@@ -6,3 +6,5 @@
 	-NUMBER OF DEPENDENTS
 
 3. PAYROLL COMPUTATIONS
+
+4. Add Upload Asset Image
