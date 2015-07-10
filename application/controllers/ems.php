@@ -2,6 +2,9 @@
 class Ems extends CI_Controller {
 	public function __construct() {
 		parent:: __construct();
+        if($this->session->userdata('logged_in')==false) {
+            redirect('msi');
+        }
 		$this->load->library("pagination");
 		$this->load->model('ems_model');
 		$this->load->model('ams_model');
@@ -32,7 +35,6 @@ class Ems extends CI_Controller {
 	}
 
 	public function dashboard(){
-		if($this->session->userdata('logged_in')==true){
 			$this->display_navbar('Dashboard - MSInc.');
 
 			$userLevel = $this->session->userdata('user_level');
@@ -56,9 +58,6 @@ class Ems extends CI_Controller {
 				$this->toast('Welcome! ' .$userLevel.' '.$firstname, 'success');
 				$this->session->unset_userdata('welcome');
 			}
-		} else {
-			redirect('msi');
-		}
 	}
 
 	public function toast($message, $type){
@@ -72,7 +71,6 @@ class Ems extends CI_Controller {
 	}
 
 	public function employees(){
-		if($this->session->userdata('logged_in')==true){
 			$this->display_navbar('Employees - MSInc.');
 
 			$config["base_url"] = base_url() . "employee/employees";
@@ -126,13 +124,9 @@ class Ems extends CI_Controller {
 				$this->toast('Successful! Photo has been changed.', 'success');
 				$this->session->unset_userdata('uploaded');
 			}
-		} else {
-			redirect('msi');
-		}
 	}
 
 	public function search_employee(){
-		   if($this->session->userdata('logged_in')==true){
 			   if($this->input->post('txtSearch')){
 				   $this->display_navbar('Employees - MSInc.');
 
@@ -155,13 +149,9 @@ class Ems extends CI_Controller {
 			   } else {
 				redirect('ems/employees');
 			   }
-		   } else {
-			redirect('msi');
-		}
 	   }
 
 	   public function add_employee(){
-		if($this->session->userdata('logged_in')==true){
 			$this->form_validation->set_rules('txtEmpID', 'Employee ID', 'trim|required');
 			$this->form_validation->set_rules('txtEmpPosition', 'Position', 'trim|required');
 			$this->form_validation->set_rules('txtEmpStatus', 'Employee Status', 'trim|required');
@@ -190,9 +180,6 @@ class Ems extends CI_Controller {
 				$this->display_navbar('Add Employee - MSInc.');
 				$this->load->view('employee/add_employee');
 				$this->load->view('components/footer');
-		} else {
-			redirect('msi');
-		}
 	}
 
 	public function delete_employee(){
@@ -203,7 +190,6 @@ class Ems extends CI_Controller {
 	}
 
 	public function view_details(){
-		if($this->session->userdata('logged_in')==true){
 			$this->display_navbar('Employee Details - MSInc.');
 			$id = $this->input->get('emp_id');
 			$this->load->model('login_model');
@@ -211,39 +197,27 @@ class Ems extends CI_Controller {
 			$data['record'] = $this->ems_model->view_emp_details($id);
 			$this->load->view('employee/employee_details',$data);
 			$this->load->view('components/footer');
-		} else {
-			redirect('msi');
-		}
 	}
 
 	public function view_accounts(){
-		if($this->session->userdata('logged_in')==true){
 			$this->display_navbar('User Accounts - MSInc.');
 			$this->load->model('login_model');
 			$data['record'] = $this->login_model->view_accounts();
 
 			$this->load->view('employee/view_user',$data);
 			$this->load->view('components/footer');
-		} else {
-		redirect('msi');
-		}
 	}
 
 	public function edit_employee(){
-		if($this->session->userdata('logged_in')==true){
 			$this->display_navbar('Employee Details - MSInc.');
 
 			$id = $this->input->get('emp_id');
 			$data['record'] = $this->ems_model->view_emp_details($id);
 			$this->load->view('employee/edit_employee',$data);
 			$this->load->view('components/footer');
-		} else {
-			redirect('msi');
-		}
 	}
 
 	public function update_employee(){
-		if($this->session->userdata('logged_in')==true){
 			$id = $this->input->get('emp_id');
 			$this->display_navbar('Employee Details - MSInc.');
 			$this->ems_model->update_record($id);
@@ -254,9 +228,6 @@ class Ems extends CI_Controller {
 					 redirect('ems/employees');
 				 }
 			$this->load->view('components/footer');
-		} else {
-			redirect('msi');
-		}
 	}
 
 	public function upload_image(){
@@ -269,7 +240,6 @@ class Ems extends CI_Controller {
 	}
 
 	public function view_performance(){
-		if($this->session->userdata('logged_in')==true){
 			$this->display_navbar('Employees - MSInc.');
 			$this->load->view('components/sidebar_admin');
 
@@ -320,26 +290,18 @@ class Ems extends CI_Controller {
 				$this->toast('Successful! Record has been updated.', 'success');
 				$this->session->unset_userdata('edited');
 			}
-		} else {
-			redirect('msi');
-		}
 	}
 
 	public function view_performance_details(){
-		if($this->session->userdata('logged_in')==true){
 			$this->display_navbar('Evaluation Details - MSInc.');
 
 			$id = $this->input->get('performance_id');
 			$data['record'] = $this->performance_model->view_performance_details($id);
 			$this->load->view('employee/performance_details',$data);
 			$this->load->view('components/footer');
-		} else {
-			redirect('msi');
-		}
 	}
 
 	public function evaluate_employee(){
-		if($this->session->userdata('logged_in')==true){
 			$this->display_navbar('Evaluate Employee - MSInc.');
 
 			$this->session->set_userdata('empID',$this->input->get('emp_id'));
@@ -348,13 +310,9 @@ class Ems extends CI_Controller {
 			$data['name'] = $this->session->userdata('emp_firstname').' '.$this->session->userdata('emp_middlename').' '.$this->session->userdata('emp_lastname');
 			$this->load->view('employee/evaluate_employee',$data);
 			$this->load->view('components/footer');
-		} else {
-			redirect('msi');
-		}
 	}
 
 	public function process_evaluation(){
-		if($this->session->userdata('logged_in')==true){
 			$id = $this->session->userdata('empID');
 			if ($this->performance_model->add_evaluation()){
 				$this->session->unset_userdata('emp_id');
@@ -364,9 +322,6 @@ class Ems extends CI_Controller {
 				$this->session->set_userdata('added',1);
 				redirect('ems/employees');
 			}
-		} else {
-		redirect('msi');
-		}
 	}
 
 	public function request_leave(){
@@ -441,13 +396,8 @@ class Ems extends CI_Controller {
 	}
 
 	public function promotion(){
-		if($this->session->userdata('logged_in')==true){
-
 			$this->display_navbar('Evaluate Employee - MSInc.');
 			$this->load->view('employee/upload');
 			$this->load->view('components/footer');
-		} else {
-		redirect('msi');
-		}
 	}
 }
