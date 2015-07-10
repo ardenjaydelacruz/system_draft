@@ -1,0 +1,107 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #ebebeb;
+	font-family: 'Roboto', sans-serif;
+	transition: all 0.2s;
+}
+.zero {
+	margin: 0px;
+	padding: 0px;
+}
+.black {
+	color: black;
+}
+.breadcrumb {
+	margin-bottom: 10px;
+}
+.big {
+	font-size: 1.3em;
+	font-weight: bold;
+}
+.addButton {
+	margin-bottom: 10px;
+}
+.auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* =====================================
+				  Login
+   ===================================== */
+
+.error {
+	color: #E60000;
+	font-size: .9em;
+}
+.signUpPanel {
+	max-width: 800px;
+	margin: 0 auto;
+	-webkit-box-shadow: 6px 9px 10px -4px rgba(0, 0, 0, 0.32);
+	-moz-box-shadow: 6px 9px 10px -4px rgba(0, 0, 0, 0.32);
+	box-shadow: 6px 9px 10px -4px rgba(0, 0, 0, 0.32);
+}
+.loginPanel {
+	max-width: 400px;
+	max-height: 400px;
+	margin: 80px auto 0 auto;
+	-webkit-box-shadow: 6px 9px 10px -4px rgba(0, 0, 0, 0.32);
+	-moz-box-shadow: 6px 9px 10px -4px rgba(0, 0, 0, 0.32);
+	box-shadow: 6px 9px 10px -4px rgba(0, 0, 0, 0.32);
+}
+.colorgraph {
+	height: 7px;
+	border-top: 0;
+	background: #c4e17f;
+	border-radius: 5px;
+	background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	margin-top: 0px;
+}
+.alert-login {
+	width: 50%;
+	margin: 0px auto;
+}
+
+/* =====================================
+				 Dashboard
+   ===================================== */
+
+.fix-body {
+	margin-top: 15px;
+}
+
+/* =====================================
+				 EMS
+   ===================================== */
+
+.main-content {
+	margin-top: 70px;
+	margin-bottom: 80px;
+	margin-right: 10px;
+	margin-left: 280px;
+	-webkit-box-shadow: 6px 9px 10px -4px rgba(0, 0, 0, 0.32);
+	-moz-box-shadow: 6px 9px 10px -4px rgba(0, 0, 0, 0.32);
+	box-shadow: 6px 9px 10px -4px rgba(0, 0, 0, 0.32);
+}
+.emp_image {
+	margin: 0 auto;
+	max-height: 200px;
+	max-width: 200px;
+}
+.table-head {
+	text-align: center;
+}
+.evaluator {
+	margin: 0 auto;
+	max-height: 150px;
+	max-width: 150px;
+}
+.user-panel {
+	height: 100px;
+}
