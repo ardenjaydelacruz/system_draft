@@ -2,8 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Ams_model extends CI_Model {
 
-	public function record_count(){
+	public function total_assets(){
 		return $this->db->count_all('assets');
+	}
+
+	public function total_employees(){
+		return $this->db->count_all('employees');
 	}
 
 	public function fetch_record($limit, $start) {
