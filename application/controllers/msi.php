@@ -7,6 +7,7 @@ class Msi extends CI_Controller {
 		$this->load->model('login_model');
 		$this->load->model('ems_model');
 		$this->load->model('ams_model');
+		
 	}
 
 	public function index(){
