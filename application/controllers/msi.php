@@ -11,7 +11,11 @@ class Msi extends CI_Controller {
 	}
 
 	public function index(){
-		$this->login();
+		$user = User::find('all');
+		foreach ($user as $row) {
+			echo $row->username.'<br>';
+		}
+	
 	}
 
 	public function toast($message, $type){
