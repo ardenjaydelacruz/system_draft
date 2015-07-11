@@ -5,6 +5,9 @@ class Ems extends MY_Controller
     public function __construct()
     {
         parent:: __construct();
+        if ($this->session->userdata('logged_in') == false) {
+            redirect('msi/login');
+        }
     }
 
     public function dashboard()
@@ -14,11 +17,8 @@ class Ems extends MY_Controller
         $data['pageTitle'] = 'Dashboard - MSInc.';
         $data['content'] = 'components/admin_dashboard';
         $this->load->view($this->master_layout,$data);
-
-        if ($this->session->userdata('welcome')) {
-            $this->toast('Welcome! ' . $this->session->userdata('user_level') . ' ' . $this->session->userdata('first_name'), 'success');
-            $this->session->unset_userdata('welcome');
-        }
+        $this->display_notif();
+       
     }
 
     public function employees()

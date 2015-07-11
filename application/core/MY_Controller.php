@@ -13,10 +13,6 @@ class MY_Controller extends CI_Controller {
         $this->load->model('performance_model');
         $this->load->model('leave_model');
 
-		if ($this->session->userdata('logged_in') == false) {
-            redirect('msi');
-        }
-
         if ($this->session->userdata('user_level') == 'Administrator') {
         	$this->master_layout = 'layout/admin-master';
         } elseif ($this->session->userdata('user_level') == 'Manager') {
@@ -24,15 +20,19 @@ class MY_Controller extends CI_Controller {
         } elseif ($this->session->userdata('user_level') == 'Employee') {
          	$this->master_layout = 'layout/employee-master';
         } 
+        if ($this->session->userdata('welcome')) {
+            $this->toast('Welcome! ' . $this->session->userdata('user_level') . ' ' . $this->session->userdata('first_name'), 'success');
+            $this->session->unset_userdata('welcome');
+        }
 	}
 
 	public function toast($message, $type)
     {
         $data['message'] = $message;
         if ($type == 'success') {
-            $this->load->view('components/toast_success', $data);
+            $this->load->view('layout/toast_success', $data);
         } elseif ($type == 'error') {
-            $this->load->view('components/toast_error', $data);
+            $this->load->view('layout/toast_error', $data);
         }
     }
 

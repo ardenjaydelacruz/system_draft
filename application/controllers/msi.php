@@ -1,13 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Msi extends CI_Controller {
+class Msi extends MY_Controller {
 	
 	public function __construct(){
-		parent::__construct();
-		$this->load->model('login_model');
-		$this->load->model('ems_model');
-		$this->load->model('ams_model');
-		
+		parent::__construct();	
 	}
 
 	public function index(){
@@ -17,15 +13,6 @@ class Msi extends CI_Controller {
 		// }
 		$this->login();
 	
-	}
-
-	public function toast($message, $type){
-		$data['message'] = $message;
-		if ($type == 'success') {
-			$this->load->view('components/toast_success',$data);	
-		} elseif ($type == 'error') {
-			$this->load->view('components/toast_error',$data);	
-		}
 	}
 
 	/* =====================================
@@ -40,7 +27,6 @@ class Msi extends CI_Controller {
 			$this->login_model->set_session();
 			$this->login_model->get_profile();
 			$this->session->set_userdata('welcome',1);
-		
 			redirect('ems/dashboard');
 		}
 		// $this->display_navbar('Login - MSInc.');
