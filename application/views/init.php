@@ -18,10 +18,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/sidebar.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/sweetalert.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/toastr.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/loader.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/animations.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/morris.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/rate.css">
 
 	<link href='http://fonts.googleapis.com/css?family=Roboto:500,700,500italic,400' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/mystyle.css">

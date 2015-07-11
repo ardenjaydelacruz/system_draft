@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Ems extends CI_Controller
+class Ems extends MY_Controller
 {
     public function __construct()
     {
@@ -324,10 +324,8 @@ class Ems extends CI_Controller
     {
         $id = $this->input->get('emp_id');
         $data['record'] = $this->ems_model->view_emp_details($id);
-
-        $this->display_navbar('Add Employee - MSInc.');
-        $this->load->view('employee/request_leave', $data);
-        $this->load->view('components/footer');
+        $data['content'] = 'employee/request_leave';
+        $this->load->view($this->master_layout,$data);
     }
 
     public function process_leave()
