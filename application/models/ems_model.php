@@ -1,17 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Ems_model extends CI_Model {
-
-	public function toast($message, $type)
-	{
-		$data['message'] = $message;
-		if ($type == 'success') {
-			$this->load->view('components/toast_success', $data);
-		} elseif ($type == 'error') {
-			$this->load->view('components/toast_error', $data);
-		}
-	}
-
+	
 	public function total_employees(){
 		return $this->db->count_all('employees');
 	}
@@ -136,10 +126,7 @@ class Ems_model extends CI_Model {
 		$row = $query->row();
 		if($query->result()){
 			$session_data = array(
-				'emp_id' => $row->emp_id,
-				'emp_firstname' => $row->first_name,
-				'emp_middlename' => $row->middle_name,
-				'emp_lastname' => $row->last_name
+				'name' => $row->first_name.' '.$row->middle_name.' '.$row->last_name
 				);
 			$this->session->set_userdata($session_data);
 		}

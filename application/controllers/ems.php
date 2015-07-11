@@ -5,73 +5,24 @@ class Ems extends MY_Controller
     public function __construct()
     {
         parent:: __construct();
-        if ($this->session->userdata('logged_in') == false) {
-            redirect('msi');
-        }
-        $this->load->library("pagination");
-        $this->load->model('ems_model');
-        $this->load->model('ams_model');
-        $this->load->model('login_model');
-        $this->load->model('performance_model');
-        $this->load->model('leave_model');
-    }
-
-    public function display_navbar($title)
-    {
-        $data['pageTitle'] = $title;
-        $this->load->view('init');
-        $userLevel = $this->session->userdata('user_level');
-
-        $data['user_level'] = $userLevel;
-        $data['firstname'] = $this->session->userdata('first_name');
-        $data['lastname'] = $this->session->userdata('last_name');
-        $data['profile_image'] = $this->session->userdata('image');
-        $this->load->view('components/navbar_logged', $data);
-
-        if ($userLevel == 'Administrator') {
-            $this->load->view('components/sidebar_admin', $data);
-        } elseif ($userLevel == 'Manager') {
-            $this->load->view('components/sidebar_manager', $data);
-        } elseif ($userLevel == 'Employee') {
-            $this->load->view('components/sidebar_employee', $data);
-        }
     }
 
     public function dashboard()
     {
-        $this->display_navbar('Dashboard - MSInc.');
-        $userLevel = $this->session->userdata('user_level');
-        $firstname = $this->session->userdata('first_name');
         $data['total_employee'] = $this->ems_model->total_employees();
         $data['total_asset'] = $this->ams_model->total_assets();
-        if ($userLevel == 'Administrator') {
-            $this->load->view('components/admin_dashboard', $data);
-        } elseif ($userLevel == 'Manager') {
-            $this->load->view('components/manager_dashboard', $data);
-        } elseif ($userLevel == 'Employee') {
-            $this->load->view('components/employee_dashboard', $data);
-        }
-        $this->load->view('components/footer');
-        if ($this->session->userdata('welcome')) {
-            $this->toast('Welcome! ' . $userLevel . ' ' . $firstname, 'success');
-            $this->session->unset_userdata('welcome');
-        }
-    }
+        $data['pageTitle'] = 'Dashboard - MSInc.';
+        $data['content'] = 'components/admin_dashboard';
+        $this->load->view($this->master_layout,$data);
 
-    public function toast($message, $type)
-    {
-        $data['message'] = $message;
-        if ($type == 'success') {
-            $this->load->view('components/toast_success', $data);
-        } elseif ($type == 'error') {
-            $this->load->view('components/toast_error', $data);
+        if ($this->session->userdata('welcome')) {
+            $this->toast('Welcome! ' . $this->session->userdata('user_level') . ' ' . $this->session->userdata('first_name'), 'success');
+            $this->session->unset_userdata('welcome');
         }
     }
 
     public function employees()
     {
-        $this->display_navbar('Employees - MSInc.');
-
         $config["base_url"] = base_url() . "employee/employees";
         $config["total_rows"] = $this->ems_model->total_employees();
         $config["per_page"] = 15;
@@ -102,49 +53,21 @@ class Ems extends MY_Controller
         $data['total_employee'] = $this->ems_model->total_employees();
         $data["record"] = $this->ems_model->fetch_record($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
-
-        $this->load->view("employee/employees_table", $data);
-
-        $this->load->view('components/footer');
-        if ($this->session->userdata('added')) {
-            $this->toast('Successful! Record has been added.', 'success');
-            $this->session->unset_userdata('added');
-        }
-        if ($this->session->userdata('deleted')) {
-            $this->toast('Successful! Record has been deleted.', 'success');
-            $this->session->unset_userdata('deleted');
-        }
-        if ($this->session->userdata('edited')) {
-            $this->toast('Successful! Record has been updated.', 'success');
-            $this->session->unset_userdata('edited');
-        }
-        if ($this->session->userdata('uploaded')) {
-            $this->toast('Successful! Photo has been changed.', 'success');
-            $this->session->unset_userdata('uploaded');
-        }
+        $data['pageTitle'] = 'Employees - MSInc.';
+        $data['content'] = 'employee/employees_table';
+        $this->load->view($this->master_layout,$data);
+        $this->display_notif();
     }
 
     public function search_employee()
     {
         if ($this->input->post('txtSearch')) {
-            $this->display_navbar('Employees - MSInc.');
-
-            $data['total_employee'] = $this->ems_model->record_count();
+            $data['total_employee'] = $this->ems_model->total_employees();
             $data['record'] = $this->ems_model->search_employee();
-
-            $this->load->view("employee/employees_table", $data);
-
-            $this->load->view('components/footer');
-
-            if ($this->input->get('deleted')) {
-                $this->toast('Successful! Record has been deleted.', 'success');
-            } elseif ($this->input->get('added')) {
-                $this->toast('Successful! Record has been added.', 'success');
-            } elseif ($this->input->get('edited')) {
-                $this->toast('Successful! Record has been updated.', 'success');
-            } else {
-                $this->toast(count($data['record']) . " Record(s) has been found.", 'success');
-            }
+            $data['pageTitle'] = 'Search Employee - MSInc.';
+            $data['content'] = 'employee/employees_table';
+            $this->load->view($this->master_layout,$data);
+            $this->display_notif();
         } else {
             redirect('ems/employees');
         }
@@ -177,9 +100,9 @@ class Ems extends MY_Controller
                 redirect('ems/employees');
             }
         }
-        $this->display_navbar('Add Employee - MSInc.');
-        $this->load->view('employee/add_employee');
-        $this->load->view('components/footer');
+        $data['pageTitle'] = 'Add Employees - MSInc.';
+        $data['content'] = 'employee/add_employee';
+        $this->load->view($this->master_layout,$data);
     }
 
     public function delete_employee()
@@ -192,47 +115,43 @@ class Ems extends MY_Controller
 
     public function view_details()
     {
-        $this->display_navbar('Employee Details - MSInc.');
         $id = $this->input->get('emp_id');
         $this->load->model('login_model');
         $data['account'] = $this->login_model->find_account($id);
         $data['record'] = $this->ems_model->view_emp_details($id);
-        $this->load->view('employee/employee_details', $data);
-        $this->load->view('components/footer');
+        $data['pageTitle'] = 'Employee Details - MSInc.';
+        $data['content'] = 'employee/employee_details';
+        $this->load->view($this->master_layout,$data);
+        $this->display_notif();
     }
 
     public function view_accounts()
     {
-        $this->display_navbar('User Accounts - MSInc.');
-        $this->load->model('login_model');
         $data['record'] = $this->login_model->view_accounts();
-
-        $this->load->view('employee/view_user', $data);
-        $this->load->view('components/footer');
+        $data['pageTitle'] = 'User Accounts - MSInc.';
+        $data['content'] = 'employee/view_user';
+        $this->load->view($this->master_layout,$data);
     }
 
-    public function edit_employee()
-    {
-        $this->display_navbar('Employee Details - MSInc.');
-
-        $id = $this->input->get('emp_id');
-        $data['record'] = $this->ems_model->view_emp_details($id);
-        $this->load->view('employee/edit_employee', $data);
-        $this->load->view('components/footer');
-    }
+    // public function edit_employee()
+    // {
+    //     $id = $this->input->get('emp_id');
+    //     $data['record'] = $this->ems_model->view_emp_details($id);
+    //     $data['pageTitle'] = 'Edit Details - MSInc.';
+    //     $data['content'] = 'employee/edit_employee';
+    //     $this->load->view($this->master_layout,$data);
+    // }
 
     public function update_employee()
     {
         $id = $this->input->get('emp_id');
-        $this->display_navbar('Employee Details - MSInc.');
-        $this->ems_model->update_record($id);
-        $this->login_model->update_account($id);
-
         if ($this->ems_model->update_record($id) || $this->login_model->update_account($id)) {
             $this->session->set_userdata('edited', 1);
-            redirect('ems/employees');
+            redirect("ems/view_details?emp_id=$id");
         }
-        $this->load->view('components/footer');
+        $data['pageTitle'] = 'Update Details - MSInc.';
+        $data['content'] = 'employee/view_user';
+        $this->load->view($this->master_layout,$data);
     }
 
     public function upload_image()
@@ -247,12 +166,8 @@ class Ems extends MY_Controller
 
     public function view_performance()
     {
-        $this->display_navbar('Employees - MSInc.');
-        $this->load->view('components/sidebar_admin');
-
         $config["base_url"] = base_url() . "ems/view_performance";
         $config["total_rows"] = $this->performance_model->record_count();
-
         $config["per_page"] = 15;
         $config["uri_segment"] = 3;
         $choice = $config["total_rows"] / $config["per_page"];
@@ -277,60 +192,41 @@ class Ems extends MY_Controller
         $config['num_tag_close'] = '</li>';
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
         $data['total_performance'] = $this->performance_model->record_count();
         $data["record"] = $this->performance_model->fetch_record($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
-
-        $this->load->view("employee/performance_table", $data);
-
-        $this->load->view('components/footer');
-        if ($this->session->userdata('added')) {
-            $this->toast('Successful! Record has been added.', 'success');
-            $this->session->unset_userdata('added');
-        }
-        if ($this->session->userdata('deleted')) {
-            $this->toast('Successful! Record has been deleted.', 'success');
-            $this->session->unset_userdata('deleted');
-        }
-        if ($this->session->userdata('edited')) {
-            $this->toast('Successful! Record has been updated.', 'success');
-            $this->session->unset_userdata('edited');
-        }
+        $data['pageTitle'] = 'View Performance - MSInc.';
+        $data['content'] = 'employee/performance_table';
+        $this->load->view($this->master_layout,$data);
+        $this->display_notif();
     }
 
     public function view_performance_details()
     {
-        $this->display_navbar('Evaluation Details - MSInc.');
-
         $id = $this->input->get('performance_id');
         $data['record'] = $this->performance_model->view_performance_details($id);
-        $this->load->view('employee/performance_details', $data);
-        $this->load->view('components/footer');
+        $data['pageTitle'] = 'Performance Details - MSInc.';
+        $data['content'] = 'employee/performance_details';
+        $this->load->view($this->master_layout,$data);
     }
 
     public function evaluate_employee()
     {
-        $this->display_navbar('Evaluate Employee - MSInc.');
-
-        $this->session->set_userdata('empID', $this->input->get('emp_id'));
-        $id = $this->session->userdata('empID');
+        $id = $this->input->get('emp_id');
         $this->ems_model->get_employee($id);
-        $data['name'] = $this->session->userdata('emp_firstname') . ' ' . $this->session->userdata('emp_middlename') . ' ' . $this->session->userdata('emp_lastname');
-        $this->load->view('employee/evaluate_employee', $data);
-        $this->load->view('components/footer');
+        $data['name'] = $this->session->userdata('name');
+        $data['pageTitle'] = 'Evaluate Employee - MSInc.';
+        $data['content'] = 'employee/evaluate_employee';
+        $this->load->view($this->master_layout,$data);
     }
 
     public function process_evaluation()
     {
         $id = $this->session->userdata('empID');
         if ($this->performance_model->add_evaluation()) {
-            $this->session->unset_userdata('emp_id');
-            $this->session->unset_userdata('emp_firstname');
-            $this->session->unset_userdata('emp_middlename');
-            $this->session->unset_userdata('emp_lastname');
+            $this->session->unset_userdata('name');
             $this->session->set_userdata('added', 1);
-            redirect('ems/employees');
+            redirect('ems/view_performance');
         }
     }
 
@@ -338,6 +234,7 @@ class Ems extends MY_Controller
     {
         $id = $this->input->get('emp_id');
         $data['record'] = $this->ems_model->view_emp_details($id);
+        $data['pageTitle'] = 'Request Leave - MSInc.';
         $data['content'] = 'employee/request_leave';
         $this->load->view($this->master_layout,$data);
     }
@@ -347,7 +244,6 @@ class Ems extends MY_Controller
         $this->form_validation->set_rules('leaveStarts', 'Leave Starts', 'trim|required');
         $this->form_validation->set_rules('leaveEnds', 'Leave Ends', 'trim|required');
         $this->form_validation->set_rules('type', 'Type of leave', 'trim|required');
-
         $id = $this->input->get('emp_id');
         $name = $this->input->get('emp_name');
         $leaves = $this->input->get('leaves');
@@ -361,23 +257,15 @@ class Ems extends MY_Controller
 
     public function leaves_table()
     {
-        $this->display_navbar('Leaves table - MSInc.');
         $data['record'] = $this->leave_model->leaves_table();
-
-        $this->load->view('components/sidebar_admin');
-        $this->load->view('employee/leaves_table', $data);
-        $this->load->view('components/footer');
-
-        if ($this->session->userdata('added')) {
-            $this->toast('Successful! Leave has been submitted.', 'success');
-            $this->session->unset_userdata('added');
-        }
+        $data['pageTitle'] = 'Leaves - MSInc.';
+        $data['content'] = 'employee/leaves_table';
+        $this->load->view($this->master_layout,$data);
+        $this->display_notif();
     }
 
     public function delete_leave()
     {
-        $this->display_navbar('Delete Leave - MSInc.');
-
         $id = $this->input->get('leave_id');
         $this->leave_model->delete_leave($id);
         $this->session->set_userdata('deleted', 1);
@@ -386,8 +274,6 @@ class Ems extends MY_Controller
 
     public function update_leave_status()
     {
-        $this->display_navbar('Update Leave - MSInc.');
-
         $status = $this->input->get('leave_status');
         $leave_id = $this->input->get('leave_id');
         $days = $this->input->get('days');
@@ -401,18 +287,17 @@ class Ems extends MY_Controller
 
     public function view_leave_details()
     {
-        $this->display_navbar('View Leave Details - MSInc.');
-
         $id = $this->input->get('leave_id');
         $data['record'] = $this->leave_model->view_leave_info($id);
-        $this->load->view('employee/leave_details', $data);
-        $this->load->view('components/footer');
+        $data['pageTitle'] = 'Leave Details - MSInc.';
+        $data['content'] = 'employee/leave_details';
+        $this->load->view($this->master_layout,$data);
     }
 
     public function promotion()
     {
-        $this->display_navbar('Evaluate Employee - MSInc.');
-        $this->load->view('employee/upload');
-        $this->load->view('components/footer');
+        $data['pageTitle'] = 'Promotion - MSInc.';
+        $data['content'] = 'employee/upload';
+        $this->load->view($this->master_layout,$data);
     }
 }

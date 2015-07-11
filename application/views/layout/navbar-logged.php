@@ -16,7 +16,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- <img src="<?php echo base_url();?>assets/images/default.jpg" class="user-image" alt="User Image"/> -->
-              <span class="hidden-xs"> </span> 
+              <span class="hidden-xs"><?php echo $this->session->userdata('user_level').' '.$this->session->userdata('first_name'); ?> </span> 
               <i class="fa fa-angle-down"></i>
             </a>
             <ul class="dropdown-menu">
@@ -24,10 +24,8 @@
               <li class="user-header">
                 <img src="<?php echo base_url().'assets/images/profile/'.$this->session->userdata('image'); ?>" class="img-circle" alt="User Image" />
                 <p>
-                 
-                  <small>
-                	
-                </small>
+                  <?php echo $this->session->userdata('user_level'); ?>
+                  <small><?php echo $this->session->userdata('first_name'); ?></small>
                 </p>
                 
               </li>

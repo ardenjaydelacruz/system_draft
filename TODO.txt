@@ -8,3 +8,5 @@
 3. PAYROLL COMPUTATIONS
 
 4. Add Upload Asset Image
+
+5. Streamline code if pagination

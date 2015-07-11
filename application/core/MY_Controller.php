@@ -6,6 +6,53 @@ class MY_Controller extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->master_layout = 'layout/admin-master';
+		$this->load->library("pagination");
+        $this->load->model('ems_model');
+        $this->load->model('ams_model');
+        $this->load->model('login_model');
+        $this->load->model('performance_model');
+        $this->load->model('leave_model');
+
+		if ($this->session->userdata('logged_in') == false) {
+            redirect('msi');
+        }
+
+        if ($this->session->userdata('user_level') == 'Administrator') {
+        	$this->master_layout = 'layout/admin-master';
+        } elseif ($this->session->userdata('user_level') == 'Manager') {
+         	$this->master_layout = 'layout/manager-master';
+        } elseif ($this->session->userdata('user_level') == 'Employee') {
+         	$this->master_layout = 'layout/employee-master';
+        } 
 	}
+
+	public function toast($message, $type)
+    {
+        $data['message'] = $message;
+        if ($type == 'success') {
+            $this->load->view('components/toast_success', $data);
+        } elseif ($type == 'error') {
+            $this->load->view('components/toast_error', $data);
+        }
+    }
+
+     public function display_notif()
+    {
+        if ($this->session->userdata('added')) {
+            $this->toast('Successful! Record has been added.', 'success');
+            $this->session->unset_userdata('added');
+        }
+        if ($this->session->userdata('deleted')) {
+            $this->toast('Successful! Record has been deleted.', 'success');
+            $this->session->unset_userdata('deleted');
+        }
+        if ($this->session->userdata('edited')) {
+            $this->toast('Successful! Record has been updated.', 'success');
+            $this->session->unset_userdata('edited');
+        }
+        if ($this->session->userdata('uploaded')) {
+            $this->toast('Successful! Photo has been changed.', 'success');
+            $this->session->unset_userdata('uploaded');
+        }
+    }
 }
