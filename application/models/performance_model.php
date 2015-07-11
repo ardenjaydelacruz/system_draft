@@ -2,27 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Performance_model extends CI_Model {
 
-	public function record_count(){
-		return $this->db->count_all('emp_performance');
-	}
-
-	public function fetch_record($limit, $start) {
-        $this->db->limit($limit, $start);
-        $query = $this->db->get("emp_performance");
- 
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $row) {
-                $data[] = $row;
-            }
-            return $data;
-        }
-        return false;
-    }
-
-	public function view_performance(){
-		return $this->db->get('emp_performance')->result();
-	}
-
     public function add_evaluation(){
         $data = array (
             'employee_name' => $this->session->userdata('name'),
@@ -47,18 +26,6 @@ class Performance_model extends CI_Model {
             return true;
         } else {
             return false;
-        }
-    }
-
-    public function view_performance_details($id){
-        $this->db->where('performance_id', $id);
-        $query = $this->db->get('emp_performance');
-
-        if ($query->result()){
-            foreach ($query->result() as $row) {
-                $records[] = $row; 
-            }
-            return $records;
         }
     }
 }

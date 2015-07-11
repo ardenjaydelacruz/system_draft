@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Leave_model extends CI_Model {
 
-public function makeLeave($id,$name,$leaves){
+	public function makeLeave($id,$name,$leaves){
 			$date1 = new DateTime($this->input->post('leaveStarts'));
 			$date2 = new DateTime($this->input->post('leaveEnds'));
 			$interval = $date1->diff($date2);

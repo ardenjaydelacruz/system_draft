@@ -1,4 +1,4 @@
-7<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Ems extends MY_Controller
 {
@@ -250,7 +250,7 @@ class Ems extends MY_Controller
         $name = $this->input->get('emp_name');
         $leaves = $this->input->get('leaves');
         if ($this->form_validation->run()) {
-            if ($this->leave_model->makeLeave($id, $name, $leaves)) {
+            if ($this->Leaves_model->makeLeave($id, $name, $leaves)) {
                 $this->session->set_userdata('added', 1);
                 redirect('ems/leaves_table');
             }
@@ -274,7 +274,7 @@ class Ems extends MY_Controller
         $emp_id = $this->input->get('emp_id');
         $leaves = $this->input->get('leaves');
 
-        if ($this->leave_model->update_leave($leave_id, $emp_id, $status, $days, $leaves)) {
+        if ($this->Leaves_model->update_leave($leave_id, $emp_id, $status, $days, $leaves)) {
             redirect('ems/leaves_table');
         }
     }
