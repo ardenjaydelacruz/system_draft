@@ -22,7 +22,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url().'assets/images/profile/'; ?>" class="img-circle" alt="User Image" />
+                <img src="<?php echo base_url().'assets/images/profile/'.$this->session->userdata('image'); ?>" class="img-circle" alt="User Image" />
                 <p>
                  
                   <small>

@@ -19,8 +19,7 @@ class Ems extends MY_Controller
     public function display_navbar($title)
     {
         $data['pageTitle'] = $title;
-        $this->load->view('init', $data);
-
+        $this->load->view('init');
         $userLevel = $this->session->userdata('user_level');
 
         $data['user_level'] = $userLevel;
@@ -41,7 +40,22 @@ class Ems extends MY_Controller
     public function dashboard()
     {
         $this->display_navbar('Dashboard - MSInc.');
-        $this->ems_model->check_userlevel();
+        $userLevel = $this->session->userdata('user_level');
+        $firstname = $this->session->userdata('first_name');
+        $data['total_employee'] = $this->ems_model->total_employees();
+        $data['total_asset'] = $this->ams_model->total_assets();
+        if ($userLevel == 'Administrator') {
+            $this->load->view('components/admin_dashboard', $data);
+        } elseif ($userLevel == 'Manager') {
+            $this->load->view('components/manager_dashboard', $data);
+        } elseif ($userLevel == 'Employee') {
+            $this->load->view('components/employee_dashboard', $data);
+        }
+        $this->load->view('components/footer');
+        if ($this->session->userdata('welcome')) {
+            $this->toast('Welcome! ' . $userLevel . ' ' . $firstname, 'success');
+            $this->session->unset_userdata('welcome');
+        }
     }
 
     public function toast($message, $type)

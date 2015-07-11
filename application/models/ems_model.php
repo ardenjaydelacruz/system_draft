@@ -12,25 +12,6 @@ class Ems_model extends CI_Model {
 		}
 	}
 
-	public function check_userlevel()
-	{
-		$userLevel = $this->session->userdata('user_level');
-		$firstname = $this->session->userdata('first_name');
-		$data['total_employee'] = $this->ems_model->total_employees();
-		$data['total_asset'] = $this->ams_model->total_assets();
-		if ($userLevel == 'Administrator') {
-			$this->load->view('components/admin_dashboard', $data);
-		} elseif ($userLevel == 'Manager') {
-			$this->load->view('components/manager_dashboard', $data);
-		} elseif ($userLevel == 'Employee') {
-			$this->load->view('components/employee_dashboard', $data);
-		}
-		$this->load->view('components/footer');
-		if ($this->session->userdata('welcome')) {
-			$this->toast('Welcome! ' . $userLevel . ' ' . $firstname, 'success');
-			$this->session->unset_userdata('welcome');
-		}
-	}
 	public function total_employees(){
 		return $this->db->count_all('employees');
 	}
