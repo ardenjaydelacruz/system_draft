@@ -91,7 +91,6 @@ class Ams_model extends CI_Model {
 		 $data = array (
 			'asset_id' => $this->input->post('txtAssetID'),
 			'serial_number' => $this->input->post('txtSerial'),
-			'description' => $this->input->post('txtDescription'),
 			'brand' => $this->input->post('txtBrand'),
 			'model' => $this->input->post('txtModel'),
 			'vendor' => $this->input->post('txtVendor'),

@@ -2,7 +2,6 @@
     foreach ($record as $row) {
         $id = $row->asset_id;
         $serial_number = $row->serial_number;
-        $description = $row->description;
         $brand = $row->brand;
         $model = $row->model;
         $vendor = $row->vendor;
@@ -84,16 +83,6 @@
                                                     <div class="form-horizontal">
                                                         <h3>Asset Details</h3>
                                                         <hr>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">Description:</label>
-                                                            <div class="col-sm-9 controls">
-                                                                <div class="row">
-                                                                    <div class="col-xs-9">
-                                                                        <input type="text" class="form-control" value="<?php echo $description; ?>" name="txtDescription" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label">Brand:</label>
                                                             <div class="col-sm-9 controls">
