@@ -1,5 +1,3 @@
-<?php 
-foreach ($record as $row) { ?>
 <div class="content-wrapper">
 	<ol class="breadcrumb">
             <li><a href="<?php echo base_url();?>ems/dashboard"  class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -10,7 +8,6 @@ foreach ($record as $row) { ?>
             } else {
             	echo "<li class='active'>View Evaluation</li>";
             }
-          
             ?>            
     </ol>
     <div class="container-fluid">
@@ -262,4 +259,3 @@ foreach ($record as $row) { ?>
 		</div>
 	</div>
 </div>
-<?php } ?>

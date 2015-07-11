@@ -70,18 +70,6 @@
 								<i class="fa fa-star"></i>
 							</button>
 						</a>
-						<!-- <a href="<?php echo base_url();?>ems/edit_employee?emp_id=<?php echo $row->emp_id; ?>"> -->
-						<!-- <button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Edit Employee">
-							<i class="fa fa-pencil"></i>
-						</button>
-						</a>
-						<button class="btn btn-danger btn-xs" onclick=deleteEmployee(<?php echo $row->performance_id; ?>,'<?php echo base_url();?>ems/'); data-toggle="tooltip" data-placement="top" title="Delete Employee">
-							<i class="fa fa-trash-o"></i>
-						</button> -->
-						<!-- <input type="button" class="btn btn-danger btn-xs" value="Delete" onclick=deleteAlert(<?php echo $row->emp_id; ?>)> -->
-						<!-- <a href="<?php echo base_url();?>ems/delete_employee?emp_id=<?php echo $row->emp_id; ?>">
-							<input type="button" class="btn btn-danger btn-xs" value="Delete onclick=deleteAlert(<?php echo $row->emp_id; ?>)">
-						</a> -->
 						</td>
 					</tr>
 					<?php $counter++; } ?>
