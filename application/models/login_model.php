@@ -15,7 +15,6 @@ class Login_model extends CI_Model {
 		$query = $this->db->get();
 		$row = $query->row();
 
-
 		if ($query->result()){
 			$session_data = array(
 				'image' => $row->image,

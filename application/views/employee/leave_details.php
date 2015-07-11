@@ -9,7 +9,6 @@
 		<div class="panel-heading">
 		    <h6 class="panel-title big">Leave Details</h6>
 		</div>
-		<?php foreach ($record as $row) {  ?>
 		<div class="panel-body">
 			<div class="panel panel-default">
 				<div class="panel-body">
@@ -86,7 +85,6 @@
 									</div>
 								</div>
 							</div> <!-- 6 -->
-							<?php } ?>
 						</div> <!-- 12 -->
 					</div> <!-- row -->
 				</div>

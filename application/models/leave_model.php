@@ -6,7 +6,7 @@ public function makeLeave($id,$name,$leaves){
 			$date1 = new DateTime($this->input->post('leaveStarts'));
 			$date2 = new DateTime($this->input->post('leaveEnds'));
 			$interval = $date1->diff($date2);
-		$data = array (
+			$data = array (
 			'employee_name' => $name,
 			'start_date' => $this->input->post('leaveStarts'),
 			'end_date' => $this->input->post('leaveEnds'),
@@ -23,10 +23,6 @@ public function makeLeave($id,$name,$leaves){
 		} else {
 			return false;
 		}
-	}
-
-	public function leaves_table(){
-		return $this->db->get('leaves')->result();
 	}
 
 	public function update_leave($leave_id,$emp_id,$status,$days,$leaves){
@@ -51,10 +47,5 @@ public function makeLeave($id,$name,$leaves){
 		} else {
 			return false;
 		}
-	}
-
-	public function view_leave_info($id){
-		$this->db->where('leave_id',$id);
-		return $this->db->get('leaves')->result();
 	}
 }

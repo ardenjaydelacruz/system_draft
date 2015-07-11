@@ -1,9 +1,7 @@
 <?php 
-foreach ($record as $row) {
 	$id = $row->emp_id;
 	$name = $row->first_name.' '.$row->last_name;
 	$leaves = $row->leaves;
-}
  ?>
 <div class="content-wrapper">
 	<ol class="breadcrumb">

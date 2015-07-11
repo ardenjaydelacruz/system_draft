@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2015 at 04:38 AM
+-- Generation Time: Jul 11, 2015 at 05:29 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `assets` (
 --
 
 INSERT INTO `assets` (`asset_id`, `serial_number`, `model`, `category`, `brand`, `vendor`, `assigned_employee`, `assigned_date`, `status`, `date_acquired`, `warranty_start`, `warranty_end`, `date_registered`) VALUES
-(3, '28998', '32817', 'Adipiscing Elit Company', 'Pellentesque Habitant Industries', 'Nullam Vitae Corporation', 'Ivor D. Patton', '2015-03-12', 'ante', '2015-01-04', '0000-00-00', '2014-01-09', '0000-00-00 00:00:00'),
+(0, '28998', '32817', 'Adipiscing Elit Company', 'Pellentesque Habitant Industries', 'Nullam Vitae Corporation', 'None', '2015-03-12', 'wewewew', '2015-01-04', '0000-00-00', '2014-01-09', '0000-00-00 00:00:00'),
 (4, '81934', '61300', 'Metus Aliquam Erat Industries', 'Metus Aenean LLC', 'Malesuada Malesuada LLC', 'Melissa F. Preston', '0000-00-00', 'tempor', '0000-00-00', '0000-00-00', '2016-01-05', '2014-10-09 07:00:00'),
 (5, '90428', '59786', 'Enim Etiam LLC', 'In Tincidunt Incorporated', 'Lobortis Mauris Inc.', 'Boris I. Valencia', '0000-00-00', 'In', '2014-10-10', '2015-11-08', '0000-00-00', '0000-00-00 00:00:00'),
 (6, '00187', '87860', 'Orci Ut Corporation', 'Semper Et Associates', 'Facilisis Vitae Inc.', 'Jerry N. Riddle', '2014-02-10', 'Nulla', '2014-11-11', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00'),
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `employees` (
 --
 
 INSERT INTO `employees` (`emp_id`, `first_name`, `middle_name`, `last_name`, `position`, `status`, `department`, `leaves`, `birthday`, `gender`, `marital_status`, `street`, `barangay`, `city`, `state`, `zip`, `country`, `mobile_number`, `tel_number`, `email_address`, `contact_person`, `contact_rel`, `contact_num`, `image`, `date_added`) VALUES
-(1, 'Ardenx', 'Alcairo', 'Dela Cruz', 'CEOs', 'Regular', 'Executive', 10, '1993-12-16', 'male', 'Single', '12', 'qwqw', 'manda', 'manila', 999, 'Philippines', 123, 123, 'ardents02@gmail.com', 'ardents', 'asdasd', 123123, 'loader.gif', '2015-06-30 07:00:00'),
+(1, 'Ardenx', 'Alcairo', 'Dela Cruz', 'CEOs', 'Regular', 'Executive', 23, '1993-12-16', 'male', 'Single', '12', 'qwqw', 'manda', 'manila', 999, 'Philippines', 123, 123, 'ardents02@gmail.com', 'ardents', 'asdasd', 123123, 'steam_logo-wallpaper-1366x7681.jpg', '2015-06-30 07:00:00'),
 (2, 'Yvonne', 'Franklin', 'Beach', 'Avye', 'Joy', 'Laoreet Posuere Enim PC', 2, '2015-12-26', 'female', 'Married', '1793 Nulla Rd.', 'Ada', 'Ceyhan', 'Diyarbak?r', 71652, 'Mali', 7624, 0, 'sapien@lectusquismassa.ca', 'Thor Y. Terry', 'Mr.', 278, '', '2016-02-08 08:00:00'),
 (3, 'Ashely', 'Hensley', 'Delgado', 'Ross', 'Jenette', 'Ante Consulting', 4, '2015-06-09', 'female', 'Married', '375 Sagittis Road', 'SL', 'Sosnowiec', 'CV', 40205, 'Saint Pierre and Miquelon', 0, 0, 'Etiam.bibendum.fermentum@ullamcorperDuiscursus.org', 'Deacon K. Frye', 'Mrs.', 335, '', '2015-05-09 07:00:00'),
 (4, 'Illana', 'Avery', 'Zamora', 'Pearl', 'Kelsie', 'Mi LLC', 6, '2016-06-14', 'female', 'Single', 'Ap #549-9677 Tortor Avenue', 'BA', 'Vitória da Conquista', 'North Island', 453128, 'Saint Vincent and The Grenadines', 500, 800, 'Duis.mi.enim@malesuadafamesac.org', 'Tallulah B. Levy', 'Ms.', 1, '', '2015-06-03 07:00:00'),
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `emp_performance` (
   `rate5` decimal(3,2) DEFAULT NULL,
   `final_rating` decimal(3,2) NOT NULL,
   `date_evaluated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `emp_performance`
@@ -144,7 +144,9 @@ INSERT INTO `emp_performance` (`performance_id`, `employee_name`, `evaluators`, 
 (5, 'Arden Alcairo Dela Cruz', 'Arden', 'TitleFucker', 'q', 'q', 'q', 'q', 'q', '2.00', '3.00', '2.00', '4.00', '2.00', '2.60', '2015-07-03 19:55:19'),
 (6, 'Arden Alcairo Dela Cruz', 'Arden', 'TitleFucker', 'e', 'e', 'e', 'e', 'e', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2015-07-03 20:00:30'),
 (7, '  ', 'Arden', 'TitleFucker', 'e', 'e', 'e', 'e', 'e', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2015-07-03 20:02:11'),
-(8, 'Arden Alcairo Dela Cruz', 'Arden', 'TitleFucker', 'w', 'w', 'w', 'w', 'w', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2015-07-03 20:02:53');
+(8, 'Arden Alcairo Dela Cruz', 'Arden', 'TitleFucker', 'w', 'w', 'w', 'w', 'w', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2015-07-03 20:02:53'),
+(9, 'Ardenx Alcairo Dela Cruz', 'Ardenx', 'Some Title', 'qwe1', 'qwe2', 'qwe3', 'qwe4', 'qwe5', '2.00', '3.00', '3.00', '3.00', '4.00', '3.00', '2015-07-11 11:40:32'),
+(10, 'Ardenx Alcairo Dela Cruz', 'Ardenx', 'TitleFucker', 'qwe1', 'qwe2', 'qwe3', 'qwe4', 'qwe5', '2.00', '2.00', '4.00', '5.00', '2.00', '3.00', '2015-07-11 11:45:58');
 
 -- --------------------------------------------------------
 
@@ -242,10 +244,10 @@ CREATE TABLE IF NOT EXISTS `tbl_inventory` (
 --
 
 INSERT INTO `tbl_inventory` (`item_number`, `item_name`, `category`, `vendor`, `location`, `quantity`, `price`, `date_added`) VALUES
-(10001, 'Vanguard', 'Shield', 'Pasig Palengke', 'Pasig', 978, '500.00', '2015-07-08 20:54:39'),
-(10002, 'DC Hook', 'COstume', 'Secret Shop', 'Paris', 918, '7000.00', '2015-07-08 00:22:48'),
-(10003, 'Pana ni Mirana', 'Deadly Weapon', 'Aling Nena', 'Buting', 897, '200.00', '2015-07-08 00:25:41'),
-(10004, 'Es Totem', 'Weapon', 'Steam', 'Philippines', 28, '100.00', '2015-07-08 20:57:18');
+(10001, 'Vanguard', 'Shield', 'Pasig Palengke', 'Pasig', 1000, '500.00', '2015-07-08 20:54:39'),
+(10002, 'DC Hook', 'COstume', 'Secret Shop', 'Paris', 1000, '7000.00', '2015-07-08 00:22:48'),
+(10003, 'Pana ni Mirana', 'Deadly Weapon', 'Aling Nena', 'Buting', 1000, '200.00', '2015-07-08 00:25:41'),
+(10004, 'Es Totem', 'Weapon', 'Steam', 'Philippines', 1000, '100.00', '2015-07-08 20:57:18');
 
 -- --------------------------------------------------------
 
@@ -268,7 +270,12 @@ CREATE TABLE IF NOT EXISTS `tbl_materials` (
 --
 
 INSERT INTO `tbl_materials` (`materials_id`, `item_number`, `quantity`, `price`, `project_id`, `date_issued`, `date_added`) VALUES
-('M1003', 10002, 12, '7000.00', 'P1001', '2015-07-08', '2015-07-08 22:39:42');
+('M1003', 10002, 12, '7000.00', 'P1001', '2015-07-08', '2015-07-08 22:39:42'),
+('M1003', 10004, 2, '100.00', 'P1003', '2015-07-09', '2015-07-09 13:07:56'),
+('M1006', 10001, 20, '500.00', 'P1001', '2015-07-30', '2015-07-09 13:33:41'),
+('M1002', 10001, 100, '500.00', 'P1001', '2015-07-21', '2015-07-09 13:35:06'),
+('M1003', 10002, 100, '7000.00', 'P1003', '2015-07-21', '2015-07-09 13:41:57'),
+('M1002', 10003, 100, '200.00', 'P1005', '2015-07-28', '2015-07-11 20:25:03');
 
 -- --------------------------------------------------------
 
@@ -292,7 +299,8 @@ INSERT INTO `tbl_project` (`project_id`, `project_name`, `client`, `starting_dat
 ('P1001', 'Project Almanac', 'Scientists Inc.', '2015-07-08', '2015-07-08 13:36:31'),
 ('P1002', 'Project Alpha', 'NASA', '2015-07-03', '2015-07-08 14:21:12'),
 ('P1003', 'Project X', 'Classified', '2015-07-09', '2015-07-08 18:59:33'),
-('P1004', 'Project Alpha', 'NASA', '2015-07-10', '2015-07-08 19:05:40');
+('P1004', 'Project Alpha', 'NASA', '2015-07-10', '2015-07-08 19:05:40'),
+('P1005', 'Project Pie', 'Arden', '2015-07-11', '2015-07-11 20:20:08');
 
 -- --------------------------------------------------------
 
@@ -317,7 +325,7 @@ CREATE TABLE IF NOT EXISTS `user_account` (
 --
 
 INSERT INTO `user_account` (`user_id`, `username`, `password`, `email`, `user_level`, `secret_question`, `secret_answer`, `employee_id`, `date_registered`) VALUES
-(1, 'ardents', '455eaa6df5d5c0e8e15846ee6a5a9722', 'ardents02@gmail.com', 'Administrator', 'What is your pet name?', 'ardents', 1, '2015-06-05 05:28:36'),
+(1, 'ardents', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Administrator', 'What is your pet name?', 'ardents', 1, '2015-06-05 05:28:36'),
 (7, 'ardendeveloper', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', 0, '2015-06-05 05:30:12'),
 (9, 'ardenity', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', 0, '2015-06-05 21:34:52'),
 (10, 'resnerac03', '25d55ad283aa400af464c76d713c07ad', 'resnerac03@gmail.com', 'Administrator', '2', 'asdasdasdas', 0, '2015-07-03 14:27:13');
@@ -406,7 +414,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `emp_performance`
 --
 ALTER TABLE `emp_performance`
-  MODIFY `performance_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `performance_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `leaves`
 --

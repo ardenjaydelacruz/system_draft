@@ -98,8 +98,7 @@
                                         <i class="fa fa-star"></i>
                                     </button>
                                 </a>
-                                <button class="btn btn-danger btn-xs" onclick=deleteEmployee(<?php echo $row->emp_id; ?>,'
-                                    <?php echo base_url();?>ems/'); data-toggle="tooltip" data-placement="top" title="Delete Employee">
+                                <button class="btn btn-danger btn-xs" onclick=deleteEmployee(<?php echo $row->emp_id; ?>,'<?php echo base_url();?>ems/'); data-toggle="tooltip" data-placement="top" title="Delete Employee">
                                         <i class="fa fa-trash-o"></i>
                                 </button>
                                 <!-- <input type="button" class="btn btn-danger btn-xs" value="Delete" onclick=deleteAlert(<?php echo $row->emp_id; ?>)> -->

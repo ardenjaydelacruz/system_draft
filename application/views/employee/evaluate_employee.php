@@ -36,7 +36,7 @@
 					<div class="col-sm-3">
 						<section class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title text-center"><?php echo $name; ?></h3>
+								<h3 class="panel-title text-center"><?php $this->session->set_userdata('name',$name); echo $name;?></h3>
 							</div>
 							<div class="panel-body text-center">
 								<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">

@@ -25,7 +25,7 @@ class Performance_model extends CI_Model {
 
     public function add_evaluation(){
         $data = array (
-            'employee_name' => $this->session->userdata('emp_firstname').' '.$this->session->userdata('emp_middlename').' '.$this->session->userdata('emp_lastname'),
+            'employee_name' => $this->session->userdata('name'),
             'evaluators' => $this->session->userdata('first_name'),
             'description' => $this->input->post('txtEvalTitle'),
             'criteria1' => $this->input->post('txtCriteria1'),

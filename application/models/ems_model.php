@@ -1,10 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Ems_model extends CI_Model {
-	
-	public function total_employees(){
-		return $this->db->count_all('employees');
-	}
 
 	public function total_projects(){
 		return $this->db->count_all('employees');
@@ -58,23 +54,6 @@ class Ems_model extends CI_Model {
 		}
 	}
 
-	public function delete_employee($id){
-		$this->db->where('emp_id', $id);
-		$query = $this->db->delete('employees');
-	}
-
-	public function view_emp_details($id){
-		$this->db->where('emp_id', $id);
-		$query = $this->db->get('employees');
-
-		if ($query->result()){
-			foreach ($query->result() as $row) {
-				$records[] = $row;
-			}
-			return $records;
-		}
-	}
-
 	public function update_record($id){
 		$this->db->where('emp_id',$id);
 		$data = array (
@@ -120,21 +99,8 @@ class Ems_model extends CI_Model {
 		return $query->result();
 	}
 
-	public function get_employee($id){
-		$this->db->where('emp_id',$id);
-		$query = $this->db->get('employees');
-		$row = $query->row();
-		if($query->result()){
-			$session_data = array(
-				'name' => $row->first_name.' '.$row->middle_name.' '.$row->last_name
-				);
-			$this->session->set_userdata($session_data);
-		}
-	}
-
 	public function do_upload($id){
 		// $this->upload_path = realpath(APPPATH.'../assets/images/profile');
-
 		$config = array(
 			'allowed_types' => 'jpg|jpeg|gif|png',
 			'upload_path' => 'assets/images/profile/'

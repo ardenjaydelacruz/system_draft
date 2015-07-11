@@ -1,35 +1,33 @@
 <?php
-    foreach ($record as $row) {
-        $id = $row->emp_id;
-        $firstName = $row->first_name;
-        $middleName = $row->middle_name;
-        $lastName = $row->last_name;
-        $position = $row->position;
-        $status = $row->status;
-        $department = $row->department;
-        $leaves = $row->leaves;
-        $birthday = $row->birthday;
-        $gender = $row->gender;
-        $marital_status = $row->marital_status;
-        $street = $row->street;
-        $barangay = $row->barangay;
-        $city = $row->city;
-        $zip = $row->zip;
-        $state = $row->state;
-        $country = $row->country;
-        $mobile_number = $row->mobile_number;
-        $tel_number = $row->tel_number;
-        $contact_person = $row->contact_person;
-        $contact_rel = $row->contact_rel;
-        $contact_num = $row->contact_num;
-        $email = $row->email_address;
-        if (!empty($row->image)){
-            $image = $row->image;
-        } else {
-            $image = 'default.jpg';
-        }
-        $date_added = $row->date_added;
+    $id = $row->emp_id;
+    $firstName = $row->first_name;
+    $middleName = $row->middle_name;
+    $lastName = $row->last_name;
+    $position = $row->position;
+    $status = $row->status;
+    $department = $row->department;
+    $leaves = $row->leaves;
+    $birthday = $row->birthday;
+    $gender = $row->gender;
+    $marital_status = $row->marital_status;
+    $street = $row->street;
+    $barangay = $row->barangay;
+    $city = $row->city;
+    $zip = $row->zip;
+    $state = $row->state;
+    $country = $row->country;
+    $mobile_number = $row->mobile_number;
+    $tel_number = $row->tel_number;
+    $contact_person = $row->contact_person;
+    $contact_rel = $row->contact_rel;
+    $contact_num = $row->contact_num;
+    $email = $row->email_address;
+    if (!empty($row->image)){
+        $image = $row->image;
+    } else {
+        $image = 'default.jpg';
     }
+    $date_added = $row->date_added;
 ?>
     <div class="content-wrapper">
         <ol class="breadcrumb">

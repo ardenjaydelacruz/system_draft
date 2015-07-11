@@ -3,7 +3,7 @@
 class MY_Controller extends CI_Controller {
 
 	public $master_layout;
-
+    
 	public function __construct(){
 		parent::__construct();
 		$this->load->library("pagination");

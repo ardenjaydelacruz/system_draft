@@ -10,3 +10,9 @@
 4. Add Upload Asset Image
 
 5. Streamline code if pagination
+
+6. Integrate Active Record
+
+fix USER ACCOUNT delete
+
+performance, from name to employee id (reference)
