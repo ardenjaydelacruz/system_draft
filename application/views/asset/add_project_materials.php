@@ -58,6 +58,7 @@
 							<div class="form-group">
 								<label class=" col-sm-3 control-label">Project ID: * </label>
 								<div class="col-sm-3">
+									<input type="hidden" class="form-control input-sm" name="txtProjectID" value="<?php echo $id; ?>">
 									<?php echo $id; ?>
 								</div>
 								<div class="col-sm-5 error">

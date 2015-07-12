@@ -1,8 +1,10 @@
 <div class="content-wrapper">
     <ol class="breadcrumb">
-        <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="<?php echo base_url();?>ams/view_assets" class="btn btn-default"><i class="fa fa-user"></i> Assets</a></li>
-        <li class="active"><i class="fa fa-search"></i> View Inventory Details </li>
+        <li><a href="<?php echo base_url(); ?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i>
+                Dashboard</a></li>
+        <li><a href="<?php echo base_url(); ?>ams/view_assets" class="btn btn-default"><i class="fa fa-user"></i> Assets</a>
+        </li>
+        <li class="active"><i class="fa fa-search"></i> View Inventory Details</li>
     </ol>
     <div class="container-fluid">
         <div class="panel panel-warning">
@@ -16,35 +18,38 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <div class="text-center"><img src="<?php echo base_url().'assets/images/profile/default.jpg'; ?>" alt="" class="img-responsive emp_image" /></div>
+                                        <div class="text-center"><img
+                                                src="<?php echo base_url() . 'assets/images/profile/default.jpg'; ?>"
+                                                alt="" class="img-responsive emp_image"/></div>
                                         <div id="upload">
                                             <?php
-                                                echo form_open_multipart('ems/upload_image?emp_id='.$id);
-                                                echo form_upload('userfile');
-                                                echo form_submit('btnUpload','Upload');
-                                                echo form_close();
+                                            echo form_open_multipart('ems/upload_image?emp_id=' . $id);
+                                            echo form_upload('userfile');
+                                            echo form_submit('btnUpload', 'Upload');
+                                            echo form_close();
                                             ?>
                                         </div>
                                     </div>
-                                    <?php foreach ($record as $row) { ?>
-                                        <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $row->item_number; ?>" method="post">
-                                            <table class="table table-striped table-hover">
-                                                <tbody>
-                                                    <tr>
-                                                        <th>Item Number:</th>
-                                                        <td>
-                                                            <?php echo $row->item_number;?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Item Name:</th>
-                                                        <td>
-                                                            <?php echo $row->item_name;?>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <?php } ?>
+
+                                    <form
+                                        action="<?php echo base_url(); ?>ems/update_employee?emp_id=<?php echo $row->item_number; ?>"
+                                        method="post">
+                                        <table class="table table-striped table-hover">
+                                            <tbody>
+                                            <tr>
+                                                <th>Item Number:</th>
+                                                <td>
+                                                    <?php echo $row->item_number; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Item Name:</th>
+                                                <td>
+                                                    <?php echo $row->item_name; ?>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                 </div>
                             </div>
                             <!-- Side Panel-->
@@ -56,7 +61,8 @@
                                 <div class="panel-body">
                                     <div class="nav-tabs-custom">
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#tab_1" data-toggle="tab">Product Details</a></li>
+                                            <li class="active"><a href="#tab_1" data-toggle="tab">Product Details</a>
+                                            </li>
                                         </ul>
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="tab_1">
@@ -65,50 +71,67 @@
                                                     <hr>
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Category</label>
+
                                                         <div class="col-sm-9 controls">
                                                             <div class="row">
                                                                 <div class="col-xs-9">
-                                                                    <input type="text" disabled class="form-control" value="<?php echo $row->category; ?>" name="txtFirstName" />
+                                                                    <input type="text" disabled class="form-control"
+                                                                           value="<?php echo $row->category; ?>"
+                                                                           name="txtFirstName"/>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Vendor</label>
+
                                                         <div class="col-sm-9 controls">
                                                             <div class="row">
                                                                 <div class="col-xs-9">
-                                                                    <input type="text" disabled class="form-control" value="<?php echo $row->vendor; ?>" name="txtMiddleName" />
+                                                                    <input type="text" disabled class="form-control"
+                                                                           value="<?php echo $row->vendor; ?>"
+                                                                           name="txtMiddleName"/>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Location</label>
+
                                                         <div class="col-sm-9 controls">
                                                             <div class="row">
                                                                 <div class="col-xs-9">
-                                                                    <input type="text" disabled class="form-control" value="<?php echo $row->location; ?>" name="txtLastName" />
+                                                                    <input type="text" disabled class="form-control"
+                                                                           value="<?php echo $row->location; ?>"
+                                                                           name="txtLastName"/>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Quantity</label>
+
                                                         <div class="col-sm-9 controls">
                                                             <div class="row">
                                                                 <div class="col-xs-9">
-                                                                    <input type="text" type="text" disabled class="form-control" value="<?php echo $row->quantity; ?>" name="txtBirthday" />
+                                                                    <input type="text" type="text" disabled
+                                                                           class="form-control"
+                                                                           value="<?php echo $row->quantity; ?>"
+                                                                           name="txtBirthday"/>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Date Acquired</label>
+
                                                         <div class="col-sm-9 controls">
                                                             <div class="row">
                                                                 <div class="col-xs-9">
-                                                                    <input type="text" type="text" disabled class="form-control" value="<?php echo date('M d, Y',strtotime($row->date_added)); ?>" name="txtBirthday" />
+                                                                    <input type="text" type="text" disabled
+                                                                           class="form-control"
+                                                                           value="<?php echo date('M d, Y', strtotime($row->date_added)); ?>"
+                                                                           name="txtBirthday"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -130,7 +153,7 @@
                     </form>
                     <div class="signupButtons">
                         <center>
-                            <a href="<?php echo base_url();?>ams/view_inventory">
+                            <a href="<?php echo base_url(); ?>ams/view_inventory">
                                 <button class="btn btn-info">
                                     <i class="fa fa-arrow-left"> </i> Back to Inventory Table
                                 </button>
