@@ -18,7 +18,6 @@ class Ems extends MY_Controller
         $data['content'] = 'components/admin_dashboard';
         $this->load->view($this->master_layout, $data);
         $this->display_notif();
-
     }
 
     public function employees()
@@ -78,26 +77,7 @@ class Ems extends MY_Controller
 
     public function add_employee()
     {
-        $this->form_validation->set_rules('txtEmpID', 'Employee ID', 'trim|required');
-        $this->form_validation->set_rules('txtEmpPosition', 'Position', 'trim|required');
-        $this->form_validation->set_rules('txtEmpStatus', 'Employee Status', 'trim|required');
-        $this->form_validation->set_rules('txtEmpDepartment', 'Employee Department', 'trim|required');
-
-        $this->form_validation->set_rules('txtFirstName', 'First Name', 'trim|required');
-        $this->form_validation->set_rules('txtMiddleName', 'Middle Name', 'trim');
-        $this->form_validation->set_rules('txtLastName', 'Last Name', 'trim|required');
-        $this->form_validation->set_rules('txtGender', 'Gender', 'trim|required');
-        $this->form_validation->set_rules('txtBday', 'Birthday', 'trim|required');
-        $this->form_validation->set_rules('txtStatus', 'Marital Status', 'trim|required');
-
-        $this->form_validation->set_rules('txtStreet', 'Street', 'trim|required');
-        $this->form_validation->set_rules('txtBarangay', 'Barangay', 'trim|required');
-        $this->form_validation->set_rules('txtCity', 'City', 'trim|required');
-        $this->form_validation->set_rules('txtState', 'State', 'trim|required');
-        $this->form_validation->set_rules('txtZip', 'Zip Code', 'trim|required');
-        $this->form_validation->set_rules('txtCountry', 'Country', 'trim|required');
-
-        if ($this->form_validation->run()) {
+        if (Employees_model::valid_emp_data()) {
             if ($this->ems_model->add_record()) {
                 $this->session->set_userdata('added', 1);
                 redirect('ems/employees');
@@ -195,27 +175,7 @@ class Ems extends MY_Controller
 
     public function process_evaluation()
     {
-        $data = array(
-            'employee_name' => $this->session->userdata('name'),
-            'evaluators' => $this->session->userdata('first_name'),
-            'description' => $this->input->post('txtEvalTitle'),
-            'criteria1' => $this->input->post('txtCriteria1'),
-            'criteria2' => $this->input->post('txtCriteria2'),
-            'criteria3' => $this->input->post('txtCriteria3'),
-            'criteria4' => $this->input->post('txtCriteria4'),
-            'criteria5' => $this->input->post('txtCriteria5'),
-            'rate1' => $this->input->post('txtRate1'),
-            'rate2' => $this->input->post('txtRate2'),
-            'rate3' => $this->input->post('txtRate3'),
-            'rate4' => $this->input->post('txtRate4'),
-            'rate5' => $this->input->post('txtRate5'),
-            'final_rating' => ($this->input->post('txtRate1') + $this->input->post('txtRate2') + $this->input->post('txtRate3') + $this->input->post('txtRate4') + $this->input->post('txtRate5')) / 5
-        );
-        if (Performance::create($data)) {
-            $this->session->unset_userdata('name');
-            $this->session->set_userdata('added', 1);
-            redirect('ems/view_performance');
-        }
+        Performance::add_evaluation();
     }
 
     public function leaves_table()
@@ -238,27 +198,10 @@ class Ems extends MY_Controller
 
     public function process_leave()
     {
-        $this->form_validation->set_rules('leaveStarts', 'Leave Starts', 'trim|required');
-        $this->form_validation->set_rules('leaveEnds', 'Leave Ends', 'trim|required');
-        $this->form_validation->set_rules('type', 'Type of leave', 'trim|required');
-        $date1 = new DateTime($this->input->post('leaveStarts'));
-        $date2 = new DateTime($this->input->post('leaveEnds'));
-        $interval = $date1->diff($date2);
-        $data = array(
-            'employee_name' => $this->input->get('emp_name'),
-            'start_date' => $this->input->post('leaveStarts'),
-            'end_date' => $this->input->post('leaveEnds'),
-            'days' => $interval->days + 1,
-            'employee_id' => $this->input->get('emp_id'),
-            'leaves_left' => $this->input->get('leaves'),
-            'date_approved' => 0,
-            'type' => $this->input->post('type')
-        );
-        if ($this->form_validation->run()) {
-            if ($leave = Leaves_model::create($data)) {
-                $this->session->set_userdata('added', 1);
-                redirect('ems/leaves_table');
-            }
+        $details = Leaves_model::leave_details();
+        if ($leave = Leaves_model::create($details)) {
+            $this->session->set_userdata('added', 1);
+            redirect('ems/leaves_table');
         }
     }
 

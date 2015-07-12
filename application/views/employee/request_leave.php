@@ -23,41 +23,29 @@
 						    <div class="col-sm-3">						    		
 						    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled value="<?php echo $name; ?>">	
 						    </div>
-						    <div class="col-sm-5 error">
-						    <!-- 	<?php echo form_error('leaveStarts'); ?> -->
-						    </div>
 						</div>
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Leave Starts</label>
 						    <div class="col-sm-3">
-						    	<input type="date" class="form-control input-sm" placeholder="Employee ID" name="leaveStarts">						
-						    </div>
-						    <div class="col-sm-5 error">
-						    	<?php echo form_error('leaveStarts'); ?>
+						    	<input type="date" class="form-control input-sm" placeholder="Employee ID" required name="leaveStarts">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Leave Ends</label>
 						    <div class="col-sm-3">
-						    	<input type="date" class="form-control input-sm" placeholder="Position" name="leaveEnds">
-						    </div>
-						    <div class="col-sm-5 error">
-						    	<?php echo form_error('leaveEnds'); ?>
+						    	<input type="date" class="form-control input-sm" placeholder="Position" required name="leaveEnds">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Type of leave</label>
 						    <div class="col-sm-3">
-						    	<select class="form-control" name="type">
+						    	<select class="form-control" name="type" required	>
 						    		<option value="Sick Leave">Sick Leave</option>
 						    		<option value="Maternity Leave">Maternity Leave Leave</option>
 						    		<option value="Vacation Leave">Vacation Leave</option>
 						    		<option value="Leave Without Pay">Leave Without Pay</option>
 						    		<option value="Family Responsibility Leave ">Family Responsibility Leave </option>
 						    	</select>
-						    </div>
-						    <div class="col-sm-5 error">
-						    	<?php echo form_error('type'); ?>
 						    </div>
 						</div>
 					</div>
