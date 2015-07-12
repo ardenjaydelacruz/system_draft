@@ -42,7 +42,7 @@
 								<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">
 								<br>
 								<label  >Employee to be evaluated</label>
-								<button class="btn btn-success">
+								<button class="btn btn-success" name="btnSubmit">
 									<i class="fa fa-floppy-o"></i>
 									Save
 								</button>

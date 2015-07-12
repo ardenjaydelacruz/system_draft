@@ -39,7 +39,6 @@
 							<a href="<?php echo base_url(); ?>ems/update_leave_status?leave_status=Declined&leave_id=<?php echo $row->leave_id;?>">
 								<button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Decline Leave"><i class="fa fa-thumbs-down fa-lg"></i></button>
 							</a>
-							
 							<?php } else {
 									if ($row->status=='Approved'){
 										echo "<label class='label label-success'>";
@@ -51,7 +50,6 @@
 										echo "</label>";
 									}
 								} ?>
-							
 						</td>
 						<td align="center">
 							<a href="<?php echo base_url();?>ems/view_leave_details?leave_id=<?php echo $row->leave_id; ?>">

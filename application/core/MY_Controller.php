@@ -10,8 +10,7 @@ class MY_Controller extends CI_Controller {
         $this->load->model('ems_model');
         $this->load->model('ams_model');
         $this->load->model('login_model');
-        $this->load->model('performance_model');
-        $this->load->model('leave_model');
+        $this->load->model('Performance');
 
         if ($this->session->userdata('user_level') == 'Administrator') {
         	$this->master_layout = 'layout/admin-master';
