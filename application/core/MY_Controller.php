@@ -18,7 +18,7 @@ class MY_Controller extends CI_Controller {
          	$this->master_layout = 'layout/manager-master';
         } elseif ($this->session->userdata('user_level') == 'Employee') {
          	$this->master_layout = 'layout/employee-master';
-        } 
+        }
 	}
 
 	public function toast($message, $type)
@@ -49,10 +49,13 @@ class MY_Controller extends CI_Controller {
             $this->toast('Successful! Photo has been changed.', 'success');
             $this->session->unset_userdata('uploaded');
         }
-
         if ($this->session->userdata('welcome')) {
             $this->toast('Welcome! ' . $this->session->userdata('user_level') . ' ' . $this->session->userdata('first_name'), 'success');
             $this->session->unset_userdata('welcome');
+        }
+        if($this->session->userdata('registered')){
+            $this->toast('Registration Successful!', 'success');
+            $this->session->unset_userdata('registered');
         }
     }
 }

@@ -8,31 +8,18 @@ class Msi extends MY_Controller {
 
 	public function index(){
 		$this->login();
-	
 	}
 
-	/* =====================================
-					LOGIN
-	   ===================================== */ 
-
 	public function login(){
-		$this->form_validation->set_rules('txtUsername', 'Username', 'trim|required|callback_validate_data');
-		$this->form_validation->set_rules('txtPassword', 'Password', 'trim|required|md5');
-
-		if($this->form_validation->run()){
+		if(Users::validLogin()){
 			$this->login_model->set_session();
 			$this->login_model->get_profile();
 			$this->session->set_userdata('welcome',1);
 			redirect('ems/dashboard');
 		}
-		// $this->display_navbar('Login - MSInc.');
 		$this->load->view('init');
 		$this->load->view('login/login');
-		if($this->session->userdata('registered')){
-			$this->toast('Registration Successful!', 'success');
-			$this->session->unset_userdata('registered');
-		}
-		
+		$this->display_notif();
 	}
 
 	public function validate_data(){
@@ -53,30 +40,15 @@ class Msi extends MY_Controller {
 	   ===================================== */ 
 
 	public function signup(){
-		$this->form_validation->set_rules('txtUsername', 'Username', 'trim|required|is_unique[user_account.username]|min_length[6]');
-		$this->form_validation->set_rules('txtPassword', 'Password', 'trim|required|min_length[8]');		
-		$this->form_validation->set_rules('txtCPassword', 'Confirm Password', 'trim|required|matches[txtPassword]|min_length[8]');
-		$this->form_validation->set_rules('txtEmail', 'Email', 'trim|required');
-		$this->form_validation->set_rules('txtUserLevel', 'User Level', 'trim|required');
-		$this->form_validation->set_rules('txtQuestionList', 'Secret Question', 'trim|required');
-		$this->form_validation->set_rules('txtAnswer', 'Secret Answer', 'trim|required');
-
-		$this->form_validation->set_message('is_unique', 'The Username is already taken.');
-
-		$this->display_navbar('Sign Up - MSInc.');
-
-		if($this->form_validation->run()){
-			if ($this->login_model->addEmployee()) {
+		if(Users::validInfo()){
+			$details = Users::userDetails();
+			if (Users::create($details)) {
 				$this->session->set_userdata('registered',1);
 				redirect('msi/login');
 			} 
-		} else {
-			if(isset($_POST['btnSubmit']))
-				$this->load->view('login/signup_error');
 		}
-                
+		$this->load->view('init');
 		$this->load->view('login/signup');
-		$this->load->view('components/footer');
 	}
 
 	public function signup_success(){
@@ -87,7 +59,6 @@ class Msi extends MY_Controller {
 		$this->session->sess_destroy();
 		redirect('msi/login');
 	}
-
 
 	/* =====================================
 				FORGOT PASSWORD

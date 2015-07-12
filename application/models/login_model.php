@@ -41,25 +41,6 @@ class Login_model extends CI_Model {
 		}
 	}
 
-	public function addEmployee(){
-		$data = array(
-			'username' => $this->input->post('txtUsername'),
-			'password' => md5($this->input->post('txtPassword')),
-			'email' => $this->input->post('txtEmail'),
-			'user_level' => $this->input->post('txtUserLevel'),
-			'secret_question' => $this->input->post('txtQuestionList'),
-			'secret_answer' => $this->input->post('txtAnswer'),
-
-		);
-		$query = $this->db->insert('user_account',$data);
-
-		if ($query) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	public function set_session(){
 		$this->db->where('username',$this->input->post('txtUsername'));
 		$query = $this->db->get('user_account');
