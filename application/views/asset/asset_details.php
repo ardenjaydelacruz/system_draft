@@ -1,5 +1,4 @@
-<?php 
-	foreach ($record as $row) {
+<?php
 		$id = $row->asset_id;
 		$serial_number = $row->serial_number;
 		$brand = $row->brand;
@@ -10,7 +9,6 @@
 		$date_acquired = $row->date_acquired;
 		$warranty_start = $row->warranty_start;
 		$warranty_end = $row->warranty_end;
-	}
 ?>
 <div class="content-wrapper">
 	<ol class="breadcrumb">

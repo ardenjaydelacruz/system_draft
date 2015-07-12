@@ -4,6 +4,11 @@ class Assets_model extends ActiveRecord\Model {
 	static $primary_key = 'asset_id';
 
 	public function assetsDetails(){
+		if($this->input->post('txtStatus')){
+			$status = $this->input->post('txtStatus');
+		} else {
+			$status = 'Brand New';
+		}
 		$data = array (
 			'asset_id' => $this->input->post('txtAssetID'),
 			'serial_number' => $this->input->post('txtSerial'),
@@ -11,7 +16,7 @@ class Assets_model extends ActiveRecord\Model {
 			'model' => $this->input->post('txtModel'),
 			'vendor' => $this->input->post('txtVendor'),
 			'assigned_employee' => 'None',
-			'status' => 'Brand New',
+			'status' => $status,
 			'category' => $this->input->post('txtCategory'),
 			'date_acquired' => $this->input->post('txtDateAcquired'),
 			'warranty_start' => $this->input->post('txtWarrantyStart'),
@@ -41,4 +46,6 @@ class Assets_model extends ActiveRecord\Model {
 			RETURN FALSE;
 		}
 	}
+
+
 }

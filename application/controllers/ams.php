@@ -31,9 +31,10 @@ class Ams extends MY_Controller {
 	}
 
 	public function search_asset(){
-		if($this->input->post('txtSearch')){
+		$text = $this->input->post('txtSearch');
+		if($text){
 			$data['total_asset'] = count(Assets_model::all());
-			$data['record'] = $this->ams_model->search_asset();
+			$data['record'] = Assets_model::find('all', array('conditions' => "asset_id LIKE '%$text%'"));
 			$data['pageTitle'] = 'Search Asset - MSInc.';
 			$data['content'] = 'asset/asset_table';
 			$this->load->view($this->master_layout,$data);
@@ -44,7 +45,7 @@ class Ams extends MY_Controller {
 
 	public function view_asset_details(){
 		$id = $this->input->get('asset_id');
-		$data['record'] = $this->ams_model->view_details($id);
+		$data['row'] = Assets_model::find($id);
 		$data['pageTitle'] = 'Asset Details - MSInc.';
 		$data['content'] = 'asset/asset_details';
 		$this->load->view($this->master_layout,$data);
@@ -52,19 +53,19 @@ class Ams extends MY_Controller {
 
 	public function edit_asset(){
 		$id = $this->input->get('asset_id');
-		$data['record'] = $this->ams_model->view_details($id);
+		$data['row'] = Assets_model::find($id);
 		$data['pageTitle'] = 'Update Asset - MSInc.';
 		$data['content'] = 'asset/edit_asset';
 		$this->load->view($this->master_layout,$data);
 	}
 
 	public function update_asset(){
-		$id = $this->input->get('asset_id');
-		if ($this->ams_model->update_record($id)){
-			$id = $this->input->get('asset_id');
-				$this->session->set_userdata('edited',1);
-				 redirect('ams/view_assets');
-			 }
+		$details = Assets_model::assetsDetails();
+		$asset = Assets_model::find($this->input->get('asset_id'));
+		if ($asset->update_attributes($details)){
+			$this->session->set_userdata('edited',1);
+			redirect('ams/view_assets');
+		}
 	}
 
 	public function view_projects(){
