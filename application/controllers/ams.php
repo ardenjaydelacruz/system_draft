@@ -8,36 +8,8 @@ class Ams extends MY_Controller {
 	}
 
 	public function view_assets(){
-		$config["base_url"] = base_url() . "ams/view_assets";
-		$config["total_rows"] = $this->ams_model->total_assets();
-		$config["per_page"] = 15;
-		$config["uri_segment"] = 3;
-		$choice = $config["total_rows"] / $config["per_page"];
-		$config["num_links"] = round($choice);
-		$config['full_tag_open'] = '<ul class="pagination zero">';
-		$config['full_tag_close'] = '</ul>';
-		$config['first_link'] = false;
-		$config['last_link'] = false;
-		$config['first_tag_open'] = '<li>';
-		$config['first_tag_close'] = '</li>';
-		$config['prev_link'] = '&laquo';
-		$config['prev_tag_open'] = '<li class="prev">';
-		$config['prev_tag_close'] = '</li>';
-		$config['next_link'] = '&raquo';
-		$config['next_tag_open'] = '<li>';
-		$config['next_tag_close'] = '</li>';
-		$config['last_tag_open'] = '<li>';
-		$config['last_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li class="active"><a href="#">';
-		$config['cur_tag_close'] = '</a></li>';
-		$config['num_tag_open'] = '<li>';
-		$config['num_tag_close'] = '</li>';
-		$this->pagination->initialize($config);
-		$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
-
-		$data['total_asset'] = $this->ams_model->total_assets();
-		$data["record"] = $this->ams_model->fetch_record($config["per_page"], $page);
-		$data["links"] = $this->pagination->create_links();
+		$data['total_asset'] = count(Assets_model::all());
+		$data["record"] = Assets_model::all();
 		$data['pageTitle'] = 'Other Assets - MSInc.';
         $data['content'] = 'asset/asset_table';
         $this->load->view($this->master_layout,$data);
@@ -45,37 +17,22 @@ class Ams extends MY_Controller {
 	}
 
 	public function add_asset(){
-		$this->form_validation->set_rules('txtAssetID', 'Asset ID', 'trim|required');
-		$this->form_validation->set_rules('txtSerial', 'Serial Number', 'trim|required');
-		$this->form_validation->set_rules('txtBrand', 'Asset Brand', 'trim|required');
-		$this->form_validation->set_rules('txtModel', 'Asset Model', 'trim|required');
-		$this->form_validation->set_rules('txtVendor', 'Asset Vendor', 'trim|required');
-		$this->form_validation->set_rules('txtCategory', 'Asset Category', 'trim');
-		$this->form_validation->set_rules('txtDateAcquired', 'Date Acquired', 'trim|required');
-		$this->form_validation->set_rules('txtWarrantyStart', 'Warranty Start Date', 'trim|required');
-		$this->form_validation->set_rules('txtWarrantyEnd', 'Warranty End Date', 'trim|required');
-
-		if ($this->form_validation->run()){
-			if ($this->ams_model->add_record()){
-				$this->session->set_userdata('added',1);
-				redirect('ams/view_assets');
-			}
-		}
+		Assets_model::add_asset_info();
 		$data['pageTitle'] = 'Add Asset - MSInc.';
 		$data['content'] = 'asset/add_asset';
 		$this->load->view($this->master_layout,$data);
 	}
 
 	public function delete_asset(){
-		$id = $this->input->get('asset_id');
-		$this->ams_model->delete_record($id);
+		$asset = Assets_model::find($this->input->get('asset_id'));
+		$asset->delete();
 		$this->session->set_userdata('deleted',1);
 		redirect('ams/view_assets');
 	}
 
 	public function search_asset(){
 		if($this->input->post('txtSearch')){
-			$data['total_asset'] = $this->ams_model->total_assets();
+			$data['total_asset'] = count(Assets_model::all());
 			$data['record'] = $this->ams_model->search_asset();
 			$data['pageTitle'] = 'Search Asset - MSInc.';
 			$data['content'] = 'asset/asset_table';

@@ -114,15 +114,6 @@ class Login_model extends CI_Model {
 		}
 	}
 
-	public function view_accounts(){
-		return $this->db->get('user_account')->result();
-	}
-
-	public function find_account($id){
-		$this->db->where('employee_id',$id);
-		return $this->db->get('user_account')->result();
-	}
-
 	public function update_account($id){
 		$this->db->where('employee_id',$id);
 

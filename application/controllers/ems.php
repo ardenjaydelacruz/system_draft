@@ -32,9 +32,10 @@ class Ems extends MY_Controller
 
     public function search_employee()
     {
+        $text = $this->input->post('txtSearch');
         if ($this->input->post('txtSearch')) {
             $data['total_employee'] = count(Employees_model::find('all'));
-            $data['record'] = $this->ems_model->search_employee();
+            $data['record'] = Employees_model::find('all', array('conditions' => "emp_id LIKE '%$text%' OR first_name LIKE '%$text%'"));
             $data['pageTitle'] = 'Search Employee - MSInc.';
             $data['content'] = 'employee/employees_table';
             $this->load->view($this->master_layout, $data);
@@ -46,12 +47,7 @@ class Ems extends MY_Controller
 
     public function add_employee()
     {
-        if (Employees_model::valid_emp_data()) {
-            if ($this->ems_model->add_record()) {
-                $this->session->set_userdata('added', 1);
-                redirect('ems/employees');
-            }
-        }
+        Employees_model::insert_employee_data();
         $data['pageTitle'] = 'Add Employees - MSInc.';
         $data['content'] = 'employee/add_employee';
         $this->load->view($this->master_layout, $data);
@@ -68,7 +64,7 @@ class Ems extends MY_Controller
     public function view_details()
     {
         $id = $this->input->get('emp_id');
-        $data['account'] = $this->login_model->find_account($id);
+        $data['account'] = Users::find_by_employee_id($id);
         $data['row'] = Employees_model::find($id); //get user details by id
         $data['pageTitle'] = 'Employee Details - MSInc.';
         $data['content'] = 'employee/employee_details';
@@ -84,19 +80,13 @@ class Ems extends MY_Controller
         $this->load->view($this->master_layout, $data);
     }
 
-    // public function edit_employee()
-    // {
-    //     $id = $this->input->get('emp_id');
-    //     $data['record'] = $this->ems_model->view_emp_details($id);
-    //     $data['pageTitle'] = 'Edit Details - MSInc.';
-    //     $data['content'] = 'employee/edit_employee';
-    //     $this->load->view($this->master_layout,$data);
-    // }
-
     public function update_employee()
     {
         $id = $this->input->get('emp_id');
-        if ($this->ems_model->update_record($id) || $this->login_model->update_account($id)) {
+        $ems = Employees_model::find($id);
+        $user = Users::find_by_employee_id($id);
+
+        if ($ems->update_attributes(Employees_model::updateInfo()) || $user->update_attributes(Users::userDetails())) {
             $this->session->set_userdata('edited', 1);
             redirect("ems/view_details?emp_id=$id");
         }
@@ -109,7 +99,7 @@ class Ems extends MY_Controller
     {
         $id = $this->input->get('emp_id');
         if ($this->input->post('btnUpload')) {
-            if ($this->ems_model->do_upload($id)) {
+            if (Employees_model::do_upload($id)) {
                 redirect("ems/view_details?emp_id=$id");
             }
         }

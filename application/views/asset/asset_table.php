@@ -83,10 +83,6 @@
 						<button class="btn btn-danger btn-xs" onclick=deleteAsset(<?php echo $row->asset_id; ?>,'<?php echo base_url();?>ams/') data-toggle="tooltip" data-placement="top" title="Delete Asset">
 							<i class="fa fa-trash-o"></i>
 						</button>
-						<!-- <input type="button" class="btn btn-danger btn-xs" value="Delete" onclick=deleteAlert(<?php echo $row->emp_id; ?>)> -->
-						<!-- <a href="<?php echo base_url();?>ams/delete_employee?emp_id=<?php echo $row->emp_id; ?>">
-							<input type="button" class="btn btn-danger btn-xs" value="Delete onclick=deleteAlert(<?php echo $row->emp_id; ?>)">
-						</a> -->
 						</td>
 					</tr>
 					<?php $counter++; } ?>

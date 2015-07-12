@@ -18,3 +18,5 @@ fix USER ACCOUNT delete
 performance, from name to employee id (reference)
 
 request leave validation
+
+assigned assets on employees

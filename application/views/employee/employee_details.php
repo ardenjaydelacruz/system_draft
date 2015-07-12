@@ -68,7 +68,7 @@
                                                     <tr>
                                                         <th>Emp ID:</th>
                                                         <td>
-                                                            <?php echo $id;?>
+                                                            <?php echo $id; ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -349,13 +349,13 @@
                                                     <div class="form-horizontal">
                                                         <h3>User Account</h3>
                                                         <hr>
-                                                        <?php foreach ($account as $row) { ?>
+
                                                             <div class="form-group">
                                                                 <label class=" col-sm-3 control-label">User ID: </label>
                                                                 <div class="col-sm-9 controls">
                                                                     <div class="row">
                                                                         <div class="col-xs-9">
-                                                                            <input type="text" disabled class="form-control" value="<?php echo $row->user_id; ?>" name="txtUserId" />
+                                                                            <input type="text" disabled class="form-control" value="<?php echo $account->user_id; ?>" name="txtUserId" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -365,7 +365,7 @@
                                                                 <div class="col-sm-9 controls">
                                                                     <div class="row">
                                                                         <div class="col-xs-9">
-                                                                            <input type="text" disabled class="form-control" value="<?php echo $row->username; ?>" name="txtUsername" />
+                                                                            <input type="text" disabled class="form-control" value="<?php echo $account->username; ?>" name="txtUsername" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -375,7 +375,7 @@
                                                                 <div class="col-sm-9 controls">
                                                                     <div class="row">
                                                                         <div class="col-xs-9">
-                                                                            <input type="password" disabled class="form-control" value="<?php echo md5($row->password); ?>" name="txtPassword" />
+                                                                            <input type="password" disabled class="form-control" value="<?php echo md5($account->password); ?>" name="txtPassword" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -385,7 +385,7 @@
                                                                 <div class="col-sm-9 controls">
                                                                     <div class="row">
                                                                         <div class="col-xs-9">
-                                                                            <input type="text" disabled class="form-control" value="<?php echo $row->email; ?>" name="txtEmail" />
+                                                                            <input type="text" disabled class="form-control" value="<?php echo $account->email; ?>" name="txtEmail" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -395,7 +395,7 @@
                                                                 <div class="col-sm-9 controls">
                                                                     <div class="row">
                                                                         <div class="col-xs-9">
-                                                                            <input type="text" disabled class="form-control" value="<?php echo $row->secret_question; ?>" name="txtSecretQuestion" />
+                                                                            <input type="text" disabled class="form-control" value="<?php echo $account->secret_question; ?>" name="txtSecretQuestion" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -405,20 +405,12 @@
                                                                 <div class="col-sm-9 controls">
                                                                     <div class="row">
                                                                         <div class="col-xs-9">
-                                                                            <input type="text" disabled class="form-control" value="<?php echo $row->secret_answer; ?>" name="txtSecretAnswer" />
+                                                                            <input type="text" disabled class="form-control" value="<?php echo $account->secret_answer; ?>" name="txtSecretAnswer" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- <div class="form-group">
-                                                    <label class=" col-sm-3 control-label">Employee ID: </label>
-                                                    <div class="col-sm-9 controls">
-                                                        <div class="row">
-                                                            <div class="col-xs-9"><p><?php echo $row->employee_id; ?></p></div>
                                                         </div>
-                                                    </div>
-                                                </div> -->
-                                                            <?php } ?>
                                                     </div>
                                                 </div>
                                                 <!-- /.tab-content4 -->

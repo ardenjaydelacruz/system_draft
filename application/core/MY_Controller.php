@@ -7,7 +7,6 @@ class MY_Controller extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library("pagination");
-        $this->load->model('ems_model');
         $this->load->model('ams_model');
         $this->load->model('login_model');
         $this->load->model('Performance');

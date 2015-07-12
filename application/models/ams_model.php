@@ -23,29 +23,7 @@ class Ams_model extends CI_Model {
 		return false;
    }
 
-   public function add_record(){
-		$data = array (
-			'asset_id' => $this->input->post('txtAssetID'),
-			'serial_number' => $this->input->post('txtSerial'),
-			'brand' => $this->input->post('txtBrand'),
-			'model' => $this->input->post('txtModel'),
-			'vendor' => $this->input->post('txtVendor'),
-			'assigned_employee' => 'None',
-			'status' => 'Brand New',
-			'category' => $this->input->post('txtCategory'),
-			'date_acquired' => $this->input->post('txtDateAcquired'),
-			'warranty_start' => $this->input->post('txtWarrantyStart'),
-			'warranty_end' => $this->input->post('txtWarrantyEnd')
-		);
 
-		$query = $this->db->insert('assets',$data);
-
-		if ($query) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 
 	public function delete_record($id){
 		$this->db->where('asset_id', $id);
