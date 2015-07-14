@@ -112,7 +112,7 @@ class Ams extends MY_Controller {
 		Materials_model::insertMaterials();
 		$id = $this->input->get('project_id');
 		$data['id'] = $id;
-		$data['record'] = $this->ams_model->view_inventory();
+		$data['record'] = Inventory_model::all();
 		$data['pageTitle'] = 'Add Materials - MSInc.';
 		$data['content'] = 'asset/add_project_materials';
 		$this->load->view($this->master_layout,$data);
