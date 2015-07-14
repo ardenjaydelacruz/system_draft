@@ -12,6 +12,7 @@
 <script src="<?php echo base_url();?>assets/plugins/rate.js"></script>
 <script src="<?php echo base_url();?>assets/js/animations.js"></script>
 <script src="<?php echo base_url();?>assets/js/custom.js"></script>
+<script src="<?php echo base_url();?>assets/js/bootstrap-datetimepicker.min.js"></script> <!-- Bootstrap timepicker -->
 
 </div>
 <!-- Wrapper -->

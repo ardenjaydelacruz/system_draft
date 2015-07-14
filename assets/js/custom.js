@@ -67,6 +67,44 @@ function deleteAsset(id,base_url){
             } 
         })
 }
+function deleteAttendance(id,date,base_url){
+    swal({   
+        title: "Are you sure?",   
+        text: "You want to delete this attendance record?",   
+        type: "warning",   
+        showCancelButton: true,  
+        confirmButtonColor: "#DD6B55",  
+        confirmButtonText: "Delete Record",   
+        closeOnConfirm: false,
+        closeOnCancel: false }, 
+
+        function(isConfirm){   
+            if (isConfirm) {  
+                location.assign(base_url+'attendance/remove?empid='+id+'&date='+date);
+            } else {     
+                swal("Cancelled", "Attendance record not deleted", "error");   
+            } 
+        })
+}
+function deletePayslip(id, base_url){
+    swal({   
+        title: "Are you sure?",   
+        text: "You want to delete this Payslip?",   
+        type: "warning",   
+        showCancelButton: true,  
+        confirmButtonColor: "#DD6B55",  
+        confirmButtonText: "Delete Payslip",   
+        closeOnConfirm: false,
+        closeOnCancel: false }, 
+
+        function(isConfirm){   
+            if (isConfirm) {  
+                location.assign(base_url+'delete_payslip?id='+id);
+            } else {     
+                swal("Cancelled", "Payslip record not deleted", "error");   
+            } 
+        })
+}
 
 toastr.options = {
   "closeButton": true,

@@ -46,10 +46,11 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-					<li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-					<li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-					<li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+					<li><a href="<?php echo base_url();?>attendance/index"><i class="fa fa-circle-o"></i> Attendance</a></li>
+					<li><a href="<?php echo base_url();?>attendance/requestentry_table"><i class="fa fa-circle-o"></i> Request Entry</a></li>
+					<li><a href="<?php echo base_url();?>attendance/payroll"><i class="fa fa-circle-o"></i> Payroll</a></li>
+					<li><a href="<?php echo base_url();?>attendance/allowances"><i class="fa fa-circle-o"></i> Allowances</a></li>
+					<li><a href="<?php echo base_url();?>attendance/taxes"><i class="fa fa-circle-o"></i> Taxes</a></li>
 				</ul>
 			</li>
 
