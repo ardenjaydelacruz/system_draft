@@ -1,13 +1,13 @@
 <script>
 $(function() {
    $("#datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
-   $('.timepicker').timepicker();
+   $('#timepicker').timepicker();
 });
 </script>
 
 <div class="content-wrapper">
 	<ol class="breadcrumb">
-        <li><a href="<?php echo base_url();?>admin/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="<?php echo base_url();?>attendance/index" class="btn btn-default"><i class="fa fa-dashboard"></i> Attendance</a></li>
 		<li class='active'>Request Entry</li>           
     </ol>
@@ -30,7 +30,7 @@ $(function() {
 							<div class="col-sm-6 controls">
 								<div class="row">
 									<div class="col-xs-6">
-										<input type="text" class="timepicker" name="txtTimeIn"/>
+										<input type="text" id="timepicker" name="txtTimeIn"/>
 									</div>
 								</div>
 							</div>

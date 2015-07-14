@@ -13,9 +13,9 @@ $(document).ready(function(){
             $(this).toggleClass('open');       
         }
     );
-
+    
     $('#upload').hide();
-
+    
     $('#btnEnable').on('click',function(){
        toastr["success"]("Editing is enabled.");
       $('#btnSaveEdit').toggleClass('disabled');
@@ -123,13 +123,4 @@ toastr.options = {
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
 };
-
-// Star Rating
-
-$("#rateYo").rateYo({
-  rating: 0,
-  fullStar: true })
-  .on("rateyo.set", function (e, data) {
-  // alert("The rating is set to " + data.rating + "!");
-});
 

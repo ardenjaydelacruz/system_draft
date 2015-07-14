@@ -17,6 +17,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/sweetalert.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/toastr.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/animations.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap-datetimepicker.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/morris.css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:500,700,500italic,400' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/mystyle.css">
@@ -40,6 +41,7 @@
 			<script src="<?php echo base_url();?>assets/js/sweetalert.min.js"></script>
 			<script src="<?php echo base_url();?>assets/js/toastr.min.js"></script>
 			<script src="<?php echo base_url();?>assets/js/app.min.js" type="text/javascript"></script>
+			<script src="<?php echo base_url();?>assets/js/bootstrap-datetimepicker.min.js"></script>
 			<!-- Admin LTE -->
 			<script src="<?php echo base_url();?>assets/plugins/morris.js"></script>
 			<script src="<?php echo base_url();?>assets/js/animations.js"></script>
