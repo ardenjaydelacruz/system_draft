@@ -1,6 +1,6 @@
 <?php
 class Assets_model extends ActiveRecord\Model {
-	static $table_name = 'assets';
+	static $table_name = 'tbl_assets';
 	static $primary_key = 'asset_id';
 
 	public function assetsDetails(){

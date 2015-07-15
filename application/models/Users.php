@@ -1,7 +1,7 @@
 <?php
 
 class Users extends ActiveRecord\Model {
-	static $table_name = 'user_account';
+	static $table_name = 'tbl_user';
 	static $primary_key = 'user_id';
 
 	public function userDetails(){

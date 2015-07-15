@@ -6,7 +6,7 @@ class Attendance_model extends CI_Model {
 	}
 
 	public function view_employees(){
-		$query = $this->db->get('employees');
+		$query = $this->db->get('tbl_emp_info');
 		return $query->result();
 	}
 	
@@ -306,9 +306,9 @@ class Attendance_model extends CI_Model {
 	
 	public function retrievePayslips($salary_date){
 		//$this->output->enable_profiler(TRUE);
-		$this->db->select('tbl_payslip.payslip_id, employees.emp_id, employees.first_name, employees.middle_name, employees.last_name, tbl_payslip.basic_salary, tbl_payslip.gross_pay, tbl_payslip.net_pay');
-		$this->db->from('employees');
-		$this->db->join('tbl_payslip', 'tbl_payslip.emp_id = employees.emp_id');
+		$this->db->select('tbl_payslip.payslip_id, tbl_emp_info.emp_id, tbl_emp_info.first_name, tbl_emp_info.middle_name, tbl_emp_info.last_name, tbl_payslip.basic_salary, tbl_payslip.gross_pay, tbl_payslip.net_pay');
+		$this->db->from('tbl_emp_info');
+		$this->db->join('tbl_payslip', 'tbl_payslip.emp_id = tbl_emp_info.emp_id');
 		$this->db->where('tbl_payslip.payslip_date', $salary_date);
 		$result = $this->db->get();
 		return $result->result();

@@ -6,7 +6,7 @@
  * Time: 1:34 AM
  */
 class Performance extends ActiveRecord\Model {
-    static $table_name = 'emp_performance';
+    static $table_name = 'tbl_emp_performance';
     static $primary_key = 'performance_id';
 
     public function add_evaluation(){

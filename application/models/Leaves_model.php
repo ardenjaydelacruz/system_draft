@@ -1,6 +1,6 @@
 <?php
 class Leaves_model extends ActiveRecord\Model {
-	static $table_name = 'leaves';
+	static $table_name = 'tbl_leaves';
 	static $primary_key = 'leave_id';
 
 	public function leave_details(){

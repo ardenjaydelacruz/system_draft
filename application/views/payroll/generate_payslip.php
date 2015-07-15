@@ -43,7 +43,7 @@ $(function() {
 							<div class="col-sm-2 error"><?php echo form_error('txtPayrollDate') ?></div>
 						</div>
 						<div class="input-group">
-							<input type="text" class="datepicker" name="txtPayrollDate" <?php if(isset($date)) echo 'value="' . $date . '"';?>/>
+							<input type="date" class="form-control" name="txtPayrollDate" <?php if(isset($date)) echo 'value="' . $date . '"';?>/>
 						</div>
 			    	</div>
 			    	<div class="col-sm-2">
@@ -52,7 +52,7 @@ $(function() {
 							<div class="col-sm-2 error"><?php echo form_error('txtStartDate') ?></div>
 						</div>
 						<div class="input-group">
-							<input type="text" class="datepicker" name="txtStartDate" <?php if(isset($date)) echo 'value="' . $date . '"';?>/>
+							<input type="date" class="form-control" name="txtStartDate" <?php if(isset($date)) echo 'value="' . $date . '"';?>/>
 						</div>
 			    	</div>
 					<div class="col-sm-2">
@@ -61,7 +61,7 @@ $(function() {
 							<div class="col-sm-2 error"><?php echo form_error('txtEndDate') ?></div>
 						</div>
 						<div class="input-group">
-							<input type="text" class="datepicker" name="txtEndDate" <?php if(isset($date)) echo 'value="' . $date . '"';?>/>
+							<input type="date" class="form-control" name="txtEndDate" <?php if(isset($date)) echo 'value="' . $date . '"';?>/>
 						</div>
 			    	</div>
 					<div class="col-sm-3">

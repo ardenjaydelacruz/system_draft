@@ -8,8 +8,8 @@ class Login_model extends CI_Model {
 
 	public function get_profile(){
 		$this->db->select('*');
-		$this->db->from('user_account');
-		$this->db->join('employees','employees.emp_id = user_account.employee_id');
+		$this->db->from('tbl_user');
+		$this->db->join('tbl_emp_info','tbl_emp_info.emp_id = tbl_user.employee_id');
 		$this->db->where('username',$this->input->post('txtUsername'));
 		$this->db->limit(1);
 		$query = $this->db->get();
@@ -26,7 +26,7 @@ class Login_model extends CI_Model {
 
 	public function login_employee(){
 		$this->db->where('username',$this->input->post('txtUsername'));
-		$query = $this->db->get('user_account');
+		$query = $this->db->get('tbl_user');
 		$this->db->limit(1);
 		$row = $query->row();
 		
@@ -43,7 +43,7 @@ class Login_model extends CI_Model {
 
 	public function set_session(){
 		$this->db->where('username',$this->input->post('txtUsername'));
-		$query = $this->db->get('user_account');
+		$query = $this->db->get('tbl_user');
 		$this->db->limit(1);
 		$row = $query->row();
 
@@ -65,7 +65,7 @@ class Login_model extends CI_Model {
 
 	public function is_registered(){
 		$this->db->where('username',$this->input->post('txtUserChange'));
-		$query = $this->db->get('user_account');
+		$query = $this->db->get('tbl_user');
 		$row = $query->row();
 
 		if($query->num_rows()){
@@ -81,7 +81,7 @@ class Login_model extends CI_Model {
 
 	public function valid_answer(){
 		$this->db->where('username',$this->session->userdata('user'));
-		$query = $this->db->get('user_account');
+		$query = $this->db->get('tbl_user');
 	
 		foreach ($query->result() as $row){
 			$question = $row->secret_question;		
@@ -106,7 +106,7 @@ class Login_model extends CI_Model {
 		$data = array (
 			'password' => md5($this->input->post('txtNewPass'))
 			);
-		$query = $this->db->update('user_account',$data);
+		$query = $this->db->update('tbl_user',$data);
 		if ($query) {
 			return true;
 		} else {
@@ -124,7 +124,7 @@ class Login_model extends CI_Model {
 			'secret_question' => $this->input->post('txtSecretQuestion'),
 			'secret_answer' => $this->input->post('txtSecretAnswer')
 			);
-		$query = $this->db->update('user_account',$data);
+		$query = $this->db->update('tbl_user',$data);
 		if ($query) {
 			return true;
 		} else {
