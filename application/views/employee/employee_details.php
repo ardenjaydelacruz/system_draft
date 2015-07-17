@@ -3,9 +3,6 @@
     $firstName = $row->first_name;
     $middleName = $row->middle_name;
     $lastName = $row->last_name;
-    $position = $row->position;
-    $status = $row->status;
-    $department = $row->department;
     $leaves = $row->leaves_remaining;
     $birthday = $row->birthday;
     $gender = $row->gender;
@@ -35,6 +32,17 @@
     $email = $row->email;
     $secret_question = $row->secret_question;
     $secret_answer = $row->secret_answer;
+    $position = $row->job_title;
+    $status = $row->status;
+    $department = $row->department;
+    $job_category = $row->job_category;
+    $start_date = $row->start_date;
+    $probationary_date = $row->probationary_date;
+    $permanency_date = $row->permanency_date;
+    $end_date = $row->end_date;
+    $salary = $row->salary;
+    $pay_grade = $row->pay_grade;
+    $num_dependents = $row->num_dependents;
 
     if (!empty($row->image)){
         $image = $row->image;
@@ -139,7 +147,7 @@
                                  <li><a href="#tab_6" data-toggle="tab">Seminars</a></li>
                               </ul>
                               <div class="tab-content">
-                                 <section class="tab-pane active" id="tab_1">
+                                <section class="tab-pane active" id="tab_1">
                                     <div class="form-horizontal">
                                       <h3>Personal Details</h3>
                                       <hr>
@@ -231,9 +239,9 @@
                                         <?php } ?>
                                       </table>
                                     </div>
-                                 </section><!-- Personal -->
+                                </section><!-- Personal -->
                                  
-                                 <section class="tab-pane" id="tab_2">
+                                <section class="tab-pane" id="tab_2">
                                     <div class="form-horizontal">
                                       <h3>Contact Details</h3>
                                       <hr>
@@ -362,9 +370,9 @@
                                           </div>
                                       </article>
                                     </div>
-                                 </section><!-- Contact -->
+                                </section><!-- Contact -->
                                 
-                                  <section class="tab-pane" id="tab_3">
+                                <section class="tab-pane" id="tab_3">
                                     <div class="form-horizontal">
                                       <h3>Tertiary</h3>
                                       <hr>
@@ -465,9 +473,9 @@
                                           </div>
                                       </article>
                                     </div>
-                                 </section><!-- Education -->
+                                </section><!-- Education -->
                                 
-                                 <section class="tab-pane" id="tab_4">
+                                <section class="tab-pane" id="tab_4">
                                     <div class="form-horizontal">
                                        <h3>User Account</h3><hr>
                                        <article class="form-group">
@@ -521,7 +529,114 @@
                                            </div>
                                        </article>
                                     </div>
-                                 </section><!-- Account -->
+                                </section><!-- Account -->
+
+                                <section class="tab-pane" id="tab_5">
+                                    <div class="form-horizontal">
+                                       <h3>Employment Details</h3><hr>
+                                       <article class="form-group">
+                                           <label class=" col-sm-3 control-label">Employment Status: </label>
+                                           <div class="col-sm-9 controls">
+                                               <div class="row">
+                                                   <div class="col-xs-9">
+                                                       <input type="text" disabled class="form-control" value="<?php echo $status; ?>" name="txtUsername" />
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </article>
+                                       <article class="form-group">
+                                           <label class=" col-sm-3 control-label">Job title: </label>
+                                           <div class="col-sm-9 controls">
+                                               <div class="row">
+                                                   <div class="col-xs-9">
+                                                       <input type="text" disabled class="form-control" value="<?php echo $status; ?>" name="txtPassword" />
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </article>
+                                       <article class="form-group">
+                                           <label class=" col-sm-3 control-label">Job Category: </label>
+                                           <div class="col-sm-9 controls">
+                                               <div class="row">
+                                                   <div class="col-xs-9">
+                                                       <input type="text" disabled class="form-control" value="<?php echo $job_category; ?>" name="txtPassword" />
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </article>
+                                       <article class="form-group">
+                                           <label class=" col-sm-3 control-label">Department: </label>
+                                           <div class="col-sm-9 controls">
+                                               <div class="row">
+                                                   <div class="col-xs-9">
+                                                       <input type="text" disabled class="form-control" value="<?php echo $department; ?>" name="txtEmail" />
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </article>
+                                       <article class="form-group">
+                                           <label class=" col-sm-3 control-label">Start Date: </label>
+                                           <div class="col-sm-9 controls">
+                                               <div class="row">
+                                                   <div class="col-xs-9">
+                                                       <input type="text" disabled class="form-control" value="<?php echo $start_date; ?>" name="txtSecretQuestion" />
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </article>
+                                       <article class="form-group">
+                                           <label class=" col-sm-3 control-label">Probationary Date: </label>
+                                           <div class="col-sm-9 controls">
+                                               <div class="row">
+                                                   <div class="col-xs-9">
+                                                       <input type="text" disabled class="form-control" value="<?php echo $probationary_date; ?>" name="txtSecretAnswer" />
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </article>
+                                       <article class="form-group">
+                                           <label class=" col-sm-3 control-label">Permanency Date: </label>
+                                           <div class="col-sm-9 controls">
+                                               <div class="row">
+                                                   <div class="col-xs-9">
+                                                       <input type="text" disabled class="form-control" value="<?php echo $permanency_date; ?>" name="txtSecretAnswer" />
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </article>
+                                       <article class="form-group">
+                                           <label class=" col-sm-3 control-label">Pay Grade: </label>
+                                           <div class="col-sm-9 controls">
+                                               <div class="row">
+                                                   <div class="col-xs-9">
+                                                       <input type="text" disabled class="form-control" value="<?php echo $pay_grade; ?>" name="txtSecretAnswer" />
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </article>
+                                       <article class="form-group">
+                                           <label class=" col-sm-3 control-label">Salary: </label>
+                                           <div class="col-sm-9 controls">
+                                               <div class="row">
+                                                   <div class="col-xs-9">
+                                                       <input type="text" disabled class="form-control" value="<?php echo $salary; ?>" name="txtSecretAnswer" />
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </article>
+                                       <article class="form-group">
+                                           <label class=" col-sm-3 control-label">Number of Dependents: </label>
+                                           <div class="col-sm-9 controls">
+                                               <div class="row">
+                                                   <div class="col-xs-9">
+                                                       <input type="text" disabled class="form-control" value="<?php echo $num_dependents; ?>" name="txtSecretAnswer" />
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </article>
+                                       
+                                    </div>
+                                </section><!-- Account -->
                               </div><!-- Tab-content -->
                            </div><!-- Navs -->
                         </div><!--Panel Body-->
