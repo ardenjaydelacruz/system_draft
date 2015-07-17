@@ -6,7 +6,7 @@
     $position = $row->position;
     $status = $row->status;
     $department = $row->department;
-    $leaves = $row->leaves;
+    $leaves = $row->leaves_remaining;
     $birthday = $row->birthday;
     $gender = $row->gender;
     $marital_status = $row->marital_status;
@@ -27,7 +27,6 @@
     } else {
         $image = 'default.jpg';
     }
-    $date_added = $row->date_added;
 ?>
 <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $id; ?>" method="post">
 <div class="content-wrapper">
@@ -62,53 +61,53 @@
                                 </div>
                            </div>
                            <table class="table table-striped table-hover">
-                                 <tbody>
-                                     <tr>
-                                         <th>Emp ID:</th>
-                                         <td>
-                                             <?php echo $id; ?>
-                                         </td>
-                                     </tr>
-                                     <tr>
-                                         <th>Position:</th>
-                                         <td>
-                                             <input type="text" disabled class="form-control" value="<?php echo $position;?>" name="txtPosition" />
-                                         </td>
-                                     </tr>
-                                     <tr>
-                                         <th>Status:</th>
-                                         <td>
-                                             <input type="text" disabled class="form-control" value="<?php echo $status;?>" name="txtStatus" />
-                                         </td>
-                                     </tr>
-                                     <tr>
-                                         <th>Dept.:</th>
-                                         <td>
-                                             <input type="text" disabled class="form-control" value="<?php echo $department;?>" name="txtDepartment" />
-                                         </td>
-                                     </tr>
-                                     <tr>
-                                         <th>Leaves Left:</th>
-                                         <td>
-                                             <input type="text" disabled class="form-control" value="<?php echo $leaves;?>" name="txtLeaves" />
-                                         </td>
-                                     </tr>
-                                     <tr>
-                                         <td>
-                                             <a id="btnEnable" class="btn btn-primary btn-block"><i class="fa fa-edit"></i>Edit</a>
-                                         </td>
-                                         <td>
-                                             <input type="submit" id="btnSaveEdit" class="btn btn-success btn-block disabled" value="Save">
-                                         </td>
-                                     </tr>
-                                     <tr>
-                                         <td colspan="2">
-                                             <a href="<?php echo base_url();?>ems/request_leave?emp_id=<?php echo $id; ?>" class="btn btn-warning btn-block">
-                                     Add Leave
-                                 </a>
-                                         </td>
-                                     </tr>
-                                 </tbody>
+                              <tbody>
+                                  <tr>
+                                      <th>Emp ID:</th>
+                                      <td>
+                                          <?php echo $id; ?>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <th>Position:</th>
+                                      <td>
+                                          <input type="text" disabled class="form-control" value="<?php echo $position;?>" name="txtPosition" />
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <th>Status:</th>
+                                      <td>
+                                          <input type="text" disabled class="form-control" value="<?php echo $status;?>" name="txtStatus" />
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <th>Dept.:</th>
+                                      <td>
+                                          <input type="text" disabled class="form-control" value="<?php echo $department;?>" name="txtDepartment" />
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <th>Leaves Left:</th>
+                                      <td>
+                                          <input type="text" disabled class="form-control" value="<?php echo $leaves;?>" name="txtLeaves" />
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <a id="btnEnable" class="btn btn-primary btn-block"><i class="fa fa-edit"></i>Edit</a>
+                                      </td>
+                                      <td>
+                                          <input type="submit" id="btnSaveEdit" class="btn btn-success btn-block disabled" value="Save">
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="2">
+                                          <a href="<?php echo base_url();?>ems/request_leave?emp_id=<?php echo $id; ?>" class="btn btn-warning btn-block">
+                                  Add Leave
+                              </a>
+                                      </td>
+                                  </tr>
+                              </tbody>
                            </table>
                         </div>
                      </div><!-- Side Panel-->
@@ -118,13 +117,13 @@
                         <div class="panel-body">
                            <div class="nav-tabs-custom">
                               <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab_1" data-toggle="tab">Personal</a></li>
-                                    <li><a href="#tab_2" data-toggle="tab">Contact</a></li>
-                                    <li><a href="#tab_3" data-toggle="tab">Education</a></li>
-                                    <li><a href="#tab_4" data-toggle="tab">Account</a></li>
-                                    <li><a href="#tab_5" data-toggle="tab">Employment</a></li>
-                                    <li><a href="#tab_6" data-toggle="tab">Dependents</a></li>
-                                    <li><a href="#tab_7" data-toggle="tab">Seminars</a></li>
+                                 <li class="active"><a href="#tab_1" data-toggle="tab">Personal</a></li>
+                                 <li><a href="#tab_2" data-toggle="tab">Contact</a></li>
+                                 <li><a href="#tab_3" data-toggle="tab">Education</a></li>
+                                 <li><a href="#tab_4" data-toggle="tab">Account</a></li>
+                                 <li><a href="#tab_5" data-toggle="tab">Employment</a></li>
+                                 <!-- <li><a href="#tab_5" data-toggle="tab">Dependents</a></li>
+                                 <li><a href="#tab_5" data-toggle="tab">Seminars</a></li> -->
                               </ul>
                               <div class="tab-content">
                                  <section class="tab-pane active" id="tab_1">
@@ -501,178 +500,6 @@
                                  </section><!-- /.tab-content4 -->
                                  
                                  <section class="tab-pane" id="tab_5">
-                                    <div class="form-horizontal">
-                                       <h3>Employment Details</h3><hr>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Status: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->user_id; ?>" name="txtUserId" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Position: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->user_id; ?>" name="txtUserId" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Department: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->username; ?>" name="txtUsername" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Start Date: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="password" disabled class="form-control" value="<?php echo md5($account->password); ?>" name="txtPassword" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">End Date: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->email; ?>" name="txtEmail" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Salary: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->secret_question; ?>" name="txtSecretQuestion" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Paygrade: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->secret_answer; ?>" name="txtSecretAnswer" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Number of Dependents: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->secret_answer; ?>" name="txtSecretAnswer" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                    </div>
-                                 </section><!-- /.tab-content5 -->
-
-                                 <section class="tab-pane" id="tab_6">
-                                    <div class="form-horizontal">
-                                       <h3>Employment Details</h3><hr>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Status: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->user_id; ?>" name="txtUserId" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Position: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->user_id; ?>" name="txtUserId" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Department: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->username; ?>" name="txtUsername" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Start Date: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="password" disabled class="form-control" value="<?php echo md5($account->password); ?>" name="txtPassword" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">End Date: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->email; ?>" name="txtEmail" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Salary: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->secret_question; ?>" name="txtSecretQuestion" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Paygrade: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->secret_answer; ?>" name="txtSecretAnswer" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Number of Dependents: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->secret_answer; ?>" name="txtSecretAnswer" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                    </div>
-                                 </section><!-- /.tab-content5 -->
-
-                                 <section class="tab-pane" id="tab_7">
                                     <div class="form-horizontal">
                                        <h3>Employment Details</h3><hr>
                                        <article class="form-group">
