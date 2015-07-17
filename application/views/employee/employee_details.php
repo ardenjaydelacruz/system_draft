@@ -21,7 +21,6 @@
     $contact_person = $row->contact_person;
     $contact_rel = $row->contact_rel;
     $contact_num = $row->contact_num;
-    $email = $row->email_address;
     $primaryName = $row->primary_name;
     $primaryAddress = $row->primary_address;
     $primaryYear = $row->primary_year;
@@ -31,6 +30,11 @@
     $tertiaryName = $row->tertiary_name;
     $tertiaryAddress = $row->tertiary_address;
     $tertiaryYear = $row->tertiary_year;
+    $username = $row->username;
+    $password = MD5($row->password);
+    $email = $row->email;
+    $secret_question = $row->secret_question;
+    $secret_answer = $row->secret_answer;
 
     if (!empty($row->image)){
         $image = $row->image;
@@ -227,7 +231,7 @@
                                         <?php } ?>
                                       </table>
                                     </div>
-                                 </section><!-- /.tab-pane1 -->
+                                 </section><!-- Personal -->
                                  
                                  <section class="tab-pane" id="tab_2">
                                     <div class="form-horizontal">
@@ -358,7 +362,7 @@
                                           </div>
                                       </article>
                                     </div>
-                                 </section><!-- /.tab-pane2 -->
+                                 </section><!-- Contact -->
                                 
                                   <section class="tab-pane" id="tab_3">
                                     <div class="form-horizontal">
@@ -461,28 +465,17 @@
                                           </div>
                                       </article>
                                     </div>
-                                 </section><!-- /.tab-pane3 -->
+                                 </section><!-- Education -->
                                 
-                                 
                                  <section class="tab-pane" id="tab_4">
                                     <div class="form-horizontal">
                                        <h3>User Account</h3><hr>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">User ID: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->user_id; ?>" name="txtUserId" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
                                        <article class="form-group">
                                            <label class=" col-sm-3 control-label">Username: </label>
                                            <div class="col-sm-9 controls">
                                                <div class="row">
                                                    <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->username; ?>" name="txtUsername" />
+                                                       <input type="text" disabled class="form-control" value="<?php echo $username; ?>" name="txtUsername" />
                                                    </div>
                                                </div>
                                            </div>
@@ -492,7 +485,7 @@
                                            <div class="col-sm-9 controls">
                                                <div class="row">
                                                    <div class="col-xs-9">
-                                                       <input type="password" disabled class="form-control" value="<?php echo md5($account->password); ?>" name="txtPassword" />
+                                                       <input type="password" disabled class="form-control" value="<?php echo $password; ?>" name="txtPassword" />
                                                    </div>
                                                </div>
                                            </div>
@@ -502,7 +495,7 @@
                                            <div class="col-sm-9 controls">
                                                <div class="row">
                                                    <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->email; ?>" name="txtEmail" />
+                                                       <input type="text" disabled class="form-control" value="<?php echo $email; ?>" name="txtEmail" />
                                                    </div>
                                                </div>
                                            </div>
@@ -512,7 +505,7 @@
                                            <div class="col-sm-9 controls">
                                                <div class="row">
                                                    <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->secret_question; ?>" name="txtSecretQuestion" />
+                                                       <input type="text" disabled class="form-control" value="<?php echo $secret_question; ?>" name="txtSecretQuestion" />
                                                    </div>
                                                </div>
                                            </div>
@@ -522,15 +515,13 @@
                                            <div class="col-sm-9 controls">
                                                <div class="row">
                                                    <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->secret_answer; ?>" name="txtSecretAnswer" />
+                                                       <input type="text" disabled class="form-control" value="<?php echo $secret_answer; ?>" name="txtSecretAnswer" />
                                                    </div>
                                                </div>
                                            </div>
                                        </article>
                                     </div>
-                                 </section><!-- /.tab-content4 -->
-                                 
-                                
+                                 </section><!-- Account -->
                               </div><!-- Tab-content -->
                            </div><!-- Navs -->
                         </div><!--Panel Body-->
