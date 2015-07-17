@@ -32,7 +32,7 @@
     $email = $row->email;
     $secret_question = $row->secret_question;
     $secret_answer = $row->secret_answer;
-    $position = $row->job_title;
+    $job_title = $row->job_title;
     $status = $row->status;
     $department = $row->department;
     $job_category = $row->job_category;
@@ -93,7 +93,7 @@
                                   <tr>
                                       <th>Position:</th>
                                       <td>
-                                          <input type="text" disabled class="form-control" value="<?php echo $position;?>" name="txtPosition" />
+                                          <input type="text" disabled class="form-control" value="<?php echo $job_title;?>" name="txtPosition" />
                                       </td>
                                   </tr>
                                   <tr>
@@ -144,7 +144,7 @@
                                  <li><a href="#tab_3" data-toggle="tab">Education</a></li>
                                  <li><a href="#tab_4" data-toggle="tab">Account</a></li>
                                  <li><a href="#tab_5" data-toggle="tab">Employment</a></li>
-                                 <li><a href="#tab_6" data-toggle="tab">Seminars</a></li>
+                                 <!-- <li><a href="#tab_6" data-toggle="tab">Seminars</a></li> -->
                               </ul>
                               <div class="tab-content">
                                 <section class="tab-pane active" id="tab_1">
@@ -549,7 +549,7 @@
                                            <div class="col-sm-9 controls">
                                                <div class="row">
                                                    <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $status; ?>" name="txtPassword" />
+                                                       <input type="text" disabled class="form-control" value="<?php echo $job_title; ?>" name="txtPassword" />
                                                    </div>
                                                </div>
                                            </div>
