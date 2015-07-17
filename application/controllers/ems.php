@@ -65,6 +65,7 @@ class Ems extends MY_Controller
     {
         $id = $this->input->get('emp_id');
         $data['account'] = Users::find_by_employee_id($id);
+        $data['record'] = Dependent_model::find('all',array('conditions'=>"employee_id =$id")); //get dependents by id
         $data['row'] = Employees_model::find($id); //get user details by id
         $data['pageTitle'] = 'Employee Details - MSInc.';
         $data['content'] = 'employee/employee_details';

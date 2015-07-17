@@ -22,6 +22,16 @@
     $contact_rel = $row->contact_rel;
     $contact_num = $row->contact_num;
     $email = $row->email_address;
+    $primaryName = $row->primary_name;
+    $primaryAddress = $row->primary_address;
+    $primaryYear = $row->primary_year;
+    $secondaryName = $row->secondary_name;
+    $secondaryAddress = $row->secondary_address;
+    $secondaryYear = $row->secondary_year;
+    $tertiaryName = $row->tertiary_name;
+    $tertiaryAddress = $row->tertiary_address;
+    $tertiaryYear = $row->tertiary_year;
+
     if (!empty($row->image)){
         $image = $row->image;
     } else {
@@ -56,7 +66,7 @@
                                     echo form_open_multipart('ems/upload_image?emp_id='.$id);
                                     echo form_upload('userfile');
                                     echo form_submit('btnUpload','Upload');
-                                        echo form_close();
+                                    echo form_close();
                                  ?>
                                 </div>
                            </div>
@@ -122,8 +132,7 @@
                                  <li><a href="#tab_3" data-toggle="tab">Education</a></li>
                                  <li><a href="#tab_4" data-toggle="tab">Account</a></li>
                                  <li><a href="#tab_5" data-toggle="tab">Employment</a></li>
-                                 <li><a href="#tab_5" data-toggle="tab">Dependents</a></li>
-                                 <li><a href="#tab_5" data-toggle="tab">Seminars</a></li>
+                                 <li><a href="#tab_6" data-toggle="tab">Seminars</a></li>
                               </ul>
                               <div class="tab-content">
                                  <section class="tab-pane active" id="tab_1">
@@ -131,98 +140,92 @@
                                       <h3>Personal Details</h3>
                                       <hr>
                                       <article class="form-group">
-                                          <label class="col-sm-3 control-label">First Name</label>
-                                          <div class="col-sm-9 controls">
-                                              <div class="row">
-                                                  <div class="col-xs-9">
-                                                      <input type="text" disabled placeholder="first name" class="form-control" value="<?php echo $firstName; ?>" name="txtFirstName" />
-                                                  </div>
-                                              </div>
-                                          </div>
+                                        <label class="col-sm-3 control-label">First Name</label>
+                                        <div class="col-sm-9 controls">
+                                            <div class="row">
+                                                <div class="col-xs-9">
+                                                    <input type="text" disabled placeholder="first name" class="form-control" value="<?php echo $firstName; ?>" name="txtFirstName" />
+                                                </div>
+                                            </div>
+                                        </div>
                                       </article>
                                       <article class="form-group">
-                                          <label class="col-sm-3 control-label">Middle Name</label>
-                                          <div class="col-sm-9 controls">
-                                              <div class="row">
-                                                  <div class="col-xs-9">
-                                                      <input type="text" disabled placeholder="middle name" class="form-control" value="<?php echo $middleName; ?>" name="txtMiddleName" />
-                                                  </div>
-                                              </div>
-                                          </div>
+                                        <label class="col-sm-3 control-label">Middle Name</label>
+                                        <div class="col-sm-9 controls">
+                                            <div class="row">
+                                                <div class="col-xs-9">
+                                                    <input type="text" disabled placeholder="middle name" class="form-control" value="<?php echo $middleName; ?>" name="txtMiddleName" />
+                                                </div>
+                                            </div>
+                                        </div>
                                       </article>
                                       <article class="form-group">
-                                          <label class="col-sm-3 control-label">Last Name</label>
-                                          <div class="col-sm-9 controls">
-                                              <div class="row">
-                                                  <div class="col-xs-9">
-                                                      <input type="text" disabled placeholder="last name" class="form-control" value="<?php echo $lastName; ?>" name="txtLastName" />
-                                                  </div>
-                                              </div>
-                                          </div>
+                                        <label class="col-sm-3 control-label">Last Name</label>
+                                        <div class="col-sm-9 controls">
+                                            <div class="row">
+                                                <div class="col-xs-9">
+                                                    <input type="text" disabled placeholder="last name" class="form-control" value="<?php echo $lastName; ?>" name="txtLastName" />
+                                                </div>
+                                            </div>
+                                        </div>
                                       </article>
                                       <article class="form-group">
-                                          <label class="col-sm-3 control-label">Gender</label>
-                                          <div class="col-sm-9 controls">
-                                              <div class="row">
-                                                  <div class="col-xs-9">
-                                                      <div class="radio">
-                                                          <label class="radio-inline">
-                                                              <input type="radio" value="male" name="txtGender" <?php if($gender=='male' ) echo "checked='checked'"; ?> disabled/>Male
-                                                          </label>
-                                                          <label class="radio-inline">
-                                                              <input type="radio" value="female" name="txtGender" <?php if($gender=='female' ) echo "checked='checked'"; ?> disabled/>Female
-                                                          </label>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
+                                        <label class="col-sm-3 control-label">Gender</label>
+                                        <div class="col-sm-9 controls">
+                                            <div class="row">
+                                                <div class="col-xs-9">
+                                                    <div class="radio">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" value="male" name="txtGender" <?php if($gender=='male' ) echo "checked='checked'"; ?> disabled/>Male
+                                                        </label>
+                                                        <label class="radio-inline">
+                                                            <input type="radio" value="female" name="txtGender" <?php if($gender=='female' ) echo "checked='checked'"; ?> disabled/>Female
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                       </article>
                                       <article class="form-group">
-                                          <label class="col-sm-3 control-label">Birthday</label>
-                                          <div class="col-sm-9 controls">
-                                              <div class="row">
-                                                  <div class="col-xs-9">
-                                                      <input type="text" type="text" disabled class="form-control" value="<?php echo $birthday; ?>" name="txtBirthday" disabled/>
-                                                  </div>
-                                              </div>
-                                          </div>
+                                        <label class="col-sm-3 control-label">Birthday</label>
+                                        <div class="col-sm-9 controls">
+                                            <div class="row">
+                                                <div class="col-xs-9">
+                                                    <input type="text" type="text" disabled class="form-control" value="<?php echo $birthday; ?>" name="txtBirthday" disabled/>
+                                                </div>
+                                            </div>
+                                        </div>
                                       </article>
                                       <article class="form-group">
-                                          <label class="col-sm-3 control-label">Marital Status</label>
-                                          <div class="col-sm-9 controls">
-                                              <div class="row">
-                                                  <div class="col-xs-9">
-                                                      <select class="form-control" name="txtMaritalStatus" disabled>
-                                                          <option <?php if($marital_status=='single' ) echo "selected='selected'"; ?>>Single</option>
-                                                          <option <?php if($marital_status=='married' ) echo "selected='selected'"; ?>>Married</option>
-                                                          <option <?php if($marital_status=='widowed' ) echo "selected='selected'"; ?>>Widowed</option>
-                                                      </select>
-                                                  </div>
-                                              </div>
-                                          </div>
+                                        <label class="col-sm-3 control-label">Marital Status</label>
+                                        <div class="col-sm-9 controls">
+                                            <div class="row">
+                                                <div class="col-xs-9">
+                                                    <select class="form-control" name="txtMaritalStatus" disabled>
+                                                        <option <?php if($marital_status=='single' ) echo "selected='selected'"; ?>>Single</option>
+                                                        <option <?php if($marital_status=='married' ) echo "selected='selected'"; ?>>Married</option>
+                                                        <option <?php if($marital_status=='widowed' ) echo "selected='selected'"; ?>>Widowed</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                       </article>
                                       <br>
-                                      <h3>Dependent</h3><hr>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Dependent Name: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $row->dependent_name; ?>" name="txtDependentName" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Relationship: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $row->dependent_rel; ?>" name="txtDependentRel" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
+                                      <h3>Dependent/s</h3><hr>
+                                      <table class="table table-bordered table-striped table-hovered">
+                                        <thead>
+                                          <th></th>
+                                          <th class="text-center">Name</th>
+                                          <th class="text-center">Relationship</th>
+                                        </thead>
+                                        <?php $counter=1; foreach ($record as $row) { ?>
+                                        <tr>
+                                          <td><?php echo $counter++; ?></td>
+                                          <td><input type="text" disabled class="form-control" value="<?php echo $row->dependent_fname.' '.$row->dependent_lname; ?>" name="txtDependentRel" /></td>
+                                          <td><input type="text" disabled class="form-control" value="<?php echo $row->relationship; ?>" name="txtDependentRel" /></td>
+                                        </tr>
+                                        <?php } ?>
+                                      </table>
                                     </div>
                                  </section><!-- /.tab-pane1 -->
                                  
@@ -356,104 +359,110 @@
                                       </article>
                                     </div>
                                  </section><!-- /.tab-pane2 -->
-                                 
-                                 <section class="tab-pane" id="tab_3">
+                                
+                                  <section class="tab-pane" id="tab_3">
                                     <div class="form-horizontal">
-                                       <h3>Tertiary</h3><hr>
-                                       <article class="form-group">
+                                      <h3>Tertiary</h3>
+                                      <hr>
+                                      <article class="form-group">
                                           <label class=" col-sm-3 control-label">School Name: </label>
                                           <div class="col-sm-9 controls">
                                               <div class="row">
                                                   <div class="col-xs-9">
-                                                      <input type="text" disabled class="form-control" value="<?php echo $row->tertiary_name; ?>" name="txtSchoolName3" />
+                                                      <input type="text" disabled class="form-control" value="<?php echo $tertiaryName; ?>" name="txtSchoolName3" />
                                                   </div>
                                               </div>
                                           </div>
-                                       </article>
-                                       <article class="form-group">
+                                      </article>
+                                      <article class="form-group">
                                           <label class=" col-sm-3 control-label">School Address: </label>
                                           <div class="col-sm-9 controls">
                                               <div class="row">
                                                   <div class="col-xs-9">
-                                                      <input type="text" disabled class="form-control" value="<?php echo $row->tertiary_address; ?>" name="txtSchoolAddress3" />
+                                                      <input type="text" disabled class="form-control" value="<?php echo $tertiaryAddress; ?>" name="txtSchoolAddress3" />
                                                   </div>
                                               </div>
                                           </div>
-                                       </article>
-                                       <article class="form-group">
+                                      </article>
+                                      <article class="form-group">
                                           <label class=" col-sm-3 control-label">Year Graduated: </label>
                                           <div class="col-sm-9 controls">
                                               <div class="row">
                                                   <div class="col-xs-9">
-                                                      <input type="text" disabled class="form-control" value="<?php echo $row->tertiary_year; ?>" name="txtschoolYear3" />
+                                                      <input type="text" disabled class="form-control" value="<?php echo $tertiaryYear; ?>" name="txtSchoolYear3" />
                                                   </div>
                                               </div>
                                           </div>
-                                       </article>
-                                       <h3>Secondary</h3><hr>
-                                       <article class="form-group">
-                                             <label class=" col-sm-3 control-label">School Name: </label>
-                                             <div class="col-sm-9 controls">
-                                                 <div class="row">
-                                                     <div class="col-xs-9">
-                                                         <input type="text" disabled class="form-control" value="<?php echo $row->secondary_name; ?>" name="txtSchoolName2" />
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                       </article>
-                                       <article class="form-group">
-                                          <label class=" col-sm-3 control-label">School Address: </label>
-                                          <div class="col-sm-9 controls">
-                                              <div class="row">
-                                                  <div class="col-xs-9">
-                                                      <input type="text" disabled class="form-control" value="<?php echo $row->secondary_address; ?>" name="txtSchoolAddress2" />
-                                                  </div>
-                                              </div>
-                                          </div>
-                                       </article>
-                                       <article class="form-group">
-                                          <label class=" col-sm-3 control-label">Year Graduated: </label>
-                                          <div class="col-sm-9 controls">
-                                              <div class="row">
-                                                  <div class="col-xs-9">
-                                                      <input type="text" disabled class="form-control" value="<?php echo $row->secondary_year; ?>" name="txtschoolYear2" />
-                                                  </div>
-                                              </div>
-                                          </div>
-                                       </article>
-                                       <h3>Primary</h3><hr>
-                                       <article class="form-group">
+                                      </article>
+                                      <br>
+                                      <h3>Secondary </h3>
+                                      <hr>
+                                      <article class="form-group">
                                           <label class=" col-sm-3 control-label">School Name: </label>
                                           <div class="col-sm-9 controls">
                                               <div class="row">
                                                   <div class="col-xs-9">
-                                                      <input type="text" disabled class="form-control" value="<?php echo $row->primary_name; ?>" name="txtSchoolName1" />
+                                                      <input type="text" disabled class="form-control" value="<?php echo $secondaryName; ?>" name="txtSchoolName2" />
                                                   </div>
                                               </div>
                                           </div>
-                                       </article>
-                                       <article class="form-group">
+                                      </article>
+                                      <article class="form-group">
                                           <label class=" col-sm-3 control-label">School Address: </label>
                                           <div class="col-sm-9 controls">
                                               <div class="row">
                                                   <div class="col-xs-9">
-                                                      <input type="text" disabled class="form-control" value="<?php echo $row->primary_address; ?>" name="txtSchoolAddress1" />
+                                                      <input type="text" disabled class="form-control" value="<?php echo $secondaryAddress; ?>" name="txtSchoolAddress2" />
                                                   </div>
                                               </div>
                                           </div>
-                                       </article>
-                                       <article class="form-group">
+                                      </article>
+                                      <article class="form-group">
                                           <label class=" col-sm-3 control-label">Year Graduated: </label>
                                           <div class="col-sm-9 controls">
                                               <div class="row">
                                                   <div class="col-xs-9">
-                                                      <input type="text" disabled class="form-control" value="<?php echo $row->primary_year; ?>" name="txtschoolYear1" />
+                                                      <input type="text" disabled class="form-control" value="<?php echo $secondaryYear; ?>" name="txtSchoolYear2" />
                                                   </div>
                                               </div>
                                           </div>
-                                       </article>
+                                      </article>
+                                      <br>
+                                      <h3>Primary </h3>
+                                      <hr>
+                                      <article class="form-group">
+                                          <label class=" col-sm-3 control-label">School Name: </label>
+                                          <div class="col-sm-9 controls">
+                                              <div class="row">
+                                                  <div class="col-xs-9">
+                                                      <input type="text" disabled class="form-control" value="<?php echo $primaryName; ?>" name="txtSchoolName1" />
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </article>
+                                      <article class="form-group">
+                                          <label class=" col-sm-3 control-label">School Address: </label>
+                                          <div class="col-sm-9 controls">
+                                              <div class="row">
+                                                  <div class="col-xs-9">
+                                                      <input type="text" disabled class="form-control" value="<?php echo $primaryAddress; ?>" name="txtSchoolAddress1" />
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </article>
+                                      <article class="form-group">
+                                          <label class=" col-sm-3 control-label">Year Graduated: </label>
+                                          <div class="col-sm-9 controls">
+                                              <div class="row">
+                                                  <div class="col-xs-9">
+                                                      <input type="text" disabled class="form-control" value="<?php echo $primaryYear; ?>" name="txtSchoolYear1" />
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </article>
                                     </div>
                                  </section><!-- /.tab-pane3 -->
+                                
                                  
                                  <section class="tab-pane" id="tab_4">
                                     <div class="form-horizontal">
@@ -521,117 +530,7 @@
                                     </div>
                                  </section><!-- /.tab-content4 -->
                                  
-                                 <section class="tab-pane" id="tab_5">
-                                    <div class="form-horizontal">
-                                       <h3>Employment Details</h3><hr>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Status: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->user_id; ?>" name="txtUserId" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Position: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->user_id; ?>" name="txtUserId" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Department: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->username; ?>" name="txtUsername" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Start Date: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="password" disabled class="form-control" value="<?php echo md5($account->password); ?>" name="txtPassword" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">End Date: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->email; ?>" name="txtEmail" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Salary: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->secret_question; ?>" name="txtSecretQuestion" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Paygrade: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->secret_answer; ?>" name="txtSecretAnswer" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Number of Dependents: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->secret_answer; ?>" name="txtSecretAnswer" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                    </div>
-                                 </section><!-- /.tab-content5 -->
-
-                                 <section class="tab-pane" id="tab_5">
-                                    <div class="form-horizontal">
-                                       <h3>Dependent</h3><hr>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Dependent Name: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->user_id; ?>" name="txtUserId" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                       <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Relationship: </label>
-                                           <div class="col-sm-9 controls">
-                                               <div class="row">
-                                                   <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $account->user_id; ?>" name="txtUserId" />
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </article>
-                                    </div>
-                                 </section><!-- /.tab-content5 -->
+                                
                               </div><!-- Tab-content -->
                            </div><!-- Navs -->
                         </div><!--Panel Body-->
