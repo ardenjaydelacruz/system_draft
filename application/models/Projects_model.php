@@ -6,7 +6,7 @@
  * Time: 11:59 PM
  */
 class Projects_model extends ActiveRecord\Model {
-    static $table_name = 'tbl_projects';
+    static $table_name = 'view_project_cost';
     static $primary_key = 'project_id';
 
     public function projectDetails(){

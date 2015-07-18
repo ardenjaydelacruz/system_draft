@@ -19,7 +19,9 @@
 						<th class="text-center">ID</th>
 						<th class="text-center">Project Name</th>
 						<th class="text-center">Client Name</th>
+						<th class="text-center">Project Cost</th>
 						<th class="text-center">Starting Date</th>
+						<th class="text-center">Ending Date</th>
 						<th class="text-center">Manage</th>
 					</thead>
 					<?php foreach ($record as $row) { ?>
@@ -31,10 +33,16 @@
 								<?php echo $row->project_name; ?>
 							</td>
 							<td>
-								<?php echo $row->client; ?>
+								<?php echo $row->client_name; ?>
+							</td>
+							<td>
+								<?php echo $row->price; ?>
 							</td>
 							<td class="text-center">
 								<?php echo $row->starting_date; ?>
+							</td>
+							<td class="text-center">
+								<?php echo $row->ending_date; ?>
 							</td>
 							<td class="text-center">
 								<a href="<?php echo base_url(); ?>ams/view_materials?project_id=<?php echo $row->project_id; ?>">
