@@ -35,8 +35,8 @@
 							<td>
 								<?php echo $row->client_name; ?>
 							</td>
-							<td>
-								<?php echo $row->price; ?>
+							<td class="text-center">
+								<?php echo number_format($row->price,2); ?>
 							</td>
 							<td class="text-center">
 								<?php echo $row->starting_date; ?>

@@ -5,7 +5,7 @@
         	echo "<li><a href='view_assets' class='btn btn-default'>Assets</a></li>";
         	echo "<li class='active'>Search Assets</li>";
         } else {
-        	echo "<li class='active'>Assets</li>";
+        	echo "<li class='active'>Other Assets</li>";
         }
         $counter = 0;
         ?>            
@@ -15,7 +15,7 @@
 			<div class="panel-heading">
 			    <div class="row">
 			    	<div class="col-sm-8">
-			    		<h1 class="panel-title big">Assets
+			    		<h1 class="panel-title big">Other Assets
 				    		 
 						</h1>
 			    	</div>
@@ -48,13 +48,10 @@
 					<thead >
 						<!-- <th><input type="checkbox" class="checkbox"></th> -->
 						<th class="table-head">Asset ID</th>
-						<th class="table-head">Serial Number</th>
-						<th class="table-head">Model</th>
+						<th class="table-head">Asset Name</th>
 						<th class="table-head">Category</th>
-						<th class="table-head">Assigned Employee</th>
-						<th class="table-head">Assigned On</th>
 						<th class="table-head">Status</th>
-						<th class="table-head">Warranty Ends</th>
+						<th class="table-head">Assigned Employee</th>
 						<th class="table-head">Manage</th>
 					</thead>
 					<?php 
@@ -62,13 +59,10 @@
 					<tr>
 						<!-- <td><input type="checkbox" class="checkbox" name="checkbox[]"></td> -->
 						<td align="center"><?php echo $row->asset_id; ?></td>
-						<td><?php echo $row->serial_number; ?></td>
-						<td><?php echo $row->model; ?></td>
-						<td><?php echo $row->category; ?></td>
-						<td><?php echo $row->assigned_employee; ?></td>
-						<td><?php echo $row->assigned_date; ?></td>
-						<td><?php echo $row->status; ?></td>
-						<td><?php echo $row->warranty_end; ?></td>
+						<td><?php echo $row->asset_name; ?></td>
+						<td><?php echo $row->category_name; ?></td>
+						<td><?php echo $row->asset_status; ?></td>
+						<td><?php echo $row->name; ?></td>
 						<td align="center">
 						<a href="<?php echo base_url();?>ams/view_asset_details?asset_id=<?php echo $row->asset_id; ?>">
 							<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Asset">
