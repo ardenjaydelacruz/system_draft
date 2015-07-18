@@ -71,8 +71,8 @@
                         </div>
                         <div class="panel-body">
                            <div class="form-group">
-                                <div class="text-center"><img src="<?php echo base_url().'assets/images/profile/'.$image; ?>" alt="" class="img-responsive emp_image" /></div>
-                                <div id="upload">
+                               <div class="text-center"><img src="<?php echo base_url().'assets/images/profile/'.$image; ?>" alt="" class="img-responsive emp_image" /></div>
+                               <div id="upload">
                                     <?php
                                     echo form_open_multipart('ems/upload_image?emp_id='.$id);
                                     echo form_upload('userfile');
@@ -85,21 +85,15 @@
                               <tbody>
                                   <tr>
                                       <th>Emp ID:</th>
-                                      <td>
-                                          <?php echo $id; ?>
-                                      </td>
+                                      <td><?php echo $id; ?></td>
                                   </tr>
                                   <tr>
                                       <th>Job Title:</th>
-                                      <td>
-                                          <input type="text" disabled class="form-control" value="<?php echo $job_title;?>" name="txtPosition" />
-                                      </td>
+                                      <td><input type="text" disabled class="form-control" value="<?php echo $job_title;?>" name="txtPosition" /></td>
                                   </tr>
                                   <tr>
                                       <th>Status:</th>
-                                      <td>
-                                          <input type="text" disabled class="form-control" value="<?php echo $status;?>" name="txtStatus" />
-                                      </td>
+                                      <td><input type="text" disabled class="form-control" value="<?php echo $status;?>" name="txtStatus" /></td>
                                   </tr>
                                   <tr>
                                       <th>Dept.:</th>
@@ -130,18 +124,20 @@
                   <div class="col-md-8">
                      <div class="panel panel-default">
                         <div class="panel-body">
-                           <div class="nav-tabs-custom">
-                              <ul class="nav nav-tabs">
-                                 <li class="active"><a href="#tab_1" data-toggle="tab">Personal</a></li>
-                                 <li><a href="#tab_2" data-toggle="tab">Contact</a></li>
-                                 <li><a href="#tab_3" data-toggle="tab">Education</a></li>
-                                 <li><a href="#tab_4" data-toggle="tab">Account</a></li>
-                                 <li><a href="#tab_5" data-toggle="tab">Employment</a></li>
-                                 <li><a href="#tab_6" data-toggle="tab">Leaves</a></li>
+                           <div class="nav-tabs-custom ">
+                              <ul class="nav nav-tabs ">
+                                  <li class="active"><a href="#tab_1" data-toggle="tab">Personal</a></li>
+                                  <li><a href="#tab_2" data-toggle="tab">Contact</a></li>
+                                  <li><a href="#tab_3" data-toggle="tab">Education</a></li>
+                                  <li><a href="#tab_4" data-toggle="tab">Account</a></li>
+                                  <li><a href="#tab_5" data-toggle="tab">Employment</a></li>
+                                  <li><a href="#tab_6" data-toggle="tab">Leaves</a></li>
+                                  <li><a href="#tab_7" data-toggle="tab">Assets</a></li>
+                                  <li><a href="#tab_8" data-toggle="tab">Projects</a></li>
                                  <!-- <li><a href="#tab_6" data-toggle="tab">Seminars</a></li> -->
                               </ul>
                               <div class="tab-content">
-                                <section class="tab-pane active" id="tab_1">
+                                  <section class="tab-pane active" id="tab_1">
                                     <div class="form-horizontal">
                                       <h3>Personal Details</h3>
                                       <hr>
@@ -278,7 +274,7 @@
                                     </div>
                                 </section><!-- Personal -->
 
-                                <section class="tab-pane" id="tab_2">
+                                  <section class="tab-pane" id="tab_2">
                                     <div class="form-horizontal">
                                       <h3>Contact Details</h3>
                                       <hr>
@@ -409,7 +405,7 @@
                                     </div>
                                 </section><!-- Contact -->
 
-                                <section class="tab-pane" id="tab_3">
+                                  <section class="tab-pane" id="tab_3">
                                     <div class="form-horizontal">
                                       <h3>Tertiary</h3>
                                       <hr>
@@ -512,7 +508,7 @@
                                     </div>
                                 </section><!-- Education -->
 
-                                <section class="tab-pane" id="tab_4">
+                                  <section class="tab-pane" id="tab_4">
                                     <div class="form-horizontal">
                                        <h3>User Account</h3><hr>
                                        <article class="form-group">
@@ -568,7 +564,7 @@
                                     </div>
                                 </section><!-- Account -->
 
-                                <section class="tab-pane" id="tab_5">
+                                  <section class="tab-pane" id="tab_5">
                                     <div class="form-horizontal">
                                        <h3>Employment Details</h3><hr>
                                        <article class="form-group">
@@ -674,7 +670,7 @@
                                     </div>
                                 </section><!-- Account -->
 
-                                <section class="tab-pane" id="tab_6">
+                                  <section class="tab-pane" id="tab_6">
                                     <div class="form-horizontal">
                                        <h3>Leave Details</h3><hr>
                                        <table class="table table-hovered table-striped table-bordered">

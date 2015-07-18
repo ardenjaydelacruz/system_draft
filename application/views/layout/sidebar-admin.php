@@ -1,6 +1,6 @@
-<aside class="main-sidebar height">
+<aside class="main-sidebar  height">
 	<!-- sidebar: style can be found in sidebar.less -->
-	<section class="sidebar">
+	<section class="sidebar collapsed-sidebar">
 		<!-- Sidebar user panel -->
 		<div class="user-panel">
 			<div class="text-center image">

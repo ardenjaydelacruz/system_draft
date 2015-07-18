@@ -6,7 +6,7 @@
  * Time: 12:46 AM
  */
 class Inventory_model extends ActiveRecord\Model {
-    static $table_name = 'tbl_inventory';
+    static $table_name = 'view_stocks';
     static $primary_key = 'item_number';
 
     public function stocksDetails(){

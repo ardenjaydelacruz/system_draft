@@ -20,8 +20,6 @@
 						<th class="text-center">Item #</th>
 						<th class="text-center">Item Name</th>
 						<th class="text-center">Category</th>
-						<th class="text-center">Vendor</th>
-						<th class="text-center">Location</th>
 						<th class="text-center">Quantity</th>
 						<th class="text-center">Price/pc.</th>
 						<th class="text-center">Manage</th>
@@ -29,19 +27,13 @@
 					<?php foreach ($record as $row) { ?>
 						<tr>
 							<td class="text-center">
-								<?php echo $row->item_number; ?>
+								<?php echo $row->item_id; ?>
 							</td>
 							<td>
 								<?php echo $row->item_name; ?>
 							</td>
 							<td>
-								<?php echo $row->category; ?>
-							</td>
-							<td>
-								<?php echo $row->vendor; ?>
-							</td>
-							<td>
-								<?php echo $row->location; ?>
+								<?php echo $row->category_name; ?>
 							</td>
 							<td class="text-center">
 								<?php echo $row->quantity; ?>
@@ -50,17 +42,17 @@
 								<?php echo $row->price; ?>
 							</td>
 							<td class="text-center">
-								<a href="<?php echo base_url(); ?>ams/view_inventory_details?item_number=<?php echo $row->item_number; ?>">
+								<a href="<?php echo base_url(); ?>ams/view_inventory_details?item_number=<?php echo $row->item_id; ?>">
 									<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Product">
 										<i class="fa fa-cube"></i>
 									</button>
 								</a>
-								<a href="<?php echo base_url(); ?>ams/edit_stocks?item_number=<?php echo $row->item_number; ?>">
+								<a href="<?php echo base_url(); ?>ams/edit_stocks?item_number=<?php echo $row->item_id; ?>">
 									<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Update Stock">
 										<i class="fa fa-pencil"></i>
 									</button>
 								</a>
-								<a href="<?php echo base_url(); ?>ams/delete_stocks?item_number=<?php echo $row->item_number; ?>">
+								<a href="<?php echo base_url(); ?>ams/delete_stocks?item_number=<?php echo $row->item_id; ?>">
 									<button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Update Stock">
 										<i class="fa fa-trash-o"></i>
 									</button>
