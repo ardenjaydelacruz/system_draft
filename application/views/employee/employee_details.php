@@ -216,6 +216,49 @@
                                             </div>
                                         </div>
                                       </article>
+                                        <br>
+                                        <h3>Government Issued ID:</h3>
+                                        <hr>
+                                        <article class="form-group">
+                                            <label class=" col-sm-3 control-label">Social Security No.: </label>
+                                            <div class="col-sm-9 controls">
+                                                <div class="row">
+                                                    <div class="col-xs-9">
+                                                        <input type="text" disabled class="form-control" value="<?php echo $row->sss_no; ?>" name="txtStreet" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="form-group">
+                                            <label class=" col-sm-3 control-label">Pag-ibig No.: </label>
+                                            <div class="col-sm-9 controls">
+                                                <div class="row">
+                                                    <div class="col-xs-9">
+                                                        <input type="text" disabled class="form-control" value="<?php echo $row->pagibig_no; ?>" name="txtBarangay" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="form-group">
+                                            <label class=" col-sm-3 control-label">Philhealth No.: </label>
+                                            <div class="col-sm-9 controls">
+                                                <div class="row">
+                                                    <div class="col-xs-9">
+                                                        <input type="text" disabled class="form-control" value="<?php echo $row->philhealth_no; ?>" name="txtCity" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="form-group">
+                                            <label class=" col-sm-3 control-label">Tax Identification No.: </label>
+                                            <div class="col-sm-9 controls">
+                                                <div class="row">
+                                                    <div class="col-xs-9">
+                                                        <input type="text" disabled placeholder="State" class="form-control" value="<?php echo $row->tin; ?>" name="txtState" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
                                       <br>
                                       <h3>Dependent/s</h3><hr>
                                       <table class="table table-bordered table-striped table-hovered">
@@ -634,17 +677,17 @@
                                 <section class="tab-pane" id="tab_6">
                                     <div class="form-horizontal">
                                        <h3>Leave Details</h3><hr>
-                                       <table class="table table-hovered table-striped">
+                                       <table class="table table-hovered table-striped table-bordered">
                                            <thead>
-                                                <th >Leave ID</th>
-                                               <th>Leave Type</th>
-                                               <th>Leaves Remaining (Days)</th>
+                                                <th class="text-center" >Leave ID</th>
+                                               <th class="text-center">Leave Type</th>
+                                               <th class="text-center">Leaves Remaining (Days)</th>
                                            </thead>
                                            <?php $flag=1; foreach($leaves_left as $leave) { ?>
                                            <tr>
                                                <th class="text-center"><?php echo $leave->leave_type_id; ?></th>
                                                <td><?php echo $leave->leave_type_name; ?></td>
-                                               <td><input type="text" disabled class="form-control" value="<?php echo $leave->leave_remaining; ?>" name="txtLeft<?php echo $leave->leave_type_id; ?>" /></td>
+                                               <td><input type="text" class="form-control" disabled value="<?php echo $leave->leave_remaining; ?>" name="txtLeft<?php echo $leave->leave_type_id; ?>" /></td>
                                            </tr>
                                            <?php } ?>
                                        </table>
