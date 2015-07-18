@@ -52,7 +52,7 @@
                         <th class="table-head">First Name</th>
                         <th class="table-head">Middle Name</th>
                         <th class="table-head">Last Name</th>
-                        <th class="table-head">Position</th>
+                        <th class="table-head">Job Title</th>
                         <th class="table-head">Department</th>
                         <th class="table-head">Status</th>
                         <th class="table-head">Manage</th>
@@ -74,7 +74,7 @@
                                 <?php echo $row->last_name; ?>
                             </td>
                             <td>
-                                <?php echo $row->position; ?>
+                                <?php echo $row->job_title; ?>
                             </td>
                             <td>
                                 <?php echo $row->department; ?>

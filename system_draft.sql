@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2015 at 09:56 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: Jul 17, 2015 at 05:17 PM
+-- Server version: 5.6.24
+-- PHP Version: 5.5.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `msi_system`
+-- Database: `system_draft`
 --
 
 DELIMITER $$
@@ -37,6 +37,7 @@ END$$
 CREATE DEFINER=`root`@`localhost` FUNCTION `fn_getTimeOut`(logdate varchar(12)) RETURNS varchar(10) CHARSET utf8 COLLATE utf8_unicode_ci
 BEGIN
 	DECLARE logtime varchar(10);
+
 	SELECT DATE_FORMAT(MIN(tbl_attendance.datetimelog), '%h:%i %p') INTO logtime
     FROM `msi_system`.`tbl_attendance`
     WHERE DATE_FORMAT(`msi_system`.`tbl_attendance`.`datetimelog`,'%m/%d/%Y') = logdate AND tbl_attendance.`event` = 'OUT';
@@ -104,8 +105,7 @@ CREATE TABLE IF NOT EXISTS `assets` (
   `date_acquired` date NOT NULL,
   `warranty_start` date NOT NULL,
   `warranty_end` date NOT NULL,
-  `date_registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`asset_id`)
+  `date_registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -129,7 +129,7 @@ INSERT INTO `assets` (`asset_id`, `serial_number`, `model`, `category`, `brand`,
 --
 
 CREATE TABLE IF NOT EXISTS `employees` (
-  `emp_id` int(5) NOT NULL AUTO_INCREMENT,
+  `emp_id` int(5) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `middle_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) NOT NULL,
@@ -153,16 +153,15 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `contact_rel` varchar(50) DEFAULT NULL,
   `contact_num` int(20) DEFAULT NULL,
   `image` varchar(255) NOT NULL,
-  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`emp_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `employees`
 --
 
 INSERT INTO `employees` (`emp_id`, `first_name`, `middle_name`, `last_name`, `position`, `status`, `department`, `leaves`, `birthday`, `gender`, `marital_status`, `street`, `barangay`, `city`, `state`, `zip`, `country`, `mobile_number`, `tel_number`, `email_address`, `contact_person`, `contact_rel`, `contact_num`, `image`, `date_added`) VALUES
-(1, 'Ardenx', 'Alcairo', 'Dela Cruz', 'CEOs', 'Regular', 'Executive', 23, '1993-12-16', 'male', 'Single', '12', 'qwqw', 'manda', 'manila', 999, 'Philippines', 123, 123, 'ardents02@gmail.com', 'ardents', 'asdasd', 123123, 'steam_logo-wallpaper-1366x7681.jpg', '2015-06-30 07:00:00'),
+(1, 'Ardenx', 'Alcairo', 'Dela Cruz', 'CEOs', 'Regular', 'Executive', 30, '0000-00-00', 'male', 'Single', '12', 'qwqw', 'manda', 'manila', 999, 'Philippines', 123, 123, 'ardents02@gmail.com', 'ardents', 'asdasd', 123123, 'steam_logo-wallpaper-1366x7681.jpg', '2015-06-30 07:00:00'),
 (2, 'Yvonne', 'Franklin', 'Beach', 'Avye', 'Joy', 'Laoreet Posuere Enim PC', 2, '2015-12-26', 'female', 'Married', '1793 Nulla Rd.', 'Ada', 'Ceyhan', 'Diyarbak?r', 71652, 'Mali', 7624, 0, 'sapien@lectusquismassa.ca', 'Thor Y. Terry', 'Mr.', 278, '', '2016-02-08 08:00:00'),
 (3, 'Ashely', 'Hensley', 'Delgado', 'Ross', 'Jenette', 'Ante Consulting', 4, '2015-06-09', 'female', 'Married', '375 Sagittis Road', 'SL', 'Sosnowiec', 'CV', 40205, 'Saint Pierre and Miquelon', 0, 0, 'Etiam.bibendum.fermentum@ullamcorperDuiscursus.org', 'Deacon K. Frye', 'Mrs.', 335, '', '2015-05-09 07:00:00'),
 (4, 'Illana', 'Avery', 'Zamora', 'Pearl', 'Kelsie', 'Mi LLC', 6, '2016-06-14', 'female', 'Single', 'Ap #549-9677 Tortor Avenue', 'BA', 'Vitória da Conquista', 'North Island', 453128, 'Saint Vincent and The Grenadines', 500, 800, 'Duis.mi.enim@malesuadafamesac.org', 'Tallulah B. Levy', 'Ms.', 1, '', '2015-06-03 07:00:00'),
@@ -181,7 +180,7 @@ INSERT INTO `employees` (`emp_id`, `first_name`, `middle_name`, `last_name`, `po
 --
 
 CREATE TABLE IF NOT EXISTS `emp_performance` (
-  `performance_id` int(5) NOT NULL AUTO_INCREMENT,
+  `performance_id` int(5) NOT NULL,
   `employee_name` varchar(255) NOT NULL,
   `evaluators` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
@@ -196,9 +195,8 @@ CREATE TABLE IF NOT EXISTS `emp_performance` (
   `rate4` decimal(3,2) DEFAULT NULL,
   `rate5` decimal(3,2) DEFAULT NULL,
   `final_rating` decimal(3,2) NOT NULL,
-  `date_evaluated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`performance_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `date_evaluated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `emp_performance`
@@ -223,7 +221,7 @@ INSERT INTO `emp_performance` (`performance_id`, `employee_name`, `evaluators`, 
 --
 
 CREATE TABLE IF NOT EXISTS `leaves` (
-  `leave_id` int(5) NOT NULL AUTO_INCREMENT,
+  `leave_id` int(5) NOT NULL,
   `employee_name` varchar(255) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
@@ -234,9 +232,8 @@ CREATE TABLE IF NOT EXISTS `leaves` (
   `approved_by` varchar(100) NOT NULL,
   `date_approved` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_requested` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `employee_id` int(11) NOT NULL,
-  PRIMARY KEY (`leave_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+  `employee_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `leaves`
@@ -258,38 +255,40 @@ INSERT INTO `leaves` (`leave_id`, `employee_name`, `start_date`, `end_date`, `da
 -- --------------------------------------------------------
 
 --
--- Table structure for table `purchase_stocks`
+-- Table structure for table `tbl_address`
 --
 
-CREATE TABLE IF NOT EXISTS `purchase_stocks` (
-  `order_number` int(5) NOT NULL,
-  `item_number` int(5) NOT NULL,
-  `item_name` varchar(10) NOT NULL,
-  `quantity` int(5) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `vendor` varchar(20) NOT NULL,
-  `date_ordered` date NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `number_of_items_delivered` int(5) NOT NULL,
-  `notes` varchar(50) NOT NULL,
-  `date_delivered` date NOT NULL
+CREATE TABLE IF NOT EXISTS `tbl_address` (
+  `emp_address_id` int(5) NOT NULL,
+  `street` varchar(50) DEFAULT NULL,
+  `barangay` varchar(50) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `zip` int(10) DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
+  `employee_id` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `purchase_stocks`
+-- Dumping data for table `tbl_address`
 --
 
-INSERT INTO `purchase_stocks` (`order_number`, `item_number`, `item_name`, `quantity`, `price`, `vendor`, `date_ordered`, `status`, `number_of_items_delivered`, `notes`, `date_delivered`) VALUES
-(123, 321, 'chua', 3, '1233.00', 'neil inc.', '0000-00-00', 'das', 2, 'asdasdadf fuck you ka chua', '0000-00-00'),
-(231, 2, 'sad', 34, '1233.00', 'yow', '0000-00-00', 'assdasd', 23, 'chuariwariwap', '0000-00-00'),
-(98, 98, 'dog', 10, '1000.00', 'resnera', '2015-06-17', 'asdds', 12, 'picachua', '2015-07-29'),
-(789, 12, 'name', 12, '1234.00', 'chuariwariwap', '2015-07-01', 'asdsdd', 12, 'hey', '2015-07-05'),
-(12344, 98, 'hp', 2, '189.00', 'dealen', '2015-07-01', 'yeah', 35, 'fuck you', '2015-07-02'),
-(4521, 321, 'acer', 19, '1000.00', 'jaycent', '2015-06-01', 'lyonfng vn', 14, 'asdfghjk', '2015-07-02'),
-(654, 456, 'chair', 5, '500.00', 'gilbert', '2015-07-01', '', 0, '', '0000-00-00'),
-(1232, 122, 'bed', 2, '123333.00', 'paul', '2015-07-01', 'new', 3, 'asddff', '2015-07-01'),
-(32, 12, 'laptop', 23, '99999999.99', 'neil', '0000-00-00', 'asdsd', 5, 'sdadasd', '0000-00-00'),
-(321, 234, 'drugs', 40, '50000.00', 'cj', '2015-07-01', 'high', 40, 'yeeeaaahhh \\m/', '2015-07-02');
+INSERT INTO `tbl_address` (`emp_address_id`, `street`, `barangay`, `city`, `state`, `zip`, `country`, `employee_id`) VALUES
+(10000, 'weewe', 'ewewe', 'wewewe', 'qeqeqe', 12122, 'qeqeqee', 0),
+(10001, '577', 'Maybunga', 'Pasig City', 'Metro Manila', 1607, 'Philippines', 1),
+(10002, '577', 'Maybunga', 'Pasig City', 'Metro Manila', 1607, 'Philippines', 2),
+(10003, '1793 Nulla Rd.', 'Ada', 'Ceyhan', 'Diyarbak?r', 71652, 'Mali', 3),
+(10004, '375 Sagittis Road', 'SL', 'Sosnowiec', 'CV', 40205, 'Saint Pierre and Miquelon', 4),
+(10005, 'Ap #549-9677 Tortor Avenue', 'BA', 'Vitória da Conquista', 'North Island', 453128, 'Saint Vincent and The Grenadines', 5),
+(10006, 'P.O. Box 616, 5935 Vel, St.', '?z', 'Tire', 'AK', 35724, 'Saint Pierre and Miquelon', 6),
+(10007, '6319 Odio. St.', 'Hesse', 'Obertshausen', 'Luxemburg', 0, 'Gambia', 7),
+(10008, '637 Dui. St.', 'Aragón', 'Zaragoza', 'RJ', 14743, 'Niger', 8),
+(10009, '984-3608 Pede. Rd.', 'South Australia', 'Whyalla', 'YT', 1077, 'El Salvador', 9),
+(10010, 'Ap #165-4162 Fusce Avenue', 'Ist', 'Istanbul', 'Bur', 82667, 'Micronesia', 10),
+(10011, 'Ap #913-4290 Massa. Rd.', 'Istanbul', 'Istanbul', 'Leinster', 0, 'Liechtenstein', 11),
+(10012, '12', 'qwqw', 'manda', 'manila', 999, 'Philippines', 12),
+(10013, 'w', 'qwqw', 'manda', 'manila', 999, 'Philippines', 13),
+(10014, '12', 'Kalentong', 'Mandaluyong', 'Metro Manila', 999, 'Philippines', 14);
 
 -- --------------------------------------------------------
 
@@ -298,13 +297,12 @@ INSERT INTO `purchase_stocks` (`order_number`, `item_number`, `item_name`, `quan
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_allowances` (
-  `allowance_id` int(11) NOT NULL AUTO_INCREMENT,
+  `allowance_id` int(11) NOT NULL,
   `allowance_name` varchar(50) NOT NULL,
   `percentage` decimal(3,3) NOT NULL,
   `amount` decimal(8,2) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`allowance_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `active` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_allowances`
@@ -321,14 +319,13 @@ INSERT INTO `tbl_allowances` (`allowance_id`, `allowance_name`, `percentage`, `a
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_attendance` (
-  `attendance_id` int(11) NOT NULL AUTO_INCREMENT,
+  `attendance_id` int(11) NOT NULL,
   `emp_id` int(11) NOT NULL,
   `datelog` datetime DEFAULT NULL,
   `datetimelog` datetime NOT NULL,
   `event` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
-  `datetimefetch` datetime NOT NULL,
-  PRIMARY KEY (`attendance_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=243 ;
+  `datetimefetch` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=243 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbl_attendance`
@@ -577,126 +574,290 @@ INSERT INTO `tbl_attendance` (`attendance_id`, `emp_id`, `datelog`, `datetimelog
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_contact_number`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_contact_number` (
+  `employee_id` int(5) DEFAULT NULL,
+  `mobile_number` int(20) DEFAULT NULL,
+  `tel_number` int(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_contact_number`
+--
+
+INSERT INTO `tbl_contact_number` (`employee_id`, `mobile_number`, `tel_number`) VALUES
+(1, 926246265, 3692735),
+(2, 32132132, 65656565),
+(4, 2132323213, 656565656),
+(5, 564564564, 12212121),
+(6, 878978998, 21212121),
+(8, 564564654, 2122121),
+(9, 321321321, 21212121),
+(10, 465454656, 212121255),
+(11, 988979878, 54545488),
+(12, 564654656, 5454448),
+(13, 1321321231, 55454878),
+(14, 554545454, 878898978);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_contact_person`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_contact_person` (
+  `cperson_id` int(5) NOT NULL,
+  `contact_person` varchar(100) DEFAULT NULL,
+  `contact_rel` varchar(30) DEFAULT NULL,
+  `contact_num` int(20) DEFAULT NULL,
+  `employee_id` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_contact_person`
+--
+
+INSERT INTO `tbl_contact_person` (`cperson_id`, `contact_person`, `contact_rel`, `contact_num`, `employee_id`) VALUES
+(1, 'Jon Snow', 'Tropa', 1620111, 1),
+(6, NULL, NULL, NULL, NULL),
+(8, NULL, NULL, NULL, NULL),
+(10, NULL, NULL, NULL, NULL),
+(12, NULL, NULL, NULL, NULL),
+(13, NULL, NULL, NULL, NULL),
+(14, NULL, NULL, NULL, NULL),
+(10001, 'Pareng Erap', 'Kainuman', 162012, 0),
+(10002, NULL, NULL, NULL, NULL),
+(10003, NULL, NULL, NULL, NULL),
+(10004, NULL, NULL, NULL, NULL),
+(10005, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_departments`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_departments` (
+  `department_id` varchar(10) NOT NULL,
+  `department_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_departments`
+--
+
+INSERT INTO `tbl_departments` (`department_id`, `department_name`) VALUES
+('DE1001', 'Technical'),
+('DE1002', 'Operational'),
+('DE1003', 'Finance');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_dependent`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_dependent` (
+  `dependent_id` int(5) NOT NULL,
+  `dependent_fname` varchar(50) DEFAULT NULL,
+  `dependent_lname` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_dependent`
+--
+
+INSERT INTO `tbl_dependent` (`dependent_id`, `dependent_fname`, `dependent_lname`) VALUES
+(1, 'Aria', 'Stark'),
+(2, 'Sansa', 'Stark'),
+(3, 'Bran', 'Stark'),
+(4, 'Tony', 'Stark');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_dependent_info`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_dependent_info` (
+  `employee_id` varchar(10) DEFAULT NULL,
+  `dependent_id` varchar(10) DEFAULT NULL,
+  `relationship` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_dependent_info`
+--
+
+INSERT INTO `tbl_dependent_info` (`employee_id`, `dependent_id`, `relationship`) VALUES
+('1', '1', 'Daughter'),
+('1', '2', 'Daughter'),
+('1', '3', 'Son');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_emp_history`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_emp_history` (
-  `emp_history_id` int(4) NOT NULL AUTO_INCREMENT,
+  `emp_history_id` int(4) NOT NULL,
   `emp_id` int(4) NOT NULL,
-  `position` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `job_title` varchar(50) NOT NULL,
+  `job_category` varchar(50) NOT NULL,
   `department` varchar(50) NOT NULL,
   `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
+  `probationary_date` date DEFAULT NULL,
+  `permanency_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
   `salary` decimal(10,2) NOT NULL,
   `pay_grade` varchar(5) NOT NULL,
-  `date_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`emp_history_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=133 ;
+  `date_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_emp_history`
 --
 
-INSERT INTO `tbl_emp_history` (`emp_history_id`, `emp_id`, `position`, `department`, `start_date`, `end_date`, `salary`, `pay_grade`, `date_modified`) VALUES
-(1, 1, 'CEO', 'Executive', '1990-01-01', '2020-12-31', '40000.00', 'A', '2015-07-08 05:11:34'),
-(2, 2, 'Avye', 'Laoreet Posuere Enim PC', '1990-01-01', '2020-12-31', '30000.00', 'A', '2015-07-08 05:13:55'),
-(3, 3, 'Ross', 'Ante Consulting', '1990-01-01', '2020-12-31', '25000.00', 'A', '2015-07-08 05:15:00'),
-(4, 4, 'Pearl', 'Mi LLC', '1990-01-01', '2020-12-31', '20000.00', 'A', '2015-07-08 05:16:20'),
-(5, 5, 'Oliver', 'Velit Quisque Foundation', '1990-01-01', '2020-12-31', '20000.00', 'A', '2015-07-08 05:16:20'),
-(6, 6, 'Cameran', 'Velit Justo Nec Inc.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(7, 7, 'Todd', 'Ornare In Corp.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(8, 8, 'Beau', 'Arcu Sed Et Consulting', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(9, 9, 'Imogene', 'Ac Arcu Institute', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(10, 10, 'Nigel', 'Sem Molestie Inc.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(11, 11, 'Katell', 'Suspendisse Institute', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(12, 12, 'Ashely', 'Non Feugiat Associates', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(13, 13, 'Kasper', 'Vulputate Ullamcorper Magna Incorporated', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(14, 14, 'Amal', 'Rutrum Eu LLP', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(15, 15, 'Kasper', 'A Ultricies Inc.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(16, 16, 'Heidi', 'Ultrices Iaculis Odio Incorporated', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(17, 17, 'Alexa', 'Vel LLC', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(18, 18, 'Armando', 'Eu Euismod Consulting', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(19, 19, 'Vivien', 'Nostra Per Industries', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(20, 20, 'Sarah', 'Ante LLC', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(21, 21, 'Halla', 'Enim Associates', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(22, 22, 'Chandler', 'At PC', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(23, 23, 'Xandra', 'Donec Institute', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(24, 24, 'Ferris', 'Ornare Facilisis Eget Corporation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(25, 25, 'Hu', 'Nulla Foundation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(26, 26, 'Omar', 'Tempor Erat Neque Corp.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(27, 27, 'Azalia', 'Magnis Dis Corporation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(28, 28, 'Chastity', 'Euismod Limited', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(29, 29, 'Reece', 'Elementum Lorem Ut PC', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(30, 30, 'Plato', 'Eget Foundation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(31, 31, 'Harper', 'Vitae Corporation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(32, 32, 'Len', 'Fames Ac Turpis Institute', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(33, 33, 'Jada', 'Mi Tempor Lorem Corp.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(34, 34, 'Tanner', 'Euismod Enim Etiam Industries', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(35, 35, 'Melvin', 'Ultrices Duis Volutpat Inc.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(36, 36, 'Tatum', 'Sit Incorporated', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(37, 37, 'Karyn', 'Non Incorporated', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(38, 38, 'Damon', 'Vel Pede Blandit Limited', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(39, 39, 'Maxwell', 'Sem Semper Erat Ltd', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(40, 40, 'Deirdre', 'Pede Cum LLP', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(41, 41, 'Zelda', 'Proin Ltd', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(42, 42, 'Allen', 'Adipiscing Ligula Aenean Inc.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(43, 43, 'Constance', 'Tincidunt Corp.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(44, 44, 'Dalton', 'Tincidunt Corp.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(45, 45, 'Raya', 'Eleifend Nunc Risus Incorporated', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(46, 46, 'Elizabeth', 'Nunc LLP', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(47, 47, 'Florence', 'Ligula Elit Pretium LLP', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(48, 48, 'Irene', 'Ligula Aenean Euismod LLP', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(49, 49, 'Cody', 'Purus Incorporated', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(50, 50, 'Kato', 'Proin Mi Aliquam LLC', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(51, 51, 'Yael', 'Quam Curabitur LLC', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(52, 52, 'Ella', 'Semper Auctor Mauris Associates', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(53, 53, 'Germane', 'Aliquam Ltd', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(54, 54, 'Xyla', 'Velit Dui Semper Industries', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(55, 55, 'Mufutau', 'Volutpat Incorporated', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(56, 56, 'Kaitlin', 'Dui Limited', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(57, 57, 'Gannon', 'Molestie Dapibus Associates', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(58, 58, 'Jayme', 'Ante Maecenas Corp.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(59, 59, 'Alana', 'Pretium Et Institute', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(60, 60, 'Charissa', 'Fringilla Donec Foundation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(61, 61, 'Suki', 'Magnis Dis Parturient Corp.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(62, 62, 'Sage', 'Dolor Limited', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(63, 63, 'Salvador', 'Egestas PC', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(64, 64, 'Xenos', 'Eu Erat Semper Foundation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(65, 65, 'Shannon', 'Vitae Inc.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(66, 66, 'Rajah', 'Velit Corporation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(67, 67, 'Jillian', 'Convallis Erat Foundation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(68, 68, 'Brent', 'Ultricies Dignissim Lacus Foundation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(69, 69, 'Cathleen', 'Ullamcorper Magna Sed Limited', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(70, 70, 'Harrison', 'Odio Limited', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(71, 71, 'Jael', 'Dolor Dapibus Gravida Associates', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(72, 72, 'Lance', 'Mauris Ut Mi Inc.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(73, 73, 'Neve', 'Egestas Blandit Nam Inc.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(74, 74, 'Ivy', 'Quis Pede Praesent LLP', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(75, 75, 'Matthew', 'Sed Molestie Corp.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(76, 76, 'Kylee', 'Lacinia At Inc.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(77, 77, 'Dean', 'Et Magna Praesent LLP', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(78, 78, 'Slade', 'Sit Amet Ante Associates', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(79, 79, 'Amery', 'Fusce LLP', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(80, 80, 'Justin', 'Feugiat Non Limited', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(81, 81, 'Karleigh', 'Tempor Bibendum Donec Associates', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(82, 82, 'Sade', 'Volutpat Corp.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(83, 83, 'Chanda', 'Leo LLP', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(84, 84, 'Jin', 'Ligula Aenean LLC', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(85, 85, 'Patience', 'Porttitor Company', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(86, 86, 'Aurelia', 'Magnis Dis Incorporated', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(87, 87, 'Daria', 'Posuere Limited', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(88, 88, 'Kenyon', 'Suspendisse LLC', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(89, 89, 'Ivor', 'Nisi Inc.', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(90, 90, 'Bianca', 'Nulla Dignissim Limited', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(91, 91, 'Keely', 'Tincidunt Vehicula Risus Corporation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(92, 92, 'Rose', 'Nec Orci Donec LLP', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(93, 93, 'Kaitlin', 'Orci Sem Company', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(94, 94, 'Burton', 'Eu Arcu Morbi Company', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(95, 95, 'Breanna', 'Nunc Incorporated', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(96, 96, 'Althea', 'Vitae Velit Institute', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(97, 97, 'Kameko', 'Ante Bibendum Ullamcorper Industries', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(98, 98, 'Shellie', 'Commodo Corporation', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(99, 99, '', '', '1990-01-01', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44');
+INSERT INTO `tbl_emp_history` (`emp_history_id`, `emp_id`, `status`, `job_title`, `job_category`, `department`, `start_date`, `probationary_date`, `permanency_date`, `end_date`, `salary`, `pay_grade`, `date_modified`) VALUES
+(1, 1, 'Regular', 'CTO', 'Professionals', 'Executive', '1990-01-01', '2015-07-07', '2015-07-17', '2020-12-31', '40000.00', 'A', '2015-07-08 05:11:34'),
+(2, 2, '', '', '', 'Laoreet Posuere Enim PC', '1990-01-01', NULL, NULL, '2020-12-31', '30000.00', 'A', '2015-07-08 05:13:55'),
+(3, 3, '', '', '', 'Ante Consulting', '1990-01-01', NULL, NULL, '2020-12-31', '25000.00', 'A', '2015-07-08 05:15:00'),
+(4, 4, '', '', '', 'Mi LLC', '1990-01-01', NULL, NULL, '2020-12-31', '20000.00', 'A', '2015-07-08 05:16:20'),
+(5, 5, '', '', '', 'Velit Quisque Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '20000.00', 'A', '2015-07-08 05:16:20'),
+(6, 6, '', '', '', 'Velit Justo Nec Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(7, 7, '', '', '', 'Ornare In Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(8, 8, '', '', '', 'Arcu Sed Et Consulting', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(9, 9, '', '', '', 'Ac Arcu Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(10, 10, '', '', '', 'Sem Molestie Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(11, 11, '', '', '', 'Suspendisse Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(12, 12, '', '', '', 'Non Feugiat Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(13, 13, '', '', '', 'Vulputate Ullamcorper Magna Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(14, 14, '', '', '', 'Rutrum Eu LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(15, 15, '', '', '', 'A Ultricies Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(16, 16, '', '', '', 'Ultrices Iaculis Odio Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(17, 17, '', '', '', 'Vel LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(18, 18, '', '', '', 'Eu Euismod Consulting', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(19, 19, '', '', '', 'Nostra Per Industries', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(20, 20, '', '', '', 'Ante LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(21, 21, '', '', '', 'Enim Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(22, 22, '', '', '', 'At PC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(23, 23, '', '', '', 'Donec Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(24, 24, '', '', '', 'Ornare Facilisis Eget Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(25, 25, '', '', '', 'Nulla Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(26, 26, '', '', '', 'Tempor Erat Neque Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(27, 27, '', '', '', 'Magnis Dis Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(28, 28, '', '', '', 'Euismod Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(29, 29, '', '', '', 'Elementum Lorem Ut PC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(30, 30, '', '', '', 'Eget Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(31, 31, '', '', '', 'Vitae Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(32, 32, '', '', '', 'Fames Ac Turpis Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(33, 33, '', '', '', 'Mi Tempor Lorem Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(34, 34, '', '', '', 'Euismod Enim Etiam Industries', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(35, 35, '', '', '', 'Ultrices Duis Volutpat Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(36, 36, '', '', '', 'Sit Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(37, 37, '', '', '', 'Non Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(38, 38, '', '', '', 'Vel Pede Blandit Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(39, 39, '', '', '', 'Sem Semper Erat Ltd', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(40, 40, '', '', '', 'Pede Cum LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(41, 41, '', '', '', 'Proin Ltd', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(42, 42, '', '', '', 'Adipiscing Ligula Aenean Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(43, 43, '', '', '', 'Tincidunt Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(44, 44, '', '', '', 'Tincidunt Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(45, 45, '', '', '', 'Eleifend Nunc Risus Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(46, 46, '', '', '', 'Nunc LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(47, 47, '', '', '', 'Ligula Elit Pretium LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(48, 48, '', '', '', 'Ligula Aenean Euismod LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(49, 49, '', '', '', 'Purus Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(50, 50, '', '', '', 'Proin Mi Aliquam LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(51, 51, '', '', '', 'Quam Curabitur LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(52, 52, '', '', '', 'Semper Auctor Mauris Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(53, 53, '', '', '', 'Aliquam Ltd', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(54, 54, '', '', '', 'Velit Dui Semper Industries', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(55, 55, '', '', '', 'Volutpat Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(56, 56, '', '', '', 'Dui Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(57, 57, '', '', '', 'Molestie Dapibus Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(58, 58, '', '', '', 'Ante Maecenas Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(59, 59, '', '', '', 'Pretium Et Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(60, 60, '', '', '', 'Fringilla Donec Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(61, 61, '', '', '', 'Magnis Dis Parturient Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(62, 62, '', '', '', 'Dolor Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(63, 63, '', '', '', 'Egestas PC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(64, 64, '', '', '', 'Eu Erat Semper Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(65, 65, '', '', '', 'Vitae Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(66, 66, '', '', '', 'Velit Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(67, 67, '', '', '', 'Convallis Erat Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(68, 68, '', '', '', 'Ultricies Dignissim Lacus Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(69, 69, '', '', '', 'Ullamcorper Magna Sed Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(70, 70, '', '', '', 'Odio Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(71, 71, '', '', '', 'Dolor Dapibus Gravida Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(72, 72, '', '', '', 'Mauris Ut Mi Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(73, 73, '', '', '', 'Egestas Blandit Nam Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(74, 74, '', '', '', 'Quis Pede Praesent LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(75, 75, '', '', '', 'Sed Molestie Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(76, 76, '', '', '', 'Lacinia At Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(77, 77, '', '', '', 'Et Magna Praesent LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(78, 78, '', '', '', 'Sit Amet Ante Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(79, 79, '', '', '', 'Fusce LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(80, 80, '', '', '', 'Feugiat Non Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(81, 81, '', '', '', 'Tempor Bibendum Donec Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(82, 82, '', '', '', 'Volutpat Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(83, 83, '', '', '', 'Leo LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(84, 84, '', '', '', 'Ligula Aenean LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(85, 85, '', '', '', 'Porttitor Company', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(86, 86, '', '', '', 'Magnis Dis Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(87, 87, '', '', '', 'Posuere Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(88, 88, '', '', '', 'Suspendisse LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(89, 89, '', '', '', 'Nisi Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(90, 90, '', '', '', 'Nulla Dignissim Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(91, 91, '', '', '', 'Tincidunt Vehicula Risus Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(92, 92, '', '', '', 'Nec Orci Donec LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(93, 93, '', '', '', 'Orci Sem Company', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(94, 94, '', '', '', 'Eu Arcu Morbi Company', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(95, 95, '', '', '', 'Nunc Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(96, 96, '', '', '', 'Vitae Velit Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(97, 97, '', '', '', 'Ante Bibendum Ullamcorper Industries', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(98, 98, '', '', '', 'Commodo Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(99, 99, '', '', '', '', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_emp_info`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_emp_info` (
+  `emp_id` int(5) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `middle_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `birthday` date NOT NULL,
+  `gender` varchar(50) NOT NULL,
+  `marital_status` varchar(50) NOT NULL,
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_emp_info`
+--
+
+INSERT INTO `tbl_emp_info` (`emp_id`, `first_name`, `middle_name`, `last_name`, `birthday`, `gender`, `marital_status`, `date_added`) VALUES
+(1, 'Arden', 'Alcairo', 'Dela Cruz', '1993-12-16', 'male', 'Single', '2015-06-30 07:00:00'),
+(2, 'Yvonne', 'Franklin', 'Beach', '2015-12-26', 'female', 'Married', '2016-02-08 08:00:00'),
+(3, 'Ashely', 'Hensley', 'Delgado', '2015-06-09', 'female', 'Married', '2015-05-09 07:00:00'),
+(4, 'Illana', 'Avery', 'Zamora', '2016-06-14', 'female', 'Single', '2015-06-03 07:00:00'),
+(5, 'Phillip', 'Peck', 'Cameron', '2015-07-16', 'male', 'Widowed', '2014-10-23 07:00:00'),
+(6, 'Virginia', 'Curry', 'Mendoza', '2015-06-23', 'male', 'Single', '2015-06-14 07:00:00'),
+(7, 'Abel', 'King', 'Ford', '2016-06-04', 'male', 'Single', '2014-08-14 07:00:00'),
+(8, 'Kendall', 'Bright', 'Cameron', '2016-04-10', 'female', 'Single', '2015-11-07 08:00:00'),
+(9, 'Brittany', 'French', 'Gray', '2014-09-21', 'female', 'Widowed', '2015-08-24 07:00:00'),
+(10, 'Amir', 'Hernandez', 'Herrera', '2015-06-09', 'female', 'Single', '2015-01-26 08:00:00'),
+(11, 'q', 'q', '61300', '2015-07-01', 'q', 'married', '2015-07-12 14:39:19'),
+(12, 'Sheldon', 'q', '61300', '2015-10-14', 'Sheldon', 'single', '2015-07-13 11:41:09'),
+(13, 'Neil', 'Crist', 'Resnera', '0000-00-00', '', 'Single', '2015-07-13 11:54:49');
 
 -- --------------------------------------------------------
 
@@ -724,6 +885,25 @@ INSERT INTO `tbl_inventory` (`item_number`, `item_name`, `category`, `vendor`, `
 (10002, 'DC Hook', 'COstume', 'Secret Shop', 'Paris', 1000, '7000.00', '2015-07-08 00:22:48'),
 (10003, 'Pana ni Mirana', 'Deadly Weapon', 'Aling Nena', 'Buting', 1000, '200.00', '2015-07-08 00:25:41'),
 (10004, 'Es Totem', 'Weapon', 'Steam', 'Philippines', 1000, '100.00', '2015-07-08 20:57:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_leaves`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_leaves` (
+  `employee_id` varchar(10) DEFAULT NULL,
+  `leave_type` varchar(50) DEFAULT NULL,
+  `leaves_remaining` smallint(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_leaves`
+--
+
+INSERT INTO `tbl_leaves` (`employee_id`, `leave_type`, `leaves_remaining`) VALUES
+('1', 'Sick', 30);
 
 -- --------------------------------------------------------
 
@@ -760,7 +940,7 @@ INSERT INTO `tbl_materials` (`materials_id`, `item_number`, `quantity`, `price`,
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_payslip` (
-  `payslip_id` int(4) NOT NULL AUTO_INCREMENT,
+  `payslip_id` int(4) NOT NULL,
   `emp_id` int(4) NOT NULL,
   `payslip_date` datetime NOT NULL,
   `start_date` datetime NOT NULL,
@@ -774,9 +954,8 @@ CREATE TABLE IF NOT EXISTS `tbl_payslip` (
   `total_taxes` decimal(8,2) NOT NULL,
   `gross_pay` decimal(8,2) NOT NULL,
   `net_pay` decimal(8,2) NOT NULL,
-  `remarks` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`payslip_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+  `remarks` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_payslip`
@@ -797,15 +976,14 @@ INSERT INTO `tbl_payslip` (`payslip_id`, `emp_id`, `payslip_date`, `start_date`,
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_payslip_allowances` (
-  `payslip_allowance_id` int(11) NOT NULL AUTO_INCREMENT,
+  `payslip_allowance_id` int(11) NOT NULL,
   `payslip_id` int(11) NOT NULL,
   `allowance_id` int(11) NOT NULL,
   `percentage` decimal(3,3) NOT NULL,
   `percentage_amount` decimal(8,2) NOT NULL,
   `fixed_amount` decimal(8,2) NOT NULL,
-  `total` decimal(8,2) NOT NULL,
-  PRIMARY KEY (`payslip_allowance_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+  `total` decimal(8,2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_payslip_allowances`
@@ -846,15 +1024,14 @@ INSERT INTO `tbl_payslip_allowances` (`payslip_allowance_id`, `payslip_id`, `all
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_payslip_taxes` (
-  `payslip_tax_id` int(11) NOT NULL AUTO_INCREMENT,
+  `payslip_tax_id` int(11) NOT NULL,
   `payslip_id` int(11) NOT NULL,
   `tax_id` int(11) NOT NULL,
   `percentage` decimal(3,3) NOT NULL,
   `percentage_amount` decimal(8,2) NOT NULL,
   `fixed_amount` decimal(8,2) NOT NULL,
-  `total` decimal(8,2) NOT NULL,
-  PRIMARY KEY (`payslip_tax_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=89 ;
+  `total` decimal(8,2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_payslip_taxes`
@@ -925,8 +1102,7 @@ CREATE TABLE IF NOT EXISTS `tbl_project` (
   `project_name` varchar(50) NOT NULL,
   `client` varchar(50) NOT NULL,
   `starting_date` date NOT NULL,
-  `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`project_id`)
+  `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -947,7 +1123,7 @@ INSERT INTO `tbl_project` (`project_id`, `project_name`, `client`, `starting_dat
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_requestentry` (
-  `req_id` int(11) NOT NULL AUTO_INCREMENT,
+  `req_id` int(11) NOT NULL,
   `emp_id` int(11) NOT NULL,
   `date_value` date NOT NULL,
   `time_in` time NOT NULL,
@@ -956,9 +1132,8 @@ CREATE TABLE IF NOT EXISTS `tbl_requestentry` (
   `date_requested` datetime NOT NULL,
   `approved` tinyint(1) DEFAULT NULL,
   `approved_by` int(11) DEFAULT NULL,
-  `date_approved` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`req_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `date_approved` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_requestentry`
@@ -976,17 +1151,42 @@ INSERT INTO `tbl_requestentry` (`req_id`, `emp_id`, `date_value`, `time_in`, `ti
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_school`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_school` (
+  `employee_id` int(5) DEFAULT NULL,
+  `primary_name` varchar(50) DEFAULT NULL,
+  `primary_address` varchar(50) DEFAULT NULL,
+  `primary_year` smallint(50) DEFAULT NULL,
+  `secondary_name` varchar(50) DEFAULT NULL,
+  `secondary_address` varchar(50) DEFAULT NULL,
+  `secondary_year` smallint(50) DEFAULT NULL,
+  `tertiary_name` varchar(50) DEFAULT NULL,
+  `tertiary_address` varchar(50) DEFAULT NULL,
+  `tertiary_year` smallint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_school`
+--
+
+INSERT INTO `tbl_school` (`employee_id`, `primary_name`, `primary_address`, `primary_year`, `secondary_name`, `secondary_address`, `secondary_year`, `tertiary_name`, `tertiary_address`, `tertiary_year`) VALUES
+(1, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_taxes`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_taxes` (
-  `tax_id` int(4) NOT NULL AUTO_INCREMENT,
+  `tax_id` int(4) NOT NULL,
   `tax_name` varchar(50) NOT NULL,
   `percentage` decimal(3,3) NOT NULL,
   `amount` decimal(8,2) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`tax_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `active` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_taxes`
@@ -1001,11 +1201,44 @@ INSERT INTO `tbl_taxes` (`tax_id`, `tax_name`, `percentage`, `amount`, `active`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_user`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_user` (
+  `user_id` int(5) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `user_level` varchar(20) NOT NULL,
+  `secret_question` varchar(50) NOT NULL,
+  `secret_answer` varchar(50) NOT NULL,
+  `employee_id` varchar(10) NOT NULL,
+  `date_registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_user`
+--
+
+INSERT INTO `tbl_user` (`user_id`, `username`, `password`, `email`, `user_level`, `secret_question`, `secret_answer`, `employee_id`, `date_registered`) VALUES
+(1, 'ardents', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Administrator', '1', 'ardents', '1', '2015-06-05 05:28:36'),
+(7, 'ardendeveloper', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', '2', '2015-06-05 05:30:12'),
+(9, 'ardenity', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', '3', '2015-06-05 21:34:52'),
+(10, 'resnerac03', '25d55ad283aa400af464c76d713c07ad', 'resnerac03@gmail.com', 'Administrator', '2', 'asdasdasdas', '4', '2015-07-03 14:27:13'),
+(11, 'ardentss', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardentss@gmail.com', 'Administrator', '1', 'ardentss', '5', '2015-07-12 13:24:19'),
+(12, 'ardentswew', '324554b6b5ff6e4f41f3bce8b0d8a157', 'ardentswew@g.c', 'Employee', '1', 'ardentswew', '6', '2015-07-12 13:28:22'),
+(13, 'ardentsweww', '89e8ec248dabeea723ef2bc175288234', 'asdsadsadsad@gmail.com', 'Employee', '1', 'ardentsweww', '7', '2015-07-12 13:28:52'),
+(14, 'dasdasdsad', '5e44a9ce239320776166d40c5579607e', 'asdsadsadsad@gmail.com', 'Employee', '1', 'dasdasdsad', '8', '2015-07-12 13:30:06'),
+(15, 'qwewqewqewq', '26c7245d7e62a6a69404bf27886edab5', 'asdsadsadsad@gmail.com', 'Employee', '1', 'qwewqewqewq', '9', '2015-07-12 13:30:35');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_account`
 --
 
 CREATE TABLE IF NOT EXISTS `user_account` (
-  `user_id` int(5) NOT NULL AUTO_INCREMENT,
+  `user_id` int(5) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -1013,9 +1246,8 @@ CREATE TABLE IF NOT EXISTS `user_account` (
   `secret_question` varchar(255) NOT NULL,
   `secret_answer` varchar(255) NOT NULL,
   `employee_id` int(11) NOT NULL,
-  `date_registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+  `date_registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_account`
@@ -1031,50 +1263,11 @@ INSERT INTO `user_account` (`user_id`, `username`, `password`, `email`, `user_le
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vendors`
---
-
-CREATE TABLE IF NOT EXISTS `vendors` (
-  `vendor_id` int(5) NOT NULL,
-  `vendor_name` varchar(15) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `contact_number` int(15) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `date_added` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `vendors`
---
-
-INSERT INTO `vendors` (`vendor_id`, `vendor_name`, `address`, `contact_number`, `email`, `date_added`) VALUES
-(1231, 'neil', '123 taga taytay rizal', 2349, 'neil_resnera@yahoo.com', '2015-07-03'),
-(123124, 'gilbert', '123 taga altura manila', 23125, 'gilbert_start@yahoo.com', '2015-07-02'),
-(1231, 'arden', '123 taga jennys ave pasig', 123521, 'arden_delacruz@yahoo.com', '2015-07-03'),
-(12412, 'paul', '123 taga kanila daw', 1231247, 'johnpaul_evangelista@yahoo.com', '2015-07-02'),
-(609, 'Biboy', '123 kapit bahay ni arden', 905800609, 'chua_biboy@yahoo.com', '2015-07-03'),
-(12214, 'resnera', '123 housemate ni neil', 21312038, 'neilneil@yahoo.com', '2015-07-02'),
-(123421, 'start', '123 housemate ni gilbert', 1231283, 'startstart@yahoo.com', '2015-07-03'),
-(12312, 'delacruz', '123 housemate ni arden', 1241231, 'delacruz@yahoo.com', '2015-07-03'),
-(2131, 'evangelista', '123 housemate ni paul', 12314324, 'johnpaul_patun-og@yahoo.com', '2015-07-03'),
-(324234, 'CHUA', '123 housemate ni Biboy', 123123, 'chuachua@yahoo.com', '2015-07-03');
-
--- --------------------------------------------------------
-
---
 -- Stand-in structure for view `view_active_employees`
 --
 CREATE TABLE IF NOT EXISTS `view_active_employees` (
-`emp_id` int(5)
-,`first_name` varchar(50)
-,`middle_name` varchar(50)
-,`last_name` varchar(50)
-,`position` varchar(50)
-,`department` varchar(50)
-,`salary` decimal(10,2)
-,`start_date` varchar(10)
-,`end_date` varchar(10)
 );
+
 -- --------------------------------------------------------
 
 --
@@ -1094,14 +1287,81 @@ CREATE TABLE IF NOT EXISTS `view_attendance` (
 ,`tardiness` bigint(21)
 ,`overtime` varchar(67)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_dependents`
+--
+CREATE TABLE IF NOT EXISTS `view_dependents` (
+`employee_id` varchar(10)
+,`dependent_fname` varchar(50)
+,`dependent_lname` varchar(50)
+,`relationship` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_employee_info`
+--
+CREATE TABLE IF NOT EXISTS `view_employee_info` (
+`emp_id` int(5)
+,`first_name` varchar(50)
+,`middle_name` varchar(50)
+,`last_name` varchar(50)
+,`gender` varchar(50)
+,`birthday` varchar(10)
+,`marital_status` varchar(50)
+,`street` varchar(50)
+,`barangay` varchar(50)
+,`city` varchar(50)
+,`state` varchar(50)
+,`zip` int(10)
+,`country` varchar(50)
+,`mobile_number` int(20)
+,`tel_number` int(20)
+,`primary_name` varchar(50)
+,`primary_address` varchar(50)
+,`primary_year` smallint(50)
+,`secondary_name` varchar(50)
+,`secondary_address` varchar(50)
+,`secondary_year` smallint(50)
+,`tertiary_name` varchar(50)
+,`tertiary_address` varchar(50)
+,`tertiary_year` smallint(4)
+,`username` varchar(50)
+,`password` varchar(255)
+,`email` varchar(50)
+,`user_level` varchar(20)
+,`secret_question` varchar(50)
+,`secret_answer` varchar(50)
+,`department` varchar(50)
+,`start_date` varchar(10)
+,`end_date` varchar(10)
+,`salary` decimal(10,2)
+,`pay_grade` varchar(5)
+,`status` varchar(50)
+,`leave_type` varchar(50)
+,`leaves_remaining` smallint(255)
+,`contact_person` varchar(100)
+,`contact_rel` varchar(30)
+,`contact_num` int(20)
+,`user_id` int(5)
+,`job_category` varchar(50)
+,`job_title` varchar(50)
+,`probationary_date` varchar(10)
+,`permanency_date` varchar(10)
+,`num_dependents` bigint(21)
+);
+
 -- --------------------------------------------------------
 
 --
 -- Structure for view `view_active_employees`
 --
 DROP TABLE IF EXISTS `view_active_employees`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_active_employees` AS select `employees`.`emp_id` AS `emp_id`,`employees`.`first_name` AS `first_name`,`employees`.`middle_name` AS `middle_name`,`employees`.`last_name` AS `last_name`,`tbl_emp_history`.`position` AS `position`,`tbl_emp_history`.`department` AS `department`,`tbl_emp_history`.`salary` AS `salary`,date_format(max(`tbl_emp_history`.`start_date`),'%m/%d/%Y') AS `start_date`,date_format(max(`tbl_emp_history`.`end_date`),'%m/%d/%Y') AS `end_date` from (`employees` join `tbl_emp_history` on((`tbl_emp_history`.`emp_id` = `employees`.`emp_id`))) where (`tbl_emp_history`.`end_date` > now()) group by `tbl_emp_history`.`emp_id`;
+-- in use(#1356 - View 'system_draft.view_active_employees' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them)
 
 -- --------------------------------------------------------
 
@@ -1112,6 +1372,222 @@ DROP TABLE IF EXISTS `view_attendance`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_attendance` AS select distinct `employees`.`emp_id` AS `emp_id`,`employees`.`first_name` AS `first_name`,`employees`.`middle_name` AS `middle_name`,`employees`.`last_name` AS `last_name`,`employees`.`position` AS `position`,`tbl_attendance`.`datelog` AS `datelog`,date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y') AS `logdate`,`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) AS `time_in`,`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) AS `time_out`,ifnull(if((timestampdiff(MINUTE,str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),format(((timestampdiff(MINUTE,str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) / 60) - 1),2),0),0) AS `man_hours`,ifnull(if((timestampdiff(MINUTE,str_to_date('01/01/1970 08:00 AM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),timestampdiff(MINUTE,str_to_date('01/01/1970 08:00 AM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')),0),0) AS `tardiness`,ifnull(if((timestampdiff(MINUTE,str_to_date('01/01/1970 05:00 PM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),format((timestampdiff(MINUTE,str_to_date('01/01/1970 05:00 PM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) / 60),2),0),0) AS `overtime` from (`employees` join `tbl_attendance` on((`tbl_attendance`.`emp_id` = `employees`.`emp_id`))) order by `employees`.`emp_id`,6;
 
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_dependents`
+--
+DROP TABLE IF EXISTS `view_dependents`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_dependents` AS select `tbl_dependent_info`.`employee_id` AS `employee_id`,`tbl_dependent`.`dependent_fname` AS `dependent_fname`,`tbl_dependent`.`dependent_lname` AS `dependent_lname`,`tbl_dependent_info`.`relationship` AS `relationship` from (`tbl_dependent` join `tbl_dependent_info` on((`tbl_dependent`.`dependent_id` = `tbl_dependent_info`.`dependent_id`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_employee_info`
+--
+DROP TABLE IF EXISTS `view_employee_info`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_employee_info` AS select `tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name`,`tbl_emp_info`.`gender` AS `gender`,date_format(`tbl_emp_info`.`birthday`,'%m-%d-%Y') AS `birthday`,`tbl_emp_info`.`marital_status` AS `marital_status`,`tbl_address`.`street` AS `street`,`tbl_address`.`barangay` AS `barangay`,`tbl_address`.`city` AS `city`,`tbl_address`.`state` AS `state`,`tbl_address`.`zip` AS `zip`,`tbl_address`.`country` AS `country`,`tbl_contact_number`.`mobile_number` AS `mobile_number`,`tbl_contact_number`.`tel_number` AS `tel_number`,`tbl_school`.`primary_name` AS `primary_name`,`tbl_school`.`primary_address` AS `primary_address`,`tbl_school`.`primary_year` AS `primary_year`,`tbl_school`.`secondary_name` AS `secondary_name`,`tbl_school`.`secondary_address` AS `secondary_address`,`tbl_school`.`secondary_year` AS `secondary_year`,`tbl_school`.`tertiary_name` AS `tertiary_name`,`tbl_school`.`tertiary_address` AS `tertiary_address`,`tbl_school`.`tertiary_year` AS `tertiary_year`,`tbl_user`.`username` AS `username`,`tbl_user`.`password` AS `password`,`tbl_user`.`email` AS `email`,`tbl_user`.`user_level` AS `user_level`,`tbl_user`.`secret_question` AS `secret_question`,`tbl_user`.`secret_answer` AS `secret_answer`,`tbl_emp_history`.`department` AS `department`,date_format(`tbl_emp_history`.`start_date`,'%m-%d-%Y') AS `start_date`,date_format(`tbl_emp_history`.`end_date`,'%m-%d-%Y') AS `end_date`,`tbl_emp_history`.`salary` AS `salary`,`tbl_emp_history`.`pay_grade` AS `pay_grade`,`tbl_emp_history`.`status` AS `status`,`tbl_leaves`.`leave_type` AS `leave_type`,`tbl_leaves`.`leaves_remaining` AS `leaves_remaining`,`tbl_contact_person`.`contact_person` AS `contact_person`,`tbl_contact_person`.`contact_rel` AS `contact_rel`,`tbl_contact_person`.`contact_num` AS `contact_num`,`tbl_user`.`user_id` AS `user_id`,`tbl_emp_history`.`job_category` AS `job_category`,`tbl_emp_history`.`job_title` AS `job_title`,date_format(`tbl_emp_history`.`probationary_date`,'%m-%d-%Y') AS `probationary_date`,date_format(`tbl_emp_history`.`permanency_date`,'%m-%d-%Y') AS `permanency_date`,count(`tbl_dependent_info`.`dependent_id`) AS `num_dependents` from ((((((((`tbl_emp_info` join `tbl_contact_number` on((`tbl_emp_info`.`emp_id` = `tbl_contact_number`.`employee_id`))) join `tbl_address` on((`tbl_emp_info`.`emp_id` = `tbl_address`.`employee_id`))) join `tbl_emp_history` on((`tbl_emp_info`.`emp_id` = `tbl_emp_history`.`emp_id`))) join `tbl_school` on((`tbl_emp_info`.`emp_id` = `tbl_school`.`employee_id`))) join `tbl_user` on((`tbl_emp_info`.`emp_id` = `tbl_user`.`employee_id`))) join `tbl_leaves` on((`tbl_emp_info`.`emp_id` = `tbl_leaves`.`employee_id`))) join `tbl_contact_person` on((`tbl_emp_info`.`emp_id` = `tbl_contact_person`.`employee_id`))) join `tbl_dependent_info` on((`tbl_emp_info`.`emp_id` = `tbl_dependent_info`.`employee_id`))) group by `tbl_emp_info`.`emp_id`,`tbl_emp_info`.`first_name`,`tbl_emp_info`.`middle_name`,`tbl_emp_info`.`last_name`,`tbl_emp_info`.`gender`,`tbl_emp_info`.`marital_status`,`tbl_address`.`street`,`tbl_address`.`barangay`,`tbl_address`.`city`,`tbl_address`.`state`,`tbl_address`.`zip`,`tbl_address`.`country`,`tbl_contact_number`.`mobile_number`,`tbl_contact_number`.`tel_number`,`tbl_school`.`primary_name`,`tbl_school`.`primary_address`,`tbl_school`.`primary_year`,`tbl_school`.`secondary_name`,`tbl_school`.`secondary_address`,`tbl_school`.`secondary_year`,`tbl_school`.`tertiary_name`,`tbl_school`.`tertiary_address`,`tbl_school`.`tertiary_year`,`tbl_user`.`username`,`tbl_user`.`password`,`tbl_user`.`email`,`tbl_user`.`user_level`,`tbl_user`.`secret_question`,`tbl_user`.`secret_answer`,`tbl_emp_history`.`department`,`tbl_emp_history`.`start_date`,`tbl_emp_history`.`end_date`,`tbl_emp_history`.`salary`,`tbl_emp_history`.`pay_grade`,`tbl_emp_history`.`status`,`tbl_leaves`.`leave_type`,`tbl_leaves`.`leaves_remaining`,`tbl_contact_person`.`contact_person`,`tbl_contact_person`.`contact_rel`,`tbl_contact_person`.`contact_num`,`tbl_user`.`user_id`,`tbl_emp_history`.`job_category`,`tbl_emp_history`.`job_title`,`tbl_emp_history`.`probationary_date`,`tbl_emp_history`.`permanency_date`;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `assets`
+--
+ALTER TABLE `assets`
+  ADD PRIMARY KEY (`asset_id`);
+
+--
+-- Indexes for table `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`emp_id`);
+
+--
+-- Indexes for table `emp_performance`
+--
+ALTER TABLE `emp_performance`
+  ADD PRIMARY KEY (`performance_id`);
+
+--
+-- Indexes for table `leaves`
+--
+ALTER TABLE `leaves`
+  ADD PRIMARY KEY (`leave_id`);
+
+--
+-- Indexes for table `tbl_address`
+--
+ALTER TABLE `tbl_address`
+  ADD PRIMARY KEY (`emp_address_id`);
+
+--
+-- Indexes for table `tbl_allowances`
+--
+ALTER TABLE `tbl_allowances`
+  ADD PRIMARY KEY (`allowance_id`);
+
+--
+-- Indexes for table `tbl_attendance`
+--
+ALTER TABLE `tbl_attendance`
+  ADD PRIMARY KEY (`attendance_id`);
+
+--
+-- Indexes for table `tbl_contact_person`
+--
+ALTER TABLE `tbl_contact_person`
+  ADD PRIMARY KEY (`cperson_id`);
+
+--
+-- Indexes for table `tbl_departments`
+--
+ALTER TABLE `tbl_departments`
+  ADD PRIMARY KEY (`department_id`);
+
+--
+-- Indexes for table `tbl_dependent`
+--
+ALTER TABLE `tbl_dependent`
+  ADD PRIMARY KEY (`dependent_id`);
+
+--
+-- Indexes for table `tbl_emp_history`
+--
+ALTER TABLE `tbl_emp_history`
+  ADD PRIMARY KEY (`emp_history_id`);
+
+--
+-- Indexes for table `tbl_emp_info`
+--
+ALTER TABLE `tbl_emp_info`
+  ADD PRIMARY KEY (`emp_id`);
+
+--
+-- Indexes for table `tbl_payslip`
+--
+ALTER TABLE `tbl_payslip`
+  ADD PRIMARY KEY (`payslip_id`);
+
+--
+-- Indexes for table `tbl_payslip_allowances`
+--
+ALTER TABLE `tbl_payslip_allowances`
+  ADD PRIMARY KEY (`payslip_allowance_id`);
+
+--
+-- Indexes for table `tbl_payslip_taxes`
+--
+ALTER TABLE `tbl_payslip_taxes`
+  ADD PRIMARY KEY (`payslip_tax_id`);
+
+--
+-- Indexes for table `tbl_project`
+--
+ALTER TABLE `tbl_project`
+  ADD PRIMARY KEY (`project_id`);
+
+--
+-- Indexes for table `tbl_requestentry`
+--
+ALTER TABLE `tbl_requestentry`
+  ADD PRIMARY KEY (`req_id`);
+
+--
+-- Indexes for table `tbl_taxes`
+--
+ALTER TABLE `tbl_taxes`
+  ADD PRIMARY KEY (`tax_id`);
+
+--
+-- Indexes for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `user_account`
+--
+ALTER TABLE `user_account`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `emp_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `emp_performance`
+--
+ALTER TABLE `emp_performance`
+  MODIFY `performance_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `leaves`
+--
+ALTER TABLE `leaves`
+  MODIFY `leave_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `tbl_allowances`
+--
+ALTER TABLE `tbl_allowances`
+  MODIFY `allowance_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tbl_attendance`
+--
+ALTER TABLE `tbl_attendance`
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=243;
+--
+-- AUTO_INCREMENT for table `tbl_emp_history`
+--
+ALTER TABLE `tbl_emp_history`
+  MODIFY `emp_history_id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=100;
+--
+-- AUTO_INCREMENT for table `tbl_emp_info`
+--
+ALTER TABLE `tbl_emp_info`
+  MODIFY `emp_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `tbl_payslip`
+--
+ALTER TABLE `tbl_payslip`
+  MODIFY `payslip_id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `tbl_payslip_allowances`
+--
+ALTER TABLE `tbl_payslip_allowances`
+  MODIFY `payslip_allowance_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+--
+-- AUTO_INCREMENT for table `tbl_payslip_taxes`
+--
+ALTER TABLE `tbl_payslip_taxes`
+  MODIFY `payslip_tax_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
+--
+-- AUTO_INCREMENT for table `tbl_requestentry`
+--
+ALTER TABLE `tbl_requestentry`
+  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_taxes`
+--
+ALTER TABLE `tbl_taxes`
+  MODIFY `tax_id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `user_account`
+--
+ALTER TABLE `user_account`
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

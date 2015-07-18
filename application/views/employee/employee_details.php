@@ -144,6 +144,7 @@
                                  <li><a href="#tab_3" data-toggle="tab">Education</a></li>
                                  <li><a href="#tab_4" data-toggle="tab">Account</a></li>
                                  <li><a href="#tab_5" data-toggle="tab">Employment</a></li>
+                                 <li><a href="#tab_6" data-toggle="tab">Leaves</a></li>
                                  <!-- <li><a href="#tab_6" data-toggle="tab">Seminars</a></li> -->
                               </ul>
                               <div class="tab-content">
@@ -634,9 +635,10 @@
                                                </div>
                                            </div>
                                        </article>
-                                       
                                     </div>
                                 </section><!-- Account -->
+
+                                
                               </div><!-- Tab-content -->
                            </div><!-- Navs -->
                         </div><!--Panel Body-->
