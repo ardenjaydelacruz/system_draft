@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f7dbfdf-f85c-4168-84af-b29eeb655f1e" name="Default" comment="finished cleaning codes for AMS hooray!">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Assets_model.php" afterPath="$PROJECT_DIR$/application/models/Assets_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/asset/asset_table.php" afterPath="$PROJECT_DIR$/application/views/asset/asset_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/asset/project_table.php" afterPath="$PROJECT_DIR$/application/views/asset/project_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/asset/materials_table.php" afterPath="$PROJECT_DIR$/application/views/asset/materials_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system_draft.sql" afterPath="$PROJECT_DIR$/system_draft.sql" />
     </list>
     <ignored path="system_draft.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,11 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="asset_table.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="asset_table.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/asset/asset_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35915494" vertical-offset="884" max-vertical-offset="1581">
+            <state vertical-scroll-proportion="-19.615385" vertical-offset="578" max-vertical-offset="1581">
               <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="materials_table.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/asset/materials_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.9707401" vertical-offset="337" max-vertical-offset="1275">
+              <caret line="53" column="90" selection-start-line="53" selection-start-column="90" selection-end-line="53" selection-end-column="90" />
               <folding />
             </state>
           </provider>
@@ -95,6 +104,7 @@
         <option value="$PROJECT_DIR$/application/views/asset/project_table.php" />
         <option value="$PROJECT_DIR$/application/models/Assets_model.php" />
         <option value="$PROJECT_DIR$/application/views/asset/asset_table.php" />
+        <option value="$PROJECT_DIR$/application/views/asset/materials_table.php" />
       </list>
     </option>
   </component>
@@ -773,8 +783,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/asset/asset_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35915494" vertical-offset="884" max-vertical-offset="1581">
+        <state vertical-scroll-proportion="-19.615385" vertical-offset="578" max-vertical-offset="1581">
           <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/asset/materials_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9707401" vertical-offset="337" max-vertical-offset="1275">
+          <caret line="53" column="90" selection-start-line="53" selection-start-column="90" selection-end-line="53" selection-end-column="90" />
           <folding />
         </state>
       </provider>
