@@ -3,7 +3,6 @@
     $firstName = $row->first_name;
     $middleName = $row->middle_name;
     $lastName = $row->last_name;
-    $leaves = $row->leaves_remaining;
     $birthday = $row->birthday;
     $gender = $row->gender;
     $marital_status = $row->marital_status;
@@ -91,7 +90,7 @@
                                       </td>
                                   </tr>
                                   <tr>
-                                      <th>Position:</th>
+                                      <th>Job Title:</th>
                                       <td>
                                           <input type="text" disabled class="form-control" value="<?php echo $job_title;?>" name="txtPosition" />
                                       </td>
@@ -106,12 +105,6 @@
                                       <th>Dept.:</th>
                                       <td>
                                           <input type="text" disabled class="form-control" value="<?php echo $department;?>" name="txtDepartment" />
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <th>Leaves Left:</th>
-                                      <td>
-                                          <input type="text" disabled class="form-control" value="<?php echo $leaves;?>" name="txtLeaves" />
                                       </td>
                                   </tr>
                                   <tr>
@@ -241,7 +234,7 @@
                                       </table>
                                     </div>
                                 </section><!-- Personal -->
-                                 
+
                                 <section class="tab-pane" id="tab_2">
                                     <div class="form-horizontal">
                                       <h3>Contact Details</h3>
@@ -372,7 +365,7 @@
                                       </article>
                                     </div>
                                 </section><!-- Contact -->
-                                
+
                                 <section class="tab-pane" id="tab_3">
                                     <div class="form-horizontal">
                                       <h3>Tertiary</h3>
@@ -475,7 +468,7 @@
                                       </article>
                                     </div>
                                 </section><!-- Education -->
-                                
+
                                 <section class="tab-pane" id="tab_4">
                                     <div class="form-horizontal">
                                        <h3>User Account</h3><hr>
@@ -638,7 +631,25 @@
                                     </div>
                                 </section><!-- Account -->
 
-                                
+                                <section class="tab-pane" id="tab_6">
+                                    <div class="form-horizontal">
+                                       <h3>Leave Details</h3><hr>
+                                       <table class="table table-hovered table-striped">
+                                           <thead>
+                                                <th >Leave ID</th>
+                                               <th>Leave Type</th>
+                                               <th>Leaves Remaining (Days)</th>
+                                           </thead>
+                                           <?php $flag=1; foreach($leaves_left as $leave) { ?>
+                                           <tr>
+                                               <th class="text-center"><?php echo $leave->leave_type_id; ?></th>
+                                               <td><?php echo $leave->leave_type_name; ?></td>
+                                               <td><input type="text" disabled class="form-control" value="<?php echo $leave->leave_remaining; ?>" name="txtLeft<?php echo $leave->leave_type_id; ?>" /></td>
+                                           </tr>
+                                           <?php } ?>
+                                       </table>
+                                    </div>
+                                </section><!-- Leaves -->
                               </div><!-- Tab-content -->
                            </div><!-- Navs -->
                         </div><!--Panel Body-->
