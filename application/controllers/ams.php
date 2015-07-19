@@ -74,7 +74,7 @@ class Ams extends MY_Controller {
 	}
 
 	public function view_projects(){
-		$data['record'] = Projects_model::all();
+		$data['record'] = View_project_cost_model::all();
 		$data['pageTitle'] = 'Projects - MSInc.';
 		$data['content'] = 'asset/project_table';
 		$this->load->view($this->master_layout,$data);
