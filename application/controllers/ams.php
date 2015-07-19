@@ -63,7 +63,7 @@ class Ams extends MY_Controller {
 		$data['content'] = 'asset/asset_details';
 		$this->load->view($this->master_layout,$data);
 	}
-	
+
 	public function update_asset(){
 		$details = Assets_info_model::assetsDetails();
 		$asset = Assets_info_model::find($this->input->get('asset_id'));
@@ -126,7 +126,7 @@ class Ams extends MY_Controller {
 	}
 
 	public function delete_materials(){
-		$data = Materials_model::find_by_materials_id($this->input->get('id'));
+		$data = Materials_model::find($this->input->get('id'));
 		if($data->delete()){
 			$this->session->set_userdata('deleted',1);
 			redirect('ams/view_all_materials');

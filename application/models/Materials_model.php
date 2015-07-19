@@ -8,7 +8,7 @@
 
 class Materials_model extends ActiveRecord\Model{
     static $table_name = 'tbl_materials';
-    static $primary_key = 'item_number';
+    static $primary_key = 'item_id';
 
     public function insertMaterials(){
         $this->form_validation->set_rules('txtItemID', 'Item ID', 'trim|required');
