@@ -69,7 +69,7 @@
 								<i class="fa fa-user"></i>
 							</button>
 						</a>
-						<a href="<?php echo base_url();?>ams/edit_asset?asset_id=<?php echo $row->asset_id; ?>">
+						<a href="<?php echo base_url();?>ams/assign_asset?asset_id=<?php echo $row->asset_id; ?>">
 						<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Edit Asset">
 							<i class="fa fa-pencil"></i>
 						</button>

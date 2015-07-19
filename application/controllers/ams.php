@@ -8,6 +8,7 @@ class Ams extends MY_Controller {
 	}
 
 	public function view_assets(){
+		Assets_model::assignAsset();
 		$data['total_asset'] = count(View_assigned_assets_model::all());
 		$data["record"] = View_assigned_assets_model::all();
 		$data['pageTitle'] = 'Other Assets - MSInc.';
@@ -22,6 +23,14 @@ class Ams extends MY_Controller {
 		Assets_info_model::add_asset_info();
 		$data['pageTitle'] = 'Add Asset - MSInc.';
 		$data['content'] = 'asset/add_asset';
+		$this->load->view($this->master_layout,$data);
+	}
+
+	public function assign_asset(){
+		$data['asset'] = Assets_info_model::find($this->input->get('asset_id'));
+		$data['employee'] = Employees_model::all();
+		$data['pageTitle'] = 'Assign Asset - MSInc.';
+		$data['content'] = 'asset/assign_asset';
 		$this->load->view($this->master_layout,$data);
 	}
 
