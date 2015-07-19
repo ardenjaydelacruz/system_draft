@@ -21,22 +21,13 @@
 						<?php echo form_open('ams/add_materials'); ?>
 							<div class="form-horizontal">
 								<div class="form-group">
-									<label class=" col-sm-3 control-label">Materials ID: * </label>
-									<div class="col-sm-3">
-										<input type="text" class="form-control input-sm" name="txtMaterialsID">
-									</div>
-									<div class="col-sm-5 error">
-										<?php echo form_error('txtMaterialsID'); ?>
-									</div>
-								</div>
-								<div class="form-group">
 									<label class=" col-sm-3 control-label">Item Number: * </label>
 									<div class="col-sm-3">
 										<select name="txtItemNumber" class="form-control">
 											<option value="" selected>---</option>
 											<?php
 											foreach($record as $row){
-												echo "<option value='$row->item_number'>$row->item_number - $row->item_name</option>";
+												echo "<option value='$row->item_id'>$row->item_id - $row->item_name</option>";
 											}
 											?>
 										</select>

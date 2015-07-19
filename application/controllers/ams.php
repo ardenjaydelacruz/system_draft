@@ -94,6 +94,7 @@ class Ams extends MY_Controller {
 		$this->load->view($this->master_layout,$data);
 	}
 
+	//view materials for certain projects
 	public function view_materials(){
 		$id = $this->input->get('project_id');
 		$data['record'] = Materials_model::find('all',array('conditions' => array('project_id=?',$id)));
@@ -102,8 +103,9 @@ class Ams extends MY_Controller {
 		$this->load->view($this->master_layout,$data);
 	}
 
+	//list all materials for all projects
 	public function view_all_materials(){
-		$data['record'] = Materials_model::all();
+		$data['record'] = View_project_materials_model::all();
 		$data['pageTitle'] = 'Bill of Materials - MSInc.';
 		$data['content'] = 'asset/materials_table';
 		$this->load->view($this->master_layout,$data);
@@ -112,7 +114,7 @@ class Ams extends MY_Controller {
 
 	public function add_materials(){
 		Materials_model::insertMaterials();
-		$data['record'] = Inventory_model::all();
+		$data['record'] = Stock_info_model::all();
 		$data['project'] = Projects_model::all();
 		$data['pageTitle'] = 'Add Materials - MSInc.';
 		$data['content'] = 'asset/add_materials';
