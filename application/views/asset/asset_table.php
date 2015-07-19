@@ -46,7 +46,6 @@
 					</div> 
 				<table class="table table-striped table-hover table-bordered">				
 					<thead >
-						<!-- <th><input type="checkbox" class="checkbox"></th> -->
 						<th class="table-head">Asset ID</th>
 						<th class="table-head">Asset Name</th>
 						<th class="table-head">Category</th>
@@ -57,7 +56,6 @@
 					<?php 
 					foreach ($record as $row) {	?>
 					<tr>
-						<!-- <td><input type="checkbox" class="checkbox" name="checkbox[]"></td> -->
 						<td align="center"><?php echo $row->asset_id; ?></td>
 						<td><?php echo $row->asset_name; ?></td>
 						<td><?php echo $row->category_name; ?></td>
@@ -70,7 +68,7 @@
 							</button>
 						</a>
 						<a href="<?php echo base_url();?>ams/assign_asset?asset_id=<?php echo $row->asset_id; ?>">
-						<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Edit Asset">
+						<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Assign Asset">
 							<i class="fa fa-pencil"></i>
 						</button>
 						</a>

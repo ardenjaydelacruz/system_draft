@@ -1,6 +1,6 @@
 <?php
-class Employees_model extends ActiveRecord\Model {
-	static $table_name = 'view_employee_info';
+class Emp_info_model extends ActiveRecord\Model {
+	static $table_name = 'tbl_emp_info';
 	static $primary_key = 'emp_id';
 
 	public function insert_employee_data(){

@@ -28,7 +28,7 @@ class Ams extends MY_Controller {
 
 	public function assign_asset(){
 		$data['asset'] = Assets_info_model::find($this->input->get('asset_id'));
-		$data['employee'] = Employees_model::all();
+		$data['employee'] = Emp_info_model::all();
 		$data['pageTitle'] = 'Assign Asset - MSInc.';
 		$data['content'] = 'asset/assign_asset';
 		$this->load->view($this->master_layout,$data);
@@ -56,23 +56,17 @@ class Ams extends MY_Controller {
 
 	public function view_asset_details(){
 		$id = $this->input->get('asset_id');
+		$data['category'] = Stock_category_model::all();
+		$data['vendor'] = Vendor_model::all();
 		$data['row'] = Assets_info_model::find($id);
 		$data['pageTitle'] = 'Asset Details - MSInc.';
 		$data['content'] = 'asset/asset_details';
 		$this->load->view($this->master_layout,$data);
 	}
-
-	public function edit_asset(){
-		$id = $this->input->get('asset_id');
-		$data['row'] = Assets_model::find($id);
-		$data['pageTitle'] = 'Update Asset - MSInc.';
-		$data['content'] = 'asset/edit_asset';
-		$this->load->view($this->master_layout,$data);
-	}
-
+	
 	public function update_asset(){
-		$details = Assets_model::assetsDetails();
-		$asset = Assets_model::find($this->input->get('asset_id'));
+		$details = Assets_info_model::assetsDetails();
+		$asset = Assets_info_model::find($this->input->get('asset_id'));
 		if ($asset->update_attributes($details)){
 			$this->session->set_userdata('edited',1);
 			redirect('ams/view_assets');
@@ -189,7 +183,7 @@ class Ams extends MY_Controller {
 	}
 
 	public function delete_stocks(){
-		$stocks = Inventory_model::find($this->input->get('item_number'));
+		$stocks = Stock_info_model::find($this->input->get('item_id'));
 		$stocks->delete();
 		$this->session->set_userdata('deleted',1);
 		redirect('ams/view_inventory');
