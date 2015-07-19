@@ -28,7 +28,7 @@
                                         <option value="" selected>---</option>
                                         <?php
                                         foreach($stocks as $row){
-                                            echo "<option value='$row->item_id'>$row->item_id - $row->item_name</option>";
+                                            echo "<option value='$row->item_id'>$row->item_id - $row->item_name ($row->quantity)</option>";
                                         }
                                         ?>
                                     </select>

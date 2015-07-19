@@ -8,29 +8,28 @@
 
 class Materials_model extends ActiveRecord\Model{
     static $table_name = 'tbl_materials';
-    static $primary_key = 'materials_id';
+    static $primary_key = 'item_number';
 
     public function insertMaterials(){
-        $this->form_validation->set_rules('txtMaterialsID', 'Item Number', 'trim|required');
-        $this->form_validation->set_rules('txtItemNumber', 'Item Number', 'trim|required');
+        $this->form_validation->set_rules('txtItemID', 'Item ID', 'trim|required');
         $this->form_validation->set_rules('txtQuantity', 'Quantity', 'trim|required');
         $this->form_validation->set_rules('txtProjectID', 'Project ID', 'trim|required');
         $this->form_validation->set_rules('txtDateIssued', 'Date Issued', 'trim|required');
 
         if ($this->form_validation->run()){
-            $item_number = $this->input->post('txtItemNumber');
+            $item_id = $this->input->post('txtItemID');
             $quantity = $this->input->post('txtQuantity');
-            $row = Inventory_model::find($item_number);
+            $stock = Stock_info_model::find($item_id);
             //insert into materials table
             $data = array (
-                'materials_id' => $this->input->post('txtMaterialsID'),
-                'item_number' => $row->item_number,
+                'item_id' => $item_id,
                 'quantity' =>  $quantity,
-                'price' => $row->price,
+                'price' => $stock->price,
                 'project_id' => $this->input->post('txtProjectID'),
                 'date_issued' => $this->input->post('txtDateIssued')
             );
             if (Materials_model::create($data)){
+                $row = Stocks_model::find($item_id);
                 $row->quantity -= $quantity;
                 $row->save();
                 $this->session->set_userdata('added',1);

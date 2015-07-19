@@ -17,31 +17,17 @@
                         <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <div class="form-group">
-                                        <div class="text-center"><img
-                                                src="<?php echo base_url() . 'assets/images/profile/default.jpg'; ?>"
-                                                alt="" class="img-responsive emp_image"/></div>
-                                        <div id="upload">
-                                            <?php
-                                            echo form_open_multipart('ems/upload_image?emp_id=' . $id);
-                                            echo form_upload('userfile');
-                                            echo form_submit('btnUpload', 'Upload');
-                                            echo form_close();
-                                            ?>
-                                        </div>
-                                    </div>
-
                                     <form
-                                        action="<?php echo base_url(); ?>ams/edit_stocks?item_number=<?php echo $row->item_number; ?>"
+                                        action="<?php echo base_url(); ?>ams/edit_stocks?item_id=<?php echo $row->item_id; ?>"
                                         method="post">
                                         <table class="table table-striped table-hover">
                                             <tbody>
                                             <tr>
                                                 <th>Item Number:</th>
                                                 <td>
-                                                    <?php echo $row->item_number; ?>
+                                                    <?php echo $row->item_id; ?>
                                                     <input type="hidden" class="form-control"
-                                                           value="<?php echo $row->item_number; ?>" name="txtItemNumber"/>
+                                                           value="<?php echo $row->item_id; ?>" name="txtItemNumber"/>
                                                 </td>
                                             </tr>
                                             <tr>

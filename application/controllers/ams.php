@@ -165,7 +165,7 @@ class Ams extends MY_Controller {
 	public function add_stocks_quantity(){
 		Restock_model::recordRestock();
 		$data['vendor'] = Vendor_model::all();
-		$data['stocks'] = Stock_info_model::all();
+		$data['stocks'] = View_stocks_model::all();
 		$data['pageTitle'] = 'Add Stock Quantity - MSInc.';
 		$data['content'] = 'asset/add_stock_quantity';
 		$this->load->view($this->master_layout,$data);
