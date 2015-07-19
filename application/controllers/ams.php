@@ -8,8 +8,8 @@ class Ams extends MY_Controller {
 	}
 
 	public function view_assets(){
-		$data['total_asset'] = count(Assets_model::all());
-		$data["record"] = Assets_model::all();
+		$data['total_asset'] = count(View_assigned_assets_model::all());
+		$data["record"] = View_assigned_assets_model::all();
 		$data['pageTitle'] = 'Other Assets - MSInc.';
         $data['content'] = 'asset/asset_table';
         $this->load->view($this->master_layout,$data);
@@ -17,6 +17,8 @@ class Ams extends MY_Controller {
 	}
 
 	public function add_asset(){
+		$data['category'] = Stock_category_model::all();
+		$data['vendor'] = Vendor_model::all();
 		Assets_model::add_asset_info();
 		$data['pageTitle'] = 'Add Asset - MSInc.';
 		$data['content'] = 'asset/add_asset';
