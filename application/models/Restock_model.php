@@ -16,6 +16,7 @@ class Restock_model extends ActiveRecord\Model {
                 'date_restock' => $this->input->post('txtDateRestock'),
             );
             if (Restock_model::create($details)){
+                Stocks_model::addQuantity();
                 $this->session->set_userdata('updated',1);
                 redirect('ams/view_inventory');
             }

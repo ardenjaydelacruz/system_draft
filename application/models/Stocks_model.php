@@ -1,5 +1,5 @@
 <?php
-class Stock_model extends ActiveRecord\Model {
+class Stocks_model extends ActiveRecord\Model {
     static $table_name = 'tbl_stocks';
     static $primary_key = 'item_id';
 
@@ -12,17 +12,13 @@ class Stock_model extends ActiveRecord\Model {
     }
 
    	public function addQuantity(){
-   		$id =$this->post->('txtItemID');
-   		if (!$id){
-   			Stocks_model::newStocks();
-   		}
+   		$id = $this->input->post('txtItemID');
    		$stocks = Stocks_model::find($id);
    		$details = array(
    			"quantity" => ($stocks->quantity + $this->input->post('txtQuantity')),
-   			"vendor_id" => $this->input->post('txtVendor'),
    			"date_last_restocked" => $this->input->post('txtDateRestock')
    			);
-   		$stocks->update_attributest($details);
+   		$stocks->update_attributes($details);
    	}
 }
 
