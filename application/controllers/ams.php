@@ -19,14 +19,14 @@ class Ams extends MY_Controller {
 	public function add_asset(){
 		$data['category'] = Stock_category_model::all();
 		$data['vendor'] = Vendor_model::all();
-		Assets_model::add_asset_info();
+		Assets_info_model::add_asset_info();
 		$data['pageTitle'] = 'Add Asset - MSInc.';
 		$data['content'] = 'asset/add_asset';
 		$this->load->view($this->master_layout,$data);
 	}
 
 	public function delete_asset(){
-		$asset = Assets_model::find($this->input->get('asset_id'));
+		$asset = Assets_info_model::find($this->input->get('asset_id'));
 		$asset->delete();
 		$this->session->set_userdata('deleted',1);
 		redirect('ams/view_assets');
@@ -35,8 +35,8 @@ class Ams extends MY_Controller {
 	public function search_asset(){
 		$text = $this->input->post('txtSearch');
 		if($text){
-			$data['total_asset'] = count(Assets_model::all());
-			$data['record'] = Assets_model::find('all', array('conditions' => "asset_id LIKE '%$text%'"));
+			$data['total_asset'] = count(Assets_info_model::all());
+			$data['record'] = Assets_info_model::find('all', array('conditions' => "asset_id LIKE '%$text%'"));
 			$data['pageTitle'] = 'Search Asset - MSInc.';
 			$data['content'] = 'asset/asset_table';
 			$this->load->view($this->master_layout,$data);
@@ -47,7 +47,7 @@ class Ams extends MY_Controller {
 
 	public function view_asset_details(){
 		$id = $this->input->get('asset_id');
-		$data['row'] = Assets_model::find($id);
+		$data['row'] = Assets_info_model::find($id);
 		$data['pageTitle'] = 'Asset Details - MSInc.';
 		$data['content'] = 'asset/asset_details';
 		$this->load->view($this->master_layout,$data);
