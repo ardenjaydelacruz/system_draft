@@ -172,7 +172,7 @@ class Ams extends MY_Controller {
 	}
 
 	public function edit_stocks(){
-		$id = $this->input->get('item_number');
+		$id = $this->input->get('item_id');
 		if ($this->input->post('btnSubmit')){
 			$stocks = Stock_info_model::find($id);
 			$details = Stock_info_model::stocksDetails();
@@ -181,7 +181,8 @@ class Ams extends MY_Controller {
 				redirect('ams/view_inventory');
 			}
 		}
-		$data['row'] = Stock_info_model::find($id);
+		$data['category'] = Stock_category_model::all();
+		$data['row'] = Stock_info_model::find($this->input->get('item_id'));
 		$data['pageTitle'] = 'Update Stocks - MSInc.';
 		$data['content'] = 'asset/edit_stocks';
 		$this->load->view($this->master_layout,$data);

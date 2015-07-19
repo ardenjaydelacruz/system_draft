@@ -1,3 +1,4 @@
+
 <div class="content-wrapper">
 	<ol class="breadcrumb">
 		<li><a href="<?php echo base_url();?>ams/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -44,17 +45,17 @@
 								<?php echo $row->price; ?>
 							</td>
 							<td class="text-center">
-								<a href="<?php echo base_url(); ?>ams/view_inventory_details?item_id=<?php echo $row->item_id; ?>">
+								<!-- <a href="<?php echo base_url(); ?>ams/view_inventory_details?item_id=<?php echo $row->item_id; ?>">
 									<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Product">
 										<i class="fa fa-cube"></i>
 									</button>
-								</a>
-								<a href="<?php echo base_url(); ?>ams/edit_stocks?item_number=<?php echo $row->item_id; ?>">
-									<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Update Stock">
+								</a> -->
+								<a href="<?php echo base_url(); ?>ams/edit_stocks?item_id=<?php echo $row->item_id; ?>">
+									<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Update Stock Info">
 										<i class="fa fa-pencil"></i>
 									</button>
 								</a>
-								<a href="<?php echo base_url(); ?>ams/delete_stocks?item_number=<?php echo $row->item_id; ?>">
+								<a href="<?php echo base_url(); ?>ams/delete_stocks?item_id=<?php echo $row->item_id; ?>">
 									<button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Update Stock">
 										<i class="fa fa-trash-o"></i>
 									</button>

@@ -12,166 +12,65 @@
                 <h3 class="panel-title big">Product Details</h3>
             </div>
             <div class="panel-body">
+                <form action="<?php echo base_url(); ?>ams/edit_stocks?item_id=<?php echo $row->item_id; ?>" method="post">
                 <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <form
-                                        action="<?php echo base_url(); ?>ams/edit_stocks?item_id=<?php echo $row->item_id; ?>"
-                                        method="post">
-                                        <table class="table table-striped table-hover">
-                                            <tbody>
-                                            <tr>
-                                                <th>Item Number:</th>
-                                                <td>
-                                                    <?php echo $row->item_id; ?>
-                                                    <input type="hidden" class="form-control"
-                                                           value="<?php echo $row->item_id; ?>" name="txtItemNumber"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>Item Name:</th>
-                                                <td>
-                                                    <?php echo $row->item_name; ?>
-                                                    <input type="hidden" class="form-control"
-                                                           value="<?php echo $row->item_name; ?>" name="txtItemName"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <input type="submit" name="btnSubmit"
-                                                           class="btn btn-success btn-block" value="Submit">
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-
-                                </div>
-                            </div>
-                            <!-- Side Panel-->
-                        </div>
-                        <!-- col-4-->
-
-                        <div class="col-md-8">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="nav-tabs-custom">
-                                        <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#tab_1" data-toggle="tab">Product Details</a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="tab_1">
-                                                <div class="form-horizontal">
-                                                    <h3>Product Info</h3>
-                                                    <hr>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Category</label>
-
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9">
-                                                                    <input type="text" class="form-control"
-                                                                           value="<?php echo $row->category; ?>"
-                                                                           name="txtCategory"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Vendor</label>
-
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9">
-                                                                    <input type="text" class="form-control"
-                                                                           value="<?php echo $row->vendor; ?>"
-                                                                           name="txtVendor"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Location</label>
-
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9">
-                                                                    <input type="text" class="form-control"
-                                                                           value="<?php echo $row->location; ?>"
-                                                                           name="txtLocation"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Quantity</label>
-
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9">
-                                                                    <input type="text" type="text" class="form-control"
-                                                                           value="<?php echo $row->quantity; ?>"
-                                                                           name="txtQuantity"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Price</label>
-
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9">
-                                                                    <input type="text" type="text" class="form-control"
-                                                                           value="<?php echo $row->price; ?>"
-                                                                           name="txtPrice"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Date Acquired</label>
-
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9">
-                                                                    <input type="text" type="text" class="form-control"
-                                                                           value="<?php echo date('M d, Y', strtotime($row->date_added)); ?>"
-                                                                           name="" disabled/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.tab-pane1 -->
-                                        </div>
-                                        <!-- nav-tabs-custom -->
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class=" col-sm-3 control-label">Item ID: * </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control input-sm" name="txtItemID" value="<?php echo $row->item_id; ?>" >
                                     </div>
-                                    <!-- Main Details -->
+                                    <div class="col-sm-5 error">
+                                        <?php echo form_error('txtItemID'); ?>
+                                    </div>
                                 </div>
-                                <!--Main Panel -->
+                                <div class="form-group">
+                                    <label class=" col-sm-3 control-label">Item Name: * </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control input-sm" name="txtItemName" value="<?php echo $row->item_name; ?>" >
+                                    </div>
+                                    <div class="col-sm-5 error">
+                                        <?php echo form_error('txtItemName'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class=" col-sm-3 control-label">Category ID: * </label>
+                                    <div class="col-sm-3">
+                                        <select name="txtCategory" class="form-control">
+                                            <option value="<?php echo $row->category_id; ?>" selected><?php echo $row->category_id; ?></option>
+                                            <?php
+                                            foreach($category as $data){
+                                                echo "<option value='$data->category_id'>$data->category_id - $data->category_name</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-5 error">
+                                        <?php echo form_error('txtCategory'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class=" col-sm-3 control-label">Price: * </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control input-sm" name="txtPrice" value="<?php echo $row->price; ?>" >
+                                    </div>
+                                    <div class="col-sm-5 error">
+                                        <?php echo form_error('txtPrice'); ?>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- col-9-->
-                        </div>
-                    </div>
-                    <!-- col-12-->
-
-                    </form>
-                    <div class="signupButtons">
-                        <center>
-                            <a href="<?php echo base_url(); ?>ams/view_inventory">
-                                <button class="btn btn-info">
-                                    <i class="fa fa-arrow-left"> </i> Back to Inventory Table
-                                </button>
-                            </a>
-                        </center>
-                    </div>
+                        </div><!--Main Panel -->
+                    </div> <!-- col-8-->
+                </div> <!-- col-12-->
+                <div class="signupButtons">
+                    <center>
+                        <input type="submit" class="btn btn-success" name="btnSubmit" value="Submit">
+                    </center>
                 </div>
-                <!--Main Content Panel-body -->
-            </div>
-            <!--Main Content Panel -->
+                </form>
+            </div> <!--Main Content Panel-body -->
         </div>
     </div>
+</div>
