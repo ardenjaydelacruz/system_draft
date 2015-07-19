@@ -44,7 +44,7 @@
 								<?php echo $row->price; ?>
 							</td>
 							<td class="text-center">
-								<a href="<?php echo base_url(); ?>ams/view_inventory_details?item_number=<?php echo $row->item_id; ?>">
+								<a href="<?php echo base_url(); ?>ams/view_inventory_details?item_id=<?php echo $row->item_id; ?>">
 									<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Product">
 										<i class="fa fa-cube"></i>
 									</button>

@@ -23,7 +23,7 @@
                                                 alt="" class="img-responsive emp_image"/></div>
                                         <div id="upload">
                                             <?php
-                                            echo form_open_multipart('ems/upload_image?emp_id=' . $id);
+                                            echo form_open_multipart('ems/upload_image?emp_id=' . $this->input->get('item_id'));
                                             echo form_upload('userfile');
                                             echo form_submit('btnUpload', 'Upload');
                                             echo form_close();
@@ -31,9 +31,7 @@
                                         </div>
                                     </div>
 
-                                    <form
-                                        action="<?php echo base_url(); ?>ems/update_employee?emp_id=<?php echo $row->item_number; ?>"
-                                        method="post">
+                                    <form action="<?php echo base_url(); ?>ems/update_employee?emp_id=<?php echo $row->item_number; ?>" method="post">
                                         <table class="table table-striped table-hover">
                                             <tbody>
                                             <tr>

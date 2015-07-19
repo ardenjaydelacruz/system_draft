@@ -148,7 +148,7 @@ class Ams extends MY_Controller {
 	}
 
 	public function view_inventory_details(){
-		$data['row'] = Stock_info_model::find($this->input->get('item_number'));
+		$data['row'] = Stock_info_model::find($this->input->get('item_id'));
 		$data['pageTitle'] = 'View Inventory Detail - MSInc.';
 		$data['content'] = 'asset/inventory_detail';
 		$this->load->view($this->master_layout,$data);
