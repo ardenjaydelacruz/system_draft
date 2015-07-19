@@ -27,7 +27,7 @@ class Stock_info_model extends ActiveRecord\Model {
             $details = Stock_info_model::stocksDetails();
             if (Stock_info_model::create($details)){
                 $this->session->set_userdata('added',1);
-                redirect('ams/view_intentory');
+                redirect('ams/view_inventory');
             }
         }
     }
