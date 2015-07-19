@@ -17,14 +17,13 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/sweetalert.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/toastr.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/animations.css">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap-datetimepicker.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/morris.css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:500,700,500italic,400' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/mystyle.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 	</head>
-	<body class="skin-black sidebar-mini sidebar-collapse fixed">
+	<body class="skin-black fixed">
 		<div class="wrapper">
 			<!-- Page Layout -->
 			<?php 

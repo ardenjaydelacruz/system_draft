@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url();?>ams/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="<?php echo base_url();?>ams/view_assets" class="btn btn-default"><i class="fa fa-user"></i> Assets</a></li>
+        <li><a href="<?php echo base_url();?>ams/view_inventory" class="btn btn-default"><i class="fa fa-user"></i> Inventory</a></li>
         <li class="active">Add Asset</li>
     </ol>
     <div class="container-fluid">
@@ -21,7 +21,7 @@
                         <?php echo form_open('ams/add_asset'); ?>
                             <div class="form-horizontal">
                                 <div class="form-group">
-                                    <label class=" col-sm-3 control-label">Asset ID: * </label>
+                                    <label class=" col-sm-3 control-label">Item ID: * </label>
                                     <div class="col-sm-4">
                                         <input type="text" class="form-control input-sm" placeholder="Asset ID" name="txtAssetID" value="<?php echo set_value('txtAssetID'); ?>">
                                     </div>

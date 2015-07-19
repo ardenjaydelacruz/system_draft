@@ -1,23 +1,25 @@
 <div class="content-wrapper">
 	<ol class="breadcrumb">
 		<li><a href="<?php echo base_url();?>ams/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-		<li><a href="<?php echo base_url();?>ams/view_assets" class="btn btn-default"><i class="fa fa-user"></i> Assets</a></li>
-		<li class="active"><i class="fa fa-calendar"></i> Vendors </li>
+		<li><a href="<?php echo base_url();?>ams/view_inventory" class="btn btn-default"><i class="fa fa-user"></i> Inventory</a></li>
 	</ol>
 	<div class="container-fluid">
 		<div class="panel panel-warning">
 			<div class="panel-heading">
-				<h1 class="panel-title big">Purchase Table</h1>
+				<h1 class="panel-title big">Inventory Table</h1>
 			</div>
 			<div class="panel-body">
 				<div class="pull-left addButton">
 					<a href="<?php echo base_url();?>ams/add_stocks">
-						<buttom class="btn btn-success"><i class="fa fa-plus"></i> Add New Product </buttom>
+						<buttom class="btn btn-success"><i class="fa fa-plus"></i> Add New Item </buttom>
+					</a>
+					<a href="<?php echo base_url();?>ams/add_stocks_quantity">
+						<buttom class="btn btn-success"><i class="fa fa-plus"></i> Restock Inventory </buttom>
 					</a>
 				</div>
 				<table class="table table-striped table-hover table-bordered table-condensed centered">
 					<thead>
-						<th class="text-center">Item #</th>
+						<th class="text-center">Item ID</th>
 						<th class="text-center">Item Name</th>
 						<th class="text-center">Category</th>
 						<th class="text-center">Quantity</th>

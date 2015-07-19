@@ -127,7 +127,7 @@ class Ams extends MY_Controller {
 	}
 
 	public function view_inventory(){
-		$data['record'] = Inventory_model::all();
+		$data['record'] = View_stocks_model::all();
 		$data['pageTitle'] = 'View Inventory - MSInc.';
 		$data['content'] = 'asset/inventory_table';
 		$this->load->view($this->master_layout,$data);
@@ -135,30 +135,40 @@ class Ams extends MY_Controller {
 	}
 
 	public function view_inventory_details(){
-		$data['row'] = Inventory_model::find($this->input->get('item_number'));
+		$data['row'] = Stock_info_model::find($this->input->get('item_number'));
 		$data['pageTitle'] = 'View Inventory Detail - MSInc.';
 		$data['content'] = 'asset/inventory_detail';
 		$this->load->view($this->master_layout,$data);
 	}
 
 	public function add_stocks(){
-		Inventory_model::insertStocks();
+		Stock_info_model::insertStocks();
+		$data['category'] = Stock_category_model::all();
 		$data['pageTitle'] = 'Add Stocks - MSInc.';
-		$data['content'] = 'asset/add_product';
+		$data['content'] = 'asset/add_stock';
+		$this->load->view($this->master_layout,$data);
+	}
+
+	public function add_stocks_quantity(){
+		Restock_model::recordRestock();
+		$data['vendor'] = Vendor_model::all();
+		$data['stocks'] = Stock_info_model::all();
+		$data['pageTitle'] = 'Add Stock Quantity - MSInc.';
+		$data['content'] = 'asset/add_stock_quantity';
 		$this->load->view($this->master_layout,$data);
 	}
 
 	public function edit_stocks(){
 		$id = $this->input->get('item_number');
 		if ($this->input->post('btnSubmit')){
-			$stocks = Inventory_model::find($id);
-			$details = Inventory_model::stocksDetails();
+			$stocks = Stock_info_model::find($id);
+			$details = Stock_info_model::stocksDetails();
 			if ($stocks->update_attributes($details)){
 				$this->session->set_userdata('edited',1);
 				redirect('ams/view_inventory');
 			}
 		}
-		$data['row'] = Inventory_model::find($id);
+		$data['row'] = Stock_info_model::find($id);
 		$data['pageTitle'] = 'Update Stocks - MSInc.';
 		$data['content'] = 'asset/edit_stocks';
 		$this->load->view($this->master_layout,$data);
