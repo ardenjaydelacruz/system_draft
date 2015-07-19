@@ -25,7 +25,7 @@ class Assets_model extends ActiveRecord\Model {
 		if ($this->form_validation->run()){
 			$asset = Assets_model::find($this->input->post('txtAssetID'));
 			if($asset->update_attributes($details)){
-				$this->session->set_userdata('updated',1);
+				$this->session->set_userdata('edited',1);
 				redirect('ams/view_assets');
 			}
 		}
