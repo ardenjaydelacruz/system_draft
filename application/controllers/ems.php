@@ -199,4 +199,29 @@ class Ems extends MY_Controller
         $data['content'] = 'employee/upload';
         $this->load->view($this->master_layout, $data);
     }
+
+    public function view_projects(){
+        $data['record'] = Projects_model::all(); 
+        $data['pageTitle'] = 'Projects - MSInc.';
+        $data['content'] = 'employee/project_table';
+        $this->load->view($this->master_layout,$data);
+        $this->display_notif();
+    }
+
+    public function view_personnel(){
+        $id = $this->input->get('project_id');
+        $data['project'] = View_project_workers::find('all',array('conditions' => array('project_id=?',$id)));
+        $data['pageTitle'] = 'Project Personnel- MSInc.';
+        $data['content'] = 'employee/project_personnel';
+        $this->load->view($this->master_layout,$data);
+    }
+
+    public function add_personnel(){
+        Project_worker_model::addPersonnel();
+        $data['project'] = Projects_model::all();
+        $data['employee'] = Emp_info_model::all();
+        $data['pageTitle'] = 'Project Personnel- MSInc.';
+        $data['content'] = 'employee/add_personnel';
+        $this->load->view($this->master_layout,$data);
+    }
 }

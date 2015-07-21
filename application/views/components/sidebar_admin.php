@@ -31,7 +31,7 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo base_url();?>ems/employees"><i class="fa fa-user"></i> Employees</a></li>
+					<li><a href="<?php echo base_url();?>ems/employees"><i class="fa fa-user"></i>Employees</a></li>
 					<li><a href="<?php echo base_url();?>ems/leaves_table"><i class="fa fa-calendar-o"></i> Leaves</a></li>
 					<li><a href="<?php echo base_url();?>ems/view_performance"><i class="fa fa-thumbs-o-up"></i> Performance </a></li>
 					<li><a href="<?php echo base_url();?>ems/promotion"><i class="fa fa-star"></i> Promotions </a></li>

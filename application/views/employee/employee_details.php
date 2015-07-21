@@ -711,7 +711,6 @@
                                      </table>
                                   </div>
                                 </section><!-- Asset -->
-
                                 <section class="tab-pane" id="tab_8">
                                   <div class="form-horizontal">
                                      <h3>Active Projects</h3><hr>
@@ -730,7 +729,8 @@
                                          <?php } ?>
                                      </table>
                                   </div>
-                                </section><!-- Asset -->
+                                </section><!-- Projects -->
+
                               </div><!-- Tab-content -->
                            </div><!-- Navs -->
                         </div><!--Panel Body-->
