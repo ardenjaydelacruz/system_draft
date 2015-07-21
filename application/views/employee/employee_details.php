@@ -34,8 +34,8 @@
     $job_title = $row->job_title;
     $status = $row->status;
     $department = $row->department;
-    $job_category = $row->job_category;
     $start_date = $row->start_date;
+    $employment_type = $row->employment_type;
     $probationary_date = $row->probationary_date;
     $permanency_date = $row->permanency_date;
     $end_date = $row->end_date;
@@ -568,7 +568,7 @@
                                     <div class="form-horizontal">
                                        <h3>Employment Details</h3><hr>
                                        <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Employment Status: </label>
+                                           <label class=" col-sm-3 control-label">Status: </label>
                                            <div class="col-sm-9 controls">
                                                <div class="row">
                                                    <div class="col-xs-9">
@@ -588,11 +588,11 @@
                                            </div>
                                        </article>
                                        <article class="form-group">
-                                           <label class=" col-sm-3 control-label">Job Category: </label>
+                                           <label class=" col-sm-3 control-label">Employment Type: </label>
                                            <div class="col-sm-9 controls">
                                                <div class="row">
                                                    <div class="col-xs-9">
-                                                       <input type="text" disabled class="form-control" value="<?php echo $job_category; ?>" name="txtPassword" />
+                                                       <input type="text" disabled class="form-control" value="<?php echo $employment_type; ?>" name="txtEmploymentType" />
                                                    </div>
                                                </div>
                                            </div>

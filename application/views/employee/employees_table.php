@@ -79,8 +79,14 @@
                             <td>
                                 <?php echo $row->department; ?>
                             </td>
-                            <td>
-                                <?php echo $row->status; ?>
+                            <td class="text-center">
+                                <?php if ($row->status == 'Active'){
+                                    echo "<label class='label label-success'>$row->status</label>"; 
+                                } else {
+                                    echo "<label class='label label-danger'>$row->status</label>";
+                                }
+                               
+                                ?>
                             </td>
                             <td align="center">
                                 <a href="<?php echo base_url();?>ems/view_details?emp_id=<?php echo $row->emp_id; ?>">

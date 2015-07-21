@@ -22,8 +22,8 @@ class Ems extends MY_Controller
 
     public function employees()
     {
-        $data['total_employee'] = count(View_employee_info::find('all'));
-        $data['record'] = View_employee_info::all();
+        $data['total_employee'] = count(View_employees_list::find('all'));
+        $data['record'] = View_employees_list::all();
         $data['pageTitle'] = 'Employees - MSInc.';
         $data['content'] = 'employee/employees_table';
         $this->load->view($this->master_layout, $data);
