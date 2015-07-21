@@ -36,7 +36,7 @@
 								<?php echo $row->client_name; ?>
 							</td>
 							<td class="text-center">
-								<?php echo number_format($row->price,2); ?>
+								<?php echo number_format($row->total_expense,2); ?>
 							</td>
 							<td class="text-center">
 								<?php echo $row->starting_date; ?>

@@ -22,6 +22,7 @@
 						<th class="text-center">ID</th>
 						<th class="text-center">Project Name</th>
 						<th class="text-center">Client Name</th>
+						<th class="text-center">Project Cost</th>
 						<th class="text-center">Starting Date</th>
 						<th class="text-center">Ending Date</th>
 						<th class="text-center">Manage</th>
@@ -35,13 +36,16 @@
 								<?php echo $row->project_name; ?>
 							</td>
 							<td>
-								<?php echo $row->client; ?>
+								<?php echo $row->client_name; ?>
 							</td>
 							<td class="text-center">
-								<?php echo date_format($row->starting_date,'M d, Y'); ?>
+								<?php echo number_format($row->total_expense,2); ?>
 							</td>
 							<td class="text-center">
-								<?php echo date_format($row->ending_date,'M d, Y'); ?>
+								<?php echo $row->starting_date; ?>
+							</td>
+							<td class="text-center">
+								<?php echo $row->ending_date; ?>
 							</td>
 							<td class="text-center">
 								<a href="<?php echo base_url(); ?>ems/view_personnel?project_id=<?php echo $row->project_id; ?>">
