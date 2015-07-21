@@ -10,12 +10,6 @@
 				<h1 class="panel-title big">Bill of Materials Table</h1>
 			</div>
 			<div class="panel-body">
-				<div class="pull-left addButton">
-					<a href="<?php echo base_url();?>ams/add_materials">
-						<buttom class="btn btn-success"><i class="fa fa-plus"></i> Add New Materials </buttom>
-					</a>
-				</div>
-
 				<table class="table table-striped table-hover table-bordered centered">
 					<thead>
 						<th class="text-center">Item Name</th>

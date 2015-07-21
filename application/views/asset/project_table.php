@@ -13,6 +13,9 @@
 					<a href="<?php echo base_url();?>ams/add_project">
 						<button class="btn btn-success"><i class="fa fa-plus"></i> Add New Project </button>
 					</a>
+					<a href="<?php echo base_url();?>ams/add_materials">
+						<buttom class="btn btn-info"><i class="fa fa-plus"></i> Add New Materials </buttom>
+					</a>
 				</div>
 				<table class="table table-striped table-hover table-bordered centered">
 					<thead>
@@ -46,15 +49,15 @@
 							</td>
 							<td class="text-center">
 								<a href="<?php echo base_url(); ?>ams/view_materials?project_id=<?php echo $row->project_id; ?>">
-									<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="View Materials">
+									<button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View Materials">
 										<i class="fa fa-search"></i>
 									</button>
 								</a>
-								<a href="<?php echo base_url(); ?>ams/add_project_materials?project_id=<?php echo $row->project_id; ?>">
+								<!-- <a href="<?php echo base_url(); ?>ams/add_project_materials?project_id=<?php echo $row->project_id; ?>">
 									<button class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Add Materials">
 										<i class="fa fa-plus"></i>
 									</button>
-								</a>
+								</a> -->
 							</td>
 						</tr>
 						<?php } ?>
