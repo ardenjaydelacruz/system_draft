@@ -91,7 +91,7 @@ class Ams extends MY_Controller {
 	//view materials for certain projects
 	public function view_materials(){
 		$id = $this->input->get('project_id');
-		$data['record'] = Materials_model::find('all',array('conditions' => array('project_id=?',$id)));
+		$data['record'] = View_project_materials_model::find('all',array('conditions' => array('project_id=?',$id)));
 		$data['pageTitle'] = 'Project Materials- MSInc.';
 		$data['content'] = 'asset/materials_table';
 		$this->load->view($this->master_layout,$data);

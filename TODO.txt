@@ -1,6 +1,3 @@
-1. ADD VIEW PROJECT ON MANAGE FIELD OF PROJECT TABLE
-	ADD PROJECT DETAILS
-
 3. PAYROLL COMPUTATIONS
 
 4. Add Upload Asset Image
@@ -13,4 +10,4 @@ performance, from name to employee id (reference)
 
 request leave validation
 
-assigned assets on employees
+fix projects cost
