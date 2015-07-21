@@ -12,7 +12,7 @@ class Ems extends MY_Controller
 
     public function dashboard()
     {
-        $data['total_employee'] = count(Employees_model::find('all'));
+        $data['total_employee'] = count(View_employee_info::find('all'));
         $data['total_asset'] = count(Assets_model::find('all'));
         $data['pageTitle'] = 'Dashboard - MSInc.';
         $data['content'] = 'components/admin_dashboard';
@@ -22,8 +22,8 @@ class Ems extends MY_Controller
 
     public function employees()
     {
-        $data['total_employee'] = count(Employees_model::find('all'));
-        $data['record'] = Employees_model::all();
+        $data['total_employee'] = count(View_employee_info::find('all'));
+        $data['record'] = View_employee_info::all();
         $data['pageTitle'] = 'Employees - MSInc.';
         $data['content'] = 'employee/employees_table';
         $this->load->view($this->master_layout, $data);
@@ -34,8 +34,8 @@ class Ems extends MY_Controller
     {
         $text = $this->input->post('txtSearch');
         if ($this->input->post('txtSearch')) {
-            $data['total_employee'] = count(Employees_model::find('all'));
-            $data['record'] = Employees_model::find('all', array('conditions' => "emp_id LIKE '%$text%' OR first_name LIKE '%$text%'"));
+            $data['total_employee'] = count(View_employee_info::find('all'));
+            $data['record'] = View_employee_info::find('all', array('conditions' => "emp_id LIKE '%$text%' OR first_name LIKE '%$text%'"));
             $data['pageTitle'] = 'Search Employee - MSInc.';
             $data['content'] = 'employee/employees_table';
             $this->load->view($this->master_layout, $data);
@@ -66,7 +66,7 @@ class Ems extends MY_Controller
         $id = $this->input->get('emp_id');
         $data['record'] = Dependent_model::find('all',array('conditions'=>"employee_id =$id")); //get dependents by id
         $data['leaves_left'] = Leaves_left_model::find('all',array('conditions'=>"emp_id =$id"));
-        $data['row'] = Employees_model::find($id); //get user details by id
+        $data['row'] = View_employee_info::find($id); //get user details by id
         $data['pageTitle'] = 'Employee Details - MSInc.';
         $data['content'] = 'employee/employee_details';
         $this->load->view($this->master_layout, $data);

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2015 at 05:53 PM
+-- Generation Time: Jul 20, 2015 at 02:22 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -161,6 +161,7 @@ CREATE TABLE IF NOT EXISTS `employees` (
 --
 
 INSERT INTO `employees` (`emp_id`, `first_name`, `middle_name`, `last_name`, `position`, `status`, `department`, `leaves`, `birthday`, `gender`, `marital_status`, `street`, `barangay`, `city`, `state`, `zip`, `country`, `mobile_number`, `tel_number`, `email_address`, `contact_person`, `contact_rel`, `contact_num`, `image`, `date_added`) VALUES
+(0, 'Unassigned', 'Unassigned', 'Unassigned', '', '', '', 0, '0000-00-00', '', '', NULL, '', '', '', 0, '', NULL, NULL, NULL, NULL, NULL, NULL, '', '2015-07-19 11:07:12'),
 (1, 'Ardenx', 'Alcairo', 'Dela Cruz', 'CEOs', 'Regular', 'Executive', 30, '0000-00-00', 'male', 'Single', '12', 'qwqw', 'manda', 'manila', 999, 'Philippines', 123, 123, 'ardents02@gmail.com', 'ardents', 'asdasd', 123123, 'steam_logo-wallpaper-1366x7681.jpg', '2015-06-30 07:00:00'),
 (2, 'Yvonne', 'Franklin', 'Beach', 'Avye', 'Joy', 'Laoreet Posuere Enim PC', 2, '2015-12-26', 'female', 'Married', '1793 Nulla Rd.', 'Ada', 'Ceyhan', 'Diyarbak?r', 71652, 'Mali', 7624, 0, 'sapien@lectusquismassa.ca', 'Thor Y. Terry', 'Mr.', 278, '', '2016-02-08 08:00:00'),
 (3, 'Ashely', 'Hensley', 'Delgado', 'Ross', 'Jenette', 'Ante Consulting', 4, '2015-06-09', 'female', 'Married', '375 Sagittis Road', 'SL', 'Sosnowiec', 'CV', 40205, 'Saint Pierre and Miquelon', 0, 0, 'Etiam.bibendum.fermentum@ullamcorperDuiscursus.org', 'Deacon K. Frye', 'Mrs.', 335, '', '2015-05-09 07:00:00'),
@@ -330,8 +331,11 @@ CREATE TABLE IF NOT EXISTS `tbl_assets` (
 --
 
 INSERT INTO `tbl_assets` (`asset_id`, `employee_id`, `asset_status`, `assigned_date`) VALUES
-('EQ1001', '1', 'Brand New', '2015-07-18 23:39:05'),
-('EQ1002', '2', 'Luma', '2015-07-18 23:47:07');
+('EQ1001', '4', 'Destroyed', '2015-07-20 00:00:00'),
+('EQ1002', '1', 'Sabog', '2015-07-14 00:00:00'),
+('EQ1003', '1', 'Brand New', NULL),
+('EQ1004', '1', 'BOOOOOM', '2015-07-20 00:00:00'),
+('EQ1005', '3', 'Sabog', '2015-07-21 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -341,15 +345,15 @@ INSERT INTO `tbl_assets` (`asset_id`, `employee_id`, `asset_status`, `assigned_d
 
 CREATE TABLE IF NOT EXISTS `tbl_asset_info` (
   `asset_id` varchar(10) NOT NULL,
-  `asset_name` varchar(50) NOT NULL,
+  `asset_name` varchar(50) DEFAULT NULL,
   `asset_description` varchar(100) DEFAULT NULL,
   `category_id` varchar(50) NOT NULL,
   `brand` varchar(50) DEFAULT NULL,
   `serial_number` int(20) DEFAULT NULL,
   `model` varchar(50) DEFAULT NULL,
   `vendor_id` varchar(10) DEFAULT NULL,
-  `warranty_end_date` datetime DEFAULT NULL,
-  `date_acquired` datetime NOT NULL
+  `warranty_end_date` date DEFAULT NULL,
+  `date_acquired` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -357,8 +361,11 @@ CREATE TABLE IF NOT EXISTS `tbl_asset_info` (
 --
 
 INSERT INTO `tbl_asset_info` (`asset_id`, `asset_name`, `asset_description`, `category_id`, `brand`, `serial_number`, `model`, `vendor_id`, `warranty_end_date`, `date_acquired`) VALUES
-('EQ1001', 'Toshiba Laptop', 'It is an awesome laptop.', 'COMP', 'Toshiba', 1111111111, 'Satellite S10', 'VEN1001', '2015-07-25 23:38:26', '2015-07-18 23:38:32'),
-('EQ1002', 'Office Table', 'It is a table. Duh!', 'WD', 'Unbranded', NULL, NULL, 'VEN1001', '2015-08-29 23:46:31', '2015-07-18 23:46:40');
+('EQ1001', 'Toshiba Laptop', 'It is an awesome laptop.', 'COMP', 'Toshiba', 1111111111, 'Satellite S10', 'VEN1001', '2015-07-25', '2015-07-18'),
+('EQ1002', 'Office Table', 'It is a table. Duh!', 'WD', 'Unbranded', NULL, NULL, 'VEN1001', '2015-08-29', '2015-07-18'),
+('EQ1003', 'Zanpaktou', 'Sharp Sword', 'PLSTC', 'Unbranded', 0, 'N/A', 'VEN1001', '2015-07-21', '2015-07-13'),
+('EQ1004', 'Steel Chair', 'Steel Chair for Wrestling', 'STL', 'Unbranded', 0, 'N/A', 'VEN1001', NULL, '2015-07-21'),
+('EQ1005', 'Martilyo ni Thor!''', 'Sharp Sword', 'PLSTC', 'CD R-king', 1231231, 'Super Model', 'VEN1001', '2015-07-22', '2015-07-02');
 
 -- --------------------------------------------------------
 
@@ -638,7 +645,8 @@ CREATE TABLE IF NOT EXISTS `tbl_client` (
 --
 
 INSERT INTO `tbl_client` (`client_id`, `client_name`, `client_address`, `client_contact_no`, `client_email`) VALUES
-('CL1001', 'Skyjet Airlines', 'Tokyo, Japan', 1232323213, 'skyjet@gmail.com');
+('CL1001', 'Skyjet Airlines', 'Tokyo, Japan', 1232323213, 'skyjet@gmail.com'),
+('CL1002', 'Lucio Tan', 'Fujian, China', 232323232, 'lucio@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -900,9 +908,9 @@ INSERT INTO `tbl_emp_history` (`emp_history_id`, `emp_id`, `status`, `job_title`
 
 CREATE TABLE IF NOT EXISTS `tbl_emp_info` (
   `emp_id` int(5) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
   `middle_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
   `birthday` date NOT NULL,
   `gender` varchar(50) NOT NULL,
   `marital_status` varchar(50) NOT NULL,
@@ -914,6 +922,7 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_info` (
 --
 
 INSERT INTO `tbl_emp_info` (`emp_id`, `first_name`, `middle_name`, `last_name`, `birthday`, `gender`, `marital_status`, `date_added`) VALUES
+(0, 'Unassigned', NULL, NULL, '0000-00-00', '', '', '2015-07-19 12:53:30'),
 (1, 'Arden', 'Alcairo', 'Dela Cruz', '1993-12-16', 'male', 'Single', '2015-06-30 07:00:00'),
 (2, 'Yvonne', 'Franklin', 'Beach', '2015-12-26', 'female', 'Married', '2016-02-08 08:00:00'),
 (3, 'Ashely', 'Hensley', 'Delgado', '2015-06-09', 'female', 'Married', '2015-05-09 07:00:00'),
@@ -1037,7 +1046,14 @@ INSERT INTO `tbl_materials` (`item_id`, `quantity`, `price`, `project_id`, `date
 ('10001', 20, '500.00', 'P1001', '2015-07-30 00:00:00'),
 ('10001', 100, '500.00', 'P1001', '2015-07-21 00:00:00'),
 ('10002', 100, '7000.00', 'P1003', '2015-07-21 00:00:00'),
-('10003', 100, '200.00', 'P1005', '2015-07-28 00:00:00');
+('10003', 100, '200.00', 'P1005', '2015-07-28 00:00:00'),
+('STK1002', 2, '0.00', 'P1001', '2015-07-08 00:00:00'),
+('STK1002', 2, '4000.00', 'P1001', '2015-07-08 00:00:00'),
+('STK1002', 2, '4000.00', 'P1001', '2015-07-19 00:00:00'),
+('STK1001', 2, '2000.00', 'P1001', '2015-07-20 00:00:00'),
+('STK1002', 10, '20000.00', 'P1001', '2015-07-20 00:00:00'),
+('STK1001', 20, '1000.00', 'P1001', '2015-07-21 00:00:00'),
+('STK1001', 20, '1000.00', 'P1007', '2015-07-20 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1221,7 +1237,7 @@ INSERT INTO `tbl_project` (`project_id`, `project_name`, `client`, `starting_dat
 ('P1002', 'Project Alpha', 'NASA', '2015-07-03', '0000-00-00', '2015-07-08 14:21:12'),
 ('P1003', 'Project X', 'Classified', '2015-07-09', '0000-00-00', '2015-07-08 18:59:33'),
 ('P1004', 'Project Alpha', 'NASA', '2015-07-10', '0000-00-00', '2015-07-08 19:05:40'),
-('P1005', 'Project Pie', 'Arden', '2015-07-11', '0000-00-00', '2015-07-11 20:20:08');
+('P1007', 'Project Pie', 'CL1002', '2015-07-20', '2015-07-23', '2015-07-20 01:06:53');
 
 -- --------------------------------------------------------
 
@@ -1263,13 +1279,30 @@ INSERT INTO `tbl_requestentry` (`req_id`, `emp_id`, `date_value`, `time_in`, `ti
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_restock` (
-  `restock_id` varchar(10) NOT NULL,
   `item_id` varchar(10) NOT NULL,
   `vendor_id` varchar(10) NOT NULL,
   `quantity` int(10) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
   `date_restock` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_restock`
+--
+
+INSERT INTO `tbl_restock` (`item_id`, `vendor_id`, `quantity`, `date_restock`) VALUES
+('STK1004', 'VEN1001', 1000, '2015-07-19'),
+('STK1002', 'VEN1001', 333, '2015-07-21'),
+('STK1004', 'VEN1001', 10000, '2015-07-20'),
+('STK1006', 'VEN1001', 737, '2015-07-31'),
+('STK1006', 'VEN1001', 737, '2015-07-22'),
+('STK1006', 'VEN1001', 1000, '2015-07-25'),
+('STK1006', 'VEN1001', 8, '2015-07-08'),
+('STK1003', 'VEN1001', 1000, '2015-07-19'),
+('STK1005', 'VEN1001', 1000, '2015-07-19'),
+('STK1003', 'VEN1001', 1000, '2015-07-19'),
+('STK1004', 'VEN1001', 1000, '2015-07-19'),
+('STK1007', 'VEN1001', 1000, '2015-07-19'),
+('STK1002', 'VEN1001', 610, '2015-07-19');
 
 -- --------------------------------------------------------
 
@@ -1314,7 +1347,13 @@ CREATE TABLE IF NOT EXISTS `tbl_stocks` (
 --
 
 INSERT INTO `tbl_stocks` (`item_id`, `quantity`, `date_last_restocked`) VALUES
-('STK1001', '1000', '2015-07-18');
+('STK1001', '960', '2015-07-18'),
+('STK1002', '1100', '2015-07-19'),
+('STK1003', '980', '2015-07-19'),
+('STK1004', '1000', '2015-07-19'),
+('STK1005', '1000', '2015-07-19'),
+('STK1006', '1008', '2015-07-08'),
+('STK1007', '1000', '2015-07-19');
 
 -- --------------------------------------------------------
 
@@ -1356,7 +1395,12 @@ CREATE TABLE IF NOT EXISTS `tbl_stock_info` (
 --
 
 INSERT INTO `tbl_stock_info` (`item_id`, `item_name`, `category_id`, `price`) VALUES
-('STK1001', 'Steel Post', 'STL', '1000.00');
+('STK1001', 'Steel Post', 'STL', '1000.00'),
+('STK1002', 'Wooden Chair', 'WD', '2000.00'),
+('STK1003', 'Steel Plates', 'STL', '5000.00'),
+('STK1004', 'Pako', 'STL', '5.00'),
+('STK1005', 'Eye of Skadiis', 'ELEC', '1000.00'),
+('STK1007', 'Martilyo', 'STL', '100.00');
 
 -- --------------------------------------------------------
 
@@ -1476,6 +1520,20 @@ CREATE TABLE IF NOT EXISTS `view_active_employees` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `view_all_project_materials`
+--
+CREATE TABLE IF NOT EXISTS `view_all_project_materials` (
+`item_name` varchar(50)
+,`quantity` int(10)
+,`price` decimal(10,2)
+,`project_name` varchar(50)
+,`date_issued` datetime
+,`item_id` varchar(10)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `view_assigned_assets`
 --
 CREATE TABLE IF NOT EXISTS `view_assigned_assets` (
@@ -1489,7 +1547,7 @@ CREATE TABLE IF NOT EXISTS `view_assigned_assets` (
 ,`brand` varchar(50)
 ,`serial_number` int(20)
 ,`model` varchar(50)
-,`warranty_end_date` datetime
+,`warranty_end_date` date
 ,`assigned_date` datetime
 );
 
@@ -1604,7 +1662,7 @@ CREATE TABLE IF NOT EXISTS `view_project_cost` (
 `project_id` varchar(5)
 ,`project_name` varchar(50)
 ,`client_name` varchar(50)
-,`price` decimal(32,2)
+,`price` decimal(42,2)
 ,`starting_date` varchar(74)
 ,`ending_date` varchar(73)
 );
@@ -1615,12 +1673,12 @@ CREATE TABLE IF NOT EXISTS `view_project_cost` (
 -- Stand-in structure for view `view_stocks`
 --
 CREATE TABLE IF NOT EXISTS `view_stocks` (
-`item_id` varchar(10)
-,`item_name` varchar(50)
+`item_name` varchar(50)
 ,`category_name` varchar(50)
 ,`quantity` varchar(50)
-,`price` decimal(10,2)
 ,`date_last_restocked` date
+,`price` decimal(10,2)
+,`item_id` varchar(10)
 );
 
 -- --------------------------------------------------------
@@ -1630,6 +1688,15 @@ CREATE TABLE IF NOT EXISTS `view_stocks` (
 --
 DROP TABLE IF EXISTS `view_active_employees`;
 -- in use(#1356 - View 'system_draft.view_active_employees' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them)
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_all_project_materials`
+--
+DROP TABLE IF EXISTS `view_all_project_materials`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_all_project_materials` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_materials`.`quantity` AS `quantity`,`tbl_materials`.`price` AS `price`,`tbl_project`.`project_name` AS `project_name`,`tbl_materials`.`date_issued` AS `date_issued`,`tbl_stock_info`.`item_id` AS `item_id` from ((`tbl_project` join `tbl_materials` on((`tbl_materials`.`project_id` = `tbl_project`.`project_id`))) join `tbl_stock_info` on((`tbl_materials`.`item_id` = `tbl_stock_info`.`item_id`)));
 
 -- --------------------------------------------------------
 
@@ -1683,7 +1750,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_project_cost`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_project_cost` AS select `tbl_project`.`project_id` AS `project_id`,`tbl_project`.`project_name` AS `project_name`,`tbl_client`.`client_name` AS `client_name`,sum(`tbl_materials`.`price`) AS `price`,date_format(`tbl_project`.`starting_date`,'%M %d, 	%Y') AS `starting_date`,date_format(`tbl_project`.`ending_date`,'%M %d, %Y') AS `ending_date` from ((`tbl_materials` join `tbl_project` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`))) join `tbl_client` on((`tbl_client`.`client_id` = `tbl_project`.`client`))) group by `tbl_project`.`project_id`,`tbl_project`.`project_name`,`tbl_client`.`client_name`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_project_cost` AS select `tbl_project`.`project_id` AS `project_id`,`tbl_project`.`project_name` AS `project_name`,`tbl_client`.`client_name` AS `client_name`,sum((`tbl_materials`.`price` * `tbl_materials`.`quantity`)) AS `price`,date_format(`tbl_project`.`starting_date`,'%M %d, 	%Y') AS `starting_date`,date_format(`tbl_project`.`ending_date`,'%M %d, %Y') AS `ending_date` from ((`tbl_materials` join `tbl_project` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`))) join `tbl_client` on((`tbl_client`.`client_id` = `tbl_project`.`client`))) group by `tbl_project`.`project_id`,`tbl_project`.`project_name`,`tbl_client`.`client_name`;
 
 -- --------------------------------------------------------
 
@@ -1692,7 +1759,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_stocks`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_stocks` AS select `tbl_stocks`.`item_id` AS `item_id`,`tbl_stock_info`.`item_name` AS `item_name`,`tbl_stocks_category`.`category_name` AS `category_name`,`tbl_stocks`.`quantity` AS `quantity`,`tbl_stock_info`.`price` AS `price`,`tbl_stocks`.`date_last_restocked` AS `date_last_restocked` from ((`tbl_stock_info` join `tbl_stocks_category` on((`tbl_stock_info`.`category_id` = `tbl_stocks_category`.`category_id`))) join `tbl_stocks` on((`tbl_stocks`.`item_id` = `tbl_stock_info`.`item_id`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_stocks` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_stocks_category`.`category_name` AS `category_name`,`tbl_stocks`.`quantity` AS `quantity`,`tbl_stocks`.`date_last_restocked` AS `date_last_restocked`,`tbl_stock_info`.`price` AS `price`,`tbl_stocks`.`item_id` AS `item_id` from ((`tbl_stock_info` join `tbl_stocks_category` on((`tbl_stock_info`.`category_id` = `tbl_stocks_category`.`category_id`))) join `tbl_stocks` on((`tbl_stocks`.`item_id` = `tbl_stock_info`.`item_id`)));
 
 --
 -- Indexes for dumped tables
@@ -1829,12 +1896,6 @@ ALTER TABLE `tbl_project`
 --
 ALTER TABLE `tbl_requestentry`
   ADD PRIMARY KEY (`req_id`);
-
---
--- Indexes for table `tbl_restock`
---
-ALTER TABLE `tbl_restock`
-  ADD PRIMARY KEY (`restock_id`);
 
 --
 -- Indexes for table `tbl_stocks`
