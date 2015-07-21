@@ -31,7 +31,7 @@
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
-                                <h3>00</h3>
+                                <h3><?php echo $total_projects; ?></h3>
 
                                 <p>Active Projects</p>
                             </div>

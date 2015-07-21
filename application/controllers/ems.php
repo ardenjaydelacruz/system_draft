@@ -12,8 +12,9 @@ class Ems extends MY_Controller
 
     public function dashboard()
     {
-        $data['total_employee'] = count(View_employee_info::find('all'));
-        $data['total_asset'] = count(Assets_model::find('all'));
+        $data['total_employee'] = count(View_employees_list::find('all'));
+        $data['total_asset'] = count(Projects_model::find('all'));
+        $data['total_projects'] = count(Projects_model::find('all'));
         $data['pageTitle'] = 'Dashboard - MSInc.';
         $data['content'] = 'components/admin_dashboard';
         $this->load->view($this->master_layout, $data);

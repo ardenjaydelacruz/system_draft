@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2015 at 02:22 PM
+-- Generation Time: Jul 21, 2015 at 08:16 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -89,94 +89,6 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `assets`
---
-
-CREATE TABLE IF NOT EXISTS `assets` (
-  `asset_id` int(5) NOT NULL,
-  `serial_number` varchar(50) NOT NULL,
-  `model` varchar(100) NOT NULL,
-  `category` varchar(100) NOT NULL,
-  `brand` varchar(100) NOT NULL,
-  `vendor` varchar(100) NOT NULL,
-  `assigned_employee` varchar(100) NOT NULL,
-  `assigned_date` date NOT NULL,
-  `status` varchar(100) NOT NULL,
-  `date_acquired` date NOT NULL,
-  `warranty_start` date NOT NULL,
-  `warranty_end` date NOT NULL,
-  `date_registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `assets`
---
-
-INSERT INTO `assets` (`asset_id`, `serial_number`, `model`, `category`, `brand`, `vendor`, `assigned_employee`, `assigned_date`, `status`, `date_acquired`, `warranty_start`, `warranty_end`, `date_registered`) VALUES
-(0, '28998', '32817', 'Adipiscing Elit Company', 'Pellentesque Habitant Industries', 'Nullam Vitae Corporation', 'None', '2015-03-12', 'wewewew', '2015-01-04', '0000-00-00', '2014-01-09', '0000-00-00 00:00:00'),
-(4, '81934', '61300', 'Metus Aliquam Erat Industries', 'Metus Aenean LLC', 'Malesuada Malesuada LLC', 'Melissa F. Preston', '0000-00-00', 'tempor', '0000-00-00', '0000-00-00', '2016-01-05', '2014-10-09 07:00:00'),
-(5, '90428', '59786', 'Enim Etiam LLC', 'In Tincidunt Incorporated', 'Lobortis Mauris Inc.', 'Boris I. Valencia', '0000-00-00', 'In', '2014-10-10', '2015-11-08', '0000-00-00', '0000-00-00 00:00:00'),
-(6, '00187', '87860', 'Orci Ut Corporation', 'Semper Et Associates', 'Facilisis Vitae Inc.', 'Jerry N. Riddle', '2014-02-10', 'Nulla', '2014-11-11', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00'),
-(7, '46361', '60019', 'Maecenas Iaculis Aliquet Limited', 'Lorem Vitae Odio Consulting', 'Volutpat Nulla LLC', 'Josephine U. West', '2014-06-08', 'Curabitur', '0000-00-00', '2015-01-04', '0000-00-00', '0000-00-00 00:00:00'),
-(8, '93347', '52475', 'Ligula Tortor Limited', 'Purus In Molestie Foundation', 'Hendrerit Company', 'Sara Y. Wagner', '2014-10-12', 'lacus.', '0000-00-00', '2015-12-04', '0000-00-00', '0000-00-00 00:00:00'),
-(9, '56871', '11091', 'Eros Nam PC', 'Nibh Lacinia Orci Corporation', 'Congue Institute', 'Brenden G. Moon', '0000-00-00', 'lacus.', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00'),
-(10, '96718', '31228', 'Sit LLC', 'Sed Diam Lorem LLP', 'Donec Porttitor LLC', 'Inez B. Burch', '0000-00-00', 'orci', '0000-00-00', '0000-00-00', '2015-02-10', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `employees`
---
-
-CREATE TABLE IF NOT EXISTS `employees` (
-  `emp_id` int(5) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `middle_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `position` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `department` varchar(50) NOT NULL,
-  `leaves` int(5) NOT NULL,
-  `birthday` date NOT NULL,
-  `gender` varchar(50) NOT NULL,
-  `marital_status` varchar(50) NOT NULL,
-  `street` varchar(100) DEFAULT NULL,
-  `barangay` varchar(50) NOT NULL,
-  `city` varchar(50) NOT NULL,
-  `state` varchar(50) NOT NULL,
-  `zip` int(50) NOT NULL,
-  `country` varchar(100) NOT NULL,
-  `mobile_number` int(20) DEFAULT NULL,
-  `tel_number` int(20) DEFAULT NULL,
-  `email_address` varchar(50) DEFAULT NULL,
-  `contact_person` varchar(50) DEFAULT NULL,
-  `contact_rel` varchar(50) DEFAULT NULL,
-  `contact_num` int(20) DEFAULT NULL,
-  `image` varchar(255) NOT NULL,
-  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `employees`
---
-
-INSERT INTO `employees` (`emp_id`, `first_name`, `middle_name`, `last_name`, `position`, `status`, `department`, `leaves`, `birthday`, `gender`, `marital_status`, `street`, `barangay`, `city`, `state`, `zip`, `country`, `mobile_number`, `tel_number`, `email_address`, `contact_person`, `contact_rel`, `contact_num`, `image`, `date_added`) VALUES
-(0, 'Unassigned', 'Unassigned', 'Unassigned', '', '', '', 0, '0000-00-00', '', '', NULL, '', '', '', 0, '', NULL, NULL, NULL, NULL, NULL, NULL, '', '2015-07-19 11:07:12'),
-(1, 'Ardenx', 'Alcairo', 'Dela Cruz', 'CEOs', 'Regular', 'Executive', 30, '0000-00-00', 'male', 'Single', '12', 'qwqw', 'manda', 'manila', 999, 'Philippines', 123, 123, 'ardents02@gmail.com', 'ardents', 'asdasd', 123123, 'steam_logo-wallpaper-1366x7681.jpg', '2015-06-30 07:00:00'),
-(2, 'Yvonne', 'Franklin', 'Beach', 'Avye', 'Joy', 'Laoreet Posuere Enim PC', 2, '2015-12-26', 'female', 'Married', '1793 Nulla Rd.', 'Ada', 'Ceyhan', 'Diyarbak?r', 71652, 'Mali', 7624, 0, 'sapien@lectusquismassa.ca', 'Thor Y. Terry', 'Mr.', 278, '', '2016-02-08 08:00:00'),
-(3, 'Ashely', 'Hensley', 'Delgado', 'Ross', 'Jenette', 'Ante Consulting', 4, '2015-06-09', 'female', 'Married', '375 Sagittis Road', 'SL', 'Sosnowiec', 'CV', 40205, 'Saint Pierre and Miquelon', 0, 0, 'Etiam.bibendum.fermentum@ullamcorperDuiscursus.org', 'Deacon K. Frye', 'Mrs.', 335, '', '2015-05-09 07:00:00'),
-(4, 'Illana', 'Avery', 'Zamora', 'Pearl', 'Kelsie', 'Mi LLC', 6, '2016-06-14', 'female', 'Single', 'Ap #549-9677 Tortor Avenue', 'BA', 'Vitória da Conquista', 'North Island', 453128, 'Saint Vincent and The Grenadines', 500, 800, 'Duis.mi.enim@malesuadafamesac.org', 'Tallulah B. Levy', 'Ms.', 1, '', '2015-06-03 07:00:00'),
-(5, 'Phillip', 'Peck', 'Cameron', 'Oliver', 'Isabella', 'Velit Quisque Foundation', 0, '2015-07-16', 'male', 'Widowed', 'P.O. Box 616, 5935 Vel, St.', '?z', 'Tire', 'AK', 35724, 'Saint Pierre and Miquelon', 0, 7624, 'lacus@adipiscinglobortis.net', 'Griffith W. Sawyer', 'Dr.', 1, '', '2014-10-23 07:00:00'),
-(6, 'Virginia', 'Curry', 'Mendoza', 'Cameran', 'Ginger', 'Velit Justo Nec Inc.', 7, '2015-06-23', 'male', 'Single', '6319 Odio. St.', 'Hesse', 'Obertshausen', 'Luxemburg', 0, 'Gambia', 0, 0, 'molestie.sodales.Mauris@mauris.edu', 'Yardley K. Kennedy', 'Ms.', 978, '', '2015-06-14 07:00:00'),
-(7, 'Abel', 'King', 'Ford', 'Todd', 'Thane', 'Ornare In Corp.', 10, '2016-06-04', 'male', 'Single', '637 Dui. St.', 'Aragón', 'Zaragoza', 'RJ', 14743, 'Niger', 800, 0, 'Nunc@ante.net', 'Hoyt F. Grimes', 'Dr.', 982, '', '2014-08-14 07:00:00'),
-(8, 'Kendall', 'Bright', 'Cameron', 'Beau', 'Giacomo', 'Arcu Sed Et Consulting', 10, '2016-04-10', 'female', 'Single', '984-3608 Pede. Rd.', 'South Australia', 'Whyalla', 'YT', 1077, 'El Salvador', 76, 800, 'Nunc@tellusAenean.edu', 'Wanda L. Cain', '', 1, '', '2015-11-07 08:00:00'),
-(9, 'Brittany', 'French', 'Gray', 'Imogene', 'Odysseus', 'Ac Arcu Institute', -4, '2014-09-21', 'female', 'Widowed', 'Ap #165-4162 Fusce Avenue', 'Ist', 'Istanbul', 'Bur', 82667, 'Micronesia', 800, 7624, 'imperdiet.ullamcorper@euismodin.com', 'Ulric V. Kidd', 'Ms.', 189, '', '2015-08-24 07:00:00'),
-(10, 'Amir', 'Hernandez', 'Herrera', 'Nigel', 'Kellie', 'Sem Molestie Inc.', -1, '2015-06-09', 'female', 'Single', 'Ap #913-4290 Massa. Rd.', 'Istanbul', 'Istanbul', 'Leinster', 0, 'Liechtenstein', 7850, 76, 'tincidunt.orci@vulputatemauris.co.uk', 'Hamilton Q. Townsend', 'Dr.', 1, '', '2015-01-26 08:00:00'),
-(11, 'Hakeem', 'Carson', 'Mullins', 'Katell', 'Belle', 'Suspendisse Institute', -1, '2015-02-11', 'male', 'Married', '1704 Consectetuer Rd.', 'Leinster', 'Dublin', 'PR', 25689, 'Mongolia', 845, 0, 'iaculis.nec.eleifend@dictumProin.org', 'Mona Y. Valenzuela', 'Mrs.', 289, '', '2015-12-03 08:00:00');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `emp_performance`
 --
 
@@ -218,44 +130,6 @@ INSERT INTO `emp_performance` (`performance_id`, `employee_name`, `evaluators`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `leaves`
---
-
-CREATE TABLE IF NOT EXISTS `leaves` (
-  `leave_id` int(5) NOT NULL,
-  `employee_name` varchar(255) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
-  `days` int(4) NOT NULL,
-  `leaves_left` int(5) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `status` varchar(100) NOT NULL,
-  `approved_by` varchar(100) NOT NULL,
-  `date_approved` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_requested` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `employee_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `leaves`
---
-
-INSERT INTO `leaves` (`leave_id`, `employee_name`, `start_date`, `end_date`, `days`, `leaves_left`, `type`, `status`, `approved_by`, `date_approved`, `date_requested`, `employee_id`) VALUES
-(1, 'Arden Dela Cruz', '2015-06-01', '2015-06-01', 0, 4, 'Sick Leave', 'Approved', 'Administrator Arden', '2015-06-29 16:00:00', '2015-06-30 12:15:18', 1),
-(2, 'Yvonne Beach', '2015-06-01', '2015-06-01', 0, 4, 'Sick Leave', 'Approved', 'Administrator Arden', '2015-06-29 16:00:00', '2015-06-30 12:15:33', 2),
-(3, 'Ashely Delgado', '2015-06-02', '2015-06-02', 0, 5, 'Sick Leave', 'Approved', 'Administrator Arden', '2015-06-29 16:00:00', '2015-06-30 12:36:04', 3),
-(4, 'Illana Zamora', '2015-06-02', '2015-06-02', 0, 7, 'Sick Leave', 'Approved', 'Administrator Arden', '2015-06-29 16:00:00', '2015-06-30 12:36:22', 4),
-(5, 'Arden Dela Cruz', '2015-06-01', '2015-06-01', 0, 3, 'Sick Leave', 'Approved', 'Administrator Arden', '2015-06-29 16:00:00', '2015-06-30 12:36:37', 1),
-(6, 'Arden Dela Cruz', '2015-06-01', '2015-06-01', 0, 2, 'Sick Leave', 'Approved', 'Administrator Arden', '2015-06-29 16:00:00', '2015-06-30 12:51:40', 1),
-(7, 'Yvonne Beach', '2015-06-01', '2015-06-01', 0, 3, 'Maternity Leave', 'Declined', 'Administrator Arden', '2015-06-29 16:00:00', '2015-06-30 12:51:59', 2),
-(8, 'Illana Zamora', '2015-06-02', '2015-06-04', 3, 6, 'Vacation Leave', 'Declined', 'Administrator Arden', '2015-06-29 16:00:00', '2015-06-30 13:53:58', 4),
-(9, 'Phillip Cameron', '2015-06-01', '2015-06-08', 8, 8, 'Sick Leave', 'Approved', 'Administrator Arden', '2015-06-29 16:00:00', '2015-06-30 13:55:19', 5),
-(10, 'Virginia Mendoza', '2015-07-07', '2015-07-09', 3, 10, 'Sick Leave', 'Approved', 'Administrator Arden', '2015-06-30 16:00:00', '2015-07-01 11:44:04', 6),
-(11, 'Illana Zamora', '2015-07-01', '2015-07-03', 3, 6, 'Vacation Leave', 'Declined', 'Administrator Arden', '2015-06-30 16:00:00', '2015-07-01 11:48:54', 4);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_address`
 --
 
@@ -275,7 +149,6 @@ CREATE TABLE IF NOT EXISTS `tbl_address` (
 --
 
 INSERT INTO `tbl_address` (`emp_address_id`, `street`, `barangay`, `city`, `state`, `zip`, `country`, `employee_id`) VALUES
-(10000, 'weewe', 'ewewe', 'wewewe', 'qeqeqe', 12122, 'qeqeqee', 0),
 (10001, '577', 'Maybunga', 'Pasig City', 'Metro Manila', 1607, 'Philippines', 1),
 (10002, '577', 'Maybunga', 'Pasig City', 'Metro Manila', 1607, 'Philippines', 2),
 (10003, '1793 Nulla Rd.', 'Ada', 'Ceyhan', 'Diyarbak?r', 71652, 'Mali', 3),
@@ -333,9 +206,9 @@ CREATE TABLE IF NOT EXISTS `tbl_assets` (
 INSERT INTO `tbl_assets` (`asset_id`, `employee_id`, `asset_status`, `assigned_date`) VALUES
 ('EQ1001', '4', 'Destroyed', '2015-07-20 00:00:00'),
 ('EQ1002', '1', 'Sabog', '2015-07-14 00:00:00'),
-('EQ1003', '1', 'Brand New', NULL),
+('EQ1003', '1', 'Brand New', '2015-07-12 20:46:13'),
 ('EQ1004', '1', 'BOOOOOM', '2015-07-20 00:00:00'),
-('EQ1005', '3', 'Sabog', '2015-07-21 00:00:00');
+('EQ1005', '1', 'Sabog', '2015-07-21 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -646,7 +519,8 @@ CREATE TABLE IF NOT EXISTS `tbl_client` (
 
 INSERT INTO `tbl_client` (`client_id`, `client_name`, `client_address`, `client_contact_no`, `client_email`) VALUES
 ('CL1001', 'Skyjet Airlines', 'Tokyo, Japan', 1232323213, 'skyjet@gmail.com'),
-('CL1002', 'Lucio Tan', 'Fujian, China', 232323232, 'lucio@gmail.com');
+('CL1002', 'Lucio Tan', 'Fujian, China', 232323232, 'lucio@gmail.com'),
+('CL1003', 'Tan Yu', 'wewee', 313131, 'tanyu@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -676,7 +550,8 @@ INSERT INTO `tbl_contact_number` (`employee_id`, `mobile_number`, `tel_number`) 
 (11, 988979878, 54545488),
 (12, 564654656, 5454448),
 (13, 1321321231, 55454878),
-(14, 554545454, 878898978);
+(14, 554545454, 878898978),
+(15, 1131313, 313131313);
 
 -- --------------------------------------------------------
 
@@ -685,7 +560,6 @@ INSERT INTO `tbl_contact_number` (`employee_id`, `mobile_number`, `tel_number`) 
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_contact_person` (
-  `cperson_id` int(5) NOT NULL,
   `contact_person` varchar(100) DEFAULT NULL,
   `contact_rel` varchar(30) DEFAULT NULL,
   `contact_num` int(20) DEFAULT NULL,
@@ -696,19 +570,25 @@ CREATE TABLE IF NOT EXISTS `tbl_contact_person` (
 -- Dumping data for table `tbl_contact_person`
 --
 
-INSERT INTO `tbl_contact_person` (`cperson_id`, `contact_person`, `contact_rel`, `contact_num`, `employee_id`) VALUES
-(1, 'Jon Snow', 'Tropa', 1620111, 1),
-(6, NULL, NULL, NULL, NULL),
-(8, NULL, NULL, NULL, NULL),
-(10, NULL, NULL, NULL, NULL),
-(12, NULL, NULL, NULL, NULL),
-(13, NULL, NULL, NULL, NULL),
-(14, NULL, NULL, NULL, NULL),
-(10001, 'Pareng Erap', 'Kainuman', 162012, 0),
-(10002, NULL, NULL, NULL, NULL),
-(10003, NULL, NULL, NULL, NULL),
-(10004, NULL, NULL, NULL, NULL),
-(10005, NULL, NULL, NULL, NULL);
+INSERT INTO `tbl_contact_person` (`contact_person`, `contact_rel`, `contact_num`, `employee_id`) VALUES
+('Jon Snow', 'Tropa', 1620111, 7),
+('Pareng Erap', 'Kainuman', 162012, 5),
+('Jollibee', 'Mascot', 31313131, 6),
+('Jon Snow', 'Tropa', 1620111, 10),
+('Pareng Erap', 'Kainuman', 162012, 8),
+('Jollibee', 'Mascot', 31313131, 9),
+('Jon Snow', 'Tropa', 1620111, 13),
+('Pareng Erap', 'Kainuman', 162012, 11),
+('Jollibee', 'Mascot', 31313131, 12),
+('Jon Snow', 'Tropa', 1620111, 16),
+('Pareng Erap', 'Kainuman', 162012, 14),
+('Jollibee', 'Mascot', 31313131, 15),
+('Jon Snow', 'Tropa', 1620111, 4),
+('Pareng Erap', 'Kainuman', 162012, 17),
+('Jollibee', 'Mascot', 31313131, 18),
+('Jon Snow', 'Tropa', 1620111, 1),
+('Pareng Erap', 'Kainuman', 162012, 2),
+('Jollibee', 'Mascot', 31313131, 3);
 
 -- --------------------------------------------------------
 
@@ -769,9 +649,24 @@ CREATE TABLE IF NOT EXISTS `tbl_dependent_info` (
 --
 
 INSERT INTO `tbl_dependent_info` (`employee_id`, `dependent_id`, `relationship`) VALUES
+('3', '1', 'Daughter'),
+('4', '2', 'Daughter'),
+('2', '3', 'Son'),
+('6', '1', 'Daughter'),
+('7', '2', 'Daughter'),
+('5', '3', 'Son'),
+('9', '1', 'Daughter'),
+('10', '2', 'Daughter'),
+('8', '3', 'Son'),
+('12', '1', 'Daughter'),
+('13', '2', 'Daughter'),
+('11', '3', 'Son'),
 ('1', '1', 'Daughter'),
 ('1', '2', 'Daughter'),
-('1', '3', 'Son');
+('14', '3', 'Son'),
+('15', '2', 'Daughter'),
+('16', '3', 'Daughter'),
+('17', '3', 'Son');
 
 -- --------------------------------------------------------
 
@@ -783,9 +678,10 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_history` (
   `emp_history_id` int(4) NOT NULL,
   `emp_id` int(4) NOT NULL,
   `status` varchar(50) NOT NULL,
+  `employment_type` varchar(255) NOT NULL,
   `job_title` varchar(50) NOT NULL,
-  `job_category` varchar(50) NOT NULL,
   `department` varchar(50) NOT NULL,
+  `rank` varchar(50) NOT NULL,
   `start_date` date NOT NULL,
   `probationary_date` date DEFAULT NULL,
   `permanency_date` date DEFAULT NULL,
@@ -799,106 +695,22 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_history` (
 -- Dumping data for table `tbl_emp_history`
 --
 
-INSERT INTO `tbl_emp_history` (`emp_history_id`, `emp_id`, `status`, `job_title`, `job_category`, `department`, `start_date`, `probationary_date`, `permanency_date`, `end_date`, `salary`, `pay_grade`, `date_modified`) VALUES
-(1, 1, 'Regular', 'CTO', 'Professionals', 'Executive', '1990-01-01', '2015-07-07', '2015-07-17', '2020-12-31', '40000.00', 'A', '2015-07-08 05:11:34'),
-(2, 2, '', '', '', 'Laoreet Posuere Enim PC', '1990-01-01', NULL, NULL, '2020-12-31', '30000.00', 'A', '2015-07-08 05:13:55'),
-(3, 3, '', '', '', 'Ante Consulting', '1990-01-01', NULL, NULL, '2020-12-31', '25000.00', 'A', '2015-07-08 05:15:00'),
-(4, 4, '', '', '', 'Mi LLC', '1990-01-01', NULL, NULL, '2020-12-31', '20000.00', 'A', '2015-07-08 05:16:20'),
-(5, 5, '', '', '', 'Velit Quisque Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '20000.00', 'A', '2015-07-08 05:16:20'),
-(6, 6, '', '', '', 'Velit Justo Nec Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(7, 7, '', '', '', 'Ornare In Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(8, 8, '', '', '', 'Arcu Sed Et Consulting', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(9, 9, '', '', '', 'Ac Arcu Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(10, 10, '', '', '', 'Sem Molestie Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(11, 11, '', '', '', 'Suspendisse Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(12, 12, '', '', '', 'Non Feugiat Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(13, 13, '', '', '', 'Vulputate Ullamcorper Magna Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(14, 14, '', '', '', 'Rutrum Eu LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(15, 15, '', '', '', 'A Ultricies Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(16, 16, '', '', '', 'Ultrices Iaculis Odio Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(17, 17, '', '', '', 'Vel LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(18, 18, '', '', '', 'Eu Euismod Consulting', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(19, 19, '', '', '', 'Nostra Per Industries', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(20, 20, '', '', '', 'Ante LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(21, 21, '', '', '', 'Enim Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(22, 22, '', '', '', 'At PC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(23, 23, '', '', '', 'Donec Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(24, 24, '', '', '', 'Ornare Facilisis Eget Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(25, 25, '', '', '', 'Nulla Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(26, 26, '', '', '', 'Tempor Erat Neque Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(27, 27, '', '', '', 'Magnis Dis Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(28, 28, '', '', '', 'Euismod Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(29, 29, '', '', '', 'Elementum Lorem Ut PC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(30, 30, '', '', '', 'Eget Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(31, 31, '', '', '', 'Vitae Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(32, 32, '', '', '', 'Fames Ac Turpis Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(33, 33, '', '', '', 'Mi Tempor Lorem Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(34, 34, '', '', '', 'Euismod Enim Etiam Industries', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(35, 35, '', '', '', 'Ultrices Duis Volutpat Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(36, 36, '', '', '', 'Sit Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(37, 37, '', '', '', 'Non Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(38, 38, '', '', '', 'Vel Pede Blandit Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(39, 39, '', '', '', 'Sem Semper Erat Ltd', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(40, 40, '', '', '', 'Pede Cum LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(41, 41, '', '', '', 'Proin Ltd', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(42, 42, '', '', '', 'Adipiscing Ligula Aenean Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(43, 43, '', '', '', 'Tincidunt Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(44, 44, '', '', '', 'Tincidunt Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(45, 45, '', '', '', 'Eleifend Nunc Risus Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(46, 46, '', '', '', 'Nunc LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(47, 47, '', '', '', 'Ligula Elit Pretium LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(48, 48, '', '', '', 'Ligula Aenean Euismod LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(49, 49, '', '', '', 'Purus Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(50, 50, '', '', '', 'Proin Mi Aliquam LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(51, 51, '', '', '', 'Quam Curabitur LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(52, 52, '', '', '', 'Semper Auctor Mauris Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(53, 53, '', '', '', 'Aliquam Ltd', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(54, 54, '', '', '', 'Velit Dui Semper Industries', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(55, 55, '', '', '', 'Volutpat Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(56, 56, '', '', '', 'Dui Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(57, 57, '', '', '', 'Molestie Dapibus Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(58, 58, '', '', '', 'Ante Maecenas Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(59, 59, '', '', '', 'Pretium Et Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(60, 60, '', '', '', 'Fringilla Donec Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(61, 61, '', '', '', 'Magnis Dis Parturient Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(62, 62, '', '', '', 'Dolor Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(63, 63, '', '', '', 'Egestas PC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(64, 64, '', '', '', 'Eu Erat Semper Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(65, 65, '', '', '', 'Vitae Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(66, 66, '', '', '', 'Velit Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(67, 67, '', '', '', 'Convallis Erat Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(68, 68, '', '', '', 'Ultricies Dignissim Lacus Foundation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(69, 69, '', '', '', 'Ullamcorper Magna Sed Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(70, 70, '', '', '', 'Odio Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(71, 71, '', '', '', 'Dolor Dapibus Gravida Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(72, 72, '', '', '', 'Mauris Ut Mi Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(73, 73, '', '', '', 'Egestas Blandit Nam Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(74, 74, '', '', '', 'Quis Pede Praesent LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(75, 75, '', '', '', 'Sed Molestie Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(76, 76, '', '', '', 'Lacinia At Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(77, 77, '', '', '', 'Et Magna Praesent LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(78, 78, '', '', '', 'Sit Amet Ante Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(79, 79, '', '', '', 'Fusce LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(80, 80, '', '', '', 'Feugiat Non Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(81, 81, '', '', '', 'Tempor Bibendum Donec Associates', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(82, 82, '', '', '', 'Volutpat Corp.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(83, 83, '', '', '', 'Leo LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(84, 84, '', '', '', 'Ligula Aenean LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(85, 85, '', '', '', 'Porttitor Company', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(86, 86, '', '', '', 'Magnis Dis Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(87, 87, '', '', '', 'Posuere Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(88, 88, '', '', '', 'Suspendisse LLC', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(89, 89, '', '', '', 'Nisi Inc.', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(90, 90, '', '', '', 'Nulla Dignissim Limited', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(91, 91, '', '', '', 'Tincidunt Vehicula Risus Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(92, 92, '', '', '', 'Nec Orci Donec LLP', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(93, 93, '', '', '', 'Orci Sem Company', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(94, 94, '', '', '', 'Eu Arcu Morbi Company', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(95, 95, '', '', '', 'Nunc Incorporated', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(96, 96, '', '', '', 'Vitae Velit Institute', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(97, 97, '', '', '', 'Ante Bibendum Ullamcorper Industries', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(98, 98, '', '', '', 'Commodo Corporation', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
-(99, 99, '', '', '', '', '1990-01-01', NULL, NULL, '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44');
+INSERT INTO `tbl_emp_history` (`emp_history_id`, `emp_id`, `status`, `employment_type`, `job_title`, `department`, `rank`, `start_date`, `probationary_date`, `permanency_date`, `end_date`, `salary`, `pay_grade`, `date_modified`) VALUES
+(1, 1, 'Active', 'Regular', 'CTO', 'Executive', 'Managerial', '1990-01-01', '2015-07-17', '2015-07-17', '2020-12-31', '40000.00', 'A', '2015-07-08 05:11:34'),
+(2, 2, 'Inactive', 'Contractual', 'Sales Manager', 'Laoreet Posuere Enim PC', 'Non-Managerial', '1990-01-01', '2015-07-10', '2015-07-10', '2020-12-31', '30000.00', 'A', '2015-07-08 05:13:55'),
+(3, 3, 'Active', 'Regular', 'CTO', 'Ante Consulting', 'Non-Managerial', '1990-01-01', '2015-07-15', '2015-07-15', '2020-12-31', '25000.00', 'A', '2015-07-08 05:15:00'),
+(4, 4, 'Inactive', 'Probationary', 'Marketing Manager', 'Mi LLC', 'Managerial', '1990-01-01', '2015-07-17', '2015-07-17', '2020-12-31', '20000.00', 'A', '2015-07-08 05:16:20'),
+(5, 5, 'Inactive', 'Regular', 'Finance Manager', 'Velit Quisque Foundation', 'Managerial', '1990-01-01', '2015-07-10', '2015-07-10', '2020-12-31', '20000.00', 'A', '2015-07-08 05:16:20'),
+(6, 6, 'Active', 'Contractual', 'Sales Manager', 'Velit Justo Nec Inc.', 'Non-Managerial', '1990-01-01', '2015-07-06', '2015-07-15', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(7, 7, 'Active', 'Probationary', 'Finance Manager', 'Ornare In Corp.', 'Non-Managerial', '1990-01-01', '2015-07-06', '2015-07-17', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(8, 8, 'Inactive', 'Regular', 'Marketing Manager', 'Arcu Sed Et Consulting', 'Managerial', '1990-01-01', '2015-07-06', '2015-07-10', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(9, 9, 'Active', 'Probationary', 'Sales Manager', 'Ac Arcu Institute', 'Managerial', '1990-01-01', '2015-07-06', '2015-07-15', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(10, 10, 'Inactive', 'Contractual', 'IT', 'Sem Molestie Inc.', 'Non-Managerial', '1990-01-01', '2015-07-06', '2015-07-17', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(11, 11, 'Active', 'Regular', 'Finance Manager', 'Suspendisse Institute', 'Non-Managerial', '1990-01-01', '2015-07-06', '2015-07-10', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(12, 12, 'Inactive', 'Consultant', 'Sales Manager', 'Non Feugiat Associates', 'Managerial', '1990-01-01', '2015-07-06', '2015-07-15', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(13, 13, 'Active', 'Regular', 'IT', 'Vulputate Ullamcorper Magna Incorporated', 'Managerial', '1990-01-01', '2015-07-06', '2015-07-17', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(14, 14, 'Active', 'Consultant', 'Marketing Manager', 'Rutrum Eu LLP', 'Non-Managerial', '1990-01-01', '2015-07-06', '2015-07-10', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44'),
+(15, 15, 'Active', 'Regular', 'CTO', 'A Ultricies Inc.', 'Non-Managerial', '1990-01-01', '2015-07-06', '2015-07-15', '2020-12-31', '15000.00', 'A', '2015-07-13 06:33:44');
 
 -- --------------------------------------------------------
 
@@ -922,7 +734,6 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_info` (
 --
 
 INSERT INTO `tbl_emp_info` (`emp_id`, `first_name`, `middle_name`, `last_name`, `birthday`, `gender`, `marital_status`, `date_added`) VALUES
-(0, 'Unassigned', NULL, NULL, '0000-00-00', '', '', '2015-07-19 12:53:30'),
 (1, 'Arden', 'Alcairo', 'Dela Cruz', '1993-12-16', 'male', 'Single', '2015-06-30 07:00:00'),
 (2, 'Yvonne', 'Franklin', 'Beach', '2015-12-26', 'female', 'Married', '2016-02-08 08:00:00'),
 (3, 'Ashely', 'Hensley', 'Delgado', '2015-06-09', 'female', 'Married', '2015-05-09 07:00:00'),
@@ -933,9 +744,9 @@ INSERT INTO `tbl_emp_info` (`emp_id`, `first_name`, `middle_name`, `last_name`, 
 (8, 'Kendall', 'Bright', 'Cameron', '2016-04-10', 'female', 'Single', '2015-11-07 08:00:00'),
 (9, 'Brittany', 'French', 'Gray', '2014-09-21', 'female', 'Widowed', '2015-08-24 07:00:00'),
 (10, 'Amir', 'Hernandez', 'Herrera', '2015-06-09', 'female', 'Single', '2015-01-26 08:00:00'),
-(11, 'q', 'q', '61300', '2015-07-01', 'q', 'married', '2015-07-12 14:39:19'),
-(12, 'Sheldon', 'q', '61300', '2015-10-14', 'Sheldon', 'single', '2015-07-13 11:41:09'),
-(13, 'Neil', 'Crist', 'Resnera', '0000-00-00', '', 'Single', '2015-07-13 11:54:49');
+(11, 'Amir', 'Hernandez', 'Herrera', '2015-07-01', 'female', 'married', '2015-07-12 14:39:19'),
+(12, 'Amir', 'Hernandez', 'Herrera', '2015-10-14', 'female', 'single', '2015-07-13 11:41:09'),
+(13, 'Neil', 'Crist', 'Resnera', '0000-00-00', 'female', 'Single', '2015-07-13 11:54:49');
 
 -- --------------------------------------------------------
 
@@ -956,6 +767,25 @@ CREATE TABLE IF NOT EXISTS `tbl_governmentid` (
 --
 
 INSERT INTO `tbl_governmentid` (`employee_id`, `sss_no`, `pagibig_no`, `philhealth_no`, `tin`) VALUES
+('2', 1111111111, 222222222, 333333333, 444444444),
+('3', 1111111111, 222222222, 333333333, 444444444),
+('4', 1111111111, 222222222, 333333333, 444444444),
+('15', 1111111111, 222222222, 333333333, 444444444),
+('6', 1111111111, 222222222, 333333333, 444444444),
+('7', 1111111111, 222222222, 333333333, 444444444),
+('8', 1111111111, 222222222, 333333333, 444444444),
+('9', 1111111111, 222222222, 333333333, 444444444),
+('10', 1111111111, 222222222, 333333333, 444444444),
+('11', 1111111111, 222222222, 333333333, 444444444),
+('12', 1111111111, 222222222, 333333333, 444444444),
+('13', 1111111111, 222222222, 333333333, 444444444),
+('14', 1111111111, 222222222, 333333333, 444444444),
+('5', 1111111111, 222222222, 333333333, 444444444),
+('16', 1111111111, 222222222, 333333333, 444444444),
+('17', 1111111111, 222222222, 333333333, 444444444),
+('18', 1111111111, 222222222, 333333333, 444444444),
+('19', 1111111111, 222222222, 333333333, 444444444),
+('20', 1111111111, 222222222, 333333333, 444444444),
 ('1', 1111111111, 222222222, 333333333, 444444444);
 
 -- --------------------------------------------------------
@@ -975,11 +805,76 @@ CREATE TABLE IF NOT EXISTS `tbl_leave_left` (
 --
 
 INSERT INTO `tbl_leave_left` (`employee_id`, `leave_type_id`, `leave_remaining`) VALUES
+('15', 'VL', 5),
+('8', 'ML', 5),
+('8', 'SL', 5),
+('8', 'PL', 5),
+('15', 'BL', 5),
+('13', 'VL', 5),
+('13', 'ML', 5),
+('13', 'SL', 5),
+('13', 'PL', 5),
+('13', 'BL', 5),
+('14', 'VL', 5),
+('15', 'ML', 5),
+('15', 'SL', 5),
+('15', 'PL', 5),
+('8', 'BL', 5),
+('8', 'VL', 5),
+('14', 'ML', 5),
+('14', 'SL', 5),
+('14', 'PL', 5),
+('14', 'BL', 5),
+('9', 'VL', 5),
+('9', 'ML', 5),
+('9', 'SL', 5),
+('9', 'PL', 5),
+('9', 'BL', 5),
+('10', 'VL', 5),
+('10', 'ML', 5),
+('10', 'SL', 5),
+('10', 'PL', 5),
+('10', 'BL', 5),
+('12', 'VL', 5),
+('12', 'ML', 5),
+('12', 'SL', 5),
+('12', 'PL', 5),
+('12', 'BL', 5),
 ('1', 'VL', 5),
 ('1', 'ML', 5),
 ('1', 'SL', 5),
 ('1', 'PL', 5),
-('1', 'BL', 5);
+('1', 'BL', 5),
+('2', 'VL', 5),
+('2', 'ML', 5),
+('2', 'SL', 5),
+('2', 'PL', 5),
+('2', 'BL', 5),
+('3', 'VL', 5),
+('3', 'ML', 5),
+('3', 'SL', 5),
+('3', 'PL', 5),
+('3', 'BL', 5),
+('4', 'VL', 5),
+('4', 'ML', 5),
+('4', 'SL', 5),
+('4', 'PL', 5),
+('4', 'BL', 5),
+('5', 'VL', 5),
+('5', 'ML', 5),
+('5', 'SL', 5),
+('5', 'PL', 5),
+('5', 'BL', 5),
+('6', 'VL', 5),
+('6', 'ML', 5),
+('6', 'SL', 5),
+('6', 'PL', 5),
+('6', 'BL', 5),
+('7', 'VL', 5),
+('7', 'ML', 5),
+('7', 'SL', 5),
+('7', 'PL', 5),
+('7', 'BL', 5);
 
 -- --------------------------------------------------------
 
@@ -1042,18 +937,21 @@ CREATE TABLE IF NOT EXISTS `tbl_materials` (
 
 INSERT INTO `tbl_materials` (`item_id`, `quantity`, `price`, `project_id`, `date_issued`) VALUES
 ('STK1001', 20, '20000.00', 'P1001', '2015-07-08 00:00:00'),
-('10004', 2, '100.00', 'P1003', '2015-07-09 00:00:00'),
-('10001', 20, '500.00', 'P1001', '2015-07-30 00:00:00'),
-('10001', 100, '500.00', 'P1001', '2015-07-21 00:00:00'),
-('10002', 100, '7000.00', 'P1003', '2015-07-21 00:00:00'),
-('10003', 100, '200.00', 'P1005', '2015-07-28 00:00:00'),
-('STK1002', 2, '0.00', 'P1001', '2015-07-08 00:00:00'),
-('STK1002', 2, '4000.00', 'P1001', '2015-07-08 00:00:00'),
-('STK1002', 2, '4000.00', 'P1001', '2015-07-19 00:00:00'),
-('STK1001', 2, '2000.00', 'P1001', '2015-07-20 00:00:00'),
-('STK1002', 10, '20000.00', 'P1001', '2015-07-20 00:00:00'),
-('STK1001', 20, '1000.00', 'P1001', '2015-07-21 00:00:00'),
-('STK1001', 20, '1000.00', 'P1007', '2015-07-20 00:00:00');
+('STK1001', 2, '100.00', 'P1003', '2015-07-09 00:00:00'),
+('STK1001', 20, '500.00', 'P1001', '2015-07-30 00:00:00'),
+('STK1001', 100, '500.00', 'P1001', '2015-07-21 00:00:00'),
+('STK1001', 100, '7000.00', 'P1003', '2015-07-21 00:00:00'),
+('STK1001', 100, '200.00', 'P1005', '2015-07-28 00:00:00'),
+('STK1004', 2, '4000.00', 'P1004', '2015-07-08 00:00:00'),
+('STK1002', 2, '4000.00', 'P1005', '2015-07-08 00:00:00'),
+('STK1002', 2, '4000.00', 'P1006', '2015-07-19 00:00:00'),
+('STK1001', 2, '2000.00', 'P1005', '2015-07-20 00:00:00'),
+('STK1002', 10, '30000.00', 'P1002', '2015-07-20 00:00:00'),
+('STK1001', 20, '1000.00', 'P1002', '2015-07-21 00:00:00'),
+('STK1001', 20, '1000.00', 'P1007', '2015-07-20 00:00:00'),
+('STK1004', 50, '10000.00', 'P1001', '2015-07-22 00:00:00'),
+('STK1005', 10, '1000.00', 'P1003', '2015-07-23 00:00:00'),
+('STK1001', 60, '1000.00', 'P1002', '2015-07-22 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1234,10 +1132,36 @@ CREATE TABLE IF NOT EXISTS `tbl_project` (
 
 INSERT INTO `tbl_project` (`project_id`, `project_name`, `client`, `starting_date`, `ending_date`, `date_added`) VALUES
 ('P1001', 'Project Almanac', 'CL1001', '2015-07-08', '2015-07-25', '2015-07-08 13:36:31'),
-('P1002', 'Project Alpha', 'NASA', '2015-07-03', '0000-00-00', '2015-07-08 14:21:12'),
-('P1003', 'Project X', 'Classified', '2015-07-09', '0000-00-00', '2015-07-08 18:59:33'),
-('P1004', 'Project Alpha', 'NASA', '2015-07-10', '0000-00-00', '2015-07-08 19:05:40'),
+('P1002', 'Project Alpha', 'CL1002', '2015-07-03', '2015-07-22', '2015-07-08 14:21:12'),
+('P1003', 'Project X', 'CL1003', '2015-07-09', '2015-07-14', '2015-07-08 18:59:33'),
+('P1004', 'Project Alpha', 'CL1003', '2015-07-10', '2015-07-23', '2015-07-08 19:05:40'),
+('P1006', '9DevCorp', 'CL1001', '2015-07-15', '2015-07-22', '2015-07-21 23:19:42'),
 ('P1007', 'Project Pie', 'CL1002', '2015-07-20', '2015-07-23', '2015-07-20 01:06:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_project_workers`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_project_workers` (
+  `project_id` varchar(10) DEFAULT NULL,
+  `employee_id` varchar(10) DEFAULT NULL,
+  `assigned_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_project_workers`
+--
+
+INSERT INTO `tbl_project_workers` (`project_id`, `employee_id`, `assigned_date`) VALUES
+('P1001', '1', '2015-07-13'),
+('P1002', '1', '2015-07-20'),
+('P1003', '1', '2015-07-21'),
+('P1001', '2', '2015-07-14'),
+('P1003', '3', '2015-07-14'),
+('P1003', '3', '2015-07-21'),
+('P1007', '7', '2015-07-07');
 
 -- --------------------------------------------------------
 
@@ -1328,6 +1252,21 @@ CREATE TABLE IF NOT EXISTS `tbl_school` (
 --
 
 INSERT INTO `tbl_school` (`employee_id`, `primary_name`, `primary_address`, `primary_year`, `secondary_name`, `secondary_address`, `secondary_year`, `tertiary_name`, `tertiary_address`, `tertiary_year`) VALUES
+(2, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(4, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(3, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(5, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(6, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(7, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(8, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(9, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(10, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(11, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(12, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(13, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(14, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(15, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
+(16, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
 (1, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016);
 
 -- --------------------------------------------------------
@@ -1347,11 +1286,11 @@ CREATE TABLE IF NOT EXISTS `tbl_stocks` (
 --
 
 INSERT INTO `tbl_stocks` (`item_id`, `quantity`, `date_last_restocked`) VALUES
-('STK1001', '960', '2015-07-18'),
+('STK1001', '900', '2015-07-18'),
 ('STK1002', '1100', '2015-07-19'),
 ('STK1003', '980', '2015-07-19'),
-('STK1004', '1000', '2015-07-19'),
-('STK1005', '1000', '2015-07-19'),
+('STK1004', '950', '2015-07-19'),
+('STK1005', '990', '2015-07-19'),
 ('STK1006', '1008', '2015-07-08'),
 ('STK1007', '1000', '2015-07-19');
 
@@ -1449,15 +1388,19 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `username`, `password`, `email`, `user_level`, `secret_question`, `secret_answer`, `employee_id`, `date_registered`) VALUES
-(1, 'ardents', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Administrator', '1', 'ardents', '1', '2015-06-05 05:28:36'),
-(7, 'ardendeveloper', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', '2', '2015-06-05 05:30:12'),
-(9, 'ardenity', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', '3', '2015-06-05 21:34:52'),
-(10, 'resnerac03', '25d55ad283aa400af464c76d713c07ad', 'resnerac03@gmail.com', 'Administrator', '2', 'asdasdasdas', '4', '2015-07-03 14:27:13'),
-(11, 'ardentss', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardentss@gmail.com', 'Administrator', '1', 'ardentss', '5', '2015-07-12 13:24:19'),
-(12, 'ardentswew', '324554b6b5ff6e4f41f3bce8b0d8a157', 'ardentswew@g.c', 'Employee', '1', 'ardentswew', '6', '2015-07-12 13:28:22'),
-(13, 'ardentsweww', '89e8ec248dabeea723ef2bc175288234', 'asdsadsadsad@gmail.com', 'Employee', '1', 'ardentsweww', '7', '2015-07-12 13:28:52'),
-(14, 'dasdasdsad', '5e44a9ce239320776166d40c5579607e', 'asdsadsadsad@gmail.com', 'Employee', '1', 'dasdasdsad', '8', '2015-07-12 13:30:06'),
-(15, 'qwewqewqewq', '26c7245d7e62a6a69404bf27886edab5', 'asdsadsadsad@gmail.com', 'Employee', '1', 'qwewqewqewq', '9', '2015-07-12 13:30:35');
+(1, 'ardents', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Administrator', 'What is your pet name?', 'ardents', '1', '2015-06-05 05:28:36'),
+(2, 'ardendeveloper', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', '2', '2015-06-05 05:30:12'),
+(3, 'ardenity', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', '3', '2015-06-05 21:34:52'),
+(4, 'ardents1', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Administrator', 'What is your pet name?', 'ardents', '4', '2015-06-05 05:28:36'),
+(5, 'ardendeveloper1', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', '5', '2015-06-05 05:30:12'),
+(6, 'ardenity1', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', '6', '2015-06-05 21:34:52'),
+(7, 'ardents2', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Administrator', 'What is your pet name?', 'ardents', '7', '2015-06-05 05:28:36'),
+(8, 'ardendeveloper2', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', '8', '2015-06-05 05:30:12'),
+(9, 'ardenity2', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', '9', '2015-06-05 21:34:52'),
+(10, 'ardents3', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Administrator', 'What is your pet name?', 'ardents', '10', '2015-06-05 05:28:36'),
+(11, 'ardendeveloper3', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', '11', '2015-06-05 05:30:12'),
+(12, 'ardenity4', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', '12', '2015-06-05 21:34:52'),
+(13, 'ardenity5', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', '13', '2015-06-05 21:34:52');
 
 -- --------------------------------------------------------
 
@@ -1496,7 +1439,7 @@ CREATE TABLE IF NOT EXISTS `user_account` (
   `secret_answer` varchar(255) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `date_registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_account`
@@ -1504,10 +1447,18 @@ CREATE TABLE IF NOT EXISTS `user_account` (
 
 INSERT INTO `user_account` (`user_id`, `username`, `password`, `email`, `user_level`, `secret_question`, `secret_answer`, `employee_id`, `date_registered`) VALUES
 (1, 'ardents', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Administrator', 'What is your pet name?', 'ardents', 1, '2015-06-05 05:28:36'),
-(7, 'ardendeveloper', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', 0, '2015-06-05 05:30:12'),
-(9, 'ardenity', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', 0, '2015-06-05 21:34:52'),
-(10, 'resnerac03', '25d55ad283aa400af464c76d713c07ad', 'resnerac03@gmail.com', 'Administrator', '2', 'asdasdasdas', 0, '2015-07-03 14:27:13'),
-(11, 'gilberto', '5f4dcc3b5aa765d61d8327deb882cf99', 'sample@email.com', 'Administrator', '1', 'Gilbert', 0, '2015-07-13 05:07:58');
+(2, 'ardendeveloper', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', 2, '2015-06-05 05:30:12'),
+(3, 'ardenity', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', 3, '2015-06-05 21:34:52'),
+(4, 'ardents1', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Administrator', 'What is your pet name?', 'ardents', 4, '2015-06-05 05:28:36'),
+(5, 'ardendeveloper1', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', 5, '2015-06-05 05:30:12'),
+(6, 'ardenity1', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', 6, '2015-06-05 21:34:52'),
+(7, 'ardents2', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Administrator', 'What is your pet name?', 'ardents', 7, '2015-06-05 05:28:36'),
+(8, 'ardendeveloper2', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', 8, '2015-06-05 05:30:12'),
+(9, 'ardenity2', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', 9, '2015-06-05 21:34:52'),
+(10, 'ardents3', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Administrator', 'What is your pet name?', 'ardents', 10, '2015-06-05 05:28:36'),
+(11, 'ardendeveloper3', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardendeveloper@gmail.com', 'Employee', '2', 'acs', 11, '2015-06-05 05:30:12'),
+(12, 'ardenity4', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', 12, '2015-06-05 21:34:52'),
+(13, 'ardenity5', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'Manager', '1', 'pito', 13, '2015-06-05 21:34:52');
 
 -- --------------------------------------------------------
 
@@ -1529,6 +1480,7 @@ CREATE TABLE IF NOT EXISTS `view_all_project_materials` (
 ,`project_name` varchar(50)
 ,`date_issued` datetime
 ,`item_id` varchar(10)
+,`project_id` varchar(5)
 );
 
 -- --------------------------------------------------------
@@ -1549,6 +1501,7 @@ CREATE TABLE IF NOT EXISTS `view_assigned_assets` (
 ,`model` varchar(50)
 ,`warranty_end_date` date
 ,`assigned_date` datetime
+,`emp_id` int(5)
 );
 
 -- --------------------------------------------------------
@@ -1557,18 +1510,6 @@ CREATE TABLE IF NOT EXISTS `view_assigned_assets` (
 -- Stand-in structure for view `view_attendance`
 --
 CREATE TABLE IF NOT EXISTS `view_attendance` (
-`emp_id` int(5)
-,`first_name` varchar(50)
-,`middle_name` varchar(50)
-,`last_name` varchar(50)
-,`position` varchar(50)
-,`datelog` datetime
-,`logdate` varchar(10)
-,`time_in` varchar(10)
-,`time_out` varchar(10)
-,`man_hours` varchar(69)
-,`tardiness` bigint(21)
-,`overtime` varchar(67)
 );
 
 -- --------------------------------------------------------
@@ -1581,6 +1522,23 @@ CREATE TABLE IF NOT EXISTS `view_dependents` (
 ,`dependent_fname` varchar(50)
 ,`dependent_lname` varchar(50)
 ,`relationship` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_employees_list`
+--
+CREATE TABLE IF NOT EXISTS `view_employees_list` (
+`emp_id` int(5)
+,`job_title` varchar(50)
+,`employment_type` varchar(255)
+,`department` varchar(50)
+,`status` varchar(50)
+,`rank` varchar(50)
+,`first_name` varchar(50)
+,`middle_name` varchar(50)
+,`last_name` varchar(50)
 );
 
 -- --------------------------------------------------------
@@ -1629,7 +1587,6 @@ CREATE TABLE IF NOT EXISTS `view_employee_info` (
 ,`contact_rel` varchar(30)
 ,`contact_num` int(20)
 ,`user_id` int(5)
-,`job_category` varchar(50)
 ,`job_title` varchar(50)
 ,`probationary_date` varchar(10)
 ,`permanency_date` varchar(10)
@@ -1638,6 +1595,8 @@ CREATE TABLE IF NOT EXISTS `view_employee_info` (
 ,`philhealth_no` int(12)
 ,`pagibig_no` int(12)
 ,`tin` int(12)
+,`rank` varchar(50)
+,`employment_type` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -1656,15 +1615,43 @@ CREATE TABLE IF NOT EXISTS `view_leave_left` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `view_materials`
+--
+CREATE TABLE IF NOT EXISTS `view_materials` (
+`item_name` varchar(50)
+,`item_id` varchar(10)
+,`quantity` int(10)
+,`price` decimal(10,2)
+,`project_id` varchar(10)
+,`date_issued` datetime
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `view_project_cost`
 --
 CREATE TABLE IF NOT EXISTS `view_project_cost` (
-`project_id` varchar(5)
+`starting_date` varchar(74)
+,`ending_date` varchar(73)
+,`project_id` varchar(5)
 ,`project_name` varchar(50)
 ,`client_name` varchar(50)
-,`price` decimal(42,2)
-,`starting_date` varchar(74)
-,`ending_date` varchar(73)
+,`date_added` datetime
+,`total_expense` decimal(42,2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_project_workers`
+--
+CREATE TABLE IF NOT EXISTS `view_project_workers` (
+`project_id` varchar(5)
+,`project_name` varchar(50)
+,`name` varchar(152)
+,`assigned_date` date
+,`emp_id` int(5)
 );
 
 -- --------------------------------------------------------
@@ -1687,7 +1674,8 @@ CREATE TABLE IF NOT EXISTS `view_stocks` (
 -- Structure for view `view_active_employees`
 --
 DROP TABLE IF EXISTS `view_active_employees`;
--- in use(#1356 - View 'system_draft.view_active_employees' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them)
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_active_employees` AS select `employees`.`emp_id` AS `emp_id`,`employees`.`first_name` AS `first_name`,`employees`.`middle_name` AS `middle_name`,`employees`.`last_name` AS `last_name`,`tbl_emp_history`.`position` AS `position`,`tbl_emp_history`.`department` AS `department`,`tbl_emp_history`.`salary` AS `salary`,date_format(max(`tbl_emp_history`.`start_date`),'%m/%d/%Y') AS `start_date`,date_format(max(`tbl_emp_history`.`end_date`),'%m/%d/%Y') AS `end_date` from (`employees` join `tbl_emp_history` on((`tbl_emp_history`.`emp_id` = `employees`.`emp_id`))) where (`tbl_emp_history`.`end_date` > now()) group by `tbl_emp_history`.`emp_id`;
 
 -- --------------------------------------------------------
 
@@ -1696,7 +1684,7 @@ DROP TABLE IF EXISTS `view_active_employees`;
 --
 DROP TABLE IF EXISTS `view_all_project_materials`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_all_project_materials` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_materials`.`quantity` AS `quantity`,`tbl_materials`.`price` AS `price`,`tbl_project`.`project_name` AS `project_name`,`tbl_materials`.`date_issued` AS `date_issued`,`tbl_stock_info`.`item_id` AS `item_id` from ((`tbl_project` join `tbl_materials` on((`tbl_materials`.`project_id` = `tbl_project`.`project_id`))) join `tbl_stock_info` on((`tbl_materials`.`item_id` = `tbl_stock_info`.`item_id`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_all_project_materials` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_materials`.`quantity` AS `quantity`,`tbl_materials`.`price` AS `price`,`tbl_project`.`project_name` AS `project_name`,`tbl_materials`.`date_issued` AS `date_issued`,`tbl_stock_info`.`item_id` AS `item_id`,`tbl_project`.`project_id` AS `project_id` from ((`tbl_project` join `tbl_materials` on((`tbl_materials`.`project_id` = `tbl_project`.`project_id`))) join `tbl_stock_info` on((`tbl_materials`.`item_id` = `tbl_stock_info`.`item_id`)));
 
 -- --------------------------------------------------------
 
@@ -1705,7 +1693,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_assigned_assets`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_assigned_assets` AS select `tbl_asset_info`.`asset_id` AS `asset_id`,`tbl_asset_info`.`asset_name` AS `asset_name`,`tbl_stocks_category`.`category_name` AS `category_name`,`tbl_assets`.`asset_status` AS `asset_status`,concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_vendor`.`vendor_name` AS `vendor_name`,`tbl_asset_info`.`asset_description` AS `asset_description`,`tbl_asset_info`.`brand` AS `brand`,`tbl_asset_info`.`serial_number` AS `serial_number`,`tbl_asset_info`.`model` AS `model`,`tbl_asset_info`.`warranty_end_date` AS `warranty_end_date`,`tbl_assets`.`assigned_date` AS `assigned_date` from ((((`tbl_stocks_category` join `tbl_asset_info` on((`tbl_asset_info`.`category_id` = `tbl_stocks_category`.`category_id`))) join `tbl_assets` on((`tbl_assets`.`asset_id` = `tbl_asset_info`.`asset_id`))) join `tbl_emp_info` on((`tbl_assets`.`employee_id` = `tbl_emp_info`.`emp_id`))) join `tbl_vendor` on((`tbl_vendor`.`vendor_id` = `tbl_asset_info`.`vendor_id`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_assigned_assets` AS select `tbl_asset_info`.`asset_id` AS `asset_id`,`tbl_asset_info`.`asset_name` AS `asset_name`,`tbl_stocks_category`.`category_name` AS `category_name`,`tbl_assets`.`asset_status` AS `asset_status`,concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_vendor`.`vendor_name` AS `vendor_name`,`tbl_asset_info`.`asset_description` AS `asset_description`,`tbl_asset_info`.`brand` AS `brand`,`tbl_asset_info`.`serial_number` AS `serial_number`,`tbl_asset_info`.`model` AS `model`,`tbl_asset_info`.`warranty_end_date` AS `warranty_end_date`,`tbl_assets`.`assigned_date` AS `assigned_date`,`tbl_emp_info`.`emp_id` AS `emp_id` from ((((`tbl_stocks_category` join `tbl_asset_info` on((`tbl_asset_info`.`category_id` = `tbl_stocks_category`.`category_id`))) join `tbl_assets` on((`tbl_assets`.`asset_id` = `tbl_asset_info`.`asset_id`))) join `tbl_emp_info` on((`tbl_assets`.`employee_id` = `tbl_emp_info`.`emp_id`))) join `tbl_vendor` on((`tbl_vendor`.`vendor_id` = `tbl_asset_info`.`vendor_id`)));
 
 -- --------------------------------------------------------
 
@@ -1728,11 +1716,20 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `view_employees_list`
+--
+DROP TABLE IF EXISTS `view_employees_list`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_employees_list` AS select `tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_emp_history`.`job_title` AS `job_title`,`tbl_emp_history`.`employment_type` AS `employment_type`,`tbl_emp_history`.`department` AS `department`,`tbl_emp_history`.`status` AS `status`,`tbl_emp_history`.`rank` AS `rank`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name` from (`tbl_emp_info` join `tbl_emp_history` on((`tbl_emp_info`.`emp_id` = `tbl_emp_history`.`emp_id`)));
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `view_employee_info`
 --
 DROP TABLE IF EXISTS `view_employee_info`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_employee_info` AS select `tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name`,`tbl_emp_info`.`gender` AS `gender`,date_format(`tbl_emp_info`.`birthday`,'%m-%d-%Y') AS `birthday`,`tbl_emp_info`.`marital_status` AS `marital_status`,`tbl_address`.`street` AS `street`,`tbl_address`.`barangay` AS `barangay`,`tbl_address`.`city` AS `city`,`tbl_address`.`state` AS `state`,`tbl_address`.`zip` AS `zip`,`tbl_address`.`country` AS `country`,`tbl_contact_number`.`mobile_number` AS `mobile_number`,`tbl_contact_number`.`tel_number` AS `tel_number`,`tbl_school`.`primary_name` AS `primary_name`,`tbl_school`.`primary_address` AS `primary_address`,`tbl_school`.`primary_year` AS `primary_year`,`tbl_school`.`secondary_name` AS `secondary_name`,`tbl_school`.`secondary_address` AS `secondary_address`,`tbl_school`.`secondary_year` AS `secondary_year`,`tbl_school`.`tertiary_name` AS `tertiary_name`,`tbl_school`.`tertiary_address` AS `tertiary_address`,`tbl_school`.`tertiary_year` AS `tertiary_year`,`tbl_user`.`username` AS `username`,`tbl_user`.`password` AS `password`,`tbl_user`.`email` AS `email`,`tbl_user`.`user_level` AS `user_level`,`tbl_user`.`secret_question` AS `secret_question`,`tbl_user`.`secret_answer` AS `secret_answer`,`tbl_emp_history`.`department` AS `department`,date_format(`tbl_emp_history`.`start_date`,'%m-%d-%Y') AS `start_date`,date_format(`tbl_emp_history`.`end_date`,'%m-%d-%Y') AS `end_date`,`tbl_emp_history`.`salary` AS `salary`,`tbl_emp_history`.`pay_grade` AS `pay_grade`,`tbl_emp_history`.`status` AS `status`,`tbl_contact_person`.`contact_person` AS `contact_person`,`tbl_contact_person`.`contact_rel` AS `contact_rel`,`tbl_contact_person`.`contact_num` AS `contact_num`,`tbl_user`.`user_id` AS `user_id`,`tbl_emp_history`.`job_category` AS `job_category`,`tbl_emp_history`.`job_title` AS `job_title`,date_format(`tbl_emp_history`.`probationary_date`,'%m-%d-%Y') AS `probationary_date`,date_format(`tbl_emp_history`.`permanency_date`,'%m-%d-%Y') AS `permanency_date`,count(`tbl_dependent_info`.`dependent_id`) AS `num_dependents`,`tbl_governmentid`.`sss_no` AS `sss_no`,`tbl_governmentid`.`philhealth_no` AS `philhealth_no`,`tbl_governmentid`.`pagibig_no` AS `pagibig_no`,`tbl_governmentid`.`tin` AS `tin` from ((((((((`tbl_emp_info` join `tbl_contact_number` on((`tbl_emp_info`.`emp_id` = `tbl_contact_number`.`employee_id`))) join `tbl_address` on((`tbl_emp_info`.`emp_id` = `tbl_address`.`employee_id`))) join `tbl_emp_history` on((`tbl_emp_info`.`emp_id` = `tbl_emp_history`.`emp_id`))) join `tbl_school` on((`tbl_emp_info`.`emp_id` = `tbl_school`.`employee_id`))) join `tbl_user` on((`tbl_emp_info`.`emp_id` = `tbl_user`.`employee_id`))) join `tbl_contact_person` on((`tbl_emp_info`.`emp_id` = `tbl_contact_person`.`employee_id`))) join `tbl_dependent_info` on((`tbl_emp_info`.`emp_id` = `tbl_dependent_info`.`employee_id`))) join `tbl_governmentid` on((`tbl_emp_info`.`emp_id` = `tbl_governmentid`.`employee_id`))) group by `tbl_emp_info`.`emp_id`,`tbl_emp_info`.`first_name`,`tbl_emp_info`.`middle_name`,`tbl_emp_info`.`last_name`,`tbl_emp_info`.`gender`,`tbl_emp_info`.`marital_status`,`tbl_address`.`street`,`tbl_address`.`barangay`,`tbl_address`.`city`,`tbl_address`.`state`,`tbl_address`.`zip`,`tbl_address`.`country`,`tbl_contact_number`.`mobile_number`,`tbl_contact_number`.`tel_number`,`tbl_school`.`primary_name`,`tbl_school`.`primary_address`,`tbl_school`.`primary_year`,`tbl_school`.`secondary_name`,`tbl_school`.`secondary_address`,`tbl_school`.`secondary_year`,`tbl_school`.`tertiary_name`,`tbl_school`.`tertiary_address`,`tbl_school`.`tertiary_year`,`tbl_user`.`username`,`tbl_user`.`password`,`tbl_user`.`email`,`tbl_user`.`user_level`,`tbl_user`.`secret_question`,`tbl_user`.`secret_answer`,`tbl_emp_history`.`department`,`tbl_emp_history`.`start_date`,`tbl_emp_history`.`end_date`,`tbl_emp_history`.`salary`,`tbl_emp_history`.`pay_grade`,`tbl_emp_history`.`status`,`tbl_contact_person`.`contact_person`,`tbl_contact_person`.`contact_rel`,`tbl_contact_person`.`contact_num`,`tbl_user`.`user_id`,`tbl_emp_history`.`job_category`,`tbl_emp_history`.`job_title`,`tbl_emp_history`.`probationary_date`,`tbl_emp_history`.`permanency_date`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_employee_info` AS select `tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name`,`tbl_emp_info`.`gender` AS `gender`,date_format(`tbl_emp_info`.`birthday`,'%m-%d-%Y') AS `birthday`,`tbl_emp_info`.`marital_status` AS `marital_status`,`tbl_address`.`street` AS `street`,`tbl_address`.`barangay` AS `barangay`,`tbl_address`.`city` AS `city`,`tbl_address`.`state` AS `state`,`tbl_address`.`zip` AS `zip`,`tbl_address`.`country` AS `country`,`tbl_contact_number`.`mobile_number` AS `mobile_number`,`tbl_contact_number`.`tel_number` AS `tel_number`,`tbl_school`.`primary_name` AS `primary_name`,`tbl_school`.`primary_address` AS `primary_address`,`tbl_school`.`primary_year` AS `primary_year`,`tbl_school`.`secondary_name` AS `secondary_name`,`tbl_school`.`secondary_address` AS `secondary_address`,`tbl_school`.`secondary_year` AS `secondary_year`,`tbl_school`.`tertiary_name` AS `tertiary_name`,`tbl_school`.`tertiary_address` AS `tertiary_address`,`tbl_school`.`tertiary_year` AS `tertiary_year`,`tbl_user`.`username` AS `username`,`tbl_user`.`password` AS `password`,`tbl_user`.`email` AS `email`,`tbl_user`.`user_level` AS `user_level`,`tbl_user`.`secret_question` AS `secret_question`,`tbl_user`.`secret_answer` AS `secret_answer`,`tbl_emp_history`.`department` AS `department`,date_format(`tbl_emp_history`.`start_date`,'%m-%d-%Y') AS `start_date`,date_format(`tbl_emp_history`.`end_date`,'%m-%d-%Y') AS `end_date`,`tbl_emp_history`.`salary` AS `salary`,`tbl_emp_history`.`pay_grade` AS `pay_grade`,`tbl_emp_history`.`status` AS `status`,`tbl_contact_person`.`contact_person` AS `contact_person`,`tbl_contact_person`.`contact_rel` AS `contact_rel`,`tbl_contact_person`.`contact_num` AS `contact_num`,`tbl_user`.`user_id` AS `user_id`,`tbl_emp_history`.`job_title` AS `job_title`,date_format(`tbl_emp_history`.`probationary_date`,'%m-%d-%Y') AS `probationary_date`,date_format(`tbl_emp_history`.`permanency_date`,'%m-%d-%Y') AS `permanency_date`,count(`tbl_dependent_info`.`dependent_id`) AS `num_dependents`,`tbl_governmentid`.`sss_no` AS `sss_no`,`tbl_governmentid`.`philhealth_no` AS `philhealth_no`,`tbl_governmentid`.`pagibig_no` AS `pagibig_no`,`tbl_governmentid`.`tin` AS `tin`,`tbl_emp_history`.`rank` AS `rank`,`tbl_emp_history`.`employment_type` AS `employment_type` from ((((((((`tbl_emp_info` join `tbl_contact_number` on((`tbl_emp_info`.`emp_id` = `tbl_contact_number`.`employee_id`))) join `tbl_address` on((`tbl_emp_info`.`emp_id` = `tbl_address`.`employee_id`))) join `tbl_emp_history` on((`tbl_emp_info`.`emp_id` = `tbl_emp_history`.`emp_id`))) join `tbl_school` on((`tbl_emp_info`.`emp_id` = `tbl_school`.`employee_id`))) join `tbl_user` on((`tbl_emp_info`.`emp_id` = `tbl_user`.`employee_id`))) join `tbl_contact_person` on((`tbl_emp_info`.`emp_id` = `tbl_contact_person`.`employee_id`))) join `tbl_dependent_info` on((`tbl_emp_info`.`emp_id` = `tbl_dependent_info`.`employee_id`))) join `tbl_governmentid` on((`tbl_emp_info`.`emp_id` = `tbl_governmentid`.`employee_id`))) group by `tbl_emp_info`.`emp_id`,`tbl_emp_info`.`first_name`,`tbl_emp_info`.`middle_name`,`tbl_emp_info`.`last_name`,`tbl_emp_info`.`gender`,`tbl_emp_info`.`marital_status`,`tbl_address`.`street`,`tbl_address`.`barangay`,`tbl_address`.`city`,`tbl_address`.`state`,`tbl_address`.`zip`,`tbl_address`.`country`,`tbl_contact_number`.`mobile_number`,`tbl_contact_number`.`tel_number`,`tbl_school`.`primary_name`,`tbl_school`.`primary_address`,`tbl_school`.`primary_year`,`tbl_school`.`secondary_name`,`tbl_school`.`secondary_address`,`tbl_school`.`secondary_year`,`tbl_school`.`tertiary_name`,`tbl_school`.`tertiary_address`,`tbl_school`.`tertiary_year`,`tbl_user`.`username`,`tbl_user`.`password`,`tbl_user`.`email`,`tbl_user`.`user_level`,`tbl_user`.`secret_question`,`tbl_user`.`secret_answer`,`tbl_emp_history`.`department`,`tbl_emp_history`.`start_date`,`tbl_emp_history`.`end_date`,`tbl_emp_history`.`salary`,`tbl_emp_history`.`pay_grade`,`tbl_emp_history`.`status`,`tbl_contact_person`.`contact_person`,`tbl_contact_person`.`contact_rel`,`tbl_contact_person`.`contact_num`,`tbl_user`.`user_id`,`tbl_emp_history`.`job_title`,`tbl_emp_history`.`probationary_date`,`tbl_emp_history`.`permanency_date`;
 
 -- --------------------------------------------------------
 
@@ -1746,11 +1743,29 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `view_materials`
+--
+DROP TABLE IF EXISTS `view_materials`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_materials` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_materials`.`item_id` AS `item_id`,`tbl_materials`.`quantity` AS `quantity`,`tbl_materials`.`price` AS `price`,`tbl_materials`.`project_id` AS `project_id`,`tbl_materials`.`date_issued` AS `date_issued` from (`tbl_materials` join `tbl_stock_info` on((`tbl_materials`.`item_id` = `tbl_stock_info`.`item_id`)));
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `view_project_cost`
 --
 DROP TABLE IF EXISTS `view_project_cost`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_project_cost` AS select `tbl_project`.`project_id` AS `project_id`,`tbl_project`.`project_name` AS `project_name`,`tbl_client`.`client_name` AS `client_name`,sum((`tbl_materials`.`price` * `tbl_materials`.`quantity`)) AS `price`,date_format(`tbl_project`.`starting_date`,'%M %d, 	%Y') AS `starting_date`,date_format(`tbl_project`.`ending_date`,'%M %d, %Y') AS `ending_date` from ((`tbl_materials` join `tbl_project` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`))) join `tbl_client` on((`tbl_client`.`client_id` = `tbl_project`.`client`))) group by `tbl_project`.`project_id`,`tbl_project`.`project_name`,`tbl_client`.`client_name`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_project_cost` AS select date_format(`tbl_project`.`starting_date`,'%M %d, 	%Y') AS `starting_date`,date_format(`tbl_project`.`ending_date`,'%M %d, %Y') AS `ending_date`,`tbl_project`.`project_id` AS `project_id`,`tbl_project`.`project_name` AS `project_name`,`tbl_client`.`client_name` AS `client_name`,`tbl_project`.`date_added` AS `date_added`,sum((`tbl_materials`.`quantity` * `tbl_materials`.`price`)) AS `total_expense` from ((`tbl_project` join `tbl_client` on((`tbl_client`.`client_id` = `tbl_project`.`client`))) join `tbl_materials` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`))) group by `tbl_project`.`project_id`,`tbl_project`.`project_name`,`tbl_client`.`client_name`,`tbl_project`.`date_added`;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_project_workers`
+--
+DROP TABLE IF EXISTS `view_project_workers`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_project_workers` AS select `tbl_project`.`project_id` AS `project_id`,`tbl_project`.`project_name` AS `project_name`,concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_project_workers`.`assigned_date` AS `assigned_date`,`tbl_emp_info`.`emp_id` AS `emp_id` from ((`tbl_project` join `tbl_project_workers` on((`tbl_project`.`project_id` = `tbl_project_workers`.`project_id`))) join `tbl_emp_info` on((`tbl_project_workers`.`employee_id` = `tbl_emp_info`.`emp_id`)));
 
 -- --------------------------------------------------------
 
@@ -1766,28 +1781,10 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 
 --
--- Indexes for table `assets`
---
-ALTER TABLE `assets`
-  ADD PRIMARY KEY (`asset_id`);
-
---
--- Indexes for table `employees`
---
-ALTER TABLE `employees`
-  ADD PRIMARY KEY (`emp_id`);
-
---
 -- Indexes for table `emp_performance`
 --
 ALTER TABLE `emp_performance`
   ADD PRIMARY KEY (`performance_id`);
-
---
--- Indexes for table `leaves`
---
-ALTER TABLE `leaves`
-  ADD PRIMARY KEY (`leave_id`);
 
 --
 -- Indexes for table `tbl_address`
@@ -1824,12 +1821,6 @@ ALTER TABLE `tbl_attendance`
 --
 ALTER TABLE `tbl_client`
   ADD PRIMARY KEY (`client_id`);
-
---
--- Indexes for table `tbl_contact_person`
---
-ALTER TABLE `tbl_contact_person`
-  ADD PRIMARY KEY (`cperson_id`);
 
 --
 -- Indexes for table `tbl_departments`
@@ -1944,20 +1935,10 @@ ALTER TABLE `user_account`
 --
 
 --
--- AUTO_INCREMENT for table `employees`
---
-ALTER TABLE `employees`
-  MODIFY `emp_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
---
 -- AUTO_INCREMENT for table `emp_performance`
 --
 ALTER TABLE `emp_performance`
   MODIFY `performance_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `leaves`
---
-ALTER TABLE `leaves`
-  MODIFY `leave_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tbl_allowances`
 --
@@ -2012,7 +1993,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
