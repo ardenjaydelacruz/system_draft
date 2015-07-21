@@ -47,7 +47,7 @@ class Ems extends MY_Controller
 
     public function add_employee()
     {
-        Employees_model::insert_employee_data();
+        Emp_info_model::insert_employee_data();
         $data['pageTitle'] = 'Add Employees - MSInc.';
         $data['content'] = 'employee/add_employee';
         $this->load->view($this->master_layout, $data);
@@ -55,7 +55,7 @@ class Ems extends MY_Controller
 
     public function delete_employee()
     {
-        $emp = Employees_model::find($this->input->get('emp_id'));
+        $emp = Emp_info_model::find($this->input->get('emp_id'));
         $emp->delete();
         $this->session->set_userdata('deleted', 1);
         redirect('ems/employees');
@@ -66,6 +66,8 @@ class Ems extends MY_Controller
         $id = $this->input->get('emp_id');
         $data['record'] = Dependent_model::find('all',array('conditions'=>"employee_id =$id")); //get dependents by id
         $data['leaves_left'] = Leaves_left_model::find('all',array('conditions'=>"emp_id =$id"));
+        $data['asset'] = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id"));
+        $data['project'] = View_project_workers::find('all',array('conditions'=>"emp_id =$id"));
         $data['row'] = View_employee_info::find($id); //get user details by id
         $data['pageTitle'] = 'Employee Details - MSInc.';
         $data['content'] = 'employee/employee_details';
@@ -84,10 +86,10 @@ class Ems extends MY_Controller
     public function update_employee()
     {
         $id = $this->input->get('emp_id');
-        $ems = Employees_model::find($id);
+        $ems = Emp_info_model::find($id);
         $user = Users::find_by_employee_id($id);
 
-        if ($ems->update_attributes(Employees_model::updateInfo()) || $user->update_attributes(Users::userDetails())) {
+        if ($ems->update_attributes(Emp_info_model::updateInfo()) || $user->update_attributes(Users::userDetails())) {
             $this->session->set_userdata('edited', 1);
             redirect("ems/view_details?emp_id=$id");
         }
@@ -100,7 +102,7 @@ class Ems extends MY_Controller
     {
         $id = $this->input->get('emp_id');
         if ($this->input->post('btnUpload')) {
-            if (Employees_model::do_upload($id)) {
+            if (Emp_info_model::do_upload($id)) {
                 redirect("ems/view_details?emp_id=$id");
             }
         }
@@ -126,7 +128,7 @@ class Ems extends MY_Controller
 
     public function evaluate_employee()
     {
-        $row = Employees_model::find($this->input->get('emp_id'));
+        $row = Emp_info_model::find($this->input->get('emp_id'));
         $data['name'] = $row->first_name . ' ' . $row->middle_name . ' ' . $row->last_name;
         $data['pageTitle'] = 'Evaluate Employee - MSInc.';
         $data['content'] = 'employee/evaluate_employee';
@@ -150,7 +152,7 @@ class Ems extends MY_Controller
     public function request_leave()
     {
         $id = $this->input->get('emp_id');
-        $data['row'] = Employees_model::find($id);
+        $data['row'] = Emp_info_model::find($id);
         $data['pageTitle'] = 'Request Leave - MSInc.';
         $data['content'] = 'employee/request_leave';
         $this->load->view($this->master_layout, $data);
@@ -168,7 +170,7 @@ class Ems extends MY_Controller
     public function update_leave_status()
     {
         if ($this->input->get('leave_status') == 'Approved') {
-            $data = Employees_model::find($this->input->get('emp_id'));
+            $data = Emp_info_model::find($this->input->get('emp_id'));
             $data->leaves = $this->input->get('leaves') - $this->input->get('days');
             $data->save();
         }

@@ -670,25 +670,67 @@
                                     </div>
                                 </section><!-- Account -->
 
-                                  <section class="tab-pane" id="tab_6">
-                                    <div class="form-horizontal">
-                                       <h3>Leave Details</h3><hr>
-                                       <table class="table table-hovered table-striped table-bordered">
-                                           <thead>
-                                                <th class="text-center" >Leave ID</th>
-                                               <th class="text-center">Leave Type</th>
-                                               <th class="text-center">Leaves Remaining (Days)</th>
-                                           </thead>
-                                           <?php $flag=1; foreach($leaves_left as $leave) { ?>
-                                           <tr>
-                                               <th class="text-center"><?php echo $leave->leave_type_id; ?></th>
-                                               <td><?php echo $leave->leave_type_name; ?></td>
-                                               <td><input type="text" class="form-control" disabled value="<?php echo $leave->leave_remaining; ?>" name="txtLeft<?php echo $leave->leave_type_id; ?>" /></td>
-                                           </tr>
-                                           <?php } ?>
-                                       </table>
-                                    </div>
+                                <section class="tab-pane" id="tab_6">
+                                  <div class="form-horizontal">
+                                     <h3>Leave Details</h3><hr>
+                                     <table class="table table-hovered table-striped table-bordered">
+                                         <thead>
+                                              <th class="text-center" >Leave ID</th>
+                                             <th class="text-center">Leave Type</th>
+                                             <th class="text-center">Leaves Remaining (Days)</th>
+                                         </thead>
+                                         <?php $flag=1; foreach($leaves_left as $leave) { ?>
+                                         <tr>
+                                             <th class="text-center"><?php echo $leave->leave_type_id; ?></th>
+                                             <td><?php echo $leave->leave_type_name; ?></td>
+                                             <td><input type="text" class="form-control" disabled value="<?php echo $leave->leave_remaining; ?>" name="txtLeft<?php echo $leave->leave_type_id; ?>" /></td>
+                                         </tr>
+                                         <?php } ?>
+                                     </table>
+                                  </div>
                                 </section><!-- Leaves -->
+
+                                <section class="tab-pane" id="tab_7">
+                                  <div class="form-horizontal">
+                                     <h3>Assigned Assets</h3><hr>
+                                     <table class="table table-hovered table-striped table-bordered">
+                                         <thead>
+                                            <th class="text-center">Asset ID</th>
+                                            <th class="text-center">Asset Name</th>
+                                            <th class="text-center">Asset Status</th>
+                                            <th class="text-center">Assigned Date</th>
+                                         </thead>
+                                         <?php foreach ($asset as $eq) { ?>
+                                         <tr>
+                                            <th class="text-center"><?php echo $eq->asset_id; ?></th>
+                                            <td><?php echo $eq->asset_name; ?></td>
+                                            <td><?php echo $eq->asset_status;?></td>
+                                            <td><?php echo date_format($eq->assigned_date,'M d, Y'); ?></td>
+                                         </tr>
+                                         <?php } ?>
+                                     </table>
+                                  </div>
+                                </section><!-- Asset -->
+
+                                <section class="tab-pane" id="tab_8">
+                                  <div class="form-horizontal">
+                                     <h3>Active Projects</h3><hr>
+                                     <table class="table table-hovered table-striped table-bordered">
+                                         <thead>
+                                            <th class="text-center">Project ID</th>
+                                            <th class="text-center">Project Name</th>
+                                            <th class="text-center">Assigned Date</th>
+                                         </thead>
+                                         <?php foreach ($project as $proj) { ?>
+                                         <tr>
+                                            <th class="text-center"><?php echo $proj->project_id; ?></th>
+                                            <td><?php echo $proj->project_name; ?></td>
+                                            <td><?php echo date_format($proj->assigned_date,'M d, Y'); ?></td>
+                                         </tr>
+                                         <?php } ?>
+                                     </table>
+                                  </div>
+                                </section><!-- Asset -->
                               </div><!-- Tab-content -->
                            </div><!-- Navs -->
                         </div><!--Panel Body-->
