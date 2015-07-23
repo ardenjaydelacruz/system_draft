@@ -10,13 +10,13 @@ class Reports extends MY_Controller {
 	public function employees_list(){
 		$num = 0;
 		if ($this->input->post('btnFilter')){
-			$status = $this->input->post('txtStatus');
-			$job_title = $this->input->post('txtJobTitle');
-			$data['report'] = View_employee_info::find('all', array('conditions' => array('
-				status = ? AND job_title_name = ?',
-				$status , $job_title
-				)));
-			$num = count($data['report']);
+			$this->load->model('ems_model');
+			if ($this->ems_model->filterEmployee()!=false){
+				$data['report'] =  $this->ems_model->filterEmployee();
+				$num = count($data['report']);
+			} else {
+				$data['report'] = false;
+			}
 			// $data['report'] = View_employee_info::find('all',array('conditions' => array('project_id=?',$id)));
 		}
 		$data['departments'] = Departments_model::all();

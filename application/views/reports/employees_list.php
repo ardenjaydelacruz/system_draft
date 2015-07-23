@@ -52,7 +52,7 @@
                             <select name="txtEmploymentType" id="emp_name" class="form-control">
                                 <option value="">All Employment Types</option>
                                 <?php foreach ($employment_type as $row){ 
-                                    echo "<option value='$row->employment_type_id'>$row->employment_type </option>";
+                                    echo "<option value='$row->employment_type'>$row->employment_type </option>";
                                 } ?>
                             </select>
                         </div>
@@ -63,7 +63,7 @@
                             <select name="txtDepartment" id="emp_name" class="form-control">
                                 <option value="">All Departments</option>
                                 <?php foreach ($departments as $row){ 
-                                    echo "<option value='$row->department_id'>$row->department_name</option>";
+                                    echo "<option value='$row->department_name'>$row->department_name</option>";
                                 } ?>
                             </select>
                         </div>
@@ -81,8 +81,11 @@
                         <th class="table-head">Status</th>
                         <th class="table-head">Date Hired</th>
                     </thead>
+
                     <?php
-                    foreach ($report as $record) { ?>
+                    if ($report) {
+                        foreach ($report as $record) { 
+                    ?>
                     <tr>
                         <td align="center">
                             <?php echo $record->emp_id; ?>
@@ -105,14 +108,17 @@
                             } else {
                                 echo "<label class='label label-danger'>$record->status</label>";
                             }
-                           
                             ?>
                         </td>
                         <td align="center">
                             <?php echo $record->start_date; ?>
                         </td>
                     </tr>
-                    <?php } ?>
+                    <?php  }
+                        }  else {
+                            echo "0 record found.";
+                        }
+                    ?>
                 </table>
                 <?php } ?>
             </div>
