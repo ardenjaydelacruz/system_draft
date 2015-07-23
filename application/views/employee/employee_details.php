@@ -31,9 +31,9 @@
     $email = $row->email;
     $secret_question = $row->secret_question;
     $secret_answer = $row->secret_answer;
-    $job_title = $row->job_title;
+    $job_title = $row->job_title_name;
     $status = $row->status;
-    $department = $row->department;
+    $department = $row->department_name;
     $start_date = $row->start_date;
     $employment_type = $row->employment_type;
     $probationary_date = $row->probationary_date;

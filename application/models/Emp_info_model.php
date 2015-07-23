@@ -33,7 +33,7 @@ class Emp_info_model extends ActiveRecord\Model {
 			return FALSE;
 		}
 	}
-
+	
 	public function employeeInfo(){
 		$data = array (
 			'emp_id' => $this->input->post('txtEmpId'),

@@ -7,7 +7,6 @@
         } else {
             echo "<li class='active'>Employees</li>";
         }
-        $counter = 0;
         ?>
     </ol>
     <div class="container-fluid">
@@ -74,10 +73,10 @@
                                 <?php echo $row->last_name; ?>
                             </td>
                             <td>
-                                <?php echo $row->job_title; ?>
+                                <?php echo $row->job_title_name; ?>
                             </td>
                             <td>
-                                <?php echo $row->department; ?>
+                                <?php echo $row->department_name; ?>
                             </td>
                             <td class="text-center">
                                 <?php if ($row->status == 'Active'){
@@ -113,7 +112,7 @@
                         </a> -->
                             </td>
                         </tr>
-                        <?php $counter++; } ?>
+                        <?php } ?>
                 </table>
             </div>
         </div>

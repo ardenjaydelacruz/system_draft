@@ -29,7 +29,7 @@ class MY_Controller extends CI_Controller {
         }
     }
 
-     public function display_notif()
+     public function display_notif($message=null)
     {
         if ($this->session->userdata('added')) {
             $this->toast('Successful! Record has been added.', 'success');
@@ -54,6 +54,10 @@ class MY_Controller extends CI_Controller {
         if($this->session->userdata('registered')){
             $this->toast('Registration Successful!', 'success');
             $this->session->unset_userdata('registered');
+        }
+
+        if ($message!=null){
+            $this->toast($message, 'success');
         }
     }
 }
