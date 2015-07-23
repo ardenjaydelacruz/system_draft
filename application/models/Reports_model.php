@@ -1,0 +1,28 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+class Reports_model extends CI_Model {
+	public function filterEmployee(){
+		$status = $this->input->post('txtStatus');
+		$job_title = $this->input->post('txtJobTitle');
+		$department = $this->input->post('txtDepartment');
+		$employment_type = $this->input->post('txtEmploymentType');
+		if ($status){ $this->db->where('status',$this->input->post('txtStatus'));}
+		if ($job_title){ $this->db->where('job_title_name',$job_title);}
+		if ($department){ $this->db->where('department_name',$department);}
+		if ($employment_type){ $this->db->where('employment_type',$employment_type);}
+		return $this->db->get('view_employees_list')->result();
+		
+	}
+
+	public function filterProject(){
+		$status = $this->input->post('txtStatus');
+		$client = $this->input->post('txtClient');
+		if ($status=="Active"){
+			$this->db->where('ending_date >=', date('Y-m-d'));
+		} elseif ($status=="Inactive") {
+			$this->db->where('ending_date <', date('Y-m-d'));
+		}
+		if ($client){ $this->db->where('client_name',$client);}
+		return $this->db->get('view_project_cost')->result();
+	}
+}

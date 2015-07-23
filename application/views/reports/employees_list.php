@@ -91,7 +91,9 @@
                             <?php echo $record->emp_id; ?>
                         </td>
                         <td>
-                            <?php echo $record->first_name.' '.$record->middle_name.' '.$record->last_name; ?>
+                            <a href="<?php echo base_url('ems/view_details'); ?>?emp_id=<?php echo $record->emp_id; ?>">
+                                <?php echo $record->first_name.' '.$record->middle_name.' '.$record->last_name; ?>
+                            </a>
                         </td>
                         <td>
                             <?php echo $record->job_title_name; ?>

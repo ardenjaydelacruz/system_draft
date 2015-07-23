@@ -84,7 +84,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li><a href="<?php echo base_url();?>reports/employees_list"><i class="fa fa-group"></i> Employees Lists</a></li>
-							<li><a href="<?php echo base_url();?>ams/view_assets"><i class="fa fa-desktop"></i> Other Assets</a></li>
+							<li><a href="<?php echo base_url();?>reports/projects_list"><i class="fa fa-cogs"></i> Projects</a></li>
 							<li><a href="<?php echo base_url();?>ams/view_all_materials"><i class="fa fa-credit-card"></i> Bill of Materials</a></li>
 							<li><a href="<?php echo base_url();?>ams/view_projects"><i class="fa fa-cogs"></i> Projects</a></li>
 						</ul>
