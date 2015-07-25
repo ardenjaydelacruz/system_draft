@@ -49,4 +49,17 @@ class Reports extends MY_Controller {
         $this->load->view($this->master_layout, $data);
         if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
 	}
+
+	public function leave_list(){
+		$num = 0;
+		if ($this->input->post('btnFilter')){
+			$data['leaves'] =  $this->reports_model->getLeavesLeft();
+			$num = count($data['leaves']);
+		} 
+		$data['employee'] = View_employees_list::all();
+		$data['pageTitle'] = 'Projects Report - MSInc.';
+        $data['content'] = 'reports/leave_list';
+        $this->load->view($this->master_layout, $data);
+        if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
+	}
 }

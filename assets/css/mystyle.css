@@ -29,6 +29,11 @@ body {
 	margin-right: auto;
 }
 
+.bgRed {
+	background-color: red;
+	color:white;
+}
+
 /* =====================================
 				  Login
    ===================================== */

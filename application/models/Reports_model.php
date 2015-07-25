@@ -33,4 +33,10 @@ class Reports_model extends CI_Model {
 		if ($employee!='000'){ $this->db->where('emp_id',$employee);}
 		return $this->db->get('view_project_workers')->result();
 	}
+
+	public function getLeavesLeft(){
+		$employee = $this->input->post('txtEmployee');
+		if ($employee){ $this->db->where('emp_id',$employee);}
+		return $this->db->get('view_leave_remaining')->result();
+	}
 }
