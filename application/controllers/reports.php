@@ -62,4 +62,31 @@ class Reports extends MY_Controller {
         $this->load->view($this->master_layout, $data);
         if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
 	}
+
+	public function inventory_list(){
+		$num = 0;
+		if ($this->input->post('btnFilter')){
+			$data['inventory'] =  $this->reports_model->getInventory();
+			$num = count($data['inventory']);
+		} 
+		$data['category'] = Stock_category_model::all();
+		$data['pageTitle'] = 'Inventory Report - MSInc.';
+        $data['content'] = 'reports/inventory_list';
+        $this->load->view($this->master_layout, $data);
+        if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
+	}
+
+	public function asset_list(){
+		$num = 0;
+		if ($this->input->post('btnFilter')){
+			$data['asset'] =  $this->reports_model->getAsset();
+			$num = count($data['asset']);
+		} 
+		$data['category'] = Stock_category_model::all();
+		$data['employees'] = View_employees_list::all();
+		$data['pageTitle'] = 'Assigned Asset Report - MSInc.';
+        $data['content'] = 'reports/asset_list';
+        $this->load->view($this->master_layout, $data);
+        if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
+	}
 }

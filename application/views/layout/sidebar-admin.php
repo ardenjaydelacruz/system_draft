@@ -108,8 +108,8 @@
 							<i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="<?php echo base_url();?>ams/view_inventory"><i class="fa fa-cube"></i> Inventory</a></li>
-							<li><a href="<?php echo base_url();?>ams/view_assets"><i class="fa fa-desktop"></i> Other Assets</a></li>
+							<li><a href="<?php echo base_url();?>reports/inventory_list"><i class="fa fa-cube"></i> Inventory List</a></li>
+							<li><a href="<?php echo base_url();?>reports/asset_list"><i class="fa fa-desktop"></i> Other Assets</a></li>
 							<li><a href="<?php echo base_url();?>ams/view_all_materials"><i class="fa fa-credit-card"></i> Bill of Materials</a></li>
 							<li><a href="<?php echo base_url();?>ams/view_projects"><i class="fa fa-cogs"></i> Projects</a></li>
 						</ul>

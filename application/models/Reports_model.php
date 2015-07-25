@@ -11,7 +11,6 @@ class Reports_model extends CI_Model {
 		if ($department){ $this->db->where('department_name',$department);}
 		if ($employment_type){ $this->db->where('employment_type',$employment_type);}
 		return $this->db->get('view_employees_list')->result();
-		
 	}
 
 	public function filterProject(){
@@ -35,8 +34,24 @@ class Reports_model extends CI_Model {
 	}
 
 	public function getLeavesLeft(){
-		$employee = $this->input->post('txtEmployee');
+		$category = $this->input->post('txtEmployee');
 		if ($employee){ $this->db->where('emp_id',$employee);}
 		return $this->db->get('view_leave_remaining')->result();
+	}
+
+	public function getInventory(){
+		$category = $this->input->post('txtCategory');
+		if ($category){ $this->db->where('category_name',$category);}
+		return $this->db->get('view_stocks')->result();
+	}
+
+	public function getAsset(){
+		$category = $this->input->post('txtCategory');
+		$employee = $this->input->post('txtEmployee');
+		$status = $this->input->post('txtStatus');
+		if ($status){ $this->db->where('asset_status',$this->input->post('txtStatus'));}
+		if ($employee){ $this->db->where('emp_id',$employee);}
+		if ($category){ $this->db->where('category_name',$category);}
+		return $this->db->get('View_assigned_assets')->result();
 	}
 }
