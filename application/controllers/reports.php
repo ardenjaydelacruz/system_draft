@@ -10,10 +10,8 @@ class Reports extends MY_Controller {
 	public function employees_list(){
 		$num = 0;
 		if ($this->input->post('btnFilter')){
-		
-				$data['report'] =  $this->reports_model->filterEmployee();
-				$num = count($data['report']);
-		
+			$data['report'] =  $this->reports_model->filterEmployee();
+			$num = count($data['report']);
 		}
 		$data['departments'] = Departments_model::all();
 		$data['employment_type'] = Employment_type_model::all();
@@ -26,6 +24,19 @@ class Reports extends MY_Controller {
 	}
 
 	public function projects_list(){
+		$num = 0;
+		if ($this->input->post('btnFilter')){
+			$data['project'] =  $this->reports_model->filterProject();
+			$num = count($data['project']);
+		} 
+		$data ['client'] = Clients_model::all();
+		$data['pageTitle'] = 'Projects Report - MSInc.';
+        $data['content'] = 'reports/projects_list';
+        $this->load->view($this->master_layout, $data);
+        if ($num!=0){ $this->display_notif($num.' record found!'); }
+	}
+
+	public function project_workers(){
 		$num = 0;
 		if ($this->input->post('btnFilter')){
 			$data['project'] =  $this->reports_model->filterProject();

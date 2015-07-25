@@ -29,9 +29,10 @@
                         <div class="form-group">
                             <label for="status">Status:</label>
                             <select name="txtStatus" id="status" class="form-control">
-                            <option value="">---</option>
-                                <option value="Active" <?php if($this->input->post('txtStatus')=='Active') { echo "selected";}?> >Active</option>
-                                <option value="Inactive" <?php if($this->input->post('txtStatus')=='Inactive') { echo "selected";}?> >Inactive</option>
+                            <option value="">All Employees</option>
+                                <option value="Existing" <?php if($this->input->post('txtStatus')=='Existing') { echo "selected";}?> >Existing</option>
+                                <option value="Resigned" <?php if($this->input->post('txtStatus')=='Resigned') { echo "selected";}?> >Resigned</option>
+                                <option value="OnLeave" <?php if($this->input->post('txtStatus')=='OnLeave') { echo "selected";}?> >On - Leave</option>
                             </select>
                         </div>
                     </div>
@@ -105,10 +106,12 @@
                             <?php echo $record->employment_type; ?>
                         </td>
                         <td class="text-center">
-                            <?php if ($record->status == 'Active'){
+                            <?php if ($record->status == 'Existing'){
                                 echo "<label class='label label-success'>$record->status</label>"; 
-                            } else {
+                            } elseif ($record->status == 'Resigned') {
                                 echo "<label class='label label-danger'>$record->status</label>";
+                            } else {
+                                echo "<label class='label label-warning'>$record->status</label>";
                             }
                             ?>
                         </td>
