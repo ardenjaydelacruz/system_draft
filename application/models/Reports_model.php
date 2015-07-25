@@ -25,4 +25,12 @@ class Reports_model extends CI_Model {
 		if ($client){ $this->db->where('client_name',$client);}
 		return $this->db->get('view_project_cost')->result();
 	}
+
+	public function getProjectWorkers(){
+		$project = $this->input->post('txtProjectName');
+		$employee = $this->input->post('txtEmployee');
+		if ($project!='000'){ $this->db->where('project_name',$project);}
+		if ($employee!='000'){ $this->db->where('emp_id',$employee);}
+		return $this->db->get('view_project_workers')->result();
+	}
 }

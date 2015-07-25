@@ -20,7 +20,7 @@ class Reports extends MY_Controller {
         $data['pageTitle'] = 'Employees Reports - MSInc.';
         $data['content'] = 'reports/employees_list';
         $this->load->view($this->master_layout, $data);
-        if ($num!=0){ $this->display_notif($num.' record found!'); }
+        if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
 	}
 
 	public function projects_list(){
@@ -33,19 +33,20 @@ class Reports extends MY_Controller {
 		$data['pageTitle'] = 'Projects Report - MSInc.';
         $data['content'] = 'reports/projects_list';
         $this->load->view($this->master_layout, $data);
-        if ($num!=0){ $this->display_notif($num.' record found!'); }
+        if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
 	}
 
 	public function project_workers(){
 		$num = 0;
 		if ($this->input->post('btnFilter')){
-			$data['project'] =  $this->reports_model->filterProject();
+			$data['project'] =  $this->reports_model->getProjectWorkers();
 			$num = count($data['project']);
 		} 
-		$data ['client'] = Clients_model::all();
+		$data['projectName'] = Projects_model::all();
+		$data['employee'] = View_employees_list::all();
 		$data['pageTitle'] = 'Projects Report - MSInc.';
-        $data['content'] = 'reports/projects_list';
+        $data['content'] = 'reports/project_workers';
         $this->load->view($this->master_layout, $data);
-        if ($num!=0){ $this->display_notif($num.' record found!'); }
+        if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
 	}
 }
