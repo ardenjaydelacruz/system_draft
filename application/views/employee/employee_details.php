@@ -672,20 +672,28 @@
 
                                 <section class="tab-pane" id="tab_6">
                                   <div class="form-horizontal">
-                                     <h3>Leave Details</h3><hr>
-                                     <table class="table table-hovered table-striped table-bordered">
-                                         <thead>
-                                              <th class="text-center" >Leave ID</th>
-                                             <th class="text-center">Leave Type</th>
-                                             <th class="text-center">Leaves Remaining (Days)</th>
-                                         </thead>
-                                         <?php $flag=1; foreach($leaves_left as $leave) { ?>
-                                         <tr>
-                                             <th class="text-center"><?php echo $leave->leave_type_id; ?></th>
-                                             <td><?php echo $leave->leave_type_name; ?></td>
-                                             <td><input type="text" class="form-control" disabled value="<?php echo $leave->leave_remaining; ?>" name="txtLeft<?php echo $leave->leave_type_id; ?>" /></td>
-                                         </tr>
-                                         <?php } ?>
+                                    <h3>Leave Details</h3><hr>
+                                    <table class="table table-hovered table-striped table-bordered">
+                                        <thead>
+                                             <th class="text-center">Birthday Leave</th>
+                                             <th class="text-center">Mandatory Leave</th>
+                                             <th class="text-center">Maternity Leave</th>
+                                             <th class="text-center">Paternity Leave</th>
+                                             <th class="text-center">Sick Leave</th>
+                                             <th class="text-center">Vacation Leave</th>
+                                             <th class="text-center">Total Leaves Left</th>
+                                        </thead>
+                                           <?php foreach ($leaves as $row) { ?>
+                                             <tr>
+                                                  <td class="text-center <?php if ($row->birthday_leave==0) echo 'bgRed'; ?>"><?php echo $row->birthday_leave; ?></td>
+                                                  <td class="text-center <?php if ($row->mandatory_leave==0) echo 'bgRed'; ?>"><?php echo $row->mandatory_leave; ?></td>
+                                                  <td class="text-center <?php if ($row->maternity_leave==0) echo 'bgRed'; ?>"><?php echo $row->maternity_leave; ?></td>
+                                                  <td class="text-center <?php if ($row->paternity_leave==0) echo 'bgRed'; ?>"><?php echo $row->paternity_leave; ?></td>
+                                                  <td class="text-center <?php if ($row->sick_leave==0) echo 'bgRed'; ?>"><?php echo $row->sick_leave; ?></td>
+                                                  <td class="text-center <?php if ($row->vacation_leave==0) echo 'bgRed'; ?>"><?php echo $row->vacation_leave; ?></td>
+                                                  <th class="text-center success <?php if ($row->total_leave==0) echo 'bgRed'; ?>"><?php echo $row->total_leave; ?></th>
+                                              </tr>
+                                           <?php } ?>
                                      </table>
                                   </div>
                                 </section><!-- Leaves -->
