@@ -62,40 +62,40 @@
                 </form>
                 <?php if ($this->input->post('btnFilter')) { ?>
                     <table class="table table-striped table-hover table-bordered">				
-						<thead >
-							<th class="table-head">Asset ID</th>
-							<th class="table-head">Asset Name</th>
-							<th class="table-head">Category</th>
-							<th class="table-head">Status</th>
-							<th class="table-head">Assigned Employee</th>
-							<th class="table-head">Manage</th>
-						</thead>
-						<?php 
-						foreach ($asset as $row) {	?>
-						<tr>
-							<td align="center"><?php echo $row->asset_id; ?></td>
-							<td><?php echo $row->asset_name; ?></td>
-							<td><?php echo $row->category_name; ?></td>
-							<td><?php echo $row->asset_status; ?></td>
-							<td><?php echo $row->name; ?></td>
-							<td align="center">
-							<a href="<?php echo base_url();?>ams/view_asset_details?asset_id=<?php echo $row->asset_id; ?>">
-								<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Asset">
-									<i class="fa fa-user"></i>
-								</button>
-							</a>
-							<a href="<?php echo base_url();?>ams/assign_asset?asset_id=<?php echo $row->asset_id; ?>">
-							<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Assign Asset">
-								<i class="fa fa-pencil"></i>
-							</button>
-							</a>
-							<button class="btn btn-danger btn-xs" onclick=deleteAsset(<?php echo $row->asset_id; ?>,'<?php echo base_url();?>ams/') data-toggle="tooltip" data-placement="top" title="Delete Asset">
-								<i class="fa fa-trash-o"></i>
-							</button>
-							</td>
-						</tr>
-						<?php } ?>
-					</table>
+											<thead >
+												<th class="table-head">Asset ID</th>
+												<th class="table-head">Asset Name</th>
+												<th class="table-head">Category</th>
+												<th class="table-head">Status</th>
+												<th class="table-head">Assigned Employee</th>
+												<th class="table-head">Manage</th>
+											</thead>
+											<?php 
+											foreach ($asset as $row) {	?>
+											<tr>
+												<td align="center"><?php echo $row->asset_id; ?></td>
+												<td><?php echo $row->asset_name; ?></td>
+												<td><?php echo $row->category_name; ?></td>
+												<td><?php echo $row->asset_status; ?></td>
+												<td><?php echo $row->name; ?></td>
+												<td align="center">
+												<a href="<?php echo base_url();?>ams/view_asset_details?asset_id=<?php echo $row->asset_id; ?>">
+													<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Asset">
+														<i class="fa fa-user"></i>
+													</button>
+												</a>
+												<a href="<?php echo base_url();?>ams/assign_asset?asset_id=<?php echo $row->asset_id; ?>">
+												<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Assign Asset">
+													<i class="fa fa-pencil"></i>
+												</button>
+												</a>
+												<button class="btn btn-danger btn-xs" onclick=deleteAsset(<?php echo $row->asset_id; ?>,'<?php echo base_url();?>ams/') data-toggle="tooltip" data-placement="top" title="Delete Asset">
+													<i class="fa fa-trash-o"></i>
+												</button>
+												</td>
+											</tr>
+											<?php } ?>
+										</table>
                 <?php } ?>
             </div>
         </div>

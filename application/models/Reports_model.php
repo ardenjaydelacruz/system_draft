@@ -54,4 +54,10 @@ class Reports_model extends CI_Model {
 		if ($category){ $this->db->where('category_name',$category);}
 		return $this->db->get('View_assigned_assets')->result();
 	}
+
+	public function getMaterial(){
+		$project = $this->input->post('txtProject');
+		if ($project){ $this->db->where('project_id',$project);}
+		return $this->db->get('view_materials')->result();
+	}
 }

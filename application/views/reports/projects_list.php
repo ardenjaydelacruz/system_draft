@@ -42,17 +42,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="emp_name">Employment Type:</label>
-                            <select name="txtEmploymentType" id="emp_name" class="form-control">
-                                <option value="">All Employment Types</option>
-                                <?php foreach ($employment_type as $row){ 
-                                    echo "<option value='$row->employment_type'>$row->employment_type </option>";
-                                } ?>
-                            </select>
-                        </div>
-                    </div>
                 </div><br>
                 </form>
                 <?php if ($this->input->post('btnFilter')) { ?>

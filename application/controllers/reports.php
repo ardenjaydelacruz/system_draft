@@ -89,4 +89,17 @@ class Reports extends MY_Controller {
         $this->load->view($this->master_layout, $data);
         if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
 	}
+
+	public function material_list(){
+		$num = 0;
+		if ($this->input->post('btnFilter')){
+			$data['materials'] =  $this->reports_model->getMaterial();
+			$num = count($data['materials']);
+		} 
+		$data['project'] = Projects_model::all();
+		$data['pageTitle'] = 'Bill of Materials Report - MSInc.';
+        $data['content'] = 'reports/material_list';
+        $this->load->view($this->master_layout, $data);
+        if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
+	}
 }
