@@ -2,10 +2,56 @@
 class Reports extends MY_Controller {
 	public function __construct() {
 		parent:: __construct();
+		$this->load->library('pdf'); // Load library
 		if ($this->session->userdata('logged_in') == false) {
             redirect('msi/login');
         }
 	}
+
+	public function create_pdf(){
+		$this->pdf -> AddPage();
+		$this->pdf -> setDisplayMode ('fullpage');
+		$this->pdf -> Image('assets/images/logo.png',10,10,30);
+		$this->pdf->SetX('45');
+		$this->pdf -> setFont ('Arial','B',15);
+		$this->pdf -> cell(0,7,"Multistyle Specialist Inc.",0,0);
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf -> cell(0,8,"Date: ".date("m-d-Y"),0,1,'R');
+		$this->pdf->SetX('45');
+		$this->pdf->SetFont('Arial','I',11);
+		$this->pdf -> cell(0,5,"Address: 577 Jenny's Avenue, Maybunga, Pasig City",0,1);
+		$this->pdf->SetX('45');
+		$this->pdf -> cell(0,5,"Contact Number: 223132323",0,1);
+		$this->pdf->SetY('30');
+		$this->pdf->Cell(0,0,'','T'); 
+		$this->pdf->Ln(); // header
+
+		$this->pdf->setFont ('Arial','B',18);
+		$this->pdf->cell(0,13,"Employees List",0,0,'C');
+		$this->pdf->Ln(); // title
+
+		$rec = View_employees_list::all();
+		$row_height = 6;
+		$this->pdf->SetFillColor(232,232,232);
+		$this->pdf->SetFont('Arial','B',12);
+		$this->pdf->SetX(10);
+		$this->pdf->Cell(20,6,'ID',1,0,'L',1);
+		$this->pdf->Cell(70,6,'Employee NameName',1,1,'L',1);
+
+		$fill = false;
+		foreach ($rec as $row) {
+			$this->pdf->SetFillColor(224,235,255);;
+		    $this->pdf->SetX(10);
+		    $this->pdf->Cell(20,6,$row->emp_id,'LR',0,'L',$fill);
+		    $this->pdf->Cell(70,6,$row->first_name.' '.$row->middle_name.' '.$row->last_name,'LR',0,'L',$fill);
+		    $this->pdf->Ln();
+			$fill = !$fill;
+		}
+		$this->pdf->Cell(90,0,'','T'); //closing lines
+	   
+
+      $this->pdf -> output ('your_file_pdf.pdf','I');     
+  }
 
 	public function employees_list(){
 		$num = 0;

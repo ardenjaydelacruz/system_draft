@@ -139,5 +139,4 @@ class Msi extends MY_Controller {
 		$this->session->set_userdata('request_changepass',true);
 		$this->save_new_pass();
 	}
-
 }

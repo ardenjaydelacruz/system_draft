@@ -13,6 +13,9 @@
                 </div>
             </div>
             <div class="panel-body">
+            <a href="<?php echo base_url(); ?>reports/create_pdf">
+                                <button class="btn btn-success">print</button>
+                            </a>
                 <form action="<?php echo base_url();?>reports/employees_list" role="form" method="post">
                 <div class="row">
                     <div class="col-sm-12">
@@ -21,6 +24,7 @@
                         </div>
                         <div class="pull-right">
                             <input type="submit" name="btnFilter" value="Filter" class="btn btn-success btn-lg">
+                            
                         </div>
                     </div>
                 </div>
