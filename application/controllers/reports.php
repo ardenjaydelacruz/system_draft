@@ -8,56 +8,69 @@ class Reports extends MY_Controller {
         }
 	}
 
-	public function create_pdf(){
+	public function print_employees_list($data){
 		$this->pdf -> AddPage();
+		$this->pdf -> SetMargins(15,15,15);
 		$this->pdf -> setDisplayMode ('fullpage');
-		$this->pdf -> Image('assets/images/logo.png',10,10,30);
-		$this->pdf->SetX('45');
+		$this->pdf -> Image('assets/images/logo.png',15,10,30);
+		$this->pdf->SetX('47');
 		$this->pdf -> setFont ('Arial','B',15);
 		$this->pdf -> cell(0,7,"Multistyle Specialist Inc.",0,0);
 		$this->pdf->SetFont('Arial','B',10);
 		$this->pdf -> cell(0,8,"Date: ".date("m-d-Y"),0,1,'R');
-		$this->pdf->SetX('45');
+		$this->pdf->SetX('47');
 		$this->pdf->SetFont('Arial','I',11);
 		$this->pdf -> cell(0,5,"Address: 577 Jenny's Avenue, Maybunga, Pasig City",0,1);
-		$this->pdf->SetX('45');
+		$this->pdf->SetX('47');
 		$this->pdf -> cell(0,5,"Contact Number: 223132323",0,1);
 		$this->pdf->SetY('30');
 		$this->pdf->Cell(0,0,'','T'); 
 		$this->pdf->Ln(); // header
 
 		$this->pdf->setFont ('Arial','B',18);
-		$this->pdf->cell(0,13,"Employees List",0,0,'C');
+		$this->pdf->cell(0,20,"Employees List",0,0,'C');
 		$this->pdf->Ln(); // title
 
-		$rec = View_employees_list::all();
+		$rec = $data;
 		$row_height = 6;
-		$this->pdf->SetFillColor(232,232,232);
-		$this->pdf->SetFont('Arial','B',12);
-		$this->pdf->SetX(10);
-		$this->pdf->Cell(20,6,'ID',1,0,'L',1);
-		$this->pdf->Cell(70,6,'Employee NameName',1,1,'L',1);
-
+		$this->pdf->SetFillColor(232,232,255);
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf->Cell(10,6,'ID',1,0,'C',1);
+		$this->pdf->Cell(43,6,'Employee Name',1,0,'C',1);
+		$this->pdf->Cell(35,6,'Job Title',1,0,'C',1);
+		$this->pdf->Cell(30,6,'Department',1,0,'C',1);
+		$this->pdf->Cell(27,6,'Emp Type',1,0,'C',1);
+		$this->pdf->Cell(18,6,'Status',1,0,'C',1);
+		$this->pdf->Cell(22,6,'Date Hired',1,1,'C',1);
 		$fill = false;
+		$this->pdf->SetFont('Arial','',10);
 		foreach ($rec as $row) {
-			$this->pdf->SetFillColor(224,235,255);;
-		    $this->pdf->SetX(10);
-		    $this->pdf->Cell(20,6,$row->emp_id,'LR',0,'L',$fill);
-		    $this->pdf->Cell(70,6,$row->first_name.' '.$row->middle_name.' '.$row->last_name,'LR',0,'L',$fill);
+			$this->pdf->SetFillColor(224,235,255);
+		    $this->pdf->Cell(10,6,$row->emp_id,'LR',0,'C',$fill);
+		    $this->pdf->Cell(43,6,$row->first_name.' '.$row->middle_name.' '.$row->last_name,'LR',0,'L',$fill);
+		    $this->pdf->Cell(35,6,$row->job_title_name,'LR',0,'L',$fill);
+		    $this->pdf->Cell(30,6,$row->department_name,'LR',0,'L',$fill);
+		    $this->pdf->Cell(27,6,$row->employment_type,'LR',0,'L',$fill);
+		    $this->pdf->Cell(18,6,$row->status,'LR',0,'L',$fill);
+		    $this->pdf->Cell(22,6,$row->start_date,'LR',0,'C',$fill);
 		    $this->pdf->Ln();
 			$fill = !$fill;
 		}
-		$this->pdf->Cell(90,0,'','T'); //closing lines
-	   
-
-      $this->pdf -> output ('your_file_pdf.pdf','I');     
-  }
+		$this->pdf->Cell(185,0,'','T'); //closing lines
+	  
+    	$this->pdf -> output ('your_file_pdf.pdf','I');     
+    }
 
 	public function employees_list(){
 		$num = 0;
-		if ($this->input->post('btnFilter')){
+		if ($this->input->post('btnFilter') ){
 			$data['report'] =  $this->reports_model->filterEmployee();
 			$num = count($data['report']);
+
+		}
+		if ($this->input->post('btnPrint')){
+			$emp =  $this->reports_model->filterEmployee();
+			$this->print_employees_list($emp);
 		}
 		$data['departments'] = Departments_model::all();
 		$data['employment_type'] = Employment_type_model::all();

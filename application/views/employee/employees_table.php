@@ -79,8 +79,10 @@
                                 <?php echo $row->department_name; ?>
                             </td>
                             <td class="text-center">
-                                <?php if ($row->status == 'Active'){
+                                <?php if ($row->status == 'Existing'){
                                     echo "<label class='label label-success'>$row->status</label>"; 
+                                } elseif ($row->status == 'OnLeave') {
+                                    echo "<label class='label label-warning'>$row->status</label>";
                                 } else {
                                     echo "<label class='label label-danger'>$row->status</label>";
                                 }

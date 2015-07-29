@@ -13,9 +13,6 @@
                 </div>
             </div>
             <div class="panel-body">
-            <a href="<?php echo base_url(); ?>reports/create_pdf">
-                                <button class="btn btn-success">print</button>
-                            </a>
                 <form action="<?php echo base_url();?>reports/employees_list" role="form" method="post">
                 <div class="row">
                     <div class="col-sm-12">
@@ -73,63 +70,71 @@
                             </select>
                         </div>
                     </div>
-                </div><br>
+                </div>
                 </form>
                 <?php if ($this->input->post('btnFilter')) { ?>
-                    <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <th class="table-head">Emp. ID</th>
-                        <th class="table-head">Employee Name</th>
-                        <th class="table-head">Job Title</th>
-                        <th class="table-head">Department</th>
-                        <th class="table-head">Employment Type</th>
-                        <th class="table-head">Status</th>
-                        <th class="table-head">Date Hired</th>
-                    </thead>
+                <form action="<?php echo base_url();?>reports/employees_list" role="form" method="post">
+                    <input type="hidden" name="txtStatus" value="<?php echo $this->input->post('txtStatus') ?>">
+                    <input type="hidden" name="txtJobTitle" value="<?php echo $this->input->post('txtJobTitle') ?>">
+                    <input type="hidden" name="txtEmploymentType" value="<?php echo $this->input->post('txtEmploymentType') ?>">
+                    <input type="hidden" name="txtDepartment" value="<?php echo $this->input->post('txtDepartment') ?>">
+                    <input type="submit" name="btnPrint" value="Print" class="btn btn-info">
+                </form>
+                <br>
+                <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <th class="table-head">Emp. ID</th>
+                    <th class="table-head">Employee Name</th>
+                    <th class="table-head">Job Title</th>
+                    <th class="table-head">Department</th>
+                    <th class="table-head">Employment Type</th>
+                    <th class="table-head">Status</th>
+                    <th class="table-head">Date Hired</th>
+                </thead>
 
-                    <?php
-                    if ($report) {
-                        foreach ($report as $record) { 
-                    ?>
-                    <tr>
-                        <td align="center">
-                            <?php echo $record->emp_id; ?>
-                        </td>
-                        <td>
-                            <a href="<?php echo base_url('ems/view_details'); ?>?emp_id=<?php echo $record->emp_id; ?>">
-                                <?php echo $record->first_name.' '.$record->middle_name.' '.$record->last_name; ?>
-                            </a>
-                        </td>
-                        <td>
-                            <?php echo $record->job_title_name; ?>
-                        </td>
-                        <td>
-                            <?php echo $record->department_name; ?>
-                        </td>
-                        <td>
-                            <?php echo $record->employment_type; ?>
-                        </td>
-                        <td class="text-center">
-                            <?php if ($record->status == 'Existing'){
-                                echo "<label class='label label-success'>$record->status</label>"; 
-                            } elseif ($record->status == 'Resigned') {
-                                echo "<label class='label label-danger'>$record->status</label>";
-                            } else {
-                                echo "<label class='label label-warning'>$record->status</label>";
-                            }
-                            ?>
-                        </td>
-                        <td align="center">
-                            <?php echo $record->start_date; ?>
-                        </td>
-                    </tr>
-                    <?php  }
-                        }  else {
-                            echo "0 record found.";
+                <?php
+                if ($report) {
+                    foreach ($report as $record) { 
+                ?>
+                <tr>
+                    <td align="center">
+                        <?php echo $record->emp_id; ?>
+                    </td>
+                    <td>
+                        <a href="<?php echo base_url('ems/view_details'); ?>?emp_id=<?php echo $record->emp_id; ?>">
+                            <?php echo $record->first_name.' '.$record->middle_name.' '.$record->last_name; ?>
+                        </a>
+                    </td>
+                    <td>
+                        <?php echo $record->job_title_name; ?>
+                    </td>
+                    <td>
+                        <?php echo $record->department_name; ?>
+                    </td>
+                    <td>
+                        <?php echo $record->employment_type; ?>
+                    </td>
+                    <td class="text-center">
+                        <?php if ($record->status == 'Existing'){
+                            echo "<label class='label label-success'>$record->status</label>"; 
+                        } elseif ($record->status == 'Resigned') {
+                            echo "<label class='label label-danger'>$record->status</label>";
+                        } else {
+                            echo "<label class='label label-warning'>$record->status</label>";
                         }
-                    ?>
-                </table>
-                <?php } ?>
+                        ?>
+                    </td>
+                    <td align="center">
+                        <?php echo $record->start_date; ?>
+                    </td>
+                </tr>
+                <?php  }
+                    }  else {
+                        echo "0 record found.";
+                    }
+                ?>
+            </table>
+            <?php } ?>
             </div>
         </div>
     </div>
