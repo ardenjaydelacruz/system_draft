@@ -81,17 +81,15 @@
                       </tr>
                       <tr>
                         <th>Job Title:</th>
-                        <td><input type="text" disabled class="form-control" value="<?php echo $row->job_title_name;?>" name="txtPosition" /></td>
+                        <td><?php echo $row->job_title_name; ?></td>
+                       </tr>
+                      <tr>
+                        <th>Emp Type:</th>
+                         <td><?php echo $row->employment_type; ?></td>
                       </tr>
                       <tr>
-                        <th>Status:</th>
-                        <td><input type="text" disabled class="form-control" value="<?php echo $row->status;?>" name="txtStatus" /></td>
-                      </tr>
-                      <tr>
-                        <th>Dept.:</th>
-                        <td>
-                            <input type="text" disabled class="form-control" value="<?php echo $row->department_name;?>" name="txtDepartment" />
-                        </td>
+                        <th>Department:</th>
+                        <td><?php echo $row->department_name; ?></td>
                       </tr>
                       <tr>
                         <td>
