@@ -32,9 +32,13 @@
                     </select>
                 </div>
             </div>
-          </div><br>
+          </div>
           </form>
-         <?php if ($this->input->post('btnFilter')) { ?>
+          <?php if ($this->input->post('btnFilter')) { ?>
+          <form action="<?php echo base_url();?>reports/leave_list" role="form" method="post">
+            <input type="hidden" name="txtEmployee" value="<?php echo $this->input->post('txtEmployee') ?>">
+            <input type="submit" name="btnPrint" value="Print" class="btn btn-info">
+          </form>
 	        <table class="table table-hovered table-striped table-bordered">
             <thead>
                <th class="text-center">Employee Name</th>
@@ -49,13 +53,13 @@
              <?php foreach ($leaves as $row) { ?>
              <tr>
                   <td class=""><?php echo $row->name; ?></td>
-                  <td class="text-center <?php if ($row->birthday_leave==0) echo 'bgRed'; ?>"><?php echo $row->birthday_leave; ?></td>
-                  <td class="text-center <?php if ($row->mandatory_leave==0) echo 'bgRed'; ?>"><?php echo $row->mandatory_leave; ?></td>
-                  <td class="text-center <?php if ($row->maternity_leave==0) echo 'bgRed'; ?>"><?php echo $row->maternity_leave; ?></td>
-                  <td class="text-center <?php if ($row->paternity_leave==0) echo 'bgRed'; ?>"><?php echo $row->paternity_leave; ?></td>
-                  <td class="text-center <?php if ($row->sick_leave==0) echo 'bgRed'; ?>"><?php echo $row->sick_leave; ?></td>
-                  <td class="text-center <?php if ($row->vacation_leave==0) echo 'bgRed'; ?>"><?php echo $row->vacation_leave; ?></td>
-                  <th class="text-center success <?php if ($row->total_leave==0) echo 'bgRed'; ?>"><?php echo $row->total_leave; ?></th>
+                  <td class="text-center <?php if ($row->birthday_leave==0) echo 'danger'; ?>"><?php echo $row->birthday_leave; ?></td>
+                  <td class="text-center <?php if ($row->mandatory_leave==0) echo 'danger'; ?>"><?php echo $row->mandatory_leave; ?></td>
+                  <td class="text-center <?php if ($row->maternity_leave==0) echo 'danger'; ?>"><?php echo $row->maternity_leave; ?></td>
+                  <td class="text-center <?php if ($row->paternity_leave==0) echo 'danger'; ?>"><?php echo $row->paternity_leave; ?></td>
+                  <td class="text-center <?php if ($row->sick_leave==0) echo 'danger'; ?>"><?php echo $row->sick_leave; ?></td>
+                  <td class="text-center <?php if ($row->vacation_leave==0) echo 'danger'; ?>"><?php echo $row->vacation_leave; ?></td>
+                  <th class="text-center success <?php if ($row->total_leave==0) echo 'danger'; ?>"><?php echo $row->total_leave; ?></th>
               </tr>
              <?php } ?>
          </table>

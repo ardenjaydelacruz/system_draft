@@ -35,6 +35,10 @@
                 </div><br>
                 </form>
                 <?php if ($this->input->post('btnFilter')) { ?>
+                <form action="<?php echo base_url();?>reports/material_list" role="form" method="post">
+                    <input type="hidden" name="txtProject" value="<?php echo $this->input->post('txtProject') ?>">
+                    <input type="submit" name="btnPrint" value="Print" class="btn btn-info">
+                </form>
 				<table class="table table-striped table-hover table-bordered centered">
 					<thead>
 						<th class="text-center">Item Name</th>

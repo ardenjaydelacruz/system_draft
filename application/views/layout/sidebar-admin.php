@@ -85,7 +85,6 @@
 						<ul class="treeview-menu">
 							<li><a href="<?php echo base_url();?>reports/employees_list"><i class="fa fa-group"></i> Employees Lists</a></li>
 							<li><a href="<?php echo base_url();?>reports/project_workers"><i class="fa fa-user"></i> Project Workers</a></li>
-							<li><a href="<?php echo base_url();?>reports/projects_list"><i class="fa fa-cogs"></i> Projects</a></li>
 							<li><a href="<?php echo base_url();?>reports/leave_list"><i class="fa fa-calendar"></i> Leave List</a></li>
 						</ul>
 					</li>
@@ -110,6 +109,8 @@
 							<li><a href="<?php echo base_url();?>reports/inventory_list"><i class="fa fa-cube"></i> Inventory List</a></li>
 							<li><a href="<?php echo base_url();?>reports/asset_list"><i class="fa fa-desktop"></i> Other Assets</a></li>
 							<li><a href="<?php echo base_url();?>reports/material_list"><i class="fa fa-credit-card"></i> Bill of Materials</a></li>
+							<li><a href="<?php echo base_url();?>reports/projects_list"><i class="fa fa-cogs"></i> Project Cost</a></li>
+
 						</ul>
 					</li>
 				</ul>

@@ -43,9 +43,15 @@
                             </select>
                         </div>
                     </div>
-                </div><br>
+                </div>
                 </form>
                 <?php if ($this->input->post('btnFilter')) { ?>
+                <form action="<?php echo base_url();?>reports/project_workers" role="form" method="post">
+                    <input type="hidden" name="txtProjectName" value="<?php echo $this->input->post('txtProjectName') ?>">
+                    <input type="hidden" name="txtEmployee" value="<?php echo $this->input->post('txtEmployee') ?>">
+                    <input type="submit" name="btnPrint" value="Print" class="btn btn-info">
+                </form>
+                <br>
 				<table class="table table-hovered table-striped table-bordered">
 	                <thead>
 	                   <th class="text-center">Project ID</th>

@@ -43,9 +43,13 @@
                   </div>
                 </div>
             </div> -->
-        </div><br>
+        </div>
         </form>
         <?php if ($this->input->post('btnFilter')) { ?>
+        <form action="<?php echo base_url();?>reports/inventory_list" role="form" method="post">
+          <input type="hidden" name="txtCategory" value="<?php echo $this->input->post('txtCategory') ?>">
+          <input type="submit" name="btnPrint" value="Print" class="btn btn-info">
+        </form>
 				<table class="table table-striped table-hover table-bordered table-condensed centered">
           <thead>
             <th class="text-center">Item ID</th>
@@ -53,7 +57,6 @@
             <th class="text-center">Category</th>
             <th class="text-center">Quantity</th>
             <th class="text-center">Price/pc.</th>
-            
           </thead>
           <?php foreach ($inventory as $row) { ?>
             <tr>

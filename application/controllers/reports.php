@@ -2,64 +2,37 @@
 class Reports extends MY_Controller {
 	public function __construct() {
 		parent:: __construct();
-		$this->load->library('pdf'); // Load library
+		
 		if ($this->session->userdata('logged_in') == false) {
             redirect('msi/login');
         }
 	}
 
 	public function print_employees_list($data){
-		$this->pdf->AddPage();
-		$this->pdf->SetMargins(15,15,15);
-		$this->pdf->setDisplayMode ('fullpage');
-		$this->pdf->Image('assets/images/logo.png',15,10,30);
-		$this->pdf->SetX('47');
-		$this->pdf->setFont ('Arial','B',15);
-		$this->pdf->cell(0,7,"Multistyle Specialist Inc.",0,0);
-		$this->pdf->SetFont('Arial','B',10);
-		$this->pdf->cell(0,8,"Date: ".date("m-d-Y"),0,1,'R');
-		$this->pdf->SetX('47');
-		$this->pdf->SetFont('Arial','I',11);
-		$this->pdf->cell(0,5,"Address: 577 Jenny's Avenue, Maybunga, Pasig City",0,1);
-		$this->pdf->SetX('47');
-		$this->pdf->cell(0,5,"Contact Number: 223132323",0,1);
-		$this->pdf->SetY('30');
-		$this->pdf->Cell(0,0,'','T'); 
-		$this->pdf->Ln(); // header
-
-		$this->pdf->setFont ('Arial','B',18);
-		$this->pdf->cell(0,20,"Employees List",0,0,'C');
-		$this->pdf->Ln(); // title
-
-		$rec = $data;
-		$row_height = 6;
-		$this->pdf->SetFillColor(232,232,255);
-		$this->pdf->SetFont('Arial','B',10);
-		$this->pdf->Cell(10,6,'ID',1,0,'C',1);
-		$this->pdf->Cell(43,6,'Employee Name',1,0,'C',1);
-		$this->pdf->Cell(35,6,'Job Title',1,0,'C',1);
-		$this->pdf->Cell(30,6,'Department',1,0,'C',1);
-		$this->pdf->Cell(27,6,'Emp Type',1,0,'C',1);
-		$this->pdf->Cell(18,6,'Status',1,0,'C',1);
-		$this->pdf->Cell(22,6,'Date Hired',1,1,'C',1);
-		$fill = false;
-		$this->pdf->SetFont('Arial','',10);
-		foreach ($rec as $row) {
-			$this->pdf->SetFillColor(224,235,255);
-		    $this->pdf->Cell(10,6,$row->emp_id,'LR',0,'C',$fill);
-		    $this->pdf->Cell(43,6,$row->first_name.' '.$row->middle_name.' '.$row->last_name,'LR',0,'L',$fill);
-		    $this->pdf->Cell(35,6,$row->job_title_name,'LR',0,'L',$fill);
-		    $this->pdf->Cell(30,6,$row->department_name,'LR',0,'L',$fill);
-		    $this->pdf->Cell(27,6,$row->employment_type,'LR',0,'L',$fill);
-		    $this->pdf->Cell(18,6,$row->status,'LR',0,'L',$fill);
-		    $this->pdf->Cell(22,6,$row->start_date,'LR',0,'C',$fill);
-		    $this->pdf->Ln();
-			$fill = !$fill;
-		}
-		$this->pdf->Cell(185,0,'','T'); //closing lines
-	  
-    	$this->pdf -> output ('your_file_pdf.pdf','I');     
+		$this->print_reports_model->pdf_employees_list($data);
     }
+
+	public function print_project_workers($data){
+		$this->print_reports_model->pdf_project_workers($data);
+    }
+
+    public function print_leave_list($data){
+		$this->print_reports_model->pdf_leave_list($data);
+    }
+
+    public function print_inventory_list($data){
+		$this->print_reports_model->pdf_inventory_list($data);
+    }
+
+    public function print_asset_list($data){
+		$this->print_reports_model->pdf_asset_list($data);
+    }
+
+    public function print_material_list($data){
+		$this->print_reports_model->pdf_material_list($data);
+    }
+
+
 
 	public function employees_list(){
 		$num = 0;
@@ -101,6 +74,10 @@ class Reports extends MY_Controller {
 			$data['project'] =  $this->reports_model->getProjectWorkers();
 			$num = count($data['project']);
 		} 
+		if ($this->input->post('btnPrint')){
+			$personnel =  $this->reports_model->getProjectWorkers();
+			$this->print_project_workers($personnel);
+		}
 		$data['projectName'] = Projects_model::all();
 		$data['employee'] = View_employees_list::all();
 		$data['pageTitle'] = 'Projects Report - MSInc.';
@@ -115,6 +92,10 @@ class Reports extends MY_Controller {
 			$data['leaves'] =  $this->reports_model->getLeavesLeft();
 			$num = count($data['leaves']);
 		} 
+		if ($this->input->post('btnPrint')){
+			$leave =  $this->reports_model->getLeavesLeft();
+			$this->print_leave_list($leave);
+		}
 		$data['employee'] = View_employees_list::all();
 		$data['pageTitle'] = 'Projects Report - MSInc.';
         $data['content'] = 'reports/leave_list';
@@ -127,6 +108,10 @@ class Reports extends MY_Controller {
 		if ($this->input->post('btnFilter')){
 			$data['inventory'] =  $this->reports_model->getInventory();
 			$num = count($data['inventory']);
+		}
+		if ($this->input->post('btnPrint')){
+			$inventory =  $this->reports_model->getInventory();
+			$this->print_inventory_list($inventory);
 		} 
 		$data['category'] = Stock_category_model::all();
 		$data['pageTitle'] = 'Inventory Report - MSInc.';
@@ -141,6 +126,10 @@ class Reports extends MY_Controller {
 			$data['asset'] =  $this->reports_model->getAsset();
 			$num = count($data['asset']);
 		} 
+		if ($this->input->post('btnPrint')){
+			$asset =  $this->reports_model->getAsset();
+			$this->print_asset_list($asset);
+		} 
 		$data['category'] = Stock_category_model::all();
 		$data['employees'] = View_employees_list::all();
 		$data['pageTitle'] = 'Assigned Asset Report - MSInc.';
@@ -154,6 +143,10 @@ class Reports extends MY_Controller {
 		if ($this->input->post('btnFilter')){
 			$data['materials'] =  $this->reports_model->getMaterial();
 			$num = count($data['materials']);
+		} 
+		if ($this->input->post('btnPrint')){
+			$materials = $this->reports_model->getMaterial();
+			$this->print_material_list($materials);
 		} 
 		$data['project'] = Projects_model::all();
 		$data['pageTitle'] = 'Bill of Materials Report - MSInc.';
