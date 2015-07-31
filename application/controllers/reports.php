@@ -9,20 +9,20 @@ class Reports extends MY_Controller {
 	}
 
 	public function print_employees_list($data){
-		$this->pdf -> AddPage();
-		$this->pdf -> SetMargins(15,15,15);
-		$this->pdf -> setDisplayMode ('fullpage');
-		$this->pdf -> Image('assets/images/logo.png',15,10,30);
+		$this->pdf->AddPage();
+		$this->pdf->SetMargins(15,15,15);
+		$this->pdf->setDisplayMode ('fullpage');
+		$this->pdf->Image('assets/images/logo.png',15,10,30);
 		$this->pdf->SetX('47');
-		$this->pdf -> setFont ('Arial','B',15);
-		$this->pdf -> cell(0,7,"Multistyle Specialist Inc.",0,0);
+		$this->pdf->setFont ('Arial','B',15);
+		$this->pdf->cell(0,7,"Multistyle Specialist Inc.",0,0);
 		$this->pdf->SetFont('Arial','B',10);
-		$this->pdf -> cell(0,8,"Date: ".date("m-d-Y"),0,1,'R');
+		$this->pdf->cell(0,8,"Date: ".date("m-d-Y"),0,1,'R');
 		$this->pdf->SetX('47');
 		$this->pdf->SetFont('Arial','I',11);
-		$this->pdf -> cell(0,5,"Address: 577 Jenny's Avenue, Maybunga, Pasig City",0,1);
+		$this->pdf->cell(0,5,"Address: 577 Jenny's Avenue, Maybunga, Pasig City",0,1);
 		$this->pdf->SetX('47');
-		$this->pdf -> cell(0,5,"Contact Number: 223132323",0,1);
+		$this->pdf->cell(0,5,"Contact Number: 223132323",0,1);
 		$this->pdf->SetY('30');
 		$this->pdf->Cell(0,0,'','T'); 
 		$this->pdf->Ln(); // header
