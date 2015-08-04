@@ -62,4 +62,39 @@ class MY_Controller extends CI_Controller {
             $this->toast($message, 'success');
         }
     }
+
+    public function generateMonths(){
+        $months = array();
+        array_push($months, array("id"=>"01", "value"=>"January"));
+        array_push($months, array("id"=>"02", "value"=>"February"));
+        array_push($months, array("id"=>"03", "value"=>"March"));
+        array_push($months, array("id"=>"04", "value"=>"April"));
+        array_push($months, array("id"=>"05", "value"=>"May"));
+        array_push($months, array("id"=>"06", "value"=>"June"));
+        array_push($months, array("id"=>"07", "value"=>"July"));
+        array_push($months, array("id"=>"08", "value"=>"August"));
+        array_push($months, array("id"=>"09", "value"=>"September"));
+        array_push($months, array("id"=>"10", "value"=>"October"));
+        array_push($months, array("id"=>"11", "value"=>"November"));
+        array_push($months, array("id"=>"12", "value"=>"December"));
+        return $months;
+    }
+    
+    public function generateYears($order = 'asc'){
+        $years = array();
+        if($order=='asc'){
+            $yearStart = 1970;
+            $yearEnd = date("Y");
+            for($year=$yearEnd; $year>=intval($yearStart); $year--){
+                array_push($years, $year);
+            }
+        }else if($order=='desc'){
+            $yearStart = date("Y");
+            $yearEnd = 1970;
+            for($year=$yearEnd; $year<=intval($yearStart); $year++){
+                array_push($years, $year);
+            }
+        }
+        return $years;
+    }
 }

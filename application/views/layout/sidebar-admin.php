@@ -48,11 +48,11 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo base_url();?>attendance/index"><i class="fa fa-circle-o"></i> Attendance</a></li>
-					<li><a href="<?php echo base_url();?>attendance/requestentry_table"><i class="fa fa-circle-o"></i> Request Entry</a></li>
-					<li><a href="<?php echo base_url();?>attendance/payroll"><i class="fa fa-circle-o"></i> Payroll</a></li>
-					<li><a href="<?php echo base_url();?>attendance/allowances"><i class="fa fa-circle-o"></i> Allowances</a></li>
-					<li><a href="<?php echo base_url();?>attendance/taxes"><i class="fa fa-circle-o"></i> Taxes</a></li>
+					<li><a href="<?php echo base_url();?>payroll/attendance"><i class="fa fa-circle-o"></i> Attendance</a></li>
+					<li><a href="<?php echo base_url();?>payroll/requestentry_table"><i class="fa fa-circle-o"></i> Request Entry</a></li>
+					<li><a href="<?php echo base_url();?>payroll/payroll_index"><i class="fa fa-circle-o"></i> Payroll</a></li>
+					<li><a href="<?php echo base_url();?>payroll/allowances"><i class="fa fa-circle-o"></i> Allowances</a></li>
+					<li><a href="<?php echo base_url();?>payroll/taxes"><i class="fa fa-circle-o"></i> Taxes</a></li>
 				</ul>
 			</li>
 
@@ -85,6 +85,7 @@
 						<ul class="treeview-menu">
 							<li><a href="<?php echo base_url();?>reports/employees_list"><i class="fa fa-group"></i> Employees Lists</a></li>
 							<li><a href="<?php echo base_url();?>reports/project_workers"><i class="fa fa-user"></i> Project Workers</a></li>
+							<li><a href="<?php echo base_url();?>reports/projects_list"><i class="fa fa-cogs"></i> Projects</a></li>
 							<li><a href="<?php echo base_url();?>reports/leave_list"><i class="fa fa-calendar"></i> Leave List</a></li>
 						</ul>
 					</li>
@@ -94,10 +95,9 @@
 							<i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="<?php echo base_url();?>ams/view_inventory"><i class="fa fa-cube"></i> Inventory</a></li>
-							<li><a href="<?php echo base_url();?>ams/view_assets"><i class="fa fa-desktop"></i> Other Assets</a></li>
-							<li><a href="<?php echo base_url();?>ams/view_all_materials"><i class="fa fa-credit-card"></i> Bill of Materials</a></li>
-							<li><a href="<?php echo base_url();?>ams/view_projects"><i class="fa fa-cogs"></i> Projects</a></li>
+							<li><a href="<?php echo base_url();?>reports/attendance_daily"><i class="fa fa-calendar"></i> Attendance - Daily</a></li>
+							<li><a href="<?php echo base_url();?>reports/attendance_employee"><i class="fa fa-calendar-o"></i> Attendance - Employee</a></li>
+							<li><a href="<?php echo base_url();?>reports/payslip_list"><i class="fa fa-rub"></i> Payslip</a></li>
 						</ul>
 					</li>
 					<li class="treeview">
@@ -109,8 +109,6 @@
 							<li><a href="<?php echo base_url();?>reports/inventory_list"><i class="fa fa-cube"></i> Inventory List</a></li>
 							<li><a href="<?php echo base_url();?>reports/asset_list"><i class="fa fa-desktop"></i> Other Assets</a></li>
 							<li><a href="<?php echo base_url();?>reports/material_list"><i class="fa fa-credit-card"></i> Bill of Materials</a></li>
-							<li><a href="<?php echo base_url();?>reports/projects_list"><i class="fa fa-cogs"></i> Project Cost</a></li>
-
 						</ul>
 					</li>
 				</ul>

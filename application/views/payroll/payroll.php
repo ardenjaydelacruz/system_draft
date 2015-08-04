@@ -5,7 +5,7 @@ $(function() {
 	}); 
 });
 function printPayslip(id){
-	window.open('<?php echo base_url();?>attendance/print_payslip?id='.concat(id),'mywindow','width=800,height=600,menubar=no,statusbar=no,resizable=no');
+	window.open('<?php echo base_url();?>payroll/print_payslip?id='.concat(id),'mywindow','width=800,height=600,menubar=no,statusbar=no,resizable=no');
 }
 </script>
 <div class="content-wrapper">
@@ -17,20 +17,24 @@ function printPayslip(id){
 		<div class="panel panel-info">
 			<div class="panel-heading">
 			    <div class="row">
-			    	<div class="col-sm-7">
-			    		<h1 class="panel-title big">Payroll </h1>
-			    	</div>
-					<form action="<?php echo base_url();?>attendance/payroll" id="frmSearch" method="post">
-						<div class="form-horizontal"><label class="col-sm-2 control-label">Cut-off date:</label>
-							<div class="col-xs-3 controls">
-								<div class="row">
-									<select name="cboDate" class="form-control" >
-										<option value="0">Select date</option>
-										<?php foreach($salary_dates as $row){ ?>
-											<option class="form-control" value="<?php echo $row->payslip_date ?>"<?php if($post['cboDate']==$row->payslip_date) echo " selected='selected'"; ?>><?php echo $row->payslip_date_format; ?></option>
-										<?php } ?>s
-									</select>
-								</div>
+					<form action="<?php echo base_url();?>payroll/payroll_index" id="frmSearch" method="post">
+						<div class="form-horizontal">
+							<div class="col-sm-6">
+								<h1 class="panel-title big">Payroll </h1>
+							</div>
+							<div class="col-sm-2 text-right">
+								<label class="control-label">Cut-off date:</label>
+							</div>
+							<div class="col-sm-2">
+								<select name="cboDate" class="form-control">
+									<option value="0">Select date</option>
+									<?php foreach($salary_dates as $row){ ?>
+										<option value="<?php echo $row->payslip_date ?>"<?php if($post['cboDate']==$row->payslip_date) echo " selected='selected'"; ?>><?php echo $row->payslip_date_format; ?></option>
+									<?php } ?>s
+								</select>
+							</div>
+							<div class="col-sm-2 text-center">
+								<input type="submit" class="btn btn-success" name="btnSubmit" value="View">
 							</div>
 						</div>
 			    	</form>
@@ -38,11 +42,12 @@ function printPayslip(id){
 			</div>
 			<div class="panel-body">
 				<div class="pull-left add-employee">
-					<a href="<?php echo base_url();?>attendance/add_payslip">
-						<buttom  class="btn btn-success"><i class="fa fa-plus"></i> Add New Payslip </buttom>
+					<a href="<?php echo base_url();?>payroll/add_payslip">
+						<div class="btn btn-success"><i class="fa fa-plus"></i> Add New Payslip </div>
 					</a>
-					<a href="<?php echo base_url();?>attendance/multiple_payslips">
-						<buttom  class="btn btn-success"><i class="fa fa-plus"></i> Add Multiple Payslips </buttom>
+					&nbsp;
+					<a href="<?php echo base_url();?>payroll/multiple_payslips">
+						<div class="btn btn-success"><i class="fa fa-plus"></i> Add Multiple Payslips </div>
 					</a>
 				</div>
 				<div class="pull-right">
@@ -58,7 +63,7 @@ function printPayslip(id){
 						<th class="col-md-2 text-center">Basic Salary</th>
 						<th class="col-md-2 text-center">Gross Pay</th>
 						<th class="col-md-2 text-center">Net Pay</th>
-						<th class="col-md-2 text-center">Action</th>
+						<th class="col-md-2 text-center">Print</th>
 					</thead>
 					<?php foreach($payslip as $row){ ?>
 					<tr>
@@ -72,10 +77,6 @@ function printPayslip(id){
 							<button class="btn btn-info btn-xs" onClick=printPayslip(<?php echo $row->payslip_id; ?>) data-toggle="tooltip" data-placement="top" title="Print">
 								<i class="fa fa-calendar"></i>
 							</button>
-							<!--/a-->
-							<button class="btn btn-danger btn-xs" onclick=deletePayslip(<?php echo $row->payslip_id; ?>,'<?php echo base_url();?>attendance/'); data-toggle="tooltip" data-placement="top" title="Delete Payslip">
-							<i class="fa fa-trash-o"></i>
-						</button>
 						</td>
 					</tr>
 					<?php } ?>

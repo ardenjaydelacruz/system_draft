@@ -1,33 +1,17 @@
-<script>
-$(function() {
-	$(".datepicker").datepicker();
-	$("#btnGenerate").on('click',function(){
-		$("#frmGenerate").attr("action", "<?php echo base_url();?>attendance/add_payslip?generate=true");
-		$("#frmGenerate").submit();
-	});
-});
-</script>
 <div class="content-wrapper">
 	<ol class="breadcrumb">
         <li><a href="<?php echo base_url();?>admin/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="<?php echo base_url();?>attendance/payroll" class="btn btn-default"><i class="fa fa-user"></i> Payroll</a></li>
+        <li><a href="<?php echo base_url();?>payroll/payroll_index" class="btn btn-default"><i class="fa fa-user"></i> Payroll</a></li>
         <li class="active"><i class="fa fa-search"></i> Generate Employee Payslip </li>
     </ol>
 	<div class="container-fluid">
 		<div class="panel panel-info">
+			<form action="<?php echo base_url();?>payroll/add_payslip" method="post">
 			<div class="panel-heading">
 			    <div class="row">
-			    	<form action="<?php echo base_url();?>attendance/add_payslip" id="frmGenerate" method="post">
 					<div class="col-sm-3">
 			    		<div class="row">
 							<label for="cboEmployee" class="control-label col-sm-3">Employee: </label>
-							<div class="col-sm-3 error"><?php echo form_error('cboEmployee') ?></div>
-							<?php if(isset($post)){ ?>
-								<input type="hidden" name="hidID" value="<?php echo $post['cboEmployee']; ?>" />
-								<input type="hidden" name="hidPayDate" value="<?php echo $post['txtPayrollDate']; ?>" />
-								<input type="hidden" name="hidPayStart" value="<?php echo $post['txtStartDate']; ?>" />
-								<input type="hidden" name="hidPayEnd" value="<?php echo $post['txtEndDate']; ?>" />
-							<?php } ?>
 						</div>
 						<div class="input-group">
 							<select name="cboEmployee" class="form-control">
@@ -39,11 +23,11 @@ $(function() {
 			    	</div>
 					<div class="col-sm-2">
 			    		<div class="row">
-							<label for="txtPayrollDate" class="control-label">Payroll Date: </label>
+							<label for="txtPayrollDate" class="control-label">Pay Date: </label>
 							<div class="col-sm-2 error"><?php echo form_error('txtPayrollDate') ?></div>
 						</div>
 						<div class="input-group">
-							<input type="text" class="datepicker" name="txtPayrollDate" <?php if(isset($date)) echo 'value="' . $date . '"';?>/>
+							<input type="date" class="form-control input-sm" name="txtPayrollDate" value="<?php echo set_value('txtPayrollDate'); ?>">
 						</div>
 			    	</div>
 			    	<div class="col-sm-2">
@@ -52,7 +36,7 @@ $(function() {
 							<div class="col-sm-2 error"><?php echo form_error('txtStartDate') ?></div>
 						</div>
 						<div class="input-group">
-							<input type="text" class="datepicker" name="txtStartDate" <?php if(isset($date)) echo 'value="' . $date . '"';?>/>
+							<input type="date" class="form-control input-sm" name="txtStartDate" value="<?php echo set_value('txtStartDate'); ?>">
 						</div>
 			    	</div>
 					<div class="col-sm-2">
@@ -61,7 +45,7 @@ $(function() {
 							<div class="col-sm-2 error"><?php echo form_error('txtEndDate') ?></div>
 						</div>
 						<div class="input-group">
-							<input type="text" class="datepicker" name="txtEndDate" <?php if(isset($date)) echo 'value="' . $date . '"';?>/>
+							<input type="date" class="form-control input-sm" name="txtEndDate" value="<?php echo set_value('txtEndDate'); ?>">
 						</div>
 			    	</div>
 					<div class="col-sm-3">
@@ -69,7 +53,6 @@ $(function() {
 							<input type="submit" class="btn btn-success btn-lg" name="btnSubmit" value="View">
 						</div>
 					</div>
-			    	</form>
 			    </div>		    
 			</div>
 			<div class="panel-body">
@@ -87,11 +70,18 @@ $(function() {
 									<div class="form-horizontal">
 										<table class="table table-bordered table-hover">
 											<tr class="success">
-												<th class="col-md-2">Employee No.:</th>
-												<th class="col-md-3"><?php if(isset($record["employee"]->emp_id)) echo $record["employee"]->emp_id; ?></th>
-												<th class="col-md-1">&nbsp;</th>
 												<th class="col-md-2">Name:</th>
 												<th class="col-md-3"><?php if(isset($record["employee"]->last_name)) echo $record["employee"]->last_name . ", " . $record["employee"]->first_name . " " . $record["employee"]->middle_name; ?></th>
+												<th class="col-md-1">&nbsp;</th>
+												<th class="col-md-2">Employee No.:</th>
+												<th class="col-md-3"><?php if(isset($record["employee"]->emp_id)) echo $record["employee"]->emp_id; ?></th>
+											</tr>
+											<tr class="success">
+												<th class="col-md-2">Job Title:</th>
+												<th class="col-md-3"><?php if(isset($record["employee"]->job_title_name)) echo $record["employee"]->job_title_name; ?></th>
+												<th class="col-md-1">&nbsp;</th>
+												<th class="col-md-2">Department:</th>
+												<th class="col-md-3"><?php if(isset($record["employee"]->department_name)) echo $record["employee"]->department_name; ?></th>
 											</tr>
 											<tr class="success">
 												<th class="col-md-2">Pay Date:</th>
@@ -244,13 +234,17 @@ $(function() {
 								</div><!-- /.tab-content4 -->
 							</div><!-- nav-tabs-custom -->    
 						</div>
+						<input type="hidden" name="hidID" value="<?php echo set_value('cboEmployee'); ?>" />
+						<input type="hidden" name="hidPayDate" value="<?php echo set_value('txtPayrollDate'); ?>" />
+						<input type="hidden" name="hidPayStart" value="<?php echo set_value('txtStartDate'); ?>" />
+						<input type="hidden" name="hidPayEnd" value="<?php echo set_value('txtEndDate'); ?>" />
 						<div class="col-md-12 text-center">
-							<button id="btnGenerate" class="btn btn-success btn-lg" data-toggle="tooltip" data-placement="top" title="Generate Payslip">
-							<i class="fa fa-check fa-lg">Generate Payslip</i></button>
+							<input type="submit" class="btn btn-success btn-lg" name="btnGenerate" value="Generate">
 						</div>
 					</div>
 				</div>
-			</div>	
+			</form>
+			</div>
 		</div>
 	</div>
 </div>

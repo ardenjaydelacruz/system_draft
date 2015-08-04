@@ -71,7 +71,7 @@
 							<td class="col-md-2">Adjustments:</td>
 							<td class="col-md-3 text-right"><?php echo number_format($record["payslip"]->total_overtime, 2, ".", ","); ?></td>
 							<td class="col-md-1">&nbsp;</td>
-							<td class="col-md-2">Absences:</td>
+							<td class="col-md-2">Absences: (<?php echo number_format($record["payslip"]->days_absent, 1, ".", ","); ?> Days)</td>
 							<td class="col-md-3 text-right"><?php echo number_format($record["payslip"]->total_absent_amount, 2, ".", ","); ?></td>
 						</tr>
 						<tr>
@@ -90,10 +90,10 @@
 						</tr>
 						<?php for($ctr=0; $ctr<count($record["payslip_allowances"]) or $ctr<count($record["payslip_taxes"]); $ctr++){ ?>
 						<tr>
-							<td class="col-md-2"><?php if($ctr<count($record["payslip_allowances"])) echo $record["payslip_allowances"][$ctr]->allowance_id; ?></td>
+							<td class="col-md-2"><?php if($ctr<count($record["payslip_allowances"])) echo $record["payslip_allowances"][$ctr]->allowance_name; ?></td>
 							<td class="col-md-3 text-right"><?php if($ctr<count($record["payslip_allowances"])) echo number_format($record["payslip_allowances"][$ctr]->total, 2, ".", ","); ?></td>
 							<td class="col-md-1">&nbsp;</td>
-							<td class="col-md-2"><?php if($ctr<count($record["payslip_taxes"])) echo $record["payslip_taxes"][$ctr]->tax_id; ?></td>
+							<td class="col-md-2"><?php if($ctr<count($record["payslip_taxes"])) echo $record["payslip_taxes"][$ctr]->tax_name; ?></td>
 							<td class="col-md-3 text-right"><?php if($ctr<count($record["payslip_taxes"])) echo number_format($record["payslip_taxes"][$ctr]->total, 2, ".", ","); ?></td>
 						</tr>
 						<?php } ?>
