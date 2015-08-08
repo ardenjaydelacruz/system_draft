@@ -4,6 +4,9 @@ class Msi extends MY_Controller {
 	
 	public function __construct(){
 		parent::__construct();	
+		if ($this->session->userdata('logged_in') == true) {
+            redirect('ems/dashboard');
+        }
 	}
 
 	public function index(){

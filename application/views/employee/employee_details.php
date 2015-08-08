@@ -43,7 +43,7 @@
 ?>
 <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $row->emp_id; ?>" method="post">
 <div class="content-wrapper">
- <ol class="breadcrumb">
+  <ol class="breadcrumb">
   <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
   <li><a href="<?php echo base_url();?>ems/employees" class="btn btn-default"><i class="fa fa-user"></i> Employee</a></li>
   <li class="active"><i class="fa fa-search"></i> View Employee </li>
@@ -116,152 +116,152 @@
                 <div class="panel-body">
                   <div class="nav-tabs-custom ">
                     <ul class="nav nav-tabs ">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Personal</a></li>
-                        <li><a href="#tab_2" data-toggle="tab">Contact</a></li>
-                        <li><a href="#tab_3" data-toggle="tab">Education</a></li>
-                        <li><a href="#tab_4" data-toggle="tab">Account</a></li>
-                        <li><a href="#tab_5" data-toggle="tab">Employment</a></li>
-                        <li><a href="#tab_6" data-toggle="tab">Leaves</a></li>
-                        <li><a href="#tab_7" data-toggle="tab">Assets</a></li>
-                        <li><a href="#tab_8" data-toggle="tab">Projects</a></li>
-                       <!-- <li><a href="#tab_6" data-toggle="tab">Seminars</a></li> -->
+                      <li class="active"><a href="#tab_1" data-toggle="tab">Personal</a></li>
+                      <li><a href="#tab_2" data-toggle="tab">Contact</a></li>
+                      <li><a href="#tab_3" data-toggle="tab">Education</a></li>
+                      <li><a href="#tab_4" data-toggle="tab">Account</a></li>
+                      <li><a href="#tab_5" data-toggle="tab">Employment</a></li>
+                      <li><a href="#tab_6" data-toggle="tab">Leaves</a></li>
+                      <li><a href="#tab_7" data-toggle="tab">Assets</a></li>
+                      <li><a href="#tab_8" data-toggle="tab">Projects</a></li>
+                      <li><a href="#tab_9" data-toggle="tab">Job History</a></li>
                     </ul>
                     <div class="tab-content">
                       <section class="tab-pane active" id="tab_1">
-                          <div class="form-horizontal">
-                            <h3>Personal Details</h3>
+                        <div class="form-horizontal">
+                          <h3>Personal Details</h3>
+                          <hr>
+                          <article class="form-group">
+                            <label class="col-sm-3 control-label">First Name</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <input type="text" disabled placeholder="first name" class="form-control" value="<?php echo $row->first_name; ?>" name="txtFirstName" />
+                                    </div>
+                                </div>
+                            </div>
+                          </article>
+                          <article class="form-group">
+                            <label class="col-sm-3 control-label">Middle Name</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <input type="text" disabled placeholder="middle name" class="form-control" value="<?php echo $row->middle_name; ?>" name="txtMiddleName" />
+                                    </div>
+                                </div>
+                            </div>
+                          </article>
+                          <article class="form-group">
+                            <label class="col-sm-3 control-label">Last Name</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <input type="text" disabled placeholder="last name" class="form-control" value="<?php echo $row->last_name; ?>" name="txtLastName" />
+                                    </div>
+                                </div>
+                            </div>
+                          </article>
+                          <article class="form-group">
+                            <label class="col-sm-3 control-label">Gender</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <div class="radio">
+                                            <label class="radio-inline">
+                                                <input type="radio" value="male" name="txtGender" <?php if($row->gender=='male' ) echo "checked='checked'"; ?> disabled/>Male
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" value="female" name="txtGender" <?php if($row->gender=='female' ) echo "checked='checked'"; ?> disabled/>Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </article>
+                          <article class="form-group">
+                            <label class="col-sm-3 control-label">Birthday</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <input type="text" type="text" disabled class="form-control" value="<?php echo $row->birthday; ?>" name="txtBirthday" disabled/>
+                                    </div>
+                                </div>
+                            </div>
+                          </article>
+                          <article class="form-group">
+                            <label class="col-sm-3 control-label">Marital Status</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <select class="form-control" name="txtMaritalStatus" disabled>
+                                            <option <?php if($row->marital_status=='single' ) echo "selected='selected'"; ?>>Single</option>
+                                            <option <?php if($row->marital_status=='married' ) echo "selected='selected'"; ?>>Married</option>
+                                            <option <?php if($row->marital_status=='widowed' ) echo "selected='selected'"; ?>>Widowed</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                          </article>
+                            <br>
+                            <h3>Government Issued ID:</h3>
                             <hr>
                             <article class="form-group">
-                              <label class="col-sm-3 control-label">First Name</label>
-                              <div class="col-sm-9 controls">
-                                  <div class="row">
-                                      <div class="col-xs-9">
-                                          <input type="text" disabled placeholder="first name" class="form-control" value="<?php echo $row->first_name; ?>" name="txtFirstName" />
-                                      </div>
-                                  </div>
-                              </div>
+                                <label class=" col-sm-3 control-label">Social Security No.: </label>
+                                <div class="col-sm-9 controls">
+                                    <div class="row">
+                                        <div class="col-xs-9">
+                                            <input type="text" disabled class="form-control" value="<?php echo $row->sss_no; ?>" name="txtSSS" />
+                                        </div>
+                                    </div>
+                                </div>
                             </article>
                             <article class="form-group">
-                              <label class="col-sm-3 control-label">Middle Name</label>
-                              <div class="col-sm-9 controls">
-                                  <div class="row">
-                                      <div class="col-xs-9">
-                                          <input type="text" disabled placeholder="middle name" class="form-control" value="<?php echo $row->middle_name; ?>" name="txtMiddleName" />
-                                      </div>
-                                  </div>
-                              </div>
+                                <label class=" col-sm-3 control-label">Pag-ibig No.: </label>
+                                <div class="col-sm-9 controls">
+                                    <div class="row">
+                                        <div class="col-xs-9">
+                                            <input type="text" disabled class="form-control" value="<?php echo $row->pagibig_no; ?>" name="txtPagibig" />
+                                        </div>
+                                    </div>
+                                </div>
                             </article>
                             <article class="form-group">
-                              <label class="col-sm-3 control-label">Last Name</label>
-                              <div class="col-sm-9 controls">
-                                  <div class="row">
-                                      <div class="col-xs-9">
-                                          <input type="text" disabled placeholder="last name" class="form-control" value="<?php echo $row->last_name; ?>" name="txtLastName" />
-                                      </div>
-                                  </div>
-                              </div>
+                                <label class=" col-sm-3 control-label">Philhealth No.: </label>
+                                <div class="col-sm-9 controls">
+                                    <div class="row">
+                                        <div class="col-xs-9">
+                                            <input type="text" disabled class="form-control" value="<?php echo $row->philhealth_no; ?>" name="txtPhilhealth" />
+                                        </div>
+                                    </div>
+                                </div>
                             </article>
                             <article class="form-group">
-                              <label class="col-sm-3 control-label">Gender</label>
-                              <div class="col-sm-9 controls">
-                                  <div class="row">
-                                      <div class="col-xs-9">
-                                          <div class="radio">
-                                              <label class="radio-inline">
-                                                  <input type="radio" value="male" name="txtGender" <?php if($row->gender=='male' ) echo "checked='checked'"; ?> disabled/>Male
-                                              </label>
-                                              <label class="radio-inline">
-                                                  <input type="radio" value="female" name="txtGender" <?php if($row->gender=='female' ) echo "checked='checked'"; ?> disabled/>Female
-                                              </label>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
+                                <label class=" col-sm-3 control-label">Tax Identification No.: </label>
+                                <div class="col-sm-9 controls">
+                                    <div class="row">
+                                        <div class="col-xs-9">
+                                            <input type="text" disabled placeholder="State" class="form-control" value="<?php echo $row->tin; ?>" name="txtTIN" />
+                                        </div>
+                                    </div>
+                                </div>
                             </article>
-                            <article class="form-group">
-                              <label class="col-sm-3 control-label">Birthday</label>
-                              <div class="col-sm-9 controls">
-                                  <div class="row">
-                                      <div class="col-xs-9">
-                                          <input type="text" type="text" disabled class="form-control" value="<?php echo $row->birthday; ?>" name="txtBirthday" disabled/>
-                                      </div>
-                                  </div>
-                              </div>
-                            </article>
-                            <article class="form-group">
-                              <label class="col-sm-3 control-label">Marital Status</label>
-                              <div class="col-sm-9 controls">
-                                  <div class="row">
-                                      <div class="col-xs-9">
-                                          <select class="form-control" name="txtMaritalStatus" disabled>
-                                              <option <?php if($row->marital_status=='single' ) echo "selected='selected'"; ?>>Single</option>
-                                              <option <?php if($row->marital_status=='married' ) echo "selected='selected'"; ?>>Married</option>
-                                              <option <?php if($row->marital_status=='widowed' ) echo "selected='selected'"; ?>>Widowed</option>
-                                          </select>
-                                      </div>
-                                  </div>
-                              </div>
-                            </article>
-                              <br>
-                              <h3>Government Issued ID:</h3>
-                              <hr>
-                              <article class="form-group">
-                                  <label class=" col-sm-3 control-label">Social Security No.: </label>
-                                  <div class="col-sm-9 controls">
-                                      <div class="row">
-                                          <div class="col-xs-9">
-                                              <input type="text" disabled class="form-control" value="<?php echo $row->sss_no; ?>" name="txtSSS" />
-                                          </div>
-                                      </div>
-                                  </div>
-                              </article>
-                              <article class="form-group">
-                                  <label class=" col-sm-3 control-label">Pag-ibig No.: </label>
-                                  <div class="col-sm-9 controls">
-                                      <div class="row">
-                                          <div class="col-xs-9">
-                                              <input type="text" disabled class="form-control" value="<?php echo $row->pagibig_no; ?>" name="txtPagibig" />
-                                          </div>
-                                      </div>
-                                  </div>
-                              </article>
-                              <article class="form-group">
-                                  <label class=" col-sm-3 control-label">Philhealth No.: </label>
-                                  <div class="col-sm-9 controls">
-                                      <div class="row">
-                                          <div class="col-xs-9">
-                                              <input type="text" disabled class="form-control" value="<?php echo $row->philhealth_no; ?>" name="txtPhilhealth" />
-                                          </div>
-                                      </div>
-                                  </div>
-                              </article>
-                              <article class="form-group">
-                                  <label class=" col-sm-3 control-label">Tax Identification No.: </label>
-                                  <div class="col-sm-9 controls">
-                                      <div class="row">
-                                          <div class="col-xs-9">
-                                              <input type="text" disabled placeholder="State" class="form-control" value="<?php echo $row->tin; ?>" name="txtTIN" />
-                                          </div>
-                                      </div>
-                                  </div>
-                              </article>
-                            <br>
-                            <h3>Dependent/s</h3><hr>
-                            <table class="table table-bordered table-striped table-hovered">
-                              <thead>
-                                <th></th>
-                                <th class="text-center">Name</th>
-                                <th class="text-center">Relationship</th>
-                              </thead>
-                              <?php $counter=1; foreach ($record as $row) { ?>
-                              <tr>
-                                <td><?php echo $counter++; ?></td>
-                                <td><input type="text" disabled class="form-control" value="<?php echo $row->dependent_fname.' '.$row->dependent_lname; ?>" name="txtDependentName" /></td>
-                                <td><input type="text" disabled class="form-control" value="<?php echo $row->relationship; ?>" name="txtDependentRel" /></td>
-                              </tr>
-                              <?php } ?>
-                            </table>
-                          </div>
+                          <br>
+                          <h3>Dependent/s</h3><hr>
+                          <table class="table table-bordered table-striped table-hovered">
+                            <thead>
+                              <th></th>
+                              <th class="text-center">Name</th>
+                              <th class="text-center">Relationship</th>
+                            </thead>
+                            <?php $counter=1; foreach ($record as $row) { ?>
+                            <tr>
+                              <td><?php echo $counter++; ?></td>
+                              <td><input type="text" disabled class="form-control" value="<?php echo $row->dependent_fname.' '.$row->dependent_lname; ?>" name="txtDependentName" /></td>
+                              <td><input type="text" disabled class="form-control" value="<?php echo $row->relationship; ?>" name="txtDependentRel" /></td>
+                            </tr>
+                            <?php } ?>
+                          </table>
+                        </div>
                       </section><!-- Personal -->
 
                       <section class="tab-pane" id="tab_2">
@@ -728,6 +728,28 @@
                            </table>
                         </div>
                       </section><!-- Projects -->
+
+                      <section class="tab-pane" id="tab_9">
+                        <div class="form-horizontal">
+                           <h3>Job History</h3><hr>
+                           <table class="table table-hovered table-striped table-bordered">
+                               <thead>
+                                  <th class="text-center">Company Name</th>
+                                  <th class="text-center">Company Address</th>
+                                  <th class="text-center">Years of Service</th>
+                                  <th class="text-center">Job Title</th>
+                               </thead>
+                               <?php foreach ($job_hist as $job) { ?>
+                               <tr>
+                                  <th class="text-center"><?php echo $job->company_name; ?></th>
+                                  <td><?php echo $job->company_address; ?></td>
+                                  <td><?php echo $job->years_stayed; ?></td>
+                                  <td><?php echo $job->job_title; ?></td>
+                               </tr>
+                               <?php } ?>
+                           </table>
+                        </div>
+                      </section><!-- Job History -->
                     </div><!-- Tab-content -->
                   </div><!-- Navs -->
                 </div><!--Panel Body-->

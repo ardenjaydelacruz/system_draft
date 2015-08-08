@@ -65,6 +65,7 @@ class Ems extends MY_Controller
     public function view_details()
     {
         $id = $this->input->get('emp_id');
+        $data['job_hist'] = Job_history_model::find('all',array('conditions'=>"employee_id =$id"));
         $data['record'] = Dependent_model::find('all',array('conditions'=>"employee_id =$id")); //get dependents by id
         $data['leaves'] = View_leave_remaining::find('all',array('conditions'=>"emp_id =$id"));
         $data['asset'] = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id"));
