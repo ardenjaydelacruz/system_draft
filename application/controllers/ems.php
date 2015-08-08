@@ -143,52 +143,34 @@ class Ems extends MY_Controller
 
     public function leaves_table()
     {
-        $data['record'] = Leaves_model::all();
+        if ($this->input->get('leave_status')){
+            Leave_request_model::update_leave();
+        }
+        $data['record'] = View_leaves_request::all();
         $data['pageTitle'] = 'Leaves - MSInc.';
         $data['content'] = 'employee/leaves_table';
         $this->load->view($this->master_layout, $data);
         $this->display_notif();
+
     }
 
     public function request_leave()
     {
+        if($this->input->post('btnSubmit')){
+            Leave_request_model::process_leave_request();
+        }
         $id = $this->input->get('emp_id');
         $data['row'] = Emp_info_model::find($id);
+        $data['leave_type'] = Leave_type_model::all();
         $data['pageTitle'] = 'Request Leave - MSInc.';
         $data['content'] = 'employee/request_leave';
         $this->load->view($this->master_layout, $data);
-    }
 
-    public function process_leave()
-    {
-        $details = Leaves_model::leave_details();
-        if ($leave = Leaves_model::create($details)) {
-            $this->session->set_userdata('added', 1);
-            redirect('ems/leaves_table');
-        }
-    }
-
-    public function update_leave_status()
-    {
-        if ($this->input->get('leave_status') == 'Approved') {
-            $data = Emp_info_model::find($this->input->get('emp_id'));
-            $data->leaves = $this->input->get('leaves') - $this->input->get('days');
-            $data->save();
-        }
-        $details = array(
-            'status' => $this->input->get('leave_status'),
-            'approved_by' => $this->session->userdata('user_level') . ' ' . $this->session->userdata('first_name'),
-            'date_approved' => date("Y-m-d")
-        );
-        $approved = Leaves_model::find($this->input->get('leave_id'));
-        if ($approved->update_attributes($details)) {
-            redirect('ems/leaves_table');
-        }
     }
 
     public function view_leave_details()
     {
-        $data['row'] = Leaves_model::find($this->input->get('leave_id'));
+        $data['row'] = View_leaves_request::find($this->input->get('leave_request_id'));
         $data['pageTitle'] = 'Leave Details - MSInc.';
         $data['content'] = 'employee/leave_details';
         $this->load->view($this->master_layout, $data);

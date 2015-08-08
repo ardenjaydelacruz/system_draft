@@ -2,12 +2,12 @@
 	<ol class="breadcrumb">
         <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
          <li><a href="<?php echo base_url();?>ems/employees" class="btn btn-default"><i class="fa fa-user"></i> Employee</a></li>
-          <li class="active"><i class="fa fa-calendar"></i> Leave </li>
+          <li class="active"><i class="fa fa-calendar"></i> Leave Request </li>
     </ol>
     <div class="container-fluid">
 		<div class="panel panel-info">
 			<div class="panel-heading">
-			    <h1 class="panel-title big">Leaves Table</h1>
+			    <h1 class="panel-title big">Leaves Request Table</h1>
 			</div>
 			<div class="panel-body">
 				<table class="table table-striped table-hover table-bordered centered">
@@ -16,8 +16,8 @@
 						<th class="text-center">Employee Name</th>
 						<th class="text-center">Leave Date</th>
 						<th class="text-center">Type of leave</th>
-						<th class="text-center">Number of Days</th>
-						<th class="text-center">Leave Days Remaining</th>
+						<th class="text-center">No. of Days</th>
+						<th class="text-center">Leaves Left</th>
 						<th class="text-center">Status</th>
 						<th class="text-center">Manage</th>
 					</thead>
@@ -25,38 +25,42 @@
 					foreach ($record as $row) {	
 						?>
 					<tr>
-						<td class="text-center"><?php echo $row->leave_id; ?></td>
-						<td><?php echo $row->employee_name;  ?></td>
-						<td class="text-center"><?php echo $row->start_date.' to '.$row->end_date; ?></td>
-						<td><?php echo $row->type; ?></td>
-						<td class="text-center"><?php echo $row->days; ?></td>
-						<td class="text-center"><?php echo $row->leaves_left; ?></td>
+						<td class="text-center"><?php echo $row->leave_request_id; ?></td>
+						<td><?php echo $row->name;  ?></td>
+						<td class="text-center"><?php echo $row->leave_start.' to '.$row->leave_end; ?></td>
+						<td><?php echo $row->leave_type_name; ?></td>
+						<td class="text-center"><?php echo $row->num_days; ?></td>
+						<td class="text-center"><?php echo $row->leave_left; ?></td>
 						<td align="center">
-							<?php if (empty($row->status)){ ?>
-							<a href="<?php echo base_url(); ?>ems/update_leave_status?leave_status=Approved&leave_id=<?php echo $row->leave_id;?>&days=<?php echo  $row->days;?>&emp_id=<?php echo $row->employee_id;?>&leaves=<?php echo $row->leaves_left; ?>">
+							<?php if ($row->leave_status=='Pending'){ ?>
+							<a href="<?php echo base_url(); ?>ems/leaves_table?leave_status=Approved&leave_request_id=<?php echo substr($row->leave_request_id,3,5);?>&leave_id=<?php echo $row->leave_type_id; ?>&days=<?php echo $row->num_days; ?>&leave_left=<?php echo $row->leave_left; ?>&emp_id=<?php echo $row->emp_id; ?>">
 								<button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Approve Leave"><i class="fa fa-thumbs-up fa-lg"></i></button>
 							</a>
-							<a href="<?php echo base_url(); ?>ems/update_leave_status?leave_status=Declined&leave_id=<?php echo $row->leave_id;?>">
+							<a href="<?php echo base_url(); ?>ems/leaves_table?leave_status=Denied&leave_request_id=<?php echo substr($row->leave_request_id,3,5);?>">
 								<button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Decline Leave"><i class="fa fa-thumbs-down fa-lg"></i></button>
 							</a>
 							<?php } else {
-									if ($row->status=='Approved'){
-										echo "<label class='label label-success'>";
-										echo $row->status;
-										echo "</label>";
-									} else {
-										echo "<label class='label label-danger'>";
-										echo $row->status;
-										echo "</label>";
-									}
-								} ?>
+								if ($row->leave_status=='Approved'){
+									echo "<label class='label label-success'>";
+									echo $row->leave_status;
+									echo "</label>";
+								} else if ($row->leave_status=='Denied') {
+									echo "<label class='label label-danger'>";
+									echo $row->leave_status;
+									echo "</label>";
+								} else {
+									echo "<label class='label label-warning'>";
+									echo $row->leave_status;
+									echo "</label>";
+								}
+							} ?>
 						</td>
 						<td align="center">
-							<a href="<?php echo base_url();?>ems/view_leave_details?leave_id=<?php echo $row->leave_id; ?>">
-								<button class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="View Leave"><i class="fa fa-search fa-lg"></i></button>
+							<a href="<?php echo base_url();?>ems/view_leave_details?leave_request_id=<?php echo $row->leave_request_id; ?>">
+								<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Leave"><i class="fa fa-search"></i></button>
 							</a>
-							<!-- <button onclick=deleteLeave(<?php echo $row->leave_id; ?>,'<?php echo base_url();?>ems/'); class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-						 --></td>
+							<!-- <button onclick=deleteLeave(<?php echo $row->leave_request_id; ?>,'<?php echo base_url();?>ems/'); class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Delete Request"><i class="fa fa-trash-o"></i></button> -->
+						</td>
 					</tr>
 					<?php } ?>
 				</table>	

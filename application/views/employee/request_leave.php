@@ -1,7 +1,6 @@
 <?php 
 	$id = $row->emp_id;
 	$name = $row->first_name.' '.$row->last_name;
-	$leaves = $row->leaves;
  ?>
 <div class="content-wrapper">
 	<ol class="breadcrumb">
@@ -16,7 +15,7 @@
 		<div class="panel-body">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<?php echo form_open('ems/process_leave?emp_id='.$id.'&emp_name='.$name.'&leaves='.$leaves); ?>
+					<?php echo form_open('ems/request_leave?emp_id='.$id); ?>
 					<div class="form-horizontal">
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Employee Name</label>
@@ -27,25 +26,30 @@
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Leave Starts</label>
 						    <div class="col-sm-3">
-						    	<input type="date" class="form-control input-sm" placeholder="Employee ID" required name="leaveStarts">
+						    	<input type="date" class="form-control input-sm"  required name="leaveStarts">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Leave Ends</label>
 						    <div class="col-sm-3">
-						    	<input type="date" class="form-control input-sm" placeholder="Position" required name="leaveEnds">
+						    	<input type="date" class="form-control input-sm" required name="leaveEnds">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Type of leave</label>
 						    <div class="col-sm-3">
-						    	<select class="form-control" name="type" required	>
-						    		<option value="Sick Leave">Sick Leave</option>
-						    		<option value="Maternity Leave">Maternity Leave Leave</option>
-						    		<option value="Vacation Leave">Vacation Leave</option>
-						    		<option value="Leave Without Pay">Leave Without Pay</option>
-						    		<option value="Family Responsibility Leave ">Family Responsibility Leave </option>
-						    	</select>
+						    	<select name="txtLeaveType" id="stocks" class="form-control">
+		                        <option value="">Leave Type</option>
+		                        <?php foreach ($leave_type as $row){ 
+		                            echo "<option value='$row->leave_type_id'>$row->leave_type_name</option>";
+		                        } ?>
+		                    </select>
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label class=" col-sm-3 control-label">Reason</label>
+						    <div class="col-sm-3">
+						    	<textarea name="txtReason" cols="30" rows="5" class="form-control"></textarea>
 						    </div>
 						</div>
 					</div>

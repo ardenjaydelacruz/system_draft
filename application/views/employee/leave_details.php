@@ -12,57 +12,63 @@
 		<div class="panel-body">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<h1 class="page-header"><b><?php echo $row->employee_name; ?></b></h1>
+					<h1 class="page-header"><b><?php echo $row->name; ?></b></h1>
 					<div class="row">
 						<div class="col-sm-12">
 						
-							<div class="col-sm-6">
+							<div class="col-sm-5">
 								<div class="form-horizontal">
 									<div class="form-group">
 									    <label class=" col-sm-6 control-label">Leave ID:</label>
 									    <div class="col-sm-6">						    		
-									    	<input type="text" class="form-control input-sm" name="leaveID" disabled required value="<?php echo $row->leave_id; ?>">
+									    	<input type="text" class="form-control input-sm" name="leaveID" disabled required value="<?php echo $row->leave_request_id; ?>">
 									    </div>
 									</div>
 									<div class="form-group">
 									    <label class=" col-sm-6 control-label">Leave Starts</label>
 									    <div class="col-sm-6">
-									    	<input type="date" class="form-control input-sm" placeholder="Employee ID" name="leaveStarts" disabled required value="<?php echo $row->start_date; ?>">
+									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo $row->leave_start; ?>">
 									    </div>
 									</div>
 									<div class="form-group">
 									    <label class=" col-sm-6 control-label">Leave Ends</label>
 									    <div class="col-sm-6">
-									    	<input type="date" class="form-control input-sm" placeholder="Position" name="leaveEnds"  disabled required value="<?php echo $row->end_date; ?>">
+									    	<input type="text" class="form-control input-sm" name="leaveEnds"  disabled required value="<?php echo $row->leave_end; ?>">
 									    </div>
 									</div>
 									<div class="form-group">
 									    <label class=" col-sm-6 control-label">Number of Days</label>
 									    <div class="col-sm-6">
-									    	<input type="text" class="form-control input-sm" placeholder="Position" name="leaveEnds" disabled required value="<?php echo $row->days; ?>">
+									    	<input type="text" class="form-control input-sm" name="leaveEnds" disabled required value="<?php echo $row->num_days; ?>">
 									    </div>
 									</div>
 									<div class="form-group">
 									    <label class=" col-sm-6 control-label">Leaves Left (Before Requesting)</label>
 									    <div class="col-sm-6">						    		
-									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo $row->leaves_left; ?>">
+									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo $row->leave_left; ?>">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label class=" col-sm-6 control-label">Type of leave</label>
+									     <div class="col-sm-6">						    		
+									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo $row->leave_type; ?>">
 									    </div>
 									</div>
 								</div>
 							</div> <!-- 6 -->
 
-							<div class="col-sm-6">
+							<div class="col-sm-7">
 								<div class="form-horizontal">
 									<div class="form-group">
-									    <label class=" col-sm-6 control-label">Type of leave</label>
-									     <div class="col-sm-6">						    		
-									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo $row->type; ?>">
+									    <label class=" col-sm-6 control-label">Reason</label>
+									    <div class="col-sm-6">						    		
+											<textarea name="txtReason" class="form-control" cols="30" rows="3" disabled><?php echo $row->leave_reason; ?></textarea>
 									    </div>
 									</div>
 									<div class="form-group">
 									    <label class=" col-sm-6 control-label">Status</label>
 									    <div class="col-sm-6">						    		
-									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo $row->status; ?>">
+									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo $row->leave_status; ?>">
 									    </div>
 									</div>
 									<div class="form-group">

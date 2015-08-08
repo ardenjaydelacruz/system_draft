@@ -96,7 +96,7 @@
                                     </button>
                                 </a>
                                 <a href="<?php echo base_url();?>ems/request_leave?emp_id=<?php echo $row->emp_id; ?>">
-                                    <button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Add Leave">
+                                    <button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Add Leave Request">
                                         <i class="fa fa-calendar"></i>
                                     </button>
                                 </a>
