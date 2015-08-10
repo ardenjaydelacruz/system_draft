@@ -3,6 +3,75 @@ class Emp_info_model extends ActiveRecord\Model {
 	static $table_name = 'tbl_emp_info';
 	static $primary_key = 'emp_id';
 
+	public function personalInfo(){
+		$data = array (
+			'emp_id' => $this->input->post('txtEmpID'),
+			'first_name' => $this->input->post('txtFirstName'),
+			'middle_name' => $this->input->post('txtMiddleName'),
+			'last_name' => $this->input->post('txtLastName'),
+			'birthday' => $this->input->post('txtBirthday'),
+			'gender' => $this->input->post('txtGender'),
+			'marital_status' => $this->input->post('txtMaritalStatus')
+		);
+		return $data;
+	}
+
+	public function govInfo(){
+		$data = array (
+			'sss_no' => $this->input->post('txtSSS'),
+			'pagibig_no' => $this->input->post('txtPagibig'),
+			'philhealth_no' => $this->input->post('txtPhilhealth'),
+			'tin' => $this->input->post('txtTIN')
+		);
+		return $data;
+	}
+
+	public function addressInfo(){
+		$data = array(
+			'street' => $this->input->post('txtStreet'),
+			'barangay' => $this->input->post('txtBarangay'),
+			'city' => $this->input->post('txtCity'),
+			'state' => $this->input->post('txtState'),
+			'zip' => $this->input->post('txtZip'),
+			'country' => $this->input->post('txtCountry')
+		);
+		return $data;
+	}
+
+	public function contactInfo(){
+		$data = array(
+			'mobile_number' => $this->input->post('txtMobile'),
+			'tel_number' => $this->input->post('txtTelephone'),
+			'email_address' => $this->input->post('txtEmailAd')
+		);
+		return $data;
+	}
+
+	public function contactPerson(){
+		$data = array(
+			'contact_person' => $this->input->post('txtContactPerson'),
+			'contact_num' => $this->input->post('txtContactNum'),
+			'contact_rel' => $this->input->post('txtContactRel')
+		);
+		return $data;
+	}
+
+	public function schoolInfo(){
+		$data = array(
+			'primary_name' => $this->input->post('txtSchoolName1'),
+			'primary_address' => $this->input->post('txtSchoolAddress1'),
+			'primary_year' => $this->input->post('txtSchoolYear1'),
+			'secondary_name' => $this->input->post('txtSchoolName2'),
+			'secondary_address' => $this->input->post('txtSchoolAddress2'),
+			'secondary_year' => $this->input->post('txtSchoolYear2'),
+			'tertiary_name' => $this->input->post('txtSchoolName3'),
+			'tertiary_address' => $this->input->post('txtSchoolAddress3'),
+			'tertiary_year' => $this->input->post('txtSchoolYear3')
+		);
+		return $data;
+	}
+
+
 	public function insert_employee_data(){
 		$this->form_validation->set_rules('txtEmpID', 'Employee ID', 'trim|required');
 		$this->form_validation->set_rules('txtJobTitle', 'Job Title', 'trim|required');
@@ -53,7 +122,7 @@ class Emp_info_model extends ActiveRecord\Model {
 			'last_name' => $this->input->post('txtLastName'),
 			'birthday' => $this->input->post('txtBday'),
 			'gender' => $this->input->post('txtFirstName'),
-			'marital_status' => $this->input->post('txtStatus')
+			'marital_status' => $this->input->post('txtMaritalStatus')
 		);
 
 		$id = array (
@@ -62,7 +131,7 @@ class Emp_info_model extends ActiveRecord\Model {
 
 		
 		if ($this->form_validation->run()) {	
-			if (Emp_info_model::create($personal) && 
+			if (Emp_info_model::create(Emp_info_model::personalInfo()) && 
 				Emp_history_model::create($empInfo) && 
 				Emp_address_model::create($address) && 
 				Emp_contact_model::create($contact) && 
@@ -79,33 +148,7 @@ class Emp_info_model extends ActiveRecord\Model {
 		}
 	}
 	
-	public function updateInfo(){
-		$data = array (
-			'first_name' => $this->input->post('txtFirstName'),
-			'middle_name' => $this->input->post('txtMiddleName'),
-			'last_name' => $this->input->post('txtLastName'),
-			'job_title' => $this->input->post('txtPosition'),
-			'status' => $this->input->post('txtStatus'),
-			'department' => $this->input->post('txtDepartment'),
-			'leaves' => $this->input->post('txtLeaves'),
-			'birthday' => $this->input->post('txtBirthday'),
-			'gender' => $this->input->post('txtGender'),
-			'marital_status' => $this->input->post('txtMaritalStatus'),
-			'street' => $this->input->post('txtStreet'),
-			'barangay'=> $this->input->post('txtBarangay'),
-			'city' => $this->input->post('txtCity'),
-			'zip' => $this->input->post('txtZip'),
-			'state' => $this->input->post('txtState'),
-			'country' => $this->input->post('txtCountry'),
-			'mobile_number' => $this->input->post('txtMobile'),
-			'tel_number' => $this->input->post('txtTelephone'),
-			'contact_person' => $this->input->post('txtContactPerson'),
-			'contact_rel' => $this->input->post('txtContactRel'),
-			'contact_num' => $this->input->post('txtContactNum'),
-			'email_address'=> $this->input->post('txtEmail')
-		);
-		return $data;
-	}
+	
 
 	public function do_upload($id){
 		// $this->upload_path = realpath(APPPATH.'../assets/images/profile');

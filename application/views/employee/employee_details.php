@@ -150,9 +150,9 @@ if (!empty($info->image)){
                                 <div class="row">
                                     <div class="col-xs-9">
                                         <select class="form-control" name="txtMaritalStatus" disabled>
-                                            <option <?php if($info->marital_status=='single' ) echo "selected='selected'"; ?>>Single</option>
-                                            <option <?php if($info->marital_status=='married' ) echo "selected='selected'"; ?>>Married</option>
-                                            <option <?php if($info->marital_status=='widowed' ) echo "selected='selected'"; ?>>Widowed</option>
+                                            <option <?php if($info->marital_status=='Single' ) echo "selected='selected'"; ?>>Single</option>
+                                            <option <?php if($info->marital_status=='Married' ) echo "selected='selected'"; ?>>Married</option>
+                                            <option <?php if($info->marital_status=='Widowed' ) echo "selected='selected'"; ?>>Widowed</option>
                                         </select>
                                     </div>
                                 </div>
@@ -310,7 +310,7 @@ if (!empty($info->image)){
                             <div class="col-sm-9 controls">
                                 <div class="row">
                                     <div class="col-xs-9">
-                                        <input type="text" disabled class="form-control" value="<?php echo $contact->email_address; ?>" name="txtEmail" />
+                                        <input type="text" disabled class="form-control" value="<?php echo $contact->email_address; ?>" name="txtEmailAd" />
                                     </div>
                                 </div>
                             </div>

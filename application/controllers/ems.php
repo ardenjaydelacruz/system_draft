@@ -100,9 +100,20 @@ class Ems extends MY_Controller
     {
         $id = $this->input->get('emp_id');
         $ems = Emp_info_model::find($id);
+        $gov = Gov_id_model::find($id);
+        $address = Emp_address_model::find($id);
+        $contact = Emp_contact_model::find($id);
+        $contactP = Emp_contact_person::find($id);
+        $school = Emp_school_model::find($id);
         $user = Users::find_by_employee_id($id);
 
-        if ($ems->update_attributes(Emp_info_model::updateInfo()) || $user->update_attributes(Users::userDetails())) {
+        if ($ems->update_attributes(Emp_info_model::personalInfo()) && 
+            $gov->update_attributes(Emp_info_model::govInfo()) && 
+            $address->update_attributes(Emp_info_model::addressInfo()) && 
+            $contact->update_attributes(Emp_info_model::contactInfo()) && 
+            $contactP->update_attributes(Emp_info_model::contactPerson()) && 
+            $school->update_attributes(Emp_info_model::schoolInfo()) && 
+            $user->update_attributes(Users::userDetails())) {
             $this->session->set_userdata('edited', 1);
             redirect("ems/view_details?emp_id=$id");
         }
