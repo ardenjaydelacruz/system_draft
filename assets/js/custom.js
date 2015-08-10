@@ -1,7 +1,3 @@
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-
 $(document).ready(function(){
     $(".dropdown").hover(            
         function() {
@@ -13,6 +9,8 @@ $(document).ready(function(){
             $(this).toggleClass('open');       
         }
     );
+
+    $('[data-toggle="tooltip"]').tooltip()
     
     $('#upload').hide();
     
@@ -123,4 +121,3 @@ toastr.options = {
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
 };
-

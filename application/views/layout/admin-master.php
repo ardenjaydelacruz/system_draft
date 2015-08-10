@@ -18,9 +18,10 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/toastr.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/animations.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/morris.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:500,700,500italic,400' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/mystyle.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		
 
 	</head>
 	<body class="skin-black ">
@@ -35,12 +36,12 @@
 			<footer class="main-footer">
 				<strong>Copyright &copy; 2015 Multistyle Specialists Inc.</strong> All rights reserved.
 			</footer>
-
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+			<script src="<?php echo base_url();?>assets/js/jquery-ui.min.js"></script>
 			<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 			<script src="<?php echo base_url();?>assets/js/sweetalert.min.js"></script>
 			<script src="<?php echo base_url();?>assets/js/toastr.min.js"></script>
 			<script src="<?php echo base_url();?>assets/js/app.min.js" type="text/javascript"></script>
-			<script src="<?php echo base_url();?>assets/js/bootstrap-datetimepicker.min.js"></script>
 			<!-- Admin LTE -->
 			<script src="<?php echo base_url();?>assets/plugins/morris.js"></script>
 			<script src="<?php echo base_url();?>assets/js/animations.js"></script>

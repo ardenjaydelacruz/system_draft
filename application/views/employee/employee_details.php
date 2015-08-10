@@ -139,7 +139,7 @@ if (!empty($info->image)){
                             <div class="col-sm-9 controls">
                                 <div class="row">
                                     <div class="col-xs-9">
-                                        <input type="text" type="text" disabled class="form-control" value="<?php echo $info->birthday; ?>" name="txtBirthday" disabled/>
+                                        <input type="date"  disabled class="form-control" value="<?php echo date_format($info->birthday,'Y-m-j'); ?>" name="txtBirthday" disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -524,7 +524,7 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->start_date; ?>" name="txtSecretQuestion" />
+                                           <input type="date" disabled class="form-control" value="<?php echo date_format($emp->start_date,'Y-m-j'); ?>" name="txtSecretQuestion" />
                                        </div>
                                    </div>
                                </div>
@@ -534,7 +534,7 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->end_date; ?>" name="txtSecretQuestion" />
+                                           <input type="date" disabled class="form-control" value="<?php echo date_format($emp->end_date,'Y-m-j'); ?>" name="txtSecretQuestion" />
                                        </div>
                                    </div>
                                </div>
@@ -544,7 +544,7 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->probationary_date; ?>" name="txtSecretAnswer" />
+                                           <input type="date" disabled class="form-control" value="<?php echo  date_format($emp->probationary_date,'Y-m-j'); ?>" name="txtSecretAnswer" />
                                        </div>
                                    </div>
                                </div>
@@ -554,7 +554,7 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->permanency_date; ?>" name="txtSecretAnswer" />
+                                           <input type="date" disabled class="form-control" value="<?php echo  date_format($emp->permanency_date,'Y-m-j'); ?>" name="txtSecretAnswer" />
                                        </div>
                                    </div>
                                </div>
