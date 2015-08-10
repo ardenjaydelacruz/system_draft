@@ -23,35 +23,50 @@
                                 <div class="form-group">
                                     <label class=" col-sm-3 control-label">Employee ID: * </label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control input-sm" placeholder="Employee ID" name="txtEmpID">
+                                        <input type="text" class="form-control input-sm" name="txtEmpID">
                                     </div>
                                     <div class="col-sm-5 error">
                                         <?php echo form_error('txtEmpID'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" col-sm-3 control-label">Position: * </label>
+                                    <label class=" col-sm-3 control-label">Job Title: * </label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control input-sm" placeholder="Position" name="txtEmpPosition">
+                                        <select name="txtJobTitle"  class="form-control">
+                                            <option value="">---</option>
+                                            <?php foreach ($job_titles as $row){ 
+                                                echo "<option value='$row->job_title_id'>$row->job_title_name</option>";
+                                            } ?>
+                                        </select>
                                     </div>
                                     <div class="col-sm-5 error">
-                                        <?php echo form_error('txtEmpPosition'); ?>
+                                        <?php echo form_error('txtJobTitle'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" col-sm-3 control-label">Employee Status: * </label>
+                                    <label class=" col-sm-3 control-label">Employment Type: * </label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control input-sm" placeholder="Status" name="txtEmpStatus">
+                                        <select name="txtEmploymentType"  class="form-control">
+                                            <option value="">---</option>
+                                            <?php foreach ($employment_type as $row){ 
+                                                echo "<option value='$row->employment_type_id'>$row->employment_type </option>";
+                                            } ?>
+                                        </select>
                                     </div>
                                     <div class="col-sm-5 error">
-                                        <?php echo form_error('txtEmpStatus'); ?>
+                                        <?php echo form_error('txtEmploymentType'); ?>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class=" col-sm-3 control-label">Employee Department: * </label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control input-sm" placeholder="Department" name="txtEmpDepartment">
+                                        <select name="txtEmpDepartment" class="form-control">
+                                            <option value="">---</option>
+                                            <?php foreach ($departments as $row){ 
+                                                echo "<option value='$row->department_id'>$row->department_name</option>";
+                                            } ?>
+                                        </select>
                                     </div>
                                     <div class="col-sm-5 error">
                                         <?php echo form_error('txtEmpDepartment'); ?>
@@ -70,14 +85,14 @@
                             <div class="form-group">
                                 <label class=" col-sm-2 control-label">Full Name: * </label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" placeholder="First Name" name="txtFirstName">
+                                    <input type="text" class="form-control input-sm" name="txtFirstName">
                                     <?php echo form_error('txtFirstName','<div class="error">','</div>'); ?>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" placeholder="Middle Name (Optional)" name="txtMiddleName">
+                                    <input type="text" class="form-control input-sm" placeholder="(Optional)" name="txtMiddleName">
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" placeholder="Last Name" name="txtLastName">
+                                    <input type="text" class="form-control input-sm" name="txtLastName">
                                     <?php echo form_error('txtLastName','<div class="error">','</div>'); ?>
                                 </div>
                             </div>
@@ -126,42 +141,42 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Street: * </label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" placeholder="St. #" name="txtStreet">
+                                    <input type="text" class="form-control input-sm"  name="txtStreet">
                                 </div>
                                 <?php echo form_error('txtStreet','<div class="error col-sm-5">','</div>'); ?>
                             </div>
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Barangay: * </label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" placeholder="Brgy." name="txtBarangay">
+                                    <input type="text" class="form-control input-sm"  name="txtBarangay">
                                 </div>
                                 <?php echo form_error('txtBarangay','<div class="error col-sm-5">','</div>'); ?>
                             </div>
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">City / Town: * </label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" placeholder="City / Town" name="txtCity">
+                                    <input type="text" class="form-control input-sm"  name="txtCity">
                                 </div>
                                 <?php echo form_error('txtCity','<div class="error col-sm-5">','</div>'); ?>
                             </div>
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">State / Province: * </label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" placeholder="State / Province" name="txtState">
+                                    <input type="text" class="form-control input-sm" name="txtState">
                                 </div>
                                 <?php echo form_error('txtState','<div class="error col-sm-5">','</div>'); ?>
                             </div>
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Zip / Postal Code: * </label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" placeholder="Zip / Postal" name="txtZip">
+                                    <input type="text" class="form-control input-sm"  name="txtZip">
                                 </div>
                                 <?php echo form_error('txtZip','<div class="error col-sm-5">','</div>'); ?>
                             </div>
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Country: * </label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" placeholder="Country" name="txtCountry">
+                                    <input type="text" class="form-control input-sm" name="txtCountry">
                                 </div>
                                 <?php echo form_error('txtCountry','<div class="error col-sm-5">','</div>'); ?>
                             </div>
@@ -177,59 +192,23 @@
                         <div class="form">
                             <div class="form-group col-sm-4">
                                 <label class="control-label">Mobile Number:</label>
-                                <input type="text" class="form-control input-sm" placeholder="Mobile No." name="txtMobile">
+                                <input type="text" class="form-control input-sm" name="txtMobile">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label class="control-label">Telephone Number:</label>
                                 <div class="">
-                                    <input type="text" class="form-control input-sm" placeholder="Tel. No." name="txtTelephone">
+                                    <input type="text" class="form-control input-sm"  name="txtTelephone">
                                 </div>
                             </div>
                             <div class="form-group col-sm-4">
                                 <label class=" control-label">Email:</label>
                                 <div class="">
-                                    <input type="email" class="form-control input-sm" placeholder="Contact #" name="txtEmail">
+                                    <input type="email" class="form-control input-sm" name="txtEmail">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Emergency Contact Person</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="form">
-                            <div class="form-group col-sm-4">
-                                <label class="control-label">Emergency Contact Person:</label>
-                                <input type="text" class="form-control input-sm" placeholder="Contact Person" name="txtContactPerson">
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <label class="control-label">Relationship:</label>
-                                <div class="">
-                                    <input type="text" class="form-control input-sm" placeholder="Relationship" name="txtContactRel">
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <label class=" control-label">Contact Number:</label>
-                                <div class="">
-                                    <input type="text" class="form-control input-sm" placeholder="Contact #" name="txtContactNumber">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="panel panel-default">
-                    <div class="panel-heading">
-                         <h3 class="panel-title">Employee Address</h3>
-                    </div>
-                    <div class="panel-body">
-
-                    </div>
-                </div> -->
-
                 <div class="signupButtons">
                     <center>
                         <input type="submit" class="btn btn-success" name="btnSubmit" value="Submit">

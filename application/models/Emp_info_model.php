@@ -5,8 +5,8 @@ class Emp_info_model extends ActiveRecord\Model {
 
 	public function insert_employee_data(){
 		$this->form_validation->set_rules('txtEmpID', 'Employee ID', 'trim|required');
-		$this->form_validation->set_rules('txtEmpPosition', 'Position', 'trim|required');
-		$this->form_validation->set_rules('txtEmpStatus', 'Employee Status', 'trim|required');
+		$this->form_validation->set_rules('txtJobTitle', 'Job Title', 'trim|required');
+		$this->form_validation->set_rules('txtEmploymentType', 'Employment Type', 'trim|required');
 		$this->form_validation->set_rules('txtEmpDepartment', 'Employee Department', 'trim|required');
 
 		$this->form_validation->set_rules('txtFirstName', 'First Name', 'trim|required');
@@ -23,9 +23,41 @@ class Emp_info_model extends ActiveRecord\Model {
 		$this->form_validation->set_rules('txtZip', 'Zip Code', 'trim|required');
 		$this->form_validation->set_rules('txtCountry', 'Country', 'trim|required');
 
-		if ($this->form_validation->run()) {
-			$details = Employees_model::employeeInfo();
-			if (Employees_model::create($details)) {
+		$empInfo = array (
+			'emp_id' => $this->input->post('txtEmpID'),
+			'status' => 'Existing',
+			'job_title_id' => $this->input->post('txtJobTitle'),
+			'employment_type_id' => $this->input->post('txtEmploymentType'),
+			'department_id' => $this->input->post('txtEmpDepartment')
+			);
+		$address = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'street' => $this->input->post('txtStreet'),
+			'barangay' => $this->input->post('txtBarangay'),
+			'city' => $this->input->post('txtCity'),
+			'state' => $this->input->post('txtState'),
+			'zip' => $this->input->post('txtZip'),
+			'country' => $this->input->post('txtCountry')
+			);
+		$contact = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'mobile_number' => $this->input->post('txtMobile'),
+			'tel_number' => $this->input->post('txtTelephone'),
+			'email_address' => $this->input->post('txtEmail')
+			);
+
+		$personal = array (
+			'emp_id' => $this->input->post('txtEmpID'),
+			'first_name' => $this->input->post('txtFirstName'),
+			'middle_name' => $this->input->post('txtMiddleName'),
+			'last_name' => $this->input->post('txtLastName'),
+			'birthday' => $this->input->post('txtBday'),
+			'gender' => $this->input->post('txtFirstName'),
+			'marital_status' => $this->input->post('txtStatus')
+		);
+	
+		if ($this->form_validation->run()) {	
+			if (Emp_info_model::create($personal) && Emp_history_model::create($empInfo) && Emp_address_model::create($address) && Emp_contact_model::create($contact)) {
 				$this->session->set_userdata('added', 1);
 				redirect('ems/employees');
 			}
@@ -34,34 +66,6 @@ class Emp_info_model extends ActiveRecord\Model {
 		}
 	}
 	
-	public function employeeInfo(){
-		$data = array (
-			'emp_id' => $this->input->post('txtEmpId'),
-			'first_name' => $this->input->post('txtFirstName'),
-			'middle_name' => $this->input->post('txtMiddleName'),
-			'last_name' => $this->input->post('txtLastName'),
-			'job_title' => $this->input->post('txtEmpPosition'),
-			'status' => $this->input->post('txtEmpStatus'),
-			'department' => $this->input->post('txtEmpDepartment'),
-			'birthday' => $this->input->post('txtBday'),
-			'gender' => $this->input->post('txtFirstName'),
-			'marital_status' => $this->input->post('txtStatus'),
-			'street' => $this->input->post('txtStreet'),
-			'barangay' => $this->input->post('txtBarangay'),
-			'city' => $this->input->post('txtCity'),
-			'state' => $this->input->post('txtState'),
-			'zip' => $this->input->post('txtZip'),
-			'country' => $this->input->post('txtCountry'),
-			'mobile_number' => $this->input->post('txtMobile'),
-			'tel_number' => $this->input->post('txtTelephone'),
-			'email_address' => $this->input->post('txtEmail'),
-			'contact_person' => $this->input->post('txtContactPerson'),
-			'contact_num' => $this->input->post('txtContactNumber'),
-			'contact_rel' => $this->input->post('txtContactRel')
-		);
-		return $data;
-	}
-
 	public function updateInfo(){
 		$data = array (
 			'first_name' => $this->input->post('txtFirstName'),

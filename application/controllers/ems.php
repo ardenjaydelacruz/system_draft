@@ -49,6 +49,9 @@ class Ems extends MY_Controller
     public function add_employee()
     {
         Emp_info_model::insert_employee_data();
+        $data['departments'] = Departments_model::all();
+        $data['job_titles'] = Job_titles_model::all();
+        $data['employment_type'] = Employment_type_model::all();
         $data['pageTitle'] = 'Add Employees - MSInc.';
         $data['content'] = 'employee/add_employee';
         $this->load->view($this->master_layout, $data);
