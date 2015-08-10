@@ -101,7 +101,7 @@
                 <a href="<?php echo base_url();?>ems/request_leave?emp_id=<?php echo $row->emp_id; ?>" class="button btn btn-warning MainButtons">
                   <i class="fa fa-calendar"></i><br>Add Leave
                 </a>
-                <button class="btn btn-success disabed MainButtons button" disabled><i class="fa fa-floppy-o"></i><br>Save</button>
+                <button class="btn btn-success MainButtons button disabled" id="btnSaveEdit"><i class="fa fa-floppy-o"></i><br>Save</button>
               </center>
             </div><!-- col-4-->
             <div class="col-md-8">
