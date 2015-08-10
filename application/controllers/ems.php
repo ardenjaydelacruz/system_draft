@@ -68,14 +68,22 @@ class Ems extends MY_Controller
     public function view_details()
     {
         $id = $this->input->get('emp_id');
-        $data['job_hist'] = Job_history_model::find('all',array('conditions'=>"employee_id =$id"));
-        $data['record'] = Dependent_model::find('all',array('conditions'=>"employee_id =$id")); //get dependents by id
-        $data['leaves'] = View_leave_remaining::find('all',array('conditions'=>"emp_id =$id"));
-        $data['asset'] = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id"));
-        $data['project'] = View_project_workers::find('all',array('conditions'=>"emp_id =$id"));
-        $data['row'] = View_employee_info::find($id); //get user details by id
+        $data['record']    = Dependent_model::find('all',array('conditions'=>"employee_id =$id")); //get dependents by id
+        $data['info']      = Emp_info_model::find($id); //Tab 1a - Personal Tab
+        $data['gov_id']    = Gov_id_model::find($id); //Tab 1b - Gov ID Tab
+        $data['address']   = Emp_address_model::find($id); //Tab 2a - Contact Tab
+        $data['contact']   = Emp_contact_model::find($id); //Tab 2b - Contact Tab
+        $data['contactP']  = Emp_contact_person::find($id); //Tab 2c - Contact Tab
+        $data['school']    = Emp_school_model::find($id); //Tab 3 - School Tab
+        $data['job_hist']  = Job_history_model::find('all',array('conditions'=>"employee_id =$id")); //Tab 4 - Job History Tab
+        $data['emp']       = View_job_history::find($id); //Tab 5 - Employment Tab
+        $data['leaves']    = View_leave_remaining::find('all',array('conditions'=>"emp_id =$id")); //Tab 6 - Leaves Tab
+        $data['asset']     = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id")); //Tab 7 - Asset Tab
+        $data['project']   = View_project_workers::find('all',array('conditions'=>"emp_id =$id")); //Tab 8 - Project Tab
+        $data['account']   = Users::find_by_employee_id($id); //Tab 9 - Users Tab
+
         $data['pageTitle'] = 'Employee Details - MSInc.';
-        $data['content'] = 'employee/employee_details';
+        $data['content']   = 'employee/employee_details';
         $this->load->view($this->master_layout, $data);
         $this->display_notif();
     }

@@ -55,9 +55,22 @@ class Emp_info_model extends ActiveRecord\Model {
 			'gender' => $this->input->post('txtFirstName'),
 			'marital_status' => $this->input->post('txtStatus')
 		);
-	
+
+		$id = array (
+			'employee_id' => $this->input->post('txtEmpID')
+		);
+
+		
 		if ($this->form_validation->run()) {	
-			if (Emp_info_model::create($personal) && Emp_history_model::create($empInfo) && Emp_address_model::create($address) && Emp_contact_model::create($contact)) {
+			if (Emp_info_model::create($personal) && 
+				Emp_history_model::create($empInfo) && 
+				Emp_address_model::create($address) && 
+				Emp_contact_model::create($contact) && 
+				Emp_contact_person::create($id) &&
+				Emp_school_model::create($id) &&
+				Gov_id_model::create($id) &&
+				Users::create($id) 
+				) {
 				$this->session->set_userdata('added', 1);
 				redirect('ems/employees');
 			}
