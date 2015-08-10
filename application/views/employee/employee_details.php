@@ -91,25 +91,18 @@
                         <th>Department:</th>
                         <td><?php echo $row->department_name; ?></td>
                       </tr>
-                      <tr>
-                        <td>
-                            <a id="btnEnable" class="btn btn-primary btn-block"><i class="fa fa-edit"></i>Edit</a>
-                        </td>
-                        <td>
-                            <input type="submit" id="btnSaveEdit" class="btn btn-success btn-block disabled" value="Save">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2">
-                          <a href="<?php echo base_url();?>ems/request_leave?emp_id=<?php echo $row->emp_id; ?>" class="btn btn-warning btn-block">
-                            Add Leave
-                          </a>
-                        </td>
-                      </tr>
                     </tbody>
                   </table>
+                  
                 </div>
               </div><!-- Side Panel-->
+              <center>
+                <a id="btnEnable" class="button btn btn-primary MainButtons"><i class="fa fa-edit"></i><br>Edit</a>
+                <a href="<?php echo base_url();?>ems/request_leave?emp_id=<?php echo $row->emp_id; ?>" class="button btn btn-warning MainButtons">
+                  <i class="fa fa-calendar"></i><br>Add Leave
+                </a>
+                <button class="btn btn-success disabed MainButtons button" disabled><i class="fa fa-floppy-o"></i><br>Save</button>
+              </center>
             </div><!-- col-4-->
             <div class="col-md-8">
               <div class="panel panel-default">

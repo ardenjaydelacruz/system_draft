@@ -34,6 +34,16 @@ body {
 	color:white;
 }
 
+.button {
+	height: 100px;
+	width: 100px;
+}
+
+.MainButtons i {
+	text-align: center;
+	font-size: 3.5em;
+	margin-top: 10px;
+}
 /* =====================================
 				  Login
    ===================================== */
