@@ -78,26 +78,29 @@ if (!empty($info->image)){
                       <li data-toggle="tooltip" data-placement="top" title="Contact Info">
                         <a href="#tab_2" data-toggle="tab"><i class="fa fa-phone"></i></a>
                       </li>
+                      <li data-toggle="tooltip" data-placement="top" title="Other Info">
+                        <a href="#tab_3" data-toggle="tab"><i class="fa fa-institution"></i></a>
+                      </li>
                       <li data-toggle="tooltip" data-placement="top" title="Educational Background">
-                        <a href="#tab_3" data-toggle="tab"><i class="fa fa-graduation-cap"></i></a>
+                        <a href="#tab_4" data-toggle="tab"><i class="fa fa-graduation-cap"></i></a>
                       </li>
                       <li data-toggle="tooltip" data-placement="top" title="Past Employment">
-                        <a href="#tab_4" data-toggle="tab"><i class="fa fa-briefcase"></i></a>
+                        <a href="#tab_5" data-toggle="tab"><i class="fa fa-briefcase"></i></a>
                       </li>
                       <li data-toggle="tooltip" data-placement="top" title="Employment Information">
-                        <a href="#tab_5" data-toggle="tab"><i class="fa fa-info-circle"></i></a>
+                        <a href="#tab_6" data-toggle="tab"><i class="fa fa-info-circle"></i></a>
                       </li>
                       <li data-toggle="tooltip" data-placement="top" title="Leave Information">
-                        <a href="#tab_6" data-toggle="tab"><i class="fa fa-calendar"></i></a>
+                        <a href="#tab_7" data-toggle="tab"><i class="fa fa-calendar"></i></a>
                       </li>
                       <li data-toggle="tooltip" data-placement="top" title="Assigned Assets">
-                        <a href="#tab_7" data-toggle="tab"><i class="fa fa-desktop"></i></a>
+                        <a href="#tab_8" data-toggle="tab"><i class="fa fa-desktop"></i></a>
                       </li>
                       <li data-toggle="tooltip" data-placement="top" title="Assigned Projects">
-                        <a href="#tab_8" data-toggle="tab"><i class="fa fa-wrench"></i></a>
+                        <a href="#tab_9" data-toggle="tab"><i class="fa fa-wrench"></i></a>
                       </li>
                       <li data-toggle="tooltip" data-placement="top" title="User Account">
-                        <a href="#tab_9" data-toggle="tab"><i class="fa fa-users"></i></a>
+                        <a href="#tab_10" data-toggle="tab"><i class="fa fa-users"></i></a>
                       </li>
                     </ul>
                     <div class="tab-content">
@@ -176,68 +179,9 @@ if (!empty($info->image)){
                                 </div>
                             </div>
                           </article>
-                            <br>
-                            <h3>Government Issued ID:</h3>
-                            <hr>
-                            <article class="form-group">
-                                <label class=" col-sm-3 control-label">Social Security No.: </label>
-                                <div class="col-sm-9 controls">
-                                    <div class="row">
-                                        <div class="col-xs-9">
-                                            <input type="text" disabled class="form-control" value="<?php echo $gov_id->sss_no; ?>" name="txtSSS" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="form-group">
-                                <label class=" col-sm-3 control-label">Pag-ibig No.: </label>
-                                <div class="col-sm-9 controls">
-                                    <div class="row">
-                                        <div class="col-xs-9">
-                                            <input type="text" disabled class="form-control" value="<?php echo $gov_id->pagibig_no; ?>" name="txtPagibig" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="form-group">
-                                <label class=" col-sm-3 control-label">Philhealth No.: </label>
-                                <div class="col-sm-9 controls">
-                                    <div class="row">
-                                        <div class="col-xs-9">
-                                            <input type="text" disabled class="form-control" value="<?php echo $gov_id->philhealth_no; ?>" name="txtPhilhealth" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="form-group">
-                                <label class=" col-sm-3 control-label">Tax Identification No.: </label>
-                                <div class="col-sm-9 controls">
-                                    <div class="row">
-                                        <div class="col-xs-9">
-                                            <input type="text" disabled class="form-control" value="<?php echo $gov_id->tin; ?>" name="txtTIN" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                          <br>
-                          <h3>Dependent/s</h3><hr>
-                          <table class="table table-bordered table-striped table-hovered">
-                            <thead>
-                              <th></th>
-                              <th class="text-center">Name</th>
-                              <th class="text-center">Relationship</th>
-                            </thead>
-                            <?php $counter=1; foreach ($record as $info) { ?>
-                            <tr>
-                              <td><?php echo $counter++; ?></td>
-                              <td><input type="text" disabled class="form-control" value="<?php echo $info->dependent_fname.' '.$info->dependent_lname; ?>" name="txtDependentName" /></td>
-                              <td><input type="text" disabled class="form-control" value="<?php echo $info->relationship; ?>" name="txtDependentRel" /></td>
-                            </tr>
-                            <?php } ?>
-                          </table>
                         </div>
                       </section><!-- Personal -->
-
+                      
                       <section class="tab-pane" id="tab_2">
                         <div class="form-horizontal">
                           <h3>Contact Details</h3>
@@ -371,6 +315,94 @@ if (!empty($info->image)){
 
                       <section class="tab-pane" id="tab_3">
                         <div class="form-horizontal">
+                          <h3>Government Issued ID:</h3>
+                          <hr>
+                          <article class="form-group">
+                              <label class=" col-sm-3 control-label">Social Security No.: </label>
+                              <div class="col-sm-9 controls">
+                                  <div class="row">
+                                      <div class="col-xs-9">
+                                          <input type="text" disabled class="form-control" value="<?php echo $gov_id->sss_no; ?>" name="txtSSS" />
+                                      </div>
+                                  </div>
+                              </div>
+                          </article>
+                          <article class="form-group">
+                              <label class=" col-sm-3 control-label">Pag-ibig No.: </label>
+                              <div class="col-sm-9 controls">
+                                  <div class="row">
+                                      <div class="col-xs-9">
+                                          <input type="text" disabled class="form-control" value="<?php echo $gov_id->pagibig_no; ?>" name="txtPagibig" />
+                                      </div>
+                                  </div>
+                              </div>
+                          </article>
+                          <article class="form-group">
+                              <label class=" col-sm-3 control-label">Philhealth No.: </label>
+                              <div class="col-sm-9 controls">
+                                  <div class="row">
+                                      <div class="col-xs-9">
+                                          <input type="text" disabled class="form-control" value="<?php echo $gov_id->philhealth_no; ?>" name="txtPhilhealth" />
+                                      </div>
+                                  </div>
+                              </div>
+                          </article>
+                          <article class="form-group">
+                              <label class=" col-sm-3 control-label">Tax Identification No.: </label>
+                              <div class="col-sm-9 controls">
+                                  <div class="row">
+                                      <div class="col-xs-9">
+                                          <input type="text" disabled class="form-control" value="<?php echo $gov_id->tin; ?>" name="txtTIN" />
+                                      </div>
+                                  </div>
+                              </div>
+                          </article><br>
+                        </div>
+                          
+                        <div class="form-horizontal">
+                          <h3>Dependent/s</h3><hr>
+                          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addDependents"><i class="fa fa-plus"></i> Add</a><br><br>
+                          <table class="table table-hovered table-striped table-bordered">
+                             <thead>
+                                <th class="text-center">Dependent Name</th>
+                                <th class="text-center">Relationship</th>
+                             </thead>
+                             <?php foreach ($record as $row) { ?>
+                             <tr>
+                                <th class="text-center"><?php echo $row->dependent_fname.' '.$row->dependent_lname; ?></th>
+                                <td class="text-center"><?php echo $row->relationship; ?></td>
+                             </tr>
+                             <?php } ?>
+                          </table>
+                        </div>
+                      </section><!-- Other Info -->
+                      <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
+                        <div class="modal fade" id="addDependents" tabindex="-1" role="dialog">
+                          <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Add New Dependents</h4>
+                              </div>
+                              <div class="modal-body">
+                                <label for="">First Name:</label>
+                                <input type="text" class="form-control" name="txtDFirstName" required><br>
+                                <label for="">Last Name:</label>
+                                <input type="text" class="form-control" name="txtDLastName" required><br>
+                                <label for="">Relationship:</label>
+                                <input type="text" class="form-control" name="txtRelationship" required><br>
+                              </div>
+                              <div class="modal-footer">
+                                <input type="submit" class="btn btn-success" value="Add" name="btnAddDependents">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                              </div>
+                            </div><!-- /.modal-content -->
+                          </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                      </form>
+
+                      <section class="tab-pane" id="tab_4">
+                        <div class="form-horizontal">
                           <h3>Tertiary</h3>
                           <hr>
                           <article class="form-group">
@@ -472,13 +504,12 @@ if (!empty($info->image)){
                         </div>
                       </section><!-- Education -->
 
-                      <section class="tab-pane" id="tab_4">
+                      <section class="tab-pane" id="tab_5">
                         <div class="form-horizontal">
-                           <h3>Job History</h3>
-                           <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addJob"><i class="fa fa-plus"></i> Add</a><br><br>
-                           <table class="table table-hovered table-striped table-bordered">
+                            <h3>Job History</h3>
+                            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addJob"><i class="fa fa-plus"></i> Add</a><br><br>
+                            <table class="table table-hovered table-striped table-bordered">
                                <thead>
-
                                   <th class="text-center">Company Name</th>
                                   <th class="text-center">Company Address</th>
                                   <th class="text-center">Years of Service</th>
@@ -492,8 +523,8 @@ if (!empty($info->image)){
                                   <td><?php echo $job->job_title; ?></td>
                                </tr>
                                <?php } ?>
-                           </table>
-                        </div>
+                            </table>
+                          </div>
                       </section><!-- Job History -->
                       <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
                         <div class="modal fade" id="addJob" tabindex="-1" role="dialog">
@@ -521,7 +552,8 @@ if (!empty($info->image)){
                           </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
                       </form>
-                      <section class="tab-pane" id="tab_5">
+
+                      <section class="tab-pane" id="tab_6">
                         <div class="form-horizontal">
                            <h3>Employment Details</h3><hr>
                            <article class="form-group">
@@ -644,7 +676,7 @@ if (!empty($info->image)){
                         </div>
                       </section><!-- Employment Details -->
 
-                      <section class="tab-pane" id="tab_6">
+                      <section class="tab-pane" id="tab_7">
                         <div class="form-horizontal">
                           <h3>Leave Details</h3><hr>
                           <table class="table table-hovered table-striped table-bordered">
@@ -672,7 +704,7 @@ if (!empty($info->image)){
                         </div>
                       </section><!-- Leaves -->
 
-                      <section class="tab-pane" id="tab_7">
+                      <section class="tab-pane" id="tab_8">
                         <div class="form-horizontal">
                            <h3>Assigned Assets</h3><hr>
                            <table class="table table-hovered table-striped table-bordered">
@@ -694,7 +726,7 @@ if (!empty($info->image)){
                         </div>
                       </section><!-- Asset -->
 
-                      <section class="tab-pane" id="tab_8">
+                      <section class="tab-pane" id="tab_9">
                         <div class="form-horizontal">
                            <h3>Active Projects</h3><hr>
                            <table class="table table-hovered table-striped table-bordered">
@@ -714,7 +746,7 @@ if (!empty($info->image)){
                         </div>
                       </section><!-- Projects -->
 
-                      <section class="tab-pane" id="tab_9">
+                      <section class="tab-pane" id="tab_10">
                         <div class="form-horizontal">
                            <h3>User Account</h3><hr>
                            <article class="form-group">

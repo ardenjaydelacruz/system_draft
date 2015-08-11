@@ -108,6 +108,16 @@ class Emp_info_model extends ActiveRecord\Model {
 		return $data;
 	}
 
+	public function dependentInfo(){
+		$data = array(
+			'employee_id' => $this->input->get('emp_id'),
+			'dependent_fname' => $this->input->post('txtDFirstName'),
+			'dependent_lname' => $this->input->post('txtDLastName'),
+			'relationship' => $this->input->post('txtRelationship')
+		);
+		return $data;
+	}
+
 	public function insert_employee_data(){
 		$this->form_validation->set_rules('txtEmpID', 'Employee ID', 'trim|required');
 		$this->form_validation->set_rules('txtJobTitle', 'Job Title', 'trim|required');

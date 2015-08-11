@@ -13,7 +13,6 @@
 		<link href="<?php echo base_url();?>assets/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url();?>assets/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 		<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/sidebar.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/sweetalert.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/toastr.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/animations.css">
