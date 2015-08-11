@@ -196,7 +196,7 @@ if (!empty($info->image)){
                                 <div class="col-sm-9 controls">
                                     <div class="row">
                                         <div class="col-xs-9">
-                                            <input type="text" disabled placeholder="State" class="form-control" value="<?php echo $gov_id->tin; ?>" name="txtTIN" />
+                                            <input type="text" disabled class="form-control" value="<?php echo $gov_id->tin; ?>" name="txtTIN" />
                                         </div>
                                     </div>
                                 </div>
@@ -500,7 +500,6 @@ if (!empty($info->image)){
                                    <div class="row">
                                        <div class="col-xs-9">
                                           <select name="txtJobTitle"  class="form-control" disabled>
-                                            <option value="">---</option>
                                             <?php foreach ($job_titles as $row){ 
                                                 echo "<option value='$row->job_title_id'> $row->job_title_name</option>";
                                             } ?>
@@ -515,7 +514,6 @@ if (!empty($info->image)){
                                    <div class="row">
                                        <div class="col-xs-9">
                                           <select name="txtEmploymentType" id="emp_name" class="form-control" disabled>
-                                              <option value="">---</option>
                                               <?php foreach ($employment_type as $row){ 
                                                   echo "<option value='$row->employment_type_id'>$row->employment_type </option>";
                                               } ?>
@@ -530,7 +528,6 @@ if (!empty($info->image)){
                                    <div class="row">
                                        <div class="col-xs-9">
                                           <select name="txtDepartment" id="emp_name" class="form-control" disabled>
-                                              <option value="">---</option>
                                               <?php foreach ($departments as $row){ 
                                                   echo "<option value='$row->department_id'>$row->department_name</option>";
                                               } ?>

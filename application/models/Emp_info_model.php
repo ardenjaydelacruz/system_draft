@@ -5,7 +5,7 @@ class Emp_info_model extends ActiveRecord\Model {
 
 	public function personalInfo(){
 		$data = array (
-			'emp_id' => $this->input->post('txtEmpID'),
+			
 			'first_name' => $this->input->post('txtFirstName'),
 			'middle_name' => $this->input->post('txtMiddleName'),
 			'last_name' => $this->input->post('txtLastName'),
@@ -122,7 +122,11 @@ class Emp_info_model extends ActiveRecord\Model {
 			'status' => 'Existing',
 			'job_title_id' => $this->input->post('txtJobTitle'),
 			'employment_type_id' => $this->input->post('txtEmploymentType'),
-			'department_id' => $this->input->post('txtEmpDepartment')
+			'department_id' => $this->input->post('txtEmpDepartment'),
+			'start_date' => date('Y-m-d'),
+			'end_date' => date('Y-m-d'),
+			'probationary_date' => date('Y-m-d'),
+			'permanency_date' => date('Y-m-d')
 			);
 		$address = array (
 			'employee_id' => $this->input->post('txtEmpID'),
@@ -156,7 +160,7 @@ class Emp_info_model extends ActiveRecord\Model {
 
 		
 		if ($this->form_validation->run()) {	
-			if (Emp_info_model::create(Emp_info_model::personalInfo()) && 
+			if (Emp_info_model::create($personal) && 
 				Emp_history_model::create($empInfo) && 
 				Emp_address_model::create($address) && 
 				Emp_contact_model::create($contact) && 
