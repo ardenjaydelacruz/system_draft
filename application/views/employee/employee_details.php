@@ -20,7 +20,7 @@ if (!empty($info->image)){
       <div class="panel-body">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title text-center"><?php echo $info->first_name.' '.$info->middle_name.' '.$info->last_name; ?></h3>
@@ -67,20 +67,38 @@ if (!empty($info->image)){
                 <button class="btn btn-success MainButtons button disabled" id="btnSaveEdit"><i class="fa fa-floppy-o"></i><br>Save</button>
               </center>
             </div><!-- col-4-->
-            <div class="col-md-9">
+            <div class="col-md-8">
               <div class="panel panel-default">
                 <div class="panel-body">
                   <div class="nav-tabs-custom ">
                     <ul class="nav nav-tabs ">
-                      <li class="active"><a href="#tab_1" data-toggle="tab">Personal</a></li>
-                      <li><a href="#tab_2" data-toggle="tab">Contact</a></li>
-                      <li><a href="#tab_3" data-toggle="tab">Education</a></li>
-                      <li><a href="#tab_4" data-toggle="tab">Job History</a></li>
-                      <li><a href="#tab_5" data-toggle="tab">Employment</a></li>
-                      <li><a href="#tab_6" data-toggle="tab">Leaves</a></li>
-                      <li><a href="#tab_7" data-toggle="tab">Assets</a></li>
-                      <li><a href="#tab_8" data-toggle="tab">Projects</a></li>
-                      <li><a href="#tab_9" data-toggle="tab">Account</a></li>
+                      <li class="active" data-toggle="tooltip" data-placement="top" title="Personal Details">
+                        <a href="#tab_1" data-toggle="tab" ><i class="fa fa-user fa-lg"></i></a>
+                      </li>
+                      <li data-toggle="tooltip" data-placement="top" title="Contact Info">
+                        <a href="#tab_2" data-toggle="tab"><i class="fa fa-phone"></i></a>
+                      </li>
+                      <li data-toggle="tooltip" data-placement="top" title="Educational Background">
+                        <a href="#tab_3" data-toggle="tab"><i class="fa fa-graduation-cap"></i></a>
+                      </li>
+                      <li data-toggle="tooltip" data-placement="top" title="Past Employment">
+                        <a href="#tab_4" data-toggle="tab"><i class="fa fa-briefcase"></i></a>
+                      </li>
+                      <li data-toggle="tooltip" data-placement="top" title="Employment Information">
+                        <a href="#tab_5" data-toggle="tab"><i class="fa fa-info-circle"></i></a>
+                      </li>
+                      <li data-toggle="tooltip" data-placement="top" title="Leave Information">
+                        <a href="#tab_6" data-toggle="tab"><i class="fa fa-calendar"></i></a>
+                      </li>
+                      <li data-toggle="tooltip" data-placement="top" title="Assigned Assets">
+                        <a href="#tab_7" data-toggle="tab"><i class="fa fa-desktop"></i></a>
+                      </li>
+                      <li data-toggle="tooltip" data-placement="top" title="Assigned Projects">
+                        <a href="#tab_8" data-toggle="tab"><i class="fa fa-wrench"></i></a>
+                      </li>
+                      <li data-toggle="tooltip" data-placement="top" title="User Account">
+                        <a href="#tab_9" data-toggle="tab"><i class="fa fa-users"></i></a>
+                      </li>
                     </ul>
                     <div class="tab-content">
                       <section class="tab-pane active" id="tab_1">
