@@ -20,7 +20,7 @@ if (!empty($info->image)){
       <div class="panel-body">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title text-center"><?php echo $info->first_name.' '.$info->middle_name.' '.$info->last_name; ?></h3>
@@ -67,7 +67,7 @@ if (!empty($info->image)){
                 <button class="btn btn-success MainButtons button disabled" id="btnSaveEdit"><i class="fa fa-floppy-o"></i><br>Save</button>
               </center>
             </div><!-- col-4-->
-            <div class="col-md-8">
+            <div class="col-md-9">
               <div class="panel panel-default">
                 <div class="panel-body">
                   <div class="nav-tabs-custom ">
@@ -456,9 +456,11 @@ if (!empty($info->image)){
 
                       <section class="tab-pane" id="tab_4">
                         <div class="form-horizontal">
-                           <h3>Job History</h3><hr>
+                           <h3>Job History</h3>
+                           <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addJob"><i class="fa fa-plus"></i> Add</a><br><br>
                            <table class="table table-hovered table-striped table-bordered">
                                <thead>
+
                                   <th class="text-center">Company Name</th>
                                   <th class="text-center">Company Address</th>
                                   <th class="text-center">Years of Service</th>
@@ -475,7 +477,32 @@ if (!empty($info->image)){
                            </table>
                         </div>
                       </section><!-- Job History -->
-
+                      <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
+                        <div class="modal fade" id="addJob" tabindex="-1" role="dialog">
+                          <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Add New Job History</h4>
+                              </div>
+                              <div class="modal-body">
+                                <label for="">Company Name:</label>
+                                <input type="text" class="form-control" name="txtCompanyName" required><br>
+                                <label for="">Company Address:</label>
+                                <input type="text" class="form-control" name="txtCompanyAddress" required><br>
+                                <label for="">Years Worked:</label>
+                                <input type="text" class="form-control" name="txtJobHistYears" required><br>
+                                <label for="">Job Title:</label>
+                                <input type="text" class="form-control" name="txtJobHistTitle" required><br>
+                              </div>
+                              <div class="modal-footer">
+                                <input type="submit" class="btn btn-success" value="Add" name="btnAddJob">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                              </div>
+                            </div><!-- /.modal-content -->
+                          </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                      </form>
                       <section class="tab-pane" id="tab_5">
                         <div class="form-horizontal">
                            <h3>Employment Details</h3><hr>

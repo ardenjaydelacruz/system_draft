@@ -97,6 +97,17 @@ class Emp_info_model extends ActiveRecord\Model {
 		return $data;
 	}
 
+	public function jobInfo(){
+		$data = array(
+			'employee_id' => $this->input->get('emp_id'),
+			'company_name' => $this->input->post('txtCompanyName'),
+			'company_address' => $this->input->post('txtCompanyAddress'),
+			'years_stayed' => $this->input->post('txtJobHistYears'),
+			'job_title' => $this->input->post('txtJobHistTitle')
+		);
+		return $data;
+	}
+
 	public function insert_employee_data(){
 		$this->form_validation->set_rules('txtEmpID', 'Employee ID', 'trim|required');
 		$this->form_validation->set_rules('txtJobTitle', 'Job Title', 'trim|required');
@@ -150,8 +161,8 @@ class Emp_info_model extends ActiveRecord\Model {
 			'middle_name' => $this->input->post('txtMiddleName'),
 			'last_name' => $this->input->post('txtLastName'),
 			'birthday' => $this->input->post('txtBday'),
-			'gender' => $this->input->post('txtFirstName'),
-			'marital_status' => $this->input->post('txtMaritalStatus')
+			'gender' => $this->input->post('txtGender'),
+			'marital_status' => $this->input->post('txtStatus')
 		);
 
 		$id = array (

@@ -103,6 +103,13 @@ class Ems extends MY_Controller
     public function update_employee()
     {
         $id = $this->input->get('emp_id');
+        if($this->input->post('btnAddJob')){
+            if(Job_history_model::create(Emp_info_model::jobInfo())){
+                $this->session->set_userdata('edited', 1);
+                redirect("ems/view_details?emp_id=$id");
+            }
+        }
+        
         $ems = Emp_info_model::find($id);
         $gov = Gov_id_model::find($id);
         $address = Emp_address_model::find($id);
