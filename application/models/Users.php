@@ -2,7 +2,7 @@
 
 class Users extends ActiveRecord\Model {
 	static $table_name = 'user_account';
-	static $primary_key = 'user_id';
+	static $primary_key = 'employee_id';
 
 	public function userDetails(){
 		$data = array(

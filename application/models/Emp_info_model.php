@@ -71,6 +71,31 @@ class Emp_info_model extends ActiveRecord\Model {
 		return $data;
 	}
 
+	public function employmentInfo(){
+		$data = array(
+			'status' => $this->input->post('txtStatus'),
+			'employment_type_id' => $this->input->post('txtEmploymentType'),
+			'job_title_id' => $this->input->post('txtJobTitle'),
+			'department_id' => $this->input->post('txtDepartment'),
+			'start_date' => $this->input->post('txtStartDate'),
+			'end_date' => $this->input->post('txtEndDate'),
+			'probationary_date' => $this->input->post('txtProbationaryDate'),
+			'permanency_date' => $this->input->post('txtPermanencyDate'),
+			'salary' => $this->input->post('txtSalary'),
+			'pay_grade' => $this->input->post('txtPayGrade')
+		);
+		return $data;
+	}
+
+	public function accountInfo(){
+		$data = array(
+			'username' => $this->input->post('txtUsername'),
+			'password' => $this->input->post('txtPassword'),
+			'secret_question' => $this->input->post('txtSecretQuestion'),
+			'secret_answer' => $this->input->post('txtSecretAnswer')
+		);
+		return $data;
+	}
 
 	public function insert_employee_data(){
 		$this->form_validation->set_rules('txtEmpID', 'Employee ID', 'trim|required');

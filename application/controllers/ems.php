@@ -68,6 +68,10 @@ class Ems extends MY_Controller
     public function view_details()
     {
         $id = $this->input->get('emp_id');
+        $data['departments'] = Departments_model::all();
+        $data['job_titles'] = Job_titles_model::all();
+        $data['employment_type'] = Employment_type_model::all();
+        
         $data['record']    = Dependent_model::find('all',array('conditions'=>"employee_id =$id")); //get dependents by id
         $data['info']      = Emp_info_model::find($id); //Tab 1a - Personal Tab
         $data['gov_id']    = Gov_id_model::find($id); //Tab 1b - Gov ID Tab
@@ -105,6 +109,7 @@ class Ems extends MY_Controller
         $contact = Emp_contact_model::find($id);
         $contactP = Emp_contact_person::find($id);
         $school = Emp_school_model::find($id);
+        $emp = Emp_history_model::find($id);
         $user = Users::find_by_employee_id($id);
 
         if ($ems->update_attributes(Emp_info_model::personalInfo()) && 
@@ -113,7 +118,8 @@ class Ems extends MY_Controller
             $contact->update_attributes(Emp_info_model::contactInfo()) && 
             $contactP->update_attributes(Emp_info_model::contactPerson()) && 
             $school->update_attributes(Emp_info_model::schoolInfo()) && 
-            $user->update_attributes(Users::userDetails())) {
+            $emp->update_attributes(Emp_info_model::employmentInfo()) && 
+            $user->update_attributes(Emp_info_model::accountInfo())) {
             $this->session->set_userdata('edited', 1);
             redirect("ems/view_details?emp_id=$id");
         }

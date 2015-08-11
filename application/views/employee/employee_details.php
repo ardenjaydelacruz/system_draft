@@ -484,7 +484,12 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->status; ?>" name="txtStatus" />
+                                          <select name="txtStatus" id="status" class="form-control" disabled>
+                                              <option value="">All Employees</option>
+                                              <option value="Existing" <?php if($emp->status=='Existing') { echo "selected";}?> >Existing</option>
+                                              <option value="Resigned" <?php if($emp->status=='Resigned') { echo "selected";}?> >Resigned</option>
+                                              <option value="OnLeave" <?php if($emp->status=='OnLeave') { echo "selected";}?> >On - Leave</option>
+                                          </select>
                                        </div>
                                    </div>
                                </div>
@@ -494,7 +499,12 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->job_title_name; ?>" name="txtPassword" />
+                                          <select name="txtJobTitle"  class="form-control" disabled>
+                                            <option value="">---</option>
+                                            <?php foreach ($job_titles as $row){ 
+                                                echo "<option value='$row->job_title_id'> $row->job_title_name</option>";
+                                            } ?>
+                                        </select>
                                        </div>
                                    </div>
                                </div>
@@ -504,7 +514,12 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->employment_type; ?>" name="txtEmploymentType" />
+                                          <select name="txtEmploymentType" id="emp_name" class="form-control" disabled>
+                                              <option value="">---</option>
+                                              <?php foreach ($employment_type as $row){ 
+                                                  echo "<option value='$row->employment_type_id'>$row->employment_type </option>";
+                                              } ?>
+                                          </select>
                                        </div>
                                    </div>
                                </div>
@@ -514,7 +529,12 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->department_name; ?>" name="txtEmail" />
+                                          <select name="txtDepartment" id="emp_name" class="form-control" disabled>
+                                              <option value="">---</option>
+                                              <?php foreach ($departments as $row){ 
+                                                  echo "<option value='$row->department_id'>$row->department_name</option>";
+                                              } ?>
+                                          </select>
                                        </div>
                                    </div>
                                </div>
@@ -524,7 +544,7 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo date_format($emp->start_date,'Y-m-j'); ?>" name="txtSecretQuestion" />
+                                           <input type="date" disabled class="form-control" value="<?php echo date_format($emp->start_date,'Y-m-j'); ?>" name="txtStartDate" />
                                        </div>
                                    </div>
                                </div>
@@ -534,7 +554,7 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo date_format($emp->end_date,'Y-m-j'); ?>" name="txtSecretQuestion" />
+                                           <input type="date" disabled class="form-control" value="<?php echo date_format($emp->end_date,'Y-m-j'); ?>" name="txtEndDate" />
                                        </div>
                                    </div>
                                </div>
@@ -544,7 +564,7 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo  date_format($emp->probationary_date,'Y-m-j'); ?>" name="txtSecretAnswer" />
+                                           <input type="date" disabled class="form-control" value="<?php echo  date_format($emp->probationary_date,'Y-m-j'); ?>" name="txtProbationaryDate" />
                                        </div>
                                    </div>
                                </div>
@@ -554,7 +574,7 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo  date_format($emp->permanency_date,'Y-m-j'); ?>" name="txtSecretAnswer" />
+                                           <input type="date" disabled class="form-control" value="<?php echo  date_format($emp->permanency_date,'Y-m-j'); ?>" name="txtPermanencyDate" />
                                        </div>
                                    </div>
                                </div>
@@ -564,7 +584,7 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->pay_grade; ?>" name="txtSecretAnswer" />
+                                           <input type="text" disabled class="form-control" value="<?php echo $emp->pay_grade; ?>" name="txtPayGrade" />
                                        </div>
                                    </div>
                                </div>
@@ -574,7 +594,7 @@ if (!empty($info->image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->salary; ?>" name="txtSecretAnswer" />
+                                           <input type="text" disabled class="form-control" value="<?php echo $emp->salary; ?>" name="txtSalary" />
                                        </div>
                                    </div>
                                </div>
@@ -676,16 +696,6 @@ if (!empty($info->image)){
                                </div>
                            </article>
                            <article class="form-group">
-                               <label class=" col-sm-3 control-label">Email: </label>
-                               <div class="col-sm-9 controls">
-                                   <div class="row">
-                                       <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $account->email; ?>" name="txtEmail" />
-                                       </div>
-                                   </div>
-                               </div>
-                           </article>
-                           <article class="form-group">
                                <label class=" col-sm-3 control-label">Secret Question: </label>
                                <div class="col-sm-9 controls">
                                    <div class="row">
@@ -716,6 +726,6 @@ if (!empty($info->image)){
         </div><!-- col-12-->
       </div><!--Main Content Panel-body -->
     </div><!--Main Content Panel -->
-   </div> <!-- container-fluid-->
+  </div> <!-- container-fluid-->
 </div><!-- content-wrapper-->
 </form>
