@@ -1,4 +1,4 @@
-<?php
+  <?php
 if (!empty($info->image)){
       $image = $info->image;
   } else {

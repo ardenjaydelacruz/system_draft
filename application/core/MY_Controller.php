@@ -12,6 +12,10 @@ class MY_Controller extends CI_Controller {
         $this->load->model('reports_model');
         $this->load->model('print_reports_model');
 
+        // if ($this->ion_auth->logged_in()==false && uri_string() != 'auth/login'){
+        //     redirect('auth/login');
+        // }
+
         if ($this->session->userdata('user_level') == 'Administrator') {
         	$this->master_layout = 'layout/admin-master';
         } elseif ($this->session->userdata('user_level') == 'Manager') {

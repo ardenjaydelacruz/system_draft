@@ -33,8 +33,8 @@ class Users extends ActiveRecord\Model {
 	}
 
 	public function validLogin(){
-		$this->form_validation->set_rules('txtUsername', 'Username', 'trim|required|callback_validate_data');
-		$this->form_validation->set_rules('txtPassword', 'Password', 'trim|required|md5');
+		$this->form_validation->set_rules('txtUsername', 'Username', 'trim|required');
+		$this->form_validation->set_rules('txtPassword', 'Password', 'trim|required');
 		if($this->form_validation->run()){
 			RETURN TRUE;
 		} else {
