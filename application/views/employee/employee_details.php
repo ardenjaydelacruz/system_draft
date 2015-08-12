@@ -691,7 +691,7 @@ if (!empty($info->image)){
                                  <th class="text-center">Total Leaves Left</th>
                             </thead>
                             <?php foreach ($leaves as $row) { ?>
-                               <tr>
+                                <tr>
                                     <td class="text-center <?php if ($row->birthday_leave==0) echo 'bgRed'; ?>"><?php echo $row->birthday_leave; ?></td>
                                     <td class="text-center <?php if ($row->mandatory_leave==0) echo 'bgRed'; ?>"><?php echo $row->mandatory_leave; ?></td>
                                     <td class="text-center <?php if ($row->maternity_leave==0) echo 'bgRed'; ?>"><?php echo $row->maternity_leave; ?></td>
