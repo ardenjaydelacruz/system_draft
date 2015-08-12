@@ -184,21 +184,25 @@ class Print_reports_model extends CI_Model {
 		$this->pdf->SetRightMargin(15);
 		$this->pdf->SetFillColor(158, 255, 158);
 		$this->pdf->SetFont('Arial','B',10);
-		$this->pdf->Cell(20,6,'Item Name',1,0,'C',1);
-		$this->pdf->Cell(50,6,'Quantity',1,0,'C',1);
-		$this->pdf->Cell(35,6,'Price',1,0,'C',1);
-		$this->pdf->Cell(30,6,'Status',1,0,'C',1);
-		$this->pdf->Cell(50,6,'Assigned Employee',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Item ID',1,0,'C',1);
+		$this->pdf->Cell(35,6,'Item Name',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Quantity',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Price',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Total Price',1,0,'C',1);
+		$this->pdf->Cell(45,6,'Project Name',1,0,'C',1);
+		$this->pdf->Cell(25,6,'Date Issued',1,0,'C',1);
 		$this->pdf->Ln();
 		$fill = false;
 		$this->pdf->SetFont('Arial','',10);
 		foreach ($rec as $row) {
 			$this->pdf->SetFillColor(235, 235, 236);
-				$this->pdf->Cell(20,6,$row->asset_id,'LR',0,'C',$fill);
-		    $this->pdf->Cell(50,6,$row->asset_name,'LR',0,'L',$fill);
-		    $this->pdf->Cell(35,6,$row->category_name,'LR',0,'C',$fill);
-		    $this->pdf->Cell(30,6,$row->asset_status,'LR',0,'C',$fill);
-		    $this->pdf->Cell(50,6,$row->name,'LR',0,'L',$fill);
+			$this->pdf->Cell(20,6,$row->item_id,'LR',0,'C',$fill);
+			$this->pdf->Cell(35,6,$row->item_name,'LR',0,'L',$fill);
+		    $this->pdf->Cell(20,6,$row->quantity,'LR',0,'C',$fill);
+		    $this->pdf->Cell(20,6,$row->price,'LR',0,'C',$fill);
+		    $this->pdf->Cell(20,6,($row->quantity*$row->price),'LR',0,'C',$fill);
+		    $this->pdf->Cell(45,6,$row->project_name,'LR',0,'L',$fill);
+		    $this->pdf->Cell(25,6,$row->date_issued,'LR',0,'L',$fill);
 		    $this->pdf->Ln();
 			$fill = !$fill;
 		}

@@ -118,6 +118,7 @@ class Emp_info_model extends ActiveRecord\Model {
 		return $data;
 	}
 
+	
 	public function insert_employee_data(){
 		$this->form_validation->set_rules('txtEmpID', 'Employee ID', 'trim|required');
 		$this->form_validation->set_rules('txtJobTitle', 'Job Title', 'trim|required');
