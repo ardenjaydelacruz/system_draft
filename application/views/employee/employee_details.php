@@ -679,30 +679,67 @@ if (!empty($info->image)){
                       <section class="tab-pane" id="tab_7">
                         <div class="form-horizontal">
                           <h3>Leave Details</h3><hr>
+                          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addLeave"><i class="fa fa-plus"></i> Add</a><br><br>
                           <table class="table table-hovered table-striped table-bordered">
-                              <thead>
-                                   <th class="text-center">Birthday Leave</th>
-                                   <th class="text-center">Mandatory Leave</th>
-                                   <th class="text-center">Maternity Leave</th>
-                                   <th class="text-center">Paternity Leave</th>
-                                   <th class="text-center">Sick Leave</th>
-                                   <th class="text-center">Vacation Leave</th>
-                                   <th class="text-center">Total Leaves Left</th>
-                              </thead>
-                                 <?php foreach ($leaves as $row) { ?>
-                                   <tr>
-                                        <td class="text-center <?php if ($row->birthday_leave==0) echo 'bgRed'; ?>"><?php echo $row->birthday_leave; ?></td>
-                                        <td class="text-center <?php if ($row->mandatory_leave==0) echo 'bgRed'; ?>"><?php echo $row->mandatory_leave; ?></td>
-                                        <td class="text-center <?php if ($row->maternity_leave==0) echo 'bgRed'; ?>"><?php echo $row->maternity_leave; ?></td>
-                                        <td class="text-center <?php if ($row->paternity_leave==0) echo 'bgRed'; ?>"><?php echo $row->paternity_leave; ?></td>
-                                        <td class="text-center <?php if ($row->sick_leave==0) echo 'bgRed'; ?>"><?php echo $row->sick_leave; ?></td>
-                                        <td class="text-center <?php if ($row->vacation_leave==0) echo 'bgRed'; ?>"><?php echo $row->vacation_leave; ?></td>
-                                        <th class="text-center success <?php if ($row->total_leave==0) echo 'bgRed'; ?>"><?php echo $row->total_leave; ?></th>
-                                    </tr>
-                                 <?php } ?>
+                            <thead>
+                                 <th class="text-center">Birthday Leave</th>
+                                 <th class="text-center">Mandatory Leave</th>
+                                 <th class="text-center">Maternity Leave</th>
+                                 <th class="text-center">Paternity Leave</th>
+                                 <th class="text-center">Sick Leave</th>
+                                 <th class="text-center">Vacation Leave</th>
+                                 <th class="text-center">Total Leaves Left</th>
+                            </thead>
+                            <?php foreach ($leaves as $row) { ?>
+                               <tr>
+                                    <td class="text-center <?php if ($row->birthday_leave==0) echo 'bgRed'; ?>"><?php echo $row->birthday_leave; ?></td>
+                                    <td class="text-center <?php if ($row->mandatory_leave==0) echo 'bgRed'; ?>"><?php echo $row->mandatory_leave; ?></td>
+                                    <td class="text-center <?php if ($row->maternity_leave==0) echo 'bgRed'; ?>"><?php echo $row->maternity_leave; ?></td>
+                                    <td class="text-center <?php if ($row->paternity_leave==0) echo 'bgRed'; ?>"><?php echo $row->paternity_leave; ?></td>
+                                    <td class="text-center <?php if ($row->sick_leave==0) echo 'bgRed'; ?>"><?php echo $row->sick_leave; ?></td>
+                                    <td class="text-center <?php if ($row->vacation_leave==0) echo 'bgRed'; ?>"><?php echo $row->vacation_leave; ?></td>
+                                    <th class="text-center success <?php if ($row->total_leave==0) echo 'bgRed'; ?>"><?php echo $row->total_leave; ?></th>
+                                </tr>
+                            <?php } ?>
                            </table>
                         </div>
                       </section><!-- Leaves -->
+                      <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
+                        <div class="modal fade" id="addLeave" tabindex="-1" role="dialog">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Add Leave Days</h4>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                  <div class="col-sm-6">
+                                    <label for="">Birthday Leave:</label>
+                                    <input type="text" class="form-control" name="txtBirthdayLeave" required><br>
+                                    <label for="">Mandatory Leave:</label>
+                                    <input type="text" class="form-control" name="txtMandatoryLeave" required><br>
+                                    <label for="">Maternity Leave:</label>
+                                    <input type="text" class="form-control" name="txtMaternityLeave" required><br>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <label for="">Paternity Leave:</label>
+                                    <input type="text" class="form-control" name="txtPaternityLeave" required><br>
+                                    <label for="">Sick Leave:</label>
+                                    <input type="text" class="form-control" name="txtSickLeave" required><br>
+                                    <label for="">Vacation Leave:</label>
+                                    <input type="text" class="form-control" name="txtVacationLeave" required><br>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                              </div>
+                            </div><!-- /.modal-content -->
+                          </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                      </form>
 
                       <section class="tab-pane" id="tab_8">
                         <div class="form-horizontal">

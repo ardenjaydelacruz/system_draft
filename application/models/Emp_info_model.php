@@ -5,7 +5,6 @@ class Emp_info_model extends ActiveRecord\Model {
 
 	public function personalInfo(){
 		$data = array (
-			
 			'first_name' => $this->input->post('txtFirstName'),
 			'middle_name' => $this->input->post('txtMiddleName'),
 			'last_name' => $this->input->post('txtLastName'),

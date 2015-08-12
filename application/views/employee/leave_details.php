@@ -27,13 +27,13 @@
 									<div class="form-group">
 									    <label class=" col-sm-6 control-label">Leave Starts</label>
 									    <div class="col-sm-6">
-									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo $row->leave_start; ?>">
+									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo date_format($row->leave_start,'m-d-y'); ?>">
 									    </div>
 									</div>
 									<div class="form-group">
 									    <label class=" col-sm-6 control-label">Leave Ends</label>
 									    <div class="col-sm-6">
-									    	<input type="text" class="form-control input-sm" name="leaveEnds"  disabled required value="<?php echo $row->leave_end; ?>">
+									    	<input type="text" class="form-control input-sm" name="leaveEnds"  disabled required value="<?php echo date_format($row->leave_end,'m-d-y'); ?>">
 									    </div>
 									</div>
 									<div class="form-group">
@@ -72,7 +72,7 @@
 									    </div>
 									</div>
 									<div class="form-group">
-									    <label class=" col-sm-6 control-label">Approved By</label>
+									    <label class=" col-sm-6 control-label">Checked By</label>
 									    <div class="col-sm-6">						    		
 									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo $row->approved_by; ?>">
 									    </div>
@@ -80,13 +80,13 @@
 									<div class="form-group">
 									    <label class=" col-sm-6 control-label">Date Approved</label>
 									    <div class="col-sm-6">						    		
-									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo $row->date_approved; ?>">
+									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo date_format($row->date_approved,'m-d-y'); ?>">
 									    </div>
 									</div>
 									<div class="form-group">
 									    <label class=" col-sm-6 control-label">Date Requested</label>
 									    <div class="col-sm-6">						    		
-									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo $row->date_requested; ?>">
+									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php echo date_format($row->date_requested,'m-d-y'); ?>">
 									    </div>
 									</div>
 								</div>
