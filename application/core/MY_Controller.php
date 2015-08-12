@@ -15,6 +15,9 @@ class MY_Controller extends CI_Controller {
         // if ($this->ion_auth->logged_in()==false && uri_string() != 'auth/login'){
         //     redirect('auth/login');
         // }
+        if ($this->session->userdata('logged_in') == false && uri_string() != 'msi/login') {
+            redirect('msi/login');
+        }
 
         if ($this->session->userdata('user_level') == 'Administrator') {
         	$this->master_layout = 'layout/admin-master';

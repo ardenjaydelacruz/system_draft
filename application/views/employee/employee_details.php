@@ -770,6 +770,16 @@ if (!empty($info->image)){
                                </div>
                            </article>
                            <article class="form-group">
+                               <label class=" col-sm-3 control-label">User Level: </label>
+                               <div class="col-sm-9 controls">
+                                   <div class="row">
+                                       <div class="col-xs-9">
+                                           <input type="text" disabled class="form-control" value="<?php echo $account->user_level; ?>" name="txtUserLevel" />
+                                       </div>
+                                   </div>
+                               </div>
+                           </article>
+                           <article class="form-group">
                                <label class=" col-sm-3 control-label">Secret Question: </label>
                                <div class="col-sm-9 controls">
                                    <div class="row">
