@@ -117,6 +117,28 @@
 					</li>
 				</ul>
 			</li>
+
+			<li class="treeview">
+				<a href="#">
+					<i class="fa fa-files-o"></i>
+					<span>Backup</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="treeview-menu">
+					<li class="treeview">
+						<a href="<?php echo base_url(); ?>ems/export_db">
+							<i class="fa fa-arrow-down"></i>
+							<span>Export Database</span>
+						</a>
+					</li>
+					<li class="treeview">
+						<a href="<?php echo base_url(); ?>ems/import_db">
+							<i class="fa fa-arrow-up"></i>
+							<span>Import Database</span>
+						</a>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</section>
 </aside>

@@ -21,13 +21,13 @@ class MY_Controller extends CI_Controller {
         }
 
     
-        $this->output->enable_profiler(TRUE);
-        $sections = array(
-        'config'  => TRUE,
-        'queries' => TRUE
-        );
+        // $this->output->enable_profiler(TRUE);
+        // $sections = array(
+        // 'config'  => TRUE,
+        // 'queries' => TRUE
+        // );
 
-        $this->output->set_profiler_sections($sections);
+        // $this->output->set_profiler_sections($sections);
         if ($this->session->userdata('user_level') == 'Administrator') {
         	$this->master_layout = 'layout/admin-master';
         } elseif ($this->session->userdata('user_level') == 'Manager') {

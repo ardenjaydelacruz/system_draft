@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2015 at 10:24 AM
+-- Generation Time: Aug 13, 2015 at 07:22 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -25,7 +25,7 @@ DELIMITER $$
 -- Functions
 --
 DROP FUNCTION IF EXISTS `fn_getTimeIn`$$
-CREATE DEFINER=`root`@`localhost` FUNCTION `fn_getTimeIn`(logdate varchar(12)) RETURNS varchar(10) CHARSET utf8 COLLATE utf8_unicode_ci
+CREATE FUNCTION `fn_getTimeIn`(logdate varchar(12)) RETURNS varchar(10) CHARSET utf8 COLLATE utf8_unicode_ci
 BEGIN
 	DECLARE logtime varchar(10);
 	SELECT DATE_FORMAT(MIN(tbl_attendance.datetimelog), '%h:%i %p') INTO logtime
@@ -36,7 +36,7 @@ RETURN logtime;
 END$$
 
 DROP FUNCTION IF EXISTS `fn_getTimeOut`$$
-CREATE DEFINER=`root`@`localhost` FUNCTION `fn_getTimeOut`(logdate varchar(12)) RETURNS varchar(10) CHARSET utf8 COLLATE utf8_unicode_ci
+CREATE FUNCTION `fn_getTimeOut`(logdate varchar(12)) RETURNS varchar(10) CHARSET utf8 COLLATE utf8_unicode_ci
 BEGIN
 	DECLARE logtime varchar(10);
 
@@ -48,7 +48,7 @@ RETURN logtime;
 END$$
 
 DROP FUNCTION IF EXISTS `fn_getTotalManHours`$$
-CREATE DEFINER=`root`@`localhost` FUNCTION `fn_getTotalManHours`(id int, start_date datetime, end_date datetime) RETURNS decimal(10,2)
+CREATE FUNCTION `fn_getTotalManHours`(id int, start_date datetime, end_date datetime) RETURNS decimal(10,2)
 BEGIN
 	DECLARE total DECIMAL(10,2);
     #Shift is from 8:00 AM to 5:00 PM
@@ -62,7 +62,7 @@ RETURN total;
 END$$
 
 DROP FUNCTION IF EXISTS `fn_getTotalOvertime`$$
-CREATE DEFINER=`root`@`localhost` FUNCTION `fn_getTotalOvertime`(id int, start_date datetime, end_date datetime) RETURNS decimal(10,2)
+CREATE FUNCTION `fn_getTotalOvertime`(id int, start_date datetime, end_date datetime) RETURNS decimal(10,2)
 BEGIN
 	DECLARE total DECIMAL(10,2);
     #Shift is from 8:00 AM to 5:00 PM
@@ -76,7 +76,7 @@ RETURN total;
 END$$
 
 DROP FUNCTION IF EXISTS `fn_getTotalTardiness`$$
-CREATE DEFINER=`root`@`localhost` FUNCTION `fn_getTotalTardiness`(id int, start_date datetime, end_date datetime) RETURNS decimal(10,2)
+CREATE FUNCTION `fn_getTotalTardiness`(id int, start_date datetime, end_date datetime) RETURNS decimal(10,2)
 BEGIN
 	DECLARE total DECIMAL(10,2);
     #Shift is from 8:00 AM to 5:00 PM
@@ -221,7 +221,16 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `ip_address` varchar(15) NOT NULL,
   `login` varchar(100) NOT NULL,
   `time` int(11) unsigned DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(1, '::1', 'ardents', 1439475132),
+(2, '::1', 'arasd', 1439475293),
+(3, '::1', 'ardents', 1439475298);
 
 -- --------------------------------------------------------
 
@@ -258,10 +267,10 @@ CREATE TABLE IF NOT EXISTS `tbl_address` (
 --
 
 INSERT INTO `tbl_address` (`employee_id`, `street`, `barangay`, `city`, `state`, `zip`, `country`) VALUES
-(100, '577', 'Maybunga', 'PSG', 'Metro Manila', 1607, 'Philippines'),
-(1, '577', 'Maybunga', 'Pasig City', 'Metro Manila', 1607, 'Philippines'),
-(3, 'e', 'e', 'e', 'e', 2, 'e'),
-(20, 'e', 'e', 'e', 'e', 0, 'e');
+(100, '577', 'Maybunga', 'Pasig City', 'Metro Manila', 1607, 'PH'),
+(1, '577', 'Maybunga', 'Pasig City', 'Metro Manila', 1607, 'PH'),
+(20, 'e', 'e', 'e', 'e', 0, 'PH'),
+(3, 'e', 'e', 'e', 'e', 0, 'e');
 
 -- --------------------------------------------------------
 
@@ -615,36 +624,40 @@ INSERT INTO `tbl_attendance` (`attendance_id`, `emp_id`, `datelog`, `datetimelog
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_city`
+-- Table structure for table `tbl_audit_trail`
 --
 
-DROP TABLE IF EXISTS `tbl_city`;
-CREATE TABLE IF NOT EXISTS `tbl_city` (
-  `city_code` varchar(5) NOT NULL,
-  `city_name` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `tbl_audit_trail`;
+CREATE TABLE IF NOT EXISTS `tbl_audit_trail` (
+  `audit_trail_id` smallint(5) unsigned zerofill NOT NULL,
+  `ip_address` varchar(15) DEFAULT NULL,
+  `user_level` varchar(20) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `action` varchar(50) DEFAULT NULL,
+  `employee_id` varchar(10) DEFAULT NULL,
+  `old_value` varchar(50) DEFAULT NULL,
+  `new_value` varchar(50) DEFAULT NULL,
+  `date_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_city`
+-- Dumping data for table `tbl_audit_trail`
 --
 
-INSERT INTO `tbl_city` (`city_code`, `city_name`) VALUES
-('CAL', 'Caloocan City'),
-('MKN', 'Marikina  City'),
-('MKT', 'Makati City'),
-('MLB', 'Malabon City'),
-('MND', 'Mandaluyong City'),
-('MNL', 'Manila City'),
-('MUN', 'Muntinlupa City\r\n'),
-('NAV', 'Navotas City'),
-('PAT', 'Pateros City'),
-('PNQ', 'Parañaque City'),
-('PSG', 'Pasig City'),
-('PSY', 'Pasay City'),
-('QZN', 'Quezon City'),
-('SJN', 'San Juan City'),
-('TGG', 'Taguig City'),
-('VAL', 'Valenzuela City');
+INSERT INTO `tbl_audit_trail` (`audit_trail_id`, `ip_address`, `user_level`, `username`, `action`, `employee_id`, `old_value`, `new_value`, `date_time`) VALUES
+(00001, '::1', 'Administrator', 'admin', 'Logged in', NULL, NULL, NULL, NULL),
+(00002, '::1', 'Administrator', 'admin', 'Logged in', NULL, NULL, NULL, NULL),
+(00003, '::1', 'Administrator', 'admin', 'Logged in', NULL, NULL, NULL, '2015-08-13 15:45:19'),
+(00004, '::1', 'Administrator', 'admin', 'Logged in', NULL, NULL, NULL, '2015-08-13 15:53:00'),
+(00005, '::1', 'Administrator', 'admin', 'Logged out', NULL, NULL, NULL, '2015-08-13 15:55:30'),
+(00006, '::1', 'Administrator', 'admin', 'Logged in', NULL, NULL, NULL, '2015-08-13 15:55:49'),
+(00007, '::1', 'Administrator', 'admin', 'Logged in', NULL, NULL, NULL, '2015-08-13 16:08:58'),
+(00008, '::1', 'Administrator', 'admin', 'CREATED Employee Profile', NULL, NULL, 'Jolly Bee', '2015-08-13 16:37:40'),
+(00009, '::1', 'Administrator', 'admin', 'CREATED Employee Profile', '2', NULL, NULL, '2015-08-13 16:53:54'),
+(00010, '::1', 'Administrator', 'admin', 'Deleted Employee Profile', NULL, NULL, NULL, '2015-08-13 16:53:59'),
+(00011, '::1', 'Administrator', 'admin', 'CREATED Employee Profile', '2', NULL, NULL, '2015-08-13 16:55:12'),
+(00017, '::1', 'Administrator', 'admin', 'UPDATED Employee Profile', '3', NULL, NULL, '2015-08-13 17:20:20'),
+(00018, '::1', 'Administrator', 'admin', 'UPDATED Employee Profile', '3', NULL, NULL, '2015-08-13 17:20:33');
 
 -- --------------------------------------------------------
 
@@ -693,8 +706,8 @@ CREATE TABLE IF NOT EXISTS `tbl_contact_number` (
 INSERT INTO `tbl_contact_number` (`employee_id`, `mobile_number`, `tel_number`, `email_address`) VALUES
 (100, 32132132, 65656565, 'ardents02@gmail.com'),
 (1, 2147483647, 3691753, 'ardents02@gmail.com'),
-(3, 1, 1, 'ee@gmail.com'),
-(20, 1, 1, 'qweqwe@gmail.com');
+(20, 1, 1, 'qweqwe@gmail.com'),
+(3, 0, 0, 'ee@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -717,8 +730,8 @@ CREATE TABLE IF NOT EXISTS `tbl_contact_person` (
 INSERT INTO `tbl_contact_person` (`contact_person`, `contact_rel`, `contact_num`, `employee_id`) VALUES
 ('Pareng Erap', 'Kainuman', 162012, 100),
 ('Obama', 'Godfather', 12345, 1),
-('', '', 0, 3),
-('', '', 0, 20);
+('', '', 0, 20),
+('', '', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -1056,7 +1069,9 @@ CREATE TABLE IF NOT EXISTS `tbl_employment_history` (
 INSERT INTO `tbl_employment_history` (`company_name`, `company_address`, `years_stayed`, `job_title`, `employee_id`) VALUES
 ('JRU', 'Mandaluyong City', 2, 'Programmer', '100'),
 ('IBM', 'Eastwood', 1, 'Programmer', '1'),
-('IBM', 'Eastwood', 1, 'Programmer', '3');
+('IBM', 'Eastwood', 1, 'Programmer', '3'),
+('qwe', 'qwe', 2, 'e', '3'),
+('IBMe', 'ee', 0, 'e', '3');
 
 -- --------------------------------------------------------
 
@@ -1110,8 +1125,12 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_history` (
 INSERT INTO `tbl_emp_history` (`emp_id`, `status`, `employment_type_id`, `job_title_id`, `department_id`, `start_date`, `end_date`, `probationary_date`, `permanency_date`, `salary`, `pay_grade`, `date_modified`) VALUES
 (100, 'Resigned', 'ET1001', 'JT1001', 'DE1001', '2015-08-11', '2015-08-11', '2015-08-11', '2015-08-11', '300002.00', 'AB', '2015-07-08 05:11:34'),
 (1, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-11', '2015-08-11', '2015-08-11', '2015-08-11', '25000.00', 'A', '2015-08-11 20:53:11'),
-(3, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-11', '2015-08-11', '2015-08-11', '2015-08-11', '0.00', '', '2015-08-12 02:11:24'),
-(20, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-12', '2015-08-12', '2015-08-12', '2015-08-12', '0.00', '', '2015-08-12 17:09:26');
+(20, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-12', '2015-08-12', '2015-08-12', '2015-08-12', '0.00', '', '2015-08-12 17:09:26'),
+(16, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', NULL, NULL, '2015-08-13 22:24:05'),
+(4, 'Existing', 'ET1002', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', NULL, NULL, '2015-08-13 22:25:24'),
+(6, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', NULL, NULL, '2015-08-14 00:36:43'),
+(7, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', NULL, NULL, '2015-08-14 00:37:38'),
+(3, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '0.00', '', '2015-08-14 01:13:59');
 
 -- --------------------------------------------------------
 
@@ -1137,7 +1156,8 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_info` (
 
 INSERT INTO `tbl_emp_info` (`emp_id`, `first_name`, `middle_name`, `last_name`, `birthday`, `gender`, `marital_status`, `date_added`) VALUES
 (1, 'Arden', 'Jay', 'Dela Cruz', '1993-12-16', 'male', 'Single', '2015-08-11 12:53:11'),
-(3, 'e', 'e', 'e', '2015-08-01', 'male', 'Single', '2015-08-11 18:11:24'),
+(3, 'Arden', 'Alcairo', 'Dela Cruz', '2015-08-11', 'female', 'Single', '2015-08-13 17:13:59'),
+(16, 'r', 'r', 'r', '2015-06-12', 'male', 'married', '2015-08-13 14:24:05'),
 (20, 'e', 'e', 'e', '2015-08-12', 'male', 'Single', '2015-08-12 09:09:26'),
 (100, 'Arden', 'Alcairo', 'Dela Cruz', '1993-12-16', 'male', 'Single', '2015-06-30 07:00:00');
 
@@ -1190,8 +1210,8 @@ CREATE TABLE IF NOT EXISTS `tbl_governmentid` (
 INSERT INTO `tbl_governmentid` (`employee_id`, `sss_no`, `pagibig_no`, `philhealth_no`, `tin`) VALUES
 ('100', 1, 2, 3, 4),
 ('1', 11, 22, 33, 44),
-('3', 0, 0, 0, 0),
-('20', 0, 0, 0, 0);
+('20', 0, 0, 0, 0),
+('3', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1303,7 +1323,7 @@ CREATE TABLE IF NOT EXISTS `tbl_leave_request` (
   `date_approved` date DEFAULT NULL,
   `date_requested` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `employee_id` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_leave_request`
@@ -1311,7 +1331,8 @@ CREATE TABLE IF NOT EXISTS `tbl_leave_request` (
 
 INSERT INTO `tbl_leave_request` (`id`, `prefix`, `leave_type`, `leave_reason`, `leave_start`, `leave_end`, `leave_left`, `leave_status`, `approved_by`, `date_approved`, `date_requested`, `employee_id`) VALUES
 (00002, 'LVR', 'BL', 'It is my birthday!', '2015-08-06', '2015-08-08', 20, 'Denied', 'Administrator Arden', '2015-08-08', '2015-08-10 16:00:00', '1'),
-(00003, 'LVR', 'EL', '23', '2015-08-04', '2015-08-06', 20, 'Pending', NULL, NULL, NULL, '1');
+(00003, 'LVR', 'EL', '23', '2015-08-04', '2015-08-06', 20, 'Pending', NULL, NULL, NULL, '1'),
+(00004, 'LVR', 'BL', 'sadasd', '2015-08-01', '2015-08-04', 20, 'Pending', NULL, NULL, NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -1680,8 +1701,8 @@ CREATE TABLE IF NOT EXISTS `tbl_school` (
 INSERT INTO `tbl_school` (`employee_id`, `primary_name`, `primary_address`, `primary_year`, `secondary_name`, `secondary_address`, `secondary_year`, `tertiary_name`, `tertiary_address`, `tertiary_year`) VALUES
 (100, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2016),
 (1, 'Aurora Central School', 'Aurora, Isabela', 2006, 'DANHS', 'Aurora, Isabela', 2010, 'JRU', 'Mandaluyong City', 2015),
-(3, 'w', 'w', 0, 'w', 'w', 0, 'w', 'w', 0),
-(20, '', '', 0, '', '', 0, '', '', 0);
+(20, '', '', 0, '', '', 0, '', '', 0),
+(3, '', '', 0, '', '', 0, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1887,7 +1908,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'ardents', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'ardents', '', NULL, NULL, NULL, 1268889823, 1439351756, 1, 'Arden Jay', 'Dela Cruz', '9devcorp', '0');
+(1, '127.0.0.1', 'ardents', '$2a$10$aU3SF2qPslkj31km5Gb0/uGQPZfIsHcbsD5jhRQ1OwICCTiJDJbP2', '', 'ardents', '', NULL, NULL, NULL, 1268889823, 1439351756, 1, 'Arden Jay', 'Dela Cruz', '9devcorp', '0');
 
 -- --------------------------------------------------------
 
@@ -1933,7 +1954,18 @@ CREATE TABLE IF NOT EXISTS `user_account` (
 
 INSERT INTO `user_account` (`username`, `password`, `user_level`, `secret_question`, `secret_answer`, `employee_id`, `date_registered`) VALUES
 ('admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'What is your pet name?', 'ardents', 1, '2015-08-11 12:53:12'),
-('android20', 'ardents', 'HR Manager', 'What is your pet name?', 'qweqwe', 20, '2015-08-12 09:09:26');
+('android20', 'ardents', 'HR Manager', 'What is your pet name?', 'qweqwe', 20, '2015-08-12 09:09:26'),
+(NULL, NULL, NULL, NULL, NULL, 4, '2015-08-13 14:25:25'),
+(NULL, NULL, NULL, NULL, NULL, 6, '2015-08-13 16:36:44'),
+(NULL, NULL, NULL, NULL, NULL, 7, '2015-08-13 16:37:40'),
+('', '', '', '', '', 3, '2015-08-13 17:13:59');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_address`
+--
+
 
 -- --------------------------------------------------------
 
@@ -2152,11 +2184,16 @@ CREATE TABLE IF NOT EXISTS `view_stocks` (
 -- --------------------------------------------------------
 
 --
+-- Structure for view `view_address`
+--
+-- --------------------------------------------------------
+
+--
 -- Structure for view `view_all_project_materials`
 --
 DROP TABLE IF EXISTS `view_all_project_materials`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_all_project_materials` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_materials`.`quantity` AS `quantity`,`tbl_materials`.`price` AS `price`,`tbl_project`.`project_name` AS `project_name`,`tbl_materials`.`date_issued` AS `date_issued`,`tbl_stock_info`.`item_id` AS `item_id`,`tbl_project`.`project_id` AS `project_id` from ((`tbl_project` join `tbl_materials` on((`tbl_materials`.`project_id` = `tbl_project`.`project_id`))) join `tbl_stock_info` on((`tbl_materials`.`item_id` = `tbl_stock_info`.`item_id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_all_project_materials` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_materials`.`quantity` AS `quantity`,`tbl_materials`.`price` AS `price`,`tbl_project`.`project_name` AS `project_name`,`tbl_materials`.`date_issued` AS `date_issued`,`tbl_stock_info`.`item_id` AS `item_id`,`tbl_project`.`project_id` AS `project_id` from ((`tbl_project` join `tbl_materials` on((`tbl_materials`.`project_id` = `tbl_project`.`project_id`))) join `tbl_stock_info` on((`tbl_materials`.`item_id` = `tbl_stock_info`.`item_id`)));
 
 -- --------------------------------------------------------
 
@@ -2165,7 +2202,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_assigned_assets`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_assigned_assets` AS select `tbl_asset_info`.`asset_id` AS `asset_id`,`tbl_asset_info`.`asset_name` AS `asset_name`,`tbl_stocks_category`.`category_name` AS `category_name`,`tbl_assets`.`asset_status` AS `asset_status`,concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_vendor`.`vendor_name` AS `vendor_name`,`tbl_asset_info`.`asset_description` AS `asset_description`,`tbl_asset_info`.`brand` AS `brand`,`tbl_asset_info`.`serial_number` AS `serial_number`,`tbl_asset_info`.`model` AS `model`,`tbl_asset_info`.`warranty_end_date` AS `warranty_end_date`,`tbl_assets`.`assigned_date` AS `assigned_date`,`tbl_emp_info`.`emp_id` AS `emp_id` from ((((`tbl_stocks_category` join `tbl_asset_info` on((`tbl_asset_info`.`category_id` = `tbl_stocks_category`.`category_id`))) join `tbl_assets` on((`tbl_assets`.`asset_id` = `tbl_asset_info`.`asset_id`))) join `tbl_emp_info` on((`tbl_assets`.`employee_id` = `tbl_emp_info`.`emp_id`))) join `tbl_vendor` on((`tbl_vendor`.`vendor_id` = `tbl_asset_info`.`vendor_id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_assigned_assets` AS select `tbl_asset_info`.`asset_id` AS `asset_id`,`tbl_asset_info`.`asset_name` AS `asset_name`,`tbl_stocks_category`.`category_name` AS `category_name`,`tbl_assets`.`asset_status` AS `asset_status`,concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_vendor`.`vendor_name` AS `vendor_name`,`tbl_asset_info`.`asset_description` AS `asset_description`,`tbl_asset_info`.`brand` AS `brand`,`tbl_asset_info`.`serial_number` AS `serial_number`,`tbl_asset_info`.`model` AS `model`,`tbl_asset_info`.`warranty_end_date` AS `warranty_end_date`,`tbl_assets`.`assigned_date` AS `assigned_date`,`tbl_emp_info`.`emp_id` AS `emp_id` from ((((`tbl_stocks_category` join `tbl_asset_info` on((`tbl_asset_info`.`category_id` = `tbl_stocks_category`.`category_id`))) join `tbl_assets` on((`tbl_assets`.`asset_id` = `tbl_asset_info`.`asset_id`))) join `tbl_emp_info` on((`tbl_assets`.`employee_id` = `tbl_emp_info`.`emp_id`))) join `tbl_vendor` on((`tbl_vendor`.`vendor_id` = `tbl_asset_info`.`vendor_id`)));
 
 -- --------------------------------------------------------
 
@@ -2174,7 +2211,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_attendance`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_attendance` AS select distinct `employees`.`emp_id` AS `emp_id`,`employees`.`first_name` AS `first_name`,`employees`.`middle_name` AS `middle_name`,`employees`.`last_name` AS `last_name`,`employees`.`position` AS `position`,`tbl_attendance`.`datelog` AS `datelog`,date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y') AS `logdate`,`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) AS `time_in`,`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) AS `time_out`,ifnull(if((timestampdiff(MINUTE,str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),format(((timestampdiff(MINUTE,str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) / 60) - 1),2),0),0) AS `man_hours`,ifnull(if((timestampdiff(MINUTE,str_to_date('01/01/1970 08:00 AM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),timestampdiff(MINUTE,str_to_date('01/01/1970 08:00 AM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')),0),0) AS `tardiness`,ifnull(if((timestampdiff(MINUTE,str_to_date('01/01/1970 05:00 PM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),format((timestampdiff(MINUTE,str_to_date('01/01/1970 05:00 PM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) / 60),2),0),0) AS `overtime` from (`employees` join `tbl_attendance` on((`tbl_attendance`.`emp_id` = `employees`.`emp_id`))) order by `employees`.`emp_id`,6;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_attendance` AS select distinct `employees`.`emp_id` AS `emp_id`,`employees`.`first_name` AS `first_name`,`employees`.`middle_name` AS `middle_name`,`employees`.`last_name` AS `last_name`,`employees`.`position` AS `position`,`tbl_attendance`.`datelog` AS `datelog`,date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y') AS `logdate`,`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) AS `time_in`,`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) AS `time_out`,ifnull(if((timestampdiff(MINUTE,str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),format(((timestampdiff(MINUTE,str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) / 60) - 1),2),0),0) AS `man_hours`,ifnull(if((timestampdiff(MINUTE,str_to_date('01/01/1970 08:00 AM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),timestampdiff(MINUTE,str_to_date('01/01/1970 08:00 AM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')),0),0) AS `tardiness`,ifnull(if((timestampdiff(MINUTE,str_to_date('01/01/1970 05:00 PM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),format((timestampdiff(MINUTE,str_to_date('01/01/1970 05:00 PM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) / 60),2),0),0) AS `overtime` from (`employees` join `tbl_attendance` on((`tbl_attendance`.`emp_id` = `employees`.`emp_id`))) order by `employees`.`emp_id`,6;
 
 -- --------------------------------------------------------
 
@@ -2183,7 +2220,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_employees_list`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_employees_list` AS select `tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name`,`tbl_emp_history`.`status` AS `status`,`tbl_emp_history`.`start_date` AS `start_date`,`tbl_departments`.`department_name` AS `department_name`,`tbl_employment_type`.`employment_type` AS `employment_type`,`tbl_job_title`.`job_title_name` AS `job_title_name` from ((((`tbl_emp_info` join `tbl_emp_history` on((`tbl_emp_info`.`emp_id` = `tbl_emp_history`.`emp_id`))) join `tbl_departments` on((`tbl_emp_history`.`department_id` = `tbl_departments`.`department_id`))) join `tbl_employment_type` on((`tbl_emp_history`.`employment_type_id` = `tbl_employment_type`.`employment_type_id`))) join `tbl_job_title` on((`tbl_emp_history`.`job_title_id` = `tbl_job_title`.`job_title_id`))) order by `tbl_emp_info`.`emp_id`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_employees_list` AS select `tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name`,`tbl_emp_history`.`status` AS `status`,`tbl_emp_history`.`start_date` AS `start_date`,`tbl_departments`.`department_name` AS `department_name`,`tbl_employment_type`.`employment_type` AS `employment_type`,`tbl_job_title`.`job_title_name` AS `job_title_name` from ((((`tbl_emp_info` join `tbl_emp_history` on((`tbl_emp_info`.`emp_id` = `tbl_emp_history`.`emp_id`))) join `tbl_departments` on((`tbl_emp_history`.`department_id` = `tbl_departments`.`department_id`))) join `tbl_employment_type` on((`tbl_emp_history`.`employment_type_id` = `tbl_employment_type`.`employment_type_id`))) join `tbl_job_title` on((`tbl_emp_history`.`job_title_id` = `tbl_job_title`.`job_title_id`))) order by `tbl_emp_info`.`emp_id`;
 
 -- --------------------------------------------------------
 
@@ -2192,7 +2229,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_job_history`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_job_history` AS select `tbl_emp_history`.`emp_id` AS `emp_id`,`tbl_emp_history`.`status` AS `status`,`tbl_employment_type`.`employment_type` AS `employment_type`,`tbl_job_title`.`job_title_name` AS `job_title_name`,`tbl_departments`.`department_name` AS `department_name`,`tbl_emp_history`.`start_date` AS `start_date`,`tbl_emp_history`.`probationary_date` AS `probationary_date`,`tbl_emp_history`.`permanency_date` AS `permanency_date`,`tbl_emp_history`.`salary` AS `salary`,`tbl_emp_history`.`end_date` AS `end_date`,`tbl_emp_history`.`pay_grade` AS `pay_grade`,`tbl_emp_history`.`date_modified` AS `date_modified` from (((`tbl_emp_history` join `tbl_departments` on((`tbl_departments`.`department_id` = `tbl_emp_history`.`department_id`))) join `tbl_employment_type` on((`tbl_employment_type`.`employment_type_id` = `tbl_emp_history`.`employment_type_id`))) join `tbl_job_title` on((`tbl_job_title`.`job_title_id` = `tbl_emp_history`.`job_title_id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_job_history` AS select `tbl_emp_history`.`emp_id` AS `emp_id`,`tbl_emp_history`.`status` AS `status`,`tbl_employment_type`.`employment_type` AS `employment_type`,`tbl_job_title`.`job_title_name` AS `job_title_name`,`tbl_departments`.`department_name` AS `department_name`,`tbl_emp_history`.`start_date` AS `start_date`,`tbl_emp_history`.`probationary_date` AS `probationary_date`,`tbl_emp_history`.`permanency_date` AS `permanency_date`,`tbl_emp_history`.`salary` AS `salary`,`tbl_emp_history`.`end_date` AS `end_date`,`tbl_emp_history`.`pay_grade` AS `pay_grade`,`tbl_emp_history`.`date_modified` AS `date_modified` from (((`tbl_emp_history` join `tbl_departments` on((`tbl_departments`.`department_id` = `tbl_emp_history`.`department_id`))) join `tbl_employment_type` on((`tbl_employment_type`.`employment_type_id` = `tbl_emp_history`.`employment_type_id`))) join `tbl_job_title` on((`tbl_job_title`.`job_title_id` = `tbl_emp_history`.`job_title_id`)));
 
 -- --------------------------------------------------------
 
@@ -2201,7 +2238,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_leave_left`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_leave_left` AS select concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_leave_left`.`days` AS `days`,`tbl_leave_type`.`leave_type_name` AS `leave_type_name`,`tbl_leave_left`.`employee_id` AS `employee_id` from ((`tbl_leave_type` join `tbl_leave_left` on((`tbl_leave_type`.`leave_type_id` = `tbl_leave_left`.`leave_type_id`))) join `tbl_emp_info` on((`tbl_emp_info`.`emp_id` = `tbl_leave_left`.`employee_id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_leave_left` AS select concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_leave_left`.`days` AS `days`,`tbl_leave_type`.`leave_type_name` AS `leave_type_name`,`tbl_leave_left`.`employee_id` AS `employee_id` from ((`tbl_leave_type` join `tbl_leave_left` on((`tbl_leave_type`.`leave_type_id` = `tbl_leave_left`.`leave_type_id`))) join `tbl_emp_info` on((`tbl_emp_info`.`emp_id` = `tbl_leave_left`.`employee_id`)));
 
 -- --------------------------------------------------------
 
@@ -2210,7 +2247,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_leave_remaining`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_leave_remaining` AS select concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_leave_remaining`.`birthday_leave` AS `birthday_leave`,`tbl_leave_remaining`.`mandatory_leave` AS `mandatory_leave`,`tbl_leave_remaining`.`paternity_leave` AS `paternity_leave`,`tbl_leave_remaining`.`sick_leave` AS `sick_leave`,`tbl_leave_remaining`.`vacation_leave` AS `vacation_leave`,`tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_leave_remaining`.`maternity_leave` AS `maternity_leave`,(((((`tbl_leave_remaining`.`birthday_leave` + `tbl_leave_remaining`.`mandatory_leave`) + `tbl_leave_remaining`.`paternity_leave`) + `tbl_leave_remaining`.`sick_leave`) + `tbl_leave_remaining`.`vacation_leave`) + `tbl_leave_remaining`.`maternity_leave`) AS `total_leave` from (`tbl_leave_remaining` join `tbl_emp_info` on((`tbl_emp_info`.`emp_id` = `tbl_leave_remaining`.`employee_id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_leave_remaining` AS select concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_leave_remaining`.`birthday_leave` AS `birthday_leave`,`tbl_leave_remaining`.`mandatory_leave` AS `mandatory_leave`,`tbl_leave_remaining`.`paternity_leave` AS `paternity_leave`,`tbl_leave_remaining`.`sick_leave` AS `sick_leave`,`tbl_leave_remaining`.`vacation_leave` AS `vacation_leave`,`tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_leave_remaining`.`maternity_leave` AS `maternity_leave`,(((((`tbl_leave_remaining`.`birthday_leave` + `tbl_leave_remaining`.`mandatory_leave`) + `tbl_leave_remaining`.`paternity_leave`) + `tbl_leave_remaining`.`sick_leave`) + `tbl_leave_remaining`.`vacation_leave`) + `tbl_leave_remaining`.`maternity_leave`) AS `total_leave` from (`tbl_leave_remaining` join `tbl_emp_info` on((`tbl_emp_info`.`emp_id` = `tbl_leave_remaining`.`employee_id`)));
 
 -- --------------------------------------------------------
 
@@ -2219,7 +2256,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_leave_request`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_leave_request` AS select concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,concat(`tbl_leave_request`.`prefix`,`tbl_leave_request`.`id`) AS `leave_request_id`,`tbl_leave_request`.`leave_reason` AS `leave_reason`,`tbl_leave_request`.`leave_start` AS `leave_start`,`tbl_leave_request`.`leave_status` AS `leave_status`,`tbl_leave_request`.`approved_by` AS `approved_by`,`tbl_leave_request`.`date_approved` AS `date_approved`,`tbl_leave_request`.`date_requested` AS `date_requested`,((to_days(`tbl_leave_request`.`leave_end`) - to_days(`tbl_leave_request`.`leave_start`)) + 1) AS `num_days`,`tbl_leave_request`.`leave_end` AS `leave_end`,`tbl_leave_request`.`leave_left` AS `leave_left`,`tbl_leave_request`.`leave_type` AS `leave_type`,`tbl_leave_type`.`leave_type_name` AS `leave_type_name`,`tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_leave_type`.`leave_type_id` AS `leave_type_id` from ((`tbl_emp_info` join `tbl_leave_request` on((`tbl_emp_info`.`emp_id` = `tbl_leave_request`.`employee_id`))) join `tbl_leave_type` on((`tbl_leave_type`.`leave_type_id` = `tbl_leave_request`.`leave_type`))) order by concat(`tbl_leave_request`.`prefix`,`tbl_leave_request`.`id`);
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_leave_request` AS select concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,concat(`tbl_leave_request`.`prefix`,`tbl_leave_request`.`id`) AS `leave_request_id`,`tbl_leave_request`.`leave_reason` AS `leave_reason`,`tbl_leave_request`.`leave_start` AS `leave_start`,`tbl_leave_request`.`leave_status` AS `leave_status`,`tbl_leave_request`.`approved_by` AS `approved_by`,`tbl_leave_request`.`date_approved` AS `date_approved`,`tbl_leave_request`.`date_requested` AS `date_requested`,((to_days(`tbl_leave_request`.`leave_end`) - to_days(`tbl_leave_request`.`leave_start`)) + 1) AS `num_days`,`tbl_leave_request`.`leave_end` AS `leave_end`,`tbl_leave_request`.`leave_left` AS `leave_left`,`tbl_leave_request`.`leave_type` AS `leave_type`,`tbl_leave_type`.`leave_type_name` AS `leave_type_name`,`tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_leave_type`.`leave_type_id` AS `leave_type_id` from ((`tbl_emp_info` join `tbl_leave_request` on((`tbl_emp_info`.`emp_id` = `tbl_leave_request`.`employee_id`))) join `tbl_leave_type` on((`tbl_leave_type`.`leave_type_id` = `tbl_leave_request`.`leave_type`))) order by concat(`tbl_leave_request`.`prefix`,`tbl_leave_request`.`id`);
 
 -- --------------------------------------------------------
 
@@ -2228,7 +2265,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_materials`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_materials` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_materials`.`item_id` AS `item_id`,`tbl_materials`.`quantity` AS `quantity`,`tbl_materials`.`price` AS `price`,`tbl_materials`.`project_id` AS `project_id`,`tbl_materials`.`date_issued` AS `date_issued`,`tbl_project`.`project_name` AS `project_name` from ((`tbl_materials` join `tbl_stock_info` on((`tbl_materials`.`item_id` = `tbl_stock_info`.`item_id`))) join `tbl_project` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_materials` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_materials`.`item_id` AS `item_id`,`tbl_materials`.`quantity` AS `quantity`,`tbl_materials`.`price` AS `price`,`tbl_materials`.`project_id` AS `project_id`,`tbl_materials`.`date_issued` AS `date_issued`,`tbl_project`.`project_name` AS `project_name` from ((`tbl_materials` join `tbl_stock_info` on((`tbl_materials`.`item_id` = `tbl_stock_info`.`item_id`))) join `tbl_project` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`)));
 
 -- --------------------------------------------------------
 
@@ -2237,7 +2274,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_project_cost`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_project_cost` AS select `tbl_project`.`starting_date` AS `starting_date`,`tbl_project`.`ending_date` AS `ending_date`,`tbl_project`.`project_id` AS `project_id`,`tbl_project`.`project_name` AS `project_name`,`tbl_client`.`client_name` AS `client_name`,`tbl_project`.`date_added` AS `date_added`,sum((`tbl_materials`.`quantity` * `tbl_materials`.`price`)) AS `total_expense` from ((`tbl_project` join `tbl_client` on((`tbl_client`.`client_id` = `tbl_project`.`client`))) join `tbl_materials` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`))) group by `tbl_project`.`project_id`,`tbl_project`.`project_name`,`tbl_client`.`client_name`,`tbl_project`.`date_added`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_project_cost` AS select `tbl_project`.`starting_date` AS `starting_date`,`tbl_project`.`ending_date` AS `ending_date`,`tbl_project`.`project_id` AS `project_id`,`tbl_project`.`project_name` AS `project_name`,`tbl_client`.`client_name` AS `client_name`,`tbl_project`.`date_added` AS `date_added`,sum((`tbl_materials`.`quantity` * `tbl_materials`.`price`)) AS `total_expense` from ((`tbl_project` join `tbl_client` on((`tbl_client`.`client_id` = `tbl_project`.`client`))) join `tbl_materials` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`))) group by `tbl_project`.`project_id`,`tbl_project`.`project_name`,`tbl_client`.`client_name`,`tbl_project`.`date_added`;
 
 -- --------------------------------------------------------
 
@@ -2246,7 +2283,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_project_workers`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_project_workers` AS select `tbl_project`.`project_id` AS `project_id`,`tbl_project`.`project_name` AS `project_name`,concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_project_workers`.`assigned_date` AS `assigned_date`,`tbl_emp_info`.`emp_id` AS `emp_id` from ((`tbl_project` join `tbl_project_workers` on((`tbl_project`.`project_id` = `tbl_project_workers`.`project_id`))) join `tbl_emp_info` on((`tbl_project_workers`.`employee_id` = `tbl_emp_info`.`emp_id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_project_workers` AS select `tbl_project`.`project_id` AS `project_id`,`tbl_project`.`project_name` AS `project_name`,concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_project_workers`.`assigned_date` AS `assigned_date`,`tbl_emp_info`.`emp_id` AS `emp_id` from ((`tbl_project` join `tbl_project_workers` on((`tbl_project`.`project_id` = `tbl_project_workers`.`project_id`))) join `tbl_emp_info` on((`tbl_project_workers`.`employee_id` = `tbl_emp_info`.`emp_id`)));
 
 -- --------------------------------------------------------
 
@@ -2255,7 +2292,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_stocks`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_stocks` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_stocks_category`.`category_name` AS `category_name`,`tbl_stocks`.`quantity` AS `quantity`,`tbl_stocks`.`date_last_restocked` AS `date_last_restocked`,`tbl_stock_info`.`price` AS `price`,`tbl_stocks`.`item_id` AS `item_id` from ((`tbl_stock_info` join `tbl_stocks_category` on((`tbl_stock_info`.`category_id` = `tbl_stocks_category`.`category_id`))) join `tbl_stocks` on((`tbl_stocks`.`item_id` = `tbl_stock_info`.`item_id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_stocks` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_stocks_category`.`category_name` AS `category_name`,`tbl_stocks`.`quantity` AS `quantity`,`tbl_stocks`.`date_last_restocked` AS `date_last_restocked`,`tbl_stock_info`.`price` AS `price`,`tbl_stocks`.`item_id` AS `item_id` from ((`tbl_stock_info` join `tbl_stocks_category` on((`tbl_stock_info`.`category_id` = `tbl_stocks_category`.`category_id`))) join `tbl_stocks` on((`tbl_stocks`.`item_id` = `tbl_stock_info`.`item_id`)));
 
 --
 -- Indexes for dumped tables
@@ -2310,10 +2347,10 @@ ALTER TABLE `tbl_attendance`
   ADD PRIMARY KEY (`attendance_id`);
 
 --
--- Indexes for table `tbl_city`
+-- Indexes for table `tbl_audit_trail`
 --
-ALTER TABLE `tbl_city`
-  ADD PRIMARY KEY (`city_code`);
+ALTER TABLE `tbl_audit_trail`
+  ADD PRIMARY KEY (`audit_trail_id`);
 
 --
 -- Indexes for table `tbl_countries`
@@ -2428,7 +2465,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_allowances`
 --
@@ -2439,6 +2476,11 @@ ALTER TABLE `tbl_allowances`
 --
 ALTER TABLE `tbl_attendance`
   MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=243;
+--
+-- AUTO_INCREMENT for table `tbl_audit_trail`
+--
+ALTER TABLE `tbl_audit_trail`
+  MODIFY `audit_trail_id` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `tbl_countries`
 --
@@ -2453,7 +2495,7 @@ ALTER TABLE `tbl_emp_info`
 -- AUTO_INCREMENT for table `tbl_leave_request`
 --
 ALTER TABLE `tbl_leave_request`
-  MODIFY `id` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_payslip`
 --
