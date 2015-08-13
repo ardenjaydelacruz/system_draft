@@ -3,6 +3,174 @@ class Emp_info_model extends ActiveRecord\Model {
 	static $table_name = 'tbl_emp_info';
 	static $primary_key = 'emp_id';
 
+	
+
+	public function updateEmployee(){
+		$id = $this->input->get('emp_id');
+	    if($this->input->post('btnAddJob')){
+	        if(Job_history_model::create(Emp_info_model::jobInfo())){
+	            $this->session->set_userdata('edited', 1);
+	            redirect("ems/view_details?emp_id=$id");
+	        }
+	    }
+	    if($this->input->post('btnAddDependents')){
+	        if(Dependent_model::create(Emp_info_model::dependentInfo())){
+	            $this->session->set_userdata('edited', 1);
+	            redirect("ems/view_details?emp_id=$id");
+	        }
+	    }
+	    
+	    $ems = Emp_info_model::find($id);
+	    $gov = Gov_id_model::find($id);
+	    $address = Emp_address_model::find($id);
+	    $contact = Emp_contact_model::find($id);
+	    $contactP = Emp_contact_person::find($id);
+	    $school = Emp_school_model::find($id);
+	    $emp = Emp_history_model::find($id);
+	    $user = Users::find_by_employee_id($id);
+
+	    if ($ems->update_attributes(Emp_info_model::personalInfo()) && 
+	        $gov->update_attributes(Emp_info_model::govInfo()) && 
+	        $address->update_attributes(Emp_info_model::addressInfo()) && 
+	        $contact->update_attributes(Emp_info_model::contactInfo()) && 
+	        $contactP->update_attributes(Emp_info_model::contactPerson()) && 
+	        $school->update_attributes(Emp_info_model::schoolInfo()) && 
+	        $emp->update_attributes(Emp_info_model::employmentInfo()) && 
+	        $user->update_attributes(Emp_info_model::accountInfo())) {
+	        $this->session->set_userdata('edited', 1);
+	    	Audit_trail_model::auditUpdateEmp($id);
+	        redirect("ems/view_details?emp_id=$id");
+	    }
+	}
+
+	public function insert_employee_data(){
+		$this->form_validation->set_rules('txtEmpID', 'Employee ID', 'trim|required');
+		$this->form_validation->set_rules('txtJobTitle', 'Job Title', 'trim|required');
+		$this->form_validation->set_rules('txtEmploymentType', 'Employment Type', 'trim|required');
+		$this->form_validation->set_rules('txtEmpDepartment', 'Employee Department', 'trim|required');
+
+		$this->form_validation->set_rules('txtFirstName', 'First Name', 'trim|required');
+		$this->form_validation->set_rules('txtMiddleName', 'Middle Name', 'trim');
+		$this->form_validation->set_rules('txtLastName', 'Last Name', 'trim|required');
+		$this->form_validation->set_rules('txtGender', 'Gender', 'trim|required');
+		$this->form_validation->set_rules('txtBday', 'Birthday', 'trim|required');
+		$this->form_validation->set_rules('txtStatus', 'Marital Status', 'trim|required');
+
+		$this->form_validation->set_rules('txtStreet', 'Street', 'trim|required');
+		$this->form_validation->set_rules('txtBarangay', 'Barangay', 'trim|required');
+		$this->form_validation->set_rules('txtCity', 'City', 'trim|required');
+		$this->form_validation->set_rules('txtState', 'State', 'trim|required');
+		$this->form_validation->set_rules('txtZip', 'Zip Code', 'trim|required');
+		$this->form_validation->set_rules('txtCountry', 'Country', 'trim|required');
+
+		$empInfo = array (
+			'emp_id' => $this->input->post('txtEmpID'),
+			'status' => 'Existing',
+			'job_title_id' => $this->input->post('txtJobTitle'),
+			'employment_type_id' => $this->input->post('txtEmploymentType'),
+			'department_id' => $this->input->post('txtEmpDepartment'),
+			'start_date' => date('Y-m-d'),
+			'end_date' => date('Y-m-d'),
+			'probationary_date' => date('Y-m-d'),
+			'permanency_date' => date('Y-m-d')
+			);
+		$address = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'street' => $this->input->post('txtStreet'),
+			'barangay' => $this->input->post('txtBarangay'),
+			'city' => $this->input->post('txtCity'),
+			'state' => $this->input->post('txtState'),
+			'zip' => $this->input->post('txtZip'),
+			'country' => $this->input->post('txtCountry')
+			);
+		$contact = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'mobile_number' => $this->input->post('txtMobile'),
+			'tel_number' => $this->input->post('txtTelephone'),
+			'email_address' => $this->input->post('txtEmail')
+			);
+
+		$personal = array (
+			'emp_id' => $this->input->post('txtEmpID'),
+			'first_name' => $this->input->post('txtFirstName'),
+			'middle_name' => $this->input->post('txtMiddleName'),
+			'last_name' => $this->input->post('txtLastName'),
+			'birthday' => $this->input->post('txtBday'),
+			'gender' => $this->input->post('txtGender'),
+			'marital_status' => $this->input->post('txtStatus')
+		);
+
+		$id = array (
+			'employee_id' => $this->input->post('txtEmpID')
+		);
+
+		
+		if ($this->form_validation->run()) {	
+			if (Emp_info_model::create($personal) && 
+				Emp_history_model::create($empInfo) && 
+				Emp_address_model::create($address) && 
+				Emp_contact_model::create($contact) && 
+				Emp_contact_person::create($id) &&
+				Emp_school_model::create($id) &&
+				Gov_id_model::create($id) &&
+				Users::create($id) 
+				) {
+				$this->session->set_userdata('added', 1);
+				Audit_trail_model::auditAddEmp($this->input->post('txtEmpID'));
+				redirect('ems/employees');
+			}
+		} else {
+			return FALSE;
+		}
+	}
+	
+	public function deleteEmployee(){
+		$id       = $this->input->get('emp_id');
+        $emp      = Emp_info_model::find($id);
+        $info     = Emp_info_model::find($id); //Tab 1a - Personal Tab
+        $gov_id   = Gov_id_model::find($id); //Tab 1b - Gov ID Tab
+        $address  = Emp_address_model::find($id); //Tab 2a - Contact Tab
+        $contact  = Emp_contact_model::find($id); //Tab 2b - Contact Tab
+        $contactP = Emp_contact_person::find($id); //Tab 2c - Contact Tab
+        $school   = Emp_school_model::find($id); //Tab 3 - School Tab
+        $emp_hist = Emp_history_model::find($id); //Tab 5 - Employment Tab
+        $account  = Users::find_by_employee_id($id); //Tab 9 - Users Tab
+        $emp->delete();
+        $info->delete();
+        $gov_id->delete();
+        $address->delete();
+        $contact->delete();
+        $contactP->delete();
+        $school->delete();
+        $emp_hist->delete();
+        $account->delete();
+        $this->session->set_userdata('deleted', 1);
+        Audit_trail_model::auditDeleteEmp($id);
+        redirect('ems/employees');
+	}
+
+	public function do_upload($id){
+		// $this->upload_path = realpath(APPPATH.'../assets/images/profile');
+		$config = array(
+			'allowed_types' => 'jpg|jpeg|gif|png',
+			'upload_path' => 'assets/images/profile/'
+		);
+		$this->load->library('upload',$config);
+		$this->upload->do_upload();
+		$image = $this->upload->data();
+		$ems = Employees_model::find($id);
+		$ems->image = $image['file_name'];
+		$ems->save();
+		if ($ems->save()) {
+			$this->session->set_userdata('uploaded',1);
+			$this->session->set_userdata('profile_image',$image['file_name']);
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 	public function personalInfo(){
 		$data = array (
 			'first_name' => $this->input->post('txtFirstName'),
@@ -116,112 +284,6 @@ class Emp_info_model extends ActiveRecord\Model {
 			'relationship' => $this->input->post('txtRelationship')
 		);
 		return $data;
-	}
-
-	
-	public function insert_employee_data(){
-		$this->form_validation->set_rules('txtEmpID', 'Employee ID', 'trim|required');
-		$this->form_validation->set_rules('txtJobTitle', 'Job Title', 'trim|required');
-		$this->form_validation->set_rules('txtEmploymentType', 'Employment Type', 'trim|required');
-		$this->form_validation->set_rules('txtEmpDepartment', 'Employee Department', 'trim|required');
-
-		$this->form_validation->set_rules('txtFirstName', 'First Name', 'trim|required');
-		$this->form_validation->set_rules('txtMiddleName', 'Middle Name', 'trim');
-		$this->form_validation->set_rules('txtLastName', 'Last Name', 'trim|required');
-		$this->form_validation->set_rules('txtGender', 'Gender', 'trim|required');
-		$this->form_validation->set_rules('txtBday', 'Birthday', 'trim|required');
-		$this->form_validation->set_rules('txtStatus', 'Marital Status', 'trim|required');
-
-		$this->form_validation->set_rules('txtStreet', 'Street', 'trim|required');
-		$this->form_validation->set_rules('txtBarangay', 'Barangay', 'trim|required');
-		$this->form_validation->set_rules('txtCity', 'City', 'trim|required');
-		$this->form_validation->set_rules('txtState', 'State', 'trim|required');
-		$this->form_validation->set_rules('txtZip', 'Zip Code', 'trim|required');
-		$this->form_validation->set_rules('txtCountry', 'Country', 'trim|required');
-
-		$empInfo = array (
-			'emp_id' => $this->input->post('txtEmpID'),
-			'status' => 'Existing',
-			'job_title_id' => $this->input->post('txtJobTitle'),
-			'employment_type_id' => $this->input->post('txtEmploymentType'),
-			'department_id' => $this->input->post('txtEmpDepartment'),
-			'start_date' => date('Y-m-d'),
-			'end_date' => date('Y-m-d'),
-			'probationary_date' => date('Y-m-d'),
-			'permanency_date' => date('Y-m-d')
-			);
-		$address = array (
-			'employee_id' => $this->input->post('txtEmpID'),
-			'street' => $this->input->post('txtStreet'),
-			'barangay' => $this->input->post('txtBarangay'),
-			'city' => $this->input->post('txtCity'),
-			'state' => $this->input->post('txtState'),
-			'zip' => $this->input->post('txtZip'),
-			'country' => $this->input->post('txtCountry')
-			);
-		$contact = array (
-			'employee_id' => $this->input->post('txtEmpID'),
-			'mobile_number' => $this->input->post('txtMobile'),
-			'tel_number' => $this->input->post('txtTelephone'),
-			'email_address' => $this->input->post('txtEmail')
-			);
-
-		$personal = array (
-			'emp_id' => $this->input->post('txtEmpID'),
-			'first_name' => $this->input->post('txtFirstName'),
-			'middle_name' => $this->input->post('txtMiddleName'),
-			'last_name' => $this->input->post('txtLastName'),
-			'birthday' => $this->input->post('txtBday'),
-			'gender' => $this->input->post('txtGender'),
-			'marital_status' => $this->input->post('txtStatus')
-		);
-
-		$id = array (
-			'employee_id' => $this->input->post('txtEmpID')
-		);
-
-		
-		if ($this->form_validation->run()) {	
-			if (Emp_info_model::create($personal) && 
-				Emp_history_model::create($empInfo) && 
-				Emp_address_model::create($address) && 
-				Emp_contact_model::create($contact) && 
-				Emp_contact_person::create($id) &&
-				Emp_school_model::create($id) &&
-				Gov_id_model::create($id) &&
-				Users::create($id) 
-				) {
-				$this->session->set_userdata('added', 1);
-				Audit_trail_model::auditAddEmp($this->input->post('txtEmpID'));
-				redirect('ems/employees');
-			}
-		} else {
-			return FALSE;
-		}
-	}
-	
-	
-
-	public function do_upload($id){
-		// $this->upload_path = realpath(APPPATH.'../assets/images/profile');
-		$config = array(
-			'allowed_types' => 'jpg|jpeg|gif|png',
-			'upload_path' => 'assets/images/profile/'
-		);
-		$this->load->library('upload',$config);
-		$this->upload->do_upload();
-		$image = $this->upload->data();
-		$ems = Employees_model::find($id);
-		$ems->image = $image['file_name'];
-		$ems->save();
-		if ($ems->save()) {
-			$this->session->set_userdata('uploaded',1);
-			$this->session->set_userdata('profile_image',$image['file_name']);
-			return true;
-		} else {
-			return false;
-		}
-
 	}
 
 

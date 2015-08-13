@@ -160,7 +160,7 @@ if (!empty($info->image)){
                             <div class="col-sm-9 controls">
                                 <div class="row">
                                     <div class="col-xs-9">
-                                        <input type="date"  disabled class="form-control" value="<?php echo date_format($info->birthday,'Y-m-j'); ?>" name="txtBirthday" disabled/>
+                                        <input type="text"  disabled class="form-control" value="<?php echo date_format($info->birthday,'M d, Y'); ?>" name="txtBirthday" disabled/>
                                     </div>
                                 </div>
                             </div>

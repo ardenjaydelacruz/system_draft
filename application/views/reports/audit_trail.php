@@ -38,7 +38,7 @@
                         <?php echo $record->user_level; ?>
                     </td>
                     <td align="center">
-                        <?php echo $record->ip_address; ?>
+                        <?php if($record->ip_address=='::1'){echo '127.0.0.1';} else {echo $record->ip_address;} ?>
                     </td>
                     <td>
                         <?php echo $record->action; ?>

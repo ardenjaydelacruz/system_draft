@@ -57,31 +57,7 @@ class Ems extends MY_Controller
 
     public function delete_employee()
     {
-        $id = $this->input->get('emp_id');
-        $emp = Emp_info_model::find($id);
-        $info      = Emp_info_model::find($id); //Tab 1a - Personal Tab
-        $gov_id    = Gov_id_model::find($id); //Tab 1b - Gov ID Tab
-        $address   = Emp_address_model::find($id); //Tab 2a - Contact Tab
-        $contact   = Emp_contact_model::find($id); //Tab 2b - Contact Tab
-        $contactP  = Emp_contact_person::find($id); //Tab 2c - Contact Tab
-        $school    = Emp_school_model::find($id); //Tab 3 - School Tab
-       
-        $emp_hist  = Emp_history_model::find($id); //Tab 5 - Employment Tab
-      
-        $account   = Users::find_by_employee_id($id); //Tab 9 - Users Tab
-        
-        $emp->delete();
-        $info->delete();
-        $gov_id->delete();
-        $address->delete();
-        $contact->delete();
-        $contactP->delete();
-        $school->delete();
-        $emp_hist->delete();
-        $account->delete();
-        $this->session->set_userdata('deleted', 1);
-        Audit_trail_model::auditDeleteEmp($id);
-        redirect('ems/employees');
+       Emp_info_model::deleteEmployee();
     }
 
     public function view_details()
@@ -121,40 +97,7 @@ class Ems extends MY_Controller
 
     public function update_employee()
     {
-        $id = $this->input->get('emp_id');
-        if($this->input->post('btnAddJob')){
-            if(Job_history_model::create(Emp_info_model::jobInfo())){
-                $this->session->set_userdata('edited', 1);
-                redirect("ems/view_details?emp_id=$id");
-            }
-        }
-        if($this->input->post('btnAddDependents')){
-            if(Dependent_model::create(Emp_info_model::dependentInfo())){
-                $this->session->set_userdata('edited', 1);
-                redirect("ems/view_details?emp_id=$id");
-            }
-        }
-        
-        $ems = Emp_info_model::find($id);
-        $gov = Gov_id_model::find($id);
-        $address = Emp_address_model::find($id);
-        $contact = Emp_contact_model::find($id);
-        $contactP = Emp_contact_person::find($id);
-        $school = Emp_school_model::find($id);
-        $emp = Emp_history_model::find($id);
-        $user = Users::find_by_employee_id($id);
-
-        if ($ems->update_attributes(Emp_info_model::personalInfo()) && 
-            $gov->update_attributes(Emp_info_model::govInfo()) && 
-            $address->update_attributes(Emp_info_model::addressInfo()) && 
-            $contact->update_attributes(Emp_info_model::contactInfo()) && 
-            $contactP->update_attributes(Emp_info_model::contactPerson()) && 
-            $school->update_attributes(Emp_info_model::schoolInfo()) && 
-            $emp->update_attributes(Emp_info_model::employmentInfo()) && 
-            $user->update_attributes(Emp_info_model::accountInfo())) {
-            $this->session->set_userdata('edited', 1);
-            redirect("ems/view_details?emp_id=$id");
-        }
+        Emp_info_model::updateEmployee();
         $data['pageTitle'] = 'Update Details - MSInc.';
         $data['content'] = 'employee/view_user';
         $this->load->view($this->master_layout, $data);
