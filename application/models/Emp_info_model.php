@@ -192,6 +192,7 @@ class Emp_info_model extends ActiveRecord\Model {
 				Users::create($id) 
 				) {
 				$this->session->set_userdata('added', 1);
+				Audit_trail_model::auditAddEmp($this->input->post('txtEmpID'));
 				redirect('ems/employees');
 			}
 		} else {

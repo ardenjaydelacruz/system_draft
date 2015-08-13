@@ -21,4 +21,25 @@ class Audit_trail_model extends ActiveRecord\Model {
     		);
     	Audit_trail_model::create($data);
     }
+
+    public function auditAddEmp($id){
+    	$data = array(
+    		'ip_address' => $this->input->ip_address(),
+    		'user_level' => $this->session->userdata('user_level'),
+    		'username' => $this->session->userdata('username'),
+    		'action' => 'CREATED Employee Profile',
+    		'employee_id' => $id
+    		);
+    	Audit_trail_model::create($data);
+    }
+    public function auditDeleteEmp($id){
+    	$data = array(
+    		'ip_address' => $this->input->ip_address(),
+    		'user_level' => $this->session->userdata('user_level'),
+    		'username' => $this->session->userdata('username'),
+    		'action' => 'DELETED Employee Profile',
+    		'employee_id' => $id
+    		);
+    	Audit_trail_model::create($data);
+    }
 }

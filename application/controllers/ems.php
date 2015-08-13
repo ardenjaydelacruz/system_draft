@@ -59,41 +59,28 @@ class Ems extends MY_Controller
     {
         $id = $this->input->get('emp_id');
         $emp = Emp_info_model::find($id);
-        if (Dependent_model::find($id)){
-            $record    = Dependent_model::find($id); //get dependents by id
-        }
         $info      = Emp_info_model::find($id); //Tab 1a - Personal Tab
         $gov_id    = Gov_id_model::find($id); //Tab 1b - Gov ID Tab
         $address   = Emp_address_model::find($id); //Tab 2a - Contact Tab
         $contact   = Emp_contact_model::find($id); //Tab 2b - Contact Tab
         $contactP  = Emp_contact_person::find($id); //Tab 2c - Contact Tab
         $school    = Emp_school_model::find($id); //Tab 3 - School Tab
-        if (Dependent_model::find($id)){
-            $job_hist  = Job_history_model::find($id); //Tab 4 - Job History Tab
-        }
-        if (View_job_history::find($id)){
-            $emp_hist  = View_job_history::find($id); //Tab 5 - Employment Tab
-        }
-        $leaves    = View_leave_remaining::find($id); //Tab 6 - Leaves Tab
-        $asset     = View_assigned_assets_model::find($id); //Tab 7 - Asset Tab
-        $project   = View_project_workers::find($id); //Tab 8 - Project Tab
+       
+        $emp_hist  = Emp_history_model::find($id); //Tab 5 - Employment Tab
+      
         $account   = Users::find_by_employee_id($id); //Tab 9 - Users Tab
         
         $emp->delete();
-        $record->delete();
         $info->delete();
         $gov_id->delete();
         $address->delete();
         $contact->delete();
         $contactP->delete();
         $school->delete();
-        $job_hist->delete();
         $emp_hist->delete();
-        $leaves->delete();
-        $asset->delete();
-        $project->delete();
         $account->delete();
         $this->session->set_userdata('deleted', 1);
+        Audit_trail_model::auditDeleteEmp($id);
         redirect('ems/employees');
     }
 
