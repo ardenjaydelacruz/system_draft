@@ -110,6 +110,11 @@
 							<li><a href="<?php echo base_url();?>reports/material_list"><i class="fa fa-credit-card"></i> Bill of Materials</a></li>
 						</ul>
 					</li>
+					<li>
+						<a href="<?php echo base_url(); ?>reports/audit_trail">
+							<span><i class="fa fa-cogs"></i> Audit Trail</span>
+						</a>
+					</li>
 				</ul>
 			</li>
 		</ul>

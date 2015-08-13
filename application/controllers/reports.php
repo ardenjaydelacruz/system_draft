@@ -154,4 +154,11 @@ class Reports extends MY_Controller {
         $this->load->view($this->master_layout, $data);
         if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
 	}
+
+	public function audit_trail(){
+		$data['audit'] = Audit_trail_model::all();
+		$data['pageTitle'] = 'Audit Trail - MSInc.';
+        $data['content'] = 'reports/audit_trail';
+        $this->load->view($this->master_layout, $data);
+	}
 }
