@@ -253,8 +253,8 @@ class Attendance extends MY_Controller {
 			$data['firstname']  = $this->session->userdata('first_name');
 			$data['lastname']  = $this->session->userdata('last_name');
 			$data['profile_image'] = $this->session->userdata('image');
-			$this->load->view('components/navbar_logged', $data);
-			$this->load->view('components/sidebar_admin', $data);
+			$this->load->view('layout/navbar-logged', $data);
+			$this->load->view('layout/sidebar-admin', $data);
 			$this->load->model('Employees_model');
 		} else {
 			$this->load->view('components/navbar', $data);

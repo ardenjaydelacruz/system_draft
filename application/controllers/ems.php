@@ -227,10 +227,10 @@ class Ems extends MY_Controller
         $backup = $this->dbutil->backup($prefs);
         // Load the file helper and write the file to your server
         $this->load->helper('file');
-        write_file(base_url(), $backup); 
-
+        write_file('./', $backup); 
+        $date = date('m-d-Y');
         // Load the download helper and send the file to your desktop
         $this->load->helper('download');
-        force_download('mybackup.zip', $backup);
+        force_download("Backup - $date.zip", $backup);
     }
 }

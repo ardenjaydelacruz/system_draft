@@ -131,12 +131,12 @@
 							<span>Export Database</span>
 						</a>
 					</li>
-					<li class="treeview">
+					<<!-- li class="treeview">
 						<a href="<?php echo base_url(); ?>ems/import_db">
 							<i class="fa fa-arrow-up"></i>
 							<span>Import Database</span>
 						</a>
-					</li>
+					</li> -->
 				</ul>
 			</li>
 		</ul>
