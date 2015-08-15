@@ -1,7 +1,7 @@
 <?php
 
 class Users extends ActiveRecord\Model {
-	static $table_name = 'user_account';
+	static $table_name = 'tbl_user';
 	static $primary_key = 'employee_id';
 
 	public function userDetails(){
@@ -32,26 +32,26 @@ class Users extends ActiveRecord\Model {
 		}
 	}
 
-	public function validLogin(){
-		$this->form_validation->set_rules('txtUsername', 'Username', 'trim|required|callback_validate_data');
-		$this->form_validation->set_rules('txtPassword', 'Password', 'trim|required');
-		if($this->form_validation->run()){
-			RETURN TRUE;
-		} else {
-			RETURN FALSE;
-		}
-	}
+	// public function validLogin(){
+	// 	$this->form_validation->set_rules('txtUsername', 'Username', 'trim|required|callback_validate_data');
+	// 	$this->form_validation->set_rules('txtPassword', 'Password', 'trim|required');
+	// 	if($this->form_validation->run()){
+	// 		RETURN TRUE;
+	// 	} else {
+	// 		RETURN FALSE;
+	// 	}
+	// }
 
-	public function validate_data(){
-		$user = $this->login_model->login_employee();
-		if ($user == 'Not registered') {
-			$this->form_validation->set_message('validate_data','Username does not exists.');
-			return false;
-		} elseif ($user == 'Incorrect password') {
-			$this->form_validation->set_message('validate_data','Username and Password does not match.');
-	 		return false;
-		} elseif ($user == 'login success') {
-			return true; // no error
-		}
-	}
+	// public function validate_data(){
+	// 	$user = $this->login_model->login_employee();
+	// 	if ($user == 'Not registered') {
+	// 		$this->form_validation->set_message('validate_data','Username does not exists.');
+	// 		return false;
+	// 	} elseif ($user == 'Incorrect password') {
+	// 		$this->form_validation->set_message('validate_data','Username and Password does not match.');
+	//  		return false;
+	// 	} elseif ($user == 'login success') {
+	// 		return true; // no error
+	// 	}
+	// }
 }
