@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Asset Name: * </label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control input-sm" placeholder="Asset Name" name="txtAssetName" value="<?php echo set_value('txtAssetID'); ?>">
+                                    <input type="text" class="form-control input-sm" placeholder="Asset Name" name="txtAssetName" value="<?php echo set_value('txtAssetName'); ?>">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtAssetName'); ?>
@@ -41,10 +41,19 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Description: * </label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control input-sm" placeholder="Asset Description" name="txtDescription" value="<?php echo set_value('txtAssetID'); ?>">
+                                    <input type="text" class="form-control input-sm" placeholder="Asset Description" name="txtDescription" value="<?php echo set_value('txtDescription'); ?>">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtDescription'); ?>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class=" col-sm-3 control-label">Price: * </label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control input-sm" placeholder="Asset Price" name="txtPrice" value="<?php echo set_value('txtPrice'); ?>">
+                                </div>
+                                <div class="col-sm-5 error">
+                                    <?php echo form_error('txtPrice'); ?>
                                 </div>
                             </div>
                             <div class="form-group">

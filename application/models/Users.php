@@ -37,25 +37,30 @@ class Users extends ActiveRecord\Model {
 		$config = array(
 			'allowed_types' => 'jpg|jpeg|gif|png',
 			'upload_path' => 'assets/images/profile/',
-			'max_width' => '1024',
-			'max_height' => '768',
-			'max_size' => '2048KB',
 			'overwrite' => TRUE
 		);
 		$this->load->library('upload',$config);
 		$this->upload->do_upload();
-		$info = array (
-			'image_width' => 512,
-			'image_height' => 512
-			);
-		$image = $this->upload->data($info);
+		$image = $this->upload->data();
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $image['full_path'];
+		$config['create_thumb'] = TRUE;
+		$config['maintain_ratio'] = TRUE;
+		$config['width'] = 128;
+		$config['height'] = 128;
+		$this->load->library('image_lib', $config); 
+		$this->image_lib->resize();
 		$ems = Users::find($id);
 		$ems->profile_image = $image['file_name'];
 		$ems->save();
 		
+		
+
 		if ($ems->save()) {
 			$this->session->set_userdata('uploaded',1);
-			$this->session->set_userdata('profile_image',$image['file_name']);
+			if ($id == $this->session->userdata('employee_id')){
+				$this->session->set_userdata('profile_image',$image['file_name']);
+			}
 			return true;
 		} else {
 			return false;

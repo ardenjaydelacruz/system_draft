@@ -19,6 +19,7 @@ class Assets_info_model extends ActiveRecord\Model {
 			'asset_id' => $this->input->post('txtAssetID'),
 			'asset_name' => $this->input->post('txtAssetName'),
 			'asset_description' => $this->input->post('txtDescription'),
+			'asset_price' => $this->input->post('txtPrice'),
 			'category_id' => $this->input->post('txtCategory'),
 			'serial_number' => $this->input->post('txtSerial'),
 			'brand' => $brand,

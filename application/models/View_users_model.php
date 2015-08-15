@@ -8,6 +8,7 @@ class View_users_model extends ActiveRecord\Model {
 		$row = View_users_model::find_by_username($this->input->post('txtUsername'));
 	
 		$session_data = array(
+			'employee_id' => $row->employee_id,
 			'username'   => $row->username,
 			'user_level' => $row->user_level,
 			'logged_in'  => TRUE,

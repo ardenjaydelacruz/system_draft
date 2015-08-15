@@ -65,11 +65,12 @@ class Ams extends MY_Controller {
 	}
 
 	public function update_asset(){
+		$id = $this->input->get('asset_id');
 		$details = Assets_info_model::assetsDetails();
-		$asset = Assets_info_model::find($this->input->get('asset_id'));
+		$asset = Assets_info_model::find($id);
 		if ($asset->update_attributes($details)){
 			$this->session->set_userdata('edited',1);
-			redirect('ams/view_assets');
+			redirect("ams/view_asset_details?asset_id=$id");
 		}
 	}
 
