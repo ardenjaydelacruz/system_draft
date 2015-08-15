@@ -217,14 +217,13 @@ class Ems extends MY_Controller
         force_download("Backup - $date.zip", $backup);
     }
 
-    // public function upload_image()
-    // {
-    //     $id = $this->input->get('emp_id');
-    //     if ($this->input->post('btnUpload')) {
-    //         if (Users::do_upload($id)) {
-    //             dump(Users::do_upload($id));
-    //             redirect("ems/view_details?emp_id=$id");
-    //         }
-    //     }
-    // }
+    public function upload_image()
+    {
+        $id = $this->input->get('emp_id');
+        if ($this->input->post('btnUpload')) {
+            if (Users::do_upload($id)) {
+                redirect("ems/view_details?emp_id=$id");
+            }
+        }
+    }
 }

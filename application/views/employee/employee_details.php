@@ -1,11 +1,10 @@
   <?php
-if (!empty($info->image)){
-      $image = $info->image;
+if (!empty($account->profile_image)){
+      $image = $account->profile_image;
   } else {
       $image = 'default.jpg';
   }
 ?>
-<form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
 <div class="content-wrapper">
   <ol class="breadcrumb">
   <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -67,6 +66,7 @@ if (!empty($info->image)){
                 <button class="btn btn-success MainButtons button disabled" id="btnSaveEdit"><i class="fa fa-floppy-o"></i><br>Save</button>
               </center>
             </div><!-- col-4-->
+            <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
             <div class="col-md-8">
               <div class="panel panel-default">
                 <div class="panel-body">

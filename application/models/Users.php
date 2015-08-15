@@ -36,11 +36,19 @@ class Users extends ActiveRecord\Model {
 		// $this->upload_path = realpath(APPPATH.'../assets/images/profile');
 		$config = array(
 			'allowed_types' => 'jpg|jpeg|gif|png',
-			'upload_path' => 'assets/images/profile/'
+			'upload_path' => 'assets/images/profile/',
+			'max_width' => '1024',
+			'max_height' => '768',
+			'max_size' => '2048KB',
+			'overwrite' => TRUE
 		);
 		$this->load->library('upload',$config);
 		$this->upload->do_upload();
-		$image = $this->upload->data();
+		$info = array (
+			'image_width' => 512,
+			'image_height' => 512
+			);
+		$image = $this->upload->data($info);
 		$ems = Users::find($id);
 		$ems->profile_image = $image['file_name'];
 		$ems->save();
