@@ -149,27 +149,7 @@ class Emp_info_model extends ActiveRecord\Model {
         redirect('ems/employees');
 	}
 
-	public function do_upload($id){
-		// $this->upload_path = realpath(APPPATH.'../assets/images/profile');
-		$config = array(
-			'allowed_types' => 'jpg|jpeg|gif|png',
-			'upload_path' => 'assets/images/profile/'
-		);
-		$this->load->library('upload',$config);
-		$this->upload->do_upload();
-		$image = $this->upload->data();
-		$ems = Employees_model::find($id);
-		$ems->image = $image['file_name'];
-		$ems->save();
-		if ($ems->save()) {
-			$this->session->set_userdata('uploaded',1);
-			$this->session->set_userdata('profile_image',$image['file_name']);
-			return true;
-		} else {
-			return false;
-		}
-
-	}
+	
 
 	public function personalInfo(){
 		$data = array (

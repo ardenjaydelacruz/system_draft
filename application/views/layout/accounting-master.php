@@ -28,7 +28,7 @@
 			<!-- Page Layout -->
 			<?php 
 			$this->load->view('layout/navbar-logged');
-			$this->load->view('layout/sidebar-employee');
+			$this->load->view('layout/sidebar_accounting');
 			$this->load->view($content);
 			 ?>
 			<!-- Page Layout -->

@@ -103,16 +103,6 @@ class Ems extends MY_Controller
         $this->load->view($this->master_layout, $data);
     }
 
-    public function upload_image()
-    {
-        $id = $this->input->get('emp_id');
-        if ($this->input->post('btnUpload')) {
-            if (Emp_info_model::do_upload($id)) {
-                redirect("ems/view_details?emp_id=$id");
-            }
-        }
-    }
-
     public function view_performance()
     {
         $data['total_performance'] = count(Performance::all());
@@ -180,13 +170,6 @@ class Ems extends MY_Controller
         $this->load->view($this->master_layout, $data);
     }
 
-    public function promotion()
-    {
-        $data['pageTitle'] = 'Promotion - MSInc.';
-        $data['content'] = 'employee/upload';
-        $this->load->view($this->master_layout, $data);
-    }
-
     public function view_projects(){
         $data['record'] = View_project_cost_model::all(); 
         $data['pageTitle'] = 'Projects - MSInc.';
@@ -233,4 +216,15 @@ class Ems extends MY_Controller
         $this->load->helper('download');
         force_download("Backup - $date.zip", $backup);
     }
+
+    // public function upload_image()
+    // {
+    //     $id = $this->input->get('emp_id');
+    //     if ($this->input->post('btnUpload')) {
+    //         if (Users::do_upload($id)) {
+    //             dump(Users::do_upload($id));
+    //             redirect("ems/view_details?emp_id=$id");
+    //         }
+    //     }
+    // }
 }
