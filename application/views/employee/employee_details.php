@@ -5,6 +5,7 @@ if (!empty($account->profile_image)){
       $image = 'default.jpg';
   }
 ?>
+<form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
 <div class="content-wrapper">
   <ol class="breadcrumb">
   <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -66,7 +67,6 @@ if (!empty($account->profile_image)){
                 <button class="btn btn-success MainButtons button disabled" id="btnSaveEdit"><i class="fa fa-floppy-o"></i><br>Save</button>
               </center>
             </div><!-- col-4-->
-            <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
             <div class="col-md-8">
               <div class="panel panel-default">
                 <div class="panel-body">
@@ -577,6 +577,7 @@ if (!empty($account->profile_image)){
                                    <div class="row">
                                        <div class="col-xs-9">
                                           <select name="txtJobTitle"  class="form-control" disabled>
+                                          <option value="<?php echo $emp->job_title_id; ?>"><?php echo $emp->job_title_name; ?></option>
                                             <?php foreach ($job_titles as $row){ 
                                                 echo "<option value='$row->job_title_id'> $row->job_title_name</option>";
                                             } ?>
@@ -591,6 +592,7 @@ if (!empty($account->profile_image)){
                                    <div class="row">
                                        <div class="col-xs-9">
                                           <select name="txtEmploymentType" id="emp_name" class="form-control" disabled>
+                                            <option value="<?php echo $emp->employment_type_id; ?>"><?php echo $emp->employment_type; ?></option>
                                               <?php foreach ($employment_type as $row){ 
                                                   echo "<option value='$row->employment_type_id'>$row->employment_type </option>";
                                               } ?>
@@ -605,6 +607,7 @@ if (!empty($account->profile_image)){
                                    <div class="row">
                                        <div class="col-xs-9">
                                           <select name="txtDepartment" id="emp_name" class="form-control" disabled>
+                                            <option value="<?php echo $emp->department_id; ?>"><?php echo $emp->department_name; ?></option>
                                               <?php foreach ($departments as $row){ 
                                                   echo "<option value='$row->department_id'>$row->department_name</option>";
                                               } ?>
