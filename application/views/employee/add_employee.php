@@ -176,7 +176,12 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Country: * </label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" name="txtCountry">
+                                    <select name="txtCountry" class="form-control">
+                                        <option value=" "> --- </option>
+                                          <?php foreach ($countryy as $row){ 
+                                              echo "<option value='$row->country_code'>$row->country_name </option>";
+                                          } ?>
+                                      </select>
                                 </div>
                                 <?php echo form_error('txtCountry','<div class="error col-sm-5">','</div>'); ?>
                             </div>

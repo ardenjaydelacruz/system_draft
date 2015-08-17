@@ -47,6 +47,7 @@ class Ems extends MY_Controller
     public function add_employee()
     {
         Emp_info_model::insert_employee_data();
+        $data['countryy'] = Countries::all();
         $data['departments'] = Departments_model::all();
         $data['job_titles'] = Job_titles_model::all();
         $data['employment_type'] = Employment_type_model::all();
@@ -66,11 +67,12 @@ class Ems extends MY_Controller
         $data['departments'] = Departments_model::all();
         $data['job_titles'] = Job_titles_model::all();
         $data['employment_type'] = Employment_type_model::all();
+        $data['countryy'] = Countries::all();
         
         $data['record']    = Dependent_model::find('all',array('conditions'=>"employee_id =$id")); //get dependents by id
         $data['info']      = Emp_info_model::find($id); //Tab 1a - Personal Tab
         $data['gov_id']    = Gov_id_model::find($id); //Tab 1b - Gov ID Tab
-        $data['address']   = Emp_address_model::find($id); //Tab 2a - Contact Tab
+        $data['address']   = View_emp_address::find($id); //Tab 2a - Contact Tab
         $data['contact']   = Emp_contact_model::find($id); //Tab 2b - Contact Tab
         $data['contactP']  = Emp_contact_person::find($id); //Tab 2c - Contact Tab
         $data['school']    = Emp_school_model::find($id); //Tab 3 - School Tab

@@ -41,7 +41,14 @@
                         <div class="form-group">
                             <label for="emp_name">Job Title:</label>
                             <select name="txtJobTitle" id="emp_name" class="form-control">
-                                <option value="">All Job Titles</option>
+                                <?php 
+                                    $job_title = $this->input->post('txtJobTitle');
+                                    if (!$job_title){
+                                        echo "<option value=''>All Job Titles</option>";
+                                    } else {
+                                         echo "<option value=$job_title>$job_title</option>";
+                                    }
+                                 ?>
                                 <?php foreach ($job_titles as $row){ 
                                     echo "<option value='$row->job_title_name'>$row->job_title_name</option>";
                                 } ?>
@@ -52,7 +59,14 @@
                         <div class="form-group">
                             <label for="emp_name">Employment Type:</label>
                             <select name="txtEmploymentType" id="emp_name" class="form-control">
-                                <option value="">All Employment Types</option>
+                                <?php 
+                                    $empType = $this->input->post('txtEmploymentType');
+                                    if (!$empType){
+                                        echo "<option value=>All Employment Types</option>";
+                                    } else {
+                                         echo "<option value=$empType>$empType</option>";
+                                    }
+                                 ?>
                                 <?php foreach ($employment_type as $row){ 
                                     echo "<option value='$row->employment_type'>$row->employment_type </option>";
                                 } ?>
@@ -63,7 +77,14 @@
                         <div class="form-group">
                             <label for="emp_name">Department:</label>
                             <select name="txtDepartment" id="emp_name" class="form-control">
-                                <option value="">All Departments</option>
+                                <?php 
+                                    $dept = $this->input->post('txtDepartment');
+                                    if (!$dept){
+                                        echo "<option value=>All Departments</option>";
+                                    } else {
+                                         echo "<option value=$dept>$dept</option>";
+                                    }
+                                 ?>
                                 <?php foreach ($departments as $row){ 
                                     echo "<option value='$row->department_name'>$row->department_name</option>";
                                 } ?>

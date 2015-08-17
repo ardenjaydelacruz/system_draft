@@ -241,7 +241,12 @@ if (!empty($account->profile_image)){
                             <div class="col-sm-9 controls">
                                 <div class="row">
                                     <div class="col-xs-9">
-                                        <input type="text" disabled  class="form-control" value="<?php echo $address->country; ?>" name="txtCountry" />
+                                      <select name="txtCountry" class="form-control" disabled>
+                                        <option value="<?php echo $address->country_code; ?>"><?php echo $address->country_name; ?></option>
+                                          <?php foreach ($countryy as $row){ 
+                                              echo "<option value='$row->country_code'>$row->country_name </option>";
+                                          } ?>
+                                      </select>
                                     </div>
                                 </div>
                             </div>

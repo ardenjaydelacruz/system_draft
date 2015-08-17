@@ -5,7 +5,7 @@
  * Date: 7/12/2015
  * Time: 11:59 PM
  */
-class View_address_model extends ActiveRecord\Model {
-    static $table_name = 'view_address';
+class View_emp_address extends ActiveRecord\Model {
+    static $table_name = 'view_emp_address';
     static $primary_key = 'employee_id';
 }
