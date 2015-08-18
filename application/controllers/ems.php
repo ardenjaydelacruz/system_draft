@@ -9,13 +9,24 @@ class Ems extends MY_Controller
        
     }
 
-    public function dashboard()
+    public function admin_dashboard()
     {
         $data['total_employee'] = count(View_employees_list::find('all'));
         $data['total_asset'] = count(Projects_model::find('all'));
         $data['total_projects'] = count(Projects_model::find('all'));
         $data['pageTitle'] = 'Dashboard - MSInc.';
-        $data['content'] = 'employee/admin_dashboard';
+        $data['content'] = 'employee/admin-dashboard';
+        $this->load->view($this->master_layout, $data);
+        $this->display_notif();
+    }
+
+     public function emp_dashboard()
+    {
+        $data['total_employee'] = count(View_employees_list::find('all'));
+        $data['total_asset'] = count(Projects_model::find('all'));
+        $data['total_projects'] = count(Projects_model::find('all'));
+        $data['pageTitle'] = 'Dashboard - MSInc.';
+        $data['content'] = 'employee/employee_dashboard';
         $this->load->view($this->master_layout, $data);
         $this->display_notif();
     }

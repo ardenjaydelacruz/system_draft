@@ -13,7 +13,19 @@ class Auth extends MY_Controller {
 			View_users_model::set_session();
 			$this->session->set_userdata('welcome',1);
 			Audit_trail_model::auditLogin();
-			redirect('ems/dashboard');
+			$userlevel = $this->session->userdata('user_level');
+			if ($userlevel=='Administrator'){
+				redirect('ems/admin_dashboard');
+			} elseif ($userlevel=='HR Manager'){
+				redirect('ems/dashboard');
+			} elseif ($userlevel=='Operations Manager'){
+				redirect('ems/dashboard');
+			} elseif ($userlevel=='Accounting Manager'){
+				redirect('ems/dashboard');
+			} elseif ($userlevel=='Employee'){
+				redirect('ems/emp_dashboard');
+			}
+			
 			// dump($this->validLogin());
 		}
 		$this->load->view('init');
