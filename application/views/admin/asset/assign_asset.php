@@ -5,20 +5,20 @@
         <li class="active">Add Asset</li>
     </ol>
     <div class="container-fluid">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title big">Add Asset</h3>
+        <div class="box box-info box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title big">Add Asset</h3>
             </div>
-            <div class="panel-body">
+            <div class="box-body">
             <?php echo form_open('ams/view_assets'); ?>
                 <label>
                     <p>Fields with * asterisk are required.</p>
                 </label>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Asset Information</h3>
+                <div class="box box-default box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Asset Information</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="box-body">
                         <div class="form-horizontal">
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Asset ID: * </label>

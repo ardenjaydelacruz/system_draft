@@ -11,11 +11,11 @@
         ?>            
     </ol>
     <div class="container-fluid">
-		<div class="panel panel-info">
-			<div class="panel-heading">
+		<div class="box box-info box-solid">
+			<div class="box-header with-border">
 			    <div class="row">
 			    	<div class="col-sm-8">
-			    		<h1 class="panel-title big">Evaluate Employee
+			    		<h1 class="box-title big">Evaluate Employee
 						</h1>
 			    	</div>
 			    	<form action="<?php echo base_url();?>ems/search_employee" method="post">
@@ -30,15 +30,15 @@
 			    	</form>
 			    </div>		    
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 			<form action="<?php echo base_url();?>ems/process_evaluation" method="post">
 				<div class="row">
 					<div class="col-sm-3">
-						<section class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title text-center"><?php $this->session->set_userdata('name',$name); echo $name;?></h3>
+						<section class="box box-default box-solid">
+							<div class="box-header with-border">
+								<h3 class="box-title text-center"><?php $this->session->set_userdata('name',$name); echo $name;?></h3>
 							</div>
-							<div class="panel-body text-center">
+							<div class="box-body text-center">
 								<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">
 								<br>
 								<label  >Employee to be evaluated</label>

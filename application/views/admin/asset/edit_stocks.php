@@ -7,15 +7,15 @@
         <li class="active"><i class="fa fa-search"></i> Edit Stocks</li>
     </ol>
     <div class="container-fluid">
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                <h3 class="panel-title big">Product Details</h3>
+        <div class="box box-warning box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title big">Product Details</h3>
             </div>
-            <div class="panel-body">
+            <div class="box-body">
                 <form action="<?php echo base_url(); ?>ams/edit_stocks?item_id=<?php echo $row->item_id; ?>" method="post">
                 <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
+                    <div class="box box-default box-solid">
+                        <div class="box-body">
                             <div class="form-horizontal">
                                 <div class="form-group">
                                     <label class=" col-sm-3 control-label">Item ID: * </label>

@@ -33,19 +33,10 @@
 					<?php foreach($taxes as $row){	?>
 					<tr>
 						<td class="col-md-2 text-center"><?php echo $row->tax_name; ?></td>
-						<?php if($row->ranges_active==0){ ?>
 						<td class="col-md-2 text-center"><?php echo $row->percentage; ?></td>
 						<td class="col-md-2 text-center"><?php echo $row->amount; ?></td>
-						<?php }else{ ?>
-						<td class="col-md-4 text-center" colspan="2"><i>Varies on salary</i></td>
-						<?php } ?>
 						<td class="col-md-2 text-center"><?php echo ($row->active==1)?'<i class="fa fa-check"></i>':'<i class="fa fa-times"></i>'; ?></td>
 						<td class="col-md-2 text-center">
-							<a href="<?php echo base_url();?>payroll/tax_range?id=<?php echo $row->tax_id; ?>">
-							<button class="btn btn-<?php echo ($row->ranges_active==0)?"default disabled":"info"; ?> btn-xs" data-toggle="tooltip" data-placement="top" title="Edit Tax Range">
-								<i class="fa fa-list"></i>
-							</button>
-							</a>
 							<a href="<?php echo base_url();?>payroll/taxes_edit?id=<?php echo $row->tax_id; ?>">
 							<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Edit Tax">
 								<i class="fa fa-pencil"></i>

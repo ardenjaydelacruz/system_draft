@@ -11,16 +11,16 @@
         ?>            
     </ol>
     <div class="container-fluid">
-		<div class="panel panel-info">
-			<div class="panel-heading">
+		<div class="box box-info box-solid">
+			<div class="box-header with-border">
 			    <div class="row">
 			    	<div class="col-sm-8">
-			    		<h1 class="panel-title big">Performance Evaluation
+			    		<h1 class="box-title big">Performance Evaluation
 						</h1>
 			    	</div>
 			    </div>		    
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 					<div class="pull-left add-employee">
 						<!-- <a href="<?php echo base_url();?>ems/add_employee">
 							<buttom  class="btn btn-success"><i class="fa fa-plus"></i> Add New Evaluation </buttom>

@@ -47,15 +47,6 @@
                                     <?php echo form_error('txtPercentage'); ?>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class=" col-sm-3 control-label">Activate tax table: </label>
-                                <div class="col-sm-3">
-                                    <input type="checkbox" name="chkRangeActive">
-                                </div>
-                                <div class="col-sm-5 error">
-                                    <?php echo form_error('txtPercentage'); ?>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

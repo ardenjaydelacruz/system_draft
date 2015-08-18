@@ -5,11 +5,11 @@
         <li class="active">User Accounts</li>
     </ol>
     <div class="container-fluid">
-    	<div class="panel panel-info">
-    		<div class="panel-heading">
-    			<h3 class="panel-title big">User Account</h3>
+    	<div class="box box-info box-solid">
+    		<div class="box-header with-border">
+    			<h3 class="box-title big">User Account</h3>
     		</div>
-    		<div class="panel-body">
+    		<div class="box-body">
     			<table class="table table-striped table-hover table-bordered">				
 					<thead >
 						<!-- <th><input type="checkbox" class="checkbox"></th> -->

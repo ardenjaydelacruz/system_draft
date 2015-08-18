@@ -4,11 +4,11 @@
 		<li class="active"><i class="fa fa-cogs"></i> Projects </li>
 	</ol>
 	<div class="container-fluid">
-		<div class="panel panel-warning">
-			<div class="panel-heading">
-				<h1 class="panel-title big">Projects Table</h1>
+		<div class="box box-warning box-solid">
+			<div class="box-header with-border">
+				<h1 class="box-title big">Projects Table</h1>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="pull-left addButton">
 					<a href="<?php echo base_url();?>ams/add_project">
 						<button class="btn btn-success"><i class="fa fa-plus"></i> Add New Project </button>

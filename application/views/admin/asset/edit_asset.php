@@ -17,19 +17,19 @@
             <li class="active"><i class="fa fa-search"></i> Edit Assets </li>
         </ol>
         <div class="container-fluid">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title big">Asset Details</h3>
+            <div class="box box-warning box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title big">Asset Details</h3>
                 </div>
-                <div class="panel-body">
+                <div class="box-body">
                     <div class="row">
                         <form action="<?php echo base_url();?>ams/update_asset?asset_id=<?php echo $id; ?>" method="post">
                             <div class="col-md-4">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title text-center"></h3>
+                                <div class="box box-default box-solid">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title text-center"></h3>
                                     </div>
-                                    <div class="panel-body">
+                                    <div class="box-body">
                                         <div class="form-group">
                                             <div class="text-center"><img src="<?php echo base_url();?>assets/images/default.jpg" alt="" class="img-responsive emp_image" /></div>
                                         </div>
@@ -68,8 +68,8 @@
                             <!-- col-4-->
 
                             <div class="col-md-8">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
+                                <div class="box box-default box-solid">
+                                    <div class="box-body">
                                         <div class="nav-tabs-custom">
                                             <ul class="nav nav-tabs">
                                                 <li class="active"><a href="#tab_1" data-toggle="tab">Asset Details</a></li>

@@ -11,16 +11,16 @@
             ?>            
     </ol>
     <div class="container-fluid">
-		<div class="panel panel-info">
-			<div class="panel-heading">
+		<div class="box box-info box-solid">
+			<div class="box-header with-border">
 			    <div class="row">
 			    	<div class="col-sm-8">
-			    		<h1 class="panel-title big">View Evaluation
+			    		<h1 class="box-title big">View Evaluation
 						</h1>
 			    	</div>
 			    </div>		    
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="row">
 					<div class="col-sm-3">
 						<br><br>
@@ -32,11 +32,11 @@
 						</div>
 					</div>
 					<div class="col-sm-6">
-						<section class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title text-center"><?php echo $row->employee_name; ?></h3>
+						<section class="box box-default box-solid">
+							<div class="box-header with-border">
+								<h3 class="box-title text-center"><?php echo $row->employee_name; ?></h3>
 							</div>
-							<div class="panel-body text-center">
+							<div class="box-body text-center">
 								<div class="row">
 									<div class="col-sm-4">
 										<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">
@@ -83,11 +83,11 @@
 						</section>
 					</div> -->
 					<div class="col-sm-3">
-						<section class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title text-center"><?php echo $row->evaluators; ?></h3>
+						<section class="box box-default box-solid">
+							<div class="box-header with-border">
+								<h3 class="box-title text-center"><?php echo $row->evaluators; ?></h3>
 							</div>
-							<div class="panel-body text-center">
+							<div class="box-body text-center">
 								<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">
 								
 								<label class="label label-info ">Evaluator</label>

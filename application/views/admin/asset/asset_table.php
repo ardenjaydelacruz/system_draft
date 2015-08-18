@@ -11,11 +11,11 @@
         ?>            
     </ol>
     <div class="container-fluid">
-		<div class="panel panel-warning">
-			<div class="panel-heading">
+		<div class="box box-warning box-solid">
+			<div class="box-header with-border">
 			    <div class="row">
 			    	<div class="col-sm-8">
-			    		<h1 class="panel-title big">Other Assets
+			    		<h1 class="box-title big">Other Assets
 				    		 
 						</h1>
 			    	</div>
@@ -31,7 +31,7 @@
 			    	</form>
 			    </div>		    
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 					<div class="pull-left add-employee">
 						<a href="<?php echo base_url();?>ams/add_asset">
 							<buttom  class="btn btn-success"><i class="fa fa-plus"></i> Add Asset </buttom>

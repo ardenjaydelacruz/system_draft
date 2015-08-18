@@ -5,11 +5,11 @@
 		<li class="active"><i class="fa fa-money"></i> Bill of Materials </li>
 	</ol>
 	<div class="container-fluid">
-		<div class="panel panel-warning">
-			<div class="panel-heading">
-				<h1 class="panel-title big">Bill of Materials Table</h1>
+		<div class="box box-warning box-solid">
+			<div class="box-header with-border">
+				<h1 class="box-title big">Bill of Materials Table</h1>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<table class="table table-striped table-hover table-bordered centered">
 					<thead>
 						<th class="text-center">Item Name</th>

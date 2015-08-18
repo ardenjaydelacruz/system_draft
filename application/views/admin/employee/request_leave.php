@@ -8,17 +8,17 @@
         <li class="active">Request Leave</li>
     </ol>
     <div class="container-fluid">
-    	<div class="panel panel-info">
-		<div class="panel-heading">
-		    <h3 class="panel-title big">Request Leave</h3>
+    	<div class="box box-info box-solid">
+		<div class="box-header with-border">
+		    <h3 class="box-title big">Request Leave</h3>
 		</div>
-		<div class="panel-body">
-			<div class="panel panel-default">
-				<div class="panel-body">
+		<div class="box-body">
+			<div class="box box-default box-solid">
+				<div class="box-body">
 					<?php echo form_open('ems/request_leave?emp_id='.$id); ?>
 					<div class="form-horizontal">
 						<div class="form-group">
-						    <label class=" col-sm-3 control-label">Employee Name</label>
+						    <label class=" col-sm-3 control-label">Employee Name</label>box
 						    <div class="col-sm-3">						    		
 						    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled value="<?php echo $name; ?>">	
 						    </div>

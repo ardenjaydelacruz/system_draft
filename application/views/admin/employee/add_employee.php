@@ -5,19 +5,19 @@
         <li class="active">Add Employee</li>
     </ol>
     <div class="container-fluid">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title big">Add Employee</h3>
+        <div class="box box-info box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title big">Add Employee</h3>
             </div>
-            <div class="panel-body">
+            <div class="box-body">
                 <label>
                     <small>Fields with * asterisk are required.</small>
                 </label>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Employee Information</h3>
+                <div class="box box-default box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Employee Information</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="box-body">
                         <?php echo form_open('ems/add_employee'); ?>
                             <div class="form-horizontal">
                                 <div class="form-group">
@@ -76,11 +76,11 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Employee Personal Information</h3>
+                <div class="box box-default box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Employee Personal Information</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="box-body">
                         <div class="form-horizontal">
                             <div class="form-group">
                                 <label class=" col-sm-2 control-label">Full Name: * </label>
@@ -131,11 +131,11 @@
                     <!-- 2nd panel Body -->
                 </div>
                 <!-- End of Secondary Panel -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Employee Address</h3>
+                <div class="box box-default box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Employee Address</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="box-body">
 
                         <div class="form-horizontal">
                             <div class="form-group">
@@ -189,11 +189,11 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Employee Contact Details</h3>
+                <div class="box box-default box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Employee Contact Details</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="box-body">
                         <div class="form">
                             <div class="form-group col-sm-4">
                                 <label class="control-label">Mobile Number:</label>

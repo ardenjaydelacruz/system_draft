@@ -1,6 +1,11 @@
 <script>
+$(function() {
+	$("select").change(function () {
+		$("#frmSearch").submit();
+	}); 
+});
 function printPayslip(id){
-	window.open('<?php echo base_url();?>reports/print_payslip?id='.concat(id),'mywindow','width=800,height=600,menubar=no,statusbar=no,resizable=no');
+	window.open('<?php echo base_url();?>payroll/print_payslip?id='.concat(id),'mywindow','width=800,height=600,menubar=no,statusbar=no,resizable=no');
 }
 </script>
 <div class="content-wrapper">

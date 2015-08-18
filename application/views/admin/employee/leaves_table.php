@@ -5,11 +5,11 @@
           <li class="active"><i class="fa fa-calendar"></i> Leave Request </li>
     </ol>
     <div class="container-fluid">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-			    <h1 class="panel-title big">Leaves Request Table</h1>
+		<div class="box box-info box-solid">
+			<div class="box-header with-border">
+			    <h1 class="box-title big">Leaves Request Table</h1>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<table class="table table-striped table-hover table-bordered centered">
 					<thead >
 						<th class="text-center">ID</th>

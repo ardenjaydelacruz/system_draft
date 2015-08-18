@@ -13,19 +13,19 @@ if (!empty($account->profile_image)){
   <li class="active"><i class="fa fa-search"></i> View Employee </li>
   </ol>
   <div class="container-fluid">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title big">Employee Details</h3>
+    <div class="box box-info box-solid">
+      <div class="box-header with-border">
+        <h3 class="box-title big">Employee Details</h3>
       </div>
-      <div class="panel-body">
+      <div class="box-body">
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-4">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title text-center"><?php echo $info->first_name.' '.$info->middle_name.' '.$info->last_name; ?></h3>
+              <div class="box box-default box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title text-center"><?php echo $info->first_name.' '.$info->middle_name.' '.$info->last_name; ?></h3>
                 </div>
-                <div class="panel-body">
+                <div class="box-body">
                   <div class="form-group">
                     <div class="text-center"><img src="<?php echo base_url().'assets/images/profile/'.$image; ?>" alt="" class="img-responsive emp_image" /></div>
                     <div id="upload">
@@ -68,8 +68,8 @@ if (!empty($account->profile_image)){
               </center>
             </div><!-- col-4-->
             <div class="col-md-8">
-              <div class="panel panel-default">
-                <div class="panel-body">
+              <div class="box box-default box-solid">
+                <div class="box-body">
                   <div class="nav-tabs-custom ">
                     <ul class="nav nav-tabs ">
                       <li class="active" data-toggle="tooltip" data-placement="top" title="Personal Details">

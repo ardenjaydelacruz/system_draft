@@ -1,6 +1,6 @@
 <div class="content-wrapper">
     <ol class="breadcrumb">
-        <li><a href="<?php echo base_url(); ?>ems/admin_dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i>
+        <li><a href="<?php echo base_url(); ?>admin/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i>
                 Dashboard</a></li>
     </ol>
     <div class="container-fluid">

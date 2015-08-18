@@ -5,13 +5,13 @@
         <li class="active">View Leave Details</li>
     </ol>
     <div class="container-fluid">
-    	<div class="panel panel-info">
-		<div class="panel-heading">
-		    <h6 class="panel-title big">Leave Details</h6>
+    	<div class="box box-info box-solid">
+		<div class="box-header with-border">
+		    <h6 class="box-title big">Leave Details</h6>
 		</div>
-		<div class="panel-body">
-			<div class="panel panel-default">
-				<div class="panel-body">
+		<div class="box-body">
+			<div class="box box-default box-solid">
+				<div class="box-body">
 					<h1 class="page-header"><b><?php echo $row->name; ?></b></h1>
 					<div class="row">
 						<div class="col-sm-12">

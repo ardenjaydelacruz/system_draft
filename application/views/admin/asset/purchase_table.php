@@ -5,11 +5,11 @@
         <li class="active"><i class="fa fa-calendar"></i> Vendors </li>
     </ol>
     <div class="container-fluid">
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                <h1 class="panel-title big">Purchase Table</h1>
+        <div class="box box-warning box-solid">
+            <div class="box-header with-border">
+                <h1 class="box-title big">Purchase Table</h1>
             </div>
-            <div class="panel-body">
+            <div class="box-body">
                 <table class="table table-striped table-hover table-bordered table-condensed centered">
                     <thead>
                         <th class="text-center">Order Number</th>
