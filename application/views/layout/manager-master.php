@@ -28,9 +28,17 @@
 			<!-- Page Layout -->
 			<?php 
 			$this->load->view('layout/navbar-logged');
-			$this->load->view('layout/sidebar-admin');
+			$userlevel = $this->session->userdata('user_level');
+			if ($userlevel == 'HR Manager'){
+				$this->load->view('layout/sidebar_hr');
+			} elseif ($userlevel == 'Accounting Manager'){
+				$this->load->view('layout/sidebar_accounting');
+			} elseif ($userlevel == 'Operations Manager'){
+				$this->load->view('layout/sidebar_operation');
+			}
+			
 			$this->load->view('manager/'.$content);
-			 ?>
+			?>
 			<!-- Page Layout -->
 			<footer class="main-footer">
 				<strong>Copyright &copy; 2015 Multistyle Specialists Inc.</strong> All rights reserved.

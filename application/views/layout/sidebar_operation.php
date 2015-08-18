@@ -4,7 +4,7 @@
 		<!-- Sidebar user panel -->
 		<div class="user-panel">
 			<div class="text-center image">
-				<img src="<?php echo base_url().'assets/images/profile/'.$this->session->userdata('image'); ?>" class="img-circle" alt="User Image" />
+				<img src="<?php echo base_url().'assets/images/profile/'.$this->session->userdata('profile_image'); ?>" class="img-circle" alt="User Image" />
 			</div>
 			<div class="pull-right info">
 				<p class="text-center">
@@ -27,17 +27,6 @@
 			</li>
 			<li class="treeview">
 				<a href="#">
-					<i class="fa fa-group"></i>
-					<span>Employee Management</span>
-					<i class="fa fa-angle-left pull-right"></i>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="<?php echo base_url();?>ems/employees"><i class="fa fa-user"></i> Employees</a></li>
-				</ul>
-			</li>
-
-			<li class="treeview">
-				<a href="#">
 					<i class="fa fa-cubes"></i>
 					<span>Asset Management</span>
 					<i class="fa fa-angle-left pull-right"></i>
@@ -57,29 +46,6 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li class="treeview">
-						<a href="#">
-							<span>Employee Management</span>
-							<i class="fa fa-angle-left pull-right"></i>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="<?php echo base_url();?>reports/employees_list"><i class="fa fa-group"></i> Employees Lists</a></li>
-							<li><a href="<?php echo base_url();?>reports/project_workers"><i class="fa fa-user"></i> Project Workers</a></li>
-							<li><a href="<?php echo base_url();?>reports/projects_list"><i class="fa fa-cogs"></i> Projects</a></li>
-							<li><a href="<?php echo base_url();?>reports/leave_list"><i class="fa fa-calendar"></i> Leave List</a></li>
-						</ul>
-					</li>
-					<li class="treeview">
-						<a href="#">
-							<span>Payroll Management</span>
-							<i class="fa fa-angle-left pull-right"></i>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="<?php echo base_url();?>reports/attendance_daily"><i class="fa fa-calendar"></i> Attendance - Daily</a></li>
-							<li><a href="<?php echo base_url();?>reports/attendance_employee"><i class="fa fa-calendar-o"></i> Attendance - Employee</a></li>
-							<li><a href="<?php echo base_url();?>reports/payslip_list"><i class="fa fa-rub"></i> Payslip</a></li>
-						</ul>
-					</li>
 					<li class="treeview">
 						<a href="#">
 							<span>Asset Management</span>

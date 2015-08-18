@@ -19,9 +19,9 @@ class Auth extends MY_Controller {
 			} elseif ($userlevel=='HR Manager'){
 				redirect('ems/hr_dashboard');
 			} elseif ($userlevel=='Operations Manager'){
-				redirect('ems/dashboard');
+				redirect('ems/oper_dashboard');
 			} elseif ($userlevel=='Accounting Manager'){
-				redirect('ems/dashboard');
+				redirect('ems/acc_dashboard');
 			} elseif ($userlevel=='Employee'){
 				redirect('ems/emp_dashboard');
 			}

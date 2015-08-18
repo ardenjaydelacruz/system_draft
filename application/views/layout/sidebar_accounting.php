@@ -4,7 +4,7 @@
 		<!-- Sidebar user panel -->
 		<div class="user-panel">
 			<div class="text-center image">
-				<img src="<?php echo base_url().'assets/images/profile/'.$this->session->userdata('image'); ?>" class="img-circle" alt="User Image" />
+				<img src="<?php echo base_url().'assets/images/profile/'.$this->session->userdata('profile_image'); ?>" class="img-circle" alt="User Image" />
 			</div>
 			<div class="pull-right info">
 				<p class="text-center">
