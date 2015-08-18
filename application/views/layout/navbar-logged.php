@@ -1,6 +1,6 @@
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo base_url();?>ems/dashboard" class="logo">
+    <a href="<?php echo base_url();?>ems/admin_dashboard" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini">MSI</span>
       <span class="logo-lg"><b>MSInc.</b></span>

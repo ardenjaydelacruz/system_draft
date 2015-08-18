@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2015 at 04:46 PM
+-- Generation Time: Aug 18, 2015 at 10:18 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `tbl_allowances` (
   `percentage` decimal(3,3) NOT NULL,
   `amount` decimal(8,2) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_allowances`
@@ -151,7 +151,8 @@ CREATE TABLE IF NOT EXISTS `tbl_allowances` (
 
 INSERT INTO `tbl_allowances` (`allowance_id`, `allowance_name`, `percentage`, `amount`, `active`) VALUES
 (1, 'Communication Allowance', '0.000', '300.00', 1),
-(2, 'Transportation Allowance', '0.000', '200.00', 1);
+(2, 'Transportation Allowance', '0.000', '200.00', 1),
+(3, 'Travel', '0.999', '1000.00', 1);
 
 -- --------------------------------------------------------
 
@@ -497,7 +498,7 @@ CREATE TABLE IF NOT EXISTS `tbl_audit_trail` (
   `old_value` varchar(50) DEFAULT NULL,
   `new_value` varchar(50) DEFAULT NULL,
   `date_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=254 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_audit_trail`
@@ -507,7 +508,73 @@ INSERT INTO `tbl_audit_trail` (`audit_trail_id`, `ip_address`, `user_level`, `us
 (00210, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (00211, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (00212, '::1', 'Administrator', 'ardents', 'DELETED Employee Profile', '20', NULL, NULL, '2015-08-18 08:26:50'),
-(00213, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-18 08:28:24');
+(00213, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-18 08:28:24'),
+(00214, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-18 14:49:38'),
+(00215, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-18 14:49:45'),
+(00216, '::1', 'HR Manager', 'hr', 'Logged in', NULL, NULL, NULL, '2015-08-18 14:50:08'),
+(00217, '::1', 'HR Manager', 'hr', 'Logged out', NULL, NULL, NULL, '2015-08-18 14:59:32'),
+(00218, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:00:36'),
+(00219, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:07:02'),
+(00220, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:09:42'),
+(00221, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:12:31'),
+(00222, '::1', 'HR Manager', 'hr', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:15:44'),
+(00223, '::1', 'HR Manager', 'hr', 'Logged out', NULL, NULL, NULL, '2015-08-18 15:22:27'),
+(00224, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:24:36'),
+(00225, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:25:12'),
+(00226, '::1', 'Operations Manager', 'ope', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:29:30'),
+(00227, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:31:35'),
+(00228, '::1', 'HR Manager', 'hr', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:33:57'),
+(00229, '::1', 'HR Manager', 'hr', 'Logged out', NULL, NULL, NULL, '2015-08-18 15:34:21'),
+(00230, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:36:49'),
+(00231, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:45:04'),
+(00232, '::1', 'Operations Manager', 'ope', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:46:04'),
+(00233, '::1', 'HR Manager', 'hr', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:51:13'),
+(00234, '::1', 'HR Manager', 'hr', 'Logged out', NULL, NULL, NULL, '2015-08-18 15:51:34'),
+(00235, '::1', 'HR Manager', 'hr', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:51:42'),
+(00236, '::1', 'HR Manager', 'hr', 'Logged out', NULL, NULL, NULL, '2015-08-18 15:52:19'),
+(00237, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:52:27'),
+(00238, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:53:56'),
+(00239, '::1', 'Accounting Manager', 'acc', 'Logged out', NULL, NULL, NULL, '2015-08-18 16:02:17'),
+(00240, '::1', 'Operations Manager', 'ope', 'Logged in', NULL, NULL, NULL, '2015-08-18 16:02:23'),
+(00241, '::1', 'Operations Manager', 'ope', 'Logged out', NULL, NULL, NULL, '2015-08-18 17:32:40'),
+(00242, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-18 17:38:15'),
+(00243, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-18 17:38:24'),
+(00244, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-18 17:42:47'),
+(00245, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-18 18:43:22'),
+(00246, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-18 18:43:27'),
+(00247, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-18 19:08:29'),
+(00248, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-18 19:08:35'),
+(00249, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-18 20:12:30'),
+(00250, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-18 20:13:19'),
+(00251, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-18 20:15:08'),
+(00252, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-18 20:16:13'),
+(00253, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-18 20:16:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_calendar`
+--
+
+DROP TABLE IF EXISTS `tbl_calendar`;
+CREATE TABLE IF NOT EXISTS `tbl_calendar` (
+  `calendar_id` int(11) NOT NULL,
+  `day_name` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `date_value` date NOT NULL,
+  `day_type_id` int(11) NOT NULL,
+  `allow_absence` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_calendar`
+--
+
+INSERT INTO `tbl_calendar` (`calendar_id`, `day_name`, `description`, `date_value`, `day_type_id`, `allow_absence`) VALUES
+(1, 'New Year''s Day', 'Happy New Year!', '2015-01-01', 1, 1),
+(2, 'Valentine''s Day', 'Love is in the air!', '2015-02-14', 3, 1),
+(3, 'People Power Anniversary', 'I have no idea what is this.', '2015-02-25', 2, 1),
+(4, 'Independence Day', 'Araw ng kalayaan', '2015-06-12', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -845,6 +912,28 @@ INSERT INTO `tbl_countries` (`id`, `country_code`, `country_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_day_type`
+--
+
+DROP TABLE IF EXISTS `tbl_day_type`;
+CREATE TABLE IF NOT EXISTS `tbl_day_type` (
+  `day_type_id` int(11) NOT NULL,
+  `day_type_name` varchar(45) NOT NULL,
+  `multiplier` decimal(4,2) NOT NULL DEFAULT '1.00'
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_day_type`
+--
+
+INSERT INTO `tbl_day_type` (`day_type_id`, `day_type_name`, `multiplier`) VALUES
+(1, 'Regular Date', '1.00'),
+(2, 'Special Holiday', '1.33'),
+(3, 'Regular Holiday', '2.00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_departments`
 --
 
@@ -974,7 +1063,7 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_history` (
 --
 
 INSERT INTO `tbl_emp_history` (`emp_id`, `status`, `employment_type_id`, `job_title_id`, `department_id`, `start_date`, `end_date`, `probationary_date`, `permanency_date`, `salary`, `pay_grade`, `user_id`, `date_modified`) VALUES
-(1, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-11', '2015-08-11', '2015-08-11', '2015-08-11', '25000.00', 'A', NULL, '2015-08-11 20:53:11'),
+(1, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-19', '2015-08-11', '2015-08-11', '2015-08-11', '25000.00', 'A', NULL, '2015-08-11 20:53:11'),
 (16, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', NULL, NULL, NULL, '2015-08-13 22:24:05'),
 (4, 'Existing', 'ET1002', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', NULL, NULL, NULL, '2015-08-13 22:25:24'),
 (6, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', NULL, NULL, NULL, '2015-08-14 00:36:43'),
@@ -1523,7 +1612,7 @@ CREATE TABLE IF NOT EXISTS `tbl_requestentry` (
   `approved` tinyint(1) DEFAULT NULL,
   `approved_by` int(11) DEFAULT NULL,
   `date_approved` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_requestentry`
@@ -1537,7 +1626,8 @@ INSERT INTO `tbl_requestentry` (`req_id`, `emp_id`, `date_value`, `time_in`, `ti
 (5, 6, '2015-06-22', '08:00:00', '05:00:00', NULL, '2015-07-13 00:00:00', 1, 1, '0000-00-00 00:00:00'),
 (6, 7, '2015-06-22', '08:00:00', '05:00:00', NULL, '2015-07-13 00:00:00', NULL, NULL, NULL),
 (7, 0, '2015-06-15', '09:00:00', '04:00:00', NULL, '0000-00-00 00:00:00', 1, 1, '0000-00-00 00:00:00'),
-(8, 1, '2015-06-06', '08:50:00', '12:00:00', NULL, '0000-00-00 00:00:00', NULL, NULL, '2015-07-17 23:24:04');
+(8, 1, '2015-06-06', '08:50:00', '12:00:00', NULL, '0000-00-00 00:00:00', NULL, NULL, '2015-07-17 23:24:04'),
+(9, 0, '2015-06-01', '09:00:00', '12:00:00', NULL, '0000-00-00 00:00:00', NULL, NULL, '2015-08-19 03:10:37');
 
 -- --------------------------------------------------------
 
@@ -1712,18 +1802,44 @@ CREATE TABLE IF NOT EXISTS `tbl_taxes` (
   `tax_name` varchar(50) NOT NULL,
   `percentage` decimal(3,3) NOT NULL,
   `amount` decimal(8,2) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `ranges_active` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_taxes`
 --
 
-INSERT INTO `tbl_taxes` (`tax_id`, `tax_name`, `percentage`, `amount`, `active`) VALUES
-(3, 'SSS', '0.040', '0.00', 1),
-(4, 'Philhealth', '0.020', '0.00', 1),
-(5, 'PagIbig', '0.010', '0.00', 1),
-(6, 'Withholding', '0.120', '0.00', 1);
+INSERT INTO `tbl_taxes` (`tax_id`, `tax_name`, `percentage`, `amount`, `active`, `ranges_active`) VALUES
+(3, 'SSS', '0.040', '0.00', 1, 1),
+(4, 'Philhealth', '0.020', '0.00', 1, 0),
+(6, 'Withholding', '0.120', '0.00', 1, 0),
+(7, 'TIN', '0.000', '100.00', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_tax_range`
+--
+
+DROP TABLE IF EXISTS `tbl_tax_range`;
+CREATE TABLE IF NOT EXISTS `tbl_tax_range` (
+  `tax_range_id` int(11) NOT NULL,
+  `tax_id` int(11) NOT NULL,
+  `amount_from` decimal(8,2) NOT NULL,
+  `amount_to` decimal(8,2) NOT NULL,
+  `amount_deducted` decimal(8,2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_tax_range`
+--
+
+INSERT INTO `tbl_tax_range` (`tax_range_id`, `tax_id`, `amount_from`, `amount_to`, `amount_deducted`) VALUES
+(1, 3, '10000.00', '12499.00', '100.00'),
+(2, 3, '12500.00', '14999.00', '125.00'),
+(3, 3, '15000.00', '17499.00', '150.00'),
+(4, 4, '17500.00', '22499.00', '200.00');
 
 -- --------------------------------------------------------
 
@@ -1750,7 +1866,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `username`, `password`, `email`, `user_level`, `secret_question`, `secret_answer`, `profile_image`, `employee_id`, `date_registered`) VALUES
-(1, 'ardents', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'ADMIN', 'What is your pet name?', 'ardentsss', 'loader.gif', '1', '2015-06-05 05:28:36'),
+(1, 'ardents', '12c96228dcfd7485c40e467bdb1db13b', 'ardents02@gmail.com', 'ADMIN', 'What is your pet name?', 'ardentsss', 'loader.gif', '1', '2015-06-05 05:28:36'),
 (3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'asd@gmail.com', 'ADMIN', 'asda', 'asd', 'arrow_right.png', '3', '2015-08-15 01:02:18'),
 (4, 'hr', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'HR', 'sad', 'asd', 'default.jpg', '4', '2015-08-15 01:02:06'),
 (6, 'acc', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'asd@gmail.com', 'ACC', 'we', 'qw', 'default.jpg', '6', '2015-08-15 01:02:17'),
@@ -1843,6 +1959,23 @@ CREATE TABLE IF NOT EXISTS `view_assigned_assets` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `view_calendar`
+--
+DROP VIEW IF EXISTS `view_calendar`;
+CREATE TABLE IF NOT EXISTS `view_calendar` (
+`calendar_id` int(11)
+,`day_name` varchar(50)
+,`description` varchar(200)
+,`date_value` varchar(10)
+,`day_type_id` int(11)
+,`allow_absence` tinyint(1)
+,`day_type_name` varchar(45)
+,`multiplier` decimal(4,2)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `view_employees_list`
 --
 DROP VIEW IF EXISTS `view_employees_list`;
@@ -1897,6 +2030,9 @@ CREATE TABLE IF NOT EXISTS `view_job_history` (
 ,`employment_type_id` varchar(10)
 ,`department_id` varchar(10)
 ,`job_title_id` varchar(10)
+,`first_name` varchar(50)
+,`middle_name` varchar(50)
+,`last_name` varchar(50)
 );
 
 -- --------------------------------------------------------
@@ -1968,6 +2104,40 @@ CREATE TABLE IF NOT EXISTS `view_materials` (
 ,`project_id` varchar(10)
 ,`date_issued` date
 ,`project_name` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_payslip_allowances`
+--
+DROP VIEW IF EXISTS `view_payslip_allowances`;
+CREATE TABLE IF NOT EXISTS `view_payslip_allowances` (
+`payslip_allowance_id` int(11)
+,`allowance_id` int(11)
+,`allowance_name` varchar(50)
+,`payslip_id` int(4)
+,`percentage` decimal(3,3)
+,`percentage_amount` decimal(8,2)
+,`fixed_amount` decimal(8,2)
+,`total` decimal(8,2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_payslip_taxes`
+--
+DROP VIEW IF EXISTS `view_payslip_taxes`;
+CREATE TABLE IF NOT EXISTS `view_payslip_taxes` (
+`payslip_tax_id` int(11)
+,`tax_id` int(4)
+,`tax_name` varchar(50)
+,`payslip_id` int(4)
+,`percentage` decimal(3,3)
+,`percentage_amount` decimal(8,2)
+,`fixed_amount` decimal(8,2)
+,`total` decimal(8,2)
 );
 
 -- --------------------------------------------------------
@@ -2058,6 +2228,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `view_calendar`
+--
+DROP TABLE IF EXISTS `view_calendar`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_calendar` AS select `tbl_calendar`.`calendar_id` AS `calendar_id`,`tbl_calendar`.`day_name` AS `day_name`,`tbl_calendar`.`description` AS `description`,date_format(`tbl_calendar`.`date_value`,'%m/%d/%Y') AS `date_value`,`tbl_calendar`.`day_type_id` AS `day_type_id`,`tbl_calendar`.`allow_absence` AS `allow_absence`,`tbl_day_type`.`day_type_name` AS `day_type_name`,`tbl_day_type`.`multiplier` AS `multiplier` from (`tbl_calendar` join `tbl_day_type` on((`tbl_day_type`.`day_type_id` = `tbl_calendar`.`day_type_id`))) order by `tbl_calendar`.`date_value`;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `view_employees_list`
 --
 DROP TABLE IF EXISTS `view_employees_list`;
@@ -2080,7 +2259,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_job_history`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_job_history` AS select `tbl_emp_history`.`emp_id` AS `emp_id`,`tbl_emp_history`.`status` AS `status`,`tbl_employment_type`.`employment_type` AS `employment_type`,`tbl_job_title`.`job_title_name` AS `job_title_name`,`tbl_departments`.`department_name` AS `department_name`,`tbl_emp_history`.`start_date` AS `start_date`,`tbl_emp_history`.`probationary_date` AS `probationary_date`,`tbl_emp_history`.`permanency_date` AS `permanency_date`,`tbl_emp_history`.`salary` AS `salary`,`tbl_emp_history`.`end_date` AS `end_date`,`tbl_emp_history`.`pay_grade` AS `pay_grade`,`tbl_emp_history`.`date_modified` AS `date_modified`,`tbl_employment_type`.`employment_type_id` AS `employment_type_id`,`tbl_departments`.`department_id` AS `department_id`,`tbl_job_title`.`job_title_id` AS `job_title_id` from (((`tbl_emp_history` join `tbl_departments` on((`tbl_departments`.`department_id` = `tbl_emp_history`.`department_id`))) join `tbl_employment_type` on((`tbl_employment_type`.`employment_type_id` = `tbl_emp_history`.`employment_type_id`))) join `tbl_job_title` on((`tbl_job_title`.`job_title_id` = `tbl_emp_history`.`job_title_id`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_job_history` AS select `tbl_emp_history`.`emp_id` AS `emp_id`,`tbl_emp_history`.`status` AS `status`,`tbl_employment_type`.`employment_type` AS `employment_type`,`tbl_job_title`.`job_title_name` AS `job_title_name`,`tbl_departments`.`department_name` AS `department_name`,`tbl_emp_history`.`start_date` AS `start_date`,`tbl_emp_history`.`probationary_date` AS `probationary_date`,`tbl_emp_history`.`permanency_date` AS `permanency_date`,`tbl_emp_history`.`salary` AS `salary`,`tbl_emp_history`.`end_date` AS `end_date`,`tbl_emp_history`.`pay_grade` AS `pay_grade`,`tbl_emp_history`.`date_modified` AS `date_modified`,`tbl_employment_type`.`employment_type_id` AS `employment_type_id`,`tbl_departments`.`department_id` AS `department_id`,`tbl_job_title`.`job_title_id` AS `job_title_id`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name` from ((((`tbl_emp_history` join `tbl_departments` on((`tbl_departments`.`department_id` = `tbl_emp_history`.`department_id`))) join `tbl_employment_type` on((`tbl_employment_type`.`employment_type_id` = `tbl_emp_history`.`employment_type_id`))) join `tbl_job_title` on((`tbl_job_title`.`job_title_id` = `tbl_emp_history`.`job_title_id`))) join `tbl_emp_info` on((`tbl_emp_history`.`emp_id` = `tbl_emp_info`.`emp_id`)));
 
 -- --------------------------------------------------------
 
@@ -2117,6 +2296,24 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `view_materials`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_materials` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_materials`.`item_id` AS `item_id`,`tbl_materials`.`quantity` AS `quantity`,`tbl_materials`.`price` AS `price`,`tbl_materials`.`project_id` AS `project_id`,`tbl_materials`.`date_issued` AS `date_issued`,`tbl_project`.`project_name` AS `project_name` from ((`tbl_materials` join `tbl_stock_info` on((`tbl_materials`.`item_id` = `tbl_stock_info`.`item_id`))) join `tbl_project` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_payslip_allowances`
+--
+DROP TABLE IF EXISTS `view_payslip_allowances`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_payslip_allowances` AS select `tbl_payslip_allowances`.`payslip_allowance_id` AS `payslip_allowance_id`,`tbl_allowances`.`allowance_id` AS `allowance_id`,`tbl_allowances`.`allowance_name` AS `allowance_name`,`tbl_payslip`.`payslip_id` AS `payslip_id`,`tbl_payslip_allowances`.`percentage` AS `percentage`,`tbl_payslip_allowances`.`percentage_amount` AS `percentage_amount`,`tbl_payslip_allowances`.`fixed_amount` AS `fixed_amount`,`tbl_payslip_allowances`.`total` AS `total` from ((`tbl_payslip_allowances` join `tbl_allowances` on((`tbl_allowances`.`allowance_id` = `tbl_payslip_allowances`.`allowance_id`))) join `tbl_payslip` on((`tbl_payslip`.`payslip_id` = `tbl_payslip_allowances`.`payslip_id`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_payslip_taxes`
+--
+DROP TABLE IF EXISTS `view_payslip_taxes`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_payslip_taxes` AS select `tbl_payslip_taxes`.`payslip_tax_id` AS `payslip_tax_id`,`tbl_taxes`.`tax_id` AS `tax_id`,`tbl_taxes`.`tax_name` AS `tax_name`,`tbl_payslip`.`payslip_id` AS `payslip_id`,`tbl_payslip_taxes`.`percentage` AS `percentage`,`tbl_payslip_taxes`.`percentage_amount` AS `percentage_amount`,`tbl_payslip_taxes`.`fixed_amount` AS `fixed_amount`,`tbl_payslip_taxes`.`total` AS `total` from ((`tbl_payslip_taxes` join `tbl_taxes` on((`tbl_taxes`.`tax_id` = `tbl_payslip_taxes`.`tax_id`))) join `tbl_payslip` on((`tbl_payslip`.`payslip_id` = `tbl_payslip_taxes`.`payslip_id`)));
 
 -- --------------------------------------------------------
 
@@ -2189,10 +2386,22 @@ ALTER TABLE `tbl_audit_trail`
   ADD PRIMARY KEY (`audit_trail_id`);
 
 --
+-- Indexes for table `tbl_calendar`
+--
+ALTER TABLE `tbl_calendar`
+  ADD PRIMARY KEY (`calendar_id`);
+
+--
 -- Indexes for table `tbl_countries`
 --
 ALTER TABLE `tbl_countries`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_day_type`
+--
+ALTER TABLE `tbl_day_type`
+  ADD PRIMARY KEY (`day_type_id`);
 
 --
 -- Indexes for table `tbl_emp_info`
@@ -2261,6 +2470,12 @@ ALTER TABLE `tbl_taxes`
   ADD PRIMARY KEY (`tax_id`);
 
 --
+-- Indexes for table `tbl_tax_range`
+--
+ALTER TABLE `tbl_tax_range`
+  ADD PRIMARY KEY (`tax_range_id`);
+
+--
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -2286,7 +2501,7 @@ ALTER TABLE `tbl_vendor`
 -- AUTO_INCREMENT for table `tbl_allowances`
 --
 ALTER TABLE `tbl_allowances`
-  MODIFY `allowance_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `allowance_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_attendance`
 --
@@ -2296,12 +2511,22 @@ ALTER TABLE `tbl_attendance`
 -- AUTO_INCREMENT for table `tbl_audit_trail`
 --
 ALTER TABLE `tbl_audit_trail`
-  MODIFY `audit_trail_id` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=214;
+  MODIFY `audit_trail_id` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=254;
+--
+-- AUTO_INCREMENT for table `tbl_calendar`
+--
+ALTER TABLE `tbl_calendar`
+  MODIFY `calendar_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_countries`
 --
 ALTER TABLE `tbl_countries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=243;
+--
+-- AUTO_INCREMENT for table `tbl_day_type`
+--
+ALTER TABLE `tbl_day_type`
+  MODIFY `day_type_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_emp_info`
 --
@@ -2336,12 +2561,17 @@ ALTER TABLE `tbl_payslip_taxes`
 -- AUTO_INCREMENT for table `tbl_requestentry`
 --
 ALTER TABLE `tbl_requestentry`
-  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_taxes`
 --
 ALTER TABLE `tbl_taxes`
-  MODIFY `tax_id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `tax_id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_tax_range`
+--
+ALTER TABLE `tbl_tax_range`
+  MODIFY `tax_range_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --

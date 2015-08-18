@@ -22,7 +22,7 @@ class Payroll extends MY_Controller {
 		$data['employees'] = $this->attendance_model->view_employees();
 		$post = $this->input->post();
 		if($post){
-			$data['attendance'] = $this->attendance_model->generateAttendance($post['cboEmployee'], $post['cboMonth'], $post['cboYear']);
+			$data['attendance'] = $this->attendance_model->generateAttendanceEmployee($post['cboEmployee'], $post['cboMonth'], $post['cboYear']);
 		}
 		
         $data['pageTitle'] = 'Attendance - MSInc.';
@@ -47,7 +47,7 @@ class Payroll extends MY_Controller {
 			$post = $this->input->post();
 			if ($this->attendance_model->insert_requestentry($post['txtEmpID'], $post['txtDate'], $post['txtTimeIn'], $post['txtTimeOut'])){
 				$this->session->set_userdata('added',1);
-				redirect('attendance/index');
+				redirect('payroll/attendance');
 			} 
 		}
 		$data['pageTitle'] = 'Request Entry - MSInc.';
@@ -165,7 +165,9 @@ class Payroll extends MY_Controller {
 		
 		if ($this->form_validation->run()) {
 			$post = $this->input->post();
-			if(Taxes_model::insert_taxes($post['txtTaxType'], $post['txtAmount'], $post['txtPercentage'])){
+			$range_active = 0;
+			if($post['chkRangeActive']) $range_active = 1;
+			if(Taxes_model::insert_taxes($post['txtTaxType'], $post['txtAmount'], $post['txtPercentage'], $range_active)){
 				$this->session->set_userdata('added', 1);
 				redirect("payroll/taxes");
 			}
@@ -188,7 +190,9 @@ class Payroll extends MY_Controller {
 			$post = $this->input->post();
 			$active = 0;
 			if($post['chkStatus']) $active = 1;
-			if(Taxes_model::update_taxes($post['txtTaxID'], $post['txtTaxType'], $post['txtAmount'], $post['txtPercentage'], $active)){
+			$range_active = 0;
+			if($post['chkRangeActive']) $range_active = 1;
+			if(Taxes_model::update_taxes($post['txtTaxID'], $post['txtTaxType'], $post['txtAmount'], $post['txtPercentage'], $active, $range_active)){
 				$this->session->set_userdata('edited', 1);
 				redirect("payroll/taxes");
 			}
@@ -209,6 +213,74 @@ class Payroll extends MY_Controller {
 		}
 		$this->session->set_userdata('deleted', 1);
 		redirect('payroll/taxes');
+	} 
+	
+	public function tax_range(){
+		$get = $this->input->get();
+		if($get){
+			$data['tax'] = Taxes_model::view_taxes($get['id']);
+			$data['tax_ranges'] = $this->taxes_model->view_tax_range($get['id']);
+		}
+		$data['pageTitle'] = 'Tax Range - MSInc.';
+        $data['content'] = 'taxes/tax_range_table';
+        $this->load->view($this->master_layout, $data);
+        $this->display_notif();
+	}
+	
+	public function tax_range_add(){
+		$get = $this->input->get();
+		if($get){
+			$data['tax_id'] = $get['id'];
+		}
+		$this->form_validation->set_rules('txtAmountFrom', 'Amount from', 'trim|required|numeric');
+		$this->form_validation->set_rules('txtAmountTo', 'Amount to', 'trim|required|numeric');
+		$this->form_validation->set_rules('txtAmountDeducted', 'Amount deducted', 'trim|required|numeric');
+		
+		if ($this->form_validation->run()) {
+			$post = $this->input->post();
+			if(Taxes_model::insert_tax_range($post['txtTaxID'], $post['txtAmountFrom'], $post['txtAmountTo'], $post['txtAmountDeducted'])){
+				$this->session->set_userdata('added', 1);
+				redirect("payroll/tax_range?id=" . $post['txtTaxID']);
+			}
+		}
+		
+		$data['pageTitle'] = 'Add Tax Range - MSInc.';
+        $data['content'] = 'taxes/tax_range_add';
+        $this->load->view($this->master_layout, $data);
+        $this->display_notif();
+	}
+	
+	public function tax_range_edit(){
+		$get = $this->input->get();
+		$this->form_validation->set_rules('txtAmountFrom', 'Amount from', 'trim|required|numeric');
+		$this->form_validation->set_rules('txtAmountTo', 'Amount to', 'trim|required|numeric');
+		$this->form_validation->set_rules('txtAmountDeducted', 'Amount deducted', 'trim|required|numeric');
+		
+		if ($this->form_validation->run()) {
+			$post = $this->input->post();
+			if(Taxes_model::update_tax_range($post['txtTaxRangeID'], $post['txtAmountFrom'], $post['txtAmountTo'], $post['txtAmountDeducted'])){
+				$this->session->set_userdata('edited', 1);
+				redirect("payroll/tax_range?id=" . $post['txtTaxID']);
+			}
+		}
+		
+		$data = array();
+		$data['tax_range'] = Taxes_model::view_tax_range_details($get['id']);
+		$data['pageTitle'] = 'Edit Tax Range - MSInc.';
+        $data['content'] = 'taxes/tax_range_edit';
+        $this->load->view($this->master_layout, $data);
+        $this->display_notif();
+	} 
+	
+	public function tax_range_delete(){
+		$get = $this->input->get();
+		$tax = Taxes_model::view_tax_range_details($get['id']);
+		$taxID = $tax->tax_id;
+		if($get){
+			$this->taxes_model->delete_tax_range($get['id']);
+		}
+		$this->session->set_userdata('deleted', 1);
+		redirect("payroll/tax_range?id=" . $taxID);
 	} 
 	
 	// ------------------------------------------------------------ 

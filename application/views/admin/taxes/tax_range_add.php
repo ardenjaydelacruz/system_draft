@@ -2,18 +2,19 @@
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li><a href="<?php echo base_url();?>payroll/taxes" class="btn btn-default"><i class="fa fa-user"></i> Taxes</a></li>
-        <li class="active">Edit Tax Type</li>
+        <li><a href="<?php echo base_url();?>payroll/tax_range?id=<?php echo $tax_id; ?>" class="btn btn-default"><i class="fa fa-dashboard"></i> Tax Ranges</a></li>
+        <li class="active">Add Tax Range</li>
     </ol>
     <div class="container-fluid">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title big">Edit Tax Type</h3>
+                <h3 class="panel-title big">Add new Tax Type</h3>
             </div>
             <div class="panel-body">
                 <label>
                     <small>Fields with * asterisk are required.</small>
                 </label>
-                <?php echo form_open('payroll/taxes_edit'); ?>
+                <?php echo form_open('payroll/tax_range_add'); ?>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Tax Information</h3>
@@ -21,46 +22,28 @@
                     <div class="panel-body">
                         <div class="form-horizontal">
                             <div class="form-group">
-                                <label class=" col-sm-3 control-label">Tax Type: * </label>
+                                <label class=" col-sm-3 control-label">Amount From: * </label>
                                 <div class="col-sm-3">
-									<input type="hidden" name="txtTaxID" value="<?php echo $tax->tax_id; ?>">
-                                    <input type="text" class="form-control input-sm" name="txtTaxType" value="<?php echo (set_value('txtTaxType'))?set_value('txtTaxType'):$tax->tax_name; ?>">
+									<input type="hidden" name="txtTaxID" value="<?php echo $tax_id; ?>">
+                                    <input type="text" class="form-control input-sm" name="txtAmountFrom" value="<?php echo set_value('txtAmountFrom'); ?>">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtTaxType'); ?>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class=" col-sm-3 control-label">Amount: * </label>
+                                <label class=" col-sm-3 control-label">Amount To: * </label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" name="txtAmount" value="<?php echo (set_value('txtAmount'))?set_value('txtAmount'):$tax->amount; ?>">
+                                    <input type="text" class="form-control input-sm" name="txtAmountTo" value="<?php echo set_value('txtAmountTo'); ?>">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtAmount'); ?>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class=" col-sm-3 control-label">Percentage: * </label>
+                                <label class=" col-sm-3 control-label">Amount Deduction: * </label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" name="txtPercentage" value="<?php echo (set_value('txtPercentage'))?set_value('txtPercentage'):$tax->percentage; ?>">
-                                </div>
-                                <div class="col-sm-5 error">
-                                    <?php echo form_error('txtPercentage'); ?>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class=" col-sm-3 control-label">Include on payroll: </label>
-                                <div class="col-sm-3">
-                                    <input type="checkbox" name="chkStatus" <?php if($tax->active==1) echo 'checked'; ?>>
-                                </div>
-                                <div class="col-sm-5 error">
-                                    <?php echo form_error('txtPercentage'); ?>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class=" col-sm-3 control-label">Activate tax table: </label>
-                                <div class="col-sm-3">
-                                    <input type="checkbox" name="chkRangeActive" <?php if($tax->ranges_active==1) echo 'checked'; ?>>
+                                    <input type="text" class="form-control input-sm" name="txtAmountDeducted" value="<?php echo set_value('txtAmountDeducted'); ?>">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtPercentage'); ?>

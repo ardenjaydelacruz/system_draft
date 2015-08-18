@@ -20,7 +20,7 @@
 			<br>
 			<li class="header text-center">Administrator Menu</li>
 			<li>
-				<a href="<?php echo base_url();?>ems/dashboard">
+				<a href="<?php echo base_url();?>ems/admin_dashboard">
 					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 				</a>
 
@@ -37,6 +37,7 @@
 					<li><a href="<?php echo base_url();?>ems/view_performance"><i class="fa fa-thumbs-o-up"></i> Performance </a></li>
 					<li><a href="<?php echo base_url();?>ems/view_projects"><i class="fa fa-cogs"></i> Projects</a></li>
 					<li><a href="<?php echo base_url();?>ems/view_accounts"><i class="fa fa-list"></i> User Accounts</a></li>
+					<li><a href="<?php echo base_url();?>calendar/calendar_index"><i class="fa fa-list"></i> Calendar</a></li>
 				</ul>
 			</li>
 

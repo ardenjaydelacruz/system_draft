@@ -44,7 +44,7 @@ class Allowance_model extends MY_Model {
 	
 	public function delete_allowances($allowanceID){
 		$this->db->where('allowance_id', $allowanceID);
-		$this->db->delete('tbl_allowances'); 
+		$this->db->delete('tbl_allowances');
 	}
 	
 }

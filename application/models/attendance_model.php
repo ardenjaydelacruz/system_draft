@@ -1,13 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Attendance_model extends CI_Model {
+class Attendance_model extends MY_Model {
 
 	public function index(){
 		return true;
 	}
 
 	public function view_employees(){
-		$query = $this->db->get('employees');
-		return $query->result();
+		return Emp_info_model::all();
 	}
 	
 	public function get_records($query){
@@ -23,7 +22,7 @@ class Attendance_model extends CI_Model {
 	// ------------------------------------------------------------ 
 	// Attendance 
 	// ------------------------------------------------------------
-	
+  
 	public function view_attendance($empID, $date){
 		$this->db->select('time_in, time_out, man_hours, tardiness, overtime');
 		$this->db->where('emp_id',$empID);
@@ -57,32 +56,20 @@ class Attendance_model extends CI_Model {
 		$this->db->delete('tbl_attendance', array('emp_id'=>$empID, 'datelog'=>$date.' 00.00.00')); 
 	}
 	
-	public function generateAttendance($empID, $month, $year){
-		$attendance = array();
-		$start_date = new DateTime("$year-$month-01");
-		$end_date = new DateTime($start_date->format('Y-m-t'));
-		$end_date = $end_date->modify('+1 day'); 
-		$period = new DatePeriod($start_date, new DateInterval('P1D'), $end_date);
-		foreach($period as $date){
-			$row = $this->view_attendance($empID, $date->format("m/d/Y"));
-			$time_in = "";
-			$time_out = "";
-			if(count($row)!=0){
-				$time_in = $row->time_in;
-				$time_out = $row->time_out;
-			}
-			array_push($attendance, array(
-				"emp_id"=>$empID,
-				"datevalue"=>$date->format("Y-m-d"), 
-				"datelog"=>$date->format("M d, Y"), 
-				"weekday"=>$date->format("D"), 
-				"time_in"=>$time_in, 
-				"time_out"=>$time_out));
-		}
-		return $attendance;
+	public function getAttendance($empID, $start_date, $end_date){
+		$query = "SELECT IFNULL(att.emp_id, '') as emp_id, IFNULL(att.time_in, '') as time_in, IFNULL(att.time_out, '') as time_out, 
+				IFNULL(att.man_hours, '') as man_hours, IFNULL(att.tardiness, '') as tardiness, IFNULL(att.overtime, '') as overtime, 
+				IF(ISNULL(att.datelog) AND (DATE_FORMAT(a.date_value, '%w')!=0 AND DATE_FORMAT(a.date_value, '%w')!=6), 1, 0) as absent,
+				DATE_FORMAT(a.date_value, '%Y-%m-%d') as datevalue, DAYNAME(a.date_value) as weekday, DATE_FORMAT(a.date_value, '%M %d, %Y') as datelog 
+			FROM (select curdate() - INTERVAL (a.a + (10 * b.a) + (100 * c.a)) DAY as date_value from (select 0 as a union all select 1 union all select 2 	union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as a cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as b cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as c ) a
+			LEFT JOIN (SELECT datelog, emp_id, time_in, time_out, man_hours, tardiness, overtime FROM view_attendance 
+				WHERE datelog BETWEEN '" .$start_date . "' AND '" .$end_date . "' AND emp_id = " . $empID . ") att ON a.date_value = att.datelog  
+			WHERE a.date_value BETWEEN '" .$start_date . "' AND '" .$end_date . "' ORDER BY a.date_value";
+		$result = $this->db->query($query);
+		return $result->result();
 	}
 	
-	public function getAttendance($empID, $start_date, $end_date){
+	/*public function getAttendance($empID, $start_date, $end_date){
 		$attendance = array();
 		$start_date = new DateTime($start_date);
 		$end_date = new DateTime($end_date);
@@ -117,6 +104,50 @@ class Attendance_model extends CI_Model {
 				"tardiness"=>$tardiness,
 				"overtime"=>$overtime));
 		}
+		return $attendance;
+	}*/
+	
+	public function generateAttendanceEmployee($empID, $month, $year){
+		$attendance = array();
+		$start_date = new DateTime("$year-$month-01");
+		$end_date = new DateTime($start_date->format('Y-m-t'));
+		$attendance = Attendance_model::getAttendance($empID, $start_date->format('Y-m-d'), $end_date->format('Y-m-d'));
+		/*
+		$end_date = $end_date->modify('+1 day'); 
+		$period = new DatePeriod($start_date, new DateInterval('P1D'), $end_date);
+		foreach($period as $date){
+			//$row = $this->view_attendance($empID, $date->format("m/d/Y"));
+			
+			$this->db->select('time_in, time_out, man_hours, tardiness, overtime');
+			$this->db->where('emp_id',$empID);
+			$this->db->where('logdate',$date->format("m/d/Y"));
+			$this->db->order_by('logdate');
+			$result = $this->db->get('view_attendance');
+			$row = $result->row();
+		
+			$time_in = "";
+			$time_out = "";
+			$man_hours = 0;
+			$tardiness = 0;
+			$overtime = 0;
+			if(count($row)!=0){
+				$time_in = $row->time_in;
+				$time_out = $row->time_out;
+				$man_hours = $row->man_hours; 
+				$tardiness = $row->tardiness;
+				$overtime = $row->overtime;
+			}
+			array_push($attendance, array(
+				"emp_id"=>$empID,
+				"datevalue"=>$date->format("Y-m-d"), 
+				"datelog"=>$date->format("M d, Y"), 
+				"weekday"=>$date->format("D"), 
+				"time_in"=>$time_in, 
+				"time_out"=>$time_out,
+				"man_hours"=>$man_hours, 
+				"tardiness"=>$tardiness,
+				"overtime"=>$overtime));
+		}*/
 		return $attendance;
 	}
 	
@@ -198,104 +229,8 @@ class Attendance_model extends CI_Model {
 	}
 	
 	// ------------------------------------------------------------ 
-	// Taxes
-	// ------------------------------------------------------------
-	
-	public function view_taxes(){
-		$query = $this->db->get('tbl_taxes');
-		return $query->result();
-	}
-	
-	public function insert_taxes($tax_name, $percentage){
-		$data = array(
-			'tax_name'=>$tax_name,
-			'percentage'=>$percentage
-		);	
-		print_r($data);
-		$query = $this->db->insert('tbl_taxes', $data); 
-		if ($query) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	public function update_taxes($taxID, $tax_name, $percentage, $status){
-		$this->db->where('tax_id', $taxID);
-		$data = array(
-			'tax_name'=>$tax_name,
-			'percentage'=>$percentage,
-			'status'=>$status
-		);	
-		$query = $this->db->update('tbl_taxes', $data);
-		if ($query) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	public function delete_taxes($taxID){
-		$this->db->where('tax_id', $taxID);
-		$this->db->delete('tbl_taxes'); 
-	}
-	
-	// ------------------------------------------------------------ 
-	// Allowances
-	// ------------------------------------------------------------
-	
-	public function view_allowances(){
-		$query = $this->db->get('tbl_allowances');
-		return $query->result();
-	}
-	
-	public function insert_allowances($allowance_name, $amount, $percentage){
-		$data = array(
-			'allowance_name'=>$allowance_name,
-			'amount'=>$amount,
-			'percentage'=>$percentage
-		);	
-		print_r($data);
-		$query = $this->db->insert('tbl_allowances', $data); 
-		if ($query) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	public function update_allowances($taxID, $tax_name, $amount, $percentage, $status){
-		$this->db->where('tax_id', $taxID);
-		$data = array(
-			'tax_name'=>$tax_name,
-			'amount'=>$amount,
-			'percentage'=>$percentage,
-			'status'=>$status
-		);	
-		$query = $this->db->update('tbl_allowances', $data);
-		if ($query) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	public function delete_allowances($taxID){
-		$this->db->where('tax_id', $taxID);
-		$this->db->delete('tbl_allowances'); 
-	}
-	
-	// ------------------------------------------------------------ 
 	// Payroll
 	// ------------------------------------------------------------
-	
-	public function retrieveEmployeeInfo($emp_id){
-		//$this->output->enable_profiler(TRUE);
-		$this->db->select('emp_id, first_name, middle_name, last_name, position, department, salary');
-		$this->db->where('emp_id', $emp_id);
-		$result = $this->db->get('view_active_employees');
-		return $result->row();
-	}
 	
 	public function cutoffDates(){
 		$query = "SELECT DISTINCT payslip_date, DATE_FORMAT(payslip_date, '%b %d, %Y') as payslip_date_format " .
@@ -304,13 +239,17 @@ class Attendance_model extends CI_Model {
 		return $result->result();
 	}
 	
+	public function retrieveEmployeeInfo($emp_id){
+		//$this->output->enable_profiler(TRUE);
+		$this->db->select('emp_id, first_name, middle_name, last_name, job_title_name, department_name, salary');
+		$this->db->where('emp_id', $emp_id);
+		$result = $this->db->get('view_job_history');
+		return $result->row();
+	}
+	
 	public function retrievePayslips($salary_date){
 		//$this->output->enable_profiler(TRUE);
-		$this->db->select('tbl_payslip.payslip_id, employees.emp_id, employees.first_name, employees.middle_name, employees.last_name, tbl_payslip.basic_salary, tbl_payslip.gross_pay, tbl_payslip.net_pay');
-		$this->db->from('employees');
-		$this->db->join('tbl_payslip', 'tbl_payslip.emp_id = employees.emp_id');
-		$this->db->where('tbl_payslip.payslip_date', $salary_date);
-		$result = $this->db->get();
+		$result = $this->db->get_where('view_payslip', array('payslip_date' => $salary_date));
 		return $result->result();
 	}
 	
@@ -322,8 +261,8 @@ class Attendance_model extends CI_Model {
 		$payslip_details = $this->db->query($query);
 		//$payslip_details = $this->db->get_where('tbl_payslip', array('payslip_id' => $payslip_id));
 		$employee = $this->retrieveEmployeeInfo($payslip_details->row('emp_id'));
-		$payslip_allowances = $this->db->get_where('tbl_payslip_allowances', array('payslip_id' => $payslip_id));
-		$payslip_taxes = $this->db->get_where('tbl_payslip_taxes', array('payslip_id' => $payslip_id));
+		$payslip_allowances = $this->db->get_where('view_payslip_allowances', array('payslip_id' => $payslip_id));
+		$payslip_taxes = $this->db->get_where('view_payslip_taxes', array('payslip_id' => $payslip_id));
 		$payslip = array(
 			'employee'=>$employee,
 			'payslip'=>$payslip_details->row(),
@@ -349,6 +288,7 @@ class Attendance_model extends CI_Model {
 			'basic_salary'=>$payslip['basic_salary'],
 			'total_overtime'=>$payslip['total_overtime'],
 			'total_tardiness'=>$payslip['total_tardiness'],
+			'days_absent'=>$payslip['days_absent'],
 			'total_absent_amount'=>$payslip['total_absent_amount'],
 			'total_allowances'=>$payslip['total_allowances'],
 			'total_taxes'=>$payslip['total_taxes'],
@@ -411,17 +351,17 @@ class Attendance_model extends CI_Model {
 		$data['perhoursalary'] = $data['perdaysalary']/8;
 		
 		$data['attendance'] = $this->getAttendance($empid, $start_date, $end_date);
-		$data['allowances'] = $this->computeAllowances($this->view_allowances(), $data['cutoffsalary']);
+		$data['allowances'] = $this->computeAllowances(Allowance_model::view_allowances(), $data['cutoffsalary']);
 		$data['total']  = $this->retrieveTotalHours($empid, $start_date, $end_date);
 		
 		$data['total_absent'] = $this->totalAbsent($data['attendance']);
 		$data['total_overtime'] = $data['total']->overtime*($data['perhoursalary']*1.25);
 		$data['total_tardiness'] = $data['total']->tardiness*($data['perhoursalary']*1.25);
-		$data['total_absent_amount'] = $data['total_absent'] + $data['perdaysalary'];
+		$data['total_absent_amount'] = $data['total_absent'] * $data['perdaysalary'];
 		$data['total_allowance'] = $this->totalAmount($data['allowances']);
 		$data['gross_income'] = $data['cutoffsalary'] + $data['total_allowance'] + $data['total_overtime'] - $data['total_absent_amount'] - $data['total_tardiness'];
 		
-		$data['taxes'] = $this->computeTaxes($this->view_taxes(), $data['gross_income']);
+		$data['taxes'] = $this->computeTaxes(Taxes_model::view_taxes(), $data['gross_income']);
 		
 		$data['total_tax'] = $this->totalAmount($data['taxes']);
 		
@@ -473,7 +413,7 @@ class Attendance_model extends CI_Model {
 	public function totalAbsent($attendance){
 		$total = 0;
 		foreach($attendance as $row){
-			$total += $row["absent"];
+			$total += $row->absent;
 		}
 		return $total;
 	}
