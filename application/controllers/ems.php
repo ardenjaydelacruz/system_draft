@@ -1,3 +1,4 @@
+
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Ems extends MY_Controller
@@ -14,7 +15,7 @@ class Ems extends MY_Controller
         $data['total_asset'] = count(Projects_model::find('all'));
         $data['total_projects'] = count(Projects_model::find('all'));
         $data['pageTitle'] = 'Dashboard - MSInc.';
-        $data['content'] = 'components/admin_dashboard';
+        $data['content'] = 'employee/admin_dashboard';
         $this->load->view($this->master_layout, $data);
         $this->display_notif();
     }
@@ -68,6 +69,7 @@ class Ems extends MY_Controller
         $data['job_titles'] = Job_titles_model::all();
         $data['employment_type'] = Employment_type_model::all();
         $data['countryy'] = Countries::all();
+        $data['user_level'] = View_user_level::all();
         
         $data['record']    = Dependent_model::find('all',array('conditions'=>"employee_id =$id")); //get dependents by id
         $data['info']      = Emp_info_model::find($id); //Tab 1a - Personal Tab
@@ -81,7 +83,7 @@ class Ems extends MY_Controller
         $data['leaves']    = View_leave_remaining::find('all',array('conditions'=>"emp_id =$id")); //Tab 6 - Leaves Tab
         $data['asset']     = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id")); //Tab 7 - Asset Tab
         $data['project']   = View_project_workers::find('all',array('conditions'=>"emp_id =$id")); //Tab 8 - Project Tab
-        $data['account']   = Users::find_by_employee_id($id); //Tab 9 - Users Tab
+        $data['account']   = View_users_model::find_by_employee_id($id); //Tab 9 - Users Tab
 
         $data['pageTitle'] = 'Employee Details - MSInc.';
         $data['content']   = 'employee/employee_details';

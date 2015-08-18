@@ -566,12 +566,8 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                          <select name="txtStatus" id="status" class="form-control" disabled>
-                                              <option value="">All Employees</option>
-                                              <option value="Existing" <?php if($emp->status=='Existing') { echo "selected";}?> >Existing</option>
-                                              <option value="Resigned" <?php if($emp->status=='Resigned') { echo "selected";}?> >Resigned</option>
-                                              <option value="OnLeave" <?php if($emp->status=='OnLeave') { echo "selected";}?> >On - Leave</option>
-                                          </select>
+                                          <label class="control-label"><?php echo $emp->status; ?></label>
+                                          <input type="hidden" name="txtStatus" value="<?php echo $emp->status; ?>">
                                        </div>
                                    </div>
                                </div>
@@ -581,11 +577,8 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                          <select name="txtJobTitle"  class="form-control" disabled>
-                                          <option value="<?php echo $emp->job_title_id; ?>"><?php echo $emp->job_title_name; ?></option>
-                                            <?php foreach ($job_titles as $row){ 
-                                                echo "<option value='$row->job_title_id'> $row->job_title_name</option>";
-                                            } ?>
+                                          <label class="control-label"><?php echo $emp->job_title_name; ?></label>
+                                          <input type="hidden" name="txtJobTitle" value="<?php echo $emp->job_title_id; ?>">
                                         </select>
                                        </div>
                                    </div>
@@ -596,12 +589,8 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                          <select name="txtEmploymentType" id="emp_name" class="form-control" disabled>
-                                            <option value="<?php echo $emp->employment_type_id; ?>"><?php echo $emp->employment_type; ?></option>
-                                              <?php foreach ($employment_type as $row){ 
-                                                  echo "<option value='$row->employment_type_id'>$row->employment_type </option>";
-                                              } ?>
-                                          </select>
+                                          <label class="control-label"><?php echo $emp->employment_type; ?></label>
+                                          <input type="hidden" name="txtEmploymentType" value="<?php echo $emp->employment_type_id; ?>">
                                        </div>
                                    </div>
                                </div>
@@ -611,12 +600,8 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                          <select name="txtDepartment" id="emp_name" class="form-control" disabled>
-                                            <option value="<?php echo $emp->department_id; ?>"><?php echo $emp->department_name; ?></option>
-                                              <?php foreach ($departments as $row){ 
-                                                  echo "<option value='$row->department_id'>$row->department_name</option>";
-                                              } ?>
-                                          </select>
+                                          <label class="control-label"><?php echo $emp->department_name; ?></label>
+                                          <input type="hidden" name="txtDepartment" value="<?php echo $emp->department_id; ?>">
                                        </div>
                                    </div>
                                </div>
@@ -625,9 +610,10 @@ if (!empty($account->profile_image)){
                                <label class=" col-sm-3 control-label">Start Date: </label>
                                <div class="col-sm-9 controls">
                                    <div class="row">
-                                       <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo date_format($emp->start_date,'Y-m-j'); ?>" name="txtStartDate" />
-                                       </div>
+                                      <div class="col-xs-9">
+                                        <label class="control-label"><?php echo date_format($emp->start_date,'M d, Y'); ?></label>  
+                                        <input type="hidden" name="txtStartDate" value="<?php echo $emp->start_date; ?>">
+                                      </div>
                                    </div>
                                </div>
                            </article>
@@ -635,9 +621,10 @@ if (!empty($account->profile_image)){
                                <label class=" col-sm-3 control-label">End Date: </label>
                                <div class="col-sm-9 controls">
                                    <div class="row">
-                                       <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo date_format($emp->end_date,'Y-m-j'); ?>" name="txtEndDate" />
-                                       </div>
+                                      <div class="col-xs-9">
+                                        <label class="control-label"><?php echo date_format($emp->end_date,'M d, Y'); ?></label>
+                                        <input type="hidden" name="txtEndDate" value="<?php echo $emp->end_date; ?>">
+                                      </div>
                                    </div>
                                </div>
                            </article>
@@ -645,9 +632,10 @@ if (!empty($account->profile_image)){
                                <label class=" col-sm-3 control-label">Probationary Date: </label>
                                <div class="col-sm-9 controls">
                                    <div class="row">
-                                       <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo  date_format($emp->probationary_date,'Y-m-j'); ?>" name="txtProbationaryDate" />
-                                       </div>
+                                      <div class="col-xs-9">
+                                        <label class="control-label"><?php echo date_format($emp->probationary_date,'M d, Y'); ?></label>
+                                        <input type="hidden" name="txtProbationaryDate" value="<?php echo $emp->probationary_date; ?>">
+                                      </div>
                                    </div>
                                </div>
                            </article>
@@ -656,7 +644,8 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo  date_format($emp->permanency_date,'Y-m-j'); ?>" name="txtPermanencyDate" />
+                                          <label class="control-label"><?php echo date_format($emp->permanency_date,'M d, Y'); ?></label>
+                                          <input type="hidden" name="txtPermanencyDate" value="<?php echo $emp->permanency_date; ?>">
                                        </div>
                                    </div>
                                </div>
@@ -666,7 +655,8 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->pay_grade; ?>" name="txtPayGrade" />
+                                          <label class="control-label"><?php echo $emp->pay_grade; ?></label>
+                                          <input type="hidden" name="txtPayGrade" value="<?php echo $emp->pay_grade; ?>">
                                        </div>
                                    </div>
                                </div>
@@ -675,9 +665,10 @@ if (!empty($account->profile_image)){
                                <label class=" col-sm-3 control-label">Salary: </label>
                                <div class="col-sm-9 controls">
                                    <div class="row">
-                                       <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $emp->salary; ?>" name="txtSalary" />
-                                       </div>
+                                      <div class="col-xs-9">
+                                        <label class="control-label"><?php echo number_format($emp->salary,2); ?></label>
+                                        <input type="hidden" name="txtSalary" value="<?php echo $emp->salary; ?>">
+                                      </div>
                                    </div>
                                </div>
                            </article>
@@ -687,7 +678,6 @@ if (!empty($account->profile_image)){
                       <section class="tab-pane" id="tab_7">
                         <div class="form-horizontal">
                           <h3>Leave Details</h3><hr>
-                          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addLeave"><i class="fa fa-plus"></i> Add</a><br><br>
                           <table class="table table-hovered table-striped table-bordered">
                             <thead>
                                  <th class="text-center">Birthday Leave</th>
@@ -712,42 +702,6 @@ if (!empty($account->profile_image)){
                            </table>
                         </div>
                       </section><!-- Leaves -->
-                      <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
-                        <div class="modal fade" id="addLeave" tabindex="-1" role="dialog">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Add Leave Days</h4>
-                              </div>
-                              <div class="modal-body">
-                                <div class="row">
-                                  <div class="col-sm-6">
-                                    <label for="">Birthday Leave:</label>
-                                    <input type="text" class="form-control" name="txtBirthdayLeave" required><br>
-                                    <label for="">Mandatory Leave:</label>
-                                    <input type="text" class="form-control" name="txtMandatoryLeave" required><br>
-                                    <label for="">Maternity Leave:</label>
-                                    <input type="text" class="form-control" name="txtMaternityLeave" required><br>
-                                  </div>
-                                  <div class="col-sm-6">
-                                    <label for="">Paternity Leave:</label>
-                                    <input type="text" class="form-control" name="txtPaternityLeave" required><br>
-                                    <label for="">Sick Leave:</label>
-                                    <input type="text" class="form-control" name="txtSickLeave" required><br>
-                                    <label for="">Vacation Leave:</label>
-                                    <input type="text" class="form-control" name="txtVacationLeave" required><br>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                                <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                              </div>
-                            </div><!-- /.modal-content -->
-                          </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
-                      </form>
 
                       <section class="tab-pane" id="tab_8">
                         <div class="form-horizontal">
@@ -799,7 +753,8 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $account->username; ?>" name="txtUsername" />
+                                          <input type="text" disabled class="form-control" value="<?php echo $account->username; ?>" name="txtUsername" />
+                                          <input type="hidden" disabled class="form-control" value="<?php echo $account->user_level; ?>" name="txtUserLevel" />
                                        </div>
                                    </div>
                                </div>
@@ -810,16 +765,6 @@ if (!empty($account->profile_image)){
                                    <div class="row">
                                        <div class="col-xs-9">
                                            <input type="password" disabled class="form-control" value="<?php echo $account->password; ?>" name="txtPassword" />
-                                       </div>
-                                   </div>
-                               </div>
-                           </article>
-                           <article class="form-group">
-                               <label class=" col-sm-3 control-label">User Level: </label>
-                               <div class="col-sm-9 controls">
-                                   <div class="row">
-                                       <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $account->user_level; ?>" name="txtUserLevel" />
                                        </div>
                                    </div>
                                </div>

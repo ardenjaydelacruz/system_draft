@@ -29,7 +29,7 @@
 			<?php 
 			$this->load->view('layout/navbar-logged');
 			$this->load->view('layout/sidebar-admin');
-			$this->load->view($content);
+			$this->load->view('admin/'.$content);
 			 ?>
 			<!-- Page Layout -->
 			<footer class="main-footer">

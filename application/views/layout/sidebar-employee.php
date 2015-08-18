@@ -19,11 +19,26 @@
 		<ul class="sidebar-menu">
 			<br>
 			<li class="header text-center">Administrator Menu</li>
+
+			<li>
+				<a href="<?php echo base_url();?>ems/view_details?emp_id=<?php echo $this->session->userdata('employee_id'); ?>">
+					<i class="fa fa-user"></i> <span>Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="<?php echo base_url();?>ems/view_details?emp_id=<?php echo $this->session->userdata('employee_id'); ?>">
+					<i class="fa fa-user"></i> <span>Profile</span>
+				</a>
+			</li>
 			<li>
 				<a href="<?php echo base_url();?>ems/dashboard">
-					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
+					<i class="fa fa-calendar"></i> <span>Add Leave Request</span>
 				</a>
-
+			</li>
+			<li>
+				<a href="<?php echo base_url();?>ems/dashboard">
+					<i class="fa fa-money"></i> <span>View Payslip</span>
+				</a>
 			</li>
 			<li class="treeview">
 				<a href="#">

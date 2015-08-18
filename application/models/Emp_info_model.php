@@ -3,8 +3,6 @@ class Emp_info_model extends ActiveRecord\Model {
 	static $table_name = 'tbl_emp_info';
 	static $primary_key = 'emp_id';
 
-	
-
 	public function updateEmployee(){
 		$id = $this->input->get('emp_id');
 	    if($this->input->post('btnAddJob')){
@@ -104,6 +102,11 @@ class Emp_info_model extends ActiveRecord\Model {
 			'employee_id' => $this->input->post('txtEmpID')
 		);
 
+		$acc = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'profile_image' => 'default.jpg'
+			);
+
 		
 		if ($this->form_validation->run()) {	
 			if (Emp_info_model::create($personal) && 
@@ -113,7 +116,7 @@ class Emp_info_model extends ActiveRecord\Model {
 				Emp_contact_person::create($id) &&
 				Emp_school_model::create($id) &&
 				Gov_id_model::create($id) &&
-				Users::create($id) 
+				Users::create($acc) 
 				) {
 				$this->session->set_userdata('added', 1);
 				Audit_trail_model::auditAddEmp($this->input->post('txtEmpID'));
@@ -237,7 +240,7 @@ class Emp_info_model extends ActiveRecord\Model {
 	public function accountInfo(){
 		$data = array(
 			'username' => $this->input->post('txtUsername'),
-			'password' => $this->input->post('txtPassword'),
+			'password' => md5($this->input->post('txtPassword')),
 			'user_level' => $this->input->post('txtUserLevel'),
 			'secret_question' => $this->input->post('txtSecretQuestion'),
 			'secret_answer' => $this->input->post('txtSecretAnswer')
