@@ -20,6 +20,7 @@
                     <th class="table-head">User Level</th>
                     <th class="table-head">IP Address</th>
                     <th class="table-head">Action</th>
+                    <th class="table-head">Emp ID</th>
                     <th class="table-head">Old Value</th>
                     <th class="table-head">New Value</th>
                     <th class="table-head">Date and Time</th>
@@ -42,6 +43,9 @@
                     </td>
                     <td>
                         <?php echo $record->action; ?>
+                    </td>
+                    <td>
+                        <?php echo $record->employee_id; ?>
                     </td>
                      <td>
                         <?php echo $record->old_value; ?>

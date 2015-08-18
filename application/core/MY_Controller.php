@@ -42,7 +42,7 @@ class MY_Controller extends CI_Controller {
         } elseif ($this->session->userdata('user_level') == 'Employee') {
             $this->master_layout = 'layout/employee-master';
         } elseif ($this->session->userdata('user_level') == 'HR Manager') {
-            $this->master_layout = 'layout/hr-master';
+            $this->master_layout = 'layout/manager-master';
         } elseif ($this->session->userdata('user_level') == 'Accounting Manager') {
             $this->master_layout = 'layout/accounting-master';
         } elseif ($this->session->userdata('user_level') == 'Operations Manager') {

@@ -20,13 +20,30 @@ class Ems extends MY_Controller
         $this->display_notif();
     }
 
-     public function emp_dashboard()
+    public function emp_dashboard()
     {
+        $id = $this->session->userdata('employee_id');
+        $data['asset']          = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id")); //Tab 7 - Asset Tab
+        $data['project']        = View_project_workers::find('all',array('conditions'=>"emp_id =$id")); //Tab 8 - Project Tab
         $data['total_employee'] = count(View_employees_list::find('all'));
-        $data['total_asset'] = count(Projects_model::find('all'));
+        $data['total_asset']    = count(Projects_model::find('all'));
         $data['total_projects'] = count(Projects_model::find('all'));
-        $data['pageTitle'] = 'Dashboard - MSInc.';
-        $data['content'] = 'employee/employee_dashboard';
+        $data['pageTitle']      = 'Dashboard - MSInc.';
+        $data['content']        = 'employee/employee_dashboard';
+        $this->load->view($this->master_layout, $data);
+        $this->display_notif();
+    }
+
+    public function hr_dashboard()
+    {
+        $id = $this->session->userdata('employee_id');
+        $data['asset']          = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id")); //Tab 7 - Asset Tab
+        $data['project']        = View_project_workers::find('all',array('conditions'=>"emp_id =$id")); //Tab 8 - Project Tab
+        $data['total_employee'] = count(View_employees_list::find('all'));
+        $data['total_asset']    = count(Projects_model::find('all'));
+        $data['total_projects'] = count(Projects_model::find('all'));
+        $data['pageTitle']      = 'Dashboard - MSInc.';
+        $data['content']        = 'employee/hr_dashboard';
         $this->load->view($this->master_layout, $data);
         $this->display_notif();
     }

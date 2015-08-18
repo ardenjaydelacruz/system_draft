@@ -9,8 +9,7 @@ if (!empty($account->profile_image)){
 <div class="content-wrapper">
   <ol class="breadcrumb">
   <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-  <li><a href="<?php echo base_url();?>ems/employees" class="btn btn-default"><i class="fa fa-user"></i> Employee</a></li>
-  <li class="active"><i class="fa fa-search"></i> View Employee </li>
+  <li class="active"><i class="fa fa-user"></i> View Profile </li>
   </ol>
   <div class="container-fluid">
     <div class="panel panel-info">
@@ -754,7 +753,7 @@ if (!empty($account->profile_image)){
                                    <div class="row">
                                        <div class="col-xs-9">
                                           <input type="text" disabled class="form-control" value="<?php echo $account->username; ?>" name="txtUsername" />
-                                          <input type="hidden" disabled class="form-control" value="<?php echo $account->user_level; ?>" name="txtUserLevel" />
+                                          <input type="hidden" disabled class="form-control" value="<?php echo $account->user_level_id; ?>" name="txtUserLevel" />
                                        </div>
                                    </div>
                                </div>
