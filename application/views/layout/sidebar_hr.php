@@ -36,7 +36,9 @@
 					<li><a href="<?php echo base_url();?>ems/leaves_table"><i class="fa fa-calendar-o"></i> Leaves</a></li>
 					<li><a href="<?php echo base_url();?>ems/view_performance"><i class="fa fa-thumbs-o-up"></i> Performance </a></li>
 					<li><a href="<?php echo base_url();?>ems/view_projects"><i class="fa fa-cogs"></i> Projects</a></li>
+					<li><a href="<?php echo base_url();?>ems/supervisions"><i class="fa fa-group"></i> Supervisions</a></li>
 					<li><a href="<?php echo base_url();?>ems/view_accounts"><i class="fa fa-list"></i> User Accounts</a></li>
+					<li><a href="<?php echo base_url();?>calendar/calendar_index"><i class="fa fa-calendar"></i> Calendar</a></li>
 				</ul>
 			</li>
 
