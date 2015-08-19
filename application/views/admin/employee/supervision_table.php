@@ -31,9 +31,7 @@
             </div>
             <div class="box-body">
                 <div class="pull-left add-employee">
-                    <a href="<?php echo base_url();?>ems/add_employee">
-                        <buttom class="btn btn-success"><i class="fa fa-plus"></i> Add Employee Supervision </buttom>
-                    </a>
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addSupervision"><i class="fa fa-plus"></i> Add Supervision</a><br><br>
                 </div>
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
@@ -61,6 +59,39 @@
                         <?php } ?>
                 </table>
             </div>
+            <form action="<?php echo base_url();?>ems/supervisions" method="post">
+              <div class="modal fade" id="addSupervision" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Add Supervision</h4>
+                    </div>
+                    <div class="modal-body">
+                      <label for="">Employee Name:</label>
+                      <select name="txtEmployee" class="form-control">
+                          <option value=''>---</option>
+                          <?php foreach ($employee as $row){ 
+                              echo "<option value='$row->emp_id'>$row->first_name $row->middle_name $row->last_name</option>";
+                          } ?>
+                      </select><br> 
+                      <label class="text-center"> To </label> <br><br>
+                      <label for="">Supervisor Name:</label>
+                      <select name="txtSupervisor" class="form-control">
+                          <option value=''>---</option>
+                          <?php foreach ($supervisor as $row){ 
+                              echo "<option value='$row->supervisor_id'>$row->first_name $row->middle_name $row->last_name</option>";
+                          } ?>
+                      </select>
+                    </div>
+                    <div class="modal-footer">
+                      <input type="submit" class="btn btn-success" value="Add" name="btnSubmit">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+            </form>
         </div>
     </div>
 </div>

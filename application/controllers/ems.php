@@ -120,7 +120,12 @@ class Ems extends MY_Controller
 
     public function supervisions()
     {
+        if ($this->input->post('btnSubmit')){
+            Emp_supervision::updateSupervision();
+        }
         $data['record'] = View_supervisions_model::all();
+        $data['employee'] = Emp_info_model::all();
+        $data['supervisor'] = View_supervisors::all();
         $data['pageTitle'] = 'Leaves - MSInc.';
         $data['content'] = 'employee/supervision_table';
         $this->load->view($this->master_layout, $data);

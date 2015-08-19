@@ -269,6 +269,8 @@ class Emp_info_model extends ActiveRecord\Model {
 		return $data;
 	}
 
+	
+
 
 }
 
