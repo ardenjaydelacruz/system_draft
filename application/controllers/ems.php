@@ -118,6 +118,16 @@ class Ems extends MY_Controller
        Emp_info_model::deleteEmployee();
     }
 
+    public function supervisions()
+    {
+        $data['record'] = View_supervisions_model::all();
+        $data['pageTitle'] = 'Leaves - MSInc.';
+        $data['content'] = 'employee/supervision_table';
+        $this->load->view($this->master_layout, $data);
+        $this->display_notif();
+
+    }
+
     public function view_details()
     {
         $id = $this->input->get('emp_id');

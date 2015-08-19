@@ -15,7 +15,6 @@
 				</p>
 			</div>
 		</div>
-
 		<ul class="sidebar-menu">
 			<br>
 			<li class="header text-center">Administrator Menu</li>
@@ -23,7 +22,6 @@
 				<a href="<?php echo base_url();?>ems/dashboard">
 					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 				</a>
-
 			</li>
 			<li class="treeview">
 				<a href="#">
@@ -66,8 +64,6 @@
 						</a>
 						<ul class="treeview-menu">
 							<li><a href="<?php echo base_url();?>reports/employees_list"><i class="fa fa-group"></i> Employees Lists</a></li>
-							<li><a href="<?php echo base_url();?>reports/project_workers"><i class="fa fa-user"></i> Project Workers</a></li>
-							<li><a href="<?php echo base_url();?>reports/projects_list"><i class="fa fa-cogs"></i> Projects</a></li>
 							<li><a href="<?php echo base_url();?>reports/leave_list"><i class="fa fa-calendar"></i> Leave List</a></li>
 						</ul>
 					</li>
@@ -80,17 +76,6 @@
 							<li><a href="<?php echo base_url();?>reports/attendance_daily"><i class="fa fa-calendar"></i> Attendance - Daily</a></li>
 							<li><a href="<?php echo base_url();?>reports/attendance_employee"><i class="fa fa-calendar-o"></i> Attendance - Employee</a></li>
 							<li><a href="<?php echo base_url();?>reports/payslip_list"><i class="fa fa-rub"></i> Payslip</a></li>
-						</ul>
-					</li>
-					<li class="treeview">
-						<a href="#">
-							<span>Asset Management</span>
-							<i class="fa fa-angle-left pull-right"></i>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="<?php echo base_url();?>reports/inventory_list"><i class="fa fa-cube"></i> Inventory List</a></li>
-							<li><a href="<?php echo base_url();?>reports/asset_list"><i class="fa fa-desktop"></i> Other Assets</a></li>
-							<li><a href="<?php echo base_url();?>reports/material_list"><i class="fa fa-credit-card"></i> Bill of Materials</a></li>
 						</ul>
 					</li>
 				</ul>
