@@ -31,4 +31,17 @@ class View_users_model extends ActiveRecord\Model {
 			return 'Not registered';
 		}
 	}
+
+	public function mobile_login_employee(){
+		$row = View_users_model::find_by_username($this->input->post('txtUsername'));
+		if($row != NULL){
+			if ($row->password == md5($this->input->post('txtPassword'))){
+				return 'Success';
+			} else {
+				return 'Incorrect password';
+			}
+		} else {
+			return 'Not registered';
+		}
+	}
 }

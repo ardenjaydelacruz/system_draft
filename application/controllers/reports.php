@@ -32,6 +32,18 @@ class Reports extends MY_Controller {
 		$this->print_reports_model->pdf_material_list($data);
     }
 
+    public function print_attendance_daily($data){
+		$this->print_reports_model->pdf_attendance_daily($data);
+    }
+
+    public function print_attendance_employee($data){
+		$this->print_reports_model->pdf_attendance_employee($data);
+    }
+
+    public function print_payslip_list($data){
+		$this->print_reports_model->pdf_payslip_list($data);
+    }
+
 
 
 	public function employees_list(){
@@ -160,5 +172,65 @@ class Reports extends MY_Controller {
 		$data['pageTitle'] = 'Audit Trail - MSInc.';
         $data['content'] = 'reports/audit_trail';
         $this->load->view($this->master_layout, $data);
+	}
+	
+	public function attendance_daily(){
+		$num = 0;
+		if ($this->input->post('btnFilter')){
+			$data['attendance'] = $this->reports_model->generateAttendanceDaily($this->input->post('txtDate'));
+			$num = count($data['attendance']);
+		}  
+		if ($this->input->post('btnPrint')){
+			$attendance = $this->reports_model->generateAttendanceDaily($this->input->post('txtDate'));
+			$this->print_attendance_daily($attendance);
+		} 
+		$data['pageTitle'] = 'Daily Attendance Report - MSInc.';
+        $data['content'] = 'reports/attendance_daily';
+        $this->load->view($this->master_layout, $data);
+        if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
+	}
+	
+	public function attendance_employee(){
+		if ($this->input->post('btnFilter')){
+			$post = $this->input->post();
+			$data['attendance'] = Attendance_model::generateAttendanceEmployee($post['cboEmployee'], $post['cboMonth'], $post['cboYear']);
+		} 
+		if ($this->input->post('btnPrint')){
+			$post = $this->input->post();
+			$attendance = Attendance_model::generateAttendanceEmployee($post['cboEmployee'], $post['cboMonth'], $post['cboYear']);
+			$this->print_attendance_employee($attendance);
+		} 
+        $data['employees'] = View_employees_list::all();
+		$data['months'] = $this->generateMonths();
+		$data['years'] = $this->generateYears();
+		$data['pageTitle'] = 'Employee Attendance Report - MSInc.';
+        $data['content'] = 'reports/attendance_employee';
+        $this->load->view($this->master_layout, $data);
+	}
+	
+	public function payslip_list(){
+		$num = 0;
+		$data['salary_dates'] = Attendance_model::cutoffDates();
+		$data['payslip'] = array();
+		$data['post'] = $this->input->post();
+		if ($this->input->post('btnFilter')){
+			$data['payslip'] = Attendance_model::retrievePayslips($data['post']['cboDate']);
+		}
+		if ($this->input->post('btnPrint')){
+			$payslip = Attendance_model::retrievePayslips($data['post']['cboDate']);
+			$this->print_payslip_list($payslip);
+		}	
+		$data['pageTitle'] = 'Payroll - MSInc.';
+        $data['content'] = 'reports/payslip_list';
+        $this->load->view($this->master_layout, $data);
+        if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }
+	}
+	
+	public function print_payslip(){
+		$payslip_id = $this->input->get('id');
+		$data['record'] = Reports_model::getPayslipDetails($payslip_id);
+		
+		$data['pageTitle'] = 'Payslip Details - MSInc.';
+        $this->load->view('payroll/print_payslip', $data);
 	}
 }

@@ -60,4 +60,30 @@ class Reports_model extends CI_Model {
 		if ($project){ $this->db->where('project_id',$project);}
 		return $this->db->get('view_materials')->result();
 	}
+
+	public function generateAttendanceDaily($date){
+		$this->db->select('emp_id, first_name, middle_name, last_name, job_title_name, time_in, time_out, man_hours, tardiness, overtime');
+		$this->db->where('datelog', $date);
+		$this->db->order_by('last_name, first_name');
+		return $this->db->get('view_attendance')->result();
+	}
+	
+	public function getPayslipDetails($payslip_id){
+		$query = "SELECT *, DATE_FORMAT(payslip_date, '%b %d, %Y') as payslip_date_format, " .
+			"DATE_FORMAT(start_date, '%b %d, %Y') as start_date_format, DATE_FORMAT(end_date, '%b %d, %Y') as end_date_format " .
+			"FROM tbl_payslip " .
+			"WHERE payslip_id = " . $payslip_id;
+		$payslip_details = $this->db->query($query);
+		//$payslip_details = $this->db->get_where('tbl_payslip', array('payslip_id' => $payslip_id));
+		//$employee = $this->retrieveEmployeeInfo($payslip_details->row('emp_id'));
+		$employee = View_employee_info::find($payslip_details->row('emp_id'));
+		$payslip_allowances = $this->db->get_where('view_payslip_allowances', array('payslip_id' => $payslip_id));
+		$payslip_taxes = $this->db->get_where('view_payslip_taxes', array('payslip_id' => $payslip_id));
+		$payslip = array(
+			'employee'=>$employee,
+			'payslip'=>$payslip_details->row(),
+			'payslip_allowances'=>$payslip_allowances->result(),
+			'payslip_taxes'=>$payslip_taxes->result());
+		return $payslip;
+	}
 }

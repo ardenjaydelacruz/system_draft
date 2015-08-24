@@ -6,8 +6,8 @@ class Print_reports_model extends CI_Model {
 		$this->load->library('pdf'); // Load library
 	}
 
-	public function pdf_header($title){
-		$this->pdf->AddPage();
+	public function pdf_header($title, $orientation='P'){
+		$this->pdf->AddPage($orientation);
 		$this->pdf->SetMargins(15,15,15);
 		$this->pdf->setDisplayMode ('fullpage');
 		$this->pdf->Image('assets/images/logo.png',15,10,30);
@@ -208,6 +208,120 @@ class Print_reports_model extends CI_Model {
 		}
 		$this->pdf->Cell(185,0,'','T'); //closing lines
     $this->pdf -> output ('Inventory_report.pdf','I');
+	}
+	public function pdf_attendance_daily($data){
+		$this->pdf_header('Attendance Report', 'L');
+		$rec = $data;
+		$row_height = 6;
+		$this->pdf->SetRightMargin(15);
+		$this->pdf->SetFillColor(158, 255, 158);
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf->Cell(5,6,'#',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Emp ID',1,0,'C',1);
+		$this->pdf->Cell(60,6,'Employee Name',1,0,'C',1);
+		$this->pdf->Cell(55,6,'Position',1,0,'C',1);
+		$this->pdf->Cell(25,6,'Time In',1,0,'C',1);
+		$this->pdf->Cell(25,6,'Time Out',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Man Hours',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Tardiness',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Overtime',1,0,'C',1);
+		$this->pdf->Ln();
+		$fill = false;
+		$this->pdf->SetFont('Arial','',10);
+		$ctr = 1;
+		foreach ($rec as $row) {
+			$this->pdf->SetFillColor(235, 235, 236);
+			$this->pdf->Cell(5,6,$ctr,'LR',0,'C',$fill);
+			$this->pdf->Cell(20,6,$row->emp_id,'LR',0,'C',$fill);
+		    $this->pdf->Cell(60,6,$row->last_name . ", " . $row->first_name . " " . $row->middle_name,'LR',0,'L',$fill);
+		    $this->pdf->Cell(55,6,$row->job_title_name,'LR',0,'L',$fill);
+		    $this->pdf->Cell(25,6,$row->time_in,'LR',0,'C',$fill);
+		    $this->pdf->Cell(25,6,$row->time_out,'LR',0,'C',$fill);
+		    $this->pdf->Cell(20,6,$row->man_hours,'LR',0,'C',$fill);
+		    $this->pdf->Cell(20,6,$row->tardiness,'LR',0,'C',$fill);
+		    $this->pdf->Cell(20,6,$row->overtime,'LR',0,'C',$fill);
+		    $this->pdf->Ln();
+			$fill = !$fill;
+			$ctr++;
+		}
+		$this->pdf->Cell(250,0,'','T'); //closing lines
+    $this->pdf->output('attendance-daily.pdf','I');
+	}
+	public function pdf_attendance_employee($data){
+		$this->pdf_header('Employee Attendance Report');
+		$rec = $data;
+		$row_height = 6;
+		$this->pdf->SetRightMargin(15);
+		$this->pdf->SetFillColor(158, 255, 158);
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf->Cell(40,6,'Date',1,0,'C',1);
+		$this->pdf->Cell(15,6,'Day',1,0,'C',1);
+		$this->pdf->Cell(25,6,'Time In',1,0,'C',1);
+		$this->pdf->Cell(25,6,'Time Out',1,0,'C',1);
+		$this->pdf->Cell(30,6,'Remarks',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Man Hours',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Tardiness',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Overtime',1,0,'C',1);
+		$this->pdf->Ln();
+		$fill = false;
+		$this->pdf->SetFont('Arial','',10);
+		foreach ($rec as $row) {
+			$this->pdf->SetFillColor(235, 235, 236);
+			$this->pdf->Cell(40,6,$row->datelog,'LR',0,'C',$fill);
+			$this->pdf->Cell(15,6,substr($row->weekday,0,3),'LR',0,'C',$fill);
+		    $this->pdf->Cell(25,6,$row->time_in,'LR',0,'C',$fill);
+		    $this->pdf->Cell(25,6,$row->time_out,'LR',0,'C',$fill);
+		    $this->pdf->Cell(30,6,' ','LR',0,'C',$fill);
+		    $this->pdf->Cell(20,6,$row->man_hours,'LR',0,'C',$fill);
+		    $this->pdf->Cell(20,6,$row->tardiness,'LR',0,'C',$fill);
+		    $this->pdf->Cell(20,6,$row->overtime,'LR',0,'C',$fill);
+		    $this->pdf->Ln();
+			$fill = !$fill;
+		}
+		$this->pdf->Cell(185,0,'','T'); //closing lines
+    $this->pdf->output('attendance-employee.pdf','I');
+	}
+	public function pdf_payslip_list($data){
+		$this->pdf_header('Payslip Report', 'L');
+		$rec = $data;
+		$row_height = 6;
+		$this->pdf->SetRightMargin(15);
+		$this->pdf->SetFillColor(158, 255, 158);
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf->Cell(5,6,'#',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Emp ID',1,0,'C',1);
+		$this->pdf->Cell(60,6,'Employee Name',1,0,'C',1);
+		$this->pdf->Cell(25,6,'Basic Salary',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Overtime',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Allowances',1,0,'C',1);
+		$this->pdf->Cell(25,6,'Gross Pay',1,0,'C',1);
+		$this->pdf->Cell(15,6,'Absent',1,0,'C',1);
+		$this->pdf->Cell(15,6,'Tardy',1,0,'C',1);
+		$this->pdf->Cell(20,6,'Taxes',1,0,'C',1);
+		$this->pdf->Cell(25,6,'Net Pay',1,0,'C',1);
+		$this->pdf->Ln();
+		$fill = false;
+		$this->pdf->SetFont('Arial','',10);
+		$ctr = 1;
+		foreach ($rec as $row) {
+			$this->pdf->SetFillColor(235, 235, 236);
+			$this->pdf->Cell(5,6,$ctr,'LR',0,'C',$fill);
+			$this->pdf->Cell(20,6,$row->emp_id,'LR',0,'C',$fill);
+		    $this->pdf->Cell(60,6,$row->last_name . ", " . $row->first_name . " " . $row->middle_name,'LR',0,'L',$fill);
+		    $this->pdf->Cell(25,6,number_format($row->basic_salary, 2, ".", ","),'LR',0,'R',$fill);
+		    $this->pdf->Cell(20,6,number_format($row->total_overtime, 2, ".", ","),'LR',0,'R',$fill);
+		    $this->pdf->Cell(20,6,number_format($row->total_allowances, 2, ".", ","),'LR',0,'R',$fill);
+		    $this->pdf->Cell(25,6,number_format($row->gross_pay, 2, ".", ","),'LR',0,'R',$fill);
+		    $this->pdf->Cell(15,6,$row->days_absent,'LR',0,'C',$fill);
+		    $this->pdf->Cell(15,6,number_format($row->total_tardiness, 2, ".", ","),'LR',0,'C',$fill);
+		    $this->pdf->Cell(20,6,number_format($row->total_taxes, 2, ".", ","),'LR',0,'R',$fill);
+		    $this->pdf->Cell(25,6,number_format($row->net_pay, 2, ".", ","),'LR',0,'R',$fill);
+		    $this->pdf->Ln();
+			$fill = !$fill;
+			$ctr++;
+		}
+		$this->pdf->Cell(250,0,'','T'); //closing lines
+    $this->pdf->output('payslip_list.pdf','I');
 	}
 
 }

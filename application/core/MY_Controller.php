@@ -16,17 +16,17 @@ class MY_Controller extends CI_Controller {
         // if ($this->ion_auth->logged_in()==false && uri_string() != 'auth/login'){
         //     redirect('auth/login');
         // }
-        if ($this->session->userdata('logged_in') == false && uri_string() != 'auth/login') {
+        if ($this->session->userdata('logged_in') == false && uri_string() != 'auth/login' && uri_string() != 'auth/mobile_login') {
             redirect('auth/login');
         }
     
-        $this->output->enable_profiler(TRUE);
-        $sections = array(
-        'config'  => TRUE,
-        'queries' => TRUE
-        );
+        // $this->output->enable_profiler(TRUE);
+        // $sections = array(
+        // 'config'  => TRUE,
+        // 'queries' => TRUE
+        // );
 
-        $this->output->set_profiler_sections($sections);
+        // $this->output->set_profiler_sections($sections);
 
 
         // if ($this->session->userdata('user_level') == 'Administrator') {

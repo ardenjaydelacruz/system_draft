@@ -19,7 +19,7 @@ class Payroll extends MY_Controller {
 		$data['attendance'] = array();
 		$data['months'] = $this->generateMonths();
 		$data['years'] = $this->generateYears();
-		$data['employees'] = $this->attendance_model->view_employees();
+		$data['employees'] = view_job_history::all();
 		$post = $this->input->post();
 		if($post){
 			$data['attendance'] = $this->attendance_model->generateAttendanceEmployee($post['cboEmployee'], $post['cboMonth'], $post['cboYear']);
@@ -309,7 +309,9 @@ class Payroll extends MY_Controller {
 		$this->form_validation->set_rules('txtEndDate', 'End Date', 'trim|required');
 
 		$data = array();
-		$data['employees'] = $this->attendance_model->view_employees();
+		//$data['employees'] = $this->attendance_model->view_employees();
+		$data['employees'] = view_job_history::all();
+		//print_r($data['employees']);
 		$data['payslip'] = array();
 		if ($this->form_validation->run()) {
 			$post = $this->input->post();
