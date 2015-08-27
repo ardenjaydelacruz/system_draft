@@ -536,7 +536,7 @@ class Payroll extends MY_Controller {
 		$data['record'] = $this->attendance_model->getPayslipDetails($payslip_id);
 		
 		$data['pageTitle'] = 'Payslip Details - MSInc.';
-        $this->load->view('payroll/print_payslip', $data);
+        $this->load->view('admin/payroll/print_payslip', $data);
 	}
 	
 	public function delete_payslip(){

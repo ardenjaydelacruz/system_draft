@@ -68,7 +68,7 @@ class Calendar extends MY_Controller {
 		
 		$data['day_type'] = Calendar_model::getDayType();
 		$data['calendar'] = Calendar_model::find($calendarID);
-		print_r($data['calendar']);
+		//print_r($data['calendar']);
 		$data['pageTitle'] = 'Edit Event - MSInc.';
         $data['content'] = 'calendar/calendar_edit';
         $this->load->view($this->master_layout, $data);

@@ -10,7 +10,7 @@
 				<h1 class="box-title big">Bill of Materials Table</h1>
 			</div>
 			<div class="box-body">
-				<table class="table table-striped table-hover table-bordered centered">
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered centered">
 					<thead>
 						<th class="text-center">Item Name</th>
 						<th class="text-center">Project Name</th>
@@ -42,7 +42,7 @@
 							?>
 						</td>
 						<td class="text-center">
-							<?php echo $row->date_issued; ?>
+							<?php echo date_format($row->date_issued,'M d, Y'); ?>
 						</td>
 						<td class="text-center">
 							<a href="<?php echo base_url(); ?>ams/delete_materials?id=<?php echo $row->item_id; ?>">

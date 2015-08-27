@@ -1,30 +1,32 @@
 $(document).ready(function(){
-    $(".dropdown").hover(            
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop( true, true ).slideDown("fast");
-            $(this).toggleClass('open');        
-        },
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop( true, true ).slideUp("fast");
-            $(this).toggleClass('open');       
-        }
-    );
+  $(".dropdown").hover(            
+      function() {
+          $('.dropdown-menu', this).not('.in .dropdown-menu').stop( true, true ).slideDown("fast");
+          $(this).toggleClass('open');        
+      },
+      function() {
+          $('.dropdown-menu', this).not('.in .dropdown-menu').stop( true, true ).slideUp("fast");
+          $(this).toggleClass('open');       
+      }
+  );
 
-    $('[data-toggle="tooltip"]').tooltip()
-    
-    $('#upload').hide();
-    
-    $('#btnEnable').on('click',function(){
-       toastr["success"]("Editing is enabled.");
-      $('#btnSaveEdit').toggleClass('disabled');
-      $('#btnEnable').toggleClass('disabled');
-       $('#upload').show();
+  $('[data-toggle="tooltip"]').tooltip()
+  
+  $('#upload').hide();
+  
+  $('#btnEnable').on('click',function(){
+     toastr["success"]("Editing is enabled.");
+    $('#btnSaveEdit').toggleClass('disabled');
+    $('#btnEnable').toggleClass('disabled');
+     $('#upload').show();
 
-      $("input").prop('disabled', false);
-      $("select").prop('disabled', false);
+    $("input").prop('disabled', false);
+    $("select").prop('disabled', false);
   });
-
+  $('#dynamicTable').dataTable();
 });
+
+
 
 // Delete Alert Box
 function deleteEmployee(id,base_url){

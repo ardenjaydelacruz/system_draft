@@ -18,14 +18,14 @@ class Emp_info_model extends ActiveRecord\Model {
 	        }
 	    }
 	    
-		$ems      = Emp_info_model::find($id);
-		$gov      = Gov_id_model::find($id);
-		$address  = Emp_address_model::find($id);
-		$contact  = Emp_contact_model::find($id);
-		$contactP = Emp_contact_person::find($id);
-		$school   = Emp_school_model::find($id);
-		$emp      = Emp_history_model::find($id);
-		$user     = Users::find_by_employee_id($id);
+	    $ems = Emp_info_model::find($id);
+	    $gov = Gov_id_model::find($id);
+	    $address = Emp_address_model::find($id);
+	    $contact = Emp_contact_model::find($id);
+	    $contactP = Emp_contact_person::find($id);
+	    $school = Emp_school_model::find($id);
+	    $emp = Emp_history_model::find($id);
+	    $user = Users::find_by_employee_id($id);
 
 	    if ($ems->update_attributes(Emp_info_model::personalInfo()) && 
 	        $gov->update_attributes(Emp_info_model::govInfo()) && 
@@ -62,39 +62,39 @@ class Emp_info_model extends ActiveRecord\Model {
 		$this->form_validation->set_rules('txtCountry', 'Country', 'trim|required');
 
 		$empInfo = array (
-			'emp_id'             => $this->input->post('txtEmpID'),
-			'status'             => 'Existing',
-			'job_title_id'       => $this->input->post('txtJobTitle'),
+			'emp_id' => $this->input->post('txtEmpID'),
+			'status' => 'Existing',
+			'job_title_id' => $this->input->post('txtJobTitle'),
 			'employment_type_id' => $this->input->post('txtEmploymentType'),
-			'department_id'      => $this->input->post('txtEmpDepartment'),
-			'start_date'         => date('Y-m-d'),
-			'end_date'           => date('Y-m-d'),
-			'probationary_date'  => date('Y-m-d'),
-			'permanency_date'    => date('Y-m-d')
+			'department_id' => $this->input->post('txtEmpDepartment'),
+			'start_date' => date('Y-m-d'),
+			'end_date' => date('Y-m-d'),
+			'probationary_date' => date('Y-m-d'),
+			'permanency_date' => date('Y-m-d')
 			);
 		$address = array (
 			'employee_id' => $this->input->post('txtEmpID'),
-			'street'      => $this->input->post('txtStreet'),
-			'barangay'    => $this->input->post('txtBarangay'),
-			'city'        => $this->input->post('txtCity'),
-			'state'       => $this->input->post('txtState'),
-			'zip'         => $this->input->post('txtZip'),
-			'country'     => $this->input->post('txtCountry')
+			'street' => $this->input->post('txtStreet'),
+			'barangay' => $this->input->post('txtBarangay'),
+			'city' => $this->input->post('txtCity'),
+			'state' => $this->input->post('txtState'),
+			'zip' => $this->input->post('txtZip'),
+			'country' => $this->input->post('txtCountry')
 			);
 		$contact = array (
-			'employee_id'   => $this->input->post('txtEmpID'),
+			'employee_id' => $this->input->post('txtEmpID'),
 			'mobile_number' => $this->input->post('txtMobile'),
-			'tel_number'    => $this->input->post('txtTelephone'),
+			'tel_number' => $this->input->post('txtTelephone'),
 			'email_address' => $this->input->post('txtEmail')
 			);
 
 		$personal = array (
-			'emp_id'         => $this->input->post('txtEmpID'),
-			'first_name'     => $this->input->post('txtFirstName'),
-			'middle_name'    => $this->input->post('txtMiddleName'),
-			'last_name'      => $this->input->post('txtLastName'),
-			'birthday'       => $this->input->post('txtBday'),
-			'gender'         => $this->input->post('txtGender'),
+			'emp_id' => $this->input->post('txtEmpID'),
+			'first_name' => $this->input->post('txtFirstName'),
+			'middle_name' => $this->input->post('txtMiddleName'),
+			'last_name' => $this->input->post('txtLastName'),
+			'birthday' => $this->input->post('txtBday'),
+			'gender' => $this->input->post('txtGender'),
 			'marital_status' => $this->input->post('txtStatus')
 		);
 
@@ -103,9 +103,9 @@ class Emp_info_model extends ActiveRecord\Model {
 		);
 
 		$acc = array (
-			'employee_id'   => $this->input->post('txtEmpID'),
+			'employee_id' => $this->input->post('txtEmpID'),
 			'profile_image' => 'default.jpg',
-			'user_level'    => 'EMP'
+			'user_level' => 'EMP'
 			);
 
 		
@@ -157,11 +157,11 @@ class Emp_info_model extends ActiveRecord\Model {
 
 	public function personalInfo(){
 		$data = array (
-			'first_name'     => $this->input->post('txtFirstName'),
-			'middle_name'    => $this->input->post('txtMiddleName'),
-			'last_name'      => $this->input->post('txtLastName'),
-			'birthday'       => $this->input->post('txtBirthday'),
-			'gender'         => $this->input->post('txtGender'),
+			'first_name' => $this->input->post('txtFirstName'),
+			'middle_name' => $this->input->post('txtMiddleName'),
+			'last_name' => $this->input->post('txtLastName'),
+			'birthday' => $this->input->post('txtBirthday'),
+			'gender' => $this->input->post('txtGender'),
 			'marital_status' => $this->input->post('txtMaritalStatus')
 		);
 		return $data;
@@ -169,22 +169,22 @@ class Emp_info_model extends ActiveRecord\Model {
 
 	public function govInfo(){
 		$data = array (
-			'sss_no'        => $this->input->post('txtSSS'),
-			'pagibig_no'    => $this->input->post('txtPagibig'),
+			'sss_no' => $this->input->post('txtSSS'),
+			'pagibig_no' => $this->input->post('txtPagibig'),
 			'philhealth_no' => $this->input->post('txtPhilhealth'),
-			'tin'           => $this->input->post('txtTIN')
+			'tin' => $this->input->post('txtTIN')
 		);
 		return $data;
 	}
 
 	public function addressInfo(){
 		$data = array(
-			'street'   => $this->input->post('txtStreet'),
+			'street' => $this->input->post('txtStreet'),
 			'barangay' => $this->input->post('txtBarangay'),
-			'city'     => $this->input->post('txtCity'),
-			'state'    => $this->input->post('txtState'),
-			'zip'      => $this->input->post('txtZip'),
-			'country'  => $this->input->post('txtCountry')
+			'city' => $this->input->post('txtCity'),
+			'state' => $this->input->post('txtState'),
+			'zip' => $this->input->post('txtZip'),
+			'country' => $this->input->post('txtCountry')
 		);
 		return $data;
 	}
@@ -192,7 +192,7 @@ class Emp_info_model extends ActiveRecord\Model {
 	public function contactInfo(){
 		$data = array(
 			'mobile_number' => $this->input->post('txtMobile'),
-			'tel_number'    => $this->input->post('txtTelephone'),
+			'tel_number' => $this->input->post('txtTelephone'),
 			'email_address' => $this->input->post('txtEmailAd')
 		);
 		return $data;
@@ -201,71 +201,71 @@ class Emp_info_model extends ActiveRecord\Model {
 	public function contactPerson(){
 		$data = array(
 			'contact_person' => $this->input->post('txtContactPerson'),
-			'contact_num'    => $this->input->post('txtContactNum'),
-			'contact_rel'    => $this->input->post('txtContactRel')
+			'contact_num' => $this->input->post('txtContactNum'),
+			'contact_rel' => $this->input->post('txtContactRel')
 		);
 		return $data;
 	}
 
 	public function schoolInfo(){
 		$data = array(
-			'primary_name'      => $this->input->post('txtSchoolName1'),
-			'primary_address'   => $this->input->post('txtSchoolAddress1'),
-			'primary_year'      => $this->input->post('txtSchoolYear1'),
-			'secondary_name'    => $this->input->post('txtSchoolName2'),
+			'primary_name' => $this->input->post('txtSchoolName1'),
+			'primary_address' => $this->input->post('txtSchoolAddress1'),
+			'primary_year' => $this->input->post('txtSchoolYear1'),
+			'secondary_name' => $this->input->post('txtSchoolName2'),
 			'secondary_address' => $this->input->post('txtSchoolAddress2'),
-			'secondary_year'    => $this->input->post('txtSchoolYear2'),
-			'tertiary_name'     => $this->input->post('txtSchoolName3'),
-			'tertiary_address'  => $this->input->post('txtSchoolAddress3'),
-			'tertiary_year'     => $this->input->post('txtSchoolYear3')
+			'secondary_year' => $this->input->post('txtSchoolYear2'),
+			'tertiary_name' => $this->input->post('txtSchoolName3'),
+			'tertiary_address' => $this->input->post('txtSchoolAddress3'),
+			'tertiary_year' => $this->input->post('txtSchoolYear3')
 		);
 		return $data;
 	}
 
 	public function employmentInfo(){
 		$data = array(
-			'status'             => $this->input->post('txtStatus'),
+			'status' => $this->input->post('txtStatus'),
 			'employment_type_id' => $this->input->post('txtEmploymentType'),
-			'job_title_id'       => $this->input->post('txtJobTitle'),
-			'department_id'      => $this->input->post('txtDepartment'),
-			'start_date'         => $this->input->post('txtStartDate'),
-			'end_date'           => $this->input->post('txtEndDate'),
-			'probationary_date'  => $this->input->post('txtProbationaryDate'),
-			'permanency_date'    => $this->input->post('txtPermanencyDate'),
-			'salary'             => $this->input->post('txtSalary'),
-			'pay_grade'          => $this->input->post('txtPayGrade')
+			'job_title_id' => $this->input->post('txtJobTitle'),
+			'department_id' => $this->input->post('txtDepartment'),
+			'start_date' => $this->input->post('txtStartDate'),
+			'end_date' => $this->input->post('txtEndDate'),
+			'probationary_date' => $this->input->post('txtProbationaryDate'),
+			'permanency_date' => $this->input->post('txtPermanencyDate'),
+			'salary' => $this->input->post('txtSalary'),
+			'pay_grade' => $this->input->post('txtPayGrade')
 		);
 		return $data;
 	}
 
 	public function accountInfo(){
 		$data = array(
-			'username'        => $this->input->post('txtUsername'),
-			'password'        => $this->input->post('txtPassword'),
-			'user_level'      => $this->input->post('txtUserLevel'),
+			'username' => $this->input->post('txtUsername'),
+			'password' => md5($this->input->post('txtPassword')),
+			'user_level' => $this->input->post('txtUserLevel'),
 			'secret_question' => $this->input->post('txtSecretQuestion'),
-			'secret_answer'   => $this->input->post('txtSecretAnswer')
+			'secret_answer' => $this->input->post('txtSecretAnswer')
 		);
 		return $data;
 	}
 
 	public function jobInfo(){
 		$data = array(
-			'employee_id'     => $this->input->get('emp_id'),
-			'company_name'    => $this->input->post('txtCompanyName'),
+			'employee_id' => $this->input->get('emp_id'),
+			'company_name' => $this->input->post('txtCompanyName'),
 			'company_address' => $this->input->post('txtCompanyAddress'),
-			'years_stayed'    => $this->input->post('txtJobHistYears'),
-			'job_title'       => $this->input->post('txtJobHistTitle')
+			'years_stayed' => $this->input->post('txtJobHistYears'),
+			'job_title' => $this->input->post('txtJobHistTitle')
 		);
 		return $data;
 	}
 
 	public function dependentInfo(){
 		$data = array(
-			'employee_id'     => $this->input->get('emp_id'),
+			'employee_id' => $this->input->get('emp_id'),
 			'dependent_fname' => $this->input->post('txtDFirstName'),
 			'dependent_lname' => $this->input->post('txtDLastName'),
-			'relationship'    => $this->input->post('txtRelationship')
+			'relationship' => $this->input->post('txtRelationship')
 		);
 		return $data;
 	}

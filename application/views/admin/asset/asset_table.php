@@ -15,36 +15,18 @@
 			<div class="box-header with-border">
 			    <div class="row">
 			    	<div class="col-sm-8">
-			    		<h1 class="box-title big">Other Assets
-				    		 
-						</h1>
+			    		<h1 class="box-title big">Other Assets</h1>
 			    	</div>
-			    	<form action="<?php echo base_url();?>ams/search_asset" method="post">
-			    	<div class="col-sm-4">
-			    		<div class="input-group input-group">
-			    			<input type="text" class="form-control" placeholder="Search Asset (Id / Serial / Model)" name="txtSearch">
-		                    <span class="input-group-btn">
-	                    		<button class="btn btn-info btn-flat" name="btnSearch"><i class="fa fa-search fa-lg"></i></button>
-	                    	</span>
-		                 </div>
-			    	</div>
-			    	</form>
 			    </div>		    
 			</div>
 			<div class="box-body">
-					<div class="pull-left add-employee">
-						<a href="<?php echo base_url();?>ams/add_asset">
-							<buttom  class="btn btn-success"><i class="fa fa-plus"></i> Add Asset </buttom>
-						</a>
-						<buttom class="btn btn-warning btn-sm" ><?php echo "Total Assets: ". $total_asset; ?> </buttom>
-					</div>
-					<div class="pull-right">
-					
-						<?php
-						if(isset($links)) echo $links; 
-						?>
-					</div> 
-				<table class="table table-striped table-hover table-bordered">				
+				<div class="pull-left add-employee">
+					<a href="<?php echo base_url();?>ams/add_asset">
+						<buttom  class="btn btn-success"><i class="fa fa-plus"></i> Add Asset </buttom>
+					</a>
+				</div>
+				<br><br>
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered">				
 					<thead >
 						<th class="table-head">Asset ID</th>
 						<th class="table-head">Asset Name</th>

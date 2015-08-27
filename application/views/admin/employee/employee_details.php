@@ -809,7 +809,7 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $account->password; ?>" name="txtPassword" />
+                                           <input type="password" disabled class="form-control" value="<?php echo $account->password; ?>" name="txtPassword" />
                                        </div>
                                    </div>
                                </div>

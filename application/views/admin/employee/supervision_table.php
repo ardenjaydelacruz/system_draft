@@ -17,46 +17,37 @@
                         <h1 class="box-title big">Employees Supervision
                         </h1>
                     </div>
-                    <form action="<?php echo base_url();?>ems/search_employee" method="post">
-                        <div class="col-sm-4">
-                            <div class="input-group input-group">
-                                <input type="text" class="form-control" placeholder="Search Employee (Id / Name / City)" name="txtSearch">
-                                <span class="input-group-btn">
-                                <button class="btn btn-info btn-flat" name="btnSearch"><i class="fa fa-search fa-lg"></i></button>
-                            </span>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
             <div class="box-body">
                 <div class="pull-left add-employee">
                     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addSupervision"><i class="fa fa-plus"></i> Add Supervision</a><br><br>
                 </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <th class="table-head">Emp. ID</th>
-                        <th class="table-head">Employee Name</th>
-                        <th class="table-head">Supervisor Name</th>
-                        <th class="table-head">Assigned Date</th>
-                    </thead>
-                    <?php
-                    foreach ($record as $row) {	?>
-                        <tr>
-                            <td align="center">
-                                <?php echo $row->employee_id; ?>
-                            </td>
-                            <td class="text-center"> 
-                                <?php echo $row->employee_name; ?>
-                            </td>
-                            <td class="text-center">
-                                <?php echo $row->supervisor_name; ?>
-                            </td>
-                            <td class="text-center">
-                                <?php echo date_format($row->assigned_date,'M d, Y'); ?>
-                            </td>
-                        </tr>
-                        <?php } ?>
+                <div class="clearfix"></div>
+                <table id="dynamicTable" class="table table-striped table-hover table-bordered">
+                  <thead>
+                      <th class="table-head">Emp. ID</th>
+                      <th class="table-head">Employee Name</th>
+                      <th class="table-head">Supervisor Name</th>
+                      <th class="table-head">Assigned Date</th>
+                  </thead>
+                  <?php
+                  foreach ($record as $row) {	?>
+                      <tr>
+                          <td align="center">
+                              <?php echo $row->employee_id; ?>
+                          </td>
+                          <td class="text-center"> 
+                              <?php echo $row->employee_name; ?>
+                          </td>
+                          <td class="text-center">
+                              <?php echo $row->supervisor_name; ?>
+                          </td>
+                          <td class="text-center">
+                              <?php echo date_format($row->assigned_date,'M d, Y'); ?>
+                          </td>
+                      </tr>
+                      <?php } ?>
                 </table>
             </div>
             <form action="<?php echo base_url();?>ems/supervisions" method="post">

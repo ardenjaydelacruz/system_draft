@@ -49,11 +49,11 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo base_url();?>payroll/attendance"><i class="fa fa-circle-o"></i> Attendance</a></li>
-					<li><a href="<?php echo base_url();?>payroll/requestentry_table"><i class="fa fa-circle-o"></i> Request Entry</a></li>
-					<li><a href="<?php echo base_url();?>payroll/payroll_index"><i class="fa fa-circle-o"></i> Payroll</a></li>
-					<li><a href="<?php echo base_url();?>payroll/allowances"><i class="fa fa-circle-o"></i> Allowances</a></li>
-					<li><a href="<?php echo base_url();?>payroll/taxes"><i class="fa fa-circle-o"></i> Taxes</a></li>
+					<li><a href="<?php echo base_url();?>payroll/attendance"><i class="fa fa-clock-o"></i> Attendance</a></li>
+					<li><a href="<?php echo base_url();?>payroll/requestentry_table"><i class="fa fa-book"></i> Request Entry</a></li>
+					<li><a href="<?php echo base_url();?>payroll/payroll_index"><i class="fa fa-credit-card"></i> Payroll</a></li>
+					<li><a href="<?php echo base_url();?>payroll/allowances"><i class="fa fa-money"></i> Allowances</a></li>
+					<li><a href="<?php echo base_url();?>payroll/taxes"><i class="fa fa-institution"></i> Taxes</a></li>
 				</ul>
 			</li>
 

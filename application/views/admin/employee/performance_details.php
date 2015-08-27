@@ -40,7 +40,7 @@
 								<div class="row">
 									<div class="col-sm-4">
 										<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">
-										<label class="label label-info ">Employee to be evaluated.</label>
+										<label class="label label-info ">Evaluated Employee</label>
 									</div>
 									<div class="col-sm-8"><br><br>
 										<table class="table table-bordered">
@@ -50,7 +50,7 @@
 											</tr>
 											<tr>
 												<th>Date Evaluated:</th>
-												<td><?php echo $row->date_evaluated; ?></td>
+												<td><?php echo date_format($row->date_evaluated,'M d, Y'); ?></td>
 											</tr>
 										</table>
 									</div>

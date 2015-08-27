@@ -7,20 +7,16 @@ class MY_Controller extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library("pagination");
-        // $this->load->model('login_model');
         $this->load->model('Performance');
         $this->load->model('reports_model');
         $this->load->model('print_reports_model');
         $this->load->library('user_agent');
 
-        // if ($this->ion_auth->logged_in()==false && uri_string() != 'auth/login'){
-        //     redirect('auth/login');
-        // }
-        if ($this->session->userdata('logged_in') == false && uri_string() != 'auth/login' && uri_string() != 'auth/mobile_login') {
+        if ($this->session->userdata('logged_in') == false && uri_string() != 'auth/login') {
             redirect('auth/login');
         }
-    
-        // $this->output->enable_profiler(TRUE);
+
+         $this->output->enable_profiler(TRUE);
         // $sections = array(
         // 'config'  => TRUE,
         // 'queries' => TRUE

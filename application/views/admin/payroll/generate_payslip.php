@@ -173,13 +173,13 @@
 											</thead>
 											<?php foreach($record["attendance"] as $row){ ?>
 											<tr>
-												<td class="col-md-1 text-center"><?php echo $row["datelog"]?></td>
-												<td class="col-md-1 text-center"><?php echo $row["weekday"]?></td>
-												<td class="col-md-1 text-center"><?php echo $row["time_in"]?></td>
-												<td class="col-md-1 text-center"><?php echo $row["time_out"]?></td>
-												<td class="col-md-1 text-center"><?php echo $row["man_hours"]?></td>
-												<td class="col-md-1 text-center"><?php echo $row["tardiness"]?></td>
-												<td class="col-md-1 text-center"><?php echo $row["overtime"]?></td>
+												<td class="col-md-1 text-center"><?php echo $row->datelog?></td>
+												<td class="col-md-1 text-center"><?php echo $row->weekday?></td>
+												<td class="col-md-1 text-center"><?php echo $row->time_in?></td>
+												<td class="col-md-1 text-center"><?php echo $row->time_out?></td>
+												<td class="col-md-1 text-center"><?php echo $row->man_hours?></td>
+												<td class="col-md-1 text-center"><?php echo $row->tardiness?></td>
+												<td class="col-md-1 text-center"><?php echo $row->overtime?></td>
 												<td class="col-md-1 text-center">&nbsp;</td>
 											</tr>
 											<?php } ?>

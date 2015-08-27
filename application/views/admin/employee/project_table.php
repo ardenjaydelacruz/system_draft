@@ -17,7 +17,8 @@
 						<button class="btn btn-success"><i class="fa fa-plus"></i> Add New Personnel </button>
 					</a>
 				</div>
-				<table class="table table-striped table-hover table-bordered centered">
+				<div class="clearfix"></div>
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered centered">
 					<thead>
 						<th class="text-center">ID</th>
 						<th class="text-center">Project Name</th>
@@ -42,10 +43,10 @@
 								<?php echo number_format($row->total_expense,2); ?>
 							</td>
 							<td class="text-center">
-								<?php echo $row->starting_date; ?>
+								<?php echo date_format($row->starting_date,'M d, Y'); ?>
 							</td>
 							<td class="text-center">
-								<?php echo $row->ending_date; ?>
+								<?php echo date_format($row->ending_date,'M d, Y'); ?>
 							</td>
 							<td class="text-center">
 								<a href="<?php echo base_url(); ?>ems/view_personnel?project_id=<?php echo $row->project_id; ?>">

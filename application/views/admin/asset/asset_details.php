@@ -29,7 +29,7 @@
                   <div class="form-group">
                       <div class="text-center"><img src="<?php echo base_url();?>assets/images/default.jpg" alt="" class="img-responsive emp_image" /></div>
                   </div>
-                  <table class="table table-striped table-hover">
+                  <table  class="table table-striped table-hover">
                       <tbody>
                       <tr>
                           <th>Asset ID:</th>

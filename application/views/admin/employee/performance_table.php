@@ -21,24 +21,12 @@
 			    </div>		    
 			</div>
 			<div class="box-body">
-					<div class="pull-left add-employee">
-						<!-- <a href="<?php echo base_url();?>ems/add_employee">
-							<buttom  class="btn btn-success"><i class="fa fa-plus"></i> Add New Evaluation </buttom>
-						</a> -->
-						<buttom class="btn btn-info btn-sm" ><?php echo "Total Record: ". $total_performance; ?> </buttom>
-					</div>
-					<div class="pull-right">
-					
-						<?php
-						if(isset($links)) echo $links; 
-						?>
-					</div> 
-				<table class="table table-striped table-hover table-bordered">				
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered">				
 					<thead >
 						<!-- <th><input type="checkbox" class="checkbox"></th> -->
 						<th class="table-head">Evaluation ID</th>
 						<th class="table-head">Employee Name</th>
-						<th class="table-head">Evaluators</th>
+						<th class="table-head">Evaluator</th>
 						<th class="table-head">Description</th>
 						<th class="table-head">Date Evaluated</th>
 						<th class="table-head">Final Rating</th>

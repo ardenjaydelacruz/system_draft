@@ -22,7 +22,8 @@
 						<div class="btn btn-success"><i class="fa fa-plus"></i> Add Day Event </div>
 					</a>
 				</div>
-				<table class="table table-striped table-hover table-bordered table-condensed ">				
+				<div class="clearfix"></div>
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered table-condensed ">				
 					<thead >
 						<th class="text-center">#</th>
 						<th class="col-md-2 text-center">Event</th>

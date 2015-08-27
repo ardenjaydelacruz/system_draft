@@ -49,9 +49,18 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class=" col-sm-3 control-label">Status: </label>
+                                <label class=" col-sm-3 control-label">Include on payroll: </label>
                                 <div class="col-sm-3">
                                     <input type="checkbox" name="chkStatus" <?php if($tax->active==1) echo 'checked'; ?>>
+                                </div>
+                                <div class="col-sm-5 error">
+                                    <?php echo form_error('txtPercentage'); ?>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class=" col-sm-3 control-label">Activate tax table: </label>
+                                <div class="col-sm-3">
+                                    <input type="checkbox" name="chkRangeActive" <?php if($tax->ranges_active==1) echo 'checked'; ?>>
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtPercentage'); ?>

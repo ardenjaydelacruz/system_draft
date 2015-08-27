@@ -17,16 +17,6 @@
                         <h1 class="box-title big">Employees
                         </h1>
                     </div>
-                    <form action="<?php echo base_url();?>ems/search_employee" method="post">
-                        <div class="col-sm-4">
-                            <div class="input-group input-group">
-                                <input type="text" class="form-control" placeholder="Search Employee (Id / Name / City)" name="txtSearch">
-                                <span class="input-group-btn">
-                                <button class="btn btn-info btn-flat" name="btnSearch"><i class="fa fa-search fa-lg"></i></button>
-                            </span>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
             <div class="box-body">
@@ -34,25 +24,17 @@
                     <a href="<?php echo base_url();?>ems/add_employee">
                         <buttom class="btn btn-success"><i class="fa fa-plus"></i> Add Employee </buttom>
                     </a>
-                    <buttom class="btn btn-info btn-sm">
-                        <?php echo "Total Employees: ". $total_employee; ?>
-                    </buttom>
                 </div>
-                <div class="pull-right">
-
-                    <?php
-                        if(isset($links)) echo $links;
-                        ?>
-                </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
+               <br><br>
+                <table id="dynamicTable" class="table table-striped table-hover table-bordered">
+                    <thead class="success">
                         <!-- <th><input type="checkbox" class="checkbox"></th> -->
                         <th class="table-head">Emp. ID</th>
                         <th class="table-head">First Name</th>
                         <th class="table-head">Middle Name</th>
                         <th class="table-head">Last Name</th>
                         <th class="table-head">Job Title</th>
-                        <th class="table-head">Department</th>
+                        <th class="table-head">Dept</th>
                         <th class="table-head">Status</th>
                         <th class="table-head">Manage</th>
                     </thead>

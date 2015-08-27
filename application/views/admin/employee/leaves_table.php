@@ -10,7 +10,7 @@
 			    <h1 class="box-title big">Leaves Request Table</h1>
 			</div>
 			<div class="box-body">
-				<table class="table table-striped table-hover table-bordered centered">
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered centered">
 					<thead >
 						<th class="text-center">ID</th>
 						<th class="text-center">Employee Name</th>
@@ -27,7 +27,7 @@
 					<tr>
 						<td class="text-center"><?php echo $row->leave_request_id; ?></td>
 						<td><?php echo $row->name;  ?></td>
-						<td class="text-center"><?php echo date_format($row->leave_start,'M d, Y').' --- '.date_format($row->leave_end,'M d, Y'); ?></td>
+						<td class="text-center"><?php echo date_format($row->leave_start,'M d, Y').' - '.date_format($row->leave_end,'M d, Y'); ?></td>
 						<td><?php echo $row->leave_type_name; ?></td>
 						<td class="text-center"><?php echo $row->num_days; ?></td>
 						<td class="text-center"><?php echo $row->leave_left; ?></td>

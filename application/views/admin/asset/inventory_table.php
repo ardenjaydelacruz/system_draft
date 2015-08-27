@@ -18,7 +18,8 @@
 						<buttom class="btn btn-success"><i class="fa fa-plus"></i> Restock Inventory </buttom>
 					</a>
 				</div>
-				<table class="table table-striped table-hover table-bordered table-condensed centered">
+				<div class="clearfix"></div>
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered table-condensed centered">
 					<thead>
 						<th class="text-center">Item ID</th>
 						<th class="text-center">Item Name</th>

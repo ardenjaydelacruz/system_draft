@@ -3,7 +3,6 @@ class Auth extends MY_Controller {
 	
 	public function __construct(){
 		parent::__construct();	
-		
 	}
 	public function index(){
 		$this->login();
@@ -31,27 +30,6 @@ class Auth extends MY_Controller {
 		$this->load->view('init');
 		$this->load->view('login/login');
 		$this->display_notif();
-	}
-
-	public function mobile_login(){
-		if ($this->input->post('txtUsername') || $this->input->post('txtPassword')){
-			$user = View_users_model::login_employee();
-			if ($user == 'Not registered') {
-				$response["success"] = false;
-				$response["message"] = "Username is not registered";
-			} elseif ($user == 'Incorrect password') {
-				$response["success"] = false;
-				$response["message"] = "Username and Password does not match";
-			} elseif ($user == 'Success') {
-				$response["success"] = true;
-				$response["message"] = "Login Successfull! Welcome ". $this->input->post('txtUsername');
-			}
-			
-		} else {
-			$response["success"] = false;
-			$response["message"] = "Username and Password Field is required";
-		}
-		echo json_encode($response);
 	}
 	
 	public function logout(){
