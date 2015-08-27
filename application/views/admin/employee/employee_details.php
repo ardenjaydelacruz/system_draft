@@ -160,7 +160,7 @@ if (!empty($account->profile_image)){
                             <div class="col-sm-9 controls">
                                 <div class="row">
                                     <div class="col-xs-9">
-                                        <input type="text"  disabled class="form-control" value="<?php echo date_format($info->birthday,'M d, Y'); ?>" name="txtBirthday" disabled/>
+                                        <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" disabled class="form-control" value="<?php echo date_format($info->birthday,'M d, Y'); ?>" name="txtBirthday" disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -626,7 +626,7 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo date_format($emp->start_date,'Y-m-j'); ?>" name="txtStartDate" />
+                                           <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" disabled class="form-control" value="<?php echo date_format($emp->start_date,'M d, Y'); ?>" name="txtStartDate" />
                                        </div>
                                    </div>
                                </div>
@@ -636,7 +636,7 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo date_format($emp->end_date,'Y-m-j'); ?>" name="txtEndDate" />
+                                           <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" disabled class="form-control" value="<?php echo date_format($emp->end_date,'M d, Y'); ?>" name="txtEndDate" />
                                        </div>
                                    </div>
                                </div>
@@ -646,7 +646,7 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo  date_format($emp->probationary_date,'Y-m-j'); ?>" name="txtProbationaryDate" />
+                                           <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" disabled class="form-control" value="<?php echo  date_format($emp->probationary_date,'M d, Y'); ?>" name="txtProbationaryDate" />
                                        </div>
                                    </div>
                                </div>
@@ -656,7 +656,7 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="date" disabled class="form-control" value="<?php echo  date_format($emp->permanency_date,'Y-m-j'); ?>" name="txtPermanencyDate" />
+                                           <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" disabled class="form-control" value="<?php echo  date_format($emp->permanency_date,'M d, Y'); ?>" name="txtPermanencyDate" />
                                        </div>
                                    </div>
                                </div>

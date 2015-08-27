@@ -24,6 +24,9 @@ $(document).ready(function(){
     $("select").prop('disabled', false);
   });
   $('#dynamicTable').dataTable();
+  $('.datepicker').datepicker({
+    autoclose:true
+    });
 });
 
 

@@ -91,7 +91,7 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Date Acquired: </label>
                                 <div class="col-sm-4">
-                                    <input type="date" class="form-control input-sm" placeholder="Date Acquired" name="txtDateAcquired" value="<?php echo set_value('txtDateAcquired'); ?>">
+                                    <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" placeholder="Date Acquired" name="txtDateAcquired" value="<?php echo set_value('txtDateAcquired'); ?>">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtDateAcquired'); ?>
@@ -130,7 +130,7 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Warranty End Date:  </label>
                                 <div class="col-sm-4">
-                                    <input type="date" class="form-control input-sm" placeholder="Warranty Ends" name="txtWarrantyEnd" value="<?php echo set_value('txtWarrantyEnd'); ?>">
+                                <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" placeholder="Warranty Ends" name="txtWarrantyEnd" value="<?php echo set_value('txtWarrantyEnd'); ?>">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtWarrantyEnd'); ?>

@@ -65,7 +65,7 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Restock Date: * </label>
                                 <div class="col-sm-3">
-                                    <input type="date" class="form-control input-sm" name="txtDateRestock">
+                                    <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" name="txtDateRestock">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtDateRestock'); ?>

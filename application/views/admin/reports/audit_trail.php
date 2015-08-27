@@ -13,10 +13,10 @@
                 </div>
             </div>
             <div class="panel-body">
-                <table class="table table-striped table-hover table-bordered">
+                <table id="dynamicTable" class="table table-striped table-hover table-bordered">
                 <thead>
                     <th class="table-head">ID</th>
-                    <th class="table-head">Employee Name</th>
+                    <th class="table-head">Name</th>
                     <th class="table-head">User Level</th>
                     <th class="table-head">IP Address</th>
                     <th class="table-head">Action</th>

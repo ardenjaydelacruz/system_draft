@@ -99,7 +99,7 @@
                             <div class="form-group">
                                 <label class=" col-sm-2 control-label">Date of Birth: * </label>
                                 <div class="col-sm-3">
-                                    <input type="date" class="form-control input-sm" name="txtBday">
+                                    <input type="text" data-provide="datepicker" class="form-control input-sm" name="txtBday">
                                     <?php echo form_error('txtBday','<div class="error">','</div>'); ?>
                                 </div>
                             </div>
