@@ -17,8 +17,10 @@ class Ems extends MY_Controller
         $data['departments'] = count(Departments_model::all());
         $data['supervisors'] = count(View_supervisors::all());
         $data['job_titles'] = count(Job_titles_model::all());
+        $data['leaves'] = count(Leave_type_model::all());
         $data['employment_type'] = count(Employment_type_model::all());
         $data['vendors'] = count(Vendor_model::all());
+        $data['category'] = count(Asset_category_model::all());
         $data['employee'] = Emp_info_model::all();
         $data['pageTitle'] = 'Dashboard - MSInc.';
         $data['content'] = 'employee/admin-dashboard';
@@ -337,6 +339,38 @@ class Ems extends MY_Controller
             "job_title_name" => $this->input->post('txtJobTitleName')
             );
         if (Job_titles_model::create($data)){
+            $this->session->set_userdata('added',1);
+            redirect('ems/admin_dashboard');
+        }
+    }
+    public function add_vendor(){
+        $data = array (
+            "vendor_id" => $this->input->post('txtVendorID'),
+            "vendor_name" => $this->input->post('txtVendorName')
+            );
+        if (Vendor_model::create($data)){
+            $this->session->set_userdata('added',1);
+            redirect('ems/admin_dashboard');
+        }
+    }
+
+    public function add_leave_type(){
+        $data = array (
+            "leave_type_id" => $this->input->post('txtLeaveID'),
+            "leave_type_name" => $this->input->post('txtLeaveName')
+            );
+        if (Leave_type_model::create($data)){
+            $this->session->set_userdata('added',1);
+            redirect('ems/admin_dashboard');
+        }
+    }
+
+    public function add_asset_category(){
+        $data = array (
+            "category_id" => $this->input->post('txtCategoryID'),
+            "category_name" => $this->input->post('txtCategoryName')
+            );
+        if (Asset_category_model::create($data)){
             $this->session->set_userdata('added',1);
             redirect('ems/admin_dashboard');
         }

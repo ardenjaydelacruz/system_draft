@@ -38,7 +38,15 @@
                 <a href="#" data-target="#addVendor" data-toggle="modal" class="btn btn-app btn-flat">
                   <span class="badge bg-green"><?php echo $vendors; ?></span>
                   <i class="fa fa-truck"></i> Vendor
-                </a>                
+                </a>    
+                <a href="#" data-target="#addLeave" data-toggle="modal" class="btn btn-app btn-flat">
+                  <span class="badge bg-green"><?php echo $leaves; ?></span>
+                  <i class="fa fa-calendar"></i> Leave Type
+                </a>   
+                <a href="#" data-target="#addAssetCategory" data-toggle="modal" class="btn btn-app btn-flat">
+                  <span class="badge bg-green"><?php echo $category; ?></span>
+                  <i class="fa fa-cubes"></i> Asset <br> Category
+                </a>         
               </div><!-- /.box-body -->
             </div><!-- /.box -->
           </div><!-- /.col -->
@@ -200,6 +208,72 @@
         </div>
         <div class="modal-footer">
           <input type="submit" class="btn btn-success" value="Add" name="btnAddDepartment">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</form>
+<form action="<?php echo base_url();?>ems/add_vendor" method="post">
+  <div class="modal fade" id="addVendor" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add Vendor</h4>
+        </div>
+        <div class="modal-body">
+          <label for="">Vendor ID:</label>
+          <input type="text" class="form-control" name="txtVendorID" required><br>
+          <label for="">Vendor Name:</label>
+          <input type="text" class="form-control" name="txtVendorName" required><br>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" value="Add" name="btnAddDepartment">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</form>
+<form action="<?php echo base_url();?>ems/add_leave" method="post">
+  <div class="modal fade" id="addLeave" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add Leave Type</h4>
+        </div>
+        <div class="modal-body">
+          <label for="">Leave ID:</label>
+          <input type="text" class="form-control" name="txtLeaveID" required><br>
+          <label for="">Leave Name:</label>
+          <input type="text" class="form-control" name="txtLeaveName" required><br>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</form>
+<form action="<?php echo base_url();?>ems/add_asset_category" method="post">
+  <div class="modal fade" id="addAssetCategory" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add Asset Category</h4>
+        </div>
+        <div class="modal-body">
+          <label for="">Category ID:</label>
+          <input type="text" class="form-control" name="txtCategoryID" required><br>
+          <label for="">Category Name:</label>
+          <input type="text" class="form-control" name="txtCategoryName" required><br>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" value="Add" name="btnAddCategory">
           <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
         </div>
       </div><!-- /.modal-content -->
