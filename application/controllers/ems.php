@@ -14,6 +14,12 @@ class Ems extends MY_Controller
         $data['total_employee'] = count(View_employees_list::find('all'));
         $data['total_asset'] = count(Projects_model::find('all'));
         $data['total_projects'] = count(Projects_model::find('all'));
+        $data['departments'] = count(Departments_model::all());
+        $data['supervisors'] = count(View_supervisors::all());
+        $data['job_titles'] = count(Job_titles_model::all());
+        $data['employment_type'] = count(Employment_type_model::all());
+        $data['vendors'] = count(Vendor_model::all());
+        $data['employee'] = Emp_info_model::all();
         $data['pageTitle'] = 'Dashboard - MSInc.';
         $data['content'] = 'employee/admin-dashboard';
         $this->load->view($this->master_layout, $data);
@@ -300,6 +306,39 @@ class Ems extends MY_Controller
             if (Users::do_upload($id)) {
                 redirect("ems/view_details?emp_id=$id");
             }
+        }
+    }
+
+    public function add_department(){
+        $data = array (
+            "department_id" => $this->input->post('txtDepartmentID'),
+            "department_name" => $this->input->post('txtDepartmentName')
+            );
+        if (Departments_model::create($data)){
+            $this->session->set_userdata('added',1);
+            redirect('ems/admin_dashboard');
+        }
+    }
+
+    public function add_supervisor(){
+        $data = array (
+            "supervisor_id" => $this->input->post('txtSupervisorID'),
+            "employee_id" => $this->input->post('txtSupervisorName')
+            );
+        if (Supervisors_model::create($data)){
+            $this->session->set_userdata('added',1);
+            redirect('ems/admin_dashboard');
+        }
+    }
+
+    public function add_jobtitle(){
+        $data = array (
+            "job_title_id" => $this->input->post('txtJobTitleID'),
+            "job_title_name" => $this->input->post('txtJobTitleName')
+            );
+        if (Job_titles_model::create($data)){
+            $this->session->set_userdata('added',1);
+            redirect('ems/admin_dashboard');
         }
     }
 }
