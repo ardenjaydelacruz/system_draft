@@ -169,12 +169,7 @@ class Ams extends MY_Controller {
 	public function edit_stocks(){
 		$id = $this->input->get('item_id');
 		if ($this->input->post('btnSubmit')){
-			$stocks = Stock_info_model::find($id);
-			$details = Stock_info_model::stocksDetails();
-			if ($stocks->update_attributes($details)){
-				$this->session->set_userdata('edited',1);
-				redirect('ams/view_inventory');
-			}
+			Stock_info_model::editStocks($id);
 		}
 		$data['category'] = Stock_category_model::all();
 		$data['row'] = Stock_info_model::find($this->input->get('item_id'));
@@ -185,8 +180,10 @@ class Ams extends MY_Controller {
 
 	public function delete_stocks(){
 		$stocks = Stock_info_model::find($this->input->get('item_id'));
-		$stocks->delete();
-		$this->session->set_userdata('deleted',1);
-		redirect('ams/view_inventory');
+		if ($stocks->delete()){
+			$this->session->set_userdata('deleted',1);
+			Audit_trail_model::auditDeleteItem($this->input->get('item_id'));
+			redirect('ams/view_inventory');
+		}
 	}
 }

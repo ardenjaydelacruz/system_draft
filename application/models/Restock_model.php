@@ -18,6 +18,7 @@ class Restock_model extends ActiveRecord\Model {
             if (Restock_model::create($details)){
                 Stocks_model::addQuantity();
                 $this->session->set_userdata('edited',1);
+                Audit_trail_model::auditRestock($details);
                 redirect('ams/view_inventory');
             }
         }

@@ -115,4 +115,54 @@ class Audit_trail_model extends ActiveRecord\Model {
             );
         Audit_trail_model::create($data);
     }
+
+    public function auditNewItem($details){
+        $data = array(
+            'ip_address' => $this->input->ip_address(),
+            'user_level' => $this->session->userdata('user_level'),
+            'username' => $this->session->userdata('username'),
+            'action' => 'Added new Inventory: '. $details['item_name']
+            );
+        Audit_trail_model::create($data);
+    }
+
+    public function auditRestock($details){
+        $data = array(
+            'ip_address' => $this->input->ip_address(),
+            'user_level' => $this->session->userdata('user_level'),
+            'username' => $this->session->userdata('username'),
+            'action' => 'Added '.$details['quantity'].' pieces to Item ' .$details['item_id']
+            );
+        Audit_trail_model::create($data);
+    }
+
+    public function auditEditItems($details){
+        $data = array(
+            'ip_address' => $this->input->ip_address(),
+            'user_level' => $this->session->userdata('user_level'),
+            'username' => $this->session->userdata('username'),
+            'action' => 'Edited Info of Item '.$details['item_id']
+            );
+        Audit_trail_model::create($data);
+    }
+
+    public function auditDeleteItem($details){
+        $data = array(
+            'ip_address' => $this->input->ip_address(),
+            'user_level' => $this->session->userdata('user_level'),
+            'username' => $this->session->userdata('username'),
+            'action' => 'Deleted Item '.$details
+            );
+        Audit_trail_model::create($data);
+    }
+
+    public function auditNewAsset($details){
+        $data = array(
+            'ip_address' => $this->input->ip_address(),
+            'user_level' => $this->session->userdata('user_level'),
+            'username' => $this->session->userdata('username'),
+            'action' => 'Added New Asset '.$details['asset_name']
+            );
+        Audit_trail_model::create($data);
+    }
 }

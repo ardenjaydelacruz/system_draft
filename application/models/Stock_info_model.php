@@ -28,8 +28,19 @@ class Stock_info_model extends ActiveRecord\Model {
             if (Stock_info_model::create($details)){
                 Stocks_model::newStocks();
                 $this->session->set_userdata('added',1);
+                Audit_trail_model::auditNewItem($details);
                 redirect('ams/view_inventory');
             }
         }
+    }
+
+    public function editStocks($id){
+        $stocks = Stock_info_model::find($id);
+            $details = Stock_info_model::stocksDetails();
+            if ($stocks->update_attributes($details)){
+                $this->session->set_userdata('edited',1);
+                Audit_trail_model::auditEditItems($details);
+                redirect('ams/view_inventory');
+            }
     }
 }

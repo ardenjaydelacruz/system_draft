@@ -44,6 +44,7 @@ class Assets_info_model extends ActiveRecord\Model {
 			if (Assets_info_model::create($details)){
 				Assets_model::newAssets();
 				$this->session->set_userdata('added',1);
+				Audit_trail_model::auditNewAsset($details);
 				redirect('ams/view_assets');
 			}
 		}
