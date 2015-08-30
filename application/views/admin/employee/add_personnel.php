@@ -8,7 +8,7 @@
 		<div class="box box-info box-solid">
 			<div class="box-header with-borderbox">
 				<h3 class="box-title big">Add Project Personnel</h3>
-			</div>box
+			</div>
 			<div class="box-body">
 				<label>
 					<small>Fields with * asterisk are required.</small>
@@ -16,7 +16,7 @@
 				<?php echo form_open('ems/add_personnel'); ?>
 				<div class="box box-default box-solid">
 					<div class="box-heading with-border">
-						<h3 class="box-title">Material Information</h3>
+						<h3 class="box-title">Employee Information</h3>
 					</div>
 					<div class="box-body">
 						<div class="form-horizontal">

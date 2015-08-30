@@ -9,6 +9,7 @@ class Performance extends ActiveRecord\Model {
     static $table_name = 'tbl_emp_performance';
     static $primary_key = 'performance_id';
 
+
     public function add_evaluation(){
         $data = array(
             'employee_name' => $this->session->userdata('name'),
@@ -29,6 +30,7 @@ class Performance extends ActiveRecord\Model {
         if (Performance::create($data)) {
             $this->session->unset_userdata('name');
             $this->session->set_userdata('added', 1);
+            Audit_trail_model::auditPerformance($data);
             redirect('ems/view_performance');
         }
     }

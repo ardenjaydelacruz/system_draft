@@ -23,6 +23,7 @@ class Project_worker_model extends ActiveRecord\Model {
         if ($this->form_validation->run()){
             if (Project_worker_model::create($data)){
                 $this->session->set_userdata('added',1);
+                Audit_trail_model::auditProjectPersonnel($data);
                 redirect('ems/view_projects');
             }
         }

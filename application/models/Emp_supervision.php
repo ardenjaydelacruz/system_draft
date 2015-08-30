@@ -18,6 +18,7 @@ class Emp_supervision extends ActiveRecord\Model {
 
 		if(Emp_supervision::create($data)){
 	            $this->session->set_userdata('edited', 1);
+	            Audit_trail_model::auditSupervision($data);
 	            redirect("ems/supervisions");
 	        }
 	}

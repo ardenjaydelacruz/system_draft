@@ -16,6 +16,7 @@ class Leave_request_model extends ActiveRecord\Model {
 	    );
 	    $approved = Leave_request_model::find($this->input->get('leave_request_id'));
 	    if ($approved->update_attributes($details)) {
+	    	Audit_trail_model::auditUpdateLeave($details);
 	        redirect('ems/leaves_table');
 	    }
     }	
@@ -40,6 +41,7 @@ class Leave_request_model extends ActiveRecord\Model {
 		$details = Leave_request_model::leave_details();
         if ($leave = Leave_request_model::create($details)) {
             $this->session->set_userdata('added', 1);
+            Audit_trail_model::auditLeave($details);
             redirect('ems/leaves_table');
         }
 	}

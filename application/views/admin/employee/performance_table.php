@@ -40,7 +40,7 @@
 						<td><?php echo $row->employee_name; ?></td>
 						<td><?php echo $row->evaluators; ?></td>
 						<td><?php echo $row->description; ?></td>
-						<td align="center"> <?php echo $row->date_evaluated; ?></td>
+						<td align="center"> <?php echo date_format($row->date_evaluated,'M d, Y'); ?></td>
 						<td align="center"><?php echo $row->final_rating; ?></td>
 						<td align="center">
 						<a href="<?php echo base_url();?>ems/view_performance_details?performance_id=<?php echo $row->performance_id; ?>">

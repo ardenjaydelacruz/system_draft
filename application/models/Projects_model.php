@@ -29,6 +29,7 @@ class Projects_model extends ActiveRecord\Model {
         if ($this->form_validation->run()){
             if (Projects_model::create(Projects_model::projectDetails())){
                 $this->session->set_userdata('added',1);
+                Audit_trail_model::auditNewProject($this->input->post('txtProjectName'));
                 redirect('ams/view_projects');
             }
         }

@@ -18,14 +18,14 @@ class Emp_info_model extends ActiveRecord\Model {
 	        }
 	    }
 	    
-	    $ems = Emp_info_model::find($id);
-	    $gov = Gov_id_model::find($id);
-	    $address = Emp_address_model::find($id);
-	    $contact = Emp_contact_model::find($id);
-	    $contactP = Emp_contact_person::find($id);
-	    $school = Emp_school_model::find($id);
-	    $emp = Emp_history_model::find($id);
-	    $user = Users::find_by_employee_id($id);
+		$ems      = Emp_info_model::find($id);
+		$gov      = Gov_id_model::find($id);
+		$address  = Emp_address_model::find($id);
+		$contact  = Emp_contact_model::find($id);
+		$contactP = Emp_contact_person::find($id);
+		$school   = Emp_school_model::find($id);
+		$emp      = Emp_history_model::find($id);
+		$user     = Users::find_by_employee_id($id);
 
 	    if ($ems->update_attributes(Emp_info_model::personalInfo()) && 
 	        $gov->update_attributes(Emp_info_model::govInfo()) && 
@@ -107,7 +107,6 @@ class Emp_info_model extends ActiveRecord\Model {
 			'profile_image' => 'default.jpg',
 			'user_level' => 'EMP'
 			);
-
 		
 		if ($this->form_validation->run()) {	
 			if (Emp_info_model::create($personal) && 
