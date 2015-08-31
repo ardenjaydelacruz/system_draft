@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2015 at 04:55 AM
+-- Generation Time: Aug 30, 2015 at 05:17 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -249,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `tbl_attendance` (
   `datetimelog` datetime NOT NULL,
   `event` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
   `datetimefetch` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=243 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbl_attendance`
@@ -512,7 +512,7 @@ CREATE TABLE IF NOT EXISTS `tbl_audit_trail` (
   `old_value` varchar(50) DEFAULT NULL,
   `new_value` varchar(50) DEFAULT NULL,
   `date_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=297 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=289 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_audit_trail`
@@ -584,28 +584,20 @@ INSERT INTO `tbl_audit_trail` (`audit_trail_id`, `ip_address`, `user_level`, `us
 (00272, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-19 11:46:43'),
 (00273, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-19 11:47:19'),
 (00274, '::1', 'Administrator', 'ardents', 'CREATED Employee Profile', '11', NULL, NULL, '2015-08-19 11:51:15'),
-(00275, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-21 17:10:32'),
-(00276, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-21 17:10:39'),
-(00277, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-21 17:31:59'),
-(00278, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-21 17:34:13'),
-(00279, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-22 05:12:34'),
-(00280, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-22 05:27:03'),
-(00281, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-22 05:27:10'),
-(00282, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-22 05:28:40'),
-(00283, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-24 09:17:24'),
-(00284, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-24 09:23:12'),
-(00285, '::1', 'Administrator', 'ardents', 'Requested for leave', '1', NULL, NULL, '2015-08-24 09:39:23'),
-(00286, '::1', 'Administrator', 'ardents', 'Added New Project: Project Ara', NULL, NULL, NULL, '2015-08-24 09:49:43'),
-(00287, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-25 16:41:42'),
-(00288, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-25 16:58:32'),
-(00289, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-26 00:51:15'),
-(00290, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-26 06:27:09'),
-(00291, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-26 06:29:43'),
-(00292, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-26 06:29:47'),
-(00293, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-26 06:29:55'),
-(00294, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-26 06:30:36'),
-(00295, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-26 06:30:56'),
-(00296, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-26 11:11:13');
+(00275, '::1', 'Administrator', 'admin', 'Logged in', NULL, NULL, NULL, '2015-08-25 12:13:41'),
+(00276, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-27 02:58:09'),
+(00277, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-27 05:31:12'),
+(00278, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-27 05:36:27'),
+(00279, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-27 14:38:51'),
+(00280, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-27 17:32:48'),
+(00281, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-27 17:34:22'),
+(00282, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-27 17:35:14'),
+(00283, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-28 05:08:38'),
+(00284, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-28 08:57:28'),
+(00285, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-29 16:14:47'),
+(00286, '::1', 'Administrator', 'ardents', 'Employee 1 requested BL', NULL, NULL, NULL, '2015-08-29 17:59:10'),
+(00287, '::1', 'Administrator', 'ardents', 'Leave Request Approved by Administrator Arden', NULL, NULL, NULL, '2015-08-29 18:04:18'),
+(00288, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-30 02:22:33');
 
 -- --------------------------------------------------------
 
@@ -1017,7 +1009,9 @@ INSERT INTO `tbl_departments` (`department_id`, `department_name`) VALUES
 ('DE1004', 'Human Resource'),
 ('DE1005', 'Purchasing'),
 ('DE1006', 'I.T.'),
-('DE1007', 'Operations');
+('DE1007', 'Operations'),
+('DE1008', 'Inventory'),
+('DE1009', 'Others');
 
 -- --------------------------------------------------------
 
@@ -1073,8 +1067,7 @@ INSERT INTO `tbl_employment_history` (`company_name`, `company_address`, `years_
 ('IBM', 'Eastwood', 1, 'Programmer', '3'),
 ('qwe', 'qwe', 2, 'e', '3'),
 ('IBMe', 'ee', 0, 'e', '3'),
-('sd', 'ds', 2, 'sads', '20'),
-('dd', 'dd', 1, 'dd', '1');
+('sd', 'ds', 2, 'sads', '20');
 
 -- --------------------------------------------------------
 
@@ -1127,16 +1120,16 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_history` (
 --
 
 INSERT INTO `tbl_emp_history` (`emp_id`, `status`, `employment_type_id`, `job_title_id`, `department_id`, `start_date`, `end_date`, `probationary_date`, `permanency_date`, `salary`, `pay_grade`, `user_id`, `date_modified`) VALUES
-(1, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '0.00', '', NULL, '2015-08-11 20:53:11'),
-(16, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', NULL, NULL, NULL, '2015-08-13 22:24:05'),
-(4, 'Existing', 'ET1002', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', NULL, NULL, NULL, '2015-08-13 22:25:24'),
-(6, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', NULL, NULL, NULL, '2015-08-14 00:36:43'),
-(7, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', NULL, NULL, NULL, '2015-08-14 00:37:38'),
-(3, 'Existing', 'ET1005', 'JT1008', 'DE1006', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '999.00', 'A', NULL, '2015-08-14 01:13:59'),
-(2, 'Existing', 'ET1002', 'JT1002', 'DE1003', '2015-08-18', '2015-08-18', '2015-08-18', '2015-08-18', '0.00', '', NULL, '2015-08-18 13:54:04'),
-(8, 'Existing', 'ET1002', 'JT1008', 'DE1006', '2015-08-19', '2015-08-19', '2015-08-19', '2015-08-19', NULL, NULL, NULL, '2015-08-19 19:34:23'),
-(9, 'Existing', 'ET1002', 'JT1008', 'DE1001', '2015-08-19', '2015-08-19', '2015-08-19', '2015-08-19', NULL, NULL, NULL, '2015-08-19 19:37:51'),
-(11, 'Existing', 'ET1003', 'JT1004', 'DE1003', '2015-08-19', '2015-08-19', '2015-08-19', '2015-08-19', NULL, NULL, NULL, '2015-08-19 19:51:14');
+(1, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-07-27', '2015-08-13', '2015-08-13', '2015-08-14', '40000.00', 'B', NULL, '2015-08-11 20:53:11'),
+(16, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '40000.00', NULL, NULL, '2015-08-13 22:24:05'),
+(4, 'Existing', 'ET1002', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '40000.00', NULL, NULL, '2015-08-13 22:25:24'),
+(6, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '40000.00', NULL, NULL, '2015-08-14 00:36:43'),
+(7, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '40000.00', NULL, NULL, '2015-08-14 00:37:38'),
+(3, 'Existing', 'ET1005', 'JT1008', 'DE1006', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '40000.00', 'A', NULL, '2015-08-14 01:13:59'),
+(2, 'Existing', 'ET1002', 'JT1002', 'DE1003', '2015-08-18', '2015-08-18', '2015-08-18', '2015-08-18', '40000.00', '', NULL, '2015-08-18 13:54:04'),
+(8, 'Existing', 'ET1002', 'JT1008', 'DE1006', '2015-08-19', '2015-08-19', '2015-08-19', '2015-08-19', '40000.00', NULL, NULL, '2015-08-19 19:34:23'),
+(9, 'Existing', 'ET1002', 'JT1008', 'DE1001', '2015-08-19', '2015-08-19', '2015-08-19', '2015-08-19', '40000.00', NULL, NULL, '2015-08-19 19:37:51'),
+(11, 'Existing', 'ET1003', 'JT1004', 'DE1003', '2015-08-19', '2015-08-19', '2015-08-19', '2015-08-19', '40000.00', NULL, NULL, '2015-08-19 19:51:14');
 
 -- --------------------------------------------------------
 
@@ -1146,7 +1139,7 @@ INSERT INTO `tbl_emp_history` (`emp_id`, `status`, `employment_type_id`, `job_ti
 
 DROP TABLE IF EXISTS `tbl_emp_info`;
 CREATE TABLE IF NOT EXISTS `tbl_emp_info` (
-  `emp_id` int(8) NOT NULL,
+  `emp_id` int(5) NOT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `middle_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
@@ -1154,15 +1147,14 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_info` (
   `gender` varchar(50) DEFAULT NULL,
   `marital_status` varchar(50) DEFAULT NULL,
   `date_added` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_emp_info`
 --
 
 INSERT INTO `tbl_emp_info` (`emp_id`, `first_name`, `middle_name`, `last_name`, `birthday`, `gender`, `marital_status`, `date_added`) VALUES
-(0, 'Gilbert', 'Start', 'A', '2000-01-01', 'male', 'Single', '2015-08-26 11:39:46'),
-(1, 'Arden', 'Jay', 'Dela Cruz', '1992-04-22', 'male', 'Single', '2015-08-11 12:53:11'),
+(1, 'Arden', 'Jay', 'Dela Cruz', '2015-08-27', 'male', 'Single', '2015-08-11 12:53:11'),
 (2, 'Joses', 'P', 'Rizal', '2003-02-05', 'male', 'Single', '2015-08-18 05:54:04'),
 (3, 'Ardensssss', 'Alcairo', 'Dela Cruz', '2015-08-11', 'female', 'Single', '2015-08-13 17:13:59'),
 (4, 'Ardensssss', 'Alcairo', 'Dela Cruz', '2015-08-11', 'female', 'Single', '2015-08-13 17:13:59'),
@@ -1198,7 +1190,7 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_performance` (
   `rate5` decimal(3,2) DEFAULT NULL,
   `final_rating` decimal(3,2) DEFAULT NULL,
   `date_evaluated` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_emp_performance`
@@ -1215,7 +1207,8 @@ INSERT INTO `tbl_emp_performance` (`performance_id`, `employee_name`, `evaluator
 (8, 'Arden Alcairo Dela Cruz', 'Arden', 'TitleFucker', 'w', 'w', 'w', 'w', 'w', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2015-07-03 20:02:53'),
 (9, 'Ardenx Alcairo Dela Cruz', 'Ardenx', 'Some Title', 'qwe1', 'qwe2', 'qwe3', 'qwe4', 'qwe5', '2.00', '3.00', '3.00', '3.00', '4.00', '3.00', '2015-07-11 11:40:32'),
 (10, 'Ardenx Alcairo Dela Cruz', 'Ardenx', 'TitleFucker', 'qwe1', 'qwe2', 'qwe3', 'qwe4', 'qwe5', '2.00', '2.00', '4.00', '5.00', '2.00', '3.00', '2015-07-11 11:45:58'),
-(11, 'e e e', 'Arden', 'End of Project Evaluation', 'Lorem1', 'Lorem2', 'Lorem3', 'Lorem4', 'Lorem5', '1.00', '2.00', '3.00', '4.00', '5.00', '3.00', '2015-08-12 09:20:27');
+(11, 'e e e', 'Arden', 'End of Project Evaluation', 'Lorem1', 'Lorem2', 'Lorem3', 'Lorem4', 'Lorem5', '1.00', '2.00', '3.00', '4.00', '5.00', '3.00', '2015-08-12 09:20:27'),
+(12, 'Joses P Rizal', 'Arden', 'Monthly Evaluation', 'Lorem1', 'Lorem2', 'Lorem3', 'Lorem4', 'Lorem5', '1.00', '2.00', '1.00', '2.00', '5.00', '2.20', '2015-08-27 15:13:52');
 
 -- --------------------------------------------------------
 
@@ -1296,7 +1289,8 @@ INSERT INTO `tbl_job_title` (`job_title_id`, `job_title_name`) VALUES
 ('JT1006', 'HR Assistant'),
 ('JT1007', 'Purchasing Manager'),
 ('JT1008', 'I.T. Manager'),
-('JT1009', 'Operation Manager');
+('JT1009', 'Operation Manager'),
+('JT1010', 'Stock Clerk');
 
 -- --------------------------------------------------------
 
@@ -1316,7 +1310,7 @@ CREATE TABLE IF NOT EXISTS `tbl_leave_left` (
 --
 
 INSERT INTO `tbl_leave_left` (`employee_id`, `leave_type_id`, `days`) VALUES
-('1', 'BL', 20),
+('1', 'BL', 16),
 ('1', 'EL', 17),
 ('1', 'MNL', 15),
 ('1', 'MTL', 20),
@@ -1381,7 +1375,7 @@ CREATE TABLE IF NOT EXISTS `tbl_leave_request` (
   `date_approved` date DEFAULT NULL,
   `date_requested` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `employee_id` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_leave_request`
@@ -1390,11 +1384,12 @@ CREATE TABLE IF NOT EXISTS `tbl_leave_request` (
 INSERT INTO `tbl_leave_request` (`id`, `prefix`, `leave_type`, `leave_reason`, `leave_start`, `leave_end`, `leave_left`, `leave_status`, `approved_by`, `date_approved`, `date_requested`, `employee_id`) VALUES
 (00002, 'LVR', 'BL', 'It is my birthday!', '2015-08-06', '2015-08-08', 20, 'Denied', 'Administrator Arden', '2015-08-08', '2015-08-10 16:00:00', '1'),
 (00003, 'LVR', 'EL', '23', '2015-08-04', '2015-08-06', 20, 'Approved', 'Administrator Arden', '2015-08-13', '2015-08-13 17:48:55', '1'),
-(00004, 'LVR', 'BL', 'sadasd', '2015-08-01', '2015-08-04', 20, 'Pending', NULL, NULL, NULL, '1'),
+(00004, 'LVR', 'BL', 'sadasd', '2015-08-01', '2015-08-04', 20, 'Approved', 'Administrator Arden', '2015-08-29', '2015-08-29 18:04:18', '1'),
 (00005, 'LVR', 'EL', 'asdasdddd', '2015-08-18', '2015-08-20', 17, 'Pending', NULL, NULL, NULL, '1'),
 (00006, 'LVR', 'MNL', 'asdasd', '2015-08-12', '2015-08-20', NULL, 'Pending', NULL, NULL, NULL, '2'),
 (00007, 'LVR', 'EL', 'qweqwe', '2015-08-11', '2015-08-13', NULL, 'Pending', NULL, NULL, NULL, '11'),
-(00008, 'LVR', 'BL', 'inuman', '2015-08-24', '2015-08-26', 20, 'Pending', NULL, NULL, NULL, '1');
+(00008, 'LVR', 'BL', 'weqwe', '2015-08-01', '2015-08-04', 20, 'Pending', NULL, NULL, NULL, '1'),
+(00009, 'LVR', 'BL', 'qwe', '2015-08-03', '2015-08-06', 20, 'Pending', NULL, NULL, NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -1475,25 +1470,33 @@ CREATE TABLE IF NOT EXISTS `tbl_payslip` (
   `basic_salary` decimal(8,2) NOT NULL,
   `total_overtime` decimal(8,2) NOT NULL,
   `total_tardiness` decimal(8,2) NOT NULL,
+  `days_absent` decimal(4,2) DEFAULT NULL,
   `total_absent_amount` decimal(8,2) NOT NULL,
   `total_allowances` decimal(8,2) NOT NULL,
   `total_taxes` decimal(8,2) NOT NULL,
   `gross_pay` decimal(8,2) NOT NULL,
   `net_pay` decimal(8,2) NOT NULL,
   `remarks` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_payslip`
 --
 
-INSERT INTO `tbl_payslip` (`payslip_id`, `emp_id`, `payslip_date`, `start_date`, `end_date`, `monthly_rate`, `basic_salary`, `total_overtime`, `total_tardiness`, `total_absent_amount`, `total_allowances`, `total_taxes`, `gross_pay`, `net_pay`, `remarks`) VALUES
-(8, 1, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '40000.00', '20000.00', '1215.52', '0.00', '1841.08', '500.00', '3776.14', '19874.44', '16098.29', ''),
-(9, 7, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '15000.00', '7500.00', '455.82', '0.00', '690.66', '500.00', '1475.38', '7765.16', '6289.78', ''),
-(10, 8, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '15000.00', '7500.00', '455.82', '0.00', '690.66', '500.00', '1475.38', '7765.16', '6289.78', ''),
-(11, 9, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '15000.00', '7500.00', '455.82', '0.00', '690.66', '500.00', '1475.38', '7765.16', '6289.78', ''),
-(12, 10, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '15000.00', '7500.00', '455.82', '0.00', '690.66', '500.00', '1475.38', '7765.16', '6289.78', ''),
-(13, 11, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '15000.00', '7500.00', '455.82', '0.00', '690.66', '500.00', '1475.38', '7765.16', '6289.78', '');
+INSERT INTO `tbl_payslip` (`payslip_id`, `emp_id`, `payslip_date`, `start_date`, `end_date`, `monthly_rate`, `basic_salary`, `total_overtime`, `total_tardiness`, `days_absent`, `total_absent_amount`, `total_allowances`, `total_taxes`, `gross_pay`, `net_pay`, `remarks`) VALUES
+(8, 1, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '40000.00', '20000.00', '1215.52', '0.00', NULL, '1841.08', '500.00', '3776.14', '19874.44', '16098.29', ''),
+(9, 7, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '15000.00', '7500.00', '455.82', '0.00', NULL, '690.66', '500.00', '1475.38', '7765.16', '6289.78', ''),
+(10, 8, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '15000.00', '7500.00', '455.82', '0.00', NULL, '690.66', '500.00', '1475.38', '7765.16', '6289.78', ''),
+(11, 9, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '15000.00', '7500.00', '455.82', '0.00', NULL, '690.66', '500.00', '1475.38', '7765.16', '6289.78', ''),
+(12, 10, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '15000.00', '7500.00', '455.82', '0.00', NULL, '690.66', '500.00', '1475.38', '7765.16', '6289.78', ''),
+(13, 11, '2015-06-20 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '15000.00', '7500.00', '455.82', '0.00', NULL, '690.66', '500.00', '1475.38', '7765.16', '6289.78', ''),
+(22, 8, '2015-06-19 00:00:00', '2015-06-01 00:00:00', '2015-06-15 00:00:00', '15000.00', '7500.00', '455.82', '0.00', '1.00', '689.66', '500.00', '1475.57', '7766.16', '6290.59', ''),
+(24, 1, '2015-06-18 00:00:00', '2015-06-01 00:00:00', '2015-06-17 00:00:00', '40000.00', '20000.00', '1215.52', '0.00', '4.00', '7356.32', '500.00', '2728.25', '14359.20', '11630.95', ''),
+(25, 7, '2015-06-18 00:00:00', '2015-06-01 00:00:00', '2015-06-17 00:00:00', '15000.00', '7500.00', '455.82', '0.00', '3.00', '2068.97', '500.00', '1213.50', '6386.85', '5173.35', ''),
+(26, 8, '2015-06-18 00:00:00', '2015-06-01 00:00:00', '2015-06-17 00:00:00', '15000.00', '7500.00', '455.82', '0.00', '3.00', '2068.97', '500.00', '1213.50', '6386.85', '5173.35', ''),
+(27, 9, '2015-06-18 00:00:00', '2015-06-01 00:00:00', '2015-06-17 00:00:00', '15000.00', '7500.00', '455.82', '0.00', '3.00', '2068.97', '500.00', '1213.50', '6386.85', '5173.35', ''),
+(28, 10, '2015-06-18 00:00:00', '2015-06-01 00:00:00', '2015-06-17 00:00:00', '15000.00', '7500.00', '455.82', '0.00', '3.00', '2068.97', '500.00', '1213.50', '6386.85', '5173.35', ''),
+(29, 11, '2015-06-18 00:00:00', '2015-06-01 00:00:00', '2015-06-17 00:00:00', '15000.00', '7500.00', '455.82', '0.00', '3.00', '2068.97', '500.00', '1213.50', '6386.85', '5173.35', '');
 
 -- --------------------------------------------------------
 
@@ -1646,8 +1649,7 @@ INSERT INTO `tbl_project` (`project_id`, `project_name`, `client`, `starting_dat
 ('P1004', 'Project Alpha', 'CL1003', '2015-07-10', '2015-08-07', '2015-07-08 19:05:40'),
 ('P1006', '9DevCorp', 'CL1005', '2015-07-15', '2015-07-22', '2015-07-21 23:19:42'),
 ('P1007', 'Project Pie', 'CL1002', '2015-07-20', '2015-07-23', '2015-07-20 01:06:53'),
-('P1009', 'ddd', 'aaaaa', '2015-08-04', '2015-08-27', '2015-08-18 11:48:19'),
-('P1008', 'Project Ara', 'Google Inc.', '2015-07-27', '2015-08-29', '2015-08-24 17:49:43');
+('P1009', 'ddd', 'aaaaa', '2015-08-04', '2015-08-27', '2015-08-18 11:48:19');
 
 -- --------------------------------------------------------
 
@@ -1669,8 +1671,7 @@ CREATE TABLE IF NOT EXISTS `tbl_project_workers` (
 INSERT INTO `tbl_project_workers` (`project_id`, `employee_id`, `assigned_date`) VALUES
 ('P1001', '100', '2015-07-13'),
 ('P1002', '100', '2015-07-20'),
-('P1003', '100', '2015-07-21'),
-('P1001', '1', '2015-08-24');
+('P1003', '100', '2015-07-21');
 
 -- --------------------------------------------------------
 
@@ -1690,7 +1691,7 @@ CREATE TABLE IF NOT EXISTS `tbl_requestentry` (
   `approved` tinyint(1) DEFAULT NULL,
   `approved_by` int(11) DEFAULT NULL,
   `date_approved` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_requestentry`
@@ -1705,7 +1706,8 @@ INSERT INTO `tbl_requestentry` (`req_id`, `emp_id`, `date_value`, `time_in`, `ti
 (6, 7, '2015-06-22', '08:00:00', '05:00:00', NULL, '2015-07-13 00:00:00', NULL, NULL, NULL),
 (7, 0, '2015-06-15', '09:00:00', '04:00:00', NULL, '0000-00-00 00:00:00', 1, 1, '0000-00-00 00:00:00'),
 (8, 1, '2015-06-06', '08:50:00', '12:00:00', NULL, '0000-00-00 00:00:00', NULL, NULL, '2015-07-17 23:24:04'),
-(9, 0, '2015-06-01', '09:00:00', '12:00:00', NULL, '0000-00-00 00:00:00', NULL, NULL, '2015-08-19 03:10:37');
+(9, 0, '2015-06-01', '09:00:00', '12:00:00', NULL, '0000-00-00 00:00:00', NULL, NULL, '2015-08-19 03:10:37'),
+(10, 0, '2015-06-09', '08:30:00', '07:30:00', NULL, '0000-00-00 00:00:00', NULL, NULL, '2015-08-25 21:01:37');
 
 -- --------------------------------------------------------
 
@@ -1818,6 +1820,7 @@ INSERT INTO `tbl_stocks_category` (`category_id`, `category_name`) VALUES
 ('COMP', 'Computer'),
 ('ELEC', 'Electronics'),
 ('PLSTC', 'Plastic Materials'),
+('PPR', 'Paper Materials'),
 ('SC', 'Secret Materials'),
 ('STL', 'Steel Materials'),
 ('WD', 'Wood Materials');
@@ -1871,7 +1874,7 @@ INSERT INTO `tbl_supervisions` (`supervisor_id`, `employee_id`, `assigned_date`)
 ('S1001', '3', '2015-08-19'),
 ('S1001', '16', '2015-08-19'),
 ('S1001', '3', '2015-08-19'),
-('S1001', '4', '2015-08-24');
+('S1001', '8', '2015-08-28');
 
 -- --------------------------------------------------------
 
@@ -1890,7 +1893,8 @@ CREATE TABLE IF NOT EXISTS `tbl_supervisors` (
 --
 
 INSERT INTO `tbl_supervisors` (`supervisor_id`, `employee_id`) VALUES
-('S1001', 2);
+('S1001', 2),
+('S1002', 3);
 
 -- --------------------------------------------------------
 
@@ -1969,11 +1973,11 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
 
 INSERT INTO `tbl_user` (`user_id`, `username`, `password`, `email`, `user_level`, `secret_question`, `secret_answer`, `profile_image`, `employee_id`, `date_registered`) VALUES
 (1, 'ardents', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'ADMIN', 'What is your pet name?', 'ardents', 'loader.gif', '1', '2015-06-05 05:28:36'),
-(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'asd@gmail.com', 'ADMIN', 'asda', 'asd', 'arrow_right.png', '3', '2015-08-15 01:02:18'),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'asd@gmail.com', 'ADMIN', 'asda', 'asd', 'arrow_right.png', '3', '2015-08-15 01:02:18'),
 (4, 'hr', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'HR', 'sad', 'asd', 'default.jpg', '4', '2015-08-15 01:02:06'),
 (6, 'acc', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'asd@gmail.com', 'ACC', 'we', 'qw', 'default.jpg', '6', '2015-08-15 01:02:17'),
 (7, 'ope', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com\r\nasd@gmail.com', 'OP', 'we', 'qw', 'default.jpg', '7', '2015-08-15 01:02:21'),
-(21, 'arden', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'asd@gmail.com', 'EMP', 'What is your pet name?', 'ardents', 'default.jpg', '2', '2015-08-18 05:54:04'),
+(8, 'arden', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'asd@gmail.com', 'EMP', 'What is your pet name?', 'ardents', 'default.jpg', '2', '2015-08-18 05:54:04'),
 (22, NULL, NULL, NULL, NULL, NULL, NULL, 'default.jpg', '8', '2015-08-19 11:34:23'),
 (23, NULL, NULL, NULL, 'EMP', NULL, NULL, 'default.jpg', '9', '2015-08-19 11:37:53'),
 (24, NULL, NULL, NULL, 'EMP', NULL, NULL, 'default.jpg', '11', '2015-08-19 11:51:15');
@@ -2021,7 +2025,8 @@ CREATE TABLE IF NOT EXISTS `tbl_vendor` (
 --
 
 INSERT INTO `tbl_vendor` (`vendor_id`, `vendor_name`, `vendor_address`, `vendor_contact_num`, `vendor_email`) VALUES
-('VEN1001', 'Secret Shop', 'Secret Lair', 999999999, 'secret@gmail.com');
+('VEN1001', 'Secret Shop', 'Secret Lair', 999999999, 'secret@gmail.com'),
+('VEN1002', 'School Canteen', '', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -2058,7 +2063,7 @@ CREATE TABLE IF NOT EXISTS `view_assigned_assets` (
 ,`model` varchar(50)
 ,`warranty_end_date` date
 ,`assigned_date` datetime
-,`emp_id` int(8)
+,`emp_id` int(5)
 );
 
 -- --------------------------------------------------------
@@ -2068,7 +2073,7 @@ CREATE TABLE IF NOT EXISTS `view_assigned_assets` (
 --
 DROP VIEW IF EXISTS `view_attendance`;
 CREATE TABLE IF NOT EXISTS `view_attendance` (
-`emp_id` int(8)
+`emp_id` int(5)
 ,`first_name` varchar(50)
 ,`middle_name` varchar(50)
 ,`last_name` varchar(50)
@@ -2106,7 +2111,7 @@ CREATE TABLE IF NOT EXISTS `view_calendar` (
 --
 DROP VIEW IF EXISTS `view_employees_list`;
 CREATE TABLE IF NOT EXISTS `view_employees_list` (
-`emp_id` int(8)
+`emp_id` int(5)
 ,`first_name` varchar(50)
 ,`middle_name` varchar(50)
 ,`last_name` varchar(50)
@@ -2187,7 +2192,7 @@ CREATE TABLE IF NOT EXISTS `view_leave_remaining` (
 ,`paternity_leave` tinyint(2)
 ,`sick_leave` tinyint(2)
 ,`vacation_leave` tinyint(2)
-,`emp_id` int(8)
+,`emp_id` int(5)
 ,`maternity_leave` tinyint(2)
 ,`total_leave` int(9)
 );
@@ -2212,7 +2217,7 @@ CREATE TABLE IF NOT EXISTS `view_leave_request` (
 ,`leave_left` smallint(2)
 ,`leave_type` varchar(50)
 ,`leave_type_name` varchar(50)
-,`emp_id` int(8)
+,`emp_id` int(5)
 ,`leave_type_id` varchar(10)
 );
 
@@ -2230,6 +2235,37 @@ CREATE TABLE IF NOT EXISTS `view_materials` (
 ,`project_id` varchar(10)
 ,`date_issued` date
 ,`project_name` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_payslip`
+--
+DROP VIEW IF EXISTS `view_payslip`;
+CREATE TABLE IF NOT EXISTS `view_payslip` (
+`emp_id` int(5)
+,`first_name` varchar(50)
+,`middle_name` varchar(50)
+,`last_name` varchar(50)
+,`department_name` varchar(100)
+,`job_title_name` varchar(20)
+,`emp_history_start_date` date
+,`emp_history_end_date` date
+,`payslip_id` int(4)
+,`payslip_date` datetime
+,`start_date` datetime
+,`end_date` datetime
+,`monthly_rate` decimal(8,2)
+,`basic_salary` decimal(8,2)
+,`total_overtime` decimal(8,2)
+,`total_tardiness` decimal(8,2)
+,`days_absent` decimal(4,2)
+,`total_absent_amount` decimal(8,2)
+,`total_allowances` decimal(8,2)
+,`total_taxes` decimal(8,2)
+,`gross_pay` decimal(8,2)
+,`net_pay` decimal(8,2)
 );
 
 -- --------------------------------------------------------
@@ -2293,7 +2329,7 @@ CREATE TABLE IF NOT EXISTS `view_project_workers` (
 ,`project_name` varchar(50)
 ,`name` varchar(152)
 ,`assigned_date` date
-,`emp_id` int(8)
+,`emp_id` int(5)
 );
 
 -- --------------------------------------------------------
@@ -2386,7 +2422,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_attendance`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_attendance` AS select distinct `tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name`,`tbl_job_title`.`job_title_name` AS `job_title_name`,`tbl_attendance`.`datelog` AS `datelog`,date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y') AS `logdate`,`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) AS `time_in`,`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) AS `time_out`,ifnull(if((timestampdiff(MINUTE,str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),format(((timestampdiff(MINUTE,str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) / 60) - 1),2),0),0) AS `man_hours`,ifnull(if((timestampdiff(MINUTE,str_to_date('01/01/1970 08:00 AM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),timestampdiff(MINUTE,str_to_date('01/01/1970 08:00 AM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')),0),0) AS `tardiness`,ifnull(if((timestampdiff(MINUTE,str_to_date('01/01/1970 05:00 PM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) >= 0),format((timestampdiff(MINUTE,str_to_date('01/01/1970 05:00 PM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y'))),'%c/%e/%Y %h:%i %p')) / 60),2),0),0) AS `overtime` from (((`tbl_emp_info` join `tbl_attendance` on((`tbl_attendance`.`emp_id` = `tbl_emp_info`.`emp_id`))) join `tbl_emp_history` on((`tbl_emp_info`.`emp_id` = `tbl_emp_history`.`emp_id`))) join `tbl_job_title` on((`tbl_job_title`.`job_title_id` = `tbl_emp_history`.`job_title_id`))) order by `tbl_emp_info`.`emp_id`,6;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_attendance` AS select distinct `tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name`,`tbl_job_title`.`job_title_name` AS `job_title_name`,`tbl_attendance`.`datelog` AS `datelog`,date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y') AS `logdate`,`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) AS `time_in`,`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) AS `time_out`,ifnull(if((timestampdiff(MINUTE,str_to_date(concat('01/01/1970 ',convert(`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) using utf8mb4)),'%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',convert(`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) using utf8mb4)),'%c/%e/%Y %h:%i %p')) >= 0),format(((timestampdiff(MINUTE,str_to_date(concat('01/01/1970 ',convert(`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) using utf8mb4)),'%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',convert(`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) using utf8mb4)),'%c/%e/%Y %h:%i %p')) / 60) - 1),2),0),0) AS `man_hours`,ifnull(if((timestampdiff(MINUTE,str_to_date('01/01/1970 08:00 AM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',convert(`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) using utf8mb4)),'%c/%e/%Y %h:%i %p')) >= 0),timestampdiff(MINUTE,str_to_date('01/01/1970 08:00 AM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',convert(`FN_GETTIMEIN`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) using utf8mb4)),'%c/%e/%Y %h:%i %p')),0),0) AS `tardiness`,ifnull(if((timestampdiff(MINUTE,str_to_date('01/01/1970 05:00 PM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',convert(`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) using utf8mb4)),'%c/%e/%Y %h:%i %p')) >= 0),format((timestampdiff(MINUTE,str_to_date('01/01/1970 05:00 PM','%c/%e/%Y %h:%i %p'),str_to_date(concat('01/01/1970 ',convert(`FN_GETTIMEOUT`(date_format(`tbl_attendance`.`datetimelog`,'%m/%d/%Y')) using utf8mb4)),'%c/%e/%Y %h:%i %p')) / 60),2),0),0) AS `overtime` from (((`tbl_emp_info` join `tbl_attendance` on((`tbl_attendance`.`emp_id` = `tbl_emp_info`.`emp_id`))) join `tbl_emp_history` on((`tbl_emp_info`.`emp_id` = `tbl_emp_history`.`emp_id`))) join `tbl_job_title` on((`tbl_job_title`.`job_title_id` = `tbl_emp_history`.`job_title_id`))) order by `tbl_emp_info`.`emp_id`,6;
 
 -- --------------------------------------------------------
 
@@ -2459,6 +2495,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `view_materials`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_materials` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_materials`.`item_id` AS `item_id`,`tbl_materials`.`quantity` AS `quantity`,`tbl_materials`.`price` AS `price`,`tbl_materials`.`project_id` AS `project_id`,`tbl_materials`.`date_issued` AS `date_issued`,`tbl_project`.`project_name` AS `project_name` from ((`tbl_materials` join `tbl_stock_info` on((`tbl_materials`.`item_id` = `tbl_stock_info`.`item_id`))) join `tbl_project` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_payslip`
+--
+DROP TABLE IF EXISTS `view_payslip`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_payslip` AS select `tbl_emp_info`.`emp_id` AS `emp_id`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name`,`tbl_departments`.`department_name` AS `department_name`,`tbl_job_title`.`job_title_name` AS `job_title_name`,max(`tbl_emp_history`.`start_date`) AS `emp_history_start_date`,max(`tbl_emp_history`.`end_date`) AS `emp_history_end_date`,`tbl_payslip`.`payslip_id` AS `payslip_id`,`tbl_payslip`.`payslip_date` AS `payslip_date`,`tbl_payslip`.`start_date` AS `start_date`,`tbl_payslip`.`end_date` AS `end_date`,`tbl_payslip`.`monthly_rate` AS `monthly_rate`,`tbl_payslip`.`basic_salary` AS `basic_salary`,`tbl_payslip`.`total_overtime` AS `total_overtime`,`tbl_payslip`.`total_tardiness` AS `total_tardiness`,`tbl_payslip`.`days_absent` AS `days_absent`,`tbl_payslip`.`total_absent_amount` AS `total_absent_amount`,`tbl_payslip`.`total_allowances` AS `total_allowances`,`tbl_payslip`.`total_taxes` AS `total_taxes`,`tbl_payslip`.`gross_pay` AS `gross_pay`,`tbl_payslip`.`net_pay` AS `net_pay` from ((((`tbl_emp_info` left join `tbl_emp_history` on((`tbl_emp_history`.`emp_id` = `tbl_emp_info`.`emp_id`))) left join `tbl_departments` on((`tbl_departments`.`department_id` = `tbl_emp_history`.`department_id`))) left join `tbl_job_title` on((`tbl_job_title`.`job_title_id` = `tbl_emp_history`.`job_title_id`))) join `tbl_payslip` on((`tbl_payslip`.`emp_id` = `tbl_emp_info`.`emp_id`))) group by `tbl_emp_info`.`emp_id`,`tbl_emp_info`.`first_name`,`tbl_emp_info`.`middle_name`,`tbl_emp_info`.`last_name`,`tbl_departments`.`department_name`,`tbl_job_title`.`job_title_name`,`tbl_payslip`.`payslip_id`,`tbl_payslip`.`payslip_date`,`tbl_payslip`.`start_date`,`tbl_payslip`.`end_date`,`tbl_payslip`.`monthly_rate`,`tbl_payslip`.`basic_salary`,`tbl_payslip`.`total_overtime`,`tbl_payslip`.`total_tardiness`,`tbl_payslip`.`days_absent`,`tbl_payslip`.`total_absent_amount`,`tbl_payslip`.`total_allowances`,`tbl_payslip`.`total_taxes`,`tbl_payslip`.`gross_pay`,`tbl_payslip`.`net_pay`;
 
 -- --------------------------------------------------------
 
@@ -2553,12 +2598,6 @@ ALTER TABLE `tbl_allowances`
 --
 ALTER TABLE `tbl_asset_info`
   ADD PRIMARY KEY (`asset_id`);
-
---
--- Indexes for table `tbl_attendance`
---
-ALTER TABLE `tbl_attendance`
-  ADD PRIMARY KEY (`attendance_id`);
 
 --
 -- Indexes for table `tbl_audit_trail`
@@ -2684,15 +2723,10 @@ ALTER TABLE `tbl_vendor`
 ALTER TABLE `tbl_allowances`
   MODIFY `allowance_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `tbl_attendance`
---
-ALTER TABLE `tbl_attendance`
-  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=243;
---
 -- AUTO_INCREMENT for table `tbl_audit_trail`
 --
 ALTER TABLE `tbl_audit_trail`
-  MODIFY `audit_trail_id` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=297;
+  MODIFY `audit_trail_id` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=289;
 --
 -- AUTO_INCREMENT for table `tbl_calendar`
 --
@@ -2709,20 +2743,25 @@ ALTER TABLE `tbl_countries`
 ALTER TABLE `tbl_day_type`
   MODIFY `day_type_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `tbl_emp_info`
+--
+ALTER TABLE `tbl_emp_info`
+  MODIFY `emp_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
 -- AUTO_INCREMENT for table `tbl_emp_performance`
 --
 ALTER TABLE `tbl_emp_performance`
-  MODIFY `performance_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `performance_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tbl_leave_request`
 --
 ALTER TABLE `tbl_leave_request`
-  MODIFY `id` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_payslip`
 --
 ALTER TABLE `tbl_payslip`
-  MODIFY `payslip_id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `payslip_id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `tbl_payslip_allowances`
 --
@@ -2737,7 +2776,7 @@ ALTER TABLE `tbl_payslip_taxes`
 -- AUTO_INCREMENT for table `tbl_requestentry`
 --
 ALTER TABLE `tbl_requestentry`
-  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_taxes`
 --

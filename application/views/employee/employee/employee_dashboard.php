@@ -141,5 +141,75 @@
         </div><!-- /.box -->
       </div><!-- /.col -->
     </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box box-primary box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">Requested Supplies/Equipments</h3>
+            <div class="box-tools pull-right">
+              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div><!-- /.box-tools -->
+          </div><!-- /.box-header -->
+          <div class="box-body">
+            <div class="table-responsive">
+              <table class="table table-hovered table-striped table-bordered">
+                 <thead>
+                    <th class="text-center">Equipment/Supplies Name</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Date Requested</th>
+                 </thead>
+                 <?php foreach ($requested_asset as $eq) { ?>
+                 <tr>
+                    <th class="text-center"><?php echo $eq->asset_name; ?></th>
+                    <td class="text-center"><?php echo $eq->quantity; ?></td>
+                    <td class="text-center">
+                    <?php 
+                      if ($eq->request_status=='Approved'){
+                        echo "<label class='label label-success'>";
+                        echo $eq->request_status;
+                        echo "</label>";
+                      } else if ($eq->request_status=='Denied') {
+                        echo "<label class='label label-danger'>";
+                        echo $eq->request_status;
+                        echo "</label>";
+                      } else {
+                        echo "<label class='label label-warning'>";
+                        echo $eq->request_status;
+                        echo "</label>";
+                      }
+                    ?>
+                    </td>
+                    <td class="text-center"><?php echo date_format($eq->date_requested,'M d, Y'); ?></td>
+                 </tr>
+                 <?php } ?>
+             </table>
+            </div>
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div><!-- /.col -->
+    </div>
   </div>
 </div>
+<form action="<?php echo base_url();?>ams/request_asset" method="post">
+  <div class="modal fade" id="requestAsset" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Request Supplies / Equipments</h4>
+        </div>
+        <div class="modal-body">
+          <label for="">Equipment / Supply Name:</label>
+          <input type="text" class="form-control" name="txtAssetName" required><br>
+          <label for="">Quantity:</label>
+          <input type="text" class="form-control" name="txtQuantity" required><br>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" value="Add" name="btnAddRequest">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</form>

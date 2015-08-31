@@ -59,7 +59,6 @@
 							<a href="<?php echo base_url();?>ems/view_leave_details?leave_request_id=<?php echo $row->leave_request_id; ?>">
 								<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Leave"><i class="fa fa-search"></i></button>
 							</a>
-							<!-- <button onclick=deleteLeave(<?php echo $row->leave_request_id; ?>,'<?php echo base_url();?>ems/'); class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Delete Request"><i class="fa fa-trash-o"></i></button> -->
 						</td>
 					</tr>
 					<?php } ?>

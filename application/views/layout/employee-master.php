@@ -13,15 +13,16 @@
 		<link href="<?php echo base_url();?>assets/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url();?>assets/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 		<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/sidebar.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/sweetalert.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/toastr.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/animations.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/morris.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/datatables/dataTables.bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/datepicker/datepicker3.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:500,700,500italic,400' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/mystyle.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
+		
 	</head>
 	<body class="skin-black sidebar-mini">
 		<div class="wrapper">
@@ -36,13 +37,19 @@
 				<strong>Copyright &copy; 2015 Multistyle Specialists Inc.</strong> All rights reserved.
 			</footer>
 
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+			<script src="<?php echo base_url();?>assets/js/jquery-ui.min.js"></script>
 			<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 			<script src="<?php echo base_url();?>assets/js/sweetalert.min.js"></script>
 			<script src="<?php echo base_url();?>assets/js/toastr.min.js"></script>
 			<script src="<?php echo base_url();?>assets/js/app.min.js" type="text/javascript"></script>
 			<!-- Admin LTE -->
 			<script src="<?php echo base_url();?>assets/plugins/morris.js"></script>
+			<script src="<?php echo base_url();?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+			<script src="<?php echo base_url();?>assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
+			<script src="<?php echo base_url();?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 			<script src="<?php echo base_url();?>assets/js/animations.js"></script>
+			<script src="<?php echo base_url();?>assets/js/jquery.slimscroll.min.js"></script>
 			<script src="<?php echo base_url();?>assets/js/custom.js"></script>
 		</div>
 	</body>

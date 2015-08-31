@@ -9,22 +9,23 @@ if (!empty($account->profile_image)){
 <div class="content-wrapper">
   <ol class="breadcrumb">
   <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-  <li class="active"><i class="fa fa-user"></i> View Profile </li>
+  <li><a href="<?php echo base_url();?>ems/employees" class="btn btn-default"><i class="fa fa-user"></i> Employee</a></li>
+  <li class="active"><i class="fa fa-search"></i> View Employee </li>
   </ol>
   <div class="container-fluid">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title big">Employee Details</h3>
+    <div class="box box-info box-solid">
+      <div class="box-header with-border">
+        <h3 class="box-title big">Employee Details</h3>
       </div>
-      <div class="panel-body">
+      <div class="box-body">
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-4">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title text-center"><?php echo $info->first_name.' '.$info->middle_name.' '.$info->last_name; ?></h3>
+              <div class="box box-default box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title text-center"><?php echo $info->first_name.' '.$info->middle_name.' '.$info->last_name; ?></h3>
                 </div>
-                <div class="panel-body">
+                <div class="box-body">
                   <div class="form-group">
                     <div class="text-center"><img src="<?php echo base_url().'assets/images/profile/'.$image; ?>" alt="" class="img-responsive emp_image" /></div>
                     <div id="upload">
@@ -67,8 +68,8 @@ if (!empty($account->profile_image)){
               </center>
             </div><!-- col-4-->
             <div class="col-md-8">
-              <div class="panel panel-default">
-                <div class="panel-body">
+              <div class="box box-default box-solid">
+                <div class="box-body">
                   <div class="nav-tabs-custom ">
                     <ul class="nav nav-tabs ">
                       <li class="active" data-toggle="tooltip" data-placement="top" title="Personal Details">
@@ -159,7 +160,7 @@ if (!empty($account->profile_image)){
                             <div class="col-sm-9 controls">
                                 <div class="row">
                                     <div class="col-xs-9">
-                                        <input type="text"  disabled class="form-control" value="<?php echo date_format($info->birthday,'M d, Y'); ?>" name="txtBirthday" disabled/>
+                                        <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" disabled class="form-control" value="<?php echo date_format($info->birthday,'M d, Y'); ?>" name="txtBirthday" disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -677,6 +678,7 @@ if (!empty($account->profile_image)){
                       <section class="tab-pane" id="tab_7">
                         <div class="form-horizontal">
                           <h3>Leave Details</h3><hr>
+                          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addLeave"><i class="fa fa-plus"></i> Add</a><br><br>
                           <table class="table table-hovered table-striped table-bordered">
                             <thead>
                                  <th class="text-center">Birthday Leave</th>
@@ -701,6 +703,42 @@ if (!empty($account->profile_image)){
                            </table>
                         </div>
                       </section><!-- Leaves -->
+                      <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
+                        <div class="modal fade" id="addLeave" tabindex="-1" role="dialog">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Add Leave Days</h4>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                  <div class="col-sm-6">
+                                    <label for="">Birthday Leave:</label>
+                                    <input type="text" class="form-control" name="txtBirthdayLeave" required><br>
+                                    <label for="">Mandatory Leave:</label>
+                                    <input type="text" class="form-control" name="txtMandatoryLeave" required><br>
+                                    <label for="">Maternity Leave:</label>
+                                    <input type="text" class="form-control" name="txtMaternityLeave" required><br>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <label for="">Paternity Leave:</label>
+                                    <input type="text" class="form-control" name="txtPaternityLeave" required><br>
+                                    <label for="">Sick Leave:</label>
+                                    <input type="text" class="form-control" name="txtSickLeave" required><br>
+                                    <label for="">Vacation Leave:</label>
+                                    <input type="text" class="form-control" name="txtVacationLeave" required><br>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                              </div>
+                            </div><!-- /.modal-content -->
+                          </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                      </form>
 
                       <section class="tab-pane" id="tab_8">
                         <div class="form-horizontal">
@@ -753,7 +791,6 @@ if (!empty($account->profile_image)){
                                    <div class="row">
                                        <div class="col-xs-9">
                                           <input type="text" disabled class="form-control" value="<?php echo $account->username; ?>" name="txtUsername" />
-                                          <input type="hidden" disabled class="form-control" value="<?php echo $account->user_level_id; ?>" name="txtUserLevel" />
                                        </div>
                                    </div>
                                </div>
@@ -764,6 +801,21 @@ if (!empty($account->profile_image)){
                                    <div class="row">
                                        <div class="col-xs-9">
                                            <input type="password" disabled class="form-control" value="<?php echo $account->password; ?>" name="txtPassword" />
+                                       </div>
+                                   </div>
+                               </div>
+                           </article>
+                           <article class="form-group">
+                               <label class=" col-sm-3 control-label">User Level: </label>
+                               <div class="col-sm-9 controls">
+                                   <div class="row">
+                                       <div class="col-xs-9">
+                                           <select name="txtUserLevel"  class="form-control" disabled>
+                                            <option value="<?php echo $account->user_level_id; ?>"><?php echo $account->user_level; ?></option>
+                                              <?php foreach ($user_level as $row){ 
+                                                  echo "<option value='$row->user_level_id'> $row->user_level</option>";
+                                              } ?>
+                                          </select>
                                        </div>
                                    </div>
                                </div>

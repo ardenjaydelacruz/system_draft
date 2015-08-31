@@ -19,10 +19,9 @@
 		<ul class="sidebar-menu">
 			<br>
 			<li class="header text-center">Administrator Menu</li>
-
 			<li>
 				<a href="<?php echo base_url();?>ems/emp_dashboard">
-					<i class="fa fa-user"></i> <span>Dashboard</span>
+					<i class="fa fa-dashboard"></i> <span>Emp Dashboard</span>
 				</a>
 			</li>
 			<li>
@@ -36,8 +35,13 @@
 				</a>
 			</li>
 			<li>
-				<a href="<?php echo base_url();?>ems/dashboard">
+				<a href="<?php echo base_url();?>ems/emp_dashboard">
 					<i class="fa fa-money"></i> <span>View Payslip</span>
+				</a>
+			</li>
+			<li>
+				<a a href="#" data-target="#requestAsset" data-toggle="modal">
+					<i class="fa fa-desktop"></i> <span>Request Asset</span>
 				</a>
 			</li>
 		</ul>

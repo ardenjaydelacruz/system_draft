@@ -64,8 +64,9 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo base_url();?>ams/view_inventory"><i class="fa fa-cube"></i> Inventory</a></li>
-					<li><a href="<?php echo base_url();?>ams/view_assets"><i class="fa fa-desktop"></i> Assigned Assets</a></li>
+					<li><a href="<?php echo base_url();?>ams/view_inventory"><i class="fa fa-cubes"></i> Inventory</a></li>
+					<li><a href="<?php echo base_url();?>ams/asset_request_table"><i class="fa fa-cube"></i> Asset Request</a></li>
+					<li><a href="<?php echo base_url();?>ams/view_assets"><i class="fa fa-desktop"></i> Assigned Equipments</a></li>
 					<li><a href="<?php echo base_url();?>ams/view_all_materials"><i class="fa fa-credit-card"></i> Bill of Materials</a></li>
 					<li><a href="<?php echo base_url();?>ams/view_projects"><i class="fa fa-cogs"></i> Projects</a></li>
 				</ul>
@@ -122,7 +123,7 @@
 
 			<li class="treeview">
 				<a href="#">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-cogs"></i>
 					<span>Backup</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>

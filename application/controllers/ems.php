@@ -11,19 +11,19 @@ class Ems extends MY_Controller
 
     public function admin_dashboard()
     {
-        $data['total_employee'] = count(View_employees_list::find('all'));
-        $data['total_asset'] = count(Projects_model::find('all'));
-        $data['total_projects'] = count(Projects_model::find('all'));
-        $data['departments'] = count(Departments_model::all());
-        $data['supervisors'] = count(View_supervisors::all());
-        $data['job_titles'] = count(Job_titles_model::all());
-        $data['leaves'] = count(Leave_type_model::all());
+        $data['total_employee']  = count(View_employees_list::find('all'));
+        $data['total_asset']     = count(Projects_model::find('all'));
+        $data['total_projects']  = count(Projects_model::find('all'));
+        $data['departments']     = count(Departments_model::all());
+        $data['supervisors']     = count(View_supervisors::all());
+        $data['job_titles']      = count(Job_titles_model::all());
+        $data['leaves']          = count(Leave_type_model::all());
         $data['employment_type'] = count(Employment_type_model::all());
-        $data['vendors'] = count(Vendor_model::all());
-        $data['category'] = count(Asset_category_model::all());
-        $data['employee'] = Emp_info_model::all();
-        $data['pageTitle'] = 'Dashboard - MSInc.';
-        $data['content'] = 'employee/admin-dashboard';
+        $data['vendors']         = count(Vendor_model::all());
+        $data['category']        = count(Asset_category_model::all());
+        $data['employee']        = Emp_info_model::all();
+        $data['pageTitle']       = 'Dashboard - MSInc.';
+        $data['content']         = 'employee/admin-dashboard';
         $this->load->view($this->master_layout, $data);
         $this->display_notif();
     }
@@ -31,13 +31,14 @@ class Ems extends MY_Controller
     public function emp_dashboard()
     {
         $id = $this->session->userdata('employee_id');
-        $data['asset']          = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id")); //Tab 7 - Asset Tab
-        $data['project']        = View_project_workers::find('all',array('conditions'=>"emp_id =$id")); //Tab 8 - Project Tab
-        $data['total_employee'] = count(View_employees_list::find('all'));
-        $data['total_asset']    = count(Projects_model::find('all'));
-        $data['total_projects'] = count(Projects_model::find('all'));
-        $data['pageTitle']      = 'Dashboard - MSInc.';
-        $data['content']        = 'employee/employee_dashboard';
+        $data['asset']           = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id")); //Tab 7 - Asset Tab
+        $data['requested_asset'] = Asset_request::find('all',array('conditions'=>"employee_id =$id")); //Tab 7 - Asset Tab
+        $data['project']         = View_project_workers::find('all',array('conditions'=>"emp_id =$id")); //Tab 8 - Project Tab
+        $data['total_employee']  = count(View_employees_list::find('all'));
+        $data['total_asset']     = count(Projects_model::find('all'));
+        $data['total_projects']  = count(Projects_model::find('all'));
+        $data['pageTitle']       = 'Dashboard - MSInc.';
+        $data['content']         = 'employee/employee_dashboard';
         $this->load->view($this->master_layout, $data);
         $this->display_notif();
     }

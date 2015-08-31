@@ -186,4 +186,27 @@ class Ams extends MY_Controller {
 			redirect('ams/view_inventory');
 		}
 	}
+
+	public function request_asset(){
+        $data = array (
+            "asset_name" => $this->input->post('txtAssetName'),
+            "quantity" => $this->input->post('txtQuantity'),
+            "request_status" => 'Pending'
+            );
+        if (Asset_request::create($data)){
+            $this->session->set_userdata('added',1);
+            redirect('ems/emp_dashboard');
+        }
+    }
+
+    public function asset_request_table(){
+    	if ($this->input->get('pressed')){
+    		Asset_request::update_asset_request();
+    	}
+		$data['record'] = View_asset_request::all();
+		$data['pageTitle'] = 'Asset Request - MSInc.';
+		$data['content'] = 'asset/asset_request_table';
+		$this->load->view($this->master_layout,$data);
+		$this->display_notif();
+	}
 }

@@ -8,13 +8,13 @@
         <li class="active">Request Leave</li>
     </ol>
     <div class="container-fluid">
-    	<div class="panel panel-info">
-		<div class="panel-heading">
-		    <h3 class="panel-title big">Request Leave</h3>
+    	<div class="box box-info box-solid">
+		<div class="box-header with-border">
+		    <h3 class="box-title big">Request Leave</h3>
 		</div>
-		<div class="panel-body">
-			<div class="panel panel-default">
-				<div class="panel-body">
+		<div class="box-body">
+			<div class="box box-default box-solid">
+				<div class="box-body">
 					<?php echo form_open('ems/request_leave?emp_id='.$id); ?>
 					<div class="form-horizontal">
 						<div class="form-group">
@@ -26,13 +26,13 @@
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Leave Starts</label>
 						    <div class="col-sm-3">
-						    	<input type="date" class="form-control input-sm"  required name="leaveStarts">
+						    	<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm"  required name="leaveStarts">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Leave Ends</label>
 						    <div class="col-sm-3">
-						    	<input type="date" class="form-control input-sm" required name="leaveEnds">
+						    	<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" required name="leaveEnds">
 						    </div>
 						</div>
 						<div class="form-group">
