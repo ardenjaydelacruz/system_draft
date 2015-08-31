@@ -15,8 +15,26 @@
 			    </div>		    
 			</div>
 			<div class="panel-body">
+				<div class="row">
+					<form action="<?php echo base_url(); ?>ems/evaluate_performance" method="post">
+					<div class="form-group">
+		        <label class=" col-sm-2 control-label">Employee Name: </label>
+		        <div class="col-sm-5">
+		            <select name="txtEmployee" class="form-control" required>
+		                <option value="" selected>---</option>
+		                <?php
+		                foreach($employee as $row){
+		                    echo "<option value='$row->emp_id'>$row->emp_id - $row->first_name</option>";
+		                }
+		                ?>
+		            </select>
+		        </div>
+		        <button class="btn btn-success" name="btnSearchEmp"><i class="fa fa-star"></i> Evaluate</button>
+		    	</div>
+		    	</form>
+				</div>
 				<div class="clearfix"></div>
-				<?php 
+				<?php if ($this->input->post('txtEmployee')){
 					foreach ($criteria as $row) {
 						$field[] = $row->criteria_desc;
 					}
@@ -185,7 +203,7 @@
 					</div> <!--Col 9 -->
 				</div>
 				</form>
-				<?php  ?>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

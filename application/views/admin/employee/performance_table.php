@@ -1,14 +1,7 @@
 <div class="content-wrapper">
 	<ol class="breadcrumb">
         <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <?php if($this->input->post('txtSearch')) {
-        	echo "<li><a href='employees' class='btn btn-default'>Employees</a></li>";
-        	echo "<li class='active'>Search Employees</li>";
-        } else {
-        	echo "<li class='active'>Performance Evaluation</li>";
-        }
-        $counter = 0;
-        ?>            
+        <li class='active'>Performance Evaluation</li>         
     </ol>
     <div class="container-fluid">
 		<div class="box box-info box-solid">
@@ -23,7 +16,6 @@
 			<div class="box-body">
 				<table id="dynamicTable" class="table table-striped table-hover table-bordered">				
 					<thead >
-						<!-- <th><input type="checkbox" class="checkbox"></th> -->
 						<th class="table-head">Evaluation ID</th>
 						<th class="table-head">Employee Name</th>
 						<th class="table-head">Evaluator</th>
@@ -35,22 +27,21 @@
 					<?php 
 					foreach ($record as $row) {	?>
 					<tr>
-						<!-- <td><input type="checkbox" class="checkbox" name="checkbox[]"></td> -->
-						<td align="center"><?php echo $row->performance_id; ?></td>
-						<td><?php echo $row->employee_name; ?></td>
-						<td><?php echo $row->evaluators; ?></td>
-						<td><?php echo $row->description; ?></td>
-						<td align="center"> <?php echo date_format($row->date_evaluated,'M d, Y'); ?></td>
-						<td align="center"><?php echo $row->final_rating; ?></td>
+						<td align="center"><?php echo $row->evaluation_id; ?></td>
+						<td><?php echo $row->assessee; ?></td>
+						<td><?php echo $row->assessor; ?></td>
+						<td><?php echo $row->evaluation_desc; ?></td>
+						<td align="center"> <?php echo date_format($row->evaluation_date,'M d, Y'); ?></td>
+						<td align="center"><?php echo number_format($row->final_rating,2); ?></td>
 						<td align="center">
-						<a href="<?php echo base_url();?>ems/view_performance_details?performance_id=<?php echo $row->performance_id; ?>">
+						<a href="<?php echo base_url();?>ems/view_performance_details?evaluation_id=<?php echo $row->evaluation_id; ?>">
 							<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Evaluation">
 								<i class="fa fa-star"></i>
 							</button>
 						</a>
 						</td>
 					</tr>
-					<?php $counter++; } ?>
+					<?php } ?>
 				</table>	
 			</div>	
 		</div>

@@ -35,6 +35,11 @@
 				</a>
 			</li>
 			<li>
+				<a href="<?php echo base_url();?>ems/evaluate_performance">
+					<i class="fa fa-calendar"></i> <span>Evaluate Performance</span>
+				</a>
+			</li>
+			<li>
 				<a href="<?php echo base_url();?>ems/emp_dashboard">
 					<i class="fa fa-money"></i> <span>View Payslip</span>
 				</a>

@@ -34,7 +34,7 @@
 					<div class="col-sm-6">
 						<section class="box box-default box-solid">
 							<div class="box-header with-border">
-								<h3 class="box-title text-center"><?php echo $row->employee_name; ?></h3>
+								<h3 class="box-title text-center"><?php echo $row->assessee; ?></h3>
 							</div>
 							<div class="box-body text-center">
 								<div class="row">
@@ -46,11 +46,11 @@
 										<table class="table table-bordered">
 											<tr>
 												<th>Evaluation Title:</th>
-												<td><?php echo $row->description; ?></td>
+												<td><?php echo $row->evaluation_desc; ?></td>
 											</tr>
 											<tr>
 												<th>Date Evaluated:</th>
-												<td><?php echo date_format($row->date_evaluated,'M d, Y'); ?></td>
+												<td><?php echo date_format($row->evaluation_date,'M d, Y'); ?></td>
 											</tr>
 										</table>
 									</div>
@@ -58,53 +58,30 @@
 							</div>
 						</section>
 					</div>
-					<!-- <div class="col-sm-3">
-						<section class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title text-center">Arden Jay Dela Cruz</h3>
-							</div>
-							<div class="panel-body text-center">
-								<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">
-								
-								<label class="label label-info ">Self</label>
-							</div>
-						</section>
-					</div>
-					<div class="col-sm-3">
-						<section class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title text-center">Jose Rizal</h3>
-							</div>
-							<div class="panel-body text-center">
-								<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">
-								
-								<label class="label label-info ">Peer</label>
-							</div>
-						</section>
-					</div> -->
 					<div class="col-sm-3">
 						<section class="box box-default box-solid">
 							<div class="box-header with-border">
-								<h3 class="box-title text-center"><?php echo $row->evaluators; ?></h3>
+								<h3 class="box-title text-center"><?php echo $row->assessor; ?></h3>
 							</div>
 							<div class="box-body text-center">
 								<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">
-								
 								<label class="label label-info ">Evaluator</label>
 							</div>
 						</section>
 					</div>
 				</div> <!-- Evaluators row -->
-				
+				<?php 
+					foreach ($criteria as $wew) {		
+						$field[] = $wew->criteria_desc;
+					}
+				?>
 				<table class="table table-bordered table-hover table-striped text-center">
 					<thead>
 						<th class="col-sm-6"></th>
 						<th class="col-sm-6">Evaluator Rate</th>
-						<!-- <th class="col-sm-3">Evaluator 2 Rate</th>
-						<th class="col-sm-3">Evaluator 3 Rate</th> -->
 					</thead>
 					<tr>
-						<td><?php echo $row->criteria1; ?></td>
+						<td><?php echo $field[0]; ?></td>
 						<td>
 							<?php 
 								for ($i=1; $i <= $row->rate1; $i++) { 
@@ -113,25 +90,9 @@
 							 ?>
 							<label> - <?php echo $row->rate1; ?></label>
 						</td>
-						<!-- <td>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<label> - 5.0</label>
-						</td>
-						<td>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<label> - 5.0</label>
-						</td> -->
 					</tr>
 					<tr>
-						<td><?php echo $row->criteria2; ?></td>
+						<td><?php echo $field[1]; ?></td>
 						<td>
 							<?php 
 								for ($i=1; $i <= $row->rate2; $i++) { 
@@ -140,25 +101,9 @@
 							 ?>
 							<label> - <?php echo $row->rate2; ?></label>
 						</td>
-						<!-- <td>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<label> - 5.0</label>
-						</td>
-						<td>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<label> - 5.0</label>
-						</td> -->
 					</tr>
 					<tr>
-						<td><?php echo $row->criteria3; ?></td>
+						<td><?php echo $field[2]; ?></td>
 						<td>
 							<?php 
 								for ($i=1; $i <= $row->rate3; $i++) { 
@@ -167,25 +112,9 @@
 							 ?>
 							<label> - <?php echo $row->rate3; ?></label>
 						</td>
-						<!-- <td>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<label> - 5.0</label>
-						</td>
-						<td>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<label> - 5.0</label>
-						</td> -->
 					</tr>
 					<tr>
-						<td><?php echo $row->criteria4; ?></td>
+						<td><?php echo $field[3]; ?></td>
 						<td>
 							<?php 
 								for ($i=1; $i <= $row->rate4; $i++) { 
@@ -194,25 +123,9 @@
 							 ?>
 							<label> - <?php echo $row->rate4; ?></label>
 						</td>
-						<!-- <td>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<label> - 5.0</label>
-						</td>
-						<td>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<label> - 5.0</label>
-						</td> -->
 					</tr>
 					<tr>
-						<td><?php echo $row->criteria5; ?></td>
+						<td><?php echo $field[4]; ?></td>
 						<td>
 							<?php 
 								for ($i=1; $i <= $row->rate5; $i++) { 
@@ -221,26 +134,65 @@
 							 ?>
 							<label> - <?php echo $row->rate5; ?></label>
 						</td>
-						<!-- <td>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<label> - 5.0</label>
-						</td>
-						<td>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<i class="fa fa-star star"></i>
-							<label> - 5.0</label>
-						</td> -->
 					</tr>
 					<tr>
+						<td><?php echo $field[5]; ?></td>
+						<td>
+							<?php 
+								for ($i=1; $i <= $row->rate5; $i++) { 
+									echo "<i class='fa fa-star star'></i>";
+								}
+							 ?>
+							<label> - <?php echo $row->rate5; ?></label>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo $field[6]; ?></td>
+						<td>
+							<?php 
+								for ($i=1; $i <= $row->rate5; $i++) { 
+									echo "<i class='fa fa-star star'></i>";
+								}
+							 ?>
+							<label> - <?php echo $row->rate5; ?></label>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo $field[7]; ?></td>
+						<td>
+							<?php 
+								for ($i=1; $i <= $row->rate5; $i++) { 
+									echo "<i class='fa fa-star star'></i>";
+								}
+							 ?>
+							<label> - <?php echo $row->rate5; ?></label>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo $field[8]; ?></td>
+						<td>
+							<?php 
+								for ($i=1; $i <= $row->rate5; $i++) { 
+									echo "<i class='fa fa-star star'></i>";
+								}
+							 ?>
+							<label> - <?php echo $row->rate5; ?></label>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo $field[9]; ?></td>
+						<td>
+							<?php 
+								for ($i=1; $i <= $row->rate5; $i++) { 
+									echo "<i class='fa fa-star star'></i>";
+								}
+							 ?>
+							<label> - <?php echo $row->rate5; ?></label>
+						</td>
+					</tr>
+					<tr class="success">
 						<th>RATE:</th>
-						<th><?php echo $row->final_rating; ?></th>
+						<th><?php echo number_format($row->final_rating,2); ?></th>
 						<!-- <th>5.0</th>
 						<th>5.0</th> -->
 					</tr>

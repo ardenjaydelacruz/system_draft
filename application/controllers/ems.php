@@ -190,8 +190,7 @@ class Ems extends MY_Controller
 
     public function view_performance()
     {
-        $data['total_performance'] = count(Performance::all());
-        $data["record"] = Performance::find('all');
+        $data["record"] = View_evaluation::find('all');
         $data['pageTitle'] = 'View Performance - MSInc.';
         $data['content'] = 'employee/performance_table';
         $this->load->view($this->master_layout, $data);
@@ -200,7 +199,8 @@ class Ems extends MY_Controller
 
     public function view_performance_details()
     {
-        $data['row'] = Performance::find($this->input->get('performance_id'));
+        $data['row'] = View_evaluation::find($this->input->get('evaluation_id'));
+        $data['criteria'] = Criteria_model::all();
         $data['pageTitle'] = 'Performance Details - MSInc.';
         $data['content'] = 'employee/performance_details';
         $this->load->view($this->master_layout, $data);
@@ -208,8 +208,9 @@ class Ems extends MY_Controller
 
     public function evaluate_employee()
     {
-        $row = Emp_info_model::find($this->input->get('emp_id'));
-        $data['name'] = $row->first_name . ' ' . $row->middle_name . ' ' . $row->last_name;
+        $data['selected'] = Emp_info_model::find($this->input->get('emp_id'));
+        $data['employee'] = Emp_info_model::all();
+        $data['criteria'] = Criteria_model::all();
         $data['pageTitle'] = 'Evaluate Employee - MSInc.';
         $data['content'] = 'employee/evaluate_employee';
         $this->load->view($this->master_layout, $data);
@@ -376,5 +377,16 @@ class Ems extends MY_Controller
             $this->session->set_userdata('added',1);
             redirect('ems/admin_dashboard');
         }
+    }
+
+    public function evaluate_performance(){
+        if ($this->input->post('txtEmployee')){
+            $data['selected'] = Emp_info_model::find($this->input->post('txtEmployee'));
+        }
+        $data['employee'] = Emp_info_model::all();
+        $data['criteria'] = Criteria_model::all();
+        $data['pageTitle'] = 'Evaluate Employee- MSInc.';
+        $data['content'] = 'employee/evaluate_performance';
+        $this->load->view($this->master_layout,$data);
     }
 }

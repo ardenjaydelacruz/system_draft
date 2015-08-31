@@ -18,16 +18,6 @@
 			    		<h1 class="panel-title big">Evaluate Employee
 						</h1>
 			    	</div>
-			    	<form action="<?php echo base_url();?>ems/search_employee" method="post">
-			    	<div class="col-sm-4">
-			    		<div class="input-group input-group">
-			    			<input type="text" class="form-control" placeholder="Search Employee (Id / Name / City)" name="txtSearch">
-		                    <span class="input-group-btn">
-	                    		<button class="btn btn-info btn-flat" name="btnSearch"><i class="fa fa-search fa-lg"></i></button>
-	                    	</span>
-		                 </div>
-			    	</div>
-			    	</form>
 			    </div>		    
 			</div>
 			<div class="panel-body">

@@ -32,6 +32,7 @@ class Audit_trail_model extends ActiveRecord\Model {
     		);
     	Audit_trail_model::create($data);
     }
+    
     public function auditDeleteEmp($id){
     	$data = array(
     		'ip_address' => $this->input->ip_address(),
@@ -79,7 +80,7 @@ class Audit_trail_model extends ActiveRecord\Model {
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
             'username' => $this->session->userdata('username'),
-            'action' => 'Evaluated '. $details['employee_name']
+            'action' => 'Evaluated Employee'. $details['assessee_id']
             );
         Audit_trail_model::create($data);
     }
