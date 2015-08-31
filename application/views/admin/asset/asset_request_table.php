@@ -8,7 +8,7 @@
 			<div class="box-header with-border">
 			    <div class="row">
 			    	<div class="col-sm-8">
-			    		<h1 class="box-title big">Asset Request</h1>
+			    		<h1 class="box-title big">Equipment / Supply Request</h1>
 			    	</div>
 			    </div>		    
 			</div>

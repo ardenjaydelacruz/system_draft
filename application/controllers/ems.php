@@ -299,6 +299,7 @@ class Ems extends MY_Controller
         $date = date('m-d-Y');
         // Load the download helper and send the file to your desktop
         $this->load->helper('download');
+        Audit_trail_model::auditBackup();
         force_download("Backup - $date.zip", $backup);
     }
 

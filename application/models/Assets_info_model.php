@@ -50,5 +50,9 @@ class Assets_info_model extends ActiveRecord\Model {
 		}
 	}
 
+	public function asset_transfer(){
+		
+	}
+
 
 }

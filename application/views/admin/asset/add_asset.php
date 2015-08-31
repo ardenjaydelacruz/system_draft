@@ -23,43 +23,31 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Asset ID: * </label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control input-sm" placeholder="Asset ID" name="txtAssetID" value="<?php echo set_value('txtAssetID'); ?>">
-                                </div>
-                                <div class="col-sm-5 error">
-                                    <?php echo form_error('txtAssetID'); ?>
+                                    <input type="text" class="form-control input-sm" required name="txtAssetID" value="<?php echo set_value('txtAssetID'); ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Asset Name: * </label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control input-sm" placeholder="Asset Name" name="txtAssetName" value="<?php echo set_value('txtAssetName'); ?>">
-                                </div>
-                                <div class="col-sm-5 error">
-                                    <?php echo form_error('txtAssetName'); ?>
+                                    <input type="text" class="form-control input-sm" required name="txtAssetName" value="<?php echo set_value('txtAssetName'); ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Description: * </label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control input-sm" placeholder="Asset Description" name="txtDescription" value="<?php echo set_value('txtDescription'); ?>">
-                                </div>
-                                <div class="col-sm-5 error">
-                                    <?php echo form_error('txtDescription'); ?>
+                                    <input type="text" class="form-control input-sm"  required name="txtDescription" value="<?php echo set_value('txtDescription'); ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Price: * </label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control input-sm" placeholder="Asset Price" name="txtPrice" value="<?php echo set_value('txtPrice'); ?>">
-                                </div>
-                                <div class="col-sm-5 error">
-                                    <?php echo form_error('txtPrice'); ?>
+                                    <input type="text" class="form-control input-sm" required name="txtPrice" value="<?php echo set_value('txtPrice'); ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Category: * </label>
                                 <div class="col-sm-4">
-                                    <select name="txtCategory" class="form-control">
+                                    <select name="txtCategory" class="form-control" required>
                                         <option value="" selected>---</option>
                                         <?php
                                         foreach($category as $row){
@@ -68,14 +56,11 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div class="col-sm-5 error">
-                                    <?php echo form_error('txtCategory'); ?>
-                                </div>
                             </div>
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Vendor: * </label>
                                 <div class="col-sm-4">
-                                    <select name="txtVendor" class="form-control">
+                                    <select name="txtVendor" class="form-control" required>
                                         <option value="" selected>---</option>
                                         <?php
                                         foreach($vendor as $row){
@@ -84,17 +69,11 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div class="col-sm-5 error">
-                                    <?php echo form_error('txtVendor'); ?>
-                                </div>
                             </div>
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Date Acquired: </label>
                                 <div class="col-sm-4">
-                                    <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" placeholder="Date Acquired" name="txtDateAcquired" value="<?php echo set_value('txtDateAcquired'); ?>">
-                                </div>
-                                <div class="col-sm-5 error">
-                                    <?php echo form_error('txtDateAcquired'); ?>
+                                    <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" required name="txtDateAcquired" value="<?php echo set_value('txtDateAcquired'); ?>">
                                 </div>
                             </div>
                             <br><br>
@@ -102,7 +81,7 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Serial Number:  </label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control input-sm" placeholder="Position" name="txtSerial" value="<?php echo set_value('txtSerial'); ?>">
+                                    <input type="text" class="form-control input-sm"  name="txtSerial" value="<?php echo set_value('txtSerial'); ?>">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtSerial'); ?>
@@ -111,7 +90,7 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Brand:  </label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control input-sm" placeholder="Status" name="txtBrand" value="<?php echo set_value('txtBrand'); ?>">
+                                    <input type="text" class="form-control input-sm"  name="txtBrand" value="<?php echo set_value('txtBrand'); ?>">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtBrand'); ?>
@@ -120,7 +99,7 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Model:  </label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control input-sm" placeholder="Model" name="txtModel" value="<?php echo set_value('txtModel'); ?>">
+                                    <input type="text" class="form-control input-sm" name="txtModel" value="<?php echo set_value('txtModel'); ?>">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtModel'); ?>
@@ -130,7 +109,7 @@
                             <div class="form-group">
                                 <label class=" col-sm-3 control-label">Warranty End Date:  </label>
                                 <div class="col-sm-4">
-                                <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" placeholder="Warranty Ends" name="txtWarrantyEnd" value="<?php echo set_value('txtWarrantyEnd'); ?>">
+                                <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" name="txtWarrantyEnd" value="<?php echo set_value('txtWarrantyEnd'); ?>">
                                 </div>
                                 <div class="col-sm-5 error">
                                     <?php echo form_error('txtWarrantyEnd'); ?>

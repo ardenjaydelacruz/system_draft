@@ -165,4 +165,24 @@ class Audit_trail_model extends ActiveRecord\Model {
             );
         Audit_trail_model::create($data);
     }
+
+    public function auditAssignAsset($details,$id){
+        $data = array(
+            'ip_address' => $this->input->ip_address(),
+            'user_level' => $this->session->userdata('user_level'),
+            'username' => $this->session->userdata('username'),
+            'action' => 'Assigned Asset '.$id .' to Employee '. $details['employee_id']
+            );
+        Audit_trail_model::create($data);
+    }
+
+    public function auditBackup(){
+        $data = array(
+            'ip_address' => $this->input->ip_address(),
+            'user_level' => $this->session->userdata('user_level'),
+            'username' => $this->session->userdata('username'),
+            'action' => 'Backed up database'
+            );
+        Audit_trail_model::create($data);
+    }
 }

@@ -40,10 +40,33 @@
 				</a>
 			</li>
 			<li>
-				<a a href="#" data-target="#requestAsset" data-toggle="modal">
+				<a href="#" data-target="#requestAsset" data-toggle="modal">
 					<i class="fa fa-desktop"></i> <span>Request Asset</span>
 				</a>
 			</li>
 		</ul>
 	</section>
 </aside>
+<form action="<?php echo base_url();?>ams/request_asset" method="post">
+  <div class="modal fade" id="requestAsset" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Request Supplies / Equipments</h4>
+        </div>
+        <div class="modal-body">
+          <label for="">Equipment / Supply Name:</label>
+          <input type="text" class="form-control" name="txtAssetName" required><br>
+          <label for="">Quantity:</label>
+          <input type="text" class="form-control" name="txtQuantity" required><br>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" value="Add" name="btnAddRequest">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</form>
+

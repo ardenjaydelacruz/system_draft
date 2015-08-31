@@ -21,8 +21,6 @@
                     <th class="table-head">IP Address</th>
                     <th class="table-head">Action</th>
                     <th class="table-head">Emp ID</th>
-                    <th class="table-head">Old Value</th>
-                    <th class="table-head">New Value</th>
                     <th class="table-head">Date and Time</th>
                 </thead>
                 <?php
@@ -46,12 +44,6 @@
                     </td>
                     <td>
                         <?php echo $record->employee_id; ?>
-                    </td>
-                     <td>
-                        <?php echo $record->old_value; ?>
-                    </td>
-                     <td>
-                        <?php echo $record->new_value; ?>
                     </td>
                     <td align="center">
                         <?php echo date('F d, Y - g:i A',strtotime($record->date_time)); ?>

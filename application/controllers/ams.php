@@ -9,6 +9,7 @@ class Ams extends MY_Controller {
 
 	public function view_assets(){
 		Assets_model::assignAsset();
+		$data['employee']      = Emp_info_model::all();
 		$data['total_asset'] = count(View_assigned_assets_model::all());
 		$data["record"] = View_assigned_assets_model::all();
 		$data['pageTitle'] = 'Other Assets - MSInc.';
@@ -208,5 +209,9 @@ class Ams extends MY_Controller {
 		$data['content'] = 'asset/asset_request_table';
 		$this->load->view($this->master_layout,$data);
 		$this->display_notif();
+	}
+
+	public function asset_transfer(){
+		Assets_model::assetTransfer();
 	}
 }
