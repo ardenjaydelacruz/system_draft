@@ -122,4 +122,16 @@ class MY_Controller extends CI_Controller {
         }
         return $years;
     }
+
+    public function is_admin(){
+        if ($this->session->userdata('user_level')=='Administrator'){
+            return true;
+        }
+    }
+
+    public function is_employee(){
+        if ($this->session->userdata('user_level')=='Employee'){
+            return true;
+        }
+    }
 }

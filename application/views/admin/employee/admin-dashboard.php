@@ -4,6 +4,16 @@
               Dashboard</a></li>
   </ol>
   <div class="container-fluid">
+    <div class="callout callout-success">
+      <h4><i class="fa fa-bullhorn"></i> Announcement! (Recent 3)</h4>
+      <ul>
+        <?php 
+          foreach ($announcement as $row) {
+            echo "<br><li><b>$row->description</b>  -  $row->posted_by (". date('M d, Y - g:i A',strtotime($row->date_posted)).")</li>";
+          }
+         ?>
+      </ul>
+    </div>
     <div class="box box-info box-solid">
       <div class="box-header with-border">
           <h3 class="box-title">Admin Dashboard</h3>
@@ -19,6 +29,9 @@
                 </div><!-- /.box-tools -->
               </div><!-- /.box-header -->
               <div class="box-body">
+                <a href="#" data-target="#postAnnouncement" data-toggle="modal" class="btn btn-app btn-flat">
+                  <i class="fa fa-bullhorn"></i> Post<br> Announcement
+                </a>
                 <a href="#" data-target="#addDepartment" data-toggle="modal" class="btn btn-app btn-flat">
                   <span class="badge bg-green"><?php echo $departments; ?></span>
                   <i class="fa fa-institution"></i> Department
@@ -121,6 +134,26 @@
     </div>
   </div>
 </div>
+<form action="<?php echo base_url();?>ems/post_announcement" method="post">
+  <div class="modal fade" id="postAnnouncement" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Post New Announcement</h4>
+        </div>
+        <div class="modal-body">
+          <label for="">Announcement:</label>
+          <textarea name="txtAnnouncement" id="" cols="30" rows="10" required class="form-control"></textarea>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" value="Add" name="btnAddCategory">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</form>
 <form action="<?php echo base_url();?>ems/add_department" method="post">
   <div class="modal fade" id="addDepartment" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm">

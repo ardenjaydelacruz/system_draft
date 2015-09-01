@@ -11,6 +11,7 @@ class Ems extends MY_Controller
 
     public function admin_dashboard()
     {
+        $data['announcement']    = Announcement_model::find_by_sql('SELECT * FROM tbl_announcement ORDER BY announcement_id DESC LIMIT 3 ');
         $data['total_employee']  = count(View_employees_list::find('all'));
         $data['total_asset']     = count(Projects_model::find('all'));
         $data['total_projects']  = count(Projects_model::find('all'));
@@ -389,4 +390,20 @@ class Ems extends MY_Controller
         $data['content'] = 'employee/evaluate_performance';
         $this->load->view($this->master_layout,$data);
     }
+
+    public function post_announcement(){
+        $data = array (
+            "description" => $this->input->post('txtAnnouncement'),
+            'posted_by' => $this->session->userdata('user_level').' '.$this->session->userdata('first_name')
+            );
+        if (Announcement_model::create($data)){
+            $this->session->set_userdata('added',1);
+            Audit_trail_model::auditAnnouncement();
+            if ($this->is_admin()){
+                redirect('ems/admin_dashboard');
+            }
+        }
+    }
+
+
 }
