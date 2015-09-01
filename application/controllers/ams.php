@@ -192,7 +192,11 @@ class Ams extends MY_Controller {
         $data = array (
             "asset_name" => $this->input->post('txtAssetName'),
             "quantity" => $this->input->post('txtQuantity'),
-            "request_status" => 'Pending'
+            "request_status" => 'Pending',
+            "employee_id" => $this->session->userdata('employee_id'),
+            'date_approved' => 0000-00-00,
+            'approved_by' => 'Null'
+
             );
         if (Asset_request::create($data)){
             $this->session->set_userdata('added',1);

@@ -690,29 +690,21 @@ if (!empty($account->profile_image)){
                           <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addLeave"><i class="fa fa-plus"></i> Add</a><br><br>
                           <table class="table table-hovered table-striped table-bordered">
                             <thead>
-                                 <th class="text-center">Birthday Leave</th>
-                                 <th class="text-center">Mandatory Leave</th>
-                                 <th class="text-center">Maternity Leave</th>
-                                 <th class="text-center">Paternity Leave</th>
-                                 <th class="text-center">Sick Leave</th>
-                                 <th class="text-center">Vacation Leave</th>
-                                 <th class="text-center">Total Leaves Left</th>
+                              <th class="text-center">Leave Type ID</th>
+                              <th class="text-center">Leave Type Name</th>
+                              <th class="text-center">Days Left</th>
                             </thead>
+                            <tr>
                             <?php foreach ($leaves as $row) { ?>
-                                <tr>
-                                    <td class="text-center <?php if ($row->birthday_leave==0) echo 'bgRed'; ?>"><?php echo $row->birthday_leave; ?></td>
-                                    <td class="text-center <?php if ($row->mandatory_leave==0) echo 'bgRed'; ?>"><?php echo $row->mandatory_leave; ?></td>
-                                    <td class="text-center <?php if ($row->maternity_leave==0) echo 'bgRed'; ?>"><?php echo $row->maternity_leave; ?></td>
-                                    <td class="text-center <?php if ($row->paternity_leave==0) echo 'bgRed'; ?>"><?php echo $row->paternity_leave; ?></td>
-                                    <td class="text-center <?php if ($row->sick_leave==0) echo 'bgRed'; ?>"><?php echo $row->sick_leave; ?></td>
-                                    <td class="text-center <?php if ($row->vacation_leave==0) echo 'bgRed'; ?>"><?php echo $row->vacation_leave; ?></td>
-                                    <th class="text-center success <?php if ($row->total_leave==0) echo 'bgRed'; ?>"><?php echo $row->total_leave; ?></th>
-                                </tr>
+                              <td class="text-center"><?php echo $row->leave_type_id; ?></td>
+                              <td class="text-center"><?php echo $row->leave_type_name; ?></td>
+                              <td class="text-center"><?php echo $row->days; ?></tr>
                             <?php } ?>
+                            </tr>
                            </table>
                         </div>
                       </section><!-- Leaves -->
-                      <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
+                      <form action="<?php echo base_url();?>ems/addLeave?emp_id=<?php echo $info->emp_id; ?>" method="post">
                         <div class="modal fade" id="addLeave" tabindex="-1" role="dialog">
                           <div class="modal-dialog">
                             <div class="modal-content">
@@ -724,19 +716,19 @@ if (!empty($account->profile_image)){
                                 <div class="row">
                                   <div class="col-sm-6">
                                     <label for="">Birthday Leave:</label>
-                                    <input type="text" class="form-control" name="txtBirthdayLeave" required><br>
+                                    <input type="text" class="form-control" name="txtBirthdayLeave" value=0 required><br>
                                     <label for="">Mandatory Leave:</label>
-                                    <input type="text" class="form-control" name="txtMandatoryLeave" required><br>
+                                    <input type="text" class="form-control" name="txtMandatoryLeave" value=0 required><br>
                                     <label for="">Maternity Leave:</label>
-                                    <input type="text" class="form-control" name="txtMaternityLeave" required><br>
+                                    <input type="text" class="form-control" name="txtMaternityLeave" value=0 required><br>
                                   </div>
                                   <div class="col-sm-6">
                                     <label for="">Paternity Leave:</label>
-                                    <input type="text" class="form-control" name="txtPaternityLeave" required><br>
+                                    <input type="text" class="form-control" name="txtPaternityLeave" value=0 required><br>
                                     <label for="">Sick Leave:</label>
-                                    <input type="text" class="form-control" name="txtSickLeave" required><br>
+                                    <input type="text" class="form-control" name="txtSickLeave" value=0 required><br>
                                     <label for="">Vacation Leave:</label>
-                                    <input type="text" class="form-control" name="txtVacationLeave" required><br>
+                                    <input type="text" class="form-control" name="txtVacationLeave" value=0 required><br>
                                   </div>
                                 </div>
                               </div>
@@ -825,26 +817,6 @@ if (!empty($account->profile_image)){
                                                   echo "<option value='$row->user_level_id'> $row->user_level</option>";
                                               } ?>
                                           </select>
-                                       </div>
-                                   </div>
-                               </div>
-                           </article>
-                           <article class="form-group">
-                               <label class=" col-sm-3 control-label">Secret Question: </label>
-                               <div class="col-sm-9 controls">
-                                   <div class="row">
-                                       <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $account->secret_question; ?>" name="txtSecretQuestion" />
-                                       </div>
-                                   </div>
-                               </div>
-                           </article>
-                           <article class="form-group">
-                               <label class=" col-sm-3 control-label">Secret Answer: </label>
-                               <div class="col-sm-9 controls">
-                                   <div class="row">
-                                       <div class="col-xs-9">
-                                           <input type="text" disabled class="form-control" value="<?php echo $account->secret_answer; ?>" name="txtSecretAnswer" />
                                        </div>
                                    </div>
                                </div>

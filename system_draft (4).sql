@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2015 at 05:17 AM
+-- Generation Time: Sep 01, 2015 at 07:02 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -138,11 +138,19 @@ CREATE TABLE IF NOT EXISTS `tbl_address` (
 
 INSERT INTO `tbl_address` (`employee_id`, `street`, `barangay`, `city`, `state`, `zip`, `country`) VALUES
 (1, '577', 'Maybunga', 'Pasig', 'NCR', 12, 'PH'),
-(3, 'e', 'e', 'e', 'e', 0, 'e'),
-(2, 'e', 'e', 'e', 'e', 1111, 'PH'),
-(8, 'e', 'e', 'e', 'e', 1, 'PH'),
-(9, 'e', 'e', 'e', 'e', 0, 'PH'),
-(11, '12', 'Maybunga', 'Pasig City', 'Metro Manila', 1607, 'PK');
+(3, '577', 'Maybunga', 'Pasig', 'NCR', 12, 'PH'),
+(4, '577', 'Maybunga', 'Pasig', 'NCR', 12, 'PH'),
+(5, '577', 'Maybunga', 'Pasig', 'NCR', 12, 'PH'),
+(6, '577', 'Maybunga', 'Pasig', 'NCR', 12, 'PH'),
+(7, '577', 'Maybunga', 'Pasig', 'NCR', 12, 'PH'),
+(8, '577', 'Maybunga', 'Pasig', 'NCR', 12, 'PH'),
+(9, '577', 'Maybunga', 'Pasig', 'NCR', 12, 'PH'),
+(2, '577', 'Maybunga', 'Pasig', 'NCR', 12, 'PH'),
+(10, '33', 'Manhattan', 'New York', 'New York', 1232, 'PH'),
+(11, '33', 'Manhattan', 'New York', 'New York', 1232, 'PH'),
+(12, 'e', 'e', 'e', 'e', 0, 'TP'),
+(13, 'r', 'r', 'r', 'r', 0, 'BS'),
+(14, 'e', 'e', 'e', 'e', 0, 'TP');
 
 -- --------------------------------------------------------
 
@@ -171,6 +179,30 @@ INSERT INTO `tbl_allowances` (`allowance_id`, `allowance_name`, `percentage`, `a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_announcement`
+--
+
+DROP TABLE IF EXISTS `tbl_announcement`;
+CREATE TABLE IF NOT EXISTS `tbl_announcement` (
+  `announcement_id` int(5) unsigned zerofill NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `posted_by` varchar(50) DEFAULT NULL,
+  `date_posted` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_announcement`
+--
+
+INSERT INTO `tbl_announcement` (`announcement_id`, `description`, `posted_by`, `date_posted`) VALUES
+(00001, 'Merry Christmas!', 'Administrator Arden', '2015-09-01 01:20:03'),
+(00002, 'No Work for tomorrow (Sept 2, 2015, Tuesday)', 'Administrator Arden', '2015-09-01 01:20:35'),
+(00003, 'Happy New Year!', 'Administrator Arden', '2015-09-01 01:20:50'),
+(00004, 'Happy na Birthday pa', 'Administrator Arden', '2015-09-01 02:09:42');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_assets`
 --
 
@@ -187,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `tbl_assets` (
 --
 
 INSERT INTO `tbl_assets` (`asset_id`, `employee_id`, `asset_status`, `assigned_date`) VALUES
-('EQ1001', '2', 'Brand New', '2015-07-20 00:00:00'),
+('EQ1001', '2', 'asd', '2015-08-31 00:00:00'),
 ('EQ1002', '1', 'Damaged', '2015-07-14 00:00:00'),
 ('EQ1003', '16', 'Destroyed', '2015-08-12 00:00:00'),
 ('EQ1004', '4', 'Brand New', '2015-07-20 00:00:00'),
@@ -196,7 +228,10 @@ INSERT INTO `tbl_assets` (`asset_id`, `employee_id`, `asset_status`, `assigned_d
 ('EQ1007', '20', 'Destroyed', '2015-08-07 00:00:00'),
 ('EQ1008', '8', '2nd Hand', '2015-07-12 20:46:13'),
 ('EQ1009', '9', 'Brand New', '2015-07-20 00:00:00'),
-('EQ10010', '10', 'Damaged', '2015-07-21 00:00:00');
+('EQ10010', '10', 'Damaged', '2015-07-21 00:00:00'),
+('EQ1013', '0', 'Brand New', NULL),
+('EQ1011', '0', 'Brand New', NULL),
+('EQ1014', '0', 'Brand New', NULL);
 
 -- --------------------------------------------------------
 
@@ -233,7 +268,40 @@ INSERT INTO `tbl_asset_info` (`asset_id`, `asset_name`, `asset_description`, `as
 ('EQ1007', 'Batman Mask', 'It is a table. Duh!', '5000', 'WD', 'Unbranded', 1231231, '', 'VEN1001', '2015-08-29', '2015-07-18'),
 ('EQ1008', 'Superman Cape', 'Sharp Sword', '6000', 'ELEC', 'Unbranded', 1231231, 'N/A', 'VEN1001', '2015-07-21', '2015-07-13'),
 ('EQ1009', 'Wolverine Claw', 'Steel Chair for Wrestling', '7000', 'SC', 'Unbranded', 1231231, 'N/A', 'VEN1001', '0000-00-00', '2015-07-21'),
-('EQ1010', 'Hulk Formula', 'Sharp Sword', '8000', 'SC', 'CD R-king', 1231231, 'Super Model', 'VEN1001', '2015-07-22', '2015-07-02');
+('EQ1010', 'Hulk Formula', 'Sharp Sword', '8000', 'SC', 'CD R-king', 1231231, 'Super Model', 'VEN1001', '2015-07-22', '2015-07-02'),
+('EQ1011', 'Nicole', 'Stupid', '2123', 'WD', 'Unbranded', 0, 'N/A', 'VEN1002', NULL, '2015-08-19'),
+('EQ1013', 'TV', 'Malaki', '12000', 'ELEC', 'Bear', 123456, '3', 'VEN1002', '2015-09-29', '2015-08-24'),
+('EQ1014', 'Mouse', 'Daga', '1000', 'ELEC', 'Unbranded', 0, 'N/A', 'VEN1002', NULL, '2015-07-29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_asset_request`
+--
+
+DROP TABLE IF EXISTS `tbl_asset_request`;
+CREATE TABLE IF NOT EXISTS `tbl_asset_request` (
+  `asset_request_id` smallint(5) unsigned zerofill NOT NULL,
+  `asset_name` varchar(50) DEFAULT NULL,
+  `quantity` smallint(6) DEFAULT NULL,
+  `request_status` varchar(20) DEFAULT NULL,
+  `employee_id` varchar(8) DEFAULT NULL,
+  `date_approved` datetime DEFAULT NULL,
+  `approved_by` varchar(50) DEFAULT NULL,
+  `date_requested` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_asset_request`
+--
+
+INSERT INTO `tbl_asset_request` (`asset_request_id`, `asset_name`, `quantity`, `request_status`, `employee_id`, `date_approved`, `approved_by`, `date_requested`) VALUES
+(00001, 'Palakol', 1, 'Approved', '1', '2015-08-31 00:00:00', 'Administrator Arden', '2015-08-31 11:01:57'),
+(00002, 'Martilyo', 2, 'Denied', '1', '2015-08-31 00:00:00', 'Administrator Arden', '2015-08-31 11:02:00'),
+(00003, 'Pencil', 5, 'Denied', '1', '2015-08-31 00:00:00', 'Administrator Arden', '2015-08-31 11:36:32'),
+(00004, 'Palakol', 2, 'Pending', NULL, NULL, NULL, '2015-09-01 02:13:43'),
+(00005, 'Palakol', 2, 'Pending', NULL, NULL, NULL, '2015-09-01 02:30:05'),
+(00007, 'Desktop', 1, 'Pending', '10', NULL, 'Null', '2015-09-01 02:34:07');
 
 -- --------------------------------------------------------
 
@@ -509,95 +577,81 @@ CREATE TABLE IF NOT EXISTS `tbl_audit_trail` (
   `username` varchar(50) DEFAULT NULL,
   `action` varchar(50) DEFAULT NULL,
   `employee_id` varchar(10) DEFAULT NULL,
-  `old_value` varchar(50) DEFAULT NULL,
-  `new_value` varchar(50) DEFAULT NULL,
   `date_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=289 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_audit_trail`
 --
 
-INSERT INTO `tbl_audit_trail` (`audit_trail_id`, `ip_address`, `user_level`, `username`, `action`, `employee_id`, `old_value`, `new_value`, `date_time`) VALUES
-(00210, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(00211, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(00212, '::1', 'Administrator', 'ardents', 'DELETED Employee Profile', '20', NULL, NULL, '2015-08-18 08:26:50'),
-(00213, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-18 08:28:24'),
-(00214, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-18 14:49:38'),
-(00215, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-18 14:49:45'),
-(00216, '::1', 'HR Manager', 'hr', 'Logged in', NULL, NULL, NULL, '2015-08-18 14:50:08'),
-(00217, '::1', 'HR Manager', 'hr', 'Logged out', NULL, NULL, NULL, '2015-08-18 14:59:32'),
-(00218, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:00:36'),
-(00219, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:07:02'),
-(00220, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:09:42'),
-(00221, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:12:31'),
-(00222, '::1', 'HR Manager', 'hr', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:15:44'),
-(00223, '::1', 'HR Manager', 'hr', 'Logged out', NULL, NULL, NULL, '2015-08-18 15:22:27'),
-(00224, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:24:36'),
-(00225, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:25:12'),
-(00226, '::1', 'Operations Manager', 'ope', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:29:30'),
-(00227, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:31:35'),
-(00228, '::1', 'HR Manager', 'hr', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:33:57'),
-(00229, '::1', 'HR Manager', 'hr', 'Logged out', NULL, NULL, NULL, '2015-08-18 15:34:21'),
-(00230, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:36:49'),
-(00231, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:45:04'),
-(00232, '::1', 'Operations Manager', 'ope', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:46:04'),
-(00233, '::1', 'HR Manager', 'hr', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:51:13'),
-(00234, '::1', 'HR Manager', 'hr', 'Logged out', NULL, NULL, NULL, '2015-08-18 15:51:34'),
-(00235, '::1', 'HR Manager', 'hr', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:51:42'),
-(00236, '::1', 'HR Manager', 'hr', 'Logged out', NULL, NULL, NULL, '2015-08-18 15:52:19'),
-(00237, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:52:27'),
-(00238, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-18 15:53:56'),
-(00239, '::1', 'Accounting Manager', 'acc', 'Logged out', NULL, NULL, NULL, '2015-08-18 16:02:17'),
-(00240, '::1', 'Operations Manager', 'ope', 'Logged in', NULL, NULL, NULL, '2015-08-18 16:02:23'),
-(00241, '::1', 'Operations Manager', 'ope', 'Logged out', NULL, NULL, NULL, '2015-08-18 17:32:40'),
-(00242, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-18 17:38:15'),
-(00243, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-18 17:38:24'),
-(00244, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-18 17:42:47'),
-(00245, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-18 18:43:22'),
-(00246, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-18 18:43:27'),
-(00247, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-18 19:08:29'),
-(00248, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-18 19:08:35'),
-(00249, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-18 20:12:30'),
-(00250, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-18 20:13:19'),
-(00251, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-18 20:15:08'),
-(00252, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-18 20:16:13'),
-(00253, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-18 20:16:35'),
-(00254, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-19 05:19:23'),
-(00255, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-19 05:26:11'),
-(00256, '::1', 'Accounting Manager', 'acc', 'Logged in', NULL, NULL, NULL, '2015-08-19 05:26:21'),
-(00257, '::1', 'Accounting Manager', 'acc', 'Logged out', NULL, NULL, NULL, '2015-08-19 05:32:52'),
-(00258, '::1', 'Operations Manager', 'ope', 'Logged in', NULL, NULL, NULL, '2015-08-19 05:32:59'),
-(00259, '::1', 'Operations Manager', 'ope', 'Logged out', NULL, NULL, NULL, '2015-08-19 05:33:15'),
-(00260, '::1', 'Operations Manager', 'ope', 'Logged in', NULL, NULL, NULL, '2015-08-19 05:37:19'),
-(00261, '::1', 'Operations Manager', 'ope', 'Logged out', NULL, NULL, NULL, '2015-08-19 05:49:40'),
-(00262, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-19 05:49:44'),
-(00263, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-19 09:31:01'),
-(00264, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-19 09:31:49'),
-(00265, '::1', 'HR Manager', 'hr', 'Logged in', NULL, NULL, NULL, '2015-08-19 09:31:55'),
-(00266, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-19 11:32:55'),
-(00267, '::1', 'Administrator', 'ardents', 'CREATED Employee Profile', '8', NULL, NULL, '2015-08-19 11:34:23'),
-(00268, '::1', 'Administrator', 'ardents', 'CREATED Employee Profile', '9', NULL, NULL, '2015-08-19 11:37:53'),
-(00269, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-19 11:40:50'),
-(00270, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-19 11:43:36'),
-(00271, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-19 11:43:46'),
-(00272, '::1', 'Administrator', 'ardents', 'Logged out', NULL, NULL, NULL, '2015-08-19 11:46:43'),
-(00273, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-19 11:47:19'),
-(00274, '::1', 'Administrator', 'ardents', 'CREATED Employee Profile', '11', NULL, NULL, '2015-08-19 11:51:15'),
-(00275, '::1', 'Administrator', 'admin', 'Logged in', NULL, NULL, NULL, '2015-08-25 12:13:41'),
-(00276, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-27 02:58:09'),
-(00277, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-27 05:31:12'),
-(00278, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-27 05:36:27'),
-(00279, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-27 14:38:51'),
-(00280, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-27 17:32:48'),
-(00281, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-27 17:34:22'),
-(00282, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '1', NULL, NULL, '2015-08-27 17:35:14'),
-(00283, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-28 05:08:38'),
-(00284, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-28 08:57:28'),
-(00285, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-29 16:14:47'),
-(00286, '::1', 'Administrator', 'ardents', 'Employee 1 requested BL', NULL, NULL, NULL, '2015-08-29 17:59:10'),
-(00287, '::1', 'Administrator', 'ardents', 'Leave Request Approved by Administrator Arden', NULL, NULL, NULL, '2015-08-29 18:04:18'),
-(00288, '::1', 'Administrator', 'ardents', 'Logged in', NULL, NULL, NULL, '2015-08-30 02:22:33');
+INSERT INTO `tbl_audit_trail` (`audit_trail_id`, `ip_address`, `user_level`, `username`, `action`, `employee_id`, `date_time`) VALUES
+(00001, '::1', 'Administrator', 'ardents', 'Logged in', NULL, '2015-08-31 13:07:17'),
+(00002, '::1', 'Administrator', 'ardents', 'Backed up database', NULL, '2015-08-31 13:10:54'),
+(00003, '::1', 'Administrator', 'ardents', 'Logged out', NULL, '2015-08-31 13:11:39'),
+(00004, '::1', 'Employee', 'ardents', 'Logged in', NULL, '2015-08-31 13:13:27'),
+(00005, '::1', 'Employee', 'ardents', 'Logged in', NULL, '2015-08-31 13:57:59'),
+(00006, '::1', 'Employee', 'ardents', 'Logged in', NULL, '2015-08-31 14:41:13'),
+(00007, '::1', 'Employee', 'ardents', 'Evaluated Employee1', NULL, '2015-08-31 15:11:16'),
+(00008, '::1', 'Employee', 'ardents', 'Evaluated Employee1', NULL, '2015-08-31 15:13:22'),
+(00009, '::1', 'Employee', 'ardents', 'Evaluated Employee1', NULL, '2015-08-31 15:41:08'),
+(00010, '::1', 'Employee', 'ardents', 'Evaluated Employee1', NULL, '2015-08-31 15:43:21'),
+(00011, '::1', 'Employee', 'ardents', 'Evaluated Employee2', NULL, '2015-08-31 15:44:01'),
+(00012, '::1', 'Employee', 'ardents', 'Evaluated Employee11', NULL, '2015-08-31 15:45:26'),
+(00013, '::1', 'Employee', 'ardents', 'Evaluated Employee1', NULL, '2015-08-31 15:45:54'),
+(00014, '::1', 'Employee', 'ardents', 'Evaluated Employee1', NULL, '2015-08-31 15:46:27'),
+(00015, '::1', 'Employee', 'ardents', 'Evaluated Employee1', NULL, '2015-08-31 15:55:14'),
+(00016, '::1', 'Employee', 'ardents', 'Evaluated Employee1', NULL, '2015-08-31 15:56:39'),
+(00017, '::1', 'Employee', 'ardents', 'Logged out', NULL, '2015-08-31 15:57:30'),
+(00018, '::1', 'Employee', 'ardents', 'Logged in', NULL, '2015-08-31 15:57:35'),
+(00019, '::1', 'Employee', 'ardents', 'Logged out', NULL, '2015-08-31 15:57:43'),
+(00020, '::1', 'Administrator', 'ardents', 'Logged in', NULL, '2015-08-31 15:57:50'),
+(00021, '::1', 'Administrator', 'ardents', 'Logged out', NULL, '2015-08-31 17:36:53'),
+(00022, '::1', 'Employee', 'admin', 'Logged in', NULL, '2015-08-31 17:36:57'),
+(00023, '::1', 'Employee', 'admin', 'Evaluated Employee8', NULL, '2015-08-31 17:37:21'),
+(00024, '::1', 'Employee', 'admin', 'Logged out', NULL, '2015-08-31 17:37:36'),
+(00025, '::1', 'Administrator', 'ardents', 'Logged in', NULL, '2015-08-31 17:37:41'),
+(00026, '::1', 'Administrator', 'ardents', 'Evaluated Employee2', NULL, '2015-08-31 17:42:03'),
+(00027, '::1', 'Administrator', 'ardents', 'Evaluated Employee2', NULL, '2015-08-31 17:44:20'),
+(00028, '::1', 'Administrator', 'ardents', 'Evaluated Employee2', NULL, '2015-08-31 17:44:49'),
+(00029, '::1', 'Administrator', 'ardents', 'Logged in', NULL, '2015-09-01 00:16:41'),
+(00030, '::1', 'Administrator', 'ardents', ' Posted an Announcement', NULL, '2015-09-01 00:53:01'),
+(00031, '::1', 'Administrator', 'ardents', 'Posted an Announcement', NULL, '2015-09-01 00:54:27'),
+(00032, '::1', 'Administrator', 'Arden', 'Posted an Announcement', NULL, '2015-09-01 01:12:14'),
+(00033, '::1', 'Administrator', 'Arden', 'Posted an Announcement', NULL, '2015-09-01 01:12:30'),
+(00034, '::1', 'Administrator', 'ardents', 'Logged out', NULL, '2015-09-01 01:18:36'),
+(00035, '::1', 'Administrator', 'ardents', 'Logged in', NULL, '2015-09-01 01:18:41'),
+(00036, '::1', 'Administrator', 'Arden', 'Posted an Announcement', NULL, '2015-09-01 01:18:54'),
+(00037, '::1', 'Administrator', 'Arden', 'Posted an Announcement', NULL, '2015-09-01 01:20:03'),
+(00038, '::1', 'Administrator', 'Arden', 'Posted an Announcement', NULL, '2015-09-01 01:20:35'),
+(00039, '::1', 'Administrator', 'Arden', 'Posted an Announcement', NULL, '2015-09-01 01:20:50'),
+(00040, '::1', 'Administrator', 'ardents', 'Logged in', NULL, '2015-09-01 02:04:09'),
+(00041, '::1', 'Administrator', 'Arden', 'Posted an Announcement', NULL, '2015-09-01 02:09:42'),
+(00042, '::1', 'Administrator', 'ardents', 'Logged out', NULL, '2015-09-01 02:10:09'),
+(00043, '::1', 'Employee', 'admin', 'Logged in', NULL, '2015-09-01 02:11:09'),
+(00044, '::1', 'Employee', 'admin', 'Logged out', NULL, '2015-09-01 02:14:26'),
+(00045, '::1', 'Administrator', 'ardents', 'Logged in', NULL, '2015-09-01 02:14:33'),
+(00046, '::1', 'Administrator', 'ardents', 'CREATED Employee Profile', '10', '2015-09-01 02:24:20'),
+(00047, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '10', '2015-09-01 02:24:43'),
+(00048, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '10', '2015-09-01 02:25:49'),
+(00049, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '10', '2015-09-01 02:26:20'),
+(00050, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '10', '2015-09-01 02:26:33'),
+(00051, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '10', '2015-09-01 02:28:03'),
+(00052, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '10', '2015-09-01 02:28:58'),
+(00053, '::1', 'Administrator', 'ardents', 'Logged out', NULL, '2015-09-01 02:29:07'),
+(00054, '::1', 'Administrator', 'ardents', 'Logged in', NULL, '2015-09-01 02:29:24'),
+(00055, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '10', '2015-09-01 02:29:46'),
+(00056, '::1', 'Administrator', 'ardents', 'Logged out', NULL, '2015-09-01 02:29:52'),
+(00057, '::1', 'Employee', 'ted', 'Logged in', NULL, '2015-09-01 02:29:56'),
+(00058, '::1', 'Employee', 'ted', 'Logged out', NULL, '2015-09-01 02:34:50'),
+(00059, '::1', 'Administrator', 'ardents', 'Logged in', NULL, '2015-09-01 03:21:00'),
+(00060, '::1', 'Administrator', 'ardents', 'CREATED Employee Profile', '11', '2015-09-01 03:42:27'),
+(00061, '::1', 'Administrator', 'ardents', 'UPDATED Employee Profile', '11', '2015-09-01 04:32:12'),
+(00062, '::1', 'Administrator', 'ardents', 'Employee 11 requested leave', NULL, '2015-09-01 04:52:03'),
+(00063, '::1', 'Administrator', 'ardents', 'Leave Request Approved by Administrator Arden', NULL, '2015-09-01 04:52:07'),
+(00064, '::1', 'Administrator', 'ardents', 'CREATED Employee Profile', '12', '2015-09-01 04:53:17'),
+(00065, '::1', 'Administrator', 'ardents', 'CREATED Employee Profile', '13', '2015-09-01 04:55:04'),
+(00066, '::1', 'Administrator', 'ardents', 'CREATED Employee Profile', '14', '2015-09-01 05:01:01'),
+(00067, '::1', 'Administrator', 'ardents', 'Logged out', NULL, '2015-09-01 05:01:34');
 
 -- --------------------------------------------------------
 
@@ -673,9 +727,17 @@ INSERT INTO `tbl_contact_number` (`employee_id`, `mobile_number`, `tel_number`, 
 (1, 1, 1, 'ardents02@gmail.com'),
 (3, 0, 0, 'ee@gmail.com'),
 (2, 22, 22, 'asdsadsadsad@gmail.com'),
+(4, 1, 1, 'qweqwe@gmail.com'),
+(7, 1, 1, 'qweqwe@gmail.com'),
+(5, 1, 1, 'qweqwe@gmail.com'),
+(6, 1, 1, 'qweqwe@gmail.com'),
 (8, 1, 1, 'qweqwe@gmail.com'),
 (9, 1, 1, 'qweqwe@gmail.com'),
-(11, 11, 22, 'ardents02@gmail.com');
+(10, 3, 22, 'ted@gmail.com'),
+(11, 3, 22, 'ted@gmail.com'),
+(12, 1, 2, 'qweqwe@gmail.com'),
+(13, 2, 2, 'asdsadsadsad@gmail.com'),
+(14, 1, 1, 'ardents02@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -701,7 +763,11 @@ INSERT INTO `tbl_contact_person` (`contact_person`, `contact_rel`, `contact_num`
 ('', '', 0, 2),
 (NULL, NULL, NULL, 8),
 (NULL, NULL, NULL, 9),
-(NULL, NULL, NULL, 11);
+('', '', 0, 10),
+('', '', 0, 11),
+(NULL, NULL, NULL, 12),
+(NULL, NULL, NULL, 13),
+(NULL, NULL, NULL, 14);
 
 -- --------------------------------------------------------
 
@@ -967,6 +1033,34 @@ INSERT INTO `tbl_countries` (`id`, `country_code`, `country_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_criteria`
+--
+
+DROP TABLE IF EXISTS `tbl_criteria`;
+CREATE TABLE IF NOT EXISTS `tbl_criteria` (
+  `criteria_id` int(5) NOT NULL,
+  `criteria_desc` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_criteria`
+--
+
+INSERT INTO `tbl_criteria` (`criteria_id`, `criteria_desc`) VALUES
+(1, 'Criteria1'),
+(2, 'Criteria2'),
+(3, 'Criteria3'),
+(4, 'Criteria4'),
+(5, 'Criteria5'),
+(6, 'Criteria6'),
+(7, 'Criteria7'),
+(8, 'Criteria8'),
+(9, 'Criteria9'),
+(10, 'Criteria10');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_day_type`
 --
 
@@ -1011,7 +1105,8 @@ INSERT INTO `tbl_departments` (`department_id`, `department_name`) VALUES
 ('DE1006', 'I.T.'),
 ('DE1007', 'Operations'),
 ('DE1008', 'Inventory'),
-('DE1009', 'Others');
+('DE1009', 'Others'),
+('', '');
 
 -- --------------------------------------------------------
 
@@ -1040,7 +1135,8 @@ INSERT INTO `tbl_dependent` (`employee_id`, `dependent_fname`, `dependent_lname`
 ('1', 'Sansa', 'Stark', 'Daughter'),
 ('1', 'Jolly', 'Bee', 'Mascot'),
 ('3', 'Sansa', 'Nyebe', 'Daughter'),
-('1', 'fff', 'sss', 'Guard');
+('1', 'fff', 'sss', 'Guard'),
+('10', 'wqe', 'qwe', '111');
 
 -- --------------------------------------------------------
 
@@ -1062,12 +1158,11 @@ CREATE TABLE IF NOT EXISTS `tbl_employment_history` (
 --
 
 INSERT INTO `tbl_employment_history` (`company_name`, `company_address`, `years_stayed`, `job_title`, `employee_id`) VALUES
-('JRU', 'Mandaluyong City', 2, 'Programmer', '100'),
 ('IBM', 'Eastwood', 1, 'Programmer', '1'),
 ('IBM', 'Eastwood', 1, 'Programmer', '3'),
 ('qwe', 'qwe', 2, 'e', '3'),
 ('IBMe', 'ee', 0, 'e', '3'),
-('sd', 'ds', 2, 'sads', '20');
+('IBM', 'Eastwood', 2, 'Programmer', '10');
 
 -- --------------------------------------------------------
 
@@ -1121,7 +1216,6 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_history` (
 
 INSERT INTO `tbl_emp_history` (`emp_id`, `status`, `employment_type_id`, `job_title_id`, `department_id`, `start_date`, `end_date`, `probationary_date`, `permanency_date`, `salary`, `pay_grade`, `user_id`, `date_modified`) VALUES
 (1, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-07-27', '2015-08-13', '2015-08-13', '2015-08-14', '40000.00', 'B', NULL, '2015-08-11 20:53:11'),
-(16, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '40000.00', NULL, NULL, '2015-08-13 22:24:05'),
 (4, 'Existing', 'ET1002', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '40000.00', NULL, NULL, '2015-08-13 22:25:24'),
 (6, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '40000.00', NULL, NULL, '2015-08-14 00:36:43'),
 (7, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-08-13', '2015-08-13', '2015-08-13', '2015-08-13', '40000.00', NULL, NULL, '2015-08-14 00:37:38'),
@@ -1129,7 +1223,11 @@ INSERT INTO `tbl_emp_history` (`emp_id`, `status`, `employment_type_id`, `job_ti
 (2, 'Existing', 'ET1002', 'JT1002', 'DE1003', '2015-08-18', '2015-08-18', '2015-08-18', '2015-08-18', '40000.00', '', NULL, '2015-08-18 13:54:04'),
 (8, 'Existing', 'ET1002', 'JT1008', 'DE1006', '2015-08-19', '2015-08-19', '2015-08-19', '2015-08-19', '40000.00', NULL, NULL, '2015-08-19 19:34:23'),
 (9, 'Existing', 'ET1002', 'JT1008', 'DE1001', '2015-08-19', '2015-08-19', '2015-08-19', '2015-08-19', '40000.00', NULL, NULL, '2015-08-19 19:37:51'),
-(11, 'Existing', 'ET1003', 'JT1004', 'DE1003', '2015-08-19', '2015-08-19', '2015-08-19', '2015-08-19', '40000.00', NULL, NULL, '2015-08-19 19:51:14');
+(10, 'Existing', 'ET1001', 'JT1008', 'DE1006', '2015-09-01', '2019-03-21', '2015-09-01', '2015-09-01', '0.00', '', NULL, '2015-09-01 10:24:20'),
+(11, 'Existing', 'ET1001', 'JT1008', 'DE1006', '2015-09-01', '2019-03-21', '2015-09-01', '2015-09-01', '0.00', '', NULL, '2015-09-01 10:24:20'),
+(12, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-09-01', '2015-09-01', '2015-09-01', '2015-09-01', NULL, NULL, NULL, '2015-09-01 12:53:15'),
+(13, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-09-01', '2015-09-01', '2015-09-01', '2015-09-01', NULL, NULL, NULL, '2015-09-01 12:55:03'),
+(14, 'Existing', 'ET1001', 'JT1001', 'DE1001', '2015-09-01', '2015-09-01', '2015-09-01', '2015-09-01', NULL, NULL, NULL, '2015-09-01 13:00:59');
 
 -- --------------------------------------------------------
 
@@ -1154,17 +1252,20 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_info` (
 --
 
 INSERT INTO `tbl_emp_info` (`emp_id`, `first_name`, `middle_name`, `last_name`, `birthday`, `gender`, `marital_status`, `date_added`) VALUES
-(1, 'Arden', 'Jay', 'Dela Cruz', '2015-08-27', 'male', 'Single', '2015-08-11 12:53:11'),
+(1, 'Arden', 'Jay', 'Dela Cruz', '2015-09-02', 'male', 'Single', '2015-08-11 12:53:11'),
 (2, 'Joses', 'P', 'Rizal', '2003-02-05', 'male', 'Single', '2015-08-18 05:54:04'),
 (3, 'Ardensssss', 'Alcairo', 'Dela Cruz', '2015-08-11', 'female', 'Single', '2015-08-13 17:13:59'),
 (4, 'Ardensssss', 'Alcairo', 'Dela Cruz', '2015-08-11', 'female', 'Single', '2015-08-13 17:13:59'),
-(5, 'Ardensssss', 'Alcairo', 'Dela Cruz', '2015-08-11', 'female', 'Single', '2015-08-13 17:13:59'),
+(5, 'Ardensssss', 'Alcairo', 'Dela Cruz', '2015-09-24', 'female', 'Single', '2015-08-13 17:13:59'),
 (6, 'Ardensssss', 'Alcairo', 'Dela Cruz', '2015-08-11', 'female', 'Single', '2015-08-13 17:13:59'),
 (7, 'Ardensssss', 'Alcairo', 'Dela Cruz', '2015-08-11', 'female', 'Single', '2015-08-13 17:13:59'),
-(8, 'Jolly', 'b', 'Bee', '2015-08-12', 'male', 'married', '2015-08-19 11:34:22'),
-(9, 'e', 'e', 'e', '2015-01-01', 'male', 'single', '2015-08-19 11:37:51'),
-(11, 'Sheldon', 'wew', 'Dela Cruz', '2015-08-05', 'male', 'single', '2015-08-19 11:51:14'),
-(16, 'r', 'r', 'r', '2015-06-12', 'male', 'married', '2015-08-13 14:24:05');
+(8, 'Jolly', 'b', 'Bee', '2015-09-17', 'male', 'married', '2015-08-19 11:34:22'),
+(9, 'e', 'e', 'e', '2014-09-17', 'male', 'single', '2015-08-19 11:37:51'),
+(10, 'Ted', '', 'Mosby', '1980-06-12', 'male', 'Single', '2015-09-01 02:24:19'),
+(11, 'Elly', 'b', 'Buendia', '1980-06-12', 'male', 'Single', '2015-09-01 03:42:26'),
+(12, 'Mcdo', 'n', 'Alds', '2015-09-02', 'male', 'single', '2015-09-01 04:53:15'),
+(13, 'Mongol', 'o', 'id', '2015-09-01', 'male', 'single', '2015-09-01 04:55:03'),
+(14, 'Manny', 'v', 'Villar', '2015-09-01', 'male', 'single', '2015-09-01 05:00:59');
 
 -- --------------------------------------------------------
 
@@ -1190,7 +1291,7 @@ CREATE TABLE IF NOT EXISTS `tbl_emp_performance` (
   `rate5` decimal(3,2) DEFAULT NULL,
   `final_rating` decimal(3,2) DEFAULT NULL,
   `date_evaluated` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_emp_performance`
@@ -1208,7 +1309,8 @@ INSERT INTO `tbl_emp_performance` (`performance_id`, `employee_name`, `evaluator
 (9, 'Ardenx Alcairo Dela Cruz', 'Ardenx', 'Some Title', 'qwe1', 'qwe2', 'qwe3', 'qwe4', 'qwe5', '2.00', '3.00', '3.00', '3.00', '4.00', '3.00', '2015-07-11 11:40:32'),
 (10, 'Ardenx Alcairo Dela Cruz', 'Ardenx', 'TitleFucker', 'qwe1', 'qwe2', 'qwe3', 'qwe4', 'qwe5', '2.00', '2.00', '4.00', '5.00', '2.00', '3.00', '2015-07-11 11:45:58'),
 (11, 'e e e', 'Arden', 'End of Project Evaluation', 'Lorem1', 'Lorem2', 'Lorem3', 'Lorem4', 'Lorem5', '1.00', '2.00', '3.00', '4.00', '5.00', '3.00', '2015-08-12 09:20:27'),
-(12, 'Joses P Rizal', 'Arden', 'Monthly Evaluation', 'Lorem1', 'Lorem2', 'Lorem3', 'Lorem4', 'Lorem5', '1.00', '2.00', '1.00', '2.00', '5.00', '2.20', '2015-08-27 15:13:52');
+(12, 'Joses P Rizal', 'Arden', 'Monthly Evaluation', 'Lorem1', 'Lorem2', 'Lorem3', 'Lorem4', 'Lorem5', '1.00', '2.00', '1.00', '2.00', '5.00', '2.20', '2015-08-27 15:13:52'),
+(13, 'Arden Jay Dela Cruz', 'Arden', 'Project Evaluation', '1qw', 'qw', 'qw', 'qwq', 'qwq', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2015-08-30 03:30:31');
 
 -- --------------------------------------------------------
 
@@ -1240,6 +1342,74 @@ INSERT INTO `tbl_emp_supervisions` (`supervisor_id`, `employee_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_evaluation`
+--
+
+DROP TABLE IF EXISTS `tbl_evaluation`;
+CREATE TABLE IF NOT EXISTS `tbl_evaluation` (
+  `evaluation_id` int(5) NOT NULL,
+  `evaluation_desc` varchar(50) DEFAULT NULL,
+  `assessor_id` int(5) DEFAULT NULL,
+  `assessee_id` int(5) DEFAULT NULL,
+  `evaluation_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_evaluation`
+--
+
+INSERT INTO `tbl_evaluation` (`evaluation_id`, `evaluation_desc`, `assessor_id`, `assessee_id`, `evaluation_date`) VALUES
+(2, 'Ashley eval', 1, 1, '2015-08-31 15:13:22'),
+(3, 'qwe', 1, 1, '2015-08-31 15:41:08'),
+(4, 'ee', 1, 1, '2015-08-31 15:42:01'),
+(5, 'ee', 1, 1, '2015-08-31 15:43:02'),
+(6, 'ee', 1, 1, '2015-08-31 15:43:20'),
+(7, 'qwe', 1, 2, '2015-08-31 15:44:00'),
+(8, 'rr', 1, 11, '2015-08-31 15:45:26'),
+(9, 'eweqwe', 1, 1, '2015-08-31 15:45:54'),
+(10, 'weq', 1, 1, '2015-08-31 15:46:26'),
+(11, 'ee', 1, 2, '2015-08-31 17:08:14'),
+(12, 'wewe', 1, 1, '2015-08-31 15:56:38'),
+(13, 'ewewe', 3, 8, '2015-08-31 17:37:21'),
+(14, 'Joses Eval', 1, 2, '2015-08-31 17:42:02'),
+(15, 'Joses Eval', 1, 2, '2015-08-31 17:44:19'),
+(16, 'Ewewe', 1, 2, '2015-08-31 17:44:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_evaluation_rate`
+--
+
+DROP TABLE IF EXISTS `tbl_evaluation_rate`;
+CREATE TABLE IF NOT EXISTS `tbl_evaluation_rate` (
+  `evaluation_id` int(5) unsigned zerofill DEFAULT NULL,
+  `rate1` decimal(3,2) DEFAULT NULL,
+  `rate2` decimal(3,2) DEFAULT NULL,
+  `rate3` decimal(3,2) DEFAULT NULL,
+  `rate4` decimal(3,2) DEFAULT NULL,
+  `rate5` decimal(3,2) DEFAULT NULL,
+  `rate6` decimal(3,2) DEFAULT NULL,
+  `rate7` decimal(3,2) DEFAULT NULL,
+  `rate8` decimal(3,2) DEFAULT NULL,
+  `rate9` decimal(3,2) DEFAULT NULL,
+  `rate10` decimal(3,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_evaluation_rate`
+--
+
+INSERT INTO `tbl_evaluation_rate` (`evaluation_id`, `rate1`, `rate2`, `rate3`, `rate4`, `rate5`, `rate6`, `rate7`, `rate8`, `rate9`, `rate10`) VALUES
+(00011, '1.00', '1.00', '2.00', '1.00', '5.00', '1.00', '2.00', '3.00', '2.00', '3.00'),
+(00012, '1.00', '1.00', '2.00', '1.00', '3.00', '5.00', '3.00', '3.00', '4.00', '4.00'),
+(00013, '1.00', '1.00', '2.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '3.00'),
+(00014, '1.00', '1.00', '2.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '3.00'),
+(00015, '1.00', '1.00', '2.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_governmentid`
 --
 
@@ -1262,7 +1432,11 @@ INSERT INTO `tbl_governmentid` (`employee_id`, `sss_no`, `pagibig_no`, `philheal
 ('2', 0, 0, 0, 0),
 ('8', NULL, NULL, NULL, NULL),
 ('9', NULL, NULL, NULL, NULL),
-('11', NULL, NULL, NULL, NULL);
+('10', 1, 2, 3, 4),
+('11', 0, 0, 0, 0),
+('12', NULL, NULL, NULL, NULL),
+('13', NULL, NULL, NULL, NULL),
+('14', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1310,13 +1484,37 @@ CREATE TABLE IF NOT EXISTS `tbl_leave_left` (
 --
 
 INSERT INTO `tbl_leave_left` (`employee_id`, `leave_type_id`, `days`) VALUES
-('1', 'BL', 16),
-('1', 'EL', 17),
-('1', 'MNL', 15),
-('1', 'MTL', 20),
-('1', 'PL', 20),
-('1', 'SL', 20),
-('1', 'VL', 18);
+('1', 'BL', 1),
+('1', 'MNL', 1),
+('1', 'MTL', 1),
+('1', 'PL', 1),
+('1', 'SL', 1),
+('1', 'VL', 1),
+('11', 'MNL', 1),
+('11', 'PL', 1),
+('11', 'SL', 1),
+('11', 'VL', 1),
+('11', 'BL', 1),
+('11', 'MTL', 1),
+('12', 'BL', 1),
+('12', 'MNL', 1),
+('12', 'PL', 1),
+('12', 'SL', 1),
+('12', 'VL', 1),
+('12', 'BL', 1),
+('13', 'BL', 1),
+('13', 'MNL', 1),
+('13', 'PL', 1),
+('13', 'SL', 1),
+('13', 'VL', 1),
+('13', 'BL', 1),
+('14', 'BL', 1),
+('14', 'MTL', 1),
+('14', 'MNL', 1),
+('14', 'PL', 1),
+('14', 'SL', 1),
+('14', 'VL', 1),
+('14', 'BL', 1);
 
 -- --------------------------------------------------------
 
@@ -1328,6 +1526,7 @@ DROP TABLE IF EXISTS `tbl_leave_remaining`;
 CREATE TABLE IF NOT EXISTS `tbl_leave_remaining` (
   `employee_id` varchar(10) DEFAULT NULL,
   `birthday_leave` tinyint(2) DEFAULT NULL,
+  `emergency_leave` tinyint(2) DEFAULT NULL,
   `mandatory_leave` tinyint(2) DEFAULT NULL,
   `maternity_leave` tinyint(2) DEFAULT NULL,
   `paternity_leave` tinyint(2) DEFAULT NULL,
@@ -1339,21 +1538,17 @@ CREATE TABLE IF NOT EXISTS `tbl_leave_remaining` (
 -- Dumping data for table `tbl_leave_remaining`
 --
 
-INSERT INTO `tbl_leave_remaining` (`employee_id`, `birthday_leave`, `mandatory_leave`, `maternity_leave`, `paternity_leave`, `vacation_leave`, `sick_leave`) VALUES
-('1', 0, 1, 2, 3, 5, 4),
-('2', 5, 5, 4, 5, 5, 5),
-('3', 0, 5, 3, 0, 4, 5),
-('4', 5, 5, 2, 5, 3, 5),
-('5', 4, 4, 1, 5, 2, 5),
-('6', 3, 3, 0, 0, 1, 4),
-('7', 2, 2, 5, 5, 0, 3),
-('8', 1, 1, 4, 5, 5, 2),
-('9', 0, 0, 3, 4, 5, 1),
-('10', 5, 5, 2, 3, 4, 0),
-('11', 5, 5, 1, 2, 3, 5),
-('12', 5, 5, 5, 1, 2, 5),
-('13', 5, 5, 4, 0, 5, 5),
-('14', 5, 5, 3, 5, 5, 5);
+INSERT INTO `tbl_leave_remaining` (`employee_id`, `birthday_leave`, `emergency_leave`, `mandatory_leave`, `maternity_leave`, `paternity_leave`, `vacation_leave`, `sick_leave`) VALUES
+('1', 0, 5, 1, 2, 3, 5, 4),
+('2', 5, 5, 5, 4, 5, 5, 5),
+('3', 0, 5, 5, 3, 0, 4, 5),
+('4', 5, 5, 5, 2, 5, 3, 5),
+('5', 4, 5, 4, 1, 5, 2, 5),
+('6', 3, 5, 3, 0, 0, 1, 4),
+('7', 2, 5, 2, 5, 5, 0, 3),
+('8', 1, 5, 1, 4, 5, 5, 2),
+('9', 0, 5, 0, 3, 4, 5, 1),
+('10', 5, 5, 5, 2, 3, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -1375,7 +1570,7 @@ CREATE TABLE IF NOT EXISTS `tbl_leave_request` (
   `date_approved` date DEFAULT NULL,
   `date_requested` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `employee_id` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_leave_request`
@@ -1389,7 +1584,9 @@ INSERT INTO `tbl_leave_request` (`id`, `prefix`, `leave_type`, `leave_reason`, `
 (00006, 'LVR', 'MNL', 'asdasd', '2015-08-12', '2015-08-20', NULL, 'Pending', NULL, NULL, NULL, '2'),
 (00007, 'LVR', 'EL', 'qweqwe', '2015-08-11', '2015-08-13', NULL, 'Pending', NULL, NULL, NULL, '11'),
 (00008, 'LVR', 'BL', 'weqwe', '2015-08-01', '2015-08-04', 20, 'Pending', NULL, NULL, NULL, '1'),
-(00009, 'LVR', 'BL', 'qwe', '2015-08-03', '2015-08-06', 20, 'Pending', NULL, NULL, NULL, '1');
+(00009, 'LVR', 'BL', 'qwe', '2015-08-03', '2015-08-06', 20, 'Pending', NULL, NULL, NULL, '1'),
+(00010, 'LVR', 'BL', 'asdasdasdasd', '2015-08-10', '2015-08-12', 16, 'Denied', 'Employee Arden', '2015-08-31', '2015-08-31 08:56:26', '1'),
+(00011, 'LVR', 'BL', 'eqwe', '2015-09-01', '2015-09-02', 10, 'Approved', 'Administrator Arden', '2015-09-01', '2015-09-01 04:52:07', '11');
 
 -- --------------------------------------------------------
 
@@ -1649,7 +1846,8 @@ INSERT INTO `tbl_project` (`project_id`, `project_name`, `client`, `starting_dat
 ('P1004', 'Project Alpha', 'CL1003', '2015-07-10', '2015-08-07', '2015-07-08 19:05:40'),
 ('P1006', '9DevCorp', 'CL1005', '2015-07-15', '2015-07-22', '2015-07-21 23:19:42'),
 ('P1007', 'Project Pie', 'CL1002', '2015-07-20', '2015-07-23', '2015-07-20 01:06:53'),
-('P1009', 'ddd', 'aaaaa', '2015-08-04', '2015-08-27', '2015-08-18 11:48:19');
+('P1009', 'ddd', 'aaaaa', '2015-08-04', '2015-08-27', '2015-08-18 11:48:19'),
+('P1009', 'Project Ara', 'Lucio Tan', '2015-08-10', '2015-08-13', '2015-08-30 11:52:10');
 
 -- --------------------------------------------------------
 
@@ -1669,9 +1867,7 @@ CREATE TABLE IF NOT EXISTS `tbl_project_workers` (
 --
 
 INSERT INTO `tbl_project_workers` (`project_id`, `employee_id`, `assigned_date`) VALUES
-('P1001', '100', '2015-07-13'),
-('P1002', '100', '2015-07-20'),
-('P1003', '100', '2015-07-21');
+('P1009', '1', '2015-08-04');
 
 -- --------------------------------------------------------
 
@@ -1740,7 +1936,8 @@ INSERT INTO `tbl_restock` (`item_id`, `vendor_id`, `quantity`, `date_restock`) V
 ('STK1003', 'VEN1001', 1000, '2015-07-19'),
 ('STK1004', 'VEN1001', 1000, '2015-07-19'),
 ('STK1007', 'VEN1001', 1000, '2015-07-19'),
-('STK1002', 'VEN1001', 610, '2015-07-19');
+('STK1002', 'VEN1001', 610, '2015-07-19'),
+('STK10012', 'VEN1002', 100, '2015-08-06');
 
 -- --------------------------------------------------------
 
@@ -1772,7 +1969,11 @@ INSERT INTO `tbl_school` (`employee_id`, `primary_name`, `primary_address`, `pri
 (2, '', '', 0, '', '', 0, '', '', 0),
 (8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(10, '', '', 0, '', '', 0, '', '', 0),
+(11, '', '', 0, '', '', 0, '', '', 0),
+(12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1793,6 +1994,7 @@ CREATE TABLE IF NOT EXISTS `tbl_stocks` (
 
 INSERT INTO `tbl_stocks` (`item_id`, `quantity`, `date_last_restocked`) VALUES
 ('STK1001', '900', '2015-07-18'),
+('STK10012', '100', '2015-08-06'),
 ('STK1002', '1100', '2015-07-19'),
 ('STK1003', '980', '2015-07-19'),
 ('STK1004', '950', '2015-07-19'),
@@ -1844,12 +2046,9 @@ CREATE TABLE IF NOT EXISTS `tbl_stock_info` (
 --
 
 INSERT INTO `tbl_stock_info` (`item_id`, `item_name`, `category_id`, `price`) VALUES
-('STK1001', 'Steel Post', 'COMP', '1000.00'),
+('STK1001', 'Steel Posts', 'STL', '1001.00'),
 ('STK1002', 'Wooden Chair', 'ELEC', '2000.00'),
-('STK1003', 'Steel Plates', 'PLSTC', '5000.00'),
-('STK1004', 'Pako', 'SC', '5.00'),
-('STK1005', 'Eye of Skadiis', 'STL', '1000.00'),
-('STK1007', 'Martilyo', 'WD', '100.00');
+('STK1003', 'Steel Plates', 'PLSTC', '5000.00');
 
 -- --------------------------------------------------------
 
@@ -1874,7 +2073,9 @@ INSERT INTO `tbl_supervisions` (`supervisor_id`, `employee_id`, `assigned_date`)
 ('S1001', '3', '2015-08-19'),
 ('S1001', '16', '2015-08-19'),
 ('S1001', '3', '2015-08-19'),
-('S1001', '8', '2015-08-28');
+('S1001', '8', '2015-08-28'),
+('S1001', '1', '2015-08-30'),
+('S1001', '8', '2015-08-30');
 
 -- --------------------------------------------------------
 
@@ -1960,27 +2161,30 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `password` varchar(255) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `user_level` varchar(20) DEFAULT NULL,
-  `secret_question` varchar(50) DEFAULT NULL,
-  `secret_answer` varchar(50) DEFAULT NULL,
   `profile_image` varchar(100) DEFAULT NULL,
   `employee_id` varchar(10) DEFAULT NULL,
   `date_registered` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`user_id`, `username`, `password`, `email`, `user_level`, `secret_question`, `secret_answer`, `profile_image`, `employee_id`, `date_registered`) VALUES
-(1, 'ardents', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'ADMIN', 'What is your pet name?', 'ardents', 'loader.gif', '1', '2015-06-05 05:28:36'),
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'asd@gmail.com', 'ADMIN', 'asda', 'asd', 'arrow_right.png', '3', '2015-08-15 01:02:18'),
-(4, 'hr', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'HR', 'sad', 'asd', 'default.jpg', '4', '2015-08-15 01:02:06'),
-(6, 'acc', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'asd@gmail.com', 'ACC', 'we', 'qw', 'default.jpg', '6', '2015-08-15 01:02:17'),
-(7, 'ope', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com\r\nasd@gmail.com', 'OP', 'we', 'qw', 'default.jpg', '7', '2015-08-15 01:02:21'),
-(8, 'arden', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'asd@gmail.com', 'EMP', 'What is your pet name?', 'ardents', 'default.jpg', '2', '2015-08-18 05:54:04'),
-(22, NULL, NULL, NULL, NULL, NULL, NULL, 'default.jpg', '8', '2015-08-19 11:34:23'),
-(23, NULL, NULL, NULL, 'EMP', NULL, NULL, 'default.jpg', '9', '2015-08-19 11:37:53'),
-(24, NULL, NULL, NULL, 'EMP', NULL, NULL, 'default.jpg', '11', '2015-08-19 11:51:15');
+INSERT INTO `tbl_user` (`user_id`, `username`, `password`, `email`, `user_level`, `profile_image`, `employee_id`, `date_registered`) VALUES
+(1, 'ardents', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'ADMIN', 'loader.gif', '1', '2015-06-05 05:28:36'),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'asd@gmail.com', 'EMP', 'arrow_right.png', '3', '2015-08-15 01:02:18'),
+(4, 'hr', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com', 'HR', 'default.jpg', '4', '2015-08-15 01:02:06'),
+(6, 'acc', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'asd@gmail.com', 'ACC', 'default.jpg', '6', '2015-08-15 01:02:17'),
+(7, 'ope', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'ardents02@gmail.com\r\nasd@gmail.com', 'OP', 'default.jpg', '7', '2015-08-15 01:02:21'),
+(8, 'arden', 'daca2125e1f1f3c5ff6e8663ab1edef3', 'asd@gmail.com', 'EMP', 'default.jpg', '2', '2015-08-18 05:54:04'),
+(22, NULL, NULL, NULL, NULL, 'default.jpg', '8', '2015-08-19 11:34:23'),
+(23, NULL, NULL, NULL, 'EMP', 'default.jpg', '9', '2015-08-19 11:37:53'),
+(24, '', 'd41d8cd98f00b204e9800998ecf8427e', NULL, '', 'default.jpg', '11', '2015-08-19 11:51:15'),
+(25, 'ted', '870fa8ee962d90af50c7eaed792b075a', NULL, 'EMP', 'default.jpg', '10', '2015-09-01 02:24:20'),
+(26, 'elli', 'd41d8cd98f00b204e9800998ecf8427e', 'elli@gmail.cpm', 'EMP', 'default.jpg', '11', '2015-09-01 03:42:26'),
+(27, NULL, NULL, NULL, 'EMP', 'default.jpg', '12', '2015-09-01 04:53:16'),
+(28, NULL, NULL, NULL, 'EMP', 'default.jpg', '13', '2015-09-01 04:55:04'),
+(29, NULL, NULL, NULL, 'EMP', 'default.jpg', '14', '2015-09-01 05:01:00');
 
 -- --------------------------------------------------------
 
@@ -2042,6 +2246,22 @@ CREATE TABLE IF NOT EXISTS `view_all_project_materials` (
 ,`date_issued` date
 ,`item_id` varchar(10)
 ,`project_id` varchar(5)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_asset_request`
+--
+DROP VIEW IF EXISTS `view_asset_request`;
+CREATE TABLE IF NOT EXISTS `view_asset_request` (
+`asset_request_id` smallint(5) unsigned zerofill
+,`asset_name` varchar(50)
+,`quantity` smallint(6)
+,`request_status` varchar(20)
+,`date_requested` timestamp
+,`name` varchar(152)
+,`approved_by` varchar(50)
 );
 
 -- --------------------------------------------------------
@@ -2142,6 +2362,44 @@ CREATE TABLE IF NOT EXISTS `view_emp_address` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `view_emp_evaluation`
+--
+DROP VIEW IF EXISTS `view_emp_evaluation`;
+CREATE TABLE IF NOT EXISTS `view_emp_evaluation` (
+`evaluation_id` int(5)
+,`evaluation_desc` varchar(50)
+,`assessor` varchar(101)
+,`assessee` varchar(101)
+,`rate1` decimal(3,2)
+,`rate2` decimal(3,2)
+,`rate3` decimal(3,2)
+,`rate4` decimal(3,2)
+,`rate5` decimal(3,2)
+,`rate6` decimal(3,2)
+,`rate7` decimal(3,2)
+,`rate8` decimal(3,2)
+,`rate9` decimal(3,2)
+,`rate10` decimal(3,2)
+,`evaluation_date` timestamp
+,`final_rating` decimal(16,6)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_evaluation`
+--
+DROP VIEW IF EXISTS `view_evaluation`;
+CREATE TABLE IF NOT EXISTS `view_evaluation` (
+`evaluation_id` int(5)
+,`evaluation_desc` varchar(50)
+,`assessor` varchar(101)
+,`assessee` varchar(101)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `view_job_history`
 --
 DROP VIEW IF EXISTS `view_job_history`;
@@ -2177,6 +2435,7 @@ CREATE TABLE IF NOT EXISTS `view_leave_left` (
 ,`days` smallint(2)
 ,`leave_type_name` varchar(50)
 ,`employee_id` varchar(10)
+,`leave_type_id` varchar(10)
 );
 
 -- --------------------------------------------------------
@@ -2385,8 +2644,6 @@ CREATE TABLE IF NOT EXISTS `view_users` (
 `user_id` int(5)
 ,`username` varchar(50)
 ,`password` varchar(255)
-,`secret_question` varchar(50)
-,`secret_answer` varchar(50)
 ,`date_registered` timestamp
 ,`first_name` varchar(50)
 ,`middle_name` varchar(50)
@@ -2395,6 +2652,7 @@ CREATE TABLE IF NOT EXISTS `view_users` (
 ,`employee_id` varchar(10)
 ,`user_level` varchar(20)
 ,`user_level_id` varchar(10)
+,`email` varchar(50)
 );
 
 -- --------------------------------------------------------
@@ -2405,6 +2663,15 @@ CREATE TABLE IF NOT EXISTS `view_users` (
 DROP TABLE IF EXISTS `view_all_project_materials`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_all_project_materials` AS select `tbl_stock_info`.`item_name` AS `item_name`,`tbl_materials`.`quantity` AS `quantity`,`tbl_materials`.`price` AS `price`,`tbl_project`.`project_name` AS `project_name`,`tbl_materials`.`date_issued` AS `date_issued`,`tbl_stock_info`.`item_id` AS `item_id`,`tbl_project`.`project_id` AS `project_id` from ((`tbl_project` join `tbl_materials` on((`tbl_materials`.`project_id` = `tbl_project`.`project_id`))) join `tbl_stock_info` on((`tbl_materials`.`item_id` = `tbl_stock_info`.`item_id`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_asset_request`
+--
+DROP TABLE IF EXISTS `view_asset_request`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_asset_request` AS select `tbl_asset_request`.`asset_request_id` AS `asset_request_id`,`tbl_asset_request`.`asset_name` AS `asset_name`,`tbl_asset_request`.`quantity` AS `quantity`,`tbl_asset_request`.`request_status` AS `request_status`,`tbl_asset_request`.`date_requested` AS `date_requested`,concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_asset_request`.`approved_by` AS `approved_by` from (`tbl_emp_info` join `tbl_asset_request` on((`tbl_emp_info`.`emp_id` = `tbl_asset_request`.`employee_id`)));
 
 -- --------------------------------------------------------
 
@@ -2454,6 +2721,24 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `view_emp_evaluation`
+--
+DROP TABLE IF EXISTS `view_emp_evaluation`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_emp_evaluation` AS select `tbl_evaluation`.`evaluation_id` AS `evaluation_id`,`tbl_evaluation`.`evaluation_desc` AS `evaluation_desc`,concat(`assessor`.`first_name`,' ',`assessor`.`last_name`) AS `assessor`,concat(`assessee`.`first_name`,' ',`assessee`.`last_name`) AS `assessee`,`tbl_evaluation_rate`.`rate1` AS `rate1`,`tbl_evaluation_rate`.`rate2` AS `rate2`,`tbl_evaluation_rate`.`rate3` AS `rate3`,`tbl_evaluation_rate`.`rate4` AS `rate4`,`tbl_evaluation_rate`.`rate5` AS `rate5`,`tbl_evaluation_rate`.`rate6` AS `rate6`,`tbl_evaluation_rate`.`rate7` AS `rate7`,`tbl_evaluation_rate`.`rate8` AS `rate8`,`tbl_evaluation_rate`.`rate9` AS `rate9`,`tbl_evaluation_rate`.`rate10` AS `rate10`,`tbl_evaluation`.`evaluation_date` AS `evaluation_date`,((((((((((`tbl_evaluation_rate`.`rate1` + `tbl_evaluation_rate`.`rate2`) + `tbl_evaluation_rate`.`rate3`) + `tbl_evaluation_rate`.`rate4`) + `tbl_evaluation_rate`.`rate5`) + `tbl_evaluation_rate`.`rate6`) + `tbl_evaluation_rate`.`rate7`) + `tbl_evaluation_rate`.`rate8`) + `tbl_evaluation_rate`.`rate9`) + `tbl_evaluation_rate`.`rate10`) / 10) AS `final_rating` from (((`tbl_evaluation` join `tbl_evaluation_rate` on((`tbl_evaluation_rate`.`evaluation_id` = `tbl_evaluation`.`evaluation_id`))) join `tbl_emp_info` `assessor` on((`assessor`.`emp_id` = `tbl_evaluation`.`assessor_id`))) join `tbl_emp_info` `assessee` on((`assessee`.`emp_id` = `tbl_evaluation`.`assessee_id`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_evaluation`
+--
+DROP TABLE IF EXISTS `view_evaluation`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_evaluation` AS select `tbl_evaluation`.`evaluation_id` AS `evaluation_id`,`tbl_evaluation`.`evaluation_desc` AS `evaluation_desc`,concat(`assessor`.`first_name`,' ',`assessor`.`last_name`) AS `assessor`,concat(`assessee`.`first_name`,' ',`assessee`.`last_name`) AS `assessee` from (((`tbl_emp_info` `assessor` join `tbl_evaluation` on((`assessor`.`emp_id` = `tbl_evaluation`.`assessor_id`))) join `tbl_evaluation_rate` on((`tbl_evaluation_rate`.`evaluation_id` = `tbl_evaluation`.`evaluation_id`))) join `tbl_emp_info` `assessee` on((`assessee`.`emp_id` = `tbl_evaluation`.`assessee_id`)));
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `view_job_history`
 --
 DROP TABLE IF EXISTS `view_job_history`;
@@ -2467,7 +2752,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_leave_left`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_leave_left` AS select concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_leave_left`.`days` AS `days`,`tbl_leave_type`.`leave_type_name` AS `leave_type_name`,`tbl_leave_left`.`employee_id` AS `employee_id` from ((`tbl_leave_type` join `tbl_leave_left` on((`tbl_leave_type`.`leave_type_id` = `tbl_leave_left`.`leave_type_id`))) join `tbl_emp_info` on((`tbl_emp_info`.`emp_id` = `tbl_leave_left`.`employee_id`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_leave_left` AS select concat(`tbl_emp_info`.`first_name`,' ',`tbl_emp_info`.`middle_name`,' ',`tbl_emp_info`.`last_name`) AS `name`,`tbl_leave_left`.`days` AS `days`,`tbl_leave_type`.`leave_type_name` AS `leave_type_name`,`tbl_leave_left`.`employee_id` AS `employee_id`,`tbl_leave_type`.`leave_type_id` AS `leave_type_id` from ((`tbl_leave_type` join `tbl_leave_left` on((`tbl_leave_type`.`leave_type_id` = `tbl_leave_left`.`leave_type_id`))) join `tbl_emp_info` on((`tbl_emp_info`.`emp_id` = `tbl_leave_left`.`employee_id`)));
 
 -- --------------------------------------------------------
 
@@ -2575,7 +2860,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_users`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_users` AS select `tbl_user`.`user_id` AS `user_id`,`tbl_user`.`username` AS `username`,`tbl_user`.`password` AS `password`,`tbl_user`.`secret_question` AS `secret_question`,`tbl_user`.`secret_answer` AS `secret_answer`,`tbl_user`.`date_registered` AS `date_registered`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name`,`tbl_user`.`profile_image` AS `profile_image`,`tbl_user`.`employee_id` AS `employee_id`,`tbl_user_level`.`user_level` AS `user_level`,`tbl_user_level`.`user_level_id` AS `user_level_id` from ((`tbl_user` join `tbl_emp_info` on((`tbl_emp_info`.`emp_id` = `tbl_user`.`employee_id`))) join `tbl_user_level` on((`tbl_user_level`.`user_level_id` = `tbl_user`.`user_level`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_users` AS select `tbl_user`.`user_id` AS `user_id`,`tbl_user`.`username` AS `username`,`tbl_user`.`password` AS `password`,`tbl_user`.`date_registered` AS `date_registered`,`tbl_emp_info`.`first_name` AS `first_name`,`tbl_emp_info`.`middle_name` AS `middle_name`,`tbl_emp_info`.`last_name` AS `last_name`,`tbl_user`.`profile_image` AS `profile_image`,`tbl_user`.`employee_id` AS `employee_id`,`tbl_user_level`.`user_level` AS `user_level`,`tbl_user_level`.`user_level_id` AS `user_level_id`,`tbl_user`.`email` AS `email` from ((`tbl_user` join `tbl_emp_info` on((`tbl_emp_info`.`emp_id` = `tbl_user`.`employee_id`))) join `tbl_user_level` on((`tbl_user_level`.`user_level_id` = `tbl_user`.`user_level`)));
 
 --
 -- Indexes for dumped tables
@@ -2594,10 +2879,22 @@ ALTER TABLE `tbl_allowances`
   ADD PRIMARY KEY (`allowance_id`);
 
 --
+-- Indexes for table `tbl_announcement`
+--
+ALTER TABLE `tbl_announcement`
+  ADD PRIMARY KEY (`announcement_id`);
+
+--
 -- Indexes for table `tbl_asset_info`
 --
 ALTER TABLE `tbl_asset_info`
   ADD PRIMARY KEY (`asset_id`);
+
+--
+-- Indexes for table `tbl_asset_request`
+--
+ALTER TABLE `tbl_asset_request`
+  ADD PRIMARY KEY (`asset_request_id`);
 
 --
 -- Indexes for table `tbl_audit_trail`
@@ -2618,6 +2915,12 @@ ALTER TABLE `tbl_countries`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_criteria`
+--
+ALTER TABLE `tbl_criteria`
+  ADD PRIMARY KEY (`criteria_id`);
+
+--
 -- Indexes for table `tbl_day_type`
 --
 ALTER TABLE `tbl_day_type`
@@ -2634,6 +2937,12 @@ ALTER TABLE `tbl_emp_info`
 --
 ALTER TABLE `tbl_emp_performance`
   ADD PRIMARY KEY (`performance_id`);
+
+--
+-- Indexes for table `tbl_evaluation`
+--
+ALTER TABLE `tbl_evaluation`
+  ADD PRIMARY KEY (`evaluation_id`);
 
 --
 -- Indexes for table `tbl_leave_request`
@@ -2723,10 +3032,20 @@ ALTER TABLE `tbl_vendor`
 ALTER TABLE `tbl_allowances`
   MODIFY `allowance_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `tbl_announcement`
+--
+ALTER TABLE `tbl_announcement`
+  MODIFY `announcement_id` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `tbl_asset_request`
+--
+ALTER TABLE `tbl_asset_request`
+  MODIFY `asset_request_id` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `tbl_audit_trail`
 --
 ALTER TABLE `tbl_audit_trail`
-  MODIFY `audit_trail_id` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=289;
+  MODIFY `audit_trail_id` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT for table `tbl_calendar`
 --
@@ -2751,12 +3070,17 @@ ALTER TABLE `tbl_emp_info`
 -- AUTO_INCREMENT for table `tbl_emp_performance`
 --
 ALTER TABLE `tbl_emp_performance`
-  MODIFY `performance_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `performance_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `tbl_evaluation`
+--
+ALTER TABLE `tbl_evaluation`
+  MODIFY `evaluation_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `tbl_leave_request`
 --
 ALTER TABLE `tbl_leave_request`
-  MODIFY `id` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tbl_payslip`
 --
@@ -2791,7 +3115,7 @@ ALTER TABLE `tbl_tax_range`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

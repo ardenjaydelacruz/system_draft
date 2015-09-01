@@ -61,6 +61,7 @@ class Emp_info_model extends ActiveRecord\Model {
 		$this->form_validation->set_rules('txtZip', 'Zip Code', 'trim|required');
 		$this->form_validation->set_rules('txtCountry', 'Country', 'trim|required');
 
+		// $empid = count(Emp_info_model::all())+1;
 		$empInfo = array (
 			'emp_id' => $this->input->post('txtEmpID'),
 			'status' => 'Existing',
@@ -108,6 +109,48 @@ class Emp_info_model extends ActiveRecord\Model {
 			'user_level' => 'EMP'
 			);
 		
+		$leave1 = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'leave_type_id' => 'BL',
+			'days' => 0
+			);
+
+		$leave2 = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'leave_type_id' => 'MTL',
+			'days' => 0
+			);
+
+		$leave3 = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'leave_type_id' => 'MNL',
+			'days' => 0
+			);
+
+		$leave4 = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'leave_type_id' => 'PL',
+			'days' => 0
+			);
+
+		$leave5 = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'leave_type_id' => 'SL',
+			'days' => 0
+			);
+
+		$leave6 = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'leave_type_id' => 'VL',
+			'days' => 0
+			);
+
+		$leave7 = array (
+			'employee_id' => $this->input->post('txtEmpID'),
+			'leave_type_id' => 'BL',
+			'days' => 0
+			);
+
 		if ($this->form_validation->run()) {	
 			if (Emp_info_model::create($personal) && 
 				Emp_history_model::create($empInfo) && 
@@ -116,7 +159,14 @@ class Emp_info_model extends ActiveRecord\Model {
 				Emp_contact_person::create($id) &&
 				Emp_school_model::create($id) &&
 				Gov_id_model::create($id) &&
-				Users::create($acc) 
+				Users::create($acc) &&
+				Leave_left_model::create($leave1) &&
+				Leave_left_model::create($leave2) &&
+				Leave_left_model::create($leave3) &&
+				Leave_left_model::create($leave4) &&
+				Leave_left_model::create($leave5) &&
+				Leave_left_model::create($leave6) &&
+				Leave_left_model::create($leave7)
 				) {
 				$this->session->set_userdata('added', 1);
 				Audit_trail_model::auditAddEmp($this->input->post('txtEmpID'));
@@ -269,8 +319,44 @@ class Emp_info_model extends ActiveRecord\Model {
 		return $data;
 	}
 
-	
+	public function updateLeave($id){
+		$leave1 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'BL');
+		$data1 = array (
+			'days' => $leave1->days + $this->input->post('txtBirthdayLeave')
+			);
+		$leave1->update_attributes($data1);
 
+		$leave2 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'MNL');
+		$data2 = array (
+			'days' => $leave2->days + $this->input->post('txtMandatoryLeave')
+			);
+		$leave2->update_attributes($data2);
 
+		$leave3 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'PL');
+		$data3 = array (
+			'days' => $leave3->days + $this->input->post('txtPaternityLeave')
+			);
+		$leave3->update_attributes($data3);
+
+		$leave4 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'MTL');
+		$data4 = array (
+			'days' => $leave4->days + $this->input->post('txtMaternityLeave')
+			);
+		$leave4->update_attributes($data4);
+
+		$leave5 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'SL');
+		$data5 = array (
+			'days' => $leave5->days + $this->input->post('txtSickLeave')
+			);
+		$leave5->update_attributes($data5);
+
+		$leave6 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'VL');
+		$data6 = array (
+			'days' => $leave6->days + $this->input->post('txtVacationLeave')
+			);
+		$leave6->update_attributes($data6);
+
+		redirect("ems/view_details?emp_id=$id");
+	}
 }
 

@@ -7,7 +7,11 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="callout callout-success">
-          <h4><i class="fa fa-bullhorn"></i> Announcement! (Recent 3)</h4>
+          <h4 class="pull-left"><i class="fa fa-bullhorn"></i> Announcement! (Recent 3)</h4>
+          <a href="#" data-target="#postAnnouncement" data-toggle="modal" class="btn btn-primary pull-right">
+                  <i class="fa fa-plus"></i> Post Announcement
+                </a>
+                <div class="clearfix"></div>
           <ul>
             <?php 
               foreach ($announcement as $row) {
@@ -51,9 +55,7 @@
                 </div><!-- /.box-tools -->
               </div><!-- /.box-header -->
               <div class="box-body">
-                <a href="#" data-target="#postAnnouncement" data-toggle="modal" class="btn btn-app btn-flat">
-                  <i class="fa fa-bullhorn"></i> Post<br> Announcement
-                </a>
+                
                 <a href="#" data-target="#addDepartment" data-toggle="modal" class="btn btn-app btn-flat">
                   <span class="badge bg-green"><?php echo $departments; ?></span>
                   <i class="fa fa-institution"></i> Department
@@ -74,10 +76,10 @@
                   <span class="badge bg-green"><?php echo $vendors; ?></span>
                   <i class="fa fa-truck"></i> Vendor
                 </a>    
-                <a href="#" data-target="#addLeave" data-toggle="modal" class="btn btn-app btn-flat">
+                <!-- <a href="#" data-target="#addLeave" data-toggle="modal" class="btn btn-app btn-flat">
                   <span class="badge bg-green"><?php echo $leaves; ?></span>
                   <i class="fa fa-calendar"></i> Leave Type
-                </a>   
+                </a> -->   
                 <a href="#" data-target="#addAssetCategory" data-toggle="modal" class="btn btn-app btn-flat">
                   <span class="badge bg-green"><?php echo $category; ?></span>
                   <i class="fa fa-cubes"></i> Asset <br> Category

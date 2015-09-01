@@ -33,6 +33,8 @@ class Ems extends MY_Controller
     public function emp_dashboard()
     {
         $id = $this->session->userdata('employee_id');
+        $data['announcement']    = Announcement_model::find_by_sql('SELECT * FROM tbl_announcement ORDER BY announcement_id DESC LIMIT 3 ');
+        $data['birthday']        = Emp_info_model::find_by_sql('SELECT * FROM tbl_emp_info where MONTH(birthday) = MONTH(now()) ORDER BY DAY(birthday) ASC');
         $data['asset']           = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id")); //Tab 7 - Asset Tab
         $data['requested_asset'] = Asset_request::find('all',array('conditions'=>"employee_id =$id")); //Tab 7 - Asset Tab
         $data['project']         = View_project_workers::find('all',array('conditions'=>"emp_id =$id")); //Tab 8 - Project Tab
@@ -97,21 +99,6 @@ class Ems extends MY_Controller
         $this->display_notif();
     }
 
-    public function search_employee()
-    {
-        $text = $this->input->post('txtSearch');
-        if ($this->input->post('txtSearch')) {
-            $data['total_employee'] = count(View_employee_info::find('all'));
-            $data['record'] = View_employee_info::find('all', array('conditions' => "emp_id LIKE '%$text%' OR first_name LIKE '%$text%'"));
-            $data['pageTitle'] = 'Search Employee - MSInc.';
-            $data['content'] = 'employee/employees_table';
-            $this->load->view($this->master_layout, $data);
-            $this->display_notif();
-        } else {
-            redirect('ems/employees');
-        }
-    }
-
     public function add_employee()
     {
         Emp_info_model::insert_employee_data();
@@ -163,7 +150,7 @@ class Ems extends MY_Controller
         $data['school']    = Emp_school_model::find($id); //Tab 3 - School Tab
         $data['job_hist']  = Job_history_model::find('all',array('conditions'=>"employee_id =$id")); //Tab 4 - Job History Tab
         $data['emp']       = View_job_history::find($id); //Tab 5 - Employment Tab
-        $data['leaves']    = View_leave_remaining::find('all',array('conditions'=>"emp_id =$id")); //Tab 6 - Leaves Tab
+        $data['leaves']    = View_leaves_left::find('all',array('conditions'=>"employee_id =$id")); //Tab 6 - Leaves Tab
         $data['asset']     = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id")); //Tab 7 - Asset Tab
         $data['project']   = View_project_workers::find('all',array('conditions'=>"emp_id =$id")); //Tab 8 - Project Tab
         $data['account']   = View_users_model::find_by_employee_id($id); //Tab 9 - Users Tab
@@ -402,6 +389,16 @@ class Ems extends MY_Controller
             Audit_trail_model::auditAnnouncement();
             if ($this->is_admin()){
                 redirect('ems/admin_dashboard');
+            }
+        }
+    }
+
+    public function addLeave(){
+        $id = $this->input->get('emp_id');
+        if($this->input->post('btnAddLeave')){
+            if(Emp_info_model::updateLeave($id)){
+                $this->session->set_userdata('edited', 1);
+                redirect("ems/view_details?emp_id=$id");
             }
         }
     }
