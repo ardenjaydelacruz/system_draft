@@ -12,6 +12,7 @@ class Ems extends MY_Controller
     public function admin_dashboard()
     {
         $data['announcement']    = Announcement_model::find_by_sql('SELECT * FROM tbl_announcement ORDER BY announcement_id DESC LIMIT 3 ');
+        $data['birthday']        = Emp_info_model::find_by_sql('SELECT * FROM tbl_emp_info where MONTH(birthday) = MONTH(now()) ORDER BY DAY(birthday) ASC');
         $data['total_employee']  = count(View_employees_list::find('all'));
         $data['total_asset']     = count(Projects_model::find('all'));
         $data['total_projects']  = count(Projects_model::find('all'));
