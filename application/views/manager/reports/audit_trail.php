@@ -13,15 +13,14 @@
                 </div>
             </div>
             <div class="panel-body">
-                <table class="table table-striped table-hover table-bordered">
+                <table id="dynamicTable" class="table table-striped table-hover table-bordered">
                 <thead>
                     <th class="table-head">ID</th>
-                    <th class="table-head">Employee Name</th>
+                    <th class="table-head">Name</th>
                     <th class="table-head">User Level</th>
                     <th class="table-head">IP Address</th>
                     <th class="table-head">Action</th>
-                    <th class="table-head">Old Value</th>
-                    <th class="table-head">New Value</th>
+                    <th class="table-head">Emp ID</th>
                     <th class="table-head">Date and Time</th>
                 </thead>
                 <?php
@@ -43,11 +42,8 @@
                     <td>
                         <?php echo $record->action; ?>
                     </td>
-                     <td>
-                        <?php echo $record->old_value; ?>
-                    </td>
-                     <td>
-                        <?php echo $record->new_value; ?>
+                    <td>
+                        <?php echo $record->employee_id; ?>
                     </td>
                     <td align="center">
                         <?php echo date('F d, Y - g:i A',strtotime($record->date_time)); ?>

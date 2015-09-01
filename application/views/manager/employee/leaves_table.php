@@ -5,12 +5,12 @@
           <li class="active"><i class="fa fa-calendar"></i> Leave Request </li>
     </ol>
     <div class="container-fluid">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-			    <h1 class="panel-title big">Leaves Request Table</h1>
+		<div class="box box-info box-solid">
+			<div class="box-header with-border">
+			    <h1 class="box-title big">Leaves Request Table</h1>
 			</div>
-			<div class="panel-body">
-				<table class="table table-striped table-hover table-bordered centered">
+			<div class="box-body">
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered centered">
 					<thead >
 						<th class="text-center">ID</th>
 						<th class="text-center">Employee Name</th>
@@ -27,7 +27,7 @@
 					<tr>
 						<td class="text-center"><?php echo $row->leave_request_id; ?></td>
 						<td><?php echo $row->name;  ?></td>
-						<td class="text-center"><?php echo date_format($row->leave_start,'M d, Y').' --- '.date_format($row->leave_end,'M d, Y'); ?></td>
+						<td class="text-center"><?php echo date_format($row->leave_start,'M d, Y').' - '.date_format($row->leave_end,'M d, Y'); ?></td>
 						<td><?php echo $row->leave_type_name; ?></td>
 						<td class="text-center"><?php echo $row->num_days; ?></td>
 						<td class="text-center"><?php echo $row->leave_left; ?></td>
@@ -59,7 +59,6 @@
 							<a href="<?php echo base_url();?>ems/view_leave_details?leave_request_id=<?php echo $row->leave_request_id; ?>">
 								<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Leave"><i class="fa fa-search"></i></button>
 							</a>
-							<!-- <button onclick=deleteLeave(<?php echo $row->leave_request_id; ?>,'<?php echo base_url();?>ems/'); class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Delete Request"><i class="fa fa-trash-o"></i></button> -->
 						</td>
 					</tr>
 					<?php } ?>

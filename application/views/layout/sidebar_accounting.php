@@ -19,7 +19,7 @@
 			<br>
 			<li class="header text-center">Administrator Menu</li>
 			<li>
-				<a href="<?php echo base_url();?>ems/dashboard">
+				<a href="<?php echo base_url();?>ems/acc_dashboard">
 					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 				</a>
 			</li>
@@ -31,7 +31,6 @@
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url();?>ems/employees"><i class="fa fa-user"></i> Employees</a></li>
-					<li><a href="<?php echo base_url();?>ems/leaves_table"><i class="fa fa-calendar-o"></i> Leaves</a></li>
 				</ul>
 			</li>
 
@@ -64,7 +63,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li><a href="<?php echo base_url();?>reports/employees_list"><i class="fa fa-group"></i> Employees Lists</a></li>
-							<li><a href="<?php echo base_url();?>reports/leave_list"><i class="fa fa-calendar"></i> Leave List</a></li>
+							<!-- <li><a href="<?php echo base_url();?>reports/leave_list"><i class="fa fa-calendar"></i> Leave List</a></li> -->
 						</ul>
 					</li>
 					<li class="treeview">

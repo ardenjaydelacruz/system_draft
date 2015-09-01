@@ -5,11 +5,11 @@
 		<li><a href="<?php echo base_url();?>ams/view_inventory" class="btn btn-default"><i class="fa fa-user"></i> Inventory</a></li>
 	</ol>
 	<div class="container-fluid">
-		<div class="panel panel-warning">
-			<div class="panel-heading">
-				<h1 class="panel-title big">Inventory Table</h1>
+		<div class="box box-warning box-solid">
+			<div class="box-header with-border">
+				<h1 class="box-title big">Inventory Table</h1>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="pull-left addButton">
 					<a href="<?php echo base_url();?>ams/add_stocks">
 						<buttom class="btn btn-success"><i class="fa fa-plus"></i> Add New Item </buttom>
@@ -18,7 +18,8 @@
 						<buttom class="btn btn-success"><i class="fa fa-plus"></i> Restock Inventory </buttom>
 					</a>
 				</div>
-				<table class="table table-striped table-hover table-bordered table-condensed centered">
+				<div class="clearfix"></div>
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered table-condensed centered">
 					<thead>
 						<th class="text-center">Item ID</th>
 						<th class="text-center">Item Name</th>

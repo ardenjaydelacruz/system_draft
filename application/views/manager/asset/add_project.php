@@ -5,19 +5,19 @@
 		<li class="active">Add Project</li>
 	</ol>
 	<div class="container-fluid">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title big">Add New Project</h3>
+		<div class="box box-info box-solid">
+			<div class="box-header with-border">
+				<h3 class="box-title big">Add New Project</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<label>
 					<small>Fields with * asterisk are required.</small>
 				</label>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Project Information</h3>
+				<div class="box box-default box-solid">
+					<div class="box-header with-border">
+						<h3 class="box-title">Project Information</h3>
 					</div>
-					<div class="panel-body">
+					<div class="box-body">
 						<?php echo form_open('ams/add_project'); ?>
 							<div class="form-horizontal">
 								<div class="form-group">
@@ -50,7 +50,7 @@
 								<div class="form-group">
 									<label class=" col-sm-3 control-label">Starting Date: * </label>
 									<div class="col-sm-3">
-										<input type="date" class="form-control input-sm" name="txtStartingDate">
+										<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" name="txtStartingDate">
 									</div>
 									<div class="col-sm-5 error">
 										<?php echo form_error('txtStartingDate'); ?>
@@ -59,7 +59,7 @@
 								<div class="form-group">
 									<label class=" col-sm-3 control-label">Ending Date: * </label>
 									<div class="col-sm-3">
-										<input type="date" class="form-control input-sm" name="txtEndingDate">
+										<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" name="txtEndingDate">
 									</div>
 									<div class="col-sm-5 error">
 										<?php echo form_error('txtEndingDate'); ?>

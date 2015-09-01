@@ -7,7 +7,7 @@
 		<div class="panel panel-info">
 			<div class="panel-heading">
 			    <div class="row">
-			    	<form action="<?php echo base_url();?>attendance/index" method="post">
+			    	<form action="<?php echo base_url();?>payroll/attendance" method="post">
 					<div class="col-sm-6">
 			    		<div class="row">
 							<label for="cboEmployee" class="control-label col-sm-6">Employee: </label>
@@ -68,19 +68,19 @@
 					</thead>
 					<?php foreach($attendance as $day){	?>
 					<tr>
-						<td class="col-md-2 text-center"><?php echo $day["datelog"]?></td>
-						<td class="col-md-2 text-center"><?php echo $day["weekday"]?></td>
-						<td class="col-md-2 text-center"><?php echo $day["time_in"]?></td>
-						<td class="col-md-2 text-center"><?php echo $day["time_out"]?></td>
+						<td class="col-md-2 text-center"><?php echo $day->datelog?></td>
+						<td class="col-md-2 text-center"><?php echo $day->weekday?></td>
+						<td class="col-md-2 text-center"><?php echo $day->time_in?></td>
+						<td class="col-md-2 text-center"><?php echo $day->time_out?></td>
 						<td class="col-md-2 text-center">&nbsp;</td>
 						<td class="col-md-2 text-center">
 							<!--input type="button" class="btn btn-sm" name="btnLeave" value="Leave"></td-->
-							<a href="<?php echo base_url();?>attendance/requestentry?empid=<?php echo $day['emp_id'] . "&date=" . $day["datevalue"]; ?>">
+							<a href="<?php echo base_url();?>payroll/requestentry?empid=<?php echo $day->emp_id . "&date=" . $day->datevalue; ?>">
 							<button class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Request Entry">
 								<i class="fa fa-plus"></i>
 							</button>
 							</a>
-							<?php if($day["time_in"]!=""){ ?>
+							<?php /*if($day["time_in"]!=""){ ?>
 								<a href="<?php echo base_url();?>attendance/edit?empid=<?php echo $day['emp_id'] . "&date=" . $day["datevalue"]; ?>">
 								<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Edit Record">
 									<i class="fa fa-pencil"></i>
@@ -96,7 +96,7 @@
 								<button class="btn btn-default btn-xs disabled" data-toggle="tooltip" data-placement="top" title="Delete Record">
 									<i class="fa fa-trash-o"></i>
 								</button>
-							<?php } ?>
+							<?php }*/ ?>
 						</td>
 					</tr>
 					<?php } ?>

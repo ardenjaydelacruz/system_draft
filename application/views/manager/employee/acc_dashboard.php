@@ -3,6 +3,37 @@
   <li><a href="<?php echo base_url(); ?>ems/emp_dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
   </ol>
   <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="callout callout-success">
+          <h4 class=""><i class="fa fa-bullhorn"></i> Announcement! (Recent 3)</h4>
+          <ul>
+            <?php 
+              foreach ($announcement as $row) {
+                echo "<br><li><b>$row->description</b>  <br>-  $row->posted_by (". date('M d, Y - g:i A',strtotime($row->date_posted)).")</li>";
+              }
+             ?>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="callout callout-danger">
+          <h4><i class="fa fa-birthday-cake"></i>  Birthdays for <?php echo strtoupper(date('F')); ?></h4>
+          <table class="table borderless">
+            <?php 
+              foreach ($birthday as $row) {
+                echo "
+                <tr>
+                  <th>$row->first_name $row->last_name</th> 
+                  <td>". date_format($row->birthday,'F d, Y')."</td>
+                </tr>
+                ";
+              }
+             ?>
+          </table>
+        </div>
+      </div>
+    </div>
     <div class="box box-info box-solid">
       <div class="box-header with-border">
           <h3 class="box-title">Accounting Manager Dashboard</h3>
@@ -11,6 +42,7 @@
           </div><!-- /.box-tools -->
       </div>
       <div class="box-body">
+
         <div class="row">
           <div class="col-lg-3 col-xs-6">
               <!-- small box -->

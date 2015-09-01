@@ -20,7 +20,7 @@
 			<br>
 			<li class="header text-center">Administrator Menu</li>
 			<li>
-				<a href="<?php echo base_url();?>ems/dashboard">
+				<a href="<?php echo base_url();?>ems/oper_dashboard">
 					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 				</a>
 

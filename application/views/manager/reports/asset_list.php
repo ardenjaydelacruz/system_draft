@@ -29,7 +29,14 @@
 		                <div class="form-group">
 		                    <label for="stocks">Category Name:</label>
 		                    <select name="txtCategory" id="stocks" class="form-control">
-		                        <option value="">All Assets</option>
+                               <?php 
+                                    $cat = $this->input->post('txtCategory');
+                                    if (!$cat){
+                                        echo "<option value=''>All Job Titles</option>";
+                                    } else {
+                                         echo "<option value=$cat>$cat</option>";
+                                    }
+                                 ?>
 		                        <?php foreach ($category as $row){ 
 		                            echo "<option value='$row->category_name'>$row->category_name</option>";
 		                        } ?>

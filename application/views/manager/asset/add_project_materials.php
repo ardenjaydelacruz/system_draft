@@ -5,19 +5,19 @@
 		<li class="active">Add Materials</li>
 	</ol>
 	<div class="container-fluid">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title big">Add Materials</h3>
+		<div class="box box-info box-solid">
+			<div class="box-header with-border">
+				<h3 class="box-title big">Add Materials</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<label>
 					<small>Fields with * asterisk are required.</small>
 				</label>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Material Information</h3>
+				<div class="box box-default box-solid">
+					<div class="box-heading with-border">
+						<h3 class="box-title">Material Information</h3>
 					</div>
-					<div class="panel-body">
+					<div class="box-body">
 						<?php echo form_open('ams/add_project_materials?project_id='.$id); ?>
 						<div class="form-horizontal">
 							<div class="form-group">

@@ -16,7 +16,7 @@ class MY_Controller extends CI_Controller {
             redirect('auth/login');
         }
 
-         $this->output->enable_profiler(TRUE);
+         // $this->output->enable_profiler(TRUE);
         // $sections = array(
         // 'config'  => TRUE,
         // 'queries' => TRUE

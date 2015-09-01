@@ -4,11 +4,11 @@
 		<li class="active"><i class="fa fa-cogs"></i> Projects </li>
 	</ol>
 	<div class="container-fluid">
-		<div class="panel panel-warning">
-			<div class="panel-heading">
-				<h1 class="panel-title big">Projects Table</h1>
+		<div class="box box-warning box-solid">
+			<div class="box-header with-border">
+				<h1 class="box-title big">Projects Table</h1>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="pull-left addButton">
 					<a href="<?php echo base_url();?>ams/add_project">
 						<button class="btn btn-success"><i class="fa fa-plus"></i> Add New Project </button>
@@ -17,7 +17,8 @@
 						<buttom class="btn btn-info"><i class="fa fa-plus"></i> Add New Materials </buttom>
 					</a>
 				</div>
-				<table class="table table-striped table-hover table-bordered centered">
+				<div class="clearfix"></div>
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered centered">
 					<thead>
 						<th class="text-center">ID</th>
 						<th class="text-center">Project Name</th>
@@ -42,10 +43,10 @@
 								<?php echo number_format($row->total_expense,2); ?>
 							</td>
 							<td class="text-center">
-								<?php echo $row->starting_date; ?>
+								<?php echo date_format($row->starting_date,'M d, Y'); ?>
 							</td>
 							<td class="text-center">
-								<?php echo $row->ending_date; ?>
+								<?php echo date_format($row->ending_date,'M d, Y'); ?>
 							</td>
 							<td class="text-center">
 								<a href="<?php echo base_url(); ?>ams/view_materials?project_id=<?php echo $row->project_id; ?>">

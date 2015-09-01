@@ -35,7 +35,14 @@
                         <div class="form-group">
                             <label for="emp_name">Client Name:</label>
                             <select name="txtClient" id="emp_name" class="form-control">
-                                <option value="">All Job Titles</option>
+                                 <?php 
+                                    $customer = $this->input->post('txtClient');
+                                    if (!$client){
+                                        echo "<option value=''>All Client</option>";
+                                    } else {
+                                         echo "<option value=$customer>$customer</option>";
+                                    }
+                                 ?>
                                 <?php foreach ($client as $row){ 
                                     echo "<option value='$row->client_name'>$row->client_name</option>";
                                 } ?>

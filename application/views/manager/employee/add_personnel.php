@@ -5,20 +5,20 @@
 		<li class="active"><i class="fa fa-group"></i> Project Personnel </li>
 	</ol>
 	<div class="container-fluid">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title big">Add Project Personnel</h3>
+		<div class="box box-info box-solid">
+			<div class="box-header with-borderbox">
+				<h3 class="box-title big">Add Project Personnel</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<label>
 					<small>Fields with * asterisk are required.</small>
 				</label>
 				<?php echo form_open('ems/add_personnel'); ?>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Material Information</h3>
+				<div class="box box-default box-solid">
+					<div class="box-heading with-border">
+						<h3 class="box-title">Employee Information</h3>
 					</div>
-					<div class="panel-body">
+					<div class="box-body">
 						<div class="form-horizontal">
 							<div class="form-group">
 								<label class=" col-sm-3 control-label">Project: * </label>
