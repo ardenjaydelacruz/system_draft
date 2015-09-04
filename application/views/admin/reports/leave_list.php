@@ -1,4 +1,5 @@
 <div class="content-wrapper">
+
 	<ol class="breadcrumb">
 		<li><a href="<?php echo base_url();?>ams/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li class="active"><i class="fa fa-cogs"></i> Leaves Left </li>
@@ -53,13 +54,12 @@
              <?php foreach ($leaves as $row) { ?>
              <tr>
                   <td class=""><?php echo $row->name; ?></td>
-                  <td class="text-center <?php if ($row->birthday_leave==0) echo 'danger'; ?>"><?php echo $row->birthday_leave; ?></td>
-                  <td class="text-center <?php if ($row->mandatory_leave==0) echo 'danger'; ?>"><?php echo $row->mandatory_leave; ?></td>
-                  <td class="text-center <?php if ($row->maternity_leave==0) echo 'danger'; ?>"><?php echo $row->maternity_leave; ?></td>
-                  <td class="text-center <?php if ($row->paternity_leave==0) echo 'danger'; ?>"><?php echo $row->paternity_leave; ?></td>
-                  <td class="text-center <?php if ($row->sick_leave==0) echo 'danger'; ?>"><?php echo $row->sick_leave; ?></td>
-                  <td class="text-center <?php if ($row->vacation_leave==0) echo 'danger'; ?>"><?php echo $row->vacation_leave; ?></td>
-                  <th class="text-center success <?php if ($row->total_leave==0) echo 'danger'; ?>"><?php echo $row->total_leave; ?></th>
+                  <td class="text-center <?php if ($row->BL==0) echo 'danger'; ?>"><?php echo $row->BL; ?></td>
+                  <td class="text-center <?php if ($row->MNL==0) echo 'danger'; ?>"><?php echo $row->MNL; ?></td>
+                  <td class="text-center <?php if ($row->MTL==0) echo 'danger'; ?>"><?php echo $row->MTL; ?></td>
+                  <td class="text-center <?php if ($row->PL==0) echo 'danger'; ?>"><?php echo $row->PL; ?></td>
+                  <td class="text-center <?php if ($row->SL==0) echo 'danger'; ?>"><?php echo $row->SL; ?></td>
+                  <td class="text-center <?php if ($row->VL==0) echo 'danger'; ?>"><?php echo $row->VL; ?></td>
               </tr>
              <?php } ?>
          </table>

@@ -1,10 +1,31 @@
 <div class="container">
+		<div class="well pull-left accounts">
+			<label for="">Administrator: </label><br>
+			username: admin<br>
+			pw: admin <br><br>
+
+			<label for="">Human Resource: </label><br>
+			username: hr<br>
+			pw: hr <br><br>
+
+			<label for="">Accounting: </label><br>
+			username: accounting<br>
+			pw: accounting <br><br>
+
+			<label for="">Operations: </label><br>
+			username: operations<br>
+			pw: operations <br><br>
+
+			<label for="">Employee: </label><br>
+			username: employee<br>
+			pw: employee <br><br>
+		</div>
+		<div class="clearfix"></div>
 	<div class="panel panel-default loginPanel">
 		<div class="panel-heading">
 			<h3 class="panel-title">MSInc. Employee Login</h3>
 		</div>
 		<div class="panel-body">
-
 			<?php echo form_open('auth/login'); ?>
 				<div class="form-group <?php if(form_error('txtUsername')) echo 'has-error';?>">
 					<div class="row">

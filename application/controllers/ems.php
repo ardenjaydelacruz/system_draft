@@ -396,6 +396,8 @@ class Ems extends MY_Controller
             Audit_trail_model::auditAnnouncement();
             if ($this->is_admin()){
                 redirect('ems/admin_dashboard');
+            } else {
+                redirect('ems/hr_dashboard');
             }
         }
     }

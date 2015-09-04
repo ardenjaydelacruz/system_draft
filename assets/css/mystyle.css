@@ -10,7 +10,9 @@ body {
 .borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
     border: none;
 }
-
+.accounts{
+	position: fixed;
+}
 .zero {
 	margin: 0px;
 	padding: 0px;
