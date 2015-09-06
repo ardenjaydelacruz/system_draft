@@ -18,7 +18,7 @@ $(document).ready(function(){
      toastr["success"]("Editing is enabled.");
     $('#btnSaveEdit').toggleClass('disabled');
     $('#btnEnable').toggleClass('disabled');
-     $('#upload').show();
+     
 
     $("input").prop('disabled', false);
     $("select").prop('disabled', false);
@@ -27,6 +27,10 @@ $(document).ready(function(){
   $('.datepicker').datepicker({
     autoclose:true
     });
+
+  $('#display_image').click(function(){
+    $('#upload').show();
+  });
 });
 
 

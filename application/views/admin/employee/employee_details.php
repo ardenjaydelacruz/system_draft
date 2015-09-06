@@ -5,7 +5,6 @@ if (!empty($account->profile_image)){
       $image = 'default.jpg';
   }
 ?>
-<form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
 <div class="content-wrapper">
   <ol class="breadcrumb">
   <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -27,7 +26,11 @@ if (!empty($account->profile_image)){
                 </div>
                 <div class="box-body">
                   <div class="form-group">
-                    <div class="text-center"><img src="<?php echo base_url().'assets/images/profile/'.$image; ?>" alt="" class="img-responsive emp_image" /></div>
+                    <div class="text-center">
+                    <a href="#" id="display_image" data-toggle="tooltip" data-placement="bottom" title="Click to Change image">
+                    <img src="<?php echo base_url().'assets/images/profile/'.$image; ?>" alt="" class="img-responsive emp_image" />
+                    </a>
+                    </div>
                     <div id="upload">
                       <?php
                       echo form_open_multipart('ems/upload_image?emp_id='.$info->emp_id);
@@ -59,6 +62,8 @@ if (!empty($account->profile_image)){
                   </table>
                 </div>
               </div><!-- Side Panel-->
+<form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
+
               <center>
                 <a id="btnEnable" class="button btn btn-primary MainButtons"><i class="fa fa-edit"></i><br>Edit</a>
                 <a href="<?php echo base_url();?>ems/request_leave?emp_id=<?php echo $info->emp_id; ?>" class="button btn btn-warning MainButtons">
@@ -381,30 +386,6 @@ if (!empty($account->profile_image)){
                           </table>
                         </div>
                       </section><!-- Other Info -->
-                      <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
-                        <div class="modal fade" id="addDependents" tabindex="-1" role="dialog">
-                          <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Add New Dependents</h4>
-                              </div>
-                              <div class="modal-body">
-                                <label for="">First Name:</label>
-                                <input type="text" class="form-control" name="txtDFirstName" required><br>
-                                <label for="">Last Name:</label>
-                                <input type="text" class="form-control" name="txtDLastName" required><br>
-                                <label for="">Relationship:</label>
-                                <input type="text" class="form-control" name="txtRelationship" required><br>
-                              </div>
-                              <div class="modal-footer">
-                                <input type="submit" class="btn btn-success" value="Add" name="btnAddDependents">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                              </div>
-                            </div><!-- /.modal-content -->
-                          </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
-                      </form>
 
                       <section class="tab-pane" id="tab_4">
                         <div class="form-horizontal">
@@ -531,32 +512,7 @@ if (!empty($account->profile_image)){
                             </table>
                           </div>
                       </section><!-- Job History -->
-                      <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
-                        <div class="modal fade" id="addJob" tabindex="-1" role="dialog">
-                          <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Add New Job History</h4>
-                              </div>
-                              <div class="modal-body">
-                                <label for="">Company Name:</label>
-                                <input type="text" class="form-control" name="txtCompanyName" required><br>
-                                <label for="">Company Address:</label>
-                                <input type="text" class="form-control" name="txtCompanyAddress" required><br>
-                                <label for="">Years Worked:</label>
-                                <input type="text" class="form-control" name="txtJobHistYears" required><br>
-                                <label for="">Job Title:</label>
-                                <input type="text" class="form-control" name="txtJobHistTitle" required><br>
-                              </div>
-                              <div class="modal-footer">
-                                <input type="submit" class="btn btn-success" value="Add" name="btnAddJob">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                              </div>
-                            </div><!-- /.modal-content -->
-                          </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
-                      </form>
+                      
 
                       <section class="tab-pane" id="tab_6">
                         <div class="form-horizontal">
@@ -704,42 +660,7 @@ if (!empty($account->profile_image)){
                            </table>
                         </div>
                       </section><!-- Leaves -->
-                      <form action="<?php echo base_url();?>ems/addLeave?emp_id=<?php echo $info->emp_id; ?>" method="post">
-                        <div class="modal fade" id="addLeave" tabindex="-1" role="dialog">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Add Leave Days</h4>
-                              </div>
-                              <div class="modal-body">
-                                <div class="row">
-                                  <div class="col-sm-6">
-                                    <label for="">Birthday Leave:</label>
-                                    <input type="text" class="form-control" name="txtBirthdayLeave" value=0 required><br>
-                                    <label for="">Mandatory Leave:</label>
-                                    <input type="text" class="form-control" name="txtMandatoryLeave" value=0 required><br>
-                                    <label for="">Maternity Leave:</label>
-                                    <input type="text" class="form-control" name="txtMaternityLeave" value=0 required><br>
-                                  </div>
-                                  <div class="col-sm-6">
-                                    <label for="">Paternity Leave:</label>
-                                    <input type="text" class="form-control" name="txtPaternityLeave" value=0 required><br>
-                                    <label for="">Sick Leave:</label>
-                                    <input type="text" class="form-control" name="txtSickLeave" value=0 required><br>
-                                    <label for="">Vacation Leave:</label>
-                                    <input type="text" class="form-control" name="txtVacationLeave" value=0 required><br>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                                <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                              </div>
-                            </div><!-- /.modal-content -->
-                          </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
-                      </form>
+                      
 
                       <section class="tab-pane" id="tab_8">
                         <div class="form-horizontal">
@@ -834,4 +755,92 @@ if (!empty($account->profile_image)){
     </div><!--Main Content Panel -->
   </div> <!-- container-fluid-->
 </div><!-- content-wrapper-->
+</form>
+<form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
+  <div class="modal fade" id="addDependents" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add New Dependents</h4>
+        </div>
+        <div class="modal-body">
+          <label for="">First Name:</label>
+          <input type="text" class="form-control" name="txtDFirstName" required><br>
+          <label for="">Last Name:</label>
+          <input type="text" class="form-control" name="txtDLastName" required><br>
+          <label for="">Relationship:</label>
+          <input type="text" class="form-control" name="txtRelationship" required><br>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" value="Add" name="btnAddDependents">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</form>
+
+<form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
+  <div class="modal fade" id="addJob" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add New Job History</h4>
+        </div>
+        <div class="modal-body">
+          <label for="">Company Name:</label>
+          <input type="text" class="form-control" name="txtCompanyName" required><br>
+          <label for="">Company Address:</label>
+          <input type="text" class="form-control" name="txtCompanyAddress" required><br>
+          <label for="">Years Worked:</label>
+          <input type="text" class="form-control" name="txtJobHistYears" required><br>
+          <label for="">Job Title:</label>
+          <input type="text" class="form-control" name="txtJobHistTitle" required><br>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" value="Add" name="btnAddJob">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</form>
+
+<form action="<?php echo base_url();?>ems/addLeave?emp_id=<?php echo $info->emp_id; ?>" method="post">
+  <div class="modal fade" id="addLeave" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add Leave Days</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="">Birthday Leave:</label>
+              <input type="text" class="form-control" name="txtBirthdayLeave" value=0 required><br>
+              <label for="">Mandatory Leave:</label>
+              <input type="text" class="form-control" name="txtMandatoryLeave" value=0 required><br>
+              <label for="">Maternity Leave:</label>
+              <input type="text" class="form-control" name="txtMaternityLeave" value=0 required><br>
+            </div>
+            <div class="col-sm-6">
+              <label for="">Paternity Leave:</label>
+              <input type="text" class="form-control" name="txtPaternityLeave" value=0 required><br>
+              <label for="">Sick Leave:</label>
+              <input type="text" class="form-control" name="txtSickLeave" value=0 required><br>
+              <label for="">Vacation Leave:</label>
+              <input type="text" class="form-control" name="txtVacationLeave" value=0 required><br>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </form>

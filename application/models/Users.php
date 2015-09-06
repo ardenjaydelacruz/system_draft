@@ -9,9 +9,7 @@ class Users extends ActiveRecord\Model {
 			'username' => $this->input->post('txtUsername'),
 			'password' => md5($this->input->post('txtPassword')),
 			'email' => $this->input->post('txtEmail'),
-			'user_level' => $this->input->post('txtUserLevel'),
-			'secret_question' => $this->input->post('txtQuestionList'),
-			'secret_answer' => $this->input->post('txtAnswer')
+			'user_level' => $this->input->post('txtUserLevel')
 		);
 		return $data;
 	}
@@ -22,8 +20,6 @@ class Users extends ActiveRecord\Model {
 		$this->form_validation->set_rules('txtCPassword', 'Confirm Password', 'trim|required|matches[txtPassword]|min_length[8]');
 		$this->form_validation->set_rules('txtEmail', 'Email', 'trim|required');
 		$this->form_validation->set_rules('txtUserLevel', 'User Level', 'trim|required');
-		$this->form_validation->set_rules('txtQuestionList', 'Secret Question', 'trim|required');
-		$this->form_validation->set_rules('txtAnswer', 'Secret Answer', 'trim|required');
 		$this->form_validation->set_message('is_unique', 'The Username is already taken.');
 		if($this->form_validation->run()){
 			RETURN TRUE;

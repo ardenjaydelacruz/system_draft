@@ -291,9 +291,7 @@ class Emp_info_model extends ActiveRecord\Model {
 		$data = array(
 			'username' => $this->input->post('txtUsername'),
 			'password' => md5($this->input->post('txtPassword')),
-			'user_level' => $this->input->post('txtUserLevel'),
-			'secret_question' => $this->input->post('txtSecretQuestion'),
-			'secret_answer' => $this->input->post('txtSecretAnswer')
+			'user_level' => $this->input->post('txtUserLevel')
 		);
 		return $data;
 	}
