@@ -11,6 +11,7 @@ class MY_Controller extends CI_Controller {
         $this->load->model('reports_model');
         $this->load->model('print_reports_model');
         $this->load->library('user_agent');
+        $this->load->library('encrypt');
 
         if ($this->session->userdata('logged_in') == false && uri_string() != 'auth/login') {
             redirect('auth/login');

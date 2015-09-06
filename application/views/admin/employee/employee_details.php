@@ -63,7 +63,6 @@ if (!empty($account->profile_image)){
                 </div>
               </div><!-- Side Panel-->
 <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
-
               <center>
                 <a id="btnEnable" class="button btn btn-primary MainButtons"><i class="fa fa-edit"></i><br>Edit</a>
                 <a href="<?php echo base_url();?>ems/request_leave?emp_id=<?php echo $info->emp_id; ?>" class="button btn btn-warning MainButtons">
@@ -722,7 +721,7 @@ if (!empty($account->profile_image)){
                                <div class="col-sm-9 controls">
                                    <div class="row">
                                        <div class="col-xs-9">
-                                           <input type="password" disabled class="form-control" value="<?php echo $account->password; ?>" name="txtPassword" />
+                                           <input type="password" disabled class="form-control" value="<?php echo $this->encrypt->decode($account->password); ?>" name="txtPassword" />
                                        </div>
                                    </div>
                                </div>

@@ -7,7 +7,7 @@ class Users extends ActiveRecord\Model {
 	public function userDetails(){
 		$data = array(
 			'username' => $this->input->post('txtUsername'),
-			'password' => md5($this->input->post('txtPassword')),
+			'password' => $this->encrpyt->encode($this->input->post('txtPassword')),
 			'email' => $this->input->post('txtEmail'),
 			'user_level' => $this->input->post('txtUserLevel')
 		);

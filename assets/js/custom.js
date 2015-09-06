@@ -19,7 +19,6 @@ $(document).ready(function(){
     $('#btnSaveEdit').toggleClass('disabled');
     $('#btnEnable').toggleClass('disabled');
      
-
     $("input").prop('disabled', false);
     $("select").prop('disabled', false);
   });

@@ -290,7 +290,7 @@ class Emp_info_model extends ActiveRecord\Model {
 	public function accountInfo(){
 		$data = array(
 			'username' => $this->input->post('txtUsername'),
-			'password' => md5($this->input->post('txtPassword')),
+			'password' => $this->encrypt->encode($this->input->post('txtPassword')),
 			'user_level' => $this->input->post('txtUserLevel')
 		);
 		return $data;
