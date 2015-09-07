@@ -33,7 +33,7 @@
 							<div class="box-body text-center">
 								<div class="row">
 									<div class="col-sm-4">
-										<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">
+										<img src="<?php echo base_url();?>assets/images/profile/<?php echo $row->assessee_image; ?>" class="img-responsive evaluator">
 										<label class="label label-info ">Evaluated Employee</label>
 									</div>
 									<div class="col-sm-8"><br><br>
@@ -58,7 +58,7 @@
 								<h3 class="box-title text-center"><?php echo $row->assessor; ?></h3>
 							</div>
 							<div class="box-body text-center">
-								<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">
+								<img src="<?php echo base_url();?>assets/images/profile/<?php echo $row->assessor_image; ?>" class="img-responsive evaluator">
 								<label class="label label-info ">Evaluator</label>
 							</div>
 						</section>
@@ -71,8 +71,8 @@
 				?>
 				<table class="table table-bordered table-hover table-striped">
 					<thead>
-						<th class="col-sm-8"></th>
-						<th class="col-sm-4 text-center">Evaluator Rate</th>
+						<th class="col-sm-9 text-center">Criteria</th>
+						<th class="col-sm-3 text-center">Evaluator Rate</th>
 					</thead>
 					<tr>
 						<td><?php echo $field[0]; ?></td>

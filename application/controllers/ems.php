@@ -205,6 +205,7 @@ class Ems extends MY_Controller
     public function evaluate_employee()
     {
         $data['selected'] = Emp_info_model::find($this->input->get('emp_id'));
+        $data['image'] = View_users_model::find($this->input->get('emp_id'))->profile_image;
         $data['employee'] = Emp_info_model::all();
         $data['criteria'] = Criteria_model::all();
         $data['pageTitle'] = 'Evaluate Employee - MSInc.';

@@ -38,14 +38,6 @@ class Users extends ActiveRecord\Model {
 		$this->load->library('upload',$config);
 		$this->upload->do_upload();
 		$image = $this->upload->data();
-		$config['image_library'] = 'gd2';
-		$config['source_image'] = $image['full_path'];
-		$config['create_thumb'] = TRUE;
-		$config['maintain_ratio'] = TRUE;
-		$config['width'] = 128;
-		$config['height'] = 128;
-		$this->load->library('image_lib', $config); 
-		$this->image_lib->resize();
 		$ems = Users::find($id);
 		$ems->profile_image = $image['file_name'];
 		$ems->save();

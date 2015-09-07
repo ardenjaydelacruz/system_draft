@@ -30,7 +30,7 @@
 								<h3 class="panel-title text-center"><?php echo $selected->first_name.' '.$selected->last_name;?></h3>
 							</div>
 							<div class="panel-body text-center">
-								<img src="<?php echo base_url();?>assets/images/default.jpg" class="img-responsive evaluator">
+								<img src="<?php echo base_url();?>assets/images/profile/<?php echo $image; ?>" class="img-responsive evaluator">
 								<br>
 								<label>Employee to be evaluated</label>
 							</div>
