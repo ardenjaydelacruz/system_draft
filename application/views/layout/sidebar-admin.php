@@ -80,6 +80,7 @@
 				<ul class="treeview-menu">
 					<li class="treeview">
 						<a href="#">
+							<i class="fa fa-group"></i>
 							<span>Employee Management</span>
 							<i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -92,6 +93,7 @@
 					</li>
 					<li class="treeview">
 						<a href="#">
+							<i class="fa fa-money"></i>
 							<span>Payroll Management</span>
 							<i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -103,6 +105,7 @@
 					</li>
 					<li class="treeview">
 						<a href="#">
+							<i class="fa fa-cubes"></i>
 							<span>Asset Management</span>
 							<i class="fa fa-angle-left pull-right"></i>
 						</a>

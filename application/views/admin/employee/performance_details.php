@@ -75,14 +75,14 @@
 						$field[] = $wew->criteria_desc;
 					}
 				?>
-				<table class="table table-bordered table-hover table-striped text-center">
+				<table class="table table-bordered table-hover table-striped">
 					<thead>
-						<th class="col-sm-6"></th>
-						<th class="col-sm-6">Evaluator Rate</th>
+						<th class="col-sm-8"></th>
+						<th class="col-sm-4 text-center">Evaluator Rate</th>
 					</thead>
 					<tr>
 						<td><?php echo $field[0]; ?></td>
-						<td>
+						<td class="text-center">
 							<?php 
 								for ($i=1; $i <= $row->rate1; $i++) { 
 									echo "<i class='fa fa-star star'></i>";
@@ -93,7 +93,7 @@
 					</tr>
 					<tr>
 						<td><?php echo $field[1]; ?></td>
-						<td>
+						<td class="text-center">
 							<?php 
 								for ($i=1; $i <= $row->rate2; $i++) { 
 									echo "<i class='fa fa-star star'></i>";
@@ -104,7 +104,7 @@
 					</tr>
 					<tr>
 						<td><?php echo $field[2]; ?></td>
-						<td>
+						<td class="text-center">
 							<?php 
 								for ($i=1; $i <= $row->rate3; $i++) { 
 									echo "<i class='fa fa-star star'></i>";
@@ -115,7 +115,7 @@
 					</tr>
 					<tr>
 						<td><?php echo $field[3]; ?></td>
-						<td>
+						<td class="text-center">
 							<?php 
 								for ($i=1; $i <= $row->rate4; $i++) { 
 									echo "<i class='fa fa-star star'></i>";
@@ -126,7 +126,7 @@
 					</tr>
 					<tr>
 						<td><?php echo $field[4]; ?></td>
-						<td>
+						<td class="text-center">
 							<?php 
 								for ($i=1; $i <= $row->rate5; $i++) { 
 									echo "<i class='fa fa-star star'></i>";
@@ -137,7 +137,7 @@
 					</tr>
 					<tr>
 						<td><?php echo $field[5]; ?></td>
-						<td>
+						<td class="text-center">
 							<?php 
 								for ($i=1; $i <= $row->rate5; $i++) { 
 									echo "<i class='fa fa-star star'></i>";
@@ -148,7 +148,7 @@
 					</tr>
 					<tr>
 						<td><?php echo $field[6]; ?></td>
-						<td>
+						<td class="text-center">
 							<?php 
 								for ($i=1; $i <= $row->rate5; $i++) { 
 									echo "<i class='fa fa-star star'></i>";
@@ -159,7 +159,7 @@
 					</tr>
 					<tr>
 						<td><?php echo $field[7]; ?></td>
-						<td>
+						<td class="text-center">
 							<?php 
 								for ($i=1; $i <= $row->rate5; $i++) { 
 									echo "<i class='fa fa-star star'></i>";
@@ -170,7 +170,7 @@
 					</tr>
 					<tr>
 						<td><?php echo $field[8]; ?></td>
-						<td>
+						<td class="text-center">
 							<?php 
 								for ($i=1; $i <= $row->rate5; $i++) { 
 									echo "<i class='fa fa-star star'></i>";
@@ -181,7 +181,7 @@
 					</tr>
 					<tr>
 						<td><?php echo $field[9]; ?></td>
-						<td>
+						<td class="text-center">
 							<?php 
 								for ($i=1; $i <= $row->rate5; $i++) { 
 									echo "<i class='fa fa-star star'></i>";
@@ -191,8 +191,8 @@
 						</td>
 					</tr>
 					<tr class="success">
-						<th>RATE:</th>
-						<th><?php echo number_format($row->final_rating,2); ?></th>
+						<th  class="text-center">RATE:</th>
+						<th  class="text-center"><?php echo number_format($row->final_rating,2); ?></th>
 						<!-- <th>5.0</th>
 						<th>5.0</th> -->
 					</tr>

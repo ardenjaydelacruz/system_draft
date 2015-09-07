@@ -45,10 +45,10 @@
 						<label for="txtTitle">Evaluation Title: </label>
 						<input type="text" id="txtTitle" name="txtEvalTitle" class="form-control" required>
 						<br>
-						<table class="table table-bordered table-striped table-hover text-center">
+						<table class="table table-bordered table-striped table-hover">
 							<thead>
 								<th></th>
-								<th>Criteria</th>
+								<th class="text-center">Criteria</th>
 								<th>Rate</th>
 							</thead>
 							<tr>
