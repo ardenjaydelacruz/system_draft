@@ -809,31 +809,17 @@ if (!empty($account->profile_image)){
 
 <form action="<?php echo base_url();?>ems/addLeave?emp_id=<?php echo $info->emp_id; ?>" method="post">
   <div class="modal fade" id="addLeave" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Add Leave Days</h4>
         </div>
         <div class="modal-body">
-          <div class="row">
-            <div class="col-sm-6">
-              <label for="">Birthday Leave:</label>
-              <input type="text" class="form-control" name="txtBirthdayLeave" value=0 required><br>
-              <label for="">Mandatory Leave:</label>
-              <input type="text" class="form-control" name="txtMandatoryLeave" value=0 required><br>
-              <label for="">Maternity Leave:</label>
-              <input type="text" class="form-control" name="txtMaternityLeave" value=0 required><br>
-            </div>
-            <div class="col-sm-6">
-              <label for="">Paternity Leave:</label>
-              <input type="text" class="form-control" name="txtPaternityLeave" value=0 required><br>
               <label for="">Sick Leave:</label>
               <input type="text" class="form-control" name="txtSickLeave" value=0 required><br>
               <label for="">Vacation Leave:</label>
               <input type="text" class="form-control" name="txtVacationLeave" value=0 required><br>
-            </div>
-          </div>
         </div>
         <div class="modal-footer">
           <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">

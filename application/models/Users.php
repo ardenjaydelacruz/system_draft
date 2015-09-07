@@ -50,8 +50,6 @@ class Users extends ActiveRecord\Model {
 		$ems->profile_image = $image['file_name'];
 		$ems->save();
 		
-		
-
 		if ($ems->save()) {
 			$this->session->set_userdata('uploaded',1);
 			if ($id == $this->session->userdata('employee_id')){
@@ -61,6 +59,17 @@ class Users extends ActiveRecord\Model {
 		} else {
 			return false;
 		}
+	}
 
+	public function login_employee($id){
+		$user = Users::find($id);
+		$user->logged = 1;
+		$user->save();
+	}
+
+	public function logout_employee($id){
+		$user = Users::find($id);
+		$user->logged = 0;
+		$user->save();
 	}
 }

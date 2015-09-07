@@ -11,7 +11,7 @@ class View_users_model extends ActiveRecord\Model {
 			'employee_id' => $row->employee_id,
 			'username'   => $row->username,
 			'user_level' => $row->user_level,
-			'logged_in'  => TRUE,
+			'logged_in'  => 1,
 			'first_name' => $row->first_name,
 			'last_name'  => $row->last_name,
 			'profile_image'  => $row->profile_image
@@ -22,7 +22,10 @@ class View_users_model extends ActiveRecord\Model {
 	public function login_employee(){
 		$row = View_users_model::find_by_username($this->input->post('txtUsername'));
 		if($row != NULL){
-			if ( $this->encrypt->decode($row->password) ==($this->input->post('txtPassword'))){
+			if($row->logged == 1){
+				return 'Logged';
+			}
+			if ($this->encrypt->decode($row->password) == ($this->input->post('txtPassword'))){
 				return 'Success';
 			} else {
 				return 'Incorrect password';

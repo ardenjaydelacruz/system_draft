@@ -111,43 +111,13 @@ class Emp_info_model extends ActiveRecord\Model {
 		
 		$leave1 = array (
 			'employee_id' => $this->input->post('txtEmpID'),
-			'leave_type_id' => 'BL',
+			'leave_type_id' => 'VL',
 			'days' => 0
 			);
 
 		$leave2 = array (
 			'employee_id' => $this->input->post('txtEmpID'),
-			'leave_type_id' => 'MTL',
-			'days' => 0
-			);
-
-		$leave3 = array (
-			'employee_id' => $this->input->post('txtEmpID'),
-			'leave_type_id' => 'MNL',
-			'days' => 0
-			);
-
-		$leave4 = array (
-			'employee_id' => $this->input->post('txtEmpID'),
-			'leave_type_id' => 'PL',
-			'days' => 0
-			);
-
-		$leave5 = array (
-			'employee_id' => $this->input->post('txtEmpID'),
 			'leave_type_id' => 'SL',
-			'days' => 0
-			);
-
-		$leave6 = array (
-			'employee_id' => $this->input->post('txtEmpID'),
-			'leave_type_id' => 'VL',
-			'days' => 0
-			);
-
-		$leave7 = array (
-			'employee_id' => $this->input->post('txtEmpID'),
-			'leave_type_id' => 'BL',
 			'days' => 0
 			);
 
@@ -318,41 +288,17 @@ class Emp_info_model extends ActiveRecord\Model {
 	}
 
 	public function updateLeave($id){
-		$leave1 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'BL');
+		$leave1 = Leave_left_model::find_by_sql("SELECT * FROM `tbl_leave_left` WHERE employee_id = '$id' and leave_type_id = 'VL'");
 		$data1 = array (
-			'days' => $leave1->days + $this->input->post('txtBirthdayLeave')
+			'days' => $leave1->days + $this->input->post('txtVacationLeave')
 			);
 		$leave1->update_attributes($data1);
 
-		$leave2 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'MNL');
+		$leave2 = Leave_left_model::find_by_sql("SELECT * FROM `tbl_leave_left` WHERE employee_id = '$id' and leave_type_id = 'SL'");
 		$data2 = array (
-			'days' => $leave2->days + $this->input->post('txtMandatoryLeave')
+			'days' => $leave2->days + $this->input->post('txtSickLeave')
 			);
 		$leave2->update_attributes($data2);
-
-		$leave3 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'PL');
-		$data3 = array (
-			'days' => $leave3->days + $this->input->post('txtPaternityLeave')
-			);
-		$leave3->update_attributes($data3);
-
-		$leave4 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'MTL');
-		$data4 = array (
-			'days' => $leave4->days + $this->input->post('txtMaternityLeave')
-			);
-		$leave4->update_attributes($data4);
-
-		$leave5 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'SL');
-		$data5 = array (
-			'days' => $leave5->days + $this->input->post('txtSickLeave')
-			);
-		$leave5->update_attributes($data5);
-
-		$leave6 = Leave_left_model::find_by_employee_id_and_leave_type_id($id,'VL');
-		$data6 = array (
-			'days' => $leave6->days + $this->input->post('txtVacationLeave')
-			);
-		$leave6->update_attributes($data6);
 
 		redirect("ems/view_details?emp_id=$id");
 	}

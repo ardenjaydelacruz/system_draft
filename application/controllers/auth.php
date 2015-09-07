@@ -8,11 +8,15 @@ class Auth extends MY_Controller {
 		$this->login();
 	}
 	public function login(){
+		if ($this->session->userdata('logged_in') == 1){
+            redirect('ems/admin_dashboard');
+        }
 		if($this->validLogin()){
 			View_users_model::set_session();
 			$this->session->set_userdata('welcome',1);
 			Audit_trail_model::auditLogin();
 			$userlevel = $this->session->userdata('user_level');
+			Users::login_employee($this->session->userdata('employee_id'));
 			if ($userlevel=='Administrator'){
 				redirect('ems/admin_dashboard');
 			} elseif ($userlevel=='HR Manager'){
@@ -34,6 +38,7 @@ class Auth extends MY_Controller {
 	
 	public function logout(){
 		Audit_trail_model::auditLogout();
+		Users::logout_employee($this->session->userdata('employee_id'));
 		$this->session->sess_destroy();
 		redirect('auth/login');
 	}
@@ -48,6 +53,9 @@ class Auth extends MY_Controller {
 	 		return false;
 		} elseif ($user == 'Success') {
 			return true; // no error
+		} elseif ($user == 'Logged'){
+			$this->form_validation->set_message('validate_data','User is already logged in.');
+	 		return false;
 		}
 	}
 
