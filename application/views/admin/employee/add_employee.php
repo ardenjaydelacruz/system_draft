@@ -13,22 +13,13 @@
                 <label>
                     <small>Fields with * asterisk are required.</small>
                 </label>
-                <div class="box box-default box-solid">
+                <div class="<b></b>ox box-default box-solid">
                     <div class="box-header with-border">
                         <h3 class="box-title">Employee Information</h3>
                     </div>
                     <div class="box-body">
                         <?php echo form_open('ems/add_employee'); ?>
                             <div class="form-horizontal">
-                                <div class="form-group">
-                                    <label class=" col-sm-3 control-label">Employee ID: * </label>
-                                    <div class="col-sm-3">
-                                        <input type="text" class="form-control input-sm" name="txtEmpID">
-                                    </div>
-                                    <div class="col-sm-5 error">
-                                        <?php echo form_error('txtEmpID'); ?>
-                                    </div>
-                                </div>
                                 <div class="form-group">
                                     <label class=" col-sm-3 control-label">Job Title: * </label>
                                     <div class="col-sm-3">

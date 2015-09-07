@@ -42,7 +42,7 @@ class Emp_info_model extends ActiveRecord\Model {
 	}
 
 	public function insert_employee_data(){
-		$this->form_validation->set_rules('txtEmpID', 'Employee ID', 'trim|required');
+		$id = 'EMP00'.(count(Emp_info_model::all())+1);
 		$this->form_validation->set_rules('txtJobTitle', 'Job Title', 'trim|required');
 		$this->form_validation->set_rules('txtEmploymentType', 'Employment Type', 'trim|required');
 		$this->form_validation->set_rules('txtEmpDepartment', 'Employee Department', 'trim|required');
@@ -63,62 +63,62 @@ class Emp_info_model extends ActiveRecord\Model {
 
 		// $empid = count(Emp_info_model::all())+1;
 		$empInfo = array (
-			'emp_id' => $this->input->post('txtEmpID'),
-			'status' => 'Existing',
-			'job_title_id' => $this->input->post('txtJobTitle'),
+			'emp_id'             => $id,
+			'status'             => 'Existing',
+			'job_title_id'       => $this->input->post('txtJobTitle'),
 			'employment_type_id' => $this->input->post('txtEmploymentType'),
-			'department_id' => $this->input->post('txtEmpDepartment'),
-			'start_date' => date('Y-m-d'),
-			'end_date' => date('Y-m-d'),
-			'probationary_date' => date('Y-m-d'),
-			'permanency_date' => date('Y-m-d')
+			'department_id'      => $this->input->post('txtEmpDepartment'),
+			'start_date'         => date('Y-m-d'),
+			'end_date'           => date('Y-m-d'),
+			'probationary_date'  => date('Y-m-d'),
+			'permanency_date'    => date('Y-m-d')
 			);
 		$address = array (
-			'employee_id' => $this->input->post('txtEmpID'),
-			'street' => $this->input->post('txtStreet'),
-			'barangay' => $this->input->post('txtBarangay'),
-			'city' => $this->input->post('txtCity'),
-			'state' => $this->input->post('txtState'),
-			'zip' => $this->input->post('txtZip'),
-			'country' => $this->input->post('txtCountry')
+			'employee_id' => $id,
+			'street'      => $this->input->post('txtStreet'),
+			'barangay'    => $this->input->post('txtBarangay'),
+			'city'        => $this->input->post('txtCity'),
+			'state'       => $this->input->post('txtState'),
+			'zip'         => $this->input->post('txtZip'),
+			'country'     => $this->input->post('txtCountry')
 			);
 		$contact = array (
-			'employee_id' => $this->input->post('txtEmpID'),
+			'employee_id'   => $id,
 			'mobile_number' => $this->input->post('txtMobile'),
-			'tel_number' => $this->input->post('txtTelephone'),
+			'tel_number'    => $this->input->post('txtTelephone'),
 			'email_address' => $this->input->post('txtEmail')
 			);
 
 		$personal = array (
-			'emp_id' => $this->input->post('txtEmpID'),
-			'first_name' => $this->input->post('txtFirstName'),
-			'middle_name' => $this->input->post('txtMiddleName'),
-			'last_name' => $this->input->post('txtLastName'),
-			'birthday' => $this->input->post('txtBday'),
-			'gender' => $this->input->post('txtGender'),
+			'emp_id'         => $id,
+			'first_name'     => $this->input->post('txtFirstName'),
+			'middle_name'    => $this->input->post('txtMiddleName'),
+			'last_name'      => $this->input->post('txtLastName'),
+			'birthday'       => $this->input->post('txtBday'),
+			'gender'         => $this->input->post('txtGender'),
 			'marital_status' => $this->input->post('txtStatus')
-		);
+			);
 
-		$id = array (
-			'employee_id' => $this->input->post('txtEmpID')
+		$wew = array (
+			'employee_id' => $id
 		);
 
 		$acc = array (
-			'employee_id' => $this->input->post('txtEmpID'),
+			'employee_id'   => $id,
 			'profile_image' => 'default.jpg',
-			'user_level' => 'EMP'
+			'user_level'    => 'EMP'
 			);
 		
 		$leave1 = array (
-			'employee_id' => $this->input->post('txtEmpID'),
+			'employee_id'   => $id,
 			'leave_type_id' => 'VL',
-			'days' => 0
+			'days'          => 0
 			);
 
 		$leave2 = array (
-			'employee_id' => $this->input->post('txtEmpID'),
+			'employee_id'   => $id,
 			'leave_type_id' => 'SL',
-			'days' => 0
+			'days'          => 0
 			);
 
 		if ($this->form_validation->run()) {	
@@ -126,20 +126,15 @@ class Emp_info_model extends ActiveRecord\Model {
 				Emp_history_model::create($empInfo) && 
 				Emp_address_model::create($address) && 
 				Emp_contact_model::create($contact) && 
-				Emp_contact_person::create($id) &&
-				Emp_school_model::create($id) &&
-				Gov_id_model::create($id) &&
+				Emp_contact_person::create($wew) &&
+				Emp_school_model::create($wew) &&
+				Gov_id_model::create($wew) &&
 				Users::create($acc) &&
 				Leave_left_model::create($leave1) &&
-				Leave_left_model::create($leave2) &&
-				Leave_left_model::create($leave3) &&
-				Leave_left_model::create($leave4) &&
-				Leave_left_model::create($leave5) &&
-				Leave_left_model::create($leave6) &&
-				Leave_left_model::create($leave7)
+				Leave_left_model::create($leave2)
 				) {
 				$this->session->set_userdata('added', 1);
-				Audit_trail_model::auditAddEmp($this->input->post('txtEmpID'));
+				Audit_trail_model::auditAddEmp($id);
 				redirect('ems/employees');
 			}
 		} else {

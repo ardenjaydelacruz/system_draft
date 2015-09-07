@@ -1,16 +1,10 @@
 <div class="content-wrapper">
 	<ol class="breadcrumb">
-            <li><a href="<?php echo base_url();?>ems/dashboard"  class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li><a href="<?php echo base_url();?>ems/view_performance"  class="btn btn-default"><i class="fa fa-star"></i> Performance Evaluation</a></li>
-            <?php if($this->input->post('txtSearch')) {
-            	echo "<li><a href='view_performance'>Performance Evaluation</a></li>";
-            	echo "<li class='active'>Search Evaluation</li>";
-            } else {
-            	echo "<li class='active'>View Evaluation</li>";
-            }
-            ?>            
-    </ol>
-    <div class="container-fluid">
+    <li><a href="<?php echo base_url();?>ems/dashboard"  class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><a href="<?php echo base_url();?>ems/view_performance"  class="btn btn-default"><i class="fa fa-star"></i> Performance Evaluation</a></li>
+    <li class='active'>View Evaluation</li>
+  </ol>
+  <div class="container-fluid">
 		<div class="box box-info box-solid">
 			<div class="box-header with-border">
 			    <div class="row">
