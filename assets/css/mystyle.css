@@ -7,6 +7,10 @@ body {
 	font-family: 'Roboto', sans-serif;
 	transition: all 0.2s;
 }
+.announcement{
+	overflow:scroll; 
+	height:200px;
+}
 .borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
     border: none;
 }

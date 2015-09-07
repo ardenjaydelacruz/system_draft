@@ -288,18 +288,14 @@ class Emp_info_model extends ActiveRecord\Model {
 	}
 
 	public function updateLeave($id){
-		$leave1 = Leave_left_model::find_by_sql("SELECT * FROM `tbl_leave_left` WHERE employee_id = '$id' and leave_type_id = 'VL'");
-		$data1 = array (
-			'days' => $leave1->days + $this->input->post('txtVacationLeave')
-			);
-		$leave1->update_attributes($data1);
-
-		$leave2 = Leave_left_model::find_by_sql("SELECT * FROM `tbl_leave_left` WHERE employee_id = '$id' and leave_type_id = 'SL'");
-		$data2 = array (
-			'days' => $leave2->days + $this->input->post('txtSickLeave')
-			);
-		$leave2->update_attributes($data2);
-
+		$leave1 = Leave_left_model::find_by_leave_type_id_and_employee_id('VL',$id);
+		$vacation = $leave1->days + $this->input->post('txtVacationLeave');
+		$leave2 = Leave_left_model::find_by_leave_type_id_and_employee_id('SL',$id);
+		$sick = $leave2->days + $this->input->post('txtSickLeave');
+		$this->reports_model->update_leave($id,'VL',$vacation);
+		$this->reports_model->update_leave($id,'SL',$sick);
+		$this->session->set_userdata('edited', 1);
+		Audit_trail_model::auditAddLeave($id);
 		redirect("ems/view_details?emp_id=$id");
 	}
 }

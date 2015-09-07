@@ -25,7 +25,7 @@
 		
 
 	</head>
-	<body class="skin-black	 fixed">
+	<body class="skin-black">
 		<div class="wrapper">
 			<!-- Page Layout -->
 			<?php 

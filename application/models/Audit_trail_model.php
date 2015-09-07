@@ -196,4 +196,14 @@ class Audit_trail_model extends ActiveRecord\Model {
             );
         Audit_trail_model::create($data);
     }
+
+    public function auditAddLeave($id){
+        $data = array(
+            'ip_address' => $this->input->ip_address(),
+            'user_level' => $this->session->userdata('user_level'),
+            'username' => $this->session->userdata('first_name'),
+            'action' => 'Added Leave to Employee ' .$id
+            );
+        Audit_trail_model::create($data);
+    }
 }

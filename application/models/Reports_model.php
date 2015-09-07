@@ -94,4 +94,11 @@ GROUP BY a.name")->result();
 			'payslip_taxes'=>$payslip_taxes->result());
 		return $payslip;
 	}
+
+	public function update_leave($id,$type,$days){
+		$this->db->where('employee_id',$id);
+		$this->db->where('leave_type_id',$type);
+		$data = array('days'=>$days);
+		$this->db->update('tbl_leave_left',$data);
+	}
 }

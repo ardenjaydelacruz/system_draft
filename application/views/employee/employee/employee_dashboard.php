@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6">
-        <div class="callout callout-success">
+        <div class="callout callout-success announcement">
           <h4 class=""><i class="fa fa-bullhorn"></i> Announcement! (Recent 3)</h4>
           <ul>
             <?php 
@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="callout callout-danger">
+        <div class="callout callout-danger announcement">
           <h4><i class="fa fa-birthday-cake"></i>  Birthdays for <?php echo strtoupper(date('F')); ?></h4>
           <table class="table borderless">
             <?php 
