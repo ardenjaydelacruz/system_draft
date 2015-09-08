@@ -26,12 +26,13 @@ class Leave_request_model extends ActiveRecord\Model {
 		$data       = array(
 			'leave_start'   => $this->input->post('leaveStarts'),
 			'leave_end'     => $this->input->post('leaveEnds'),
+			'days'			=> Leave_request_model::getLeaveDays($this->input->post('leaveStarts'),$this->input->post('leaveEnds')),
 			'employee_id'   => $this->input->get('emp_id'),
 			'leave_left'    => $leaves,
 			'date_approved' => 0,
 			'leave_status'  => 'Pending',
 			'leave_type'    => $this->input->post('txtLeaveType'),
-			'leave_reason'    => $this->input->post('txtReason')
+			'leave_reason'  => $this->input->post('txtReason')
 		);
 		return $data;
 	}
@@ -43,5 +44,16 @@ class Leave_request_model extends ActiveRecord\Model {
             Audit_trail_model::auditLeave($details);
             redirect('ems/leaves_table');
         }
+	}
+
+	public function getLeaveDays($date1,$date2){
+		$start = strtotime($date1);
+		$end = strtotime($date2);
+		$count = 0;
+		while(date('Y-m-d', $start) < date('Y-m-d', $end)){
+		  $count += date('N', $start) < 6 ? 1 : 0;
+		  $start = strtotime("+1 day", $start);
+		}
+		return $count+1;
 	}
 }

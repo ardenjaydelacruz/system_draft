@@ -37,9 +37,9 @@
 									    </div>
 									</div>
 									<div class="form-group">
-									    <label class=" col-sm-6 control-label">Number of Days</label>
+									    <label class=" col-sm-6 control-label">Leave Days</label>
 									    <div class="col-sm-6">
-									    	<input type="text" class="form-control input-sm" name="leaveEnds" disabled required value="<?php echo $row->num_days; ?>">
+									    	<input type="text" class="form-control input-sm" name="leaveEnds" disabled required value="<?php echo $row->days; ?>">
 									    </div>
 									</div>
 									<div class="form-group">
@@ -78,7 +78,7 @@
 									    </div>
 									</div>
 									<div class="form-group">
-									    <label class=" col-sm-6 control-label">Date Approved</label>
+									    <label class=" col-sm-6 control-label">Date Checked</label>
 									    <div class="col-sm-6">						    		
 									    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled required value="<?php if($row->date_approved){ echo date('F d, Y - g:i A',strtotime($row->date_approved)); } ?>">
 									    </div>

@@ -29,11 +29,11 @@
 						<td><?php echo $row->name;  ?></td>
 						<td class="text-center"><?php echo date_format($row->leave_start,'M d, Y').' - '.date_format($row->leave_end,'M d, Y'); ?></td>
 						<td><?php echo $row->leave_type_name; ?></td>
-						<td class="text-center"><?php echo $row->num_days; ?></td>
+						<td class="text-center"><?php echo $row->days; ?></td>
 						<td class="text-center"><?php echo $row->leave_left; ?></td>
 						<td align="center">
 							<?php if ($row->leave_status=='Pending'){ ?>
-							<a href="<?php echo base_url(); ?>ems/leaves_table?leave_status=Approved&leave_request_id=<?php echo substr($row->leave_request_id,3,5);?>&leave_id=<?php echo $row->leave_type_id; ?>&days=<?php echo $row->num_days; ?>&leave_left=<?php echo $row->leave_left; ?>&emp_id=<?php echo $row->emp_id; ?>">
+							<a href="<?php echo base_url(); ?>ems/leaves_table?leave_status=Approved&leave_request_id=<?php echo substr($row->leave_request_id,3,5);?>&leave_id=<?php echo $row->leave_type_id; ?>&days=<?php echo $row->days; ?>&leave_left=<?php echo $row->leave_left; ?>&emp_id=<?php echo $row->emp_id; ?>">
 								<button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Approve Leave"><i class="fa fa-thumbs-up fa-lg"></i></button>
 							</a>
 							<a href="<?php echo base_url(); ?>ems/leaves_table?leave_status=Denied&leave_request_id=<?php echo substr($row->leave_request_id,3,5);?>">
