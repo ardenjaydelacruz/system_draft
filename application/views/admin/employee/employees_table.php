@@ -72,7 +72,27 @@
                                 ?>
                             </td>
                             <td align="center">
-                                <a href="<?php echo base_url();?>ems/view_details?emp_id=<?php echo $row->emp_id; ?>">
+                                <?php if ($row->status=='Resigned'){ ?>
+                                <a href="<?php echo base_url();?>ems/view_details?emp_id=<?php echo $row->emp_id; ?>" >
+                                    <button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Employee">
+                                        <i class="fa fa-user"></i>
+                                    </button>
+                                </a>
+                                <a href="<?php echo base_url();?>ems/request_leave?emp_id=<?php echo $row->emp_id; ?>">
+                                    <button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Add Leave Request" disabled>
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </a>
+                                <a href="<?php echo base_url();?>ems/evaluate_employee?emp_id=<?php echo $row->emp_id; ?>">
+                                    <button class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Evaluate Employee" disabled>
+                                        <i class="fa fa-star"></i>
+                                    </button>
+                                </a>
+                                <button class="btn btn-danger btn-xs" onclick=deleteEmployee(<?php echo $row->emp_id; ?>,'<?php echo base_url();?>ems/'); data-toggle="tooltip" data-placement="top" title="Delete Employee">
+                                        <i class="fa fa-trash-o"></i>
+                                </button>
+                                <?php } else {?>
+                                <a href="<?php echo base_url();?>ems/view_details?emp_id=<?php echo $row->emp_id; ?>" >
                                     <button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="View Employee">
                                         <i class="fa fa-user"></i>
                                     </button>
@@ -90,13 +110,9 @@
                                 <button class="btn btn-danger btn-xs" onclick=deleteEmployee(<?php echo $row->emp_id; ?>,'<?php echo base_url();?>ems/'); data-toggle="tooltip" data-placement="top" title="Delete Employee">
                                         <i class="fa fa-trash-o"></i>
                                 </button>
-                                <!-- <input type="button" class="btn btn-danger btn-xs" value="Delete" onclick=deleteAlert(<?php echo $row->emp_id; ?>)> -->
-                                <!-- <a href="<?php echo base_url();?>ems/delete_employee?emp_id=<?php echo $row->emp_id; ?>">
-                            <input type="button" class="btn btn-danger btn-xs" value="Delete onclick=deleteAlert(<?php echo $row->emp_id; ?>)">
-                        </a> -->
                             </td>
                         </tr>
-                        <?php } ?>
+                        <?php } } ?>
                 </table>
             </div>
         </div>
