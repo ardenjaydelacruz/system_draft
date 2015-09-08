@@ -68,4 +68,28 @@ class Auth extends MY_Controller {
 			return false;
 		}
 	}
+
+	public function mobile_login(){
+		if ($this->input->post('txtUsername') || $this->input->post('txtPassword')){
+			$user = View_users_model::login_employee();
+			if ($user == 'Not registered') {
+				$response["success"] = 0;
+				$response["message"] = "Username is not registered";
+			} elseif ($user == 'Incorrect password') {
+				$response["success"] = 0;
+				$response["message"] = "Username and Password does not match";
+			} elseif ($user == 'Success') {
+				$user = View_users_model::find_by_username($this->input->post('txtUsername'));
+				Users::login_employee($user->employee_id,1);
+				$response['employee'] = $this->reports_model->getEmpInfo($user->employee_id);
+			} elseif ($user == 'Logged'){
+				$response["success"] = 0;
+				$response["message"] = "User is already logged in ";
+			}
+		} else {
+			$response["success"] = 0;
+			$response["message"] = "Username and Password Field is required";
+		}
+		echo json_encode($response);
+	}
 }

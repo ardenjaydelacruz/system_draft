@@ -13,9 +13,9 @@ class MY_Controller extends CI_Controller {
         $this->load->library('user_agent');
         $this->load->library('encrypt');
 
-        if ($this->session->userdata('logged_in') == 0 && uri_string() != 'auth/login') {
-            redirect('auth/login');
-        }
+        // if ($this->session->userdata('logged_in') == 0 && uri_string() != 'auth/login') {
+        //     redirect('auth/login');
+        // }
 
         // $this->output->enable_profiler(TRUE);
         // $sections = array(

@@ -101,4 +101,11 @@ GROUP BY a.name")->result();
 		$data = array('days'=>$days);
 		$this->db->update('tbl_leave_left',$data);
 	}
+
+	 public function getEmpInfo($id){
+        $this->db->where('emp_id',$id);
+        $result = $this->db->get('view_employees_list');
+        return $result->result();
+    
+    }
 }

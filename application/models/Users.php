@@ -64,4 +64,6 @@ class Users extends ActiveRecord\Model {
 		$user->logged = 0;
 		$user->save();
 	}
+
+	
 }
