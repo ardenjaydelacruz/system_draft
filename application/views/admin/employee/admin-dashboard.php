@@ -142,34 +142,34 @@
           </div><!-- /.box-header -->
           <div class="box-body">
             <center>
-            <a href="#" data-target="#addDepartment" data-toggle="modal" class="btn btn-app btn-flat">
-              <span class="badge bg-green"><?php echo count($departments); ?></span>
-              <i class="fa fa-institution"></i> Department
-            </a>
-            <a href="#" data-target="#addJobTitle" data-toggle="modal" class="btn btn-app btn-flat">
-              <span class="badge bg-green"><?php echo count($job_titles); ?></span>
-              <i class="fa fa-briefcase"></i> Job Title
-            </a>
-            <a href="#" data-target="#addEmploymentType" data-toggle="modal" class="btn btn-app btn-flat">
-              <span class="badge bg-green"><?php echo count($employment_type); ?></span>
-              <i class="fa fa-suitcase"></i> Employment<Br> Type
-            </a>
-            <a href="#" data-target="#addSupervisor" data-toggle="modal" class="btn btn-app btn-flat">
-              <span class="badge bg-green"><?php echo count($supervisors); ?></span>
-              <i class="fa fa-group"></i> Supervisors
-            </a>
-            <a href="#" data-target="#addVendor" data-toggle="modal" class="btn btn-app btn-flat">
-              <span class="badge bg-green"><?php echo count($vendors); ?></span>
-              <i class="fa fa-truck"></i> Vendor
-            </a>    
-            <a href="#" data-target="#addAssetCategory" data-toggle="modal" class="btn btn-app btn-flat">
-              <span class="badge bg-green"><?php echo count($category); ?></span>
-              <i class="fa fa-cubes"></i> Asset <br> Category
-            </a>         
-            <!-- <a href="#" data-target="#addLeave" data-toggle="modal" class="btn btn-app btn-flat">
-              <span class="badge bg-green"><?php echo $leaves; ?></span>
-              <i class="fa fa-calendar"></i> Leave Type
-            </a> -->   
+            <div class="col-sm-6">
+              <a href="#" data-target="#addDepartment" data-toggle="modal" class="btn btn-app btn-flat">
+                <span class="badge bg-green"><?php echo count($departments); ?></span>
+                <i class="fa fa-institution"></i> Department
+              </a>
+              <a href="#" data-target="#addSupervisor" data-toggle="modal" class="btn btn-app btn-flat">
+                <span class="badge bg-green"><?php echo count($supervisors); ?></span>
+                <i class="fa fa-group"></i> Supervisors
+              </a>
+              <a href="#" data-target="#addAssetCategory" data-toggle="modal" class="btn btn-app btn-flat">
+                <span class="badge bg-green"><?php echo count($category); ?></span>
+                <i class="fa fa-cubes"></i> Asset <br> Category
+              </a>  
+            </div>
+            <div class="col-sm-6">
+              <a href="#" data-target="#addEmploymentType" data-toggle="modal" class="btn btn-app btn-flat">
+                <span class="badge bg-green"><?php echo count($employment_type); ?></span>
+                <i class="fa fa-suitcase"></i> Employment<Br> Type
+              </a>
+              <a href="#" data-target="#addJobTitle" data-toggle="modal" class="btn btn-app btn-flat">
+                <span class="badge bg-green"><?php echo count($job_titles); ?></span>
+                <i class="fa fa-briefcase"></i> Job Title
+              </a>
+              <a href="#" data-target="#addVendor" data-toggle="modal" class="btn btn-app btn-flat">
+                <span class="badge bg-green"><?php echo count($vendors); ?></span>
+                <i class="fa fa-truck"></i> Vendor
+              </a> 
+            </div>
             </center>
           </div><!-- /.box-body -->
 

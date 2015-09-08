@@ -1,6 +1,6 @@
 <div class="content-wrapper">
 	<ol class="breadcrumb">
-	    <li><a href="<?php echo base_url();?>employee/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+	    <li><a href="<?php echo base_url();?>employee/hr_dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li><a href="<?php echo base_url();?>employee/leaves_table" class="btn btn-default"><i class="fa fa-calendar"></i> Leaves</a></li>
         <li class="active">View Leave Details</li>
     </ol>

@@ -1,14 +1,8 @@
 
 <div class="content-wrapper">
     <ol class="breadcrumb">
-        <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <?php if($this->input->post('txtSearch')) {
-            echo "<li><a href='employees' class='btn btn-default'>Employees</a></li>";
-            echo "<li class='active'>Search Employees</li>";
-        } else {
-            echo "<li class='active'>Employees Supervision</li>";
-        }
-        ?>
+        <li><a href="<?php echo base_url();?>ems/hr_dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class='active'>Employees Supervision</li>
     </ol>
     <div class="container-fluid">
         <div class="box box-info box-solid">

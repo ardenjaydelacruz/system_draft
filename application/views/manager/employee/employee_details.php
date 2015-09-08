@@ -1,14 +1,7 @@
-  <?php
-if (!empty($account->profile_image)){
-      $image = $account->profile_image;
-  } else {
-      $image = 'default.jpg';
-  }
-?>
 <form action="<?php echo base_url();?>ems/update_employee?emp_id=<?php echo $info->emp_id; ?>" method="post">
 <div class="content-wrapper">
   <ol class="breadcrumb">
-  <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+  <li><a href="<?php echo base_url();?>ems/hr_dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
   <li><a href="<?php echo base_url();?>ems/employees" class="btn btn-default"><i class="fa fa-user"></i> Employee</a></li>
   <li class="active"><i class="fa fa-search"></i> View Employee </li>
   </ol>
@@ -27,7 +20,7 @@ if (!empty($account->profile_image)){
                 </div>
                 <div class="box-body">
                   <div class="form-group">
-                    <div class="text-center"><img src="<?php echo base_url().'assets/images/profile/'.$image; ?>" alt="" class="img-responsive emp_image" /></div>
+                    <div class="text-center"><img src="<?php echo base_url().'assets/images/profile/'.$account->profile_image; ?>" alt="" class="img-responsive emp_image" /></div>
                     <div id="upload">
                       <?php
                       echo form_open_multipart('ems/upload_image?emp_id='.$info->emp_id);

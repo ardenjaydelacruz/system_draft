@@ -4,7 +4,7 @@
  ?>
 <div class="content-wrapper">
 	<ol class="breadcrumb">
-        <li><a href="<?php echo base_url();?>employee/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo base_url();?>employee/hr_dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Request Leave</li>
     </ol>
     <div class="container-fluid">
@@ -18,7 +18,7 @@
 					<?php echo form_open('ems/request_leave?emp_id='.$id); ?>
 					<div class="form-horizontal">
 						<div class="form-group">
-						    <label class=" col-sm-3 control-label">Employee Name</label>box
+						    <label class=" col-sm-3 control-label">Employee Name</label>
 						    <div class="col-sm-3">						    		
 						    	<input type="text" class="form-control input-sm" name="leaveStarts" disabled value="<?php echo $name; ?>">	
 						    </div>

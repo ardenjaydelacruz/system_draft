@@ -1,6 +1,6 @@
 <div class="content-wrapper">
 	<ol class="breadcrumb">
-		<li><a href="<?php echo base_url();?>ams/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li><a href="<?php echo base_url();?>ems/hr_dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="<?php echo base_url();?>ems/view_projects" class="btn btn-default"><i class="fa fa-cogs"></i> Projects </a></li>
 		<li class="active"><i class="fa fa-group"></i> Project Personnel </li>
 	</ol>

@@ -28,11 +28,10 @@ class Auth extends MY_Controller {
 			} elseif ($userlevel=='Employee'){
 				redirect('ems/emp_dashboard');
 			}
-			
 			// dump($this->validLogin());
 		}
 		$this->load->view('init');
-		$this->load->view('login/login');
+		$this->load->view('layout/login');
 		$this->display_notif();
 	}
 	

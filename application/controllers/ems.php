@@ -13,7 +13,7 @@ class Ems extends MY_Controller
     {
         $data['announcement']    = Announcement_model::find_by_sql('SELECT * FROM tbl_announcement ORDER BY announcement_id DESC LIMIT 3 ');
         $data['birthday']        = Emp_info_model::find_by_sql('SELECT * FROM tbl_emp_info where MONTH(birthday) = MONTH(now()) ORDER BY DAY(birthday) ASC');
-        $data['total_employee']  = count(View_employees_list::find('all'));
+        $data['total_employee']  = count(View_employees_list::find('all',array('conditions'=>"status ='Existing'")));
         $data['total_asset']     = count(Projects_model::find('all'));
         $data['total_projects']  = count(Projects_model::find('all'));
         $data['departments']     = Departments_model::all();
@@ -56,8 +56,9 @@ class Ems extends MY_Controller
         $data['asset']          = View_assigned_assets_model::find('all',array('conditions'=>"emp_id ='$id'")); //Tab 7 - Asset Tab
         $data['project']        = View_project_workers::find('all',array('conditions'=>"emp_id ='$id'")); //Tab 8 - Project Tab
         $data['total_employee'] = count(View_employees_list::find('all'));
-        $data['total_asset']    = count(Projects_model::find('all'));
-        $data['total_projects'] = count(Projects_model::find('all'));
+        $data['existing']       = count(View_employees_list::find('all',array('conditions'=>"status ='Existing'")));
+        $data['onleave']        = count(View_employees_list::find('all',array('conditions'=>"status ='OnLeave'")));
+        $data['resigned']       = count(View_employees_list::find('all',array('conditions'=>"status ='Resigned'")));
         $data['pageTitle']      = 'Dashboard - MSInc.';
         $data['content']        = 'employee/hr_dashboard';
         $this->load->view($this->master_layout, $data);
