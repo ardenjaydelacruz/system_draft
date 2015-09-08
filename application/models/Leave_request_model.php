@@ -6,13 +6,12 @@ class Leave_request_model extends ActiveRecord\Model {
     public function update_leave(){
     	if ($this->input->get('leave_status') == 'Approved') {
 	        $emp = leave_left_model::find_by_employee_id_and_leave_type_id($this->input->get('emp_id'),$this->input->get('leave_id'));
-	        $emp->days -= $this->input->get('days');
-	        $emp->save();
+	        $days = $emp->days - $this->input->get('days');
+	        $this->reports_model->update_leave($this->input->get('emp_id'),$this->input->get('leave_id'),$days);
 	    }
 	    $details = array(
 			'leave_status'  => $this->input->get('leave_status'),
-			'approved_by'   => $this->session->userdata('user_level') . ' ' . $this->session->userdata('first_name'),
-			'date_approved' => date("Y-m-d"),
+			'approved_by'   => $this->session->userdata('user_level') . ' ' . $this->session->userdata('first_name')
 	    );
 	    $approved = Leave_request_model::find($this->input->get('leave_request_id'));
 	    if ($approved->update_attributes($details)) {

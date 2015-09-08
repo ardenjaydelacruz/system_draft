@@ -106,6 +106,5 @@ GROUP BY a.name")->result();
         $this->db->where('emp_id',$id);
         $result = $this->db->get('view_employees_list');
         return $result->result();
-    
     }
 }

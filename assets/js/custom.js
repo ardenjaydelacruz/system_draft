@@ -9,7 +9,16 @@ $(document).ready(function(){
   //         $(this).toggleClass('open');       
   //     }
   // );
-
+  $('.input-daterange input').each(function (){
+    $(this).datepicker("clearDates");
+  });
+  $('.datepicker').datepicker({
+    
+    });
+  $('.leaveDate').datepicker({
+    daysOfWeekDisabled: '0,6',
+    startDate: '0d'
+    });
   $('[data-toggle="tooltip"]').tooltip()
   
   $('#upload').hide();
@@ -23,9 +32,6 @@ $(document).ready(function(){
     $("select").prop('disabled', false);
   });
   $('#dynamicTable').dataTable();
-  $('.datepicker').datepicker({
-    autoclose:true
-    });
 
   $('#display_image').click(function(){
     $('#upload').show();

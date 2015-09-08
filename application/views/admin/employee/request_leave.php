@@ -26,19 +26,19 @@
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Leave Starts</label>
 						    <div class="col-sm-3">
-						    	<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm"  required name="leaveStarts">
+						    	<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" required class="form-control input-sm leaveDate"  required name="leaveStarts">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Leave Ends</label>
 						    <div class="col-sm-3">
-						    	<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" required name="leaveEnds">
+						    	<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" required class="form-control input-sm leaveDate" required name="leaveEnds">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Type of leave</label>
 						    <div class="col-sm-3">
-						    	<select name="txtLeaveType" id="stocks" class="form-control">
+						    	<select name="txtLeaveType" id="stocks" class="form-control" required>
 		                        <option value="">Leave Type</option>
 		                        <?php foreach ($leave_type as $row){ 
 		                            echo "<option value='$row->leave_type_id'>$row->leave_type_name</option>";
@@ -49,7 +49,7 @@
 						<div class="form-group">
 						    <label class=" col-sm-3 control-label">Reason</label>
 						    <div class="col-sm-3">
-						    	<textarea name="txtReason" cols="30" rows="5" class="form-control"></textarea>
+						    	<textarea name="txtReason" cols="30" rows="5" class="form-control" required></textarea>
 						    </div>
 						</div>
 					</div>

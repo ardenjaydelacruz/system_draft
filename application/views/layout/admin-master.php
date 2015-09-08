@@ -18,7 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/animations.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/morris.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/datatables/dataTables.bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/datepicker/datepicker3.css">
+		<link rel="stylesheet" type="text/css" href="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/css/datepicker3.css">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:500,700,500italic,400' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/mystyle.css">

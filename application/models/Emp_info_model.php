@@ -293,5 +293,9 @@ class Emp_info_model extends ActiveRecord\Model {
 		Audit_trail_model::auditAddLeave($id);
 		redirect("ems/view_details?emp_id=$id");
 	}
+
+	public function deductLeave($id,$leave){
+		
+	}
 }
 
