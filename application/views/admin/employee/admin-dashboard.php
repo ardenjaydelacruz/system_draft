@@ -4,90 +4,62 @@
               Dashboard</a></li>
   </ol>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="callout callout-success announcement">
-          <h4 class="pull-left"><i class="fa fa-bullhorn"></i> Announcement! (Recent 3)</h4>
-          <a href="#" data-target="#postAnnouncement" data-toggle="modal" class="btn btn-primary pull-right">
-                  <i class="fa fa-plus"></i> Post Announcement
-                </a>
-                <div class="clearfix"></div>
-          <ul>
-            <?php 
-              foreach ($announcement as $row) {
-                echo "<br><li><b>$row->description</b>  <br>-  $row->posted_by (". date('M d, Y - g:i A',strtotime($row->date_posted)).")</li>";
-              }
-             ?>
-          </ul>
+    <!-- announcements -->
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">Notifications</h3>
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div><!-- /.box-tools -->
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        <div class="col-sm-6">
+          <div class="callout callout-success announcement">
+            <h4 class="pull-left"><i class="fa fa-bullhorn"></i> Announcement! (Recent 3)</h4>
+            <a href="#" data-target="#postAnnouncement" data-toggle="modal" class="btn btn-primary pull-right">
+                    <i class="fa fa-plus"></i> Post Announcement
+                  </a>
+                  <div class="clearfix"></div>
+            <ul>
+              <?php 
+                foreach ($announcement as $row) {
+                  echo "<br><li><b>$row->description</b>  <br>-  $row->posted_by (". date('M d, Y - g:i A',strtotime($row->date_posted)).")</li>";
+                }
+               ?>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="callout callout-danger announcement">
-          <h4><i class="fa fa-birthday-cake"></i>  Birthdays for <?php echo strtoupper(date('F')); ?></h4>
-          <table class="table borderless">
-            <?php 
-              foreach ($birthday as $row) {
-                echo "
-                <tr>
-                  <th>$row->first_name $row->last_name</th> 
-                  <td>". date_format($row->birthday,'F d, Y')."</td>
-                </tr>
-                ";
-              }
-             ?>
-          </table>
+        <div class="col-sm-6">
+          <div class="callout callout-danger announcement">
+            <h4><i class="fa fa-birthday-cake"></i>  Birthdays for <?php echo strtoupper(date('F')); ?></h4>
+            <table class="table borderless">
+              <?php 
+                foreach ($birthday as $row) {
+                  echo "
+                  <tr>
+                    <th>$row->first_name $row->last_name</th> 
+                    <td>". date_format($row->birthday,'F d, Y')."</td>
+                  </tr>
+                  ";
+                }
+               ?>
+            </table>
+          </div>
         </div>
-      </div>
-    </div>
-   
-    <div class="box box-info box-solid">
+      </div><!-- /.box-body -->
+    </div><!-- /.box -->
+
+    <!-- dashboard -->
+    <div class="box box-info">
       <div class="box-header with-border">
           <h3 class="box-title">Admin Dashboard</h3>
+          <div class="box-tools pull-right">
+              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div><!-- /.box-tools -->
       </div>
       <div class="box-body">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="box box-info">
-              <div class="box-header with-border">
-                <h3 class="box-title">Add Company Information</h3>
-                <div class="box-tools pull-right">
-                  <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                </div><!-- /.box-tools -->
-              </div><!-- /.box-header -->
-              <div class="box-body">
-                
-                <a href="#" data-target="#addDepartment" data-toggle="modal" class="btn btn-app btn-flat">
-                  <span class="badge bg-green"><?php echo $departments; ?></span>
-                  <i class="fa fa-institution"></i> Department
-                </a>
-                <a href="#" data-target="#addSupervisor" data-toggle="modal" class="btn btn-app btn-flat">
-                  <span class="badge bg-green"><?php echo $supervisors; ?></span>
-                  <i class="fa fa-group"></i> Supervisors
-                </a>
-                <a href="#" data-target="#addJobTitle" data-toggle="modal" class="btn btn-app btn-flat">
-                  <span class="badge bg-green"><?php echo $job_titles; ?></span>
-                  <i class="fa fa-briefcase"></i> Job Title
-                </a>
-                <a href="#" data-target="#addEmploymentType" data-toggle="modal" class="btn btn-app btn-flat">
-                  <span class="badge bg-green"><?php echo $employment_type; ?></span>
-                  <i class="fa fa-suitcase"></i> Employment<Br> Type
-                </a>
-                <a href="#" data-target="#addVendor" data-toggle="modal" class="btn btn-app btn-flat">
-                  <span class="badge bg-green"><?php echo $vendors; ?></span>
-                  <i class="fa fa-truck"></i> Vendor
-                </a>    
-                <!-- <a href="#" data-target="#addLeave" data-toggle="modal" class="btn btn-app btn-flat">
-                  <span class="badge bg-green"><?php echo $leaves; ?></span>
-                  <i class="fa fa-calendar"></i> Leave Type
-                </a> -->   
-                <a href="#" data-target="#addAssetCategory" data-toggle="modal" class="btn btn-app btn-flat">
-                  <span class="badge bg-green"><?php echo $category; ?></span>
-                  <i class="fa fa-cubes"></i> Asset <br> Category
-                </a>         
-              </div><!-- /.box-body -->
-            </div><!-- /.box -->
-          </div><!-- /.col -->
-        </div>
         <div class="row">
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
@@ -156,6 +128,266 @@
         <!-- /.row -->
       </div>
     </div>
+
+    <!-- Add Infos -->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Add Company Information</h3>
+            <div class="box-tools pull-right">
+              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div><!-- /.box-tools -->
+          </div><!-- /.box-header -->
+          <div class="box-body">
+            <center>
+            <a href="#" data-target="#addDepartment" data-toggle="modal" class="btn btn-app btn-flat">
+              <span class="badge bg-green"><?php echo count($departments); ?></span>
+              <i class="fa fa-institution"></i> Department
+            </a>
+            <a href="#" data-target="#addJobTitle" data-toggle="modal" class="btn btn-app btn-flat">
+              <span class="badge bg-green"><?php echo count($job_titles); ?></span>
+              <i class="fa fa-briefcase"></i> Job Title
+            </a>
+            <a href="#" data-target="#addEmploymentType" data-toggle="modal" class="btn btn-app btn-flat">
+              <span class="badge bg-green"><?php echo count($employment_type); ?></span>
+              <i class="fa fa-suitcase"></i> Employment<Br> Type
+            </a>
+            <a href="#" data-target="#addSupervisor" data-toggle="modal" class="btn btn-app btn-flat">
+              <span class="badge bg-green"><?php echo count($supervisors); ?></span>
+              <i class="fa fa-group"></i> Supervisors
+            </a>
+            <a href="#" data-target="#addVendor" data-toggle="modal" class="btn btn-app btn-flat">
+              <span class="badge bg-green"><?php echo count($vendors); ?></span>
+              <i class="fa fa-truck"></i> Vendor
+            </a>    
+            <a href="#" data-target="#addAssetCategory" data-toggle="modal" class="btn btn-app btn-flat">
+              <span class="badge bg-green"><?php echo count($category); ?></span>
+              <i class="fa fa-cubes"></i> Asset <br> Category
+            </a>         
+            <!-- <a href="#" data-target="#addLeave" data-toggle="modal" class="btn btn-app btn-flat">
+              <span class="badge bg-green"><?php echo $leaves; ?></span>
+              <i class="fa fa-calendar"></i> Leave Type
+            </a> -->   
+            </center>
+          </div><!-- /.box-body -->
+
+          <!-- dept + emp type -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="box box-primary box-solid collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Department</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table table-hovered table-striped table-bordered">
+                      <thead>
+                        <th class="text-center">Department ID</th>
+                        <th class="text-center">Department Name</th>
+                        <th class="text-center">Manage</th>
+                      </thead>
+                      <?php foreach ($departments as $row) { ?>
+                      <tr>
+                        <td class="text-center"><?php echo $row->department_id; ?></td>
+                        <td class="text-center"><?php echo $row->department_name; ?></td>
+                        <td class="text-center">
+                          <a href="<?php echo base_url(); ?>ems/delete_company_info?id=<?php echo $row->department_id; ?>&table=department" data-toggle="tooltip" data-placement="top" title="Remove Department">
+                            <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+                          </a>
+                        </td>
+                      </tr>
+                      <?php } ?>
+                     </table>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+            <div class="col-md-6">
+              <div class="box box-primary box-solid collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Employment Type</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table table-hovered table-striped table-bordered">
+                       <thead>
+                          <th class="text-center">ID</th>
+                          <th class="text-center">Employment Type</th>
+                          <th class="text-center">Manage</th>
+                       </thead>
+                       <?php foreach ($employment_type as $row) { ?>
+                       <tr>
+                          <th class="text-center"><?php echo $row->employment_type_id; ?></th>
+                          <td class="text-center"><?php echo $row->employment_type; ?></td>
+                          <td class="text-center">
+                            <a href="<?php echo base_url(); ?>ems/delete_company_info?id=<?php echo $row->employment_type_id; ?>&table=emp_type" data-toggle="tooltip" data-placement="top" title="Remove Employment Type">
+                              <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+                            </a>
+                          </td>
+                       </tr>
+                       <?php } ?>
+                   </table>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div>
+
+          <!-- Supervisor + Job Titles -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="box box-primary box-solid collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Supervisors</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table table-hovered table-striped table-bordered">
+                      <thead>
+                        <th class="text-center">Supervisor ID</th>
+                        <th class="text-center">Employee ID</th>
+                        <th class="text-center">Supervisor Name</th>
+                        <th class="text-center">Manage</th>
+                      </thead>
+                      <?php foreach ($supervisors as $row) { ?>
+                      <tr>
+                        <td class="text-center"><?php echo $row->supervisor_id; ?></td>
+                        <td class="text-center"><?php echo $row->employee_id; ?></td>
+                        <td class="text-center"><?php echo "$row->first_name $row->middle_name $row->last_name"; ?></td>
+                        <td class="text-center">
+                          <a href="<?php echo base_url(); ?>ems/delete_company_info?id=<?php echo $row->supervisor_id; ?>&table=supervisor" data-toggle="tooltip" data-placement="top" title="Remove Supervisor">
+                            <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+                          </a>
+                        </td>
+                      </tr>
+                      <?php } ?>
+                     </table>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+            <div class="col-md-6">
+              <div class="box box-primary box-solid collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Job Titles</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table table-hovered table-striped table-bordered">
+                       <thead>
+                          <th class="text-center">ID</th>
+                          <th class="text-center">Job Title</th>
+                          <th class="text-center">Manage</th>
+                       </thead>
+                       <?php foreach ($job_titles as $row) { ?>
+                       <tr>
+                          <th class="text-center"><?php echo $row->job_title_id; ?></th>
+                          <td class="text-center"><?php echo $row->job_title_name; ?></td>
+                          <td class="text-center">
+                            <a href="<?php echo base_url(); ?>ems/delete_company_info?id=<?php echo $row->job_title_id; ?>&table=job_title" data-toggle="tooltip" data-placement="top" title="Remove Job Title">
+                              <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+                            </a>
+                          </td>
+                       </tr>
+                       <?php } ?>
+                   </table>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div>
+          <!-- Asset Category + Vendors -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="box box-primary box-solid collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Asset Category</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table table-hovered table-striped table-bordered">
+                      <thead>
+                        <th class="text-center">Category ID</th>
+                        <th class="text-center">Category Name</th>
+                        <th class="text-center">Manage</th>
+                      </thead>
+                      <?php foreach ($category as $row) { ?>
+                      <tr>
+                        <td class="text-center"><?php echo $row->category_id; ?></td>
+                        <td class="text-center"><?php echo $row->category_name; ?></td>
+                        <td class="text-center">
+                          <a href="<?php echo base_url(); ?>ems/delete_company_info?id=<?php echo $row->category_id; ?>&table=asset_category" data-toggle="tooltip" data-placement="top" title="Remove Asset Category">
+                            <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+                          </a>
+                        </td>
+                      </tr>
+                      <?php } ?>
+                     </table>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+            <div class="col-md-6">
+              <div class="box box-primary box-solid collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Vendors</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table table-hovered table-striped table-bordered">
+                       <thead>
+                          <th class="text-center">Vendor ID</th>
+                          <th class="text-center">Vendor Name</th>
+                          <th class="text-center">Manage</th>
+                       </thead>
+                       <?php foreach ($vendors as $row) { ?>
+                       <tr>
+                          <th class="text-center"><?php echo $row->vendor_id; ?></th>
+                          <td class="text-center"><?php echo $row->vendor_name; ?></td>
+                          <td class="text-center">
+                            <a href="<?php echo base_url(); ?>ems/delete_company_info?id=<?php echo $row->vendor_id; ?>&table=vendor" data-toggle="tooltip" data-placement="top" title="Remove Job Title">
+                              <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+                            </a>
+                          </td>
+                       </tr>
+                       <?php } ?>
+                   </table>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div>
+        </div><!-- /.box -->
+      </div><!-- /.col -->
+    </div>
+
+
   </div>
 </div>
 <form action="<?php echo base_url();?>ems/post_announcement" method="post">

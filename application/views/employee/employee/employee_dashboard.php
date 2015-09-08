@@ -64,7 +64,6 @@
           </div><!-- /.box-body -->
         </div><!-- /.box -->
       </div><!-- /.col -->
-
       <div class="col-md-6">
         <div class="box box-primary box-solid">
           <div class="box-header with-border">

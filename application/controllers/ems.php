@@ -16,13 +16,13 @@ class Ems extends MY_Controller
         $data['total_employee']  = count(View_employees_list::find('all'));
         $data['total_asset']     = count(Projects_model::find('all'));
         $data['total_projects']  = count(Projects_model::find('all'));
-        $data['departments']     = count(Departments_model::all());
-        $data['supervisors']     = count(View_supervisors::all());
-        $data['job_titles']      = count(Job_titles_model::all());
-        $data['leaves']          = count(Leave_type_model::all());
-        $data['employment_type'] = count(Employment_type_model::all());
-        $data['vendors']         = count(Vendor_model::all());
-        $data['category']        = count(Asset_category_model::all());
+        $data['departments']     = Departments_model::all();
+        $data['supervisors']     = View_supervisors::all();
+        $data['job_titles']      = Job_titles_model::all();
+        // $data['leaves']          = count(Leave_type_model::all());
+        $data['employment_type'] = Employment_type_model::all();
+        $data['vendors']         = Vendor_model::all();
+        $data['category']        = Asset_category_model::all();
         $data['employee']        = Emp_info_model::all();
         $data['pageTitle']       = 'Dashboard - MSInc.';
         $data['content']         = 'employee/admin-dashboard';
@@ -410,6 +410,33 @@ class Ems extends MY_Controller
                 $this->session->set_userdata('edited', 1);
                 redirect("ems/view_details?emp_id=$id");
             }
+        }
+    }
+
+    public function delete_company_info(){
+        $id = $this->input->get('id');
+        $data = $this->input->get('table');
+        if($data == 'department'){
+            $table = Departments_model::find($id);
+        }
+        if($data == 'emp_type'){
+            $table = Employment_type_model::find($id);
+        }
+        if($data == 'supervisor'){
+            $table = Supervisors_model::find($id);
+        }
+        if($data == 'job_title'){
+            $table = Job_titles_model::find($id);
+        }
+        if($data == 'asset_category'){
+            $table = Asset_category_model::find($id);
+        }
+        if($data == 'vendor'){
+            $table = Vendor_model::find($id);
+        }
+        if($table->delete()){
+            $this->session->set_userdata('deleted',1);
+            redirect('ems/admin_dashboard');
         }
     }
 
