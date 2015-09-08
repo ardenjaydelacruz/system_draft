@@ -3,8 +3,8 @@
         <li><a href="<?php echo base_url();?>ems/admin_dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
          <li><a href="<?php echo base_url();?>ems/employees" class="btn btn-default"><i class="fa fa-user"></i> Employee</a></li>
           <li class="active"><i class="fa fa-calendar"></i> Leave Request </li>
-    </ol>
-    <div class="container-fluid">
+  </ol>
+  <div class="container-fluid">
 		<div class="box box-info box-solid">
 			<div class="box-header with-border">
 			    <h1 class="box-title big">Leaves Request Table</h1>
