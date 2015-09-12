@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2015 at 05:16 PM
+-- Generation Time: Sep 12, 2015 at 06:49 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -246,19 +246,19 @@ CREATE TABLE IF NOT EXISTS `tbl_assets` (
 --
 
 INSERT INTO `tbl_assets` (`asset_id`, `employee_id`, `asset_status`, `assigned_date`) VALUES
-('EQ1001', '0', 'asd', '2015-08-31 00:00:00'),
-('EQ1002', '0', 'Damaged', '2015-07-14 00:00:00'),
-('EQ1003', '0', 'Destroyed', '2015-08-12 00:00:00'),
-('EQ1004', '0', 'Brand New', '2015-07-20 00:00:00'),
-('EQ1005', '0', 'Damaged', '2015-07-21 00:00:00'),
-('EQ1006', '0', 'Bago to!', '2015-08-06 00:00:00'),
-('EQ1007', '0', 'Destroyed', '2015-08-07 00:00:00'),
-('EQ1008', '0', '2nd Hand', '2015-07-12 20:46:13'),
-('EQ1009', '0', 'Brand New', '2015-07-20 00:00:00'),
-('EQ10010', '0', 'Damaged', '2015-07-21 00:00:00'),
-('EQ1013', '0', 'Brand New', NULL),
-('EQ1011', '0', 'Brand New', NULL),
-('EQ1014', '0', 'Brand New', NULL);
+('EQ1001', 'EMP001', 'asd', '2015-08-31 00:00:00'),
+('EQ1002', 'EMP001', 'Damaged', '2015-07-14 00:00:00'),
+('EQ1003', 'EMP001', 'Destroyed', '2015-08-12 00:00:00'),
+('EQ1004', 'EMP002', 'Brand New', '2015-07-20 00:00:00'),
+('EQ1005', 'EMP003', 'Damaged', '2015-07-21 00:00:00'),
+('EQ1006', 'EMP004', 'Bago to!', '2015-08-06 00:00:00'),
+('EQ1007', 'EMP005', 'Destroyed', '2015-08-07 00:00:00'),
+('EQ1008', 'EMP006', '2nd Hand', '2015-07-12 20:46:13'),
+('EQ1009', 'EMP001', 'Brand New', '2015-07-20 00:00:00'),
+('EQ10010', 'EMP002', 'Damaged', '2015-07-21 00:00:00'),
+('EQ1013', 'EMP003', 'Brand New', NULL),
+('EQ1011', 'EMP004', 'Brand New', NULL),
+('EQ1014', 'EMP005', 'Brand New', NULL);
 
 -- --------------------------------------------------------
 
@@ -385,7 +385,7 @@ CREATE TABLE IF NOT EXISTS `tbl_audit_trail` (
   `action` varchar(50) DEFAULT NULL,
   `employee_id` varchar(8) DEFAULT NULL,
   `date_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_audit_trail`
@@ -503,7 +503,8 @@ INSERT INTO `tbl_audit_trail` (`audit_trail_id`, `ip_address`, `user_level`, `us
 (00109, '::1', 'Administrator', 'admin', 'Logged in', NULL, '2015-09-09 09:52:54'),
 (00110, '::1', 'Administrator', 'admin', 'Logged out', NULL, '2015-09-09 10:19:48'),
 (00111, '::1', 'Administrator', 'admin', 'Logged in', NULL, '2015-09-09 10:34:40'),
-(00112, '::1', 'Administrator', 'admin', 'Logged in', NULL, '2015-09-12 14:45:15');
+(00112, '::1', 'Administrator', 'admin', 'Logged in', NULL, '2015-09-12 14:45:15'),
+(00113, '::1', 'Administrator', 'admin', 'Added new project: Construction Site', NULL, '2015-09-12 15:53:46');
 
 -- --------------------------------------------------------
 
@@ -1618,13 +1619,14 @@ CREATE TABLE IF NOT EXISTS `tbl_project` (
 --
 
 INSERT INTO `tbl_project` (`project_id`, `project_name`, `client`, `starting_date`, `ending_date`, `date_added`) VALUES
-('P1001', 'Project Almanac', 'CL1001', '2015-07-08', '2015-08-01', '2015-07-08 13:36:31'),
-('P1002', 'Project Beta', 'CL1002', '2015-07-03', '2015-07-22', '2015-07-08 14:21:12'),
-('P1003', 'Project X', 'CL1004', '2015-07-09', '2015-07-14', '2015-07-08 18:59:33'),
-('P1004', 'Project Alpha', 'CL1003', '2015-07-10', '2015-08-07', '2015-07-08 19:05:40'),
-('P1006', '9DevCorp', 'CL1005', '2015-07-15', '2015-07-22', '2015-07-21 23:19:42'),
-('P1007', 'Project Pie', 'CL1002', '2015-07-20', '2015-07-23', '2015-07-20 01:06:53'),
-('P1008', 'Project Cool', 'JRU', '2015-09-23', '2015-09-25', '2015-09-09 16:14:29');
+('P1001', 'Project Almanac', 'JRU', '2015-07-08', '2015-08-01', '2015-07-08 13:36:31'),
+('P1002', 'Project Beta', 'USA', '2015-07-03', '2015-07-22', '2015-07-08 14:21:12'),
+('P1003', 'Project X', 'France', '2015-07-09', '2015-07-14', '2015-07-08 18:59:33'),
+('P1004', 'Project Alpha', 'SEC', '2015-07-10', '2015-08-07', '2015-07-08 19:05:40'),
+('P1006', '9DevCorp', 'Wew', '2015-07-15', '2015-07-22', '2015-07-21 23:19:42'),
+('P1007', 'Project Pie', 'Local', '2015-07-20', '2015-07-23', '2015-07-20 01:06:53'),
+('P1008', 'Project Cool', 'JRU', '2015-09-23', '2015-09-25', '2015-09-09 16:14:29'),
+('P1009', 'Construction Site', 'Government', '2015-09-01', '2015-09-17', '2015-09-12 23:53:46');
 
 -- --------------------------------------------------------
 
@@ -2323,9 +2325,9 @@ CREATE TABLE IF NOT EXISTS `view_project_cost` (
 ,`ending_date` date
 ,`project_id` varchar(5)
 ,`project_name` varchar(50)
-,`client_name` varchar(50)
 ,`date_added` datetime
 ,`total_expense` decimal(42,2)
+,`client` varchar(50)
 );
 
 -- --------------------------------------------------------
@@ -2579,7 +2581,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_project_cost`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_project_cost` AS select `tbl_project`.`starting_date` AS `starting_date`,`tbl_project`.`ending_date` AS `ending_date`,`tbl_project`.`project_id` AS `project_id`,`tbl_project`.`project_name` AS `project_name`,`tbl_client`.`client_name` AS `client_name`,`tbl_project`.`date_added` AS `date_added`,sum((`tbl_materials`.`quantity` * `tbl_materials`.`price`)) AS `total_expense` from ((`tbl_project` join `tbl_client` on((`tbl_client`.`client_id` = `tbl_project`.`client`))) join `tbl_materials` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`))) group by `tbl_project`.`project_id`,`tbl_project`.`project_name`,`tbl_client`.`client_name`,`tbl_project`.`date_added`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_project_cost` AS select `tbl_project`.`starting_date` AS `starting_date`,`tbl_project`.`ending_date` AS `ending_date`,`tbl_project`.`project_id` AS `project_id`,`tbl_project`.`project_name` AS `project_name`,`tbl_project`.`date_added` AS `date_added`,sum((`tbl_materials`.`quantity` * `tbl_materials`.`price`)) AS `total_expense`,`tbl_project`.`client` AS `client` from (`tbl_project` join `tbl_materials` on((`tbl_project`.`project_id` = `tbl_materials`.`project_id`))) group by `tbl_project`.`project_id`,`tbl_project`.`project_name`,`tbl_project`.`date_added`;
 
 -- --------------------------------------------------------
 
@@ -2818,7 +2820,7 @@ ALTER TABLE `tbl_asset_request`
 -- AUTO_INCREMENT for table `tbl_audit_trail`
 --
 ALTER TABLE `tbl_audit_trail`
-  MODIFY `audit_trail_id` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=113;
+  MODIFY `audit_trail_id` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=114;
 --
 -- AUTO_INCREMENT for table `tbl_calendar`
 --

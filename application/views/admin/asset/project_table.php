@@ -37,7 +37,7 @@
 								<?php echo $row->project_name; ?>
 							</td>
 							<td>
-								<?php echo $row->client_name; ?>
+								<?php echo $row->client; ?>
 							</td>
 							<td class="text-center">
 								<?php echo number_format($row->total_expense,2); ?>
