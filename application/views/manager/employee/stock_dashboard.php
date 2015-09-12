@@ -92,22 +92,6 @@
               </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-red">
-                  <div class="inner">
-                      <h3>10</h3>
-
-                      <p>Upcoming Leaves</p>
-                  </div>
-                  <div class="icon">
-                      <i class="fa fa-calendar"></i>
-                  </div>
-                  <a href="<?php echo base_url('ems/leaves_table'); ?>" class="small-box-footer">View Leaves <i
-                          class="fa fa-arrow-circle-right"></i></a>
-              </div>
-          </div>
-          <!-- ./col -->
         </div><!-- /.row -->
       </div>
     </div>

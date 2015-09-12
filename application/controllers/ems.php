@@ -33,12 +33,12 @@ class Ems extends MY_Controller
     public function emp_dashboard()
     {
         $id = $this->session->userdata('employee_id');
-        $data['leaves']          = View_leaves_left::find('all',array('conditions'=>"employee_id =$id"));
+        $data['leaves']          = View_leaves_left::find('all',array('conditions'=>"employee_id ='$id'"));
         $data['announcement']    = Announcement_model::find_by_sql('SELECT * FROM tbl_announcement ORDER BY announcement_id DESC LIMIT 3 ');
         $data['birthday']        = Emp_info_model::find_by_sql('SELECT * FROM tbl_emp_info where MONTH(birthday) = MONTH(now()) ORDER BY DAY(birthday) ASC');
-        $data['asset']           = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id")); //Tab 7 - Asset Tab
-        $data['requested_asset'] = Asset_request::find('all',array('conditions'=>"employee_id =$id")); //Tab 7 - Asset Tab
-        $data['project']         = View_project_workers::find('all',array('conditions'=>"emp_id =$id")); //Tab 8 - Project Tab
+        $data['asset']           = View_assigned_assets_model::find('all',array('conditions'=>"emp_id ='$id'")); //Tab 7 - Asset Tab
+        $data['requested_asset'] = Asset_request::find('all',array('conditions'=>"employee_id ='$id'")); //Tab 7 - Asset Tab
+        $data['project']         = View_project_workers::find('all',array('conditions'=>"emp_id ='$id'")); //Tab 8 - Project Tab
         $data['total_employee']  = count(View_employees_list::find('all'));
         $data['total_asset']     = count(Projects_model::find('all'));
         $data['total_projects']  = count(Projects_model::find('all'));
@@ -81,18 +81,18 @@ class Ems extends MY_Controller
         $this->display_notif();
     }
 
-    public function oper_dashboard()
+    public function stock_dashboard()
     {
         $id = $this->session->userdata('employee_id');
         $data['announcement']   = Announcement_model::find_by_sql('SELECT * FROM tbl_announcement ORDER BY announcement_id DESC LIMIT 3 ');
         $data['birthday']       = Emp_info_model::find_by_sql('SELECT * FROM tbl_emp_info where MONTH(birthday) = MONTH(now()) ORDER BY DAY(birthday) ASC');
-        $data['asset']          = View_assigned_assets_model::find('all',array('conditions'=>"emp_id =$id")); //Tab 7 - Asset Tab
-        $data['project']        = View_project_workers::find('all',array('conditions'=>"emp_id =$id")); //Tab 8 - Project Tab
+        $data['asset']          = View_assigned_assets_model::find('all',array('conditions'=>"emp_id ='$id'")); //Tab 7 - Asset Tab
+        $data['project']        = View_project_workers::find('all',array('conditions'=>"emp_id ='$id'")); //Tab 8 - Project Tab
         $data['total_employee'] = count(View_employees_list::find('all'));
         $data['total_asset']    = count(Projects_model::find('all'));
         $data['total_projects'] = count(Projects_model::find('all'));
         $data['pageTitle']      = 'Dashboard - MSInc.';
-        $data['content']        = 'employee/oper_dashboard';
+        $data['content']        = 'employee/stock_dashboard';
         $this->load->view($this->master_layout, $data);
         $this->display_notif();
     }

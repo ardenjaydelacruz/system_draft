@@ -43,23 +43,20 @@
 	        <table class="table table-hovered table-striped table-bordered">
             <thead>
                <th class="text-center">Employee Name</th>
-                 <th class="text-center">Birthday Leave</th>
-                 <th class="text-center">Mandatory Leave</th>
-                 <th class="text-center">Maternity Leave</th>
-                 <th class="text-center">Paternity Leave</th>
                  <th class="text-center">Sick Leave</th>
                  <th class="text-center">Vacation Leave</th>
-                 <th class="text-center">Total Leaves Left</th>
+                 <th class="text-center">Total Leave</th>
             </thead>
-             <?php foreach ($leaves as $row) { ?>
+             <?php  foreach ($leaves as $row) { ?>
              <tr>
+                <?php 
+                  $total = 0;
+                  $total+=$row->SL;
+                  $total+=$row->VL;?>
                   <td class=""><?php echo $row->name; ?></td>
-                  <td class="text-center <?php if ($row->BL==0) echo 'danger'; ?>"><?php echo $row->BL; ?></td>
-                  <td class="text-center <?php if ($row->MNL==0) echo 'danger'; ?>"><?php echo $row->MNL; ?></td>
-                  <td class="text-center <?php if ($row->MTL==0) echo 'danger'; ?>"><?php echo $row->MTL; ?></td>
-                  <td class="text-center <?php if ($row->PL==0) echo 'danger'; ?>"><?php echo $row->PL; ?></td>
                   <td class="text-center <?php if ($row->SL==0) echo 'danger'; ?>"><?php echo $row->SL; ?></td>
                   <td class="text-center <?php if ($row->VL==0) echo 'danger'; ?>"><?php echo $row->VL; ?></td>
+                  <td class="text-center <?php if ($total==0) echo 'danger'; ?>"><?php echo $total; ?></td>
               </tr>
              <?php } ?>
          </table>

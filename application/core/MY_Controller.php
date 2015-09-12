@@ -32,7 +32,7 @@ class MY_Controller extends CI_Controller {
             $this->master_layout = 'layout/manager-master';
         } elseif ($this->session->userdata('user_level') == 'Accounting Manager') {
             $this->master_layout = 'layout/manager-master';
-        } elseif ($this->session->userdata('user_level') == 'Operations Manager') {
+        } elseif ($this->session->userdata('user_level') == 'Stock Clerk') {
             $this->master_layout = 'layout/manager-master';
         }
 	}

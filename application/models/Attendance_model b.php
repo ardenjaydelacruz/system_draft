@@ -156,25 +156,24 @@ class Attendance_model extends MY_Model {
 	// ------------------------------------------------------------
 	
 	public function view_requestentry($mode, $month=FALSE, $year=FALSE){
-		//$this->output->enable_profiler(TRUE);
+		$this->output->enable_profiler(TRUE);
 		if($mode!=''){
 			$this->db->where('approved', $mode=='approved'?1:0);
 		}else{
 			$this->db->where('approved', NULL);
 		}
 		if($month){
-			$where_month = 
 			$this->db->where("month(`date_value`)", $month);
 		}
 		if($year){
 			$this->db->where("year(`date_value`)", $year);
 		}
-		$result = $this->db->get('view_requestentry');
+		$result = $this->db->get('tbl_requestentry');
 		return $result->result();
 	}
 	
 	public function insert_requestentry($empID, $date, $timein, $timeout){
-		$sysdate=date("Y-m-d H:i:s");
+		$sysdate=date("m-d-Y H:i:s");
 		$data = array(
 				'emp_id'=>$empID,
 				'date_value'=>$date,
@@ -192,7 +191,7 @@ class Attendance_model extends MY_Model {
 	}
 	
 	public function update_requestentry($reqID, $date, $timein, $timeout){
-		$sysdate=date("Y-m-d H:i:s");
+		$sysdate=date("m-d-Y H:i:s");
 		$this->db->where('req_id', $reqID);
 		$data = array(
 				'date_value'=>$date,
@@ -209,7 +208,7 @@ class Attendance_model extends MY_Model {
 	}
 	
 	public function approve_requestentry($reqID, $empID, $approve){
-		$sysdate=date("Y-m-d H:i:s");
+		$sysdate=date("m-d-Y H:i:s");
 		$this->db->where('req_id', $reqID);
 		$data = array (
 			'approved' => $approve,
@@ -219,27 +218,6 @@ class Attendance_model extends MY_Model {
 
 		$query = $this->db->update('tbl_requestentry', $data);
 		if ($query) {
-			if($approve==1){
-				$result = $this->db->get_where('tbl_requestentry', array('req_id' => $reqID));
-				$requestentry = $result->row();
-				$attendance_data = array(
-					array(
-						'emp_id'=>$requestentry->emp_id,
-						'datelog'=>$requestentry->date_value,
-						'datetimelog'=>$requestentry->date_value . " " . $requestentry->time_in,
-						'event'=>'IN',
-						'datetimefetch'=>$sysdate
-					),
-					array(
-						'emp_id'=>$requestentry->emp_id,
-						'datelog'=>$requestentry->date_value,
-						'datetimelog'=>$requestentry->date_value . " " . $requestentry->time_out,
-						'event'=>'OUT',
-						'datetimefetch'=>$sysdate
-					)
-				);
-				$this->db->insert_batch('tbl_attendance', $attendance_data); 
-			}
 			return true;
 		} else {
 			return false;
@@ -254,17 +232,15 @@ class Attendance_model extends MY_Model {
 	// Payroll
 	// ------------------------------------------------------------
 	
-	public function cutoffDates($emp_id = 0){
+	public function cutoffDates(){
 		$query = "SELECT DISTINCT payslip_date, DATE_FORMAT(payslip_date, '%b %d, %Y') as payslip_date_format " .
-			"FROM tbl_payslip ";
-		if($emp_id!=0){
-			$query = $query . "WHERE emp_id = $emp_id";
-		}
+			"FROM tbl_payslip";
 		$result = $this->db->query($query);
 		return $result->result();
 	}
 	
 	public function retrieveEmployeeInfo($emp_id){
+		//$this->output->enable_profiler(TRUE);
 		$this->db->select('emp_id, first_name, middle_name, last_name, job_title_name, department_name, salary');
 		$this->db->where('emp_id', $emp_id);
 		$result = $this->db->get('view_job_history');
@@ -272,16 +248,8 @@ class Attendance_model extends MY_Model {
 	}
 	
 	public function retrievePayslips($salary_date){
+		//$this->output->enable_profiler(TRUE);
 		$result = $this->db->get_where('view_payslip', array('payslip_date' => $salary_date));
-		return $result->result();
-	}
-	
-	public function retrieveEmployeePayslips($emp_id, $salary_date = FALSE){
-		if($salary_date!=FALSE){
-			$this->db->where('payslip_date', $salary_date);
-		}
-		$this->db->where('emp_id', $emp_id);
-		$result = $this->db->get('view_payslip');
 		return $result->result();
 	}
 	
@@ -332,32 +300,28 @@ class Attendance_model extends MY_Model {
 			return false;
 		}
 		$payslip_id =$this->db->insert_id();
-		if(count($payslip['allowances'])!=0){
-			$allowances = array();
-			foreach($payslip['allowances'] as $row){
-				array_push($allowances, array(
-					'payslip_id'=>$payslip_id,
-					'allowance_id'=>$row['allowance_id'],
-					'percentage'=>$row['percentage'],
-					'percentage_amount'=>$row['computation'],
-					'fixed_amount'=>$row['amount'],
-					'total'=>$row['total']));
-			}
-			$this->db->insert_batch('tbl_payslip_allowances', $allowances);
+		$allowances = array();
+		$taxes = array();
+		foreach($payslip['allowances'] as $row){
+			array_push($allowances, array(
+				'payslip_id'=>$payslip_id,
+				'allowance_id'=>$row->allowance_id,
+				'percentage'=>$row->percentage,
+				'percentage_amount'=>$row->computation,
+				'fixed_amount'=>$row->amount,
+				'total'=>$row->total));
 		}
-		if(count($payslip['allowances'])!=0){
-			$taxes = array();
-			foreach($payslip['taxes'] as $row){
-				array_push($taxes, array(
-					'payslip_id'=>$payslip_id,
-					'tax_id'=>$row['tax_id'],
-					'percentage'=>$row['percentage'],
-					'percentage_amount'=>$row['computation'],
-					'fixed_amount'=>$row['amount'],
-					'total'=>$row['total']));
-			}
-			$this->db->insert_batch('tbl_payslip_taxes', $taxes);
+		foreach($payslip['taxes'] as $row){
+			array_push($taxes, array(
+				'payslip_id'=>$payslip_id,
+				'tax_id'=>$row->tax_id,
+				'percentage'=>$row->percentage,
+				'percentage_amount'=>$row->computation,
+				'fixed_amount'=>$row->amount,
+				'total'=>$row->total));
 		}
+		$this->db->insert_batch('tbl_payslip_allowances', $allowances);
+		$this->db->insert_batch('tbl_payslip_taxes', $taxes);
 	}
 	
 	public function delete_payslip($payslip_id){
@@ -380,19 +344,14 @@ class Attendance_model extends MY_Model {
 		return $result->row();
 	}
 	
-	public function generate_payslip($empid, $start_date, $end_date, $payslip_type = 'Semi-Monthly'){
+	public function generate_payslip($empid, $start_date, $end_date){
 		$data['employee'] = $this->retrieveEmployeeInfo($empid);
-		if($payslip_type=='Semi-Monthly'){
-			$divisor = 2;
-		}else{
-			$divisor = 4;
-		}
-		$data['cutoffsalary'] = $data['employee']->salary/$divisor;
+		$data['cutoffsalary'] = $data['employee']->salary/2;
 		$data['perdaysalary'] = ($data['employee']->salary*12)/261;
 		$data['perhoursalary'] = $data['perdaysalary']/8;
 		
 		$data['attendance'] = $this->getAttendance($empid, $start_date, $end_date);
-		$data['allowances'] = $this->computeAllowances(Allowance_model::view_allowances(), $data['cutoffsalary'], $divisor);
+		$data['allowances'] = $this->computeAllowances(Allowance_model::view_allowances(), $data['cutoffsalary']);
 		$data['total']  = $this->retrieveTotalHours($empid, $start_date, $end_date);
 		
 		$data['total_absent'] = $this->totalAbsent($data['attendance']);
@@ -400,13 +359,13 @@ class Attendance_model extends MY_Model {
 		$data['total_tardiness'] = $data['total']->tardiness*($data['perhoursalary']*1.25);
 		$data['total_absent_amount'] = $data['total_absent'] * $data['perdaysalary'];
 		$data['total_allowance'] = $this->totalAmount($data['allowances']);
-		$data['gross_income'] = $data['cutoffsalary'] + $data['total_overtime'] - $data['total_absent_amount'] - $data['total_tardiness'];
+		$data['gross_income'] = $data['cutoffsalary'] + $data['total_allowance'] + $data['total_overtime'] - $data['total_absent_amount'] - $data['total_tardiness'];
 		
-		$data['taxes'] = $this->computeTaxes(Taxes_model::compute_taxes($data['cutoffsalary']), $data['cutoffsalary'], $divisor);
+		$data['taxes'] = $this->computeTaxes(Taxes_model::view_taxes(), $data['gross_income']);
 		
 		$data['total_tax'] = $this->totalAmount($data['taxes']);
 		
-		$data['net_income'] = $data['gross_income'] + $data['total_allowance'] - $data['total_tax'];
+		$data['net_income'] = $data['gross_income'] - $data['total_tax'];
 		$records = array(
 			"attendance"=>$data['attendance'],
 			"allowances"=>$data['allowances'],
@@ -427,23 +386,18 @@ class Attendance_model extends MY_Model {
 		return $records;
 	}
 	
-	public function computeAllowances($allowances, $cutoffsalary, $divisor){
+	public function computeAllowances($allowances, $cutoffsalary){
 		for($ctr=0; $ctr<=count($allowances)-1; $ctr++){
 			$allowances[$ctr]->computation = $allowances[$ctr]->percentage*$cutoffsalary;
-			$allowances[$ctr]->total = $allowances[$ctr]->computation + ($allowances[$ctr]->amount/$divisor);
+			$allowances[$ctr]->total = $allowances[$ctr]->computation + $allowances[$ctr]->amount;
 		}
 		return $allowances;
 	}
 	
-	public function computeTaxes($taxes, $cutoffsalary, $divisor){
+	public function computeTaxes($taxes, $gross_salary){
 		for($ctr=0; $ctr<=count($taxes)-1; $ctr++){
-			$taxes[$ctr]->total = $taxes[$ctr]->computation;
-			if($taxes[$ctr]->ranges_active==1){
-				$taxes[$ctr]->total = $taxes[$ctr]->computation/$divisor;
-			}else{
-				$taxes[$ctr]->computation = $taxes[$ctr]->percentage*$cutoffsalary;
-				$taxes[$ctr]->total = $taxes[$ctr]->computation + ($taxes[$ctr]->amount/$divisor);
-			}
+			$taxes[$ctr]->computation = $taxes[$ctr]->percentage*$gross_salary;
+			$taxes[$ctr]->total = $taxes[$ctr]->computation + $taxes[$ctr]->amount;
 		}
 		return $taxes;
 	}
@@ -451,7 +405,7 @@ class Attendance_model extends MY_Model {
 	public function totalAmount($data){
 		$total = 0;
 		foreach($data as $row){
-			if($row->active==1) $total += $row->total;
+			$total += $row->total;
 		}
 		return $total;
 	}

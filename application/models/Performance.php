@@ -98,7 +98,8 @@ class Performance extends ActiveRecord\Model {
             if ($this->session->userdata('user_level')=='Administrator') {
                 redirect('ems/view_performance');
             } else {
-                redirect('ems/evaluate_performance');
+                $this->session->set_userdata('added',1);
+                redirect('ems/emp_dashboard');
             }
             
         }

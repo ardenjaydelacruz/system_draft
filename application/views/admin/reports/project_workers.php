@@ -25,14 +25,7 @@
                         <div class="form-group">
                             <label for="emp_name">Project Name:</label>
                             <select name="txtProjectName" id="emp_name" class="form-control">
-                                <?php 
-                                    $proj = $this->input->post('txtProjectName');
-                                    if (!$proj){
-                                        echo "<option value=''>All Projects</option>";
-                                    } else {
-                                         echo "<option value=$proj>$proj</option>";
-                                    }
-                                 ?>
+                                <option value='000' selected>All Projects</option>
                                 <?php foreach ($projectName as $row){ 
                                     echo "<option value='$row->project_name'>$row->project_name</option>";
                                 } ?>
@@ -43,14 +36,7 @@
                         <div class="form-group">
                             <label for="emp_name">Employee Name:</label>
                             <select name="txtEmployee" id="emp_name" class="form-control">
-                                <?php 
-                                    $emp = $this->input->post('txtEmployee');
-                                    if (!$proj){
-                                        echo "<option value=''>All Employees</option>";
-                                    } else {
-                                         echo "<option value=$proj>$emp</option>";
-                                    }
-                                 ?>
+                                <option value='000' selected>All Employees</option>
                                 <?php foreach ($employee as $row){ 
                                     echo "<option value='$row->emp_id'>$row->first_name $row->middle_name $row->last_name</option>";
                                 } ?>

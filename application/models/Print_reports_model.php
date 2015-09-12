@@ -30,33 +30,33 @@ class Print_reports_model extends CI_Model {
 		$this->pdf->Ln(); // title
 	}
 	public function pdf_employees_list($data){
-		$this->pdf_header('Employees List');
+		$this->pdf_header('Employees List','L');
 		$rec = $data;
 		$row_height = 6;
 		$this->pdf->SetFillColor(232,232,255);
 		$this->pdf->SetFont('Arial','B',10);
-		$this->pdf->Cell(10,6,'ID',1,0,'C',1);
-		$this->pdf->Cell(43,6,'Employee Name',1,0,'C',1);
-		$this->pdf->Cell(35,6,'Job Title',1,0,'C',1);
+		$this->pdf->Cell(20,6,'ID',1,0,'C',1);
+		$this->pdf->Cell(60,6,'Employee Name',1,0,'C',1);
+		$this->pdf->Cell(40,6,'Job Title',1,0,'C',1);
 		$this->pdf->Cell(30,6,'Department',1,0,'C',1);
-		$this->pdf->Cell(27,6,'Emp Type',1,0,'C',1);
-		$this->pdf->Cell(18,6,'Status',1,0,'C',1);
-		$this->pdf->Cell(22,6,'Date Hired',1,1,'C',1);
+		$this->pdf->Cell(40,6,'Emp Type',1,0,'C',1);
+		$this->pdf->Cell(30,6,'Status',1,0,'C',1);
+		$this->pdf->Cell(30,6,'Date Hired',1,1,'C',1);
 		$fill = false;
 		$this->pdf->SetFont('Arial','',10);
 		foreach ($rec as $row) {
 			$this->pdf->SetFillColor(224,235,255);
-		    $this->pdf->Cell(10,6,$row->emp_id,'LR',0,'C',$fill);
-		    $this->pdf->Cell(43,6,$row->first_name.' '.$row->middle_name.' '.$row->last_name,'LR',0,'L',$fill);
-		    $this->pdf->Cell(35,6,$row->job_title_name,'LR',0,'L',$fill);
+		    $this->pdf->Cell(20,6,$row->emp_id,'LR',0,'C',$fill);
+		    $this->pdf->Cell(60,6,$row->first_name.' '.$row->middle_name.' '.$row->last_name,'LR',0,'L',$fill);
+		    $this->pdf->Cell(40,6,$row->job_title_name,'LR',0,'L',$fill);
 		    $this->pdf->Cell(30,6,$row->department_name,'LR',0,'L',$fill);
-		    $this->pdf->Cell(27,6,$row->employment_type,'LR',0,'L',$fill);
-		    $this->pdf->Cell(18,6,$row->status,'LR',0,'L',$fill);
-		    $this->pdf->Cell(22,6,$row->start_date,'LR',0,'C',$fill);
+		    $this->pdf->Cell(40,6,$row->employment_type,'LR',0,'L',$fill);
+		    $this->pdf->Cell(30,6,$row->status,'LR',0,'L',$fill);
+		    $this->pdf->Cell(30,6,$row->start_date,'LR',0,'C',$fill);
 		    $this->pdf->Ln();
 			$fill = !$fill;
 		}
-		$this->pdf->Cell(0,0,'','T'); //closing lines
+		$this->pdf->Cell(250,0,'','T'); //closing lines
     	$this->pdf -> output ('employees_list.pdf','I');
 	}
 	public function pdf_project_workers($data){
@@ -82,7 +82,7 @@ class Print_reports_model extends CI_Model {
 		    $this->pdf->Ln();
 			$fill = !$fill;
 		}
-		$this->pdf->Cell(0,0,'','T'); //closing lines
+		$this->pdf->Cell(185,0,'','T'); //closing lines
     $this->pdf -> output ('project_workers.pdf','I');
 	}
 	public function pdf_leave_list($data){
@@ -92,33 +92,23 @@ class Print_reports_model extends CI_Model {
 		$this->pdf->SetRightMargin(15);
 		$this->pdf->SetFillColor(158, 255, 158);
 		$this->pdf->SetFont('Arial','B',10);
-		$this->pdf->Cell(8,6,'ID',1,0,'C',1);
-		$this->pdf->Cell(46,6,'Employee Name',1,0,'C',1);
-		$this->pdf->Cell(19,6,'Birthday',1,0,'C',1);
-		$this->pdf->Cell(19,6,'Mandatory',1,0,'C',1);
-		$this->pdf->Cell(19,6,'Paternity',1,0,'C',1);
-		$this->pdf->Cell(19,6,'Maternity',1,0,'C',1);
-		$this->pdf->Cell(19,6,'Sick',1,0,'C',1);
-		$this->pdf->Cell(19,6,'Vacation',1,0,'C',1);
-		$this->pdf->Cell(19,6,'Total',1,0,'C',1);
+		$this->pdf->Cell(65,6,'Employee Name',1,0,'C',1);
+		$this->pdf->Cell(40,6,'Sick',1,0,'C',1);
+		$this->pdf->Cell(40,6,'Vacation',1,0,'C',1);
+		$this->pdf->Cell(40,6,'Total',1,0,'C',1);
 		$this->pdf->Ln();
 		$fill = false;
 		$this->pdf->SetFont('Arial','',10);
 		foreach ($rec as $row) {
 			$this->pdf->SetFillColor(235, 235, 236);
-				$this->pdf->Cell(8,6,$row->emp_id,'LR',0,'C',$fill);
-		    $this->pdf->Cell(46,6,$row->name,'LR',0,'L',$fill);
-		    $this->pdf->Cell(19,6,$row->birthday_leave,'LR',0,'C',$fill);
-		    $this->pdf->Cell(19,6,$row->mandatory_leave,'LR',0,'C',$fill);
-		    $this->pdf->Cell(19,6,$row->paternity_leave,'LR',0,'C',$fill);
-		    $this->pdf->Cell(19,6,$row->maternity_leave,'LR',0,'C',$fill);
-		    $this->pdf->Cell(19,6,$row->sick_leave,'LR',0,'C',$fill);
-		    $this->pdf->Cell(19,6,$row->vacation_leave,'LR',0,'C',$fill);
-		    $this->pdf->Cell(19,6,$row->total_leave,'LR',0,'C',$fill);
+		    $this->pdf->Cell(65,6,$row->name,'LR',0,'L',$fill);
+		    $this->pdf->Cell(40,6,$row->SL,'LR',0,'C',$fill);
+		    $this->pdf->Cell(40,6,$row->VL,'LR',0,'C',$fill);
+		    $this->pdf->Cell(40,6,$row->SL+$row->VL,'LR',0,'C',$fill);
 		    $this->pdf->Ln();
 			$fill = !$fill;
 		}
-		$this->pdf->Cell(187,0,'','T'); //closing lines
+		$this->pdf->Cell(185,0,'','T'); //closing lines
     $this->pdf -> output ('Leave_report.pdf','I');
 	}
 	public function pdf_inventory_list($data){

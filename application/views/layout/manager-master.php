@@ -34,7 +34,7 @@
 				$this->load->view('layout/sidebar_hr');
 			} elseif ($userlevel == 'Accounting Manager'){
 				$this->load->view('layout/sidebar_accounting');
-			} elseif ($userlevel == 'Operations Manager'){
+			} elseif ($userlevel == 'Stock Clerk'){
 				$this->load->view('layout/sidebar_operation');
 			}
 			

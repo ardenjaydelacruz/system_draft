@@ -64,7 +64,7 @@
 					<?php } ?>
                 </form>
 				<?php if ($this->input->post('btnFilter')) { ?>
-				<table class="table table-striped table-hover table-bordered table-condensed ">				
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered table-condensed ">				
 					<thead >
 						<th class="col-md-1 text-center">Date</th>
 						<th class="col-md-1 text-center">Day</th>

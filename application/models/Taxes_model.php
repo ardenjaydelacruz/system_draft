@@ -12,6 +12,13 @@ class Taxes_model extends MY_Model {
 		}
 	}
 	
+	public function compute_taxes($amount){
+		$query = "SELECT tax_id, tax_name, percentage, amount, active, ranges_active, fn_getTaxComputation(tax_id, " . $amount . ") computation
+					FROM tbl_taxes";
+		$result = $this->db->query($query);
+		return $result->result();
+	}
+	
 	public function insert_taxes($tax_name, $amount, $percentage, $range_status){
 		$data = array(
 			'tax_name'=>$tax_name,

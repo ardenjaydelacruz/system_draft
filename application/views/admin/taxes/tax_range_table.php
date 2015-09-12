@@ -27,20 +27,20 @@
 						<div class="btn btn-success"><i class="fa fa-plus"></i> Add Tax Range </div>
 					</a>
 				</div>
-				<table class="table table-striped table-hover table-bordered table-condensed ">				
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered table-condensed ">				
 					<thead >
 						<th class="text-center">#</th>
-						<th class="col-md-3 text-center">Amount From</th>
-						<th class="col-md-3 text-center">Amount To</th>
-						<th class="col-md-3 text-center">Amount Deduction</th>
+						<th class="col-md-3 text-right">Amount From</th>
+						<th class="col-md-3 text-right">Amount To</th>
+						<th class="col-md-3 text-right">Amount Deduction</th>
 						<th class="col-md-3 text-center">Action</th>
 					</thead>
 					<?php $ctr=1; foreach($tax_ranges as $row){ ?>
 					<tr>
 						<td class="text-center"><?php echo $ctr; ?></td>
-						<td class="col-md-2 text-center"><?php echo $row->amount_from; ?></td>
-						<td class="col-md-2 text-center"><?php echo $row->amount_to; ?></td>
-						<td class="col-md-2 text-center"><?php echo $row->amount_deducted; ?></td>
+						<td class="col-md-2 text-right"><?php echo number_format($row->amount_from, 2, ".", ","); ?></td>
+						<td class="col-md-2 text-right"><?php echo number_format($row->amount_to, 2, ".", ","); ?></td>
+						<td class="col-md-2 text-right"><?php echo number_format($row->amount_deducted, 2, ".", ","); ?></td>
 						<td class="col-md-2 text-center">
 							<a href="<?php echo base_url();?>payroll/tax_range_edit?id=<?php echo $row->tax_range_id; ?>">
 							<button class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Edit Tax">

@@ -22,7 +22,7 @@
 						<div class="btn btn-success"><i class="fa fa-plus"></i> Add Tax Type </div>
 					</a>
 				</div>
-				<table class="table table-striped table-hover table-bordered table-condensed ">				
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered table-condensed ">				
 					<thead >
 						<th class="col-md-2 text-center">Type</th>
 						<th class="col-md-2 text-center">Percentage</th>

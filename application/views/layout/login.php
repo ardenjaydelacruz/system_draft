@@ -5,16 +5,16 @@
 			pw: admin <br><br>
 
 			<label for="">Human Resource: </label><br>
-			username: hr<br>
-			pw: hr <br><br>
+			username: hrmanager<br>
+			pw: hrmanager <br><br>
 
-			<label for="">Accounting: </label><br>
-			username: accounting<br>
-			pw: accounting <br><br>
+			<label for="">Finance: </label><br>
+			username: finance<br>
+			pw: finance <br><br>
 
-			<label for="">Operations: </label><br>
-			username: operations<br>
-			pw: operations <br><br>
+			<label for="">Stock Clerk: </label><br>
+			username: stock<br>
+			pw: stock <br><br>
 
 			<label for="">Employee: </label><br>
 			username: employee<br>

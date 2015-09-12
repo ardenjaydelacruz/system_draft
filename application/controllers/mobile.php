@@ -6,7 +6,11 @@ class Mobile extends MY_Controller {
 	}
 
 	public function logout(){
-		$this->update_logged_status($id,$value);
+		$this->reports_model->update_logged_status($id,$value);
+	}
+
+	public function leave_request(){
+		Leave_request_model::mobile_process_leave();
 	}
 	
 }

@@ -37,10 +37,6 @@ class Reports_model extends CI_Model {
 		$employee = $this->input->post('txtEmployee');
 		if ($employee){ $this->db->where('emp_id',$employee);}
 		return $this->db->query("SELECT name,
-	(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'BL') BL,
-	(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'MNL') MNL,
-	(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'MTL') MTL,
-	(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'PL') PL,
 	(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'SL') SL,
 	(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'VL') VL
 FROM view_leave_left a
@@ -107,4 +103,13 @@ GROUP BY a.name")->result();
         $result = $this->db->get('view_employees_list');
         return $result->result();
     }
+
+    public function mobile_update_leave($id,$type,$days){
+		$this->db->where('employee_id',$id);
+		$this->db->where('leave_type_id',$type);
+		$data = array('days'=>$days);
+		$this->db->update('tbl_leave_left',$data);
+		$response['message'] = 'Logout Successful';
+		$response['success']  = 1;
+	}
 }

@@ -380,22 +380,6 @@ class Payroll extends MY_Controller {
 				$this->attendance_model->insert_payslip($insert_payslip);
 				//print_r($insert_payslip);
 				$this->session->set_userdata('added', 1);
-				$data['record'] = array(
-				"attendance"=>array(),
-				"allowances"=>array(),
-				"taxes"=>array(),
-				"employee"=>array(),
-				"cutoffsalary"=>0,
-				"perdaysalary"=>0,
-				"total"=>array(),
-				"total_absent"=>0,
-				"total_overtime"=>0,
-				'total_tardiness'=>0,
-				"total_absent_amount"=>0,
-				"total_allowance"=>0,
-				"total_tax"=>0,
-				"net_income"=>0,
-				"gross_income"=>0);
 			}else{
 				$data['record'] = $this->attendance_model->generate_payslip($post['cboEmployee'], $post['txtStartDate'], $post['txtEndDate']);
 				$data['post'] = array(
@@ -555,108 +539,39 @@ class Payroll extends MY_Controller {
 		$data['payslips'] = array();
 		if ($this->form_validation->run()) {
 			$post = $this->input->post();
-			if(isset($post['btnGenerate'])){
-				$employee_count = $post["hidTotalEmp"];
+			$emp_ids = $this->attendance_model->retrieveEmployeesFromCutoff($post['txtStartDate'], $post['txtEndDate']);
+			foreach($emp_ids as $id){
+				//$data['payslip'] = $this->attendance_model->retrievePayslipDates($post['cboDate']);
+				$data['record'] = $this->attendance_model->generate_payslip($id->emp_id, $post['txtStartDate'], $post['txtEndDate']);
+				//$data['post'] = $post;
 				$data['post'] = array(
 					"txtPayrollDate"=>$post['txtPayrollDate'],
 					"txtStartDate"=>$post['txtStartDate'],
 					"txtEndDate"=>$post['txtEndDate']);
-					
-				for($empctr=1;$empctr<=$employee_count;$empctr++){
-					$tempAllowance = Attendance_model::computeAllowances(Allowance_model::view_allowances(), $post['hidBasicSalary' . $empctr], 2);
-					$tempTaxes = Attendance_model::computeTaxes(Taxes_model::compute_taxes($post['hidBasicSalary' . $empctr]), $post['hidBasicSalary' . $empctr], 2);
-					
-					$allowances = array();
-					foreach($tempAllowance as $row){
-						if($row->active==1){
-							array_push($allowances, array(
-								'allowance_id'=>$row->allowance_id,
-								'percentage'=>$row->percentage,
-								'computation'=>$row->computation,
-								'amount'=>$row->amount,
-								'total'=>$row->total));
-						}
-						
-					}
-					$taxes = array();
-					foreach($tempTaxes as $row){
-						if($row->active==1){
-							if($row->ranges_active==1){
-								array_push($taxes, array(
-									'tax_id'=>$row->tax_id,
-									'percentage'=>$row->percentage,
-									'computation'=>$row->computation,
-									'amount'=>$row->amount,
-									'total'=>$row->total));
-							}else{
-								array_push($taxes, array(
-									'tax_id'=>$row->tax_id,
-									'percentage'=>0,
-									'computation'=>0,
-									'amount'=>0,
-									'total'=>$row->total));
-							}
-						}
-					}
+				if(isset($post['btnGenerate'])){
 					$insert_payslip = array(
-						'emp_id'=>$post['hidID' . $empctr],
+						'emp_id'=>$id->emp_id,
 						'payslip_date'=>$post['hidPayDate'],
 						'start_date'=>$post['hidPayStart'],
 						'end_date'=>$post['hidPayEnd'],
-						'monthly_rate'=>$post['hidMonthlyRate' . $empctr],
-						'basic_salary'=>$post['hidBasicSalary' . $empctr],
-						'total_overtime'=>$post['hidTotalOvertime' . $empctr],
-						'total_tardiness'=>$post['hidTotalTardiness' . $empctr],
-						'days_absent'=>$post['hidTotalAbsent' . $empctr],
-						'total_absent_amount'=>$post['hidTotalAbsentAmount' . $empctr],
-						'total_allowances'=>$post['hidTotalAllowance' . $empctr],
-						'total_taxes'=>$post['hidTotalTax' . $empctr],
-						'gross_pay'=>$post['hidGrossIncome' . $empctr],
-						'net_pay'=>$post['hidNetIncome' . $empctr],
-						"allowances"=>$allowances,
-						"taxes"=>$taxes,
+						'monthly_rate'=>$data['record']['employee']->salary,
+						'basic_salary'=>$data['record']['employee']->salary/2,
+						'total_overtime'=>$data['record']['total_overtime'],
+						'total_tardiness'=>$data['record']['total_tardiness'],
+						'days_absent'=>$data['record']['total_absent'],
+						'total_absent_amount'=>$data['record']['total_absent_amount'],
+						'total_allowances'=>$data['record']['total_allowance'],
+						'total_taxes'=>$data['record']['total_tax'],
+						'gross_pay'=>$data['record']['gross_income'],
+						'net_pay'=>$data['record']['net_income'],
+						"allowances"=>$data['record']['allowances'],
+						"taxes"=>$data['record']['taxes'],
 						'remarks'=>"");
 					$this->attendance_model->insert_payslip($insert_payslip);
-					//print_r($insert_payslip);
 					$this->session->set_userdata('added', 1);
 				}
-			}else{
-				$emp_ids = $this->attendance_model->retrieveEmployeesFromCutoff($post['txtStartDate'], $post['txtEndDate']);
-				foreach($emp_ids as $id){
-					//$data['payslip'] = $this->attendance_model->retrievePayslipDates($post['cboDate']);
-					$data['record'] = $this->attendance_model->generate_payslip($id->emp_id, $post['txtStartDate'], $post['txtEndDate']);
-					//$data['post'] = $post;
-					$data['post'] = array(
-						"txtPayrollDate"=>$post['txtPayrollDate'],
-						"txtStartDate"=>$post['txtStartDate'],
-						"txtEndDate"=>$post['txtEndDate']);
-					/*if(isset($post['btnGenerate'])){
-						$insert_payslip = array(
-							'emp_id'=>$id->emp_id,
-							'payslip_date'=>$post['hidPayDate'],
-							'start_date'=>$post['hidPayStart'],
-							'end_date'=>$post['hidPayEnd'],
-							'monthly_rate'=>$data['record']['employee']->salary,
-							'basic_salary'=>$data['record']['employee']->salary/2,
-							'total_overtime'=>$data['record']['total_overtime'],
-							'total_tardiness'=>$data['record']['total_tardiness'],
-							'days_absent'=>$data['record']['total_absent'],
-							'total_absent_amount'=>$data['record']['total_absent_amount'],
-							'total_allowances'=>$data['record']['total_allowance'],
-							'total_taxes'=>$data['record']['total_tax'],
-							'gross_pay'=>$data['record']['gross_income'],
-							'net_pay'=>$data['record']['net_income'],
-							"allowances"=>$data['record']['allowances'],
-							"taxes"=>$data['record']['taxes'],
-							'remarks'=>"");
-						$this->attendance_model->insert_payslip($insert_payslip);
-						$this->session->set_userdata('added', 1);
-					}*/
-					array_push($data['payslips'], $data['record']);
-				}
+				array_push($data['payslips'], $data['record']);
 			}
-			
-			
 		} else {
 			$data['record'] = array(
 				"attendance"=>array(),

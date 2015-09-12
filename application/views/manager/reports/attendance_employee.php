@@ -1,6 +1,6 @@
 <div class="content-wrapper">
 	<ol class="breadcrumb">
-        <li><a href="<?php echo base_url();?>ems/hr_dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo base_url();?>admin/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li class='active'>Attendance - Employee</li>           
     </ol>
     <div class="container-fluid">
@@ -64,7 +64,7 @@
 					<?php } ?>
                 </form>
 				<?php if ($this->input->post('btnFilter')) { ?>
-				<table class="table table-striped table-hover table-bordered table-condensed ">				
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered table-condensed ">				
 					<thead >
 						<th class="col-md-1 text-center">Date</th>
 						<th class="col-md-1 text-center">Day</th>

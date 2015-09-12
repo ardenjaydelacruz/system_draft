@@ -56,4 +56,42 @@ class Leave_request_model extends ActiveRecord\Model {
 		}
 		return $count+1;
 	}
+
+	public function mobile_leave_details(){
+		$leave_type = Leave_left_model::find_by_employee_id_and_leave_type_id($this->input->post('emp_id'),$this->input->post('txtLeaveType'));
+		$leaves     = $leave_type->days;
+		$data       = array(
+			'leave_start'   => $this->input->post('leaveStarts'),
+			'leave_end'     => $this->input->post('leaveEnds'),
+			'days'			=> Leave_request_model::getLeaveDays($this->input->post('leaveStarts'),$this->input->post('leaveEnds'))-1,
+			'employee_id'   => $this->input->post('emp_id'),
+			'leave_left'    => $leaves,
+			'date_approved' => 0,
+			'leave_status'  => 'Pending',
+			'leave_type'    => $this->input->post('txtLeaveType'),
+			'leave_reason'  => $this->input->post('txtReason')
+		);
+		return $data;
+	}
+
+	public function mobile_process_leave(){
+		if (!empty($this->input->post('emp_id')) &&
+			!empty($this->input->post('leaveStarts')) &&
+			!empty($this->input->post('leaveEnds')) &&
+			!empty($this->input->post('txtLeaveType')) &&
+			!empty($this->input->post('txtReason')) ){
+
+			$details = Leave_request_model::mobile_leave_details();
+			$leave = Leave_request_model::create($details);
+	        if ($leave) {
+	            Audit_trail_model::auditLeave($details);
+	            $response['message'] = 'Leave Request is successfully submitted';
+	        } else {
+	        	$response['message'] = 'Error';
+	        }
+	    } else {
+	    	$response['message'] = 'Please complete the information';
+	    }
+	    echo json_encode($response);
+	}
 }

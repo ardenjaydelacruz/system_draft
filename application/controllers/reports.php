@@ -109,7 +109,7 @@ class Reports extends MY_Controller {
 			$this->print_leave_list($leave);
 		}
 		$data['employee'] = View_employees_list::all();
-		$data['pageTitle'] = 'Projects Report - MSInc.';
+		$data['pageTitle'] = 'Leave Report - MSInc.';
         $data['content'] = 'reports/leave_list';
         $this->load->view($this->master_layout, $data);
         if ($num!=0){ $this->display_notif('Successful! '.$num.' record found'); }

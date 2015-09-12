@@ -39,7 +39,7 @@
 					<?php } ?>
                 </form>
 				<?php if ($this->input->post('btnFilter')) { $ctr=1; ?>
-				<table class="table table-striped table-hover table-bordered table-condensed ">
+				<table id="dynamicTable" class="table table-striped table-hover table-bordered table-condensed ">
 					<thead >
 						<th class="text-center">#</th>
 						<th class="col-md-1 text-center">EmpID</th>
