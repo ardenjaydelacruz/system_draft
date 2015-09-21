@@ -15,7 +15,7 @@
 			<div class="box-body">
 				<div class="box box-default box-solid">
 					<div class="box-body">
-						<?php echo form_open('ems/request_leave?emp_id='.$id); 
+						<?php echo form_open('ems/request_leave?emp_id='.$id);  
 						?>
 						<div class="form-horizontal">
 							<div class="form-group">

@@ -4,10 +4,9 @@
  ?>
 <div class="content-wrapper">
 	<ol class="breadcrumb">
-        <li><a href="<?php echo base_url();?>employee/hr_dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo base_url();?>ems/admin_dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Request Leave</li>
-   </ol>
-    
+  </ol>
   <div class="container-fluid">
   	<div class="box box-info box-solid">
 			<div class="box-header with-border">
@@ -16,7 +15,7 @@
 			<div class="box-body">
 				<div class="box box-default box-solid">
 					<div class="box-body">
-						<?php echo form_open('ems/request_leave?emp_id='.$id); 
+						<?php echo form_open('ems/request_leave?emp_id='.$id);  
 						?>
 						<div class="form-horizontal">
 							<div class="form-group">
@@ -68,6 +67,5 @@
 			</div>	<!-- Main Panel Body-->
 		</div> <!-- End of Main Panel -->	
   </div>
-	
 </div> <!-- End of Wrapper -->
 
