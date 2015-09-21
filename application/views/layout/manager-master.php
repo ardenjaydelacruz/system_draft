@@ -32,7 +32,7 @@
 			$userlevel = $this->session->userdata('user_level');
 			if ($userlevel == 'HR Manager'){
 				$this->load->view('layout/sidebar_hr');
-			} elseif ($userlevel == 'Accounting Manager'){
+			} elseif ($userlevel == 'Finance Manager'){
 				$this->load->view('layout/sidebar_accounting');
 			} elseif ($userlevel == 'Stock Clerk'){
 				$this->load->view('layout/sidebar_operation');

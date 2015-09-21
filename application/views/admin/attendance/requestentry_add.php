@@ -26,7 +26,7 @@
                                 <div class="col-sm-3">
                                     <input type="date" class="form-control input-sm" name="txtDate"<?php if(isset($date)) echo ' value="' . $date . '"';?>>
                                 </div>
-                                <div class="col-sm-5 error">
+                                <div class="col-sm-3 error">
                                     <?php echo form_error('txtTaxType'); ?>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                 <div class="col-sm-3">
                                     <input type="time" class="form-control input-sm" name="txtTimeIn" value="08:00:00"/>
                                 </div>
-                                <div class="col-sm-5 error">
+                                <div class="col-sm-3 error">
                                     <?php echo form_error('txtAmount'); ?>
                                 </div>
                             </div>
@@ -44,8 +44,17 @@
                                 <div class="col-sm-3">
                                     <input type="time" class="form-control input-sm" name="txtTimeOut" value="17:00:00"/>
                                 </div>
-                                <div class="col-sm-5 error">
+                                <div class="col-sm-3 error">
                                     <?php echo form_error('txtPercentage'); ?>
+                                </div> 
+                            </div>
+                            <div class="form-group">
+                                <label class=" col-sm-3 control-label">Remarks: * </label>
+                                <div class="col-sm-3">
+                                    <textarea class="form-control input-sm" name="txtRemarks"></textarea>
+                                </div>
+                                <div class="col-sm-3 error">
+                                    <?php echo form_error('txtRemarks'); ?>
                                 </div>
                             </div>
                         </div>

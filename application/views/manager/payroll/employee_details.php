@@ -680,6 +680,7 @@
                       <section class="tab-pane" id="tab_7">
                         <div class="form-horizontal">
                           <h3>Leave Details</h3><hr>
+                          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addLeave"><i class="fa fa-plus"></i> Add</a><br><br>
                           <table class="table table-hovered table-striped table-bordered">
                             <thead>
                               <th class="text-center">Leave Type ID</th>
@@ -690,10 +691,7 @@
                             <?php foreach ($leaves as $row) { ?>
                               <td class="text-center"><?php echo $row->leave_type_id; ?></td>
                               <td class="text-center"><?php echo $row->leave_type_name; ?></td>
-                              <td class="text-center"><?php echo $row->days; ?>
-                              <td class="text-center">                          
-                                <a href="#" class="btn btn-success btn-xs" data-toggle="modal" data-target="#<?php echo $row->leave_type_id; ?>"><i class="fa fa-plus"></i> Add</a>
-                              </td></tr>
+                              <td class="text-center"><?php echo $row->days; ?></tr>
                             <?php } ?>
                             </tr>
                            </table>
@@ -829,119 +827,4 @@
     </div><!--Main Content Panel -->
   </div> <!-- container-fluid-->
 </div><!-- content-wrapper-->
-</form>
-
-<form action="<?php echo base_url();?>ems/addLeave?emp_id=<?php echo $info->emp_id; ?>&leave_id=SL" method="post">
-  <div class="modal fade" id="SL" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Add Sick Leave</h4>
-        </div>
-        <div class="modal-body">
-              <label for="">Day/s:</label>
-              <input type="text" class="form-control" name="txtLeaveType" value=0 required><br>
-              <label for="">Add Leave Details:</label>
-              <textarea name="txtDetails" class="form-control" cols="30" rows="8"></textarea>
-        </div>
-        <div class="modal-footer">
-          <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-</form>
-
-<form action="<?php echo base_url();?>ems/addLeave?emp_id=<?php echo $info->emp_id; ?>&leave_id=PL" method="post">
-  <div class="modal fade" id="PL" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Add Paternity Leave</h4>
-        </div>
-        <div class="modal-body">
-              <label for="">Day/s:</label>
-              <input type="text" class="form-control" name="txtLeaveType" value=0 required><br>
-              <label for="">Add Leave Details:</label>
-              <textarea name="txtDetails" class="form-control" cols="30" rows="8"></textarea>
-        </div>
-        <div class="modal-footer">
-          <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-</form>
-
-<form action="<?php echo base_url();?>ems/addLeave?emp_id=<?php echo $info->emp_id; ?>&leave_id=ML" method="post">
-  <div class="modal fade" id="ML" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Add Maternity Leave</h4>
-        </div>
-        <div class="modal-body">
-              <label for="">Day/s:</label>
-              <input type="text" class="form-control" name="txtLeaveType" value=0 required><br>
-              <label for="">Add Leave Details:</label>
-              <textarea name="txtDetails" class="form-control" cols="30" rows="8"></textarea>
-        </div>
-        <div class="modal-footer">
-          <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-</form>
-
-<form action="<?php echo base_url();?>ems/addLeave?emp_id=<?php echo $info->emp_id; ?>&leave_id=EL" method="post">
-  <div class="modal fade" id="EL" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Add Emergency Leave</h4>
-        </div>
-        <div class="modal-body">
-              <label for="">Day/s:</label>
-              <input type="text" class="form-control" name="txtLeaveType" value=0 required><br>
-              <label for="">Add Leave Details:</label>
-              <textarea name="txtDetails" class="form-control" cols="30" rows="8"></textarea>
-        </div>
-        <div class="modal-footer">
-          <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-</form>
-
-<form action="<?php echo base_url();?>ems/addLeave?emp_id=<?php echo $info->emp_id; ?>&leave_id=VL" method="post">
-  <div class="modal fade" id="VL" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Add Vacation Leave</h4>
-        </div>
-        <div class="modal-body">
-              <label for="">Day/s:</label>
-              <input type="text" class="form-control" name="txtLeaveType" value=0 required><br>
-              <label for="">Add Leave Details:</label>
-              <textarea name="txtDetails" class="form-control" cols="30" rows="8"></textarea>
-        </div>
-        <div class="modal-footer">
-          <input type="submit" class="btn btn-success" value="Add" name="btnAddLeave">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
 </form>

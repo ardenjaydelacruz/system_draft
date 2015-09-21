@@ -1,13 +1,13 @@
 <div class="content-wrapper">
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="<?php echo base_url();?>payroll/taxes" class="btn btn-default"><i class="fa fa-user"></i> Taxes</a></li>
-        <li class="active">Add Tax Type</li>
+        <li><a href="<?php echo base_url();?>payroll/taxes" class="btn btn-default"><i class="fa fa-user"></i> Deductions</a></li>
+        <li class="active">Add Deduction</li>
     </ol>
     <div class="container-fluid">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title big">Add new Tax Type</h3>
+                <h3 class="panel-title big">Add new Deduction</h3>
             </div>
             <div class="panel-body">
                 <label>
@@ -16,12 +16,12 @@
                 <?php echo form_open('payroll/taxes_add'); ?>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Tax Information</h3>
+                        <h3 class="panel-title">Deduction Information</h3>
                     </div>
                     <div class="panel-body">
                         <div class="form-horizontal">
                             <div class="form-group">
-                                <label class=" col-sm-3 control-label">Tax Type: * </label>
+                                <label class=" col-sm-3 control-label">Deduction Type: * </label>
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control input-sm" name="txtTaxType" value="<?php echo set_value('txtTaxType'); ?>">
                                 </div>
@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class=" col-sm-3 control-label">Activate tax table: </label>
+                                <label class=" col-sm-3 control-label">Activate Deduction: </label>
                                 <div class="col-sm-3">
                                     <input type="checkbox" name="chkRangeActive">
                                 </div>

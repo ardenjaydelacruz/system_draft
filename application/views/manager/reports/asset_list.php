@@ -26,28 +26,21 @@
                 </div>
                 <div class="row">
                      <div class="col-sm-3">
-		                <div class="form-group">
-		                    <label for="stocks">Category Name:</label>
-		                    <select name="txtCategory" id="stocks" class="form-control">
-                               <?php 
-                                    $cat = $this->input->post('txtCategory');
-                                    if (!$cat){
-                                        echo "<option value=''>All Job Titles</option>";
-                                    } else {
-                                         echo "<option value=$cat>$cat</option>";
-                                    }
-                                 ?>
-		                        <?php foreach ($category as $row){ 
-		                            echo "<option value='$row->category_name'>$row->category_name</option>";
-		                        } ?>
-		                    </select>
-		                </div>
-		            </div>
+                        <div class="form-group">
+                            <label for="stocks">Category Name:</label>
+                            <select name="txtCategory" id="stocks" class="form-control">
+                               <option value=''>All Categories</option>
+                                <?php foreach ($category as $row){ 
+                                    echo "<option value='$row->category_name'>$row->category_name</option>";
+                                } ?>
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="status">Status:</label>
                             <select name="txtStatus" id="status" class="form-control">
-                            <option value="">All Asset Conditions</option>
+                                <option value="">All Asset Conditions</option>
                                 <option value="Brand New" <?php if($this->input->post('txtStatus')=='Brand New') { echo "selected";}?> >Brand New</option>
                                 <option value="Damaged" <?php if($this->input->post('txtStatus')=='Damaged') { echo "selected";}?> >Damaged</option>
                                 <option value="2nd Hand" <?php if($this->input->post('txtStatus')=='2nd Hand') { echo "selected";}?> >2nd Hand</option>
@@ -74,25 +67,25 @@
                     <input type="hidden" name="txtEmployee" value="<?php echo $this->input->post('txtEmployee') ?>">
                     <input type="submit" name="btnPrint" value="Print" class="btn btn-info">
                 </form>
-                <table class="table table-striped table-hover table-bordered">				
-        			<thead >
-        				<th class="table-head">Asset ID</th>
-        				<th class="table-head">Asset Name</th>
-        				<th class="table-head">Category</th>
-        				<th class="table-head">Status</th>
-        				<th class="table-head">Assigned Employee</th>
-        			</thead>
-        			<?php 
-        			foreach ($asset as $row) {	?>
-        			<tr>
-        				<td align="center"><?php echo $row->asset_id; ?></td>
-        				<td><?php echo $row->asset_name; ?></td>
-        				<td><?php echo $row->category_name; ?></td>
-        				<td><?php echo $row->asset_status; ?></td>
-        				<td><?php echo $row->name; ?></td>
-        			</tr>
-        			<?php } ?>
-        		</table>
+                <table class="table table-striped table-hover table-bordered">              
+                    <thead >
+                        <th class="table-head">Asset ID</th>
+                        <th class="table-head">Asset Name</th>
+                        <th class="table-head">Category</th>
+                        <th class="table-head">Status</th>
+                        <th class="table-head">Assigned Employee</th>
+                    </thead>
+                    <?php 
+                    foreach ($asset as $row) {  ?>
+                    <tr>
+                        <td align="center"><?php echo $row->asset_id; ?></td>
+                        <td><?php echo $row->asset_name; ?></td>
+                        <td><?php echo $row->category_name; ?></td>
+                        <td><?php echo $row->asset_status; ?></td>
+                        <td><?php echo $row->name; ?></td>
+                    </tr>
+                    <?php } ?>
+                </table>
                 <?php } ?>
             </div>
         </div>

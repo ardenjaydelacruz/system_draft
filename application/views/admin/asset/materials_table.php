@@ -37,7 +37,7 @@
 						<td class="text-center">
 							<?php
 							$price = ($row->price)*($row->quantity);
-							$expense= $expense + $price;
+							$expense = $expense + $price;
 							echo number_format($price,2);
 							?>
 						</td>

@@ -48,10 +48,16 @@
 $active_group = 'default';
 $active_record = TRUE;
 
+// $db['default']['hostname'] = 'mysql.hostinger.ph';
+// $db['default']['username'] = 'u247372754_msi';
+// $db['default']['password'] = 'dejnad02';
+// $db['default']['database'] = 'u247372754_draft';
+
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
 $db['default']['database'] = 'system_draft';
+
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

@@ -193,11 +193,11 @@ class Reports extends MY_Controller {
 	public function attendance_employee(){
 		if ($this->input->post('btnFilter')){
 			$post = $this->input->post();
-			$data['attendance'] = Attendance_model::generateAttendanceEmployee($post['cboEmployee'], $post['cboMonth'], $post['cboYear']);
+			$data['attendance'] = attendance_model::generateAttendanceEmployee($post['cboEmployee'], $post['cboMonth'], $post['cboYear']);
 		} 
 		if ($this->input->post('btnPrint')){
 			$post = $this->input->post();
-			$attendance = Attendance_model::generateAttendanceEmployee($post['cboEmployee'], $post['cboMonth'], $post['cboYear']);
+			$attendance = attendance_model::generateAttendanceEmployee($post['cboEmployee'], $post['cboMonth'], $post['cboYear']);
 			$this->print_attendance_employee($attendance);
 		} 
         $data['employees'] = View_employees_list::all();
@@ -210,14 +210,14 @@ class Reports extends MY_Controller {
 	
 	public function payslip_list(){
 		$num = 0;
-		$data['salary_dates'] = Attendance_model::cutoffDates();
+		$data['salary_dates'] = attendance_model::cutoffDates();
 		$data['payslip'] = array();
 		$data['post'] = $this->input->post();
 		if ($this->input->post('btnFilter')){
-			$data['payslip'] = Attendance_model::retrievePayslips($data['post']['cboDate']);
+			$data['payslip'] = attendance_model::retrievePayslips($data['post']['cboDate']);
 		}
 		if ($this->input->post('btnPrint')){
-			$payslip = Attendance_model::retrievePayslips($data['post']['cboDate']);
+			$payslip = attendance_model::retrievePayslips($data['post']['cboDate']);
 			$this->print_payslip_list($payslip);
 		}	
 		$data['pageTitle'] = 'Payroll - MSInc.';

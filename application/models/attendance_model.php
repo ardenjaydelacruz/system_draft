@@ -33,7 +33,7 @@ class Attendance_model extends MY_Model {
 	}
 	
 	public function insert_attendance($empID, $date, $timein, $timeout, $sysdate=''){
-		if($sysdate=='') $sysdate=date("m-d-Y H:i:s");
+		if($sysdate=='') $sysdate=date("Y-m-d H:i:s");
 		$data = array(
 			array(
 				'emp_id'=>$empID,
@@ -52,6 +52,26 @@ class Attendance_model extends MY_Model {
 		$this->db->insert_batch('tbl_attendance', $data); 
 	}
 	
+	public function upload_attendance($file){
+		$data = array();
+		$sysdate=date("Y-m-d H:i:s");
+		
+		foreach($file as $day){
+			$datetime = explode(" ", $day['Date/Time']);
+			$date = strtotime($datetime[0]);
+			$time = strtotime($day['Date/Time']);
+			$event = ($day['Status']=="C/In")?"IN":"OUT";
+			array_push($data, array(
+				'emp_id'=>'EMP00'.$day['No.'],
+				'datelog'=>date("Y-m-d", $date),
+				'datetimelog'=>date("Y-m-d H:i:s", $time),
+				'event'=>$event,
+				'datetimefetch'=>$sysdate
+			));
+		}
+		$this->db->insert_batch('tbl_attendance', $data); 
+	}
+	
 	public function delete_attendance($empID, $date){
 		$this->db->delete('tbl_attendance', array('emp_id'=>$empID, 'datelog'=>$date.' 00.00.00')); 
 	}
@@ -59,7 +79,8 @@ class Attendance_model extends MY_Model {
 	public function getAttendance($empID, $start_date, $end_date){
 		$query = "SELECT IFNULL(att.emp_id, '') as emp_id, IFNULL(att.time_in, '') as time_in, IFNULL(att.time_out, '') as time_out, 
 				IFNULL(att.man_hours, '') as man_hours, IFNULL(att.tardiness, '') as tardiness, IFNULL(att.overtime, '') as overtime, 
-				IF(ISNULL(att.datelog) AND (DATE_FORMAT(a.date_value, '%w')!=0 AND DATE_FORMAT(a.date_value, '%w')!=6), 1, 0) as absent,
+				IF(ISNULL(att.datelog) AND (DATE_FORMAT(a.date_value, '%w')!=0 AND DATE_FORMAT(a.date_value, '%w')!=6), 1, 0) as absent, 
+				IF(ISNULL(att.datelog) AND (DATE_FORMAT(a.date_value, '%w')!=0 AND DATE_FORMAT(a.date_value, '%w')!=6), (SELECT COUNT(*) FROM `tbl_leave_request` WHERE a.date_value BETWEEN leave_start AND leave_end AND employee_id = '" . $empID . "' AND leave_status = 'APPROVED'), 0) as approved_leave, 
 				DATE_FORMAT(a.date_value, '%Y-%m-%d') as datevalue, DAYNAME(a.date_value) as weekday, DATE_FORMAT(a.date_value, '%M %d, %Y') as datelog 
 			FROM (select curdate() - INTERVAL (a.a + (10 * b.a) + (100 * c.a)) DAY as date_value from (select 0 as a union all select 1 union all select 2 	union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as a cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as b cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as c ) a
 			LEFT JOIN (SELECT datelog, emp_id, time_in, time_out, man_hours, tardiness, overtime FROM view_attendance 
@@ -173,16 +194,16 @@ class Attendance_model extends MY_Model {
 		return $result->result();
 	}
 	
-	public function insert_requestentry($empID, $date, $timein, $timeout){
+	public function insert_requestentry($empID, $date, $timein, $timeout, $remarks){
 		$sysdate=date("Y-m-d H:i:s");
 		$data = array(
 				'emp_id'=>$empID,
 				'date_value'=>$date,
 				'time_in'=>$timein,
 				'time_out'=>$timeout,
+				'remarks'=>$remarks,
 				'date_requested'=>$sysdate
 			);	
-		print_r($data);
 		$query = $this->db->insert('tbl_requestentry', $data); 
 		if ($query) {
 			return true;
@@ -372,9 +393,9 @@ class Attendance_model extends MY_Model {
 	public function retrieveTotalHours($emp_id, $start_date, $end_date){
 		//$start_date = '2015-06-01';
 		//$end_date = '2015-06-15';
-		$query = "SELECT fn_getTotalManHours(1, '$start_date', '$end_date') as manhours, " .
-					"fn_getTotalTardiness(1, '$start_date', '$end_date') as tardiness, " .
-					"fn_getTotalOvertime(1, '$start_date', '$end_date') as overtime
+		$query = "SELECT fn_getTotalManHours('$emp_id', '$start_date', '$end_date') as manhours, " .
+					"fn_getTotalTardiness('$emp_id', '$start_date', '$end_date') as tardiness, " .
+					"fn_getTotalOvertime('$emp_id', '$start_date', '$end_date') as overtime
 				FROM dual";
 		$result = $this->db->query($query);
 		return $result->row();
@@ -398,9 +419,10 @@ class Attendance_model extends MY_Model {
 		$data['total_absent'] = $this->totalAbsent($data['attendance']);
 		$data['total_overtime'] = $data['total']->overtime*($data['perhoursalary']*1.25);
 		$data['total_tardiness'] = $data['total']->tardiness*($data['perhoursalary']*1.25);
+		$data['total_leaves'] = $this->totalLeaves($data['attendance'])*$data['perdaysalary'];
 		$data['total_absent_amount'] = $data['total_absent'] * $data['perdaysalary'];
 		$data['total_allowance'] = $this->totalAmount($data['allowances']);
-		$data['gross_income'] = $data['cutoffsalary'] + $data['total_overtime'] - $data['total_absent_amount'] - $data['total_tardiness'];
+		$data['gross_income'] = $data['cutoffsalary'] + $data['total_overtime'] + $data['total_leaves'] - $data['total_absent_amount'] - $data['total_tardiness'];
 		
 		$data['taxes'] = $this->computeTaxes(Taxes_model::compute_taxes($data['cutoffsalary']), $data['cutoffsalary'], $divisor);
 		
@@ -430,7 +452,7 @@ class Attendance_model extends MY_Model {
 	public function computeAllowances($allowances, $cutoffsalary, $divisor){
 		for($ctr=0; $ctr<=count($allowances)-1; $ctr++){
 			$allowances[$ctr]->computation = $allowances[$ctr]->percentage*$cutoffsalary;
-			$allowances[$ctr]->total = $allowances[$ctr]->computation + ($allowances[$ctr]->amount/$divisor);
+			$allowances[$ctr]->total = ($allowances[$ctr]->computation/$divisor) + ($allowances[$ctr]->amount/$divisor);
 		}
 		return $allowances;
 	}
@@ -462,6 +484,16 @@ class Attendance_model extends MY_Model {
 			$total += $row->absent;
 		}
 		return $total;
+	}
+	
+	public function totalLeaves($attendance){
+		$leave = 0;
+		foreach($attendance as $row){
+			if($row->absent==1 and $row->approved_leave!=0){
+				$leave++;
+			}
+		}
+		return $leave;
 	}
  
 }

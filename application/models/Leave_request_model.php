@@ -42,7 +42,11 @@ class Leave_request_model extends ActiveRecord\Model {
         if ($leave = Leave_request_model::create($details)) {
             $this->session->set_userdata('added', 1);
             Audit_trail_model::auditLeave($details);
-            redirect('ems/leaves_table');
+            if($this->session->userdata('user_level')=='Employee'){
+            	redirect('ems/emp_dashboard');
+            } else {
+            	redirect('ems/leaves_table');
+            }
         }
 	}
 

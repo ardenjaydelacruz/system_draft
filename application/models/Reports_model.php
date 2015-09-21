@@ -35,12 +35,26 @@ class Reports_model extends CI_Model {
 
 	public function getLeavesLeft(){
 		$employee = $this->input->post('txtEmployee');
-		if ($employee){ $this->db->where('emp_id',$employee);}
-		return $this->db->query("SELECT name,
-	(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'SL') SL,
-	(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'VL') VL
-FROM view_leave_left a
-GROUP BY a.name")->result();
+		if ($employee){
+			return $this->db->query("SELECT name,
+		(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'EL') EL,
+		(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'ML') ML,
+		(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'PL') PL,
+		(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'SL') SL,
+		(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'VL') VL 
+		FROM view_leave_left a WHERE employee_id='$employee'
+		GROUP BY a.name")->result();
+		} else {
+			return $this->db->query("SELECT name,
+		(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'EL') EL,
+		(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'ML') ML,
+		(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'PL') PL,
+		(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'SL') SL,
+		(SELECT SUM(days) FROM tbl_leave_left b WHERE b.employee_id = a.employee_id AND leave_type_id = 'VL') VL 
+		FROM view_leave_left a
+		GROUP BY a.name")->result();
+		}
+		
 	}
 
 	public function getInventory(){
@@ -56,7 +70,7 @@ GROUP BY a.name")->result();
 		if ($status){ $this->db->where('asset_status',$this->input->post('txtStatus'));}
 		if ($employee){ $this->db->where('emp_id',$employee);}
 		if ($category){ $this->db->where('category_name',$category);}
-		return $this->db->get('View_assigned_assets')->result();
+		return $this->db->get('view_assigned_assets')->result();
 	}
 
 	public function getMaterial(){
@@ -80,7 +94,7 @@ GROUP BY a.name")->result();
 		$payslip_details = $this->db->query($query);
 		//$payslip_details = $this->db->get_where('tbl_payslip', array('payslip_id' => $payslip_id));
 		//$employee = $this->retrieveEmployeeInfo($payslip_details->row('emp_id'));
-		$employee = View_employee_info::find($payslip_details->row('emp_id'));
+		$employee = View_employees_list::find($payslip_details->row('emp_id'));
 		$payslip_allowances = $this->db->get_where('view_payslip_allowances', array('payslip_id' => $payslip_id));
 		$payslip_taxes = $this->db->get_where('view_payslip_taxes', array('payslip_id' => $payslip_id));
 		$payslip = array(

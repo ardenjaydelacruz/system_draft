@@ -33,7 +33,8 @@
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url();?>ems/employees"><i class="fa fa-user"></i> Employees</a></li>
-					<li><a href="<?php echo base_url();?>ems/leaves_table"><i class="fa fa-calendar-o"></i> Leaves</a></li>
+					<li><a href="<?php echo base_url();?>ems/leaves_table"><i class="fa fa-calendar-o"></i> Leave Request</a></li>
+					<li><a href="<?php echo base_url();?>ems/leave_credits"><i class="fa fa-calendar"></i> Leave Credits History</a></li>
 					<li><a href="<?php echo base_url();?>ems/view_performance"><i class="fa fa-thumbs-o-up"></i> Performance </a></li>
 					<li><a href="<?php echo base_url();?>ems/view_projects"><i class="fa fa-cogs"></i> Projects</a></li>
 					<li><a href="<?php echo base_url();?>ems/supervisions"><i class="fa fa-group"></i> Supervisions</a></li>
@@ -50,10 +51,11 @@
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url();?>payroll/attendance"><i class="fa fa-clock-o"></i> Attendance</a></li>
+					<li><a href="<?php echo base_url();?>payroll/attendance_upload"><i class="fa fa-arrow-up"></i> Upload Attendance</a></li>
 					<li><a href="<?php echo base_url();?>payroll/requestentry_table"><i class="fa fa-book"></i> Request Entry</a></li>
 					<li><a href="<?php echo base_url();?>payroll/payroll_index"><i class="fa fa-credit-card"></i> Payroll</a></li>
 					<li><a href="<?php echo base_url();?>payroll/allowances"><i class="fa fa-money"></i> Allowances</a></li>
-					<li><a href="<?php echo base_url();?>payroll/taxes"><i class="fa fa-institution"></i> Taxes</a></li>
+					<li><a href="<?php echo base_url();?>payroll/taxes"><i class="fa fa-institution"></i> Deductions</a></li>
 				</ul>
 			</li>
 

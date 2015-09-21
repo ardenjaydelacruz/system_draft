@@ -11,45 +11,53 @@
 			    <div class="row">
 					<div class="col-sm-3">
 			    		<div class="row">
-							<label for="cboEmployee" class="control-label col-sm-3">Employee: </label>
+							<label for="cboEmployee" class="control-label col-sm-12">Employee: </label>
 						</div>
-						<div class="input-group">
+						<div class="input-group col-sm-12">
 							<select name="cboEmployee" class="form-control">
 								<?php foreach($employees as $row){ ?>
-									<option value="<?php echo $row->emp_id ?>"<?php if(set_value('cboEmployee')==$row->emp_id) echo " selected='selected'"; ?>><?php echo $row->first_name . " " . $row->last_name ?></option>
+									<option value="<?php echo $row->emp_id ?>"<?php if(set_value('cboEmployee')==$row->emp_id) echo " selected='selected'"; ?>><?php echo $row->last_name . ", " . $row->first_name . " " . $row->middle_name ?></option>
 								<?php } ?>
 							</select>
 						</div>	
 			    	</div>
 					<div class="col-sm-2">
 			    		<div class="row">
-							<label for="txtPayrollDate" class="control-label">Pay Date: </label>
+							<label for="txtPayrollDate" class="control-label col-sm-12">Pay Date: </label>
 							<div class="col-sm-2 error"><?php echo form_error('txtPayrollDate') ?></div>
 						</div>
 						<div class="input-group">
-							<input type="date" class="form-control input-sm" name="txtPayrollDate" value="<?php echo set_value('txtPayrollDate'); ?>">
+							<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" name="txtPayrollDate" value="<?php echo set_value('txtPayrollDate'); ?>">
 						</div>
 			    	</div>
 			    	<div class="col-sm-2">
 			    		<div class="row">
-							<label for="txtStartDate" class="control-label">Start Date: </label>
+							<label for="txtStartDate" class="control-label col-sm-12">Start Date: </label>
 							<div class="col-sm-2 error"><?php echo form_error('txtStartDate') ?></div>
 						</div>
 						<div class="input-group">
-							<input type="date" class="form-control input-sm" name="txtStartDate" value="<?php echo set_value('txtStartDate'); ?>">
+							<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" name="txtStartDate" id="startdate" value="<?php echo set_value('txtStartDate'); ?>">
 						</div>
 			    	</div>
 					<div class="col-sm-2">
 			    		<div class="row">
-							<label for="txtEndDate" class="control-label">End Date: </label>
+							<label for="txtEndDate" class="control-label col-sm-12">End Date: </label>
 							<div class="col-sm-2 error"><?php echo form_error('txtEndDate') ?></div>
-						</div>
+						</div> 
 						<div class="input-group">
-							<input type="date" class="form-control input-sm" name="txtEndDate" value="<?php echo set_value('txtEndDate'); ?>">
+							<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" name="txtEndDate" id="enddate" readOnly="true" value="<?php echo set_value('txtEndDate'); ?>">
 						</div>
 			    	</div>
-					<div class="col-sm-3">
-						<div class="signupButtons text-right">
+					<div class="col-sm-2">
+			    		<div class="row">
+							<label for="txtEndDate" class="control-label col-sm-12">Override End Date: </label>
+						</div>
+						<div class="input-group">
+							<input type="checkbox" name="chkOverride" id="overrideEndDate">
+						</div>
+			    	</div>
+					<div class="col-sm-1">
+						<div class="signupButtons">
 							<input type="submit" class="btn btn-success btn-lg" name="btnSubmit" value="View">
 						</div>
 					</div>
@@ -195,7 +203,7 @@
 											</tr>
 											<tr>
 												<td class="col-md-2">
-													Adjustments:</td>
+													Overtime:</td>
 												<td class="col-md-3 text-right">
 													<input type="hidden" name="hidTotalOvertime1" value="<?php echo $record["total_overtime"]; ?>" />
 													<?php echo number_format($record["total_overtime"], 2, ".", ","); ?>
@@ -352,7 +360,7 @@
 											<?php $ctr=1; foreach($record["allowances"] as $row){ ?>
 											<tr>
 												<td class="col-md-1 text-center">
-													<input type="checkbox" onclick="updateAllowance('1', <?php echo $ctr; ?>)" name="chkAllowance1-<?php echo $ctr; ?>" <?php if($row->active==1) echo 'checked'; ?>>
+													<input type="checkbox" onclick="updateAllowance('1', '<?php echo $ctr; ?>')" name="chkAllowance1-<?php echo $ctr; ?>" <?php if($row->active==1) echo 'checked'; ?>>
 													<input type="hidden" name="hidAllowanceID1-<?php echo $ctr; ?>" value="<?php echo $row->allowance_id; ?>" />
 												</td>
 												<td class="col-md-2 text-left">
@@ -371,7 +379,7 @@
 													<?php echo number_format($row->amount, 2, ".", ",")?>
 												</td>
 												<td class="col-md-1 text-right">
-													<input type="text" class="form-control input-sm" onchange="updateAllowanceTotal('1', <?php echo $ctr; ?>)" name="txtAllowanceTotal1-<?php echo $ctr; ?>" value="<?php echo number_format($row->total, 2, ".", ",") ?>" <?php if($row->active==0) echo 'disabled'; ?>>
+													<input type="text" class="form-control input-sm" onchange="updateAllowanceTotal('1', '<?php echo $ctr; ?>')" name="txtAllowanceTotal1-<?php echo $ctr; ?>" value="<?php echo number_format($row->total, 2, ".", ",") ?>" <?php if($row->active==0) echo 'disabled'; ?>>
 												</td>
 											</tr>
 											<?php $ctr++; } ?>

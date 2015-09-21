@@ -35,7 +35,7 @@
 						</div>
 			    	</div>
 					<div class="col-sm-6">
-						<?php if ($this->session->userdata('user_level') == 'Administrator' or $this->session->userdata('user_level') == 'Accounting Manager') { ?>
+						<?php if ($this->session->userdata('user_level') == 'Administrator' or $this->session->userdata('user_level') == 'Finance Manager') { ?>
 			    		<div class="row">
 							<label for="cboEmployee" class="control-label col-sm-6">Employee: </label>
 							<div class="col-sm-6 error"><?php echo form_error('cboEmployee') ?></div>

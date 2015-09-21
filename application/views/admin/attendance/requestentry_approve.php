@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+ <div class="content-wrapper">
 	<ol class="breadcrumb">
         <li><a href="<?php echo base_url();?>admin/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li class='active'>Approve Request Entry</li>           
@@ -79,6 +79,7 @@
 										<th class="col-md-1 text-center">Date</th>
 										<th class="col-md-1 text-center">Time In</th>
 										<th class="col-md-1 text-center">Time Out</th>
+										<th class="col-md-2 text-center">Remarks</th>
 										<th class="col-md-2 text-center">Date Requested</th>
 										<?php if($mode==''){ ?>
 											<th class="col-md-2 text-center">Action</th>
@@ -94,6 +95,7 @@
 										<td class="col-md-1 text-center"><?php echo $row->date_value?></td>
 										<td class="col-md-1 text-center"><?php echo $row->time_in?></td>
 										<td class="col-md-1 text-center"><?php echo $row->time_out?></td>
+										<td class="col-md-2 text-center"><?php echo $row->remarks?></td>
 										<td class="col-md-2 text-center"><?php echo $row->date_requested?></td>
 										<td class="col-md-2 text-center">
 										<?php if($mode==''){ ?>

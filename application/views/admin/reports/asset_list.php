@@ -29,14 +29,7 @@
 		                <div class="form-group">
 		                    <label for="stocks">Category Name:</label>
 		                    <select name="txtCategory" id="stocks" class="form-control">
-                               <?php 
-                                    $cat = $this->input->post('txtCategory');
-                                    if (!$cat){
-                                        echo "<option value=''>All Job Titles</option>";
-                                    } else {
-                                         echo "<option value=$cat>$cat</option>";
-                                    }
-                                 ?>
+                               <option value=''>All Categories</option>
 		                        <?php foreach ($category as $row){ 
 		                            echo "<option value='$row->category_name'>$row->category_name</option>";
 		                        } ?>
@@ -47,7 +40,7 @@
                         <div class="form-group">
                             <label for="status">Status:</label>
                             <select name="txtStatus" id="status" class="form-control">
-                            <option value="">All Asset Conditions</option>
+                                <option value="">All Asset Conditions</option>
                                 <option value="Brand New" <?php if($this->input->post('txtStatus')=='Brand New') { echo "selected";}?> >Brand New</option>
                                 <option value="Damaged" <?php if($this->input->post('txtStatus')=='Damaged') { echo "selected";}?> >Damaged</option>
                                 <option value="2nd Hand" <?php if($this->input->post('txtStatus')=='2nd Hand') { echo "selected";}?> >2nd Hand</option>

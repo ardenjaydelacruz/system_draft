@@ -14,7 +14,7 @@ class Ems extends MY_Controller
         $data['announcement']    = Announcement_model::find_by_sql('SELECT * FROM tbl_announcement ORDER BY announcement_id DESC LIMIT 3 ');
         $data['birthday']        = Emp_info_model::find_by_sql('SELECT * FROM tbl_emp_info where MONTH(birthday) = MONTH(now()) ORDER BY DAY(birthday) ASC');
         $data['total_employee']  = count(View_employees_list::find('all',array('conditions'=>"status ='Existing'")));
-        $data['total_asset']     = count(Projects_model::find('all'));
+        $data['total_asset']     = count(View_assigned_assets_model::find('all'));
         $data['total_projects']  = count(Projects_model::find('all'));
         $data['departments']     = Departments_model::all();
         $data['supervisors']     = View_supervisors::all();
@@ -24,6 +24,9 @@ class Ems extends MY_Controller
         $data['vendors']         = Vendor_model::all();
         $data['category']        = Asset_category_model::all();
         $data['employee']        = Emp_info_model::all();
+        $data['existing']       = count(View_employees_list::find('all',array('conditions'=>"status ='Existing'")));
+        $data['onleave']        = count(View_employees_list::find('all',array('conditions'=>"status ='OnLeave'")));
+        $data['resigned']       = count(View_employees_list::find('all',array('conditions'=>"status ='Resigned'")));
         $data['pageTitle']       = 'Dashboard - MSInc.';
         $data['content']         = 'employee/admin-dashboard';
         $this->load->view($this->master_layout, $data);
@@ -42,6 +45,7 @@ class Ems extends MY_Controller
         $data['total_employee']  = count(View_employees_list::find('all'));
         $data['total_asset']     = count(Projects_model::find('all'));
         $data['total_projects']  = count(Projects_model::find('all'));
+        $data['request']  = View_leaves_request::find('all',array('conditions'=>"emp_id ='$id'"));
         $data['pageTitle']       = 'Dashboard - MSInc.';
         $data['content']         = 'employee/employee_dashboard';
         $this->load->view($this->master_layout, $data);
@@ -103,6 +107,16 @@ class Ems extends MY_Controller
         $data['record'] = View_employees_list::all();
         $data['pageTitle'] = 'Employees - MSInc.';
         $data['content'] = 'employee/employees_table';
+        $this->load->view($this->master_layout, $data);
+        $this->display_notif();
+    }
+
+    public function dept_status()
+    {
+        $dept = $this->input->get('dept');
+        $data['record'] = View_employees_list::find('all',array('conditions'=>"department_name ='$dept'"));;
+        $data['pageTitle'] = 'Employees - MSInc.';
+        $data['content'] = 'employee/dept_status';
         $this->load->view($this->master_layout, $data);
         $this->display_notif();
     }
@@ -224,6 +238,7 @@ class Ems extends MY_Controller
         if ($this->input->get('leave_status')){
             Leave_request_model::update_leave();
         }
+        $data['emp'] = View_employees_list::all();
         $data['record'] = View_leaves_request::all();
         $data['pageTitle'] = 'Leaves - MSInc.';
         $data['content'] = 'employee/leaves_table';
@@ -252,6 +267,19 @@ class Ems extends MY_Controller
         $data['pageTitle'] = 'Leave Details - MSInc.';
         $data['content'] = 'employee/leave_details';
         $this->load->view($this->master_layout, $data);
+    }
+
+    public function leave_credits()
+    {
+        if ($this->input->get('leave_status')){
+            Leave_request_model::update_leave();
+        }
+        $data['record'] = View_leave_history::all();
+        $data['pageTitle'] = 'Leave Credits - MSInc.';
+        $data['content'] = 'employee/leave_credits';
+        $this->load->view($this->master_layout, $data);
+        $this->display_notif();
+
     }
 
     public function view_projects(){
@@ -406,11 +434,9 @@ class Ems extends MY_Controller
 
     public function addLeave(){
         $id = $this->input->get('emp_id');
+        $leave_id = $this->input->get('leave_id');
         if($this->input->post('btnAddLeave')){
-            if(Emp_info_model::updateLeave($id)){
-                $this->session->set_userdata('edited', 1);
-                redirect("ems/view_details?emp_id=$id");
-            }
+            Emp_info_model::updateLeave($id,$leave_id);
         }
     }
 

@@ -7,7 +7,7 @@ class Audit_trail_model extends ActiveRecord\Model {
     	$data = array(
     		'ip_address' => $this->input->ip_address(),
     		'user_level' => $this->session->userdata('user_level'),
-    		'username' => $this->session->userdata('username'),
+    		'username' => $this->session->userdata('first_name'),
     		'action' => 'Logged in'
     		);
     	Audit_trail_model::create($data);
@@ -16,7 +16,7 @@ class Audit_trail_model extends ActiveRecord\Model {
     	$data = array(
     		'ip_address' => $this->input->ip_address(),
     		'user_level' => $this->session->userdata('user_level'),
-    		'username' => $this->session->userdata('username'),
+    		'username' => $this->session->userdata('first_name'),
     		'action' => 'Logged out'
     		);
     	Audit_trail_model::create($data);
@@ -26,7 +26,7 @@ class Audit_trail_model extends ActiveRecord\Model {
     	$data = array(
     		'ip_address' => $this->input->ip_address(),
     		'user_level' => $this->session->userdata('user_level'),
-    		'username' => $this->session->userdata('username'),
+    		'username' => $this->session->userdata('first_name'),
     		'action' => 'CREATED Employee Profile',
     		'employee_id' => $id
     		);
@@ -37,7 +37,7 @@ class Audit_trail_model extends ActiveRecord\Model {
     	$data = array(
     		'ip_address' => $this->input->ip_address(),
     		'user_level' => $this->session->userdata('user_level'),
-    		'username' => $this->session->userdata('username'),
+    		'username' => $this->session->userdata('first_name'),
     		'action' => 'DELETED Employee Profile',
     		'employee_id' => $id
     		);
@@ -48,7 +48,7 @@ class Audit_trail_model extends ActiveRecord\Model {
     	$data = array(
     		'ip_address' => $this->input->ip_address(),
     		'user_level' => $this->session->userdata('user_level'),
-    		'username' => $this->session->userdata('username'),
+    		'username' => $this->session->userdata('first_name'),
     		'action' => 'UPDATED Employee Profile',
     		'employee_id' => $id
     		);
@@ -59,7 +59,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Employee '.$details['employee_id'].' requested leave'
             );
         Audit_trail_model::create($data);
@@ -69,7 +69,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Leave Request '. $details['leave_status'].' by '. $details['approved_by']
             );
         Audit_trail_model::create($data);
@@ -79,7 +79,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Evaluated Employee'. $details['assessee_id']
             );
         Audit_trail_model::create($data);
@@ -89,7 +89,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Added new project: '. $proj
             );
         Audit_trail_model::create($data);
@@ -99,7 +99,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Added employee '.$data['employee_id'] .' to Project '.$data['project_id'],
             'employee_id' => $data['employee_id']
             );
@@ -110,7 +110,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Assigend Employee '.$data['employee_id'] .' to Supervisor '.$data['supervisor_id'],
             'employee_id' => $data['employee_id']
             );
@@ -121,7 +121,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Added new Inventory: '. $details['item_name']
             );
         Audit_trail_model::create($data);
@@ -131,7 +131,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Added '.$details['quantity'].' pieces to Item ' .$details['item_id']
             );
         Audit_trail_model::create($data);
@@ -141,7 +141,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Edited Info of Item '.$details['item_id']
             );
         Audit_trail_model::create($data);
@@ -151,7 +151,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Deleted Item '.$details
             );
         Audit_trail_model::create($data);
@@ -161,7 +161,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Added New Asset '.$details['asset_name']
             );
         Audit_trail_model::create($data);
@@ -171,7 +171,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Assigned Asset '.$id .' to Employee '. $details['employee_id']
             );
         Audit_trail_model::create($data);
@@ -181,7 +181,7 @@ class Audit_trail_model extends ActiveRecord\Model {
         $data = array(
             'ip_address' => $this->input->ip_address(),
             'user_level' => $this->session->userdata('user_level'),
-            'username' => $this->session->userdata('username'),
+            'username' => $this->session->userdata('first_name'),
             'action' => 'Backed up database'
             );
         Audit_trail_model::create($data);

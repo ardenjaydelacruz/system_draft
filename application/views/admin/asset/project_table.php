@@ -23,7 +23,6 @@
 						<th class="text-center">ID</th>
 						<th class="text-center">Project Name</th>
 						<th class="text-center">Client Name</th>
-						<th class="text-center">Project Cost</th>
 						<th class="text-center">Starting Date</th>
 						<th class="text-center">Ending Date</th>
 						<th class="text-center">Manage</th>
@@ -38,9 +37,6 @@
 							</td>
 							<td>
 								<?php echo $row->client; ?>
-							</td>
-							<td class="text-center">
-								<?php echo number_format($row->total_expense,2); ?>
 							</td>
 							<td class="text-center">
 								<?php echo date_format($row->starting_date,'M d, Y'); ?>

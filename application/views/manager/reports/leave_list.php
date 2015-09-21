@@ -43,6 +43,9 @@
 	        <table class="table table-hovered table-striped table-bordered">
             <thead>
                <th class="text-center">Employee Name</th>
+                 <th class="text-center">Emergency Leave</th>
+                 <th class="text-center">Maternity Leave</th>
+                 <th class="text-center">Paternity Leave</th>
                  <th class="text-center">Sick Leave</th>
                  <th class="text-center">Vacation Leave</th>
                  <th class="text-center">Total Leave</th>
@@ -51,9 +54,15 @@
              <tr>
                 <?php 
                   $total = 0;
+                  $total+=$row->EL;
+                  $total+=$row->PL;
+                  $total+=$row->ML;
                   $total+=$row->SL;
                   $total+=$row->VL;?>
                   <td class=""><?php echo $row->name; ?></td>
+                  <td class="text-center <?php if ($row->EL==0) echo 'danger'; ?>"><?php echo $row->EL; ?></td>
+                  <td class="text-center <?php if ($row->ML==0) echo 'danger'; ?>"><?php echo $row->ML; ?></td>
+                  <td class="text-center <?php if ($row->PL==0) echo 'danger'; ?>"><?php echo $row->PL; ?></td>
                   <td class="text-center <?php if ($row->SL==0) echo 'danger'; ?>"><?php echo $row->SL; ?></td>
                   <td class="text-center <?php if ($row->VL==0) echo 'danger'; ?>"><?php echo $row->VL; ?></td>
                   <td class="text-center <?php if ($total==0) echo 'danger'; ?>"><?php echo $total; ?></td>

@@ -20,7 +20,7 @@ class Payroll extends MY_Controller {
 		$data['attendance'] = array();
 		$data['months'] = $this->generateMonths();
 		$data['years'] = $this->generateYears();
-		$data['employees'] = view_job_history::all();
+		$data['employees'] = View_job_history::all();
 		$data['post'] = $this->input->post();
 		if($data['post']){
 			$data['attendance'] = $this->attendance_model->generateAttendanceEmployee($data['post']['cboEmployee'], $data['post']['cboMonth'], $data['post']['cboYear']);
@@ -40,6 +40,7 @@ class Payroll extends MY_Controller {
 		$this->form_validation->set_rules('txtDate', 'Date Value', 'trim|required');
 		$this->form_validation->set_rules('txtTimeIn', 'Time In', 'trim|required');
 		$this->form_validation->set_rules('txtTimeOut', 'Time Out', 'trim|required');
+		$this->form_validation->set_rules('txtRemarks', 'Remarks', 'trim|required');
 		
 		if($this->input->get('empid')){
 			$data['empID'] = $this->input->get('empid');
@@ -50,7 +51,7 @@ class Payroll extends MY_Controller {
 		
 		if ($this->form_validation->run()){
 			$post = $this->input->post();
-			if ($this->attendance_model->insert_requestentry($post['txtEmpID'], $post['txtDate'], $post['txtTimeIn'], $post['txtTimeOut'])){
+			if ($this->attendance_model->insert_requestentry($post['txtEmpID'], $post['txtDate'], $post['txtTimeIn'], $post['txtTimeOut'], $_POST['txtRemarks'])){
 				$this->session->set_userdata('added',1);
 				redirect('payroll/attendance');
 			} 
@@ -60,7 +61,7 @@ class Payroll extends MY_Controller {
         $this->load->view($this->master_layout, $data);
         $this->display_notif();
 	}
-	
+	 
 	public function requestentry_table(){
 		$data['months'] = $this->generateMonths();
 		$data['years'] = $this->generateYears();
@@ -303,7 +304,7 @@ class Payroll extends MY_Controller {
 		$data = array();
 		$data['payslip'] = array();
 		$data['post'] = $this->input->post();
-		if ($this->session->userdata('user_level') == 'Administrator' or $this->session->userdata('user_level') == 'Accounting Manager') {
+	if ($this->session->userdata('user_level') == 'Administrator' or $this->session->userdata('user_level') == 'Finance Manager') {
 			$data['salary_dates'] = $this->attendance_model->cutoffDates();
             if($data['post']){
 				$data['payslip'] = $this->attendance_model->retrievePayslips($data['post']['cboDate']);
@@ -330,7 +331,7 @@ class Payroll extends MY_Controller {
 		$this->form_validation->set_rules('txtEndDate', 'End Date', 'trim|required');
 
 		$data = array();
-		$data['employees'] = view_job_history::all();
+		$data['employees'] = View_job_history::all();
 		$data['payslip'] = array();
 		if ($this->form_validation->run()) {
 			$post = $this->input->post();
@@ -381,21 +382,21 @@ class Payroll extends MY_Controller {
 				//print_r($insert_payslip);
 				$this->session->set_userdata('added', 1);
 				$data['record'] = array(
-				"attendance"=>array(),
-				"allowances"=>array(),
-				"taxes"=>array(),
-				"employee"=>array(),
-				"cutoffsalary"=>0,
-				"perdaysalary"=>0,
-				"total"=>array(),
-				"total_absent"=>0,
-				"total_overtime"=>0,
-				'total_tardiness'=>0,
-				"total_absent_amount"=>0,
-				"total_allowance"=>0,
-				"total_tax"=>0,
-				"net_income"=>0,
-				"gross_income"=>0);
+					"attendance"=>array(),
+					"allowances"=>array(),
+					"taxes"=>array(),
+					"employee"=>array(),
+					"cutoffsalary"=>0,
+					"perdaysalary"=>0,
+					"total"=>array(),
+					"total_absent"=>0,
+					"total_overtime"=>0,
+					'total_tardiness'=>0,
+					"total_absent_amount"=>0,
+					"total_allowance"=>0,
+					"total_tax"=>0,
+					"net_income"=>0,
+					"gross_income"=>0);
 			}else{
 				$data['record'] = $this->attendance_model->generate_payslip($post['cboEmployee'], $post['txtStartDate'], $post['txtEndDate']);
 				$data['post'] = array(
@@ -430,7 +431,7 @@ class Payroll extends MY_Controller {
 	
 	public function save_payslip(){
 		$data = array();
-		$data['employees'] = view_job_history::all();
+		$data['employees'] = View_job_history::all();
 		$data['payslip'] = array();
 		if ($this->form_validation->run()) {
 			$post = $this->input->post();
@@ -733,6 +734,38 @@ class Payroll extends MY_Controller {
 			$this->attendance_model->delete_payslip($get['id']);
 		}
 		redirect('attendance/payroll');
+	}
+	
+	public function attendance_upload(){
+		$config = array(
+			'allowed_types' => 'csv',
+			'upload_path' => 'assets/csv/',
+			'overwrite' => TRUE
+		);
+		$this->load->library('csvreader');
+		$this->load->library('upload',$config);
+		$data['post'] = $this->input->post();
+		if($data['post']){
+			if(isset($data['post']['btnUpload'])){
+				if (!$this->upload->do_upload()) {
+					$data['error'] =  $this->upload->display_errors(); 
+				}
+				$data['csv'] = $this->upload->data();
+				$result = $this->csvreader->parse_file($data['csv']['full_path']);
+
+				$data['csvData'] = $result;
+			}else if(isset($data['post']['btnSave'])){
+				$result = $this->csvreader->parse_file($data['post']['hidPath']);
+				Attendance_model::upload_attendance($result);
+				$this->session->set_userdata('added',1);
+				redirect('payroll/attendance');
+			}
+		}
+		
+		$data['pageTitle'] = 'Upload Attendance - MSInc.';
+        $data['content'] = 'attendance/attendance_upload';
+        $this->load->view($this->master_layout, $data);
+        $this->display_notif();
 	}
 	
 	// ------------------------------------------------------------ 

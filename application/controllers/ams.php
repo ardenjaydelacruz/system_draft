@@ -9,11 +9,11 @@ class Ams extends MY_Controller {
 
 	public function view_assets(){
 		Assets_model::assignAsset();
-		$data['employee']      = Emp_info_model::all();
+		$data['employee']    = Emp_info_model::all();
 		$data['total_asset'] = count(View_assigned_assets_model::all());
-		$data["record"] = View_assigned_assets_model::all();
-		$data['pageTitle'] = 'Other Assets - MSInc.';
-        $data['content'] = 'asset/asset_table';
+		$data["record"]      = View_assigned_assets_model::all();
+		$data['pageTitle']   = 'Other Assets - MSInc.';
+		$data['content']     = 'asset/asset_table';
         $this->load->view($this->master_layout,$data);
         $this->display_notif();
 	}
@@ -76,7 +76,7 @@ class Ams extends MY_Controller {
 	}
 
 	public function view_projects(){
-		$data['record'] = View_project_cost_model::all();
+		$data['record'] = Projects_model::all();
 		$data['pageTitle'] = 'Projects - MSInc.';
 		$data['content'] = 'asset/project_table';
 		$this->load->view($this->master_layout,$data);

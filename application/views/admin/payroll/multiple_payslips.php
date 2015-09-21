@@ -15,7 +15,7 @@
 							<div class="col-sm-2 error"><?php echo form_error('txtPayrollDate') ?></div>
 						</div>
 						<div class="input-group">
-							<input type="date" class="form-control input-sm" name="txtPayrollDate" value="<?php echo set_value('txtPayrollDate'); ?>">
+							<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" name="txtPayrollDate" value="<?php echo set_value('txtPayrollDate'); ?>">
 						</div>
 			    	</div>
 			    	<div class="col-sm-2">
@@ -24,7 +24,7 @@
 							<div class="col-sm-2 error"><?php echo form_error('txtStartDate') ?></div>
 						</div>
 						<div class="input-group">
-							<input type="date" class="form-control input-sm" name="txtStartDate" value="<?php echo set_value('txtStartDate'); ?>">
+							<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" name="txtStartDate" id="startdate" value="<?php echo set_value('txtStartDate'); ?>">
 						</div>
 			    	</div>
 					<div class="col-sm-2">
@@ -33,7 +33,7 @@
 							<div class="col-sm-2 error"><?php echo form_error('txtEndDate') ?></div>
 						</div>
 						<div class="input-group">
-							<input type="date" class="form-control input-sm" name="txtEndDate" value="<?php echo set_value('txtEndDate'); ?>">
+							<input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" name="txtEndDate" id="enddate" value="<?php echo set_value('txtEndDate'); ?>">
 						</div>
 			    	</div>
 					<div class="col-sm-6">

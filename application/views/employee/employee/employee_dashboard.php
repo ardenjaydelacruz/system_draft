@@ -95,7 +95,8 @@
         </div><!-- /.box -->
       </div><!-- /.col -->
     </div>
-    <div class="row">
+
+     <div class="row">
       <div class="col-md-6">
         <div class="box box-primary box-solid">
           <div class="box-header with-border">
@@ -169,6 +170,60 @@
              </table>
             </div>
           </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div><!-- /.col -->
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-primary box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">Leave Request</h3>
+            <div class="box-tools pull-right">
+              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div><!-- /.box-tools -->
+          </div><!-- /.box-header -->
+          <div class="box box-info box-solid">
+          <table id="dynamicTable" class="table table-striped table-hover table-bordered centered">
+            <thead >
+              <th class="text-center">ID</th>
+              <th class="text-center">Employee Name</th>
+              <th class="text-center">Leave Date</th>
+              <th class="text-center">Type of leave</th>
+              <th class="text-center">No. of Days</th>
+              <th class="text-center">Leaves Left</th>
+              <th class="text-center">Status</th>
+            </thead>
+            <?php
+            foreach ($request as $row) { 
+              ?>
+            <tr>
+              <td class="text-center"><?php echo $row->leave_request_id; ?></td>
+              <td><?php echo $row->name;  ?></td>
+              <td class="text-center"><?php echo date_format($row->leave_start,'M d, Y').' - '.date_format($row->leave_end,'M d, Y'); ?></td>
+              <td><?php echo $row->leave_type_name; ?></td>
+              <td class="text-center"><?php echo $row->days; ?></td>
+              <td class="text-center"><?php echo $row->leave_left; ?></td>
+              <td align="center">
+                <?php 
+                  if ($row->leave_status=='Approved'){
+                    echo "<label class='label label-success'>";
+                    echo $row->leave_status;
+                    echo "</label>";
+                  } else if ($row->leave_status=='Denied') {
+                    echo "<label class='label label-danger'>";
+                    echo $row->leave_status;
+                    echo "</label>";
+                  } else {
+                    echo "<label class='label label-warning'>";
+                    echo $row->leave_status;
+                    echo "</label>";
+                  }
+                 ?>
+              </td>
+            </tr>
+            <?php } ?>
+          </table>  
         </div><!-- /.box -->
       </div><!-- /.col -->
     </div>

@@ -47,6 +47,7 @@
 				<div class="col-md-12 text-center">
 					<table class="table table-striped table-hover table-bordered table-condensed ">				
 						<thead >
+							<th class="text-center">Include</th>
 							<th class="col-md-1 text-center">Emp ID</th>
 							<th class="col-md-3 text-center">Employee Name</th>
 							<th class="col-md-2 text-center">Basic Salary</th>
@@ -54,16 +55,45 @@
 							<th class="col-md-2 text-center">Gross Pay</th>
 							<th class="col-md-2 text-center">Net Pay</th>
 						</thead>
-						<?php foreach($payslips as $row){ ?>
+						<input type="hidden" name="hidTotalEmp" value="<?php echo count($payslips); ?>" />
+						<?php $ctr=1; foreach($payslips as $row){ ?>
 						<tr>
-							<td class="col-md-1 text-center"><?php echo $row["employee"]->emp_id; ?></td>
-							<td class="col-md-3"><?php echo $row["employee"]->last_name . ", " . $row["employee"]->first_name . " " . $row["employee"]->middle_name; ?></td>
-							<td class="col-md-2 text-right"><?php echo number_format($row["cutoffsalary"], 2, ".", ","); ?></td>
-							<td class="col-md-2 text-right"><?php echo number_format($row["total_absent"], 2, ".", ","); ?></td>
-							<td class="col-md-2 text-right"><?php echo number_format($row["gross_income"], 2, ".", ","); ?></td>
-							<td class="col-md-2 text-right"><?php echo number_format($row["net_income"], 2, ".", ","); ?></td>
+							<td class="text-center">
+								<input type="checkbox" name="chkEmp<?php echo $ctr; ?>" checked />
+							</td>
+							<td class="col-md-1 text-center">
+								<input type="hidden" name="hidID<?php echo $ctr; ?>" value="<?php echo $row["employee"]->emp_id; ?>" />
+								<?php echo $row["employee"]->emp_id; ?>
+							</td>
+							<td class="col-md-3">
+								<?php echo $row["employee"]->last_name . ", " . $row["employee"]->first_name . " " . $row["employee"]->middle_name; ?>
+							</td>
+							<td class="col-md-2 text-right">
+							
+								<input type="hidden" name="hidMonthlyRate<?php echo $ctr; ?>" value="<?php echo $row["employee"]->salary; ?>" />
+								<input type="hidden" name="hidBasicSalary<?php echo $ctr; ?>" value="<?php echo $row["cutoffsalary"]; ?>" />
+								<input type="hidden" name="hidTotalTax<?php echo $ctr; ?>" value="<?php echo $row["total_tax"]; ?>" />
+								<input type="hidden" name="hidTotalAllowance<?php echo $ctr; ?>" value="<?php echo $row["total_allowance"]; ?>" />
+								<input type="hidden" name="hidTotalOvertime<?php echo $ctr; ?>" value="<?php echo $row["total_overtime"]; ?>" />
+								<input type="hidden" name="hidTotalTardiness<?php echo $ctr; ?>" value="<?php echo $row["total_tardiness"]; ?>" />
+								<input type="hidden" name="hidTotalAbsent<?php echo $ctr; ?>" value="<?php echo $row["total_absent"]; ?>" />
+								<input type="hidden" name="hidTotalAbsentAmount<?php echo $ctr; ?>" value="<?php echo $row["total_absent_amount"]; ?>" />
+								<input type="hidden" name="hidGrossIncome<?php echo $ctr; ?>" value="<?php echo $row["gross_income"]; ?>" />
+								<input type="hidden" name="hidNetIncome<?php echo $ctr; ?>" value="<?php echo $row["net_income"]; ?>" />
+								
+								<?php echo number_format($row["cutoffsalary"], 2, ".", ","); ?>
+							</td>
+							<td class="col-md-2 text-right">
+								<?php echo number_format($row["total_absent"], 2, ".", ","); ?>
+							</td>
+							<td class="col-md-2 text-right">
+								<?php echo number_format($row["gross_income"], 2, ".", ","); ?>
+							</td>
+							<td class="col-md-2 text-right">
+								<?php echo number_format($row["net_income"], 2, ".", ","); ?>
+							</td>
 						</tr>
-						<?php } ?>
+						<?php $ctr++; } ?>
 					</table>
 					<input type="hidden" name="hidPayDate" value="<?php echo set_value('txtPayrollDate'); ?>" />
 					<input type="hidden" name="hidPayStart" value="<?php echo set_value('txtStartDate'); ?>" />

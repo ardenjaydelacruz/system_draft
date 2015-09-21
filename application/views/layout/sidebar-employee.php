@@ -36,11 +36,16 @@
 			</li>
 			<li>
 				<a href="<?php echo base_url();?>ems/evaluate_performance">
-					<i class="fa fa-calendar"></i> <span>Evaluate Performance</span>
+					<i class="fa fa-star"></i> <span>Evaluate Performance</span>
 				</a>
 			</li>
 			<li>
-				<a href="<?php echo base_url();?>ems/emp_dashboard">
+				<a href="<?php echo base_url();?>payroll/attendance">
+					<i class="fa fa-clock-o"></i> <span>Attendance</span>
+				</a>
+			</li>
+			<li>
+				<a href="<?php echo base_url();?>payroll/payroll_index">
 					<i class="fa fa-money"></i> <span>View Payslip</span>
 				</a>
 			</li>

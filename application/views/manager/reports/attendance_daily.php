@@ -28,7 +28,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="status">Date:</label>
-                            <input type="date" class="form-control input-sm" name="txtDate" value="<?php echo set_value('txtDate'); ?>">
+                            <input type="text" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control input-sm" name="txtDate" value="<?php if (isset($_POST['txtDate'])){ echo $_POST['txtDate'];} ?>">
                         </div>
                     </div>
                 </div><br>

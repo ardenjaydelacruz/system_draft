@@ -7,7 +7,7 @@
 		<div class="panel panel-info">
 			<div class="panel-heading">
 			    <div class="row">
-			    	<form action="<?php echo base_url();?>attendance/requestentry_table" method="post">
+			    	<form action="<?php echo base_url();?>payroll/requestentry_table" method="post">
 					<!--div class="col-sm-6">
 			    		<div class="row">
 							<label for="cboEmployee" class="control-label col-sm-6">Employee: </label>
@@ -57,26 +57,28 @@
 						<div class="nav-tabs-custom">
 							<ul class="nav nav-tabs">
 							<?php if($mode=='approved'){ ?>
-								<li><a href="<?php echo base_url();?>attendance/requestentry_table">Pending</a></li>
+								<li><a href="<?php echo base_url();?>payroll/requestentry_table">Pending</a></li>
 								<li class="active"><a href="#">Approved</a></li>
-								<li><a href="<?php echo base_url();?>attendance/requestentry_table?mode=declined">Declined</a></li>
+								<li><a href="<?php echo base_url();?>payroll/requestentry_table?mode=declined">Declined</a></li>
 							<?php } else if($mode=='declined'){ ?>
-								<li><a href="<?php echo base_url();?>attendance/requestentry_table">Pending</a></li>
-								<li><a href="<?php echo base_url();?>attendance/requestentry_table?mode=approved">Approved</a></li>
+								<li><a href="<?php echo base_url();?>payroll/requestentry_table">Pending</a></li>
+								<li><a href="<?php echo base_url();?>payroll/requestentry_table?mode=approved">Approved</a></li>
 								<li class="active"><a href="#">Declined</a></li>
 							<?php } else { ?>
 								<li class="active"><a href="#">Pending</a></li>
-								<li><a href="<?php echo base_url();?>attendance/requestentry_table?mode=approved">Approved</a></li>
-								<li><a href="<?php echo base_url();?>attendance/requestentry_table?mode=declined">Declined</a></li>
+								<li><a href="<?php echo base_url();?>payroll/requestentry_table?mode=approved">Approved</a></li>
+								<li><a href="<?php echo base_url();?>payroll/requestentry_table?mode=declined">Declined</a></li>
 							<?php } ?>
 							</ul>
 							<div class="tab-content">
-								<table class="table table-striped table-hover table-bordered table-condensed">				
+								<table id="dynamicTable" class="table table-striped table-hover table-bordered table-condensed">				
 									<thead >
-										<th class="col-md-2 text-center">Date</th>
-										<th class="col-md-2 text-center">Time In</th>
-										<th class="col-md-2 text-center">Time Out</th>
-										<th class="col-md-2 text-center">Remarks</th>
+										<?php if ($this->session->userdata('user_level') == 'Administrator' or $this->session->userdata('user_level') == 'Accounting Manager') { ?>
+										<th class="col-md-3 text-center">Requested by</th>
+										<?php } ?>
+										<th class="col-md-1 text-center">Date</th>
+										<th class="col-md-1 text-center">Time In</th>
+										<th class="col-md-1 text-center">Time Out</th>
 										<th class="col-md-2 text-center">Date Requested</th>
 										<?php if($mode==''){ ?>
 											<th class="col-md-2 text-center">Action</th>
@@ -86,23 +88,25 @@
 									</thead>
 									<?php foreach($requestentry as $row){ ?>
 									<tr>
-										<td class="col-md-2 text-center"><?php echo $row->date_value?></td>
-										<td class="col-md-2 text-center"><?php echo $row->time_in?></td>
-										<td class="col-md-2 text-center"><?php echo $row->time_out?></td>
-										<td class="col-md-2 text-center"><?php echo $row->remarks?></td>
+										<?php if ($this->session->userdata('user_level') == 'Administrator' or $this->session->userdata('user_level') == 'Accounting Manager') { ?>
+										<td class="col-md-3 text-left"><?php echo $row->requestee?></td>
+										<?php } ?>
+										<td class="col-md-1 text-center"><?php echo $row->date_value?></td>
+										<td class="col-md-1 text-center"><?php echo $row->time_in?></td>
+										<td class="col-md-1 text-center"><?php echo $row->time_out?></td>
 										<td class="col-md-2 text-center"><?php echo $row->date_requested?></td>
 										<td class="col-md-2 text-center">
 										<?php if($mode==''){ ?>
-											<a href="<?php echo base_url();?>attendance/approverequestentry?action=approve&req_id=<?php echo $row->req_id; ?>">
+											<a href="<?php echo base_url();?>payroll/approverequestentry?action=approve&req_id=<?php echo $row->req_id; ?>">
 												<button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Approve">
 												<i class="fa fa-check fa-lg"></i></button>
 											</a>
-											<a href="<?php echo base_url();?>attendance/approverequestentry?action=decline&req_id=<?php echo $row->req_id; ?>">
+											<a href="<?php echo base_url();?>payroll/approverequestentry?action=decline&req_id=<?php echo $row->req_id; ?>">
 												<button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Decline">
 												<i class="fa fa-times fa-lg"></i></button>
 											</a>
 										<?php } else { ?>
-											<?php echo $row->approved_by?>
+											<?php echo $row->approver?>
 										<?php } ?>
 										</td>
 									</tr>

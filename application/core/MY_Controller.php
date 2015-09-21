@@ -6,8 +6,6 @@ class MY_Controller extends CI_Controller {
     
 	public function __construct(){
 		parent::__construct();
-		$this->load->library("pagination");
-        $this->load->model('Performance');
         $this->load->model('reports_model');
         $this->load->model('print_reports_model');
         $this->load->library('user_agent');
@@ -30,7 +28,7 @@ class MY_Controller extends CI_Controller {
             $this->master_layout = 'layout/employee-master';
         } elseif ($this->session->userdata('user_level') == 'HR Manager') {
             $this->master_layout = 'layout/manager-master';
-        } elseif ($this->session->userdata('user_level') == 'Accounting Manager') {
+        } elseif ($this->session->userdata('user_level') == 'Finance Manager') {
             $this->master_layout = 'layout/manager-master';
         } elseif ($this->session->userdata('user_level') == 'Stock Clerk') {
             $this->master_layout = 'layout/manager-master';

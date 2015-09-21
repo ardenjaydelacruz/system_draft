@@ -41,47 +41,50 @@ function printPayslip(id){
 			    </div>		    
 			</div>
 			<div class="panel-body">
-				<div class="pull-left add-employee">
-					<a href="<?php echo base_url();?>payroll/add_payslip">
-						<div class="btn btn-success"><i class="fa fa-plus"></i> Add New Payslip </div>
-					</a>
-					&nbsp;
-					<a href="<?php echo base_url();?>payroll/multiple_payslips">
-						<div class="btn btn-success"><i class="fa fa-plus"></i> Add Multiple Payslips </div>
-					</a>
-				</div>
-				<div class="pull-right">
-				
-					<?php
-					if(isset($links)) echo $links; 
-					?>
-				</div> 
-				<table class="table table-striped table-hover table-bordered table-condensed ">				
-					<thead >
-						<th class="col-md-1 text-center">Emp ID</th>
-						<th class="col-md-3 text-center">Employee Name</th>
-						<th class="col-md-2 text-center">Basic Salary</th>
-						<th class="col-md-2 text-center">Gross Pay</th>
-						<th class="col-md-2 text-center">Net Pay</th>
-						<th class="col-md-2 text-center">Print</th>
-					</thead>
-					<?php foreach($payslip as $row){ ?>
-					<tr>
-						<td class="col-md-1 text-center"><?php echo $row->emp_id; ?></td>
-						<td class="col-md-3"><?php echo $row->last_name . ", " . $row->first_name . " " . $row->middle_name; ?></td>
-						<td class="col-md-2 text-right"><?php echo $row->basic_salary; ?></td>
-						<td class="col-md-2 text-right"><?php echo $row->gross_pay; ?></td>
-						<td class="col-md-2 text-right"><?php echo $row->net_pay; ?></td>
-						<td class="col-md-2 text-center">
-							<!--a href="<?php echo base_url();?>attendance/print_payslip?id=<?php echo $row->payslip_id; ?>"-->
-							<button class="btn btn-info btn-xs" onClick=printPayslip(<?php echo $row->payslip_id; ?>) data-toggle="tooltip" data-placement="top" title="Print">
-								<i class="fa fa-calendar"></i>
-							</button>
-						</td>
-					</tr>
+				<div class="col-sm-12">
+					<?php if ($this->session->userdata('user_level') == 'Administrator' or $this->session->userdata('user_level') == 'Finance Manager') { ?>
+					<div class="pull-left add-employee">
+						<a href="<?php echo base_url();?>payroll/add_payslip">
+							<div class="btn btn-success"><i class="fa fa-plus"></i> Add New Payslip </div>
+						</a>
+						&nbsp;
+						<a href="<?php echo base_url();?>payroll/multiple_payslips">
+							<div class="btn btn-success"><i class="fa fa-plus"></i> Add Multiple Payslips </div>
+						</a>
+					</div>
+					<br><br>
 					<?php } ?>
-				</table>	
-			</div>	
+				</div> 
+				<div class="col-sm-12">
+					<table id="dynamicTable" class="table table-striped table-hover table-bordered table-condensed ">				
+						<thead >
+							<th class="text-center">#</th>
+							<th class="col-md-1 text-center">Emp ID</th>
+							<th class="col-md-3 text-center">Employee Name</th>
+							<th class="col-md-2 text-center">Basic Salary</th>
+							<th class="col-md-2 text-center">Gross Pay</th>
+							<th class="col-md-2 text-center">Net Pay</th>
+							<th class="col-md-2 text-center">Print</th>
+						</thead>
+						<?php $ctr=1; foreach($payslip as $row){ ?>
+						<tr>
+							<td class="text-center"><?php echo $ctr; ?></td>
+							<td class="col-md-1 text-center"><?php echo $row->emp_id; ?></td>
+							<td class="col-md-3"><?php echo $row->last_name . ", " . $row->first_name . " " . $row->middle_name; ?></td>
+							<td class="col-md-2 text-right"><?php echo $row->basic_salary; ?></td>
+							<td class="col-md-2 text-right"><?php echo $row->gross_pay; ?></td>
+							<td class="col-md-2 text-right"><?php echo $row->net_pay; ?></td>
+							<td class="col-md-2 text-center">
+								<!--a href="<?php echo base_url();?>attendance/print_payslip?id=<?php echo $row->payslip_id; ?>"-->
+								<button class="btn btn-info btn-xs" onClick=printPayslip(<?php echo $row->payslip_id; ?>) data-toggle="tooltip" data-placement="top" title="Print">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</td>
+						</tr>
+						<?php $ctr++; } ?>
+					</table>	
+				</div>	
+			</div> 
 		</div>
 	</div>
 </div>

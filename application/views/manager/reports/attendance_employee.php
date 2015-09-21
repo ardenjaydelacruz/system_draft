@@ -28,9 +28,17 @@
 					<div class="form-group">
 						<label for="status">Employee: </label>
 						<select name="cboEmployee" class="form-control">
+							<?php 
+                                $emp = $this->input->post('cboEmployee');
+                                if (!$emp){
+                                    echo "<option value=''>---</option>";
+                                } else {
+                                     echo "<option value=$emp>$emp</option>";
+                                }
+                            ?>
 							<?php print_r($employees);
 							foreach($employees as $employee){ ?>
-								<option value="<?php echo $employee->emp_id ?>"<?php if(set_value('cboEmployee')==$employee->emp_id) echo " selected='selected'"; ?>><?php echo $employee->first_name . " " . $employee->last_name ?></option>
+								<option value="<?php echo $employee->emp_id ?>"><?php echo $employee->emp_id.' - '. $employee->first_name . " " . $employee->last_name ?></option>
 							<?php } ?>
 						</select>
 					</div>
@@ -39,8 +47,16 @@
 					<div class="form-group">
 						<label for="cboMonth">Month: </label>
 						<select name="cboMonth" class="form-control">
+							<?php 
+                                $month = $this->input->post('cboMonth');
+                                if (!$month){
+                                    echo "<option value='01'>January</option>";
+                                } else {
+                                     echo "<option value=$month>$month</option>";
+                                }
+                            ?>
 							<?php foreach($months as $month){ ?>
-								<option value="<?php echo $month['id'] ?>"<?php if(set_value('cboMonth')==$month['id']) echo " selected='selected'"; ?>><?php echo $month['value']?></option>
+								<option value="<?php echo $month['id'] ?>"><?php echo $month['id'] .' - '. $month['value']?></option>
 							<?php } ?>
 						</select>
 					</div>
@@ -49,8 +65,16 @@
 					<div class="form-group">
 						<label for="cboYear">Year: </label>
 						<select name="cboYear" class="form-control">
+							<?php 
+                                $yr = $this->input->post('cboYear');
+                                if (!$emp){
+                                    echo "<option value='2015'>2015</option>";
+                                } else {
+                                     echo "<option value=$yr>$yr</option>";
+                                }
+                            ?>
 							<?php foreach($years as $year){ ?>
-								<option value="<?php echo $year ?>"<?php if(set_value('cboYear')==$year) echo " selected='selected'"; ?>><?php echo $year?></option>
+								<option value="<?php echo $year ?>"><?php echo $year?></option>
 							<?php } ?>
 						</select>
 					</div>

@@ -1,7 +1,7 @@
 <div class="content-wrapper">
 	<ol class="breadcrumb">
         <li><a href="<?php echo base_url();?>ems/dashboard" class="btn btn-default"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-		<li class='active'>Taxes</li>           
+		<li class='active'>Deductions</li>           
     </ol>
     <div class="container-fluid">
 		<div class="panel panel-info">
@@ -10,7 +10,7 @@
 			    	<form action="<?php echo base_url();?>payroll/taxes" method="post">
 					<div class="col-sm-9">
 			    		<div class="row">
-							<label for="cboEmployee" class="control-label col-sm-9">Taxes </label>
+							<label for="cboEmployee" class="control-label col-sm-9">Deductions </label>
 						</div>
 			    	</div>
 			    	</form>
@@ -19,10 +19,10 @@
 			<div class="panel-body">
 				<div class="pull-left addButton">
 					<a href="<?php echo base_url();?>payroll/taxes_add">
-						<div class="btn btn-success"><i class="fa fa-plus"></i> Add Tax Type </div>
+						<div class="btn btn-success"><i class="fa fa-plus"></i> Add Deduction </div>
 					</a>
 				</div>
-				<table id="dynamicTable" class="table table-striped table-hover table-bordered table-condensed ">				
+				<table class="table table-striped table-hover table-bordered table-condensed ">				
 					<thead >
 						<th class="col-md-2 text-center">Type</th>
 						<th class="col-md-2 text-center">Percentage</th>

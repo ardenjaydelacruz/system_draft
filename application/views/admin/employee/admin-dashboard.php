@@ -60,7 +60,7 @@
             </div><!-- /.box-tools -->
       </div>
       <div class="box-body">
-        <div class="row">
+         <div class="row">
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
                 <div class="small-box bg-aqua">
@@ -80,14 +80,13 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3><?php echo $total_projects; ?></h3>
-
-                        <p>Active Projects</p>
+                        <h3><?php echo $existing; ?></h3>
+                        <p>Existing Employees</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-clock-o"></i>
+                        <i class="fa fa-user"></i>
                     </div>
-                    <a href="<?php echo base_url('ams/view_projects'); ?>" class="small-box-footer">View Projects <i
+                    <a href="<?php echo base_url('ems/employees'); ?>" class="small-box-footer">View Employees <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -96,14 +95,13 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3><?php echo $total_asset; ?></h3>
-
-                        <p>Total Assets</p>
+                        <h3><?php echo $onleave; ?></h3>
+                        <p>On-leave Employees</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-cubes"></i>
+                        <i class="fa fa-user"></i>
                     </div>
-                    <a href="<?php echo base_url('ams/view_assets'); ?>" class="small-box-footer">View Assets <i
+                    <a href="<?php echo base_url('ems/employees'); ?>" class="small-box-footer">View Employees <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -112,14 +110,13 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>10</h3>
-
-                        <p>Upcoming Leaves</p>
+                        <h3><?php echo $resigned; ?></h3>
+                        <p>Resigned Employees</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-calendar"></i>
+                        <i class="fa fa-user"></i>
                     </div>
-                    <a href="<?php echo base_url('ems/leaves_table'); ?>" class="small-box-footer">View Leaves <i
+                    <a href="<?php echo base_url('ems/employees'); ?>" class="small-box-footer">View Employees <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>

@@ -111,13 +111,31 @@ class Emp_info_model extends ActiveRecord\Model {
 		
 		$leave1 = array (
 			'employee_id'   => $id,
-			'leave_type_id' => 'VL',
+			'leave_type_id' => 'EL',
 			'days'          => 0
 			);
 
 		$leave2 = array (
 			'employee_id'   => $id,
+			'leave_type_id' => 'ML',
+			'days'          => 0
+			);
+
+		$leave3 = array (
+			'employee_id'   => $id,
+			'leave_type_id' => 'PL',
+			'days'          => 0
+			);
+
+		$leave4 = array (
+			'employee_id'   => $id,
 			'leave_type_id' => 'SL',
+			'days'          => 0
+			);
+
+		$leave5 = array (
+			'employee_id'   => $id,
+			'leave_type_id' => 'VL',
 			'days'          => 0
 			);
 
@@ -131,7 +149,10 @@ class Emp_info_model extends ActiveRecord\Model {
 				Gov_id_model::create($wew) &&
 				Users::create($acc) &&
 				Leave_left_model::create($leave1) &&
-				Leave_left_model::create($leave2)
+				Leave_left_model::create($leave2) &&
+				Leave_left_model::create($leave3) &&
+				Leave_left_model::create($leave4) &&
+				Leave_left_model::create($leave5)
 				) {
 				$this->session->set_userdata('added', 1);
 				Audit_trail_model::auditAddEmp($id);
@@ -282,13 +303,13 @@ class Emp_info_model extends ActiveRecord\Model {
 		return $data;
 	}
 
-	public function updateLeave($id){
-		$leave1 = Leave_left_model::find_by_leave_type_id_and_employee_id('VL',$id);
-		$vacation = $leave1->days + $this->input->post('txtVacationLeave');
-		$leave2 = Leave_left_model::find_by_leave_type_id_and_employee_id('SL',$id);
-		$sick = $leave2->days + $this->input->post('txtSickLeave');
-		$this->reports_model->update_leave($id,'VL',$vacation);
-		$this->reports_model->update_leave($id,'SL',$sick);
+	public function updateLeave($id,$leave){
+		$details = $this->input->post('txtDetails');
+		$type = Leave_left_model::find_by_leave_type_id_and_employee_id($leave,$id);
+		$days =  $type->days;
+		$leaveDays = $days + $this->input->post('txtLeaveType');
+		$this->reports_model->update_leave($id,$leave,$leaveDays);
+		Leave_history_model::addHistory($id,$leave,$days,'Acquired',$leaveDays,$details,$this->input->post('txtLeaveType'));
 		$this->session->set_userdata('edited', 1);
 		Audit_trail_model::auditAddLeave($id);
 		redirect("ems/view_details?emp_id=$id");

@@ -23,7 +23,7 @@ class Auth extends MY_Controller {
 				redirect('ems/hr_dashboard');
 			} elseif ($userlevel=='Stock Clerk'){
 				redirect('ems/stock_dashboard');
-			} elseif ($userlevel=='Accounting Manager'){
+			} elseif ($userlevel=='Finance Manager'){
 				redirect('ems/acc_dashboard');
 			} elseif ($userlevel=='Employee'){
 				redirect('ems/emp_dashboard');
@@ -52,10 +52,11 @@ class Auth extends MY_Controller {
 	 		return false;
 		} elseif ($user == 'Success') {
 			return true; // no error
-		} elseif ($user == 'Logged'){
-			$this->form_validation->set_message('validate_data','User is already logged in.');
-	 		return false;
 		}
+		// } elseif ($user == 'Logged'){
+		// 	$this->form_validation->set_message('validate_data','User is already logged in.');
+	 // 		return false;
+		// }
 	}
 
 	public function validLogin(){
