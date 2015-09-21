@@ -16,8 +16,8 @@
 						<th class="text-center">Employee Name</th>
 						<th class="text-center">Leave Date</th>
 						<th class="text-center">Type of leave</th>
-						<th class="text-center">No. of Days</th>
-						<th class="text-center">Leaves Left</th>
+						<th class="text-center">Requested Day/s</th>
+						<th class="text-center">Days Left</th>
 						<th class="text-center">Status</th>
 						<th class="text-center">Manage</th>
 					</thead>
@@ -33,14 +33,20 @@
 						<td class="text-center"><?php echo $row->days; ?></td>
 						<td class="text-center"><?php echo $row->leave_left; ?></td>
 						<td align="center">
-							<?php if ($row->leave_status=='Pending'){ ?>
-							<a href="<?php echo base_url(); ?>ems/leaves_table?leave_status=Approved&leave_request_id=<?php echo substr($row->leave_request_id,3,5);?>&leave_id=<?php echo $row->leave_type_id; ?>&days=<?php echo $row->days; ?>&leave_left=<?php echo $row->leave_left; ?>&emp_id=<?php echo $row->emp_id; ?>">
-								<button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Approve Leave"><i class="fa fa-thumbs-up fa-lg"></i></button>
-							</a>
-							<a href="<?php echo base_url(); ?>ems/leaves_table?leave_status=Denied&leave_request_id=<?php echo substr($row->leave_request_id,3,5);?>">
-								<button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Decline Leave"><i class="fa fa-thumbs-down fa-lg"></i></button>
-							</a>
-							<?php } else {
+							<?php if ($row->leave_status=='Pending'){
+								if ($row->days > $row->leave_left){
+									echo "<label class='label label-warning'>";
+									echo 'Invalid';
+									echo "</label>";
+								} elseif ($row->days <= $row->leave_left) { ?>
+									<a href="<?php echo base_url(); ?>ems/leaves_table?leave_status=Approved&leave_request_id=<?php echo substr($row->leave_request_id,3,5);?>&leave_id=<?php echo $row->leave_type_id; ?>&days=<?php echo $row->days; ?>&leave_left=<?php echo $row->leave_left; ?>&emp_id=<?php echo $row->emp_id; ?>">
+										<button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Approve Leave"><i class="fa fa-thumbs-up fa-lg"></i></button>
+									</a>
+									<a href="<?php echo base_url(); ?>ems/leaves_table?leave_status=Denied&leave_request_id=<?php echo substr($row->leave_request_id,3,5);?>">
+										<button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Decline Leave"><i class="fa fa-thumbs-down fa-lg"></i></button>
+									</a>
+							<?php }
+							 } else {
 								if ($row->leave_status=='Approved'){
 									echo "<label class='label label-success'>";
 									echo $row->leave_status;
